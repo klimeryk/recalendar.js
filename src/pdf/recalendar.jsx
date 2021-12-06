@@ -23,17 +23,23 @@ class RecalendarPdf extends React.Component {
 		const endOfWeek = startOfWeek.add( 1, 'weeks' );
 		while ( currentDate.isBefore( endOfWeek ) ) {
 			if ( currentDate.date() === 1 ) {
-				weekPages.push( <MonthOverviewPage date={ currentDate } /> );
+				weekPages.push(
+					<MonthOverviewPage
+						key={ 'month-overview' + currentDate.unix() }
+						date={ currentDate }
+					/>,
+				);
 			}
-			weekPages.push( <DayPage useSuspense={ false } date={ currentDate } /> );
+			const key = 'day' + currentDate.unix();
+			weekPages.push( <DayPage key={ key } useSuspense={ false } date={ currentDate } /> );
 			currentDate = currentDate.add( 1, 'days' );
 		}
 		return (
-			<>
+			<React.Fragment key={ 'week' + startOfWeek.unix() }>
 				<WeekOverviewPage date={ startOfWeek } />
 				{weekPages}
 				<WeekRetrospectivePage date={ startOfWeek } />
-			</>
+			</React.Fragment>
 		);
 	}
 
