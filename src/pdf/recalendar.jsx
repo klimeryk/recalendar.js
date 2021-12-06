@@ -6,6 +6,7 @@ import React from 'react';
 import DayPage from 'pdf/pages/day';
 import MonthOverviewPage from 'pdf/pages/month-overview';
 import WeekOverviewPage from 'pdf/pages/week-overview';
+import WeekRetrospectivePage from 'pdf/pages/week-retrospective';
 
 class RecalendarPdf extends React.Component {
 	styles = StyleSheet.create( {
@@ -32,6 +33,7 @@ class RecalendarPdf extends React.Component {
 			<>
 				<WeekOverviewPage date={ startOfWeek } />
 				{weekPages}
+				<WeekRetrospectivePage date={ startOfWeek } />
 			</>
 		);
 	}
