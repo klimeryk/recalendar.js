@@ -1,22 +1,12 @@
 {
-	"env": {
-		"browser": true,
-		"es2021": true
-	},
 	"extends": [
+		"react-app",
 		"eslint:recommended",
 		"plugin:react/recommended",
 		"plugin:import/recommended",
 		"prettier"
 	],
-	"parserOptions": {
-		"ecmaFeatures": {
-			"jsx": true
-		},
-		"ecmaVersion": 12,
-		"sourceType": "module"
-	},
-	"plugins": ["react", "react-hooks"],
+	"plugins": ["react"],
 	"rules": {
 		"indent": ["error", "tab"],
 		"linebreak-style": ["error", "unix"],
@@ -44,7 +34,7 @@
 		"new-cap": ["error", { "capIsNew": false, "newIsCap": true }],
 		"no-cond-assign": "error",
 		"no-const-assign": "error",
-		"no-console": "error",
+		"no-console": "warn",
 		"no-debugger": "error",
 		"no-dupe-args": "error",
 		"no-dupe-keys": "error",

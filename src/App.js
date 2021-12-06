@@ -13,7 +13,7 @@ function App() {
 				<RecalendarPdf />
 			</PDFViewer>
 			<PDFDownloadLink document={ <RecalendarPdf /> } fileName="somename.pdf">
-				{( { blob, url, loading, error } ) => ( loading ? 'Loading document...' : 'Download now!' )}
+				{( { blob, url, loading, error } ) => ( loading ? 'Loading...' : 'Download now!' )}
 			</PDFDownloadLink>
 		</div>
 	);
