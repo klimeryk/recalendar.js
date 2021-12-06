@@ -26,10 +26,35 @@ class MiniCalendar extends React.Component {
 			padding: '10px',
 		},
 	} );
+
+	renderHeader() {
+		const { day, week } = this.styles;
+		const weekdays = dayjs.weekdaysMin();
+		const firstDayOfWeek = dayjs.localeData().firstDayOfWeek();
+		const correctedWeekdays = [
+			...weekdays.slice( firstDayOfWeek ),
+			...weekdays.slice( 0, firstDayOfWeek ),
+		];
+		const daysOfTheWeek = correctedWeekdays.map( ( dayOfTheWeek, index ) => (
+			<Text key={ index } style={ day }>
+				{dayOfTheWeek}
+			</Text>
+		) );
+
+		return (
+			<View style={ week }>
+				<Text style={ day }>W#</Text>
+				{daysOfTheWeek}
+				<Text style={ day }>Re</Text>
+			</View>
+		);
+	}
+
 	render() {
 		const { month, week, day } = this.styles;
 		return (
 			<View style={ month }>
+				{this.renderHeader()}
 				<View style={ week }>
 					<Text style={ day }></Text>
 					<Text style={ day }></Text>

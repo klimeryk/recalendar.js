@@ -1,5 +1,6 @@
 import dayjs from 'dayjs';
 import isoWeek from 'dayjs/plugin/isoWeek';
+import localeData from 'dayjs/plugin/localeData';
 import objectSupport from 'dayjs/plugin/objectSupport';
 import updateLocale from 'dayjs/plugin/updateLocale';
 import utc from 'dayjs/plugin/utc';
@@ -14,6 +15,7 @@ import './index.css';
 import App from './App';
 
 dayjs.extend( isoWeek );
+dayjs.extend( localeData );
 dayjs.extend( objectSupport );
 dayjs.extend( updateLocale );
 dayjs.extend( utc );
