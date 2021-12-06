@@ -1,5 +1,6 @@
 import { Document, Page, Text, View, StyleSheet, Link } from '@react-pdf/renderer';
 import dayjs from 'dayjs';
+import PropTypes from 'prop-types';
 import React from 'react';
 
 import DayPage from 'pdf/pages/day';
@@ -17,17 +18,20 @@ class RecalendarPdf extends React.Component {
 	renderPagesOnDate( date ) {}
 
 	renderWeek( startOfWeek ) {
-		const dayPages = [];
+		const weekPages = [];
 		let currentDate = startOfWeek.clone();
 		const endOfWeek = startOfWeek.add( 1, 'weeks' );
 		while ( currentDate.isBefore( endOfWeek ) ) {
-			dayPages.push( <DayPage date={ currentDate } /> );
+			if ( currentDate.date() === 1 ) {
+				weekPages.push( <MonthOverviewPage date={ currentDate } /> );
+			}
+			weekPages.push( <DayPage date={ currentDate } /> );
 			currentDate = currentDate.add( 1, 'days' );
 		}
 		return (
 			<>
 				<WeekOverviewPage date={ startOfWeek } />
-				{dayPages}
+				{weekPages}
 			</>
 		);
 	}
@@ -40,7 +44,9 @@ class RecalendarPdf extends React.Component {
 			pageList.push( this.renderWeek( currentDate ) );
 
 			currentDate = currentDate.add( 1, 'weeks' );
-			break;
+			if ( this.props.isPreview && currentDate.month() === 2 ) {
+				break;
+			}
 		}
 		return pageList;
 	}
@@ -49,5 +55,9 @@ class RecalendarPdf extends React.Component {
 		return <Document>{this.renderCalendar()}</Document>;
 	}
 }
+
+RecalendarPdf.propTypes = {
+	isPreview: PropTypes.bool.isRequired,
+};
 
 export default RecalendarPdf;
