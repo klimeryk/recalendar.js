@@ -3,6 +3,7 @@ import dayjs from 'dayjs';
 import PropTypes from 'prop-types';
 import React from 'react';
 
+import PdfConfig from 'pdf/config';
 import DayPage from 'pdf/pages/day';
 import MonthOverviewPage from 'pdf/pages/month-overview';
 import WeekOverviewPage from 'pdf/pages/week-overview';
@@ -15,8 +16,6 @@ class RecalendarPdf extends React.Component {
 			backgroundColor: '#E4E4E4',
 		},
 	} );
-
-	renderPagesOnDate( date ) {}
 
 	renderWeek( startOfWeek ) {
 		const weekPages = [];
@@ -39,9 +38,15 @@ class RecalendarPdf extends React.Component {
 	}
 
 	renderCalendar() {
+		const { year } = this.props.config;
 		const pageList = [];
-		const year = 2021;
-		let currentDate = dayjs.utc( { year, month: 0, day: 1 } ).startOf( 'week' );
+		let currentDate = dayjs
+			.utc( {
+				year,
+				month: 0,
+				day: 1,
+			} )
+			.startOf( 'week' );
 		while ( currentDate.year() <= year ) {
 			pageList.push( this.renderWeek( currentDate ) );
 
@@ -59,6 +64,7 @@ class RecalendarPdf extends React.Component {
 }
 
 RecalendarPdf.propTypes = {
+	config: PropTypes.instanceOf( PdfConfig ).isRequired,
 	isPreview: PropTypes.bool.isRequired,
 };
 
