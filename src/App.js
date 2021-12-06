@@ -38,4 +38,4 @@ App.propTypes = {
 	t: PropTypes.func.isRequired,
 };
 
-export default withTranslation( 'app' )( App );
+export default withTranslation( [ 'app', 'pdf' ] )( App );

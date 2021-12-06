@@ -1,0 +1,7 @@
+{
+	"page": {
+		"day": {
+			"header": "Day overview for {{date, string}}"
+		}
+	}
+}

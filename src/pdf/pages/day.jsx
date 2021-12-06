@@ -2,15 +2,16 @@ import { Document, Page, Text, View, StyleSheet, Link } from '@react-pdf/rendere
 import dayjs from 'dayjs';
 import PropTypes from 'prop-types';
 import React from 'react';
+import { withTranslation } from 'react-i18next';
 
 import MiniCalendar from 'pdf/components/mini-calendar';
 
 class DayPage extends React.Component {
 	render() {
-		const { date } = this.props;
+		const { date, t } = this.props;
 		return (
 			<Page>
-				<Text>Day Page for {date.format()}</Text>
+				<Text>{t( 'page.day.header', { date: date.format() } )}</Text>
 				<MiniCalendar date={ date } />
 			</Page>
 		);
@@ -19,6 +20,7 @@ class DayPage extends React.Component {
 
 DayPage.propTypes = {
 	date: PropTypes.instanceOf( dayjs ).isRequired,
+	t: PropTypes.func.isRequired,
 };
 
-export default DayPage;
+export default withTranslation( 'pdf' )( DayPage );

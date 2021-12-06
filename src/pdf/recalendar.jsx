@@ -25,7 +25,7 @@ class RecalendarPdf extends React.Component {
 			if ( currentDate.date() === 1 ) {
 				weekPages.push( <MonthOverviewPage date={ currentDate } /> );
 			}
-			weekPages.push( <DayPage date={ currentDate } /> );
+			weekPages.push( <DayPage useSuspense={ false } date={ currentDate } /> );
 			currentDate = currentDate.add( 1, 'days' );
 		}
 		return (
