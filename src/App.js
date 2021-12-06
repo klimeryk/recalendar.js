@@ -1,6 +1,7 @@
 import { PDFViewer, PDFDownloadLink } from '@react-pdf/renderer';
 import PropTypes from 'prop-types';
 import React from 'react';
+import { withTranslation } from 'react-i18next';
 
 import PdfConfig from 'pdf/config';
 import RecalendarPdf from 'pdf/recalendar';
@@ -12,7 +13,8 @@ class App extends React.PureComponent {
 	config = new PdfConfig();
 
 	handlePdfGeneration = ( { blob, url, loading, error } ) => {
-		return loading ? 'Loading...' : 'Download now';
+		const { t } = this.props;
+		return loading ? t( 'loading' ) : t( 'download-ready' );
 	};
 
 	render() {
@@ -32,6 +34,8 @@ class App extends React.PureComponent {
 	}
 }
 
-App.propTypes = {};
+App.propTypes = {
+	t: PropTypes.func.isRequired,
+};
 
-export default App;
+export default withTranslation( 'app' )( App );
