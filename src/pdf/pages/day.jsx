@@ -4,13 +4,14 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import { withTranslation } from 'react-i18next';
 
+import { dayPageLink } from 'lib/links';
 import MiniCalendar from 'pdf/components/mini-calendar';
 
 class DayPage extends React.Component {
 	render() {
 		const { date, t } = this.props;
 		return (
-			<Page>
+			<Page id={ dayPageLink( date ) }>
 				<Text>{t( 'page.day.header', { date: date.format() } )}</Text>
 				<MiniCalendar date={ date } />
 			</Page>

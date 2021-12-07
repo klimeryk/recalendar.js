@@ -3,13 +3,14 @@ import dayjs from 'dayjs';
 import PropTypes from 'prop-types';
 import React from 'react';
 
+import { weekOverviewLink } from 'lib/links';
 import MiniCalendar from 'pdf/components/mini-calendar';
 
 class WeekOverviewPage extends React.Component {
 	render() {
 		const { date } = this.props;
 		return (
-			<Page>
+			<Page id={ weekOverviewLink( date ) }>
 				<Text>Week overview Page for Week #{date.isoWeek()}</Text>
 				<MiniCalendar date={ date } />
 			</Page>

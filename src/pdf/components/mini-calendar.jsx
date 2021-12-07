@@ -3,6 +3,8 @@ import dayjs from 'dayjs';
 import PropTypes from 'prop-types';
 import React from 'react';
 
+import { dayPageLink, weekOverviewLink, weekRetrospectiveLink } from 'lib/links';
+
 class MiniCalendar extends React.Component {
 	styles = StyleSheet.create( {
 		month: {
@@ -68,22 +70,21 @@ class MiniCalendar extends React.Component {
 		for ( let i = 0; i < 7; i++ ) {
 			const currentDay = week.add( i, 'days' );
 			days.push(
-				<Text key={ i } style={ day }>
+				<Link key={ i } src={ '#' + dayPageLink( currentDay ) } style={ day }>
 					{currentDay.date()}
-				</Text>,
+				</Link>,
 			);
 		}
-		/*
-		<Link src="#page10" style={ day }>
-			1
-		</Link>
-		*/
 
 		return (
-			<View style={ this.styles.week }>
-				<Text style={ day }>{week.isoWeek()}</Text>
+			<View key={ week.isoWeek() } style={ this.styles.week }>
+				<Link src={ '#' + weekOverviewLink( week ) } style={ day }>
+					{week.isoWeek()}
+				</Link>
 				{days}
-				<Text style={ day }>R</Text>
+				<Link src={ '#' + weekRetrospectiveLink( week ) } style={ day }>
+					R
+				</Link>
 			</View>
 		);
 	}
