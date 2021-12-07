@@ -1,6 +1,6 @@
 useTabs: true
 tabWidth: 2
-printWidth: 90
+printWidth: 80
 singleQuote: true
 bracketSpacing: true
 parenSpacing: true
