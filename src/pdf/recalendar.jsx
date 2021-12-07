@@ -1,4 +1,11 @@
-import { Document, Page, Text, View, StyleSheet, Link } from '@react-pdf/renderer';
+import {
+	Document,
+	Page,
+	Text,
+	View,
+	StyleSheet,
+	Link,
+} from '@react-pdf/renderer';
 import dayjs from 'dayjs';
 import PropTypes from 'prop-types';
 import React from 'react';
@@ -22,6 +29,8 @@ class RecalendarPdf extends React.Component {
 	} );
 
 	renderWeek( startOfWeek ) {
+		const { config } = this.props;
+
 		const weekPages = [];
 		let currentDate = startOfWeek.clone();
 		const endOfWeek = startOfWeek.add( 1, 'weeks' );
@@ -31,18 +40,26 @@ class RecalendarPdf extends React.Component {
 					<MonthOverviewPage
 						key={ 'month-overview' + currentDate.unix() }
 						date={ currentDate }
+						config={ config }
 					/>,
 				);
 			}
 			const key = 'day' + currentDate.unix();
-			weekPages.push( <DayPage key={ key } useSuspense={ false } date={ currentDate } /> );
+			weekPages.push(
+				<DayPage
+					key={ key }
+					useSuspense={ false }
+					date={ currentDate }
+					config={ config }
+				/>,
+			);
 			currentDate = currentDate.add( 1, 'days' );
 		}
 		return (
 			<React.Fragment key={ 'week' + startOfWeek.unix() }>
-				<WeekOverviewPage date={ startOfWeek } />
+				<WeekOverviewPage date={ startOfWeek } config={ config } />
 				{weekPages}
-				<WeekRetrospectivePage date={ startOfWeek } />
+				<WeekRetrospectivePage date={ startOfWeek } config={ config } />
 			</React.Fragment>
 		);
 	}
@@ -56,7 +73,13 @@ class RecalendarPdf extends React.Component {
 			day: 1,
 		} );
 		const endDate = currentDate.add( months, 'months' );
-		pageList.push( <YearOverviewPage startDate={ currentDate } endDate={ endDate } /> );
+		pageList.push(
+			<YearOverviewPage
+				startDate={ currentDate }
+				endDate={ endDate }
+				config={ this.props.config }
+			/>,
+		);
 
 		currentDate = currentDate.startOf( 'week' );
 		while ( currentDate.isBefore( endDate ) ) {
@@ -71,7 +94,9 @@ class RecalendarPdf extends React.Component {
 	}
 
 	render() {
-		return <Document style={ this.styles.document }>{this.renderCalendar()}</Document>;
+		return (
+			<Document style={ this.styles.document }>{this.renderCalendar()}</Document>
+		);
 	}
 }
 

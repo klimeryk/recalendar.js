@@ -6,12 +6,13 @@ import { withTranslation } from 'react-i18next';
 
 import { dayPageLink } from 'lib/links';
 import MiniCalendar from 'pdf/components/mini-calendar';
+import PdfConfig from 'pdf/config';
 
 class DayPage extends React.Component {
 	render() {
-		const { date, t } = this.props;
+		const { date, t, config } = this.props;
 		return (
-			<Page id={ dayPageLink( date ) }>
+			<Page id={ dayPageLink( date ) } size={ config.pageSize }>
 				<Text>{t( 'page.day.header', { date: date.format() } )}</Text>
 				<MiniCalendar date={ date } />
 			</Page>
@@ -20,6 +21,7 @@ class DayPage extends React.Component {
 }
 
 DayPage.propTypes = {
+	config: PropTypes.instanceOf( PdfConfig ).isRequired,
 	date: PropTypes.instanceOf( dayjs ).isRequired,
 	t: PropTypes.func.isRequired,
 };

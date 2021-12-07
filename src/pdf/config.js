@@ -13,6 +13,7 @@ class PdfConfig {
 				{ src: '/fonts/Lato/Lato-BoldItalic.ttf', fontStyle: 'italic', fontWeight: 700 },
 			],
 		};
+		this.pageSize = [ '157mm', '209mm' ];
 	}
 }
 
