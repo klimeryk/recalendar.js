@@ -12,6 +12,9 @@ import YearOverviewPage from 'pdf/pages/year-overview';
 
 class RecalendarPdf extends React.Component {
 	styles = StyleSheet.create( {
+		document: {
+			fontFamily: 'Lato',
+		},
 		page: {
 			flexDirection: 'row',
 			backgroundColor: '#E4E4E4',
@@ -68,7 +71,7 @@ class RecalendarPdf extends React.Component {
 	}
 
 	render() {
-		return <Document>{this.renderCalendar()}</Document>;
+		return <Document style={ this.styles.document }>{this.renderCalendar()}</Document>;
 	}
 }
 

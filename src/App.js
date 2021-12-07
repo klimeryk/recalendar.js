@@ -1,4 +1,4 @@
-import { PDFViewer, PDFDownloadLink } from '@react-pdf/renderer';
+import { PDFViewer, PDFDownloadLink, Font } from '@react-pdf/renderer';
 import PropTypes from 'prop-types';
 import React from 'react';
 import { withTranslation } from 'react-i18next';
@@ -18,6 +18,7 @@ class App extends React.PureComponent {
 	};
 
 	render() {
+		Font.register( this.config.fontDefinition );
 		return (
 			<div className="App">
 				<PDFViewer width="100%" height="600px">

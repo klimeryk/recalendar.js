@@ -3,6 +3,7 @@ import dayjs from 'dayjs';
 import PropTypes from 'prop-types';
 import React from 'react';
 
+import { getWeekdays } from 'lib/date';
 import {
 	dayPageLink,
 	monthOverviewLink,
@@ -27,20 +28,29 @@ class MiniCalendar extends React.Component {
 			flexDirection: 'row',
 		},
 		currentWeek: {
-			backgroundColor: 'pink',
+			backgroundColor: '#CCC',
 		},
 		day: {
 			flexGrow: 1,
 			flexShrink: 1,
 			flexBasis: 0,
+			textDecoration: 'none',
+			color: 'black',
+			fontWeight: 'normal',
+		},
+		currentDay: {
+			backgroundColor: '#CCC',
+		},
+		weekendDay: {
+			fontWeight: 'bold',
+		},
+		specialDay: {
+			border: '1px solid #555',
 		},
 		link: {
 			display: 'block',
 			width: '100%',
 			padding: '10px',
-		},
-		currentDay: {
-			backgroundColor: 'red',
 		},
 	} );
 
@@ -67,13 +77,8 @@ class MiniCalendar extends React.Component {
 
 	renderWeekdayNames() {
 		const { day, week } = this.styles;
-		const weekdays = dayjs.weekdaysMin();
-		const firstDayOfWeek = dayjs.localeData().firstDayOfWeek();
-		const correctedWeekdays = [
-			...weekdays.slice( firstDayOfWeek ),
-			...weekdays.slice( 0, firstDayOfWeek ),
-		];
-		const daysOfTheWeek = correctedWeekdays.map( ( dayOfTheWeek, index ) => (
+		const weekdays = getWeekdays();
+		const daysOfTheWeek = weekdays.map( ( dayOfTheWeek, index ) => (
 			<Text key={ index } style={ day }>
 				{dayOfTheWeek}
 			</Text>
@@ -103,6 +108,8 @@ class MiniCalendar extends React.Component {
 	renderWeek( week ) {
 		const { day } = this.styles;
 		const days = [];
+		const weekdays = getWeekdays();
+		const weekendDays = [ weekdays[ weekdays.length - 1 ], weekdays[ weekdays.length - 2 ] ];
 		for ( let i = 0; i < 7; i++ ) {
 			const currentDay = week.add( i, 'days' );
 			const dayStyles = [ day ];
@@ -111,6 +118,9 @@ class MiniCalendar extends React.Component {
 				currentDay.isSame( this.props.date, 'day' )
 			) {
 				dayStyles.push( this.styles.currentDay );
+			}
+			if ( weekendDays.includes( currentDay.format( 'dd' ) ) ) {
+				dayStyles.push( this.styles.weekendDay );
 			}
 			days.push(
 				<Link key={ i } src={ '#' + dayPageLink( currentDay ) } style={ dayStyles }>
