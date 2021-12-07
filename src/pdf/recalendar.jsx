@@ -8,6 +8,7 @@ import DayPage from 'pdf/pages/day';
 import MonthOverviewPage from 'pdf/pages/month-overview';
 import WeekOverviewPage from 'pdf/pages/week-overview';
 import WeekRetrospectivePage from 'pdf/pages/week-retrospective';
+import YearOverviewPage from 'pdf/pages/year-overview';
 
 class RecalendarPdf extends React.Component {
 	styles = StyleSheet.create( {
@@ -44,16 +45,18 @@ class RecalendarPdf extends React.Component {
 	}
 
 	renderCalendar() {
-		const { year } = this.props.config;
+		const { year, month, months } = this.props.config;
 		const pageList = [];
-		let currentDate = dayjs
-			.utc( {
-				year,
-				month: 0,
-				day: 1,
-			} )
-			.startOf( 'week' );
-		while ( currentDate.year() <= year ) {
+		let currentDate = dayjs.utc( {
+			year,
+			month,
+			day: 1,
+		} );
+		const endDate = currentDate.add( months, 'months' );
+		pageList.push( <YearOverviewPage startDate={ currentDate } endDate={ endDate } /> );
+
+		currentDate = currentDate.startOf( 'week' );
+		while ( currentDate.isBefore( endDate ) ) {
 			pageList.push( this.renderWeek( currentDate ) );
 
 			currentDate = currentDate.add( 1, 'weeks' );

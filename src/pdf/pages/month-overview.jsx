@@ -3,13 +3,14 @@ import dayjs from 'dayjs';
 import PropTypes from 'prop-types';
 import React from 'react';
 
+import { monthOverviewLink } from 'lib/links';
 import MiniCalendar from 'pdf/components/mini-calendar';
 
 class MonthOverviewPage extends React.Component {
 	render() {
 		const { date } = this.props;
 		return (
-			<Page>
+			<Page id={ monthOverviewLink( date ) }>
 				<Text>Month overview Page for month #{date.month() + 1}</Text>
 				<MiniCalendar date={ date } />
 			</Page>

@@ -3,7 +3,13 @@ import dayjs from 'dayjs';
 import PropTypes from 'prop-types';
 import React from 'react';
 
-import { dayPageLink, weekOverviewLink, weekRetrospectiveLink } from 'lib/links';
+import {
+	dayPageLink,
+	monthOverviewLink,
+	weekOverviewLink,
+	weekRetrospectiveLink,
+	yearOverviewLink,
+} from 'lib/links';
 
 class MiniCalendar extends React.Component {
 	styles = StyleSheet.create( {
@@ -29,7 +35,28 @@ class MiniCalendar extends React.Component {
 		},
 	} );
 
-	renderHeader() {
+	renderMonthName() {
+		const { day, week } = this.styles;
+		const { date } = this.props;
+		return (
+			<View style={ week }>
+				<Link src={ '#' + monthOverviewLink( date.subtract( 1, 'month' ) ) } style={ day }>
+					{'<'}
+				</Link>
+				<Link src={ '#' + monthOverviewLink( date ) } style={ day }>
+					{date.format( 'MMMM' )}
+				</Link>
+				<Link src={ '#' + yearOverviewLink() } style={ day }>
+					{date.format( 'YYYY' )}
+				</Link>
+				<Link src={ '#' + monthOverviewLink( date.add( 1, 'month' ) ) } style={ day }>
+					{'>'}
+				</Link>
+			</View>
+		);
+	}
+
+	renderWeekdayNames() {
 		const { day, week } = this.styles;
 		const weekdays = dayjs.weekdaysMin();
 		const firstDayOfWeek = dayjs.localeData().firstDayOfWeek();
@@ -93,7 +120,8 @@ class MiniCalendar extends React.Component {
 		const { month, week, day } = this.styles;
 		return (
 			<View style={ month }>
-				{this.renderHeader()}
+				{this.renderMonthName()}
+				{this.renderWeekdayNames()}
 				{this.renderMonth()}
 			</View>
 		);

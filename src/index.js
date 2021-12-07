@@ -1,4 +1,5 @@
 import dayjs from 'dayjs';
+import advancedFormat from 'dayjs/plugin/advancedFormat';
 import isoWeek from 'dayjs/plugin/isoWeek';
 import localeData from 'dayjs/plugin/localeData';
 import objectSupport from 'dayjs/plugin/objectSupport';
@@ -14,6 +15,7 @@ import { initReactI18next } from 'react-i18next';
 import './index.css';
 import App from './App';
 
+dayjs.extend( advancedFormat );
 dayjs.extend( isoWeek );
 dayjs.extend( localeData );
 dayjs.extend( objectSupport );
