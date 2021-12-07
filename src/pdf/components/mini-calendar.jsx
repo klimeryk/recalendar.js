@@ -11,6 +11,10 @@ import {
 	yearOverviewLink,
 } from 'lib/links';
 
+export const HIGHLIGHT_WEEK = 'HIGHLIGHT_WEEK';
+export const HIGHLIGHT_DAY = 'HIGHLIGHT_DAY';
+export const HIGHLIGHT_NONE = 'HIGHLIGHT_NONE';
+
 class MiniCalendar extends React.Component {
 	styles = StyleSheet.create( {
 		month: {
@@ -22,16 +26,21 @@ class MiniCalendar extends React.Component {
 			height: '80px',
 			flexDirection: 'row',
 		},
+		currentWeek: {
+			backgroundColor: 'pink',
+		},
 		day: {
 			flexGrow: 1,
 			flexShrink: 1,
 			flexBasis: 0,
-			backgroundColor: 'green',
 		},
 		link: {
 			display: 'block',
 			width: '100%',
 			padding: '10px',
+		},
+		currentDay: {
+			backgroundColor: 'red',
 		},
 	} );
 
@@ -96,15 +105,29 @@ class MiniCalendar extends React.Component {
 		const days = [];
 		for ( let i = 0; i < 7; i++ ) {
 			const currentDay = week.add( i, 'days' );
+			const dayStyles = [ day ];
+			if (
+				this.props.highlightMode === HIGHLIGHT_DAY &&
+				currentDay.isSame( this.props.date, 'day' )
+			) {
+				dayStyles.push( this.styles.currentDay );
+			}
 			days.push(
-				<Link key={ i } src={ '#' + dayPageLink( currentDay ) } style={ day }>
+				<Link key={ i } src={ '#' + dayPageLink( currentDay ) } style={ dayStyles }>
 					{currentDay.date()}
 				</Link>,
 			);
 		}
 
+		const weekStyles = [ this.styles.week ];
+		if (
+			this.props.highlightMode === HIGHLIGHT_WEEK &&
+			week.isoWeek() === this.props.date.isoWeek()
+		) {
+			weekStyles.push( this.styles.currentWeek );
+		}
 		return (
-			<View key={ week.isoWeek() } style={ this.styles.week }>
+			<View key={ week.isoWeek() } style={ weekStyles }>
 				<Link src={ '#' + weekOverviewLink( week ) } style={ day }>
 					{week.isoWeek()}
 				</Link>
@@ -128,8 +151,13 @@ class MiniCalendar extends React.Component {
 	}
 }
 
+MiniCalendar.defaultProps = {
+	highlightMode: HIGHLIGHT_DAY,
+};
+
 MiniCalendar.propTypes = {
 	date: PropTypes.instanceOf( dayjs ).isRequired,
+	highlightMode: PropTypes.oneOf( [ HIGHLIGHT_DAY, HIGHLIGHT_WEEK, HIGHLIGHT_NONE ] ),
 };
 
 export default MiniCalendar;

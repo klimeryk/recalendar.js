@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 
 import { monthOverviewLink } from 'lib/links';
-import MiniCalendar from 'pdf/components/mini-calendar';
+import MiniCalendar, { HIGHLIGHT_NONE } from 'pdf/components/mini-calendar';
 
 class MonthOverviewPage extends React.Component {
 	render() {
@@ -12,7 +12,7 @@ class MonthOverviewPage extends React.Component {
 		return (
 			<Page id={ monthOverviewLink( date ) }>
 				<Text>Month overview Page for month #{date.month() + 1}</Text>
-				<MiniCalendar date={ date } />
+				<MiniCalendar date={ date } highlightMode={ HIGHLIGHT_NONE } />
 			</Page>
 		);
 	}

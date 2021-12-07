@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 
 import { weekOverviewLink } from 'lib/links';
-import MiniCalendar from 'pdf/components/mini-calendar';
+import MiniCalendar, { HIGHLIGHT_WEEK } from 'pdf/components/mini-calendar';
 
 class WeekOverviewPage extends React.Component {
 	render() {
@@ -12,7 +12,7 @@ class WeekOverviewPage extends React.Component {
 		return (
 			<Page id={ weekOverviewLink( date ) }>
 				<Text>Week overview Page for Week #{date.isoWeek()}</Text>
-				<MiniCalendar date={ date } />
+				<MiniCalendar date={ date } highlightMode={ HIGHLIGHT_WEEK } />
 			</Page>
 		);
 	}
