@@ -187,28 +187,34 @@ class MiniCalendar extends React.Component {
 		for ( let i = 0; i < 7; i++ ) {
 			const currentDay = week.add( i, 'days' );
 			const dayStyles = [ day ];
+
 			if (
 				this.props.highlightMode === HIGHLIGHT_DAY &&
 				currentDay.isSame( this.props.date, 'day' )
 			) {
 				dayStyles.push( this.styles.currentDay );
 			}
-			if ( weekendDays.includes( currentDay.format( 'dd' ) ) ) {
-				dayStyles.push( this.styles.weekendDay );
-			}
-			if ( currentDay.month() !== this.props.date.month() ) {
-				dayStyles.push( this.styles.otherMonthDay );
-			}
-			const specialDateKey = currentDay.format( 'DD-MM' );
-			if ( config.specialDates[ specialDateKey ] ) {
-				dayStyles.push( this.styles.specialDay );
-			}
+
 			if (
 				this.props.highlightMode === HIGHLIGHT_WEEK &&
 				currentDay.isoWeek() === this.props.date.isoWeek()
 			) {
 				dayStyles.push( this.styles.currentWeekDay );
 			}
+
+			if ( weekendDays.includes( currentDay.format( 'dd' ) ) ) {
+				dayStyles.push( this.styles.weekendDay );
+			}
+
+			if ( currentDay.month() !== this.props.date.month() ) {
+				dayStyles.push( this.styles.otherMonthDay );
+			}
+
+			const specialDateKey = currentDay.format( 'DD-MM' );
+			if ( config.specialDates[ specialDateKey ] ) {
+				dayStyles.push( this.styles.specialDay );
+			}
+
 			days.push(
 				<Link key={ i } src={ '#' + dayPageLink( currentDay ) } style={ dayStyles }>
 					{currentDay.date()}
