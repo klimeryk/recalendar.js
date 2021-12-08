@@ -1,7 +1,11 @@
 {
-	"page": {
-		"day": {
-			"header": "Day overview for {{date, string}}"
+	"calendar": {
+		"header": {
+			"week-number": "W#",
+			"retrospective": "Re"
+		},
+		"body": {
+			"retrospective": "R"
 		}
 	}
 }

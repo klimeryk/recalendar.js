@@ -1,7 +1,15 @@
-import { Document, Page, Text, View, StyleSheet, Link } from '@react-pdf/renderer';
+import {
+	Document,
+	Page,
+	Text,
+	View,
+	StyleSheet,
+	Link,
+} from '@react-pdf/renderer';
 import dayjs from 'dayjs';
 import PropTypes from 'prop-types';
 import React from 'react';
+import { withTranslation } from 'react-i18next';
 
 import { getWeekdays } from 'lib/date';
 import {
@@ -18,13 +26,13 @@ export const HIGHLIGHT_NONE = 'HIGHLIGHT_NONE';
 
 class MiniCalendar extends React.Component {
 	styles = StyleSheet.create( {
-		month: {
-			width: '100%',
+		body: {
+			fontSize: 8,
+			padding: '0 5 5 5',
+			width: 150,
 		},
 		week: {
-			width: '50%',
 			display: 'flex',
-			height: '80px',
 			flexDirection: 'row',
 		},
 		currentWeek: {
@@ -33,10 +41,36 @@ class MiniCalendar extends React.Component {
 		day: {
 			flexGrow: 1,
 			flexShrink: 1,
-			flexBasis: 0,
+			width: 14,
 			textDecoration: 'none',
 			color: 'black',
 			fontWeight: 'normal',
+			textAlign: 'center',
+			padding: 2,
+		},
+		header: {
+			flexDirection: 'row',
+		},
+		monthArrow: {
+			flexBasis: 20,
+			flexGrow: 0,
+			textAlign: 'center',
+			padding: 5,
+			textDecoration: 'none',
+			color: '#AAA',
+			fontSize: 12,
+			fontWeight: 'bold',
+		},
+		monthName: {
+			textTransform: 'uppercase',
+			padding: 5,
+			textDecoration: 'none',
+			color: '#888',
+			fontSize: 12,
+			fontWeight: 'bold',
+		},
+		push: {
+			marginLeft: 'auto',
 		},
 		currentDay: {
 			backgroundColor: '#CCC',
@@ -47,28 +81,45 @@ class MiniCalendar extends React.Component {
 		specialDay: {
 			border: '1px solid #555',
 		},
-		link: {
-			display: 'block',
-			width: '100%',
-			padding: '10px',
+		otherMonthDay: {
+			color: '#999',
+		},
+		weekNumber: {
+			color: '#999',
+			borderRight: '1 solid black',
+		},
+		weekRetrospective: {
+			color: '#999',
+			borderLeft: '1 solid black',
+		},
+		weekdayName: {
+			fontWeight: 'bold',
+			color: 'black',
+			borderBottom: '1 solid black',
 		},
 	} );
 
 	renderMonthName() {
-		const { day, week } = this.styles;
+		const { monthArrow, monthName, push, header } = this.styles;
 		const { date } = this.props;
 		return (
-			<View style={ week }>
-				<Link src={ '#' + monthOverviewLink( date.subtract( 1, 'month' ) ) } style={ day }>
+			<View style={ header }>
+				<Link
+					src={ '#' + monthOverviewLink( date.subtract( 1, 'month' ) ) }
+					style={ monthArrow }
+				>
 					{'<'}
 				</Link>
-				<Link src={ '#' + monthOverviewLink( date ) } style={ day }>
+				<Link src={ '#' + monthOverviewLink( date ) } style={ [ monthName, push ] }>
 					{date.format( 'MMMM' )}
 				</Link>
-				<Link src={ '#' + yearOverviewLink() } style={ day }>
+				<Link src={ '#' + yearOverviewLink() } style={ monthName }>
 					{date.format( 'YYYY' )}
 				</Link>
-				<Link src={ '#' + monthOverviewLink( date.add( 1, 'month' ) ) } style={ day }>
+				<Link
+					src={ '#' + monthOverviewLink( date.add( 1, 'month' ) ) }
+					style={ [ monthArrow, push ] }
+				>
 					{'>'}
 				</Link>
 			</View>
@@ -76,19 +127,26 @@ class MiniCalendar extends React.Component {
 	}
 
 	renderWeekdayNames() {
+		const { t } = this.props;
 		const { day, week } = this.styles;
 		const weekdays = getWeekdays();
 		const daysOfTheWeek = weekdays.map( ( dayOfTheWeek, index ) => (
-			<Text key={ index } style={ day }>
+			<Text key={ index } style={ [ day, this.styles.weekdayName ] }>
 				{dayOfTheWeek}
 			</Text>
 		) );
 
 		return (
 			<View style={ week }>
-				<Text style={ day }>W#</Text>
+				<Text style={ [ day, this.styles.weekNumber, this.styles.weekdayName ] }>
+					{t( 'calendar.header.week-number' )}
+				</Text>
 				{daysOfTheWeek}
-				<Text style={ day }>Re</Text>
+				<Text
+					style={ [ day, this.styles.weekRetrospective, this.styles.weekdayName ] }
+				>
+					{t( 'calendar.header.retrospective' )}
+				</Text>
 			</View>
 		);
 	}
@@ -106,10 +164,14 @@ class MiniCalendar extends React.Component {
 	}
 
 	renderWeek( week ) {
+		const { t } = this.props;
 		const { day } = this.styles;
 		const days = [];
 		const weekdays = getWeekdays();
-		const weekendDays = [ weekdays[ weekdays.length - 1 ], weekdays[ weekdays.length - 2 ] ];
+		const weekendDays = [
+			weekdays[ weekdays.length - 1 ],
+			weekdays[ weekdays.length - 2 ],
+		];
 		for ( let i = 0; i < 7; i++ ) {
 			const currentDay = week.add( i, 'days' );
 			const dayStyles = [ day ];
@@ -121,6 +183,9 @@ class MiniCalendar extends React.Component {
 			}
 			if ( weekendDays.includes( currentDay.format( 'dd' ) ) ) {
 				dayStyles.push( this.styles.weekendDay );
+			}
+			if ( currentDay.month() !== this.props.date.month() ) {
+				dayStyles.push( this.styles.otherMonthDay );
 			}
 			days.push(
 				<Link key={ i } src={ '#' + dayPageLink( currentDay ) } style={ dayStyles }>
@@ -138,21 +203,26 @@ class MiniCalendar extends React.Component {
 		}
 		return (
 			<View key={ week.isoWeek() } style={ weekStyles }>
-				<Link src={ '#' + weekOverviewLink( week ) } style={ day }>
+				<Link
+					src={ '#' + weekOverviewLink( week ) }
+					style={ [ day, this.styles.weekNumber ] }
+				>
 					{week.isoWeek()}
 				</Link>
 				{days}
-				<Link src={ '#' + weekRetrospectiveLink( week ) } style={ day }>
-					R
+				<Link
+					src={ '#' + weekRetrospectiveLink( week ) }
+					style={ [ day, this.styles.weekRetrospective ] }
+				>
+					{t( 'calendar.body.retrospective' )}
 				</Link>
 			</View>
 		);
 	}
 
 	render() {
-		const { month, week, day } = this.styles;
 		return (
-			<View style={ month }>
+			<View style={ this.styles.body }>
 				{this.renderMonthName()}
 				{this.renderWeekdayNames()}
 				{this.renderMonth()}
@@ -167,7 +237,12 @@ MiniCalendar.defaultProps = {
 
 MiniCalendar.propTypes = {
 	date: PropTypes.instanceOf( dayjs ).isRequired,
-	highlightMode: PropTypes.oneOf( [ HIGHLIGHT_DAY, HIGHLIGHT_WEEK, HIGHLIGHT_NONE ] ),
+	highlightMode: PropTypes.oneOf( [
+		HIGHLIGHT_DAY,
+		HIGHLIGHT_WEEK,
+		HIGHLIGHT_NONE,
+	] ),
+	t: PropTypes.func.isRequired,
 };
 
-export default MiniCalendar;
+export default withTranslation( 'pdf' )( MiniCalendar );

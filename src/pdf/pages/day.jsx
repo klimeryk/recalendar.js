@@ -1,20 +1,127 @@
-import { Document, Page, Text, View, StyleSheet, Link } from '@react-pdf/renderer';
+import {
+	Document,
+	Page,
+	Text,
+	View,
+	StyleSheet,
+	Link,
+} from '@react-pdf/renderer';
 import dayjs from 'dayjs';
 import PropTypes from 'prop-types';
 import React from 'react';
-import { withTranslation } from 'react-i18next';
 
-import { dayPageLink } from 'lib/links';
+import { dayPageLink, monthOverviewLink } from 'lib/links';
 import MiniCalendar from 'pdf/components/mini-calendar';
 import PdfConfig from 'pdf/config';
 
 class DayPage extends React.Component {
+	styles = StyleSheet.create( {
+		page: {
+			flex: 1,
+			width: '100%',
+			height: '100%',
+			flexGrow: 1,
+			flexDirection: 'column',
+		},
+		content: {
+			flexGrow: 1,
+			borderTop: '1 solid black',
+		},
+		header: {
+			flexGrow: 0,
+			flexDirection: 'row',
+		},
+		meta: {
+			flexGrow: 1,
+			flexDirection: 'column',
+			borderRight: '1 solid black',
+		},
+		dateMain: {
+			flexDirection: 'row',
+			marginLeft: 'auto',
+		},
+		dateInfo: {
+			flexDirection: 'row',
+			paddingRight: 5,
+		},
+		line: {
+			borderBottom: '1 solid #AAA',
+			fontSize: 12,
+			fontWeight: 'bold',
+			height: 20,
+			minHeight: 20,
+			padding: '2 0 0 5',
+		},
+		nameOfDay: {
+			marginLeft: 'auto',
+			textTransform: 'uppercase',
+			fontSize: 25,
+		},
+		dayArrow: {
+			color: '#AAA',
+			textDecoration: 'none',
+			justifyContent: 'center',
+			padding: '10 5',
+			fontSize: 20,
+		},
+		monthName: {
+			textTransform: 'uppercase',
+			textDecoration: 'none',
+			justifyContent: 'center',
+			color: 'black',
+			padding: '10 5',
+		},
+		dayNumber: {
+			fontSize: 45,
+			fontWeight: 'bold',
+		},
+	} );
+
+	renderLines() {
+		const lines = [];
+		for ( let i = 0; i < 50; i++ ) {
+			lines.push( <Text key={ i } style={ this.styles.line }></Text> );
+		}
+
+		return lines;
+	}
+
 	render() {
-		const { date, t, config } = this.props;
+		const { date, config } = this.props;
 		return (
 			<Page id={ dayPageLink( date ) } size={ config.pageSize }>
-				<Text>{t( 'page.day.header', { date: date.format() } )}</Text>
-				<MiniCalendar date={ date } />
+				<View style={ this.styles.page }>
+					<View style={ this.styles.header }>
+						<View style={ this.styles.meta }>
+							<View style={ this.styles.dateMain }>
+								<Link
+									src={ '#' + monthOverviewLink( date ) }
+									style={ this.styles.monthName }
+								>
+									{date.format( 'MMMM' )}
+								</Link>
+								<Link
+									src={ '#' + dayPageLink( date.subtract( 1, 'day' ) ) }
+									style={ this.styles.dayArrow }
+								>
+									«
+								</Link>
+								<Text style={ this.styles.dayNumber }>{date.format( 'DD' )}</Text>
+								<Link
+									src={ '#' + dayPageLink( date.add( 1, 'day' ) ) }
+									style={ this.styles.dayArrow }
+								>
+									»
+								</Link>
+							</View>
+							<View style={ this.styles.dateInfo }>
+								<Text style={ this.styles.nameOfDay }>{date.format( 'dddd' )}</Text>
+							</View>
+						</View>
+						<MiniCalendar date={ date } />
+					</View>
+					<View style={ this.styles.content }>{this.renderLines()}</View>
+				</View>
 			</Page>
 		);
 	}
@@ -23,7 +130,6 @@ class DayPage extends React.Component {
 DayPage.propTypes = {
 	config: PropTypes.instanceOf( PdfConfig ).isRequired,
 	date: PropTypes.instanceOf( dayjs ).isRequired,
-	t: PropTypes.func.isRequired,
 };
 
-export default withTranslation( 'pdf' )( DayPage );
+export default DayPage;
