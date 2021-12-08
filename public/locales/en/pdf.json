@@ -7,5 +7,10 @@
 		"body": {
 			"retrospective": "R"
 		}
+	},
+	"page": {
+		"retrospective": {
+			"title": "Retrospective for week"
+		}
 	}
 }
