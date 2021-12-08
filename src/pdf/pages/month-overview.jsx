@@ -20,7 +20,11 @@ class MonthOverviewPage extends React.Component {
 		return (
 			<Page id={ monthOverviewLink( date ) } size={ config.pageSize }>
 				<Text>Month overview Page for month #{date.month() + 1}</Text>
-				<MiniCalendar date={ date } highlightMode={ HIGHLIGHT_NONE } />
+				<MiniCalendar
+					date={ date }
+					highlightMode={ HIGHLIGHT_NONE }
+					config={ config }
+				/>
 			</Page>
 		);
 	}

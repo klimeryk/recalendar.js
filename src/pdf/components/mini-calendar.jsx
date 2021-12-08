@@ -19,6 +19,7 @@ import {
 	weekRetrospectiveLink,
 	yearOverviewLink,
 } from 'lib/links';
+import PdfConfig from 'pdf/config';
 
 export const HIGHLIGHT_WEEK = 'HIGHLIGHT_WEEK';
 export const HIGHLIGHT_DAY = 'HIGHLIGHT_DAY';
@@ -38,6 +39,9 @@ class MiniCalendar extends React.Component {
 		currentWeek: {
 			backgroundColor: '#CCC',
 		},
+		currentWeekDay: {
+			border: '1 solid #CCC',
+		},
 		day: {
 			flexGrow: 1,
 			flexShrink: 1,
@@ -47,6 +51,7 @@ class MiniCalendar extends React.Component {
 			fontWeight: 'normal',
 			textAlign: 'center',
 			padding: 2,
+			border: '1 solid white',
 		},
 		header: {
 			flexDirection: 'row',
@@ -74,6 +79,7 @@ class MiniCalendar extends React.Component {
 		},
 		currentDay: {
 			backgroundColor: '#CCC',
+			border: '1 solid #CCC',
 		},
 		weekendDay: {
 			fontWeight: 'bold',
@@ -86,15 +92,21 @@ class MiniCalendar extends React.Component {
 		},
 		weekNumber: {
 			color: '#999',
+			border: 'none',
 			borderRight: '1 solid black',
+			fontSize: 7,
+			justifyContent: 'center',
 		},
 		weekRetrospective: {
 			color: '#999',
+			border: 'none',
 			borderLeft: '1 solid black',
+			paddingTop: 3,
 		},
 		weekdayName: {
 			fontWeight: 'bold',
 			color: 'black',
+			border: 'none',
 			borderBottom: '1 solid black',
 		},
 	} );
@@ -164,7 +176,7 @@ class MiniCalendar extends React.Component {
 	}
 
 	renderWeek( week ) {
-		const { t } = this.props;
+		const { config, t } = this.props;
 		const { day } = this.styles;
 		const days = [];
 		const weekdays = getWeekdays();
@@ -186,6 +198,16 @@ class MiniCalendar extends React.Component {
 			}
 			if ( currentDay.month() !== this.props.date.month() ) {
 				dayStyles.push( this.styles.otherMonthDay );
+			}
+			const specialDateKey = currentDay.format( 'DD-MM' );
+			if ( config.specialDates[ specialDateKey ] ) {
+				dayStyles.push( this.styles.specialDay );
+			}
+			if (
+				this.props.highlightMode === HIGHLIGHT_WEEK &&
+				currentDay.isoWeek() === this.props.date.isoWeek()
+			) {
+				dayStyles.push( this.styles.currentWeekDay );
 			}
 			days.push(
 				<Link key={ i } src={ '#' + dayPageLink( currentDay ) } style={ dayStyles }>
@@ -236,6 +258,7 @@ MiniCalendar.defaultProps = {
 };
 
 MiniCalendar.propTypes = {
+	config: PropTypes.instanceOf( PdfConfig ).isRequired,
 	date: PropTypes.instanceOf( dayjs ).isRequired,
 	highlightMode: PropTypes.oneOf( [
 		HIGHLIGHT_DAY,

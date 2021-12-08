@@ -20,7 +20,11 @@ class WeekOverviewPage extends React.Component {
 		return (
 			<Page id={ weekOverviewLink( date ) } size={ config.pageSize }>
 				<Text>Week overview Page for Week #{date.isoWeek()}</Text>
-				<MiniCalendar date={ date } highlightMode={ HIGHLIGHT_WEEK } />
+				<MiniCalendar
+					date={ date }
+					highlightMode={ HIGHLIGHT_WEEK }
+					config={ config }
+				/>
 			</Page>
 		);
 	}

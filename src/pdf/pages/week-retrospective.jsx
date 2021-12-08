@@ -13,7 +13,11 @@ class WeekRetrospectivePage extends React.Component {
 		return (
 			<Page id={ weekRetrospectiveLink( date ) } size={ config.pageSize }>
 				<Text>Week retrospective Page for Week #{date.isoWeek()}</Text>
-				<MiniCalendar date={ date } highlightMode={ HIGHLIGHT_WEEK } />
+				<MiniCalendar
+					date={ date }
+					highlightMode={ HIGHLIGHT_WEEK }
+					config={ config }
+				/>
 			</Page>
 		);
 	}

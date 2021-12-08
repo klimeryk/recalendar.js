@@ -72,10 +72,32 @@ class DayPage extends React.Component {
 			padding: '10 5',
 		},
 		dayNumber: {
-			fontSize: 45,
+			fontSize: 55,
 			fontWeight: 'bold',
 		},
+		specialDateInfo: {
+			flexDirection: 'column',
+			width: 130,
+		},
+		specialDate: {
+			fontSize: 10,
+			marginLeft: 5,
+			fontStyle: 'italic',
+		},
 	} );
+
+	renderSpecialDate() {
+		const specialDateKey = this.props.date.format( 'DD-MM' );
+		if ( ! this.props.config.specialDates[ specialDateKey ] ) {
+			return null;
+		}
+
+		return this.props.config.specialDates[ specialDateKey ].map( ( text, index ) => (
+			<Text key={ index } style={ this.styles.specialDate }>
+				» {text}
+			</Text>
+		) );
+	}
 
 	renderLines() {
 		const lines = [];
@@ -115,10 +137,13 @@ class DayPage extends React.Component {
 								</Link>
 							</View>
 							<View style={ this.styles.dateInfo }>
+								<View style={ this.styles.specialDateInfo }>
+									{this.renderSpecialDate()}
+								</View>
 								<Text style={ this.styles.nameOfDay }>{date.format( 'dddd' )}</Text>
 							</View>
 						</View>
-						<MiniCalendar date={ date } />
+						<MiniCalendar date={ date } config={ config } />
 					</View>
 					<View style={ this.styles.content }>{this.renderLines()}</View>
 				</View>
