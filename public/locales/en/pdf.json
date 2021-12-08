@@ -9,6 +9,9 @@
 		}
 	},
 	"page": {
+		"week": {
+			"title": "Week"
+		},
 		"retrospective": {
 			"title": "Retrospective for week"
 		}
