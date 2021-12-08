@@ -74,6 +74,8 @@ class WeekRetrospectivePage extends React.Component {
 		weekNumber: {
 			fontSize: 55,
 			fontWeight: 'bold',
+			textAlign: 'center',
+			width: 60,
 		},
 	} );
 
