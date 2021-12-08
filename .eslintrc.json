@@ -30,7 +30,7 @@
 		"jsx-quotes": ["error", "prefer-double"],
 		"key-spacing": "error",
 		"keyword-spacing": "error",
-		"max-len": ["error", { "code": 100 }],
+		"max-len": ["error", { "code": 105 }],
 		"new-cap": ["error", { "capIsNew": false, "newIsCap": true }],
 		"no-cond-assign": "error",
 		"no-const-assign": "error",
