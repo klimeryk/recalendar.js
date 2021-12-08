@@ -30,7 +30,7 @@ class MiniCalendar extends React.Component {
 		body: {
 			fontSize: 8,
 			padding: '0 5 5 5',
-			width: 150,
+			width: 145,
 		},
 		week: {
 			display: 'flex',

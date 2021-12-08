@@ -2,7 +2,7 @@ class PdfConfig {
 	constructor() {
 		this.year = 2021;
 		this.month = 0;
-		this.months = 12;
+		this.monthCount = 12;
 		this.fontFamily = 'Lato';
 		this.fontDefinition = {
 			family: this.fontFamily,

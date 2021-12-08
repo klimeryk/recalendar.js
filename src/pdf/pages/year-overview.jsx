@@ -11,19 +11,36 @@ import PropTypes from 'prop-types';
 import React from 'react';
 
 import { yearOverviewLink } from 'lib/links';
-import MiniCalendar from 'pdf/components/mini-calendar';
+import MiniCalendar, { HIGHLIGHT_NONE } from 'pdf/components/mini-calendar';
 import PdfConfig from 'pdf/config';
 
 class YearOverviewPage extends React.Component {
+	styles = StyleSheet.create( {
+		year: {
+			fontSize: 55,
+			fontWeight: 'bold',
+			textAlign: 'center',
+		},
+		calendars: {
+			flexDirection: 'row',
+			flexWrap: 'wrap',
+			justifyContent: 'center',
+		},
+	} );
 	renderCalendars() {
 		const calendars = [];
-		const { startDate, endDate } = this.props;
+		const { startDate, endDate, config } = this.props;
 		let currentDate = startDate;
 		while ( currentDate.isBefore( endDate ) ) {
 			calendars.push(
-				<View key={ currentDate.unix() }>
-					<Text>{currentDate.format( 'MMMM YYYY' )}</Text>
-				</View>,
+				<MiniCalendar
+					key={ currentDate.unix() }
+					date={ currentDate }
+					highlightMode={ HIGHLIGHT_NONE }
+					config={ config }
+				>
+					{currentDate.format( 'MMMM YYYY' )}
+				</MiniCalendar>,
 			);
 			currentDate = currentDate.add( 1, 'month' );
 		}
@@ -35,8 +52,8 @@ class YearOverviewPage extends React.Component {
 		const { config, startDate } = this.props;
 		return (
 			<Page id={ yearOverviewLink() } size={ config.pageSize }>
-				<Text>Year overview page</Text>
-				{this.renderCalendars()}
+				<Text style={ this.styles.year }>{startDate.year()}</Text>
+				<View style={ this.styles.calendars }>{this.renderCalendars()}</View>
 			</Page>
 		);
 	}

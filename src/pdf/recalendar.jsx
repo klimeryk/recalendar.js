@@ -65,14 +65,14 @@ class RecalendarPdf extends React.Component {
 	}
 
 	renderCalendar() {
-		const { year, month, months } = this.props.config;
+		const { year, month, monthCount } = this.props.config;
 		const pageList = [];
 		let currentDate = dayjs.utc( {
 			year,
 			month,
 			day: 1,
 		} );
-		const endDate = currentDate.add( months, 'months' );
+		const endDate = currentDate.add( monthCount, 'months' );
 		pageList.push(
 			<YearOverviewPage
 				startDate={ currentDate }
@@ -86,7 +86,7 @@ class RecalendarPdf extends React.Component {
 			pageList.push( this.renderWeek( currentDate ) );
 
 			currentDate = currentDate.add( 1, 'weeks' );
-			if ( this.props.isPreview && currentDate.month() === 2 ) {
+			if ( this.props.isPreview && currentDate.month() === 1 ) {
 				break;
 			}
 		}
