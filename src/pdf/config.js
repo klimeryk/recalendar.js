@@ -28,6 +28,7 @@ class PdfConfig {
 			'14-01': [ 'Ran out of reasons celebration' ],
 		};
 		this.weeklyTodos = [ 'Plan a trip', 'Some other TODO' ];
+		this.habits = [ 'Habit 1', 'Book', 'Game', 'Read' ];
 	}
 }
 

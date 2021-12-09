@@ -9,6 +9,9 @@
 		}
 	},
 	"page": {
+		"month": {
+			"habbits": "Habbits"
+		},
 		"week": {
 			"title": "Week"
 		},
