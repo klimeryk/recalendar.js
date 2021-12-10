@@ -1,0 +1,11 @@
+{
+	"loading": "Generowanie...",
+	"download-ready": "Pobierz teraz!",
+	"configuration": {
+		"language": {
+			"label": "Język",
+			"english": "Angielski",
+			"polish": "Polski"
+		}
+	}
+}
