@@ -15,17 +15,6 @@ import { initReactI18next } from 'react-i18next';
 import './index.css';
 import App from './App';
 
-dayjs.extend( advancedFormat );
-dayjs.extend( isoWeek );
-dayjs.extend( localeData );
-dayjs.extend( objectSupport );
-dayjs.extend( updateLocale );
-dayjs.extend( utc );
-
-dayjs.updateLocale( 'en', {
-	weekStart: 1, // Week starts on Monday
-} );
-
 i18n
 	.use( Backend )
 	.use( LanguageDetector )
@@ -37,6 +26,21 @@ i18n
 			escapeValue: false, // not needed for react as it escapes by default
 		},
 	} );
+
+i18n.on( 'languageChanged', ( newLanguage ) => {
+	require( `dayjs/locale/${newLanguage}` );
+	dayjs.locale( newLanguage );
+	dayjs.updateLocale( newLanguage, {
+		weekStart: 1, // Week starts on Monday
+	} );
+} );
+
+dayjs.extend( advancedFormat );
+dayjs.extend( isoWeek );
+dayjs.extend( localeData );
+dayjs.extend( objectSupport );
+dayjs.extend( updateLocale );
+dayjs.extend( utc );
 
 ReactDOM.render(
 	<React.StrictMode>
