@@ -15,6 +15,7 @@ import { initReactI18next } from 'react-i18next';
 import './index.css';
 import App from './App';
 
+// eslint-disable-next-line import/no-named-as-default-member
 i18n
 	.use( Backend )
 	.use( LanguageDetector )
