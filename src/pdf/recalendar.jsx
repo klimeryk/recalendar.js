@@ -45,14 +45,7 @@ class RecalendarPdf extends React.Component {
 				);
 			}
 			const key = 'day' + currentDate.unix();
-			weekPages.push(
-				<DayPage
-					key={ key }
-					useSuspense={ false }
-					date={ currentDate }
-					config={ config }
-				/>,
-			);
+			weekPages.push( <DayPage key={ key } date={ currentDate } config={ config } /> );
 			currentDate = currentDate.add( 1, 'days' );
 		}
 		return (

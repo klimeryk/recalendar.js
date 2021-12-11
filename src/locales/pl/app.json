@@ -6,6 +6,9 @@
 			"label": "Język",
 			"english": "Angielski",
 			"polish": "Polski"
-		}
+		},
+		"year": "Rok",
+		"starting-month": "Pierwszy miesiąc",
+		"month-count": "Liczba miesięcy"
 	}
 }
