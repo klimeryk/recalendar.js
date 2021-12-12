@@ -9,6 +9,7 @@ import Col from 'react-bootstrap/Col';
 import Container from 'react-bootstrap/Container';
 import Form from 'react-bootstrap/Form';
 import Row from 'react-bootstrap/Row';
+import Spinner from 'react-bootstrap/Spinner';
 import Stack from 'react-bootstrap/Stack';
 import { withTranslation } from 'react-i18next';
 
@@ -23,6 +24,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 class App extends React.PureComponent {
 	state = {
+		isGeneratingPreview: false,
 		language: i18n.language,
 		year: dayjs().year(),
 		month: 0,
@@ -71,6 +73,7 @@ class App extends React.PureComponent {
 	};
 
 	handlePreview = async ( event ) => {
+		this.setState( { isGeneratingPreview: true } );
 		this.pdfWorker.postMessage( {
 			year: this.state.year,
 			month: this.state.month,
@@ -81,6 +84,7 @@ class App extends React.PureComponent {
 
 	handlePdfWorkerMessage = ( { data: { blob } } ) => {
 		this.setState( { pdfBlob: blob } );
+		this.setState( { isGeneratingPreview: false } );
 	};
 
 	handlePdfGeneration = ( { blob, url, loading, error } ) => {
@@ -101,6 +105,7 @@ class App extends React.PureComponent {
 
 	renderConfigurationForm() {
 		const { t } = this.props;
+		const { isGeneratingPreview } = this.state;
 		return (
 			<Card className="my-3">
 				<Card.Header>ReCalendar</Card.Header>
@@ -168,26 +173,81 @@ class App extends React.PureComponent {
 								<Itinerary />
 							</Card.Body>
 						</Card>
-						<Stack direction="horizontal" className="mt-3">
-							<Button variant="secondary" onClick={ this.handleDownload }>
-								{t( 'configuration.button.download' )}
-							</Button>
-							<Button
-								variant="primary"
-								className="ms-auto"
-								onClick={ this.handlePreview }
-							>
-								{t( 'configuration.button.refresh' )}
-							</Button>
-						</Stack>
+						<Button
+							variant="primary"
+							className="mt-3 w-100"
+							disabled={ isGeneratingPreview }
+							onClick={ this.handlePreview }
+						>
+							{isGeneratingPreview ? (
+								<>
+									<Spinner
+										as="span"
+										animation="border"
+										size="sm"
+										role="status"
+										aria-hidden="true"
+										className="me-1"
+									/>
+									{t( 'configuration.button.generating' )}
+								</>
+							) : (
+								t( 'configuration.button.refresh' )
+							)}
+						</Button>
 					</Form>
 				</Card.Body>
 			</Card>
 		);
 	}
 
+	renderPdfPreview() {
+		const { t } = this.props;
+		const { pdfBlob } = this.state;
+		return (
+			<Stack direction="vertical" gap={ 3 } className="h-100">
+				<iframe
+					title="PDF Preview"
+					src={ URL.createObjectURL( pdfBlob ) }
+					width="100%"
+					height="100%"
+				/>
+				<Button variant="secondary" onClick={ this.handleDownload }>
+					{t( 'configuration.button.download' )}
+				</Button>
+			</Stack>
+		);
+	}
+
+	renderNoPreview() {
+		if ( this.state.isGeneratingPreview ) {
+			return (
+				<div className="h-100 d-flex align-items-center justify-content-center">
+					<Spinner
+						animation="border"
+						role="status"
+						size="sm"
+						className="me-1"
+					/>
+					Generating preview, please wait - it can take a minute.
+				</div>
+			);
+		}
+		return (
+			<Stack
+				direction="vertical"
+				className="h-100 d-flex align-items-center justify-content-center"
+			>
+				<p className="lead">
+					Use the configuration form to create your personalized calendar.
+				</p>
+				<p>The preview will appear here.</p>
+			</Stack>
+		);
+	}
+
 	render() {
-		const { config, pdfBlob } = this.state;
+		const { config, pdfBlob, isGeneratingPreview } = this.state;
 
 		return (
 			<Container className="h-100" fluid>
@@ -209,15 +269,9 @@ class App extends React.PureComponent {
 								Calendar preview (only first month is rendered)
 							</Card.Header>
 							<Card.Body>
-								{pdfBlob && (
-									<iframe
-										title="PDF Preview"
-										src={ URL.createObjectURL( pdfBlob ) }
-										width="100%"
-										height="100%"
-									/>
-								)}
-								{! pdfBlob && <h3>No preview</h3>}
+								{pdfBlob && ! isGeneratingPreview
+									? this.renderPdfPreview()
+									: this.renderNoPreview()}
 							</Card.Body>
 						</Card>
 					</Col>
@@ -231,4 +285,4 @@ App.propTypes = {
 	t: PropTypes.func.isRequired,
 };
 
-export default withTranslation( [ 'app', 'pdf' ] )( App );
+export default withTranslation( [ 'app' ] )( App );
