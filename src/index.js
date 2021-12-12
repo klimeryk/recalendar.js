@@ -1,10 +1,4 @@
 import dayjs from 'dayjs';
-import advancedFormat from 'dayjs/plugin/advancedFormat';
-import isoWeek from 'dayjs/plugin/isoWeek';
-import localeData from 'dayjs/plugin/localeData';
-import objectSupport from 'dayjs/plugin/objectSupport';
-import updateLocale from 'dayjs/plugin/updateLocale';
-import utc from 'dayjs/plugin/utc';
 import i18n from 'i18next';
 import LanguageDetector from 'i18next-browser-languagedetector';
 //import Backend from 'i18next-http-backend';
@@ -14,19 +8,9 @@ import { initReactI18next } from 'react-i18next';
 
 import './index.css';
 import App from './App';
+import 'config/dayjs';
 
-const webpackBackend = {
-	type: 'backend',
-	read: ( language, namespace, callback ) => {
-		import( './locales/' + language + '/' + namespace + '.json' )
-			.then( ( resources ) => {
-				callback( null, resources );
-			} )
-			.catch( ( error ) => {
-				callback( error, null );
-			} );
-	},
-};
+import { i18nConfiguration, webpackBackend } from 'config/i18n';
 
 // eslint-disable-next-line import/no-named-as-default-member
 i18n
@@ -34,11 +18,7 @@ i18n
 	.use( LanguageDetector )
 	.use( initReactI18next )
 	.init( {
-		debug: true,
-		fallbackLng: 'en',
-		interpolation: {
-			escapeValue: false, // not needed for react as it escapes by default
-		},
+		...i18nConfiguration( [ 'app', 'pdf' ] ),
 	} );
 
 i18n.on( 'languageChanged', ( newLanguage ) => {
@@ -48,13 +28,6 @@ i18n.on( 'languageChanged', ( newLanguage ) => {
 		weekStart: 1, // Week starts on Monday
 	} );
 } );
-
-dayjs.extend( advancedFormat );
-dayjs.extend( isoWeek );
-dayjs.extend( localeData );
-dayjs.extend( objectSupport );
-dayjs.extend( updateLocale );
-dayjs.extend( utc );
 
 ReactDOM.render(
 	<React.StrictMode>

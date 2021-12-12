@@ -75,11 +75,11 @@ class App extends React.PureComponent {
 			year: this.state.year,
 			month: this.state.month,
 			monthCount: this.state.monthCount,
+			language: this.state.language,
 		} );
 	};
 
 	handlePdfWorkerMessage = ( { data: { blob } } ) => {
-		console.log( 'message from worker' );
 		this.setState( { pdfBlob: blob } );
 	};
 

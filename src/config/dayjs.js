@@ -1,0 +1,14 @@
+import dayjs from 'dayjs';
+import advancedFormat from 'dayjs/plugin/advancedFormat';
+import isoWeek from 'dayjs/plugin/isoWeek';
+import localeData from 'dayjs/plugin/localeData';
+import objectSupport from 'dayjs/plugin/objectSupport';
+import updateLocale from 'dayjs/plugin/updateLocale';
+import utc from 'dayjs/plugin/utc';
+
+dayjs.extend( advancedFormat );
+dayjs.extend( isoWeek );
+dayjs.extend( localeData );
+dayjs.extend( objectSupport );
+dayjs.extend( updateLocale );
+dayjs.extend( utc );
