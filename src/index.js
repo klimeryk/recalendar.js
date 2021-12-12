@@ -3,6 +3,7 @@ import i18n from 'i18next';
 import LanguageDetector from 'i18next-browser-languagedetector';
 //import Backend from 'i18next-http-backend';
 import React, { Suspense } from 'react';
+import Spinner from 'react-bootstrap/Spinner';
 import ReactDOM from 'react-dom';
 import { initReactI18next } from 'react-i18next';
 
@@ -29,9 +30,20 @@ i18n.on( 'languageChanged', ( newLanguage ) => {
 	} );
 } );
 
+const loadingComponent = (
+	<Spinner
+		className="position-absolute top-50 start-50"
+		animation="border"
+		variant="primary"
+		role="status"
+	>
+		<span className="visually-hidden">Loading...</span>
+	</Spinner>
+);
+
 ReactDOM.render(
 	<React.StrictMode>
-		<Suspense fallback="...loading">
+		<Suspense fallback={ loadingComponent }>
 			<App />
 		</Suspense>
 	</React.StrictMode>,
