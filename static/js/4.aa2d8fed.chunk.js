@@ -1,2 +1,0 @@
-((self||this)["webpackJsonprecalendar.js"]=(self||this)["webpackJsonprecalendar.js"]||[]).push([[4],{738:function(e){e.exports=JSON.parse('{"calendar":{"header":{"week-number":"W#","retrospective":"Re"},"body":{"retrospective":"R"}},"page":{"month":{"habbits":"Habbits"},"week":{"title":"Week"},"retrospective":{"title":"Retrospective for week"}}}')}}]);
-//# sourceMappingURL=4.aa2d8fed.chunk.js.map
