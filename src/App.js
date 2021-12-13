@@ -15,6 +15,7 @@ import { withTranslation } from 'react-i18next';
 
 import PdfWorker from './worker/pdf.worker.js'; // eslint-disable-line import/default
 
+import PdfPreview from 'components/pdf-preview';
 import Itinerary from 'configuration-form/itinerary';
 import PdfConfig from 'pdf/config';
 import RecalendarPdf from 'pdf/recalendar';
@@ -30,7 +31,7 @@ class App extends React.PureComponent {
 		year: dayjs().year(),
 		month: 0,
 		monthCount: 12,
-		pdfBlob: null,
+		blobUrl: null,
 	};
 
 	constructor( props ) {
@@ -92,7 +93,7 @@ class App extends React.PureComponent {
 	handlePdfWorkerMessage = ( { data: { blob } } ) => {
 		const shouldTriggerDownload = this.state.isGeneratingPdf;
 		if ( this.state.isGeneratingPreview ) {
-			this.setState( { pdfBlob: blob } );
+			this.setState( { blobUrl: URL.createObjectURL( blob ) } );
 		}
 		this.setState( { isGeneratingPdf: false, isGeneratingPreview: false } );
 		if ( shouldTriggerDownload ) {
@@ -220,14 +221,12 @@ class App extends React.PureComponent {
 
 	renderPdfPreview() {
 		const { t } = this.props;
-		const { isGeneratingPdf, isGeneratingPreview, pdfBlob } = this.state;
+		const { isGeneratingPdf, isGeneratingPreview, blobUrl } = this.state;
 		return (
 			<Stack direction="vertical" gap={ 3 } className="h-100">
-				<iframe
-					title="PDF Preview"
-					src={ URL.createObjectURL( pdfBlob ) }
-					width="100%"
-					height="100%"
+				<PdfPreview
+					blobUrl={ blobUrl }
+					title={ t( 'configuration.preview.viewer-title' ) }
 				/>
 				<Button
 					variant="secondary"
@@ -282,7 +281,7 @@ class App extends React.PureComponent {
 	}
 
 	render() {
-		const { config, pdfBlob, isGeneratingPreview } = this.state;
+		const { config, blobUrl, isGeneratingPreview } = this.state;
 
 		return (
 			<Container className="h-100" fluid>
@@ -296,7 +295,7 @@ class App extends React.PureComponent {
 								Calendar preview (only first month is rendered)
 							</Card.Header>
 							<Card.Body>
-								{pdfBlob && ! isGeneratingPreview
+								{blobUrl && ! isGeneratingPreview
 									? this.renderPdfPreview()
 									: this.renderNoPreview()}
 							</Card.Body>
