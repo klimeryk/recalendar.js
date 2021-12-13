@@ -9,6 +9,14 @@
 		},
 		"year": "Rok",
 		"starting-month": "Pierwszy miesiąc",
-		"month-count": "Liczba miesięcy"
+		"month-count": "Liczba miesięcy",
+		"button": {
+			"refresh": "Odśwież podgląd",
+			"download": "Wygeneruj i pobierz pełny kalendarz",
+			"generating": "Generowanie, proszę czekać..."
+		},
+		"preview": {
+			"viewer-title": "Podgląd PDF"
+		}
 	}
 }
