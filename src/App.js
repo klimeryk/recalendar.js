@@ -49,6 +49,16 @@ class App extends React.PureComponent {
 		i18n.off( 'languageChanged', this.handleLanguageChange );
 	}
 
+	componentDidUpdate( prevProps, prevState ) {
+		if ( prevState.blobUrl && prevState.blobUrl !== this.state.blobUrl ) {
+			// Each refresh generates a new blob - and it will be kept in the memory
+			// until the window is refreshed/unloaded. To keep memory consumption low
+			// lets explicitly release the stale blob.
+			// See https://developer.mozilla.org/en-US/docs/Web/API/URL/revokeObjectURL
+			URL.revokeObjectURL( prevState.blobUrl );
+		}
+	}
+
 	handleLanguageSelection = ( event ) => {
 		const newLanguage = event.target.value;
 		changeLanguage( newLanguage );
