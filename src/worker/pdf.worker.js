@@ -25,7 +25,9 @@ i18n
 		},
 	} );
 
-self.onmessage = ( { data: { year, month, monthCount, language } } ) => {
+self.onmessage = ( {
+	data: { isPreview, year, month, monthCount, language },
+} ) => {
 	const config = new PdfConfig();
 	config.year = year;
 	config.month = month;
@@ -41,7 +43,7 @@ self.onmessage = ( { data: { year, month, monthCount, language } } ) => {
 
 	const document = React.createElement(
 		RecalendarPdf,
-		{ isPreview: true, config },
+		{ isPreview, config },
 		null,
 	);
 	pdf( document )

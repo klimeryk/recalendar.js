@@ -1,5 +1,5 @@
-import { PDFViewer, PDFDownloadLink } from '@react-pdf/renderer';
 import dayjs from 'dayjs';
+import { saveAs } from 'file-saver';
 import i18n, { changeLanguage } from 'i18next';
 import PropTypes from 'prop-types';
 import React from 'react';
@@ -24,6 +24,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 class App extends React.PureComponent {
 	state = {
+		isGeneratingPdf: false,
 		isGeneratingPreview: false,
 		language: i18n.language,
 		year: dayjs().year(),
@@ -69,22 +70,34 @@ class App extends React.PureComponent {
 	};
 
 	handleDownload = ( event ) => {
-		console.log( 'Downloading...' );
+		this.setState( { isGeneratingPdf: true } );
+		this.generatePdf( false );
 	};
 
 	handlePreview = async ( event ) => {
 		this.setState( { isGeneratingPreview: true } );
+		this.generatePdf( true );
+	};
+
+	generatePdf( isPreview ) {
 		this.pdfWorker.postMessage( {
+			isPreview,
 			year: this.state.year,
 			month: this.state.month,
 			monthCount: this.state.monthCount,
 			language: this.state.language,
 		} );
-	};
+	}
 
 	handlePdfWorkerMessage = ( { data: { blob } } ) => {
-		this.setState( { pdfBlob: blob } );
-		this.setState( { isGeneratingPreview: false } );
+		const shouldTriggerDownload = this.state.isGeneratingPdf;
+		if ( this.state.isGeneratingPreview ) {
+			this.setState( { pdfBlob: blob } );
+		}
+		this.setState( { isGeneratingPdf: false, isGeneratingPreview: false } );
+		if ( shouldTriggerDownload ) {
+			saveAs( blob, 'recalendar.pdf' );
+		}
 	};
 
 	handlePdfGeneration = ( { blob, url, loading, error } ) => {
@@ -105,7 +118,7 @@ class App extends React.PureComponent {
 
 	renderConfigurationForm() {
 		const { t } = this.props;
-		const { isGeneratingPreview } = this.state;
+		const { isGeneratingPdf, isGeneratingPreview } = this.state;
 		return (
 			<Card className="my-3">
 				<Card.Header>ReCalendar</Card.Header>
@@ -176,7 +189,7 @@ class App extends React.PureComponent {
 						<Button
 							variant="primary"
 							className="mt-3 w-100"
-							disabled={ isGeneratingPreview }
+							disabled={ isGeneratingPreview || isGeneratingPdf }
 							onClick={ this.handlePreview }
 						>
 							{isGeneratingPreview ? (
@@ -195,6 +208,10 @@ class App extends React.PureComponent {
 								t( 'configuration.button.refresh' )
 							)}
 						</Button>
+						<Form.Text className="text-muted">
+							PDF generation is done entirely in your browser - no data is sent
+							to our servers!
+						</Form.Text>
 					</Form>
 				</Card.Body>
 			</Card>
@@ -203,7 +220,7 @@ class App extends React.PureComponent {
 
 	renderPdfPreview() {
 		const { t } = this.props;
-		const { pdfBlob } = this.state;
+		const { isGeneratingPdf, isGeneratingPreview, pdfBlob } = this.state;
 		return (
 			<Stack direction="vertical" gap={ 3 } className="h-100">
 				<iframe
@@ -212,8 +229,26 @@ class App extends React.PureComponent {
 					width="100%"
 					height="100%"
 				/>
-				<Button variant="secondary" onClick={ this.handleDownload }>
-					{t( 'configuration.button.download' )}
+				<Button
+					variant="secondary"
+					disabled={ isGeneratingPreview || isGeneratingPdf }
+					onClick={ this.handleDownload }
+				>
+					{isGeneratingPdf ? (
+						<>
+							<Spinner
+								as="span"
+								animation="border"
+								size="sm"
+								role="status"
+								aria-hidden="true"
+								className="me-1"
+							/>
+							Generating full calendar - this could take a minute or more...
+						</>
+					) : (
+						t( 'configuration.button.download' )
+					)}
 				</Button>
 			</Stack>
 		);
@@ -254,14 +289,6 @@ class App extends React.PureComponent {
 				<Row className="h-100">
 					<Col className="h-100 overflow-auto">
 						{this.renderConfigurationForm()}
-						{false && (
-							<PDFDownloadLink
-								document={ <RecalendarPdf isPreview config={ config } /> }
-								fileName="recalendar.pdf"
-							>
-								{this.handlePdfGeneration}
-							</PDFDownloadLink>
-						)}
 					</Col>
 					<Col className="py-3 h-100">
 						<Card className="h-100">
