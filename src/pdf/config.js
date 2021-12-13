@@ -17,6 +17,7 @@ class PdfConfig {
 				},
 			],
 		};
+		this.monthlyItinerary = [];
 		this.pageSize = [ '157mm', '209mm' ];
 		this.specialDates = {
 			'01-01': [ 'Special date 1', 'Special date for reason #2' ],

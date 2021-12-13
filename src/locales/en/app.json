@@ -17,6 +17,17 @@
 		},
 		"preview": {
 			"viewer-title": "PDF Preview"
+		},
+		"itinerary": {
+			"title": "Itinerary",
+			"placeholder": {
+				"lines": "Number of lines"
+			},
+			"button": {
+				"remove": "Remove",
+				"item": "Add itinerary item",
+				"lines": "Add empty lines"
+			}
 		}
 	}
 }

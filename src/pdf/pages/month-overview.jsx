@@ -11,6 +11,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import { withTranslation } from 'react-i18next';
 
+import { ITINERARY_ITEM, ITINERARY_LINES } from 'configuration-form/itinerary';
 import { dayPageLink, monthOverviewLink } from 'lib/links';
 import MiniCalendar, { HIGHLIGHT_NONE } from 'pdf/components/mini-calendar';
 import PdfConfig from 'pdf/config';
@@ -188,9 +189,24 @@ class MonthOverviewPage extends React.Component {
 		return squares;
 	}
 
-	renderLines() {
+	renderItineraryItem = ( { type, value } ) => {
+		switch ( type ) {
+			case ITINERARY_ITEM:
+				return this.renderItem( value );
+
+			case ITINERARY_LINES:
+			default:
+				return this.renderLines( value );
+		}
+	};
+
+	renderItem( text ) {
+		return <Text style={ this.styles.line }>{text}</Text>;
+	}
+
+	renderLines( count ) {
 		const lines = [];
-		for ( let i = 0; i < 50; i++ ) {
+		for ( let i = 0; i < count; i++ ) {
 			lines.push( <Text key={ i } style={ this.styles.line }></Text> );
 		}
 
@@ -213,7 +229,9 @@ class MonthOverviewPage extends React.Component {
 						/>
 					</View>
 					{this.renderHabitsTable()}
-					<View style={ this.styles.content }>{this.renderLines()}</View>
+					<View style={ this.styles.content }>
+						{config.monthlyItinerary.map( this.renderItineraryItem )}
+					</View>
 				</View>
 			</Page>
 		);

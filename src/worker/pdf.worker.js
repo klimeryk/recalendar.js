@@ -26,12 +26,13 @@ i18n
 	} );
 
 self.onmessage = ( {
-	data: { isPreview, year, month, monthCount, language },
+	data: { isPreview, year, month, monthCount, language, monthlyItinerary },
 } ) => {
 	const config = new PdfConfig();
 	config.year = year;
 	config.month = month;
 	config.monthCount = monthCount;
+	config.monthlyItinerary = monthlyItinerary;
 
 	require( `dayjs/locale/${language}` );
 	dayjs.locale( language );

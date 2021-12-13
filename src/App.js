@@ -16,8 +16,10 @@ import { withTranslation } from 'react-i18next';
 import PdfWorker from './worker/pdf.worker.js'; // eslint-disable-line import/default
 
 import PdfPreview from 'components/pdf-preview';
-import Itinerary from 'configuration-form/itinerary';
-import PdfConfig from 'pdf/config';
+import Itinerary, {
+	ITINERARY_ITEM,
+	ITINERARY_LINES,
+} from 'configuration-form/itinerary';
 import RecalendarPdf from 'pdf/recalendar';
 
 import './App.css';
@@ -32,6 +34,24 @@ class App extends React.PureComponent {
 		month: 0,
 		monthCount: 12,
 		blobUrl: null,
+		monthlyItinerary: [
+			{
+				type: ITINERARY_ITEM,
+				value: 'Main goal',
+			},
+			{
+				type: ITINERARY_LINES,
+				value: 2,
+			},
+			{
+				type: ITINERARY_ITEM,
+				value: 'Notes',
+			},
+			{
+				type: ITINERARY_LINES,
+				value: 50,
+			},
+		],
 	};
 
 	constructor( props ) {
@@ -85,7 +105,8 @@ class App extends React.PureComponent {
 		this.generatePdf( false );
 	};
 
-	handlePreview = async ( event ) => {
+	handlePreview = ( event ) => {
+		event.preventDefault();
 		this.setState( { isGeneratingPreview: true } );
 		this.generatePdf( true );
 	};
@@ -96,6 +117,7 @@ class App extends React.PureComponent {
 			year: this.state.year,
 			month: this.state.month,
 			monthCount: this.state.monthCount,
+			monthlyItinerary: this.state.monthlyItinerary,
 			language: this.state.language,
 		} );
 	}
@@ -116,6 +138,30 @@ class App extends React.PureComponent {
 		return loading ? t( 'loading' ) : t( 'download-ready' );
 	};
 
+	handleMonthlyItineraryChange = ( type, index, value ) => {
+		const newItinerary = [ ...this.state.monthlyItinerary ];
+		newItinerary[ index ] = {
+			type,
+			value,
+		};
+		this.setState( { monthlyItinerary: newItinerary } );
+	};
+
+	handleMonthlyItineraryRemove = ( index ) => {
+		const newItinerary = [ ...this.state.monthlyItinerary ];
+		newItinerary.splice( index, 1 );
+		this.setState( { monthlyItinerary: newItinerary } );
+	};
+
+	handleMonthlyItineraryAdd = ( type ) => {
+		const newItinerary = [ ...this.state.monthlyItinerary ];
+		newItinerary.push( {
+			type,
+			value: '',
+		} );
+		this.setState( { monthlyItinerary: newItinerary } );
+	};
+
 	renderMonths() {
 		return dayjs
 			.localeData()
@@ -134,7 +180,7 @@ class App extends React.PureComponent {
 			<Card className="my-3">
 				<Card.Header>ReCalendar</Card.Header>
 				<Card.Body>
-					<Form>
+					<Form onSubmit={ this.handlePreview }>
 						<Form.Label htmlFor="languagePicker">
 							{t( 'configuration.language.label' )}
 						</Form.Label>
@@ -183,9 +229,9 @@ class App extends React.PureComponent {
 						<Card className="mt-3">
 							<Card.Header>
 								<Stack direction="horizontal">
-									<span>Weekly overview</span>
+									<span>Monthly overview</span>
 									<Form.Check
-										id="weekly-overview-enabled"
+										id="monthly-overview-enabled"
 										type="checkbox"
 										label="Enabled"
 										className="ms-auto"
@@ -193,15 +239,20 @@ class App extends React.PureComponent {
 								</Stack>
 							</Card.Header>
 							<Card.Body>
-								<p>Weekly overview prepares you for the week. Bla bla bla.</p>
-								<Itinerary />
+								<p>Monthly overview prepares you for the month. Bla bla bla.</p>
+								<Itinerary
+									itinerary={ this.state.monthlyItinerary }
+									onAdd={ this.handleMonthlyItineraryAdd }
+									onChange={ this.handleMonthlyItineraryChange }
+									onRemove={ this.handleMonthlyItineraryRemove }
+								/>
 							</Card.Body>
 						</Card>
 						<Button
 							variant="primary"
 							className="mt-3 w-100"
 							disabled={ isGeneratingPreview || isGeneratingPdf }
-							onClick={ this.handlePreview }
+							type="submit"
 						>
 							{isGeneratingPreview ? (
 								<>
