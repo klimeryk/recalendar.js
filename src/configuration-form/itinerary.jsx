@@ -71,6 +71,7 @@ class Itinerary extends React.Component {
 					value={ item }
 					onChange={ this.handleItemChange }
 					data-index={ index }
+					required
 				/>
 				{this.renderRemoveButton( index )}
 			</InputGroup>
@@ -94,6 +95,7 @@ class Itinerary extends React.Component {
 						value={ numberOfLines }
 						onChange={ this.handleLinesChange }
 						data-index={ index }
+						required
 					/>
 				</FloatingLabel>
 				{this.renderRemoveButton( index )}
