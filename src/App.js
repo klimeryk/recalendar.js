@@ -21,6 +21,7 @@ import Itinerary, {
 	ITINERARY_LINES,
 } from 'configuration-form/itinerary';
 import ToggleForm from 'configuration-form/toggle-form';
+import PdfConfig from 'pdf/config';
 import RecalendarPdf from 'pdf/recalendar';
 
 import './App.css';
@@ -31,29 +32,12 @@ class App extends React.PureComponent {
 		isGeneratingPdf: false,
 		isGeneratingPreview: false,
 		language: i18n.language,
-		year: dayjs().year(),
-		month: 0,
-		monthCount: 12,
 		blobUrl: null,
-		isMonthlyOverviewEnabled: true,
-		monthlyItinerary: [
-			{
-				type: ITINERARY_ITEM,
-				value: 'Main goal',
-			},
-			{
-				type: ITINERARY_LINES,
-				value: 2,
-			},
-			{
-				type: ITINERARY_ITEM,
-				value: 'Notes',
-			},
-			{
-				type: ITINERARY_LINES,
-				value: 50,
-			},
-		],
+		year: this.props.initialState.year,
+		month: this.props.initialState.month,
+		monthCount: this.props.initialState.monthCount,
+		isMonthlyOverviewEnabled: this.props.initialState.isMonthlyOverviewEnabled,
+		monthlyItinerary: this.props.initialState.monthlyItinerary,
 	};
 
 	constructor( props ) {
@@ -234,7 +218,7 @@ class App extends React.PureComponent {
 							</Form.Text>
 						</Form.Group>
 						<ToggleForm
-							title="Monthly overview lol"
+							title="Monthly overview"
 							onToggle={ this.handleMonthlyOverviewToggle }
 							toggledOn={ this.state.isMonthlyOverviewEnabled }
 						>
@@ -367,6 +351,7 @@ class App extends React.PureComponent {
 }
 
 App.propTypes = {
+	initialState: PropTypes.instanceOf( PdfConfig ).isRequired,
 	t: PropTypes.func.isRequired,
 };
 

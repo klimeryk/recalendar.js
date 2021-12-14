@@ -9,9 +9,10 @@ import { initReactI18next } from 'react-i18next';
 
 import './index.css';
 import App from './App';
-import 'config/dayjs';
 
+import 'config/dayjs';
 import { i18nConfiguration, webpackBackend } from 'config/i18n';
+import PdfConfig from 'pdf/config';
 
 // eslint-disable-next-line import/no-named-as-default-member
 i18n
@@ -41,10 +42,12 @@ const loadingComponent = (
 	</Spinner>
 );
 
+const initialState = new PdfConfig();
+
 ReactDOM.render(
 	<React.StrictMode>
 		<Suspense fallback={ loadingComponent }>
-			<App />
+			<App initialState={ initialState } />
 		</Suspense>
 	</React.StrictMode>,
 	document.getElementById( 'root' ),

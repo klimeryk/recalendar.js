@@ -1,6 +1,8 @@
+import { ITINERARY_ITEM, ITINERARY_LINES } from 'configuration-form/itinerary';
+
 class PdfConfig {
 	constructor() {
-		this.year = 2021;
+		this.year = new Date().getFullYear();
 		this.month = 0;
 		this.monthCount = 12;
 		this.fontFamily = 'Lato';
@@ -18,7 +20,24 @@ class PdfConfig {
 			],
 		};
 		this.isMonthlyOverviewEnabled = true;
-		this.monthlyItinerary = [];
+		this.monthlyItinerary = [
+			{
+				type: ITINERARY_ITEM,
+				value: 'Main goal',
+			},
+			{
+				type: ITINERARY_LINES,
+				value: 2,
+			},
+			{
+				type: ITINERARY_ITEM,
+				value: 'Notes',
+			},
+			{
+				type: ITINERARY_LINES,
+				value: 50,
+			},
+		];
 		this.pageSize = [ '157mm', '209mm' ];
 		this.specialDates = {
 			'01-01': [ 'Special date 1', 'Special date for reason #2' ],
