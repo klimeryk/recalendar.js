@@ -28,6 +28,9 @@
 				"item": "Add itinerary item",
 				"lines": "Add empty lines"
 			}
+		},
+		"toggle-form": {
+			"enabled": "Enabled"
 		}
 	}
 }

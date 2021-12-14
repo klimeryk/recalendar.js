@@ -110,9 +110,13 @@ class DayPage extends React.Component {
 
 	render() {
 		const { date, config } = this.props;
+		const optionalStartOfMonthId =
+			! config.isMonthlyOverviewEnabled && date.date() === 1
+				? { id: monthOverviewLink( date ) }
+				: {};
 		return (
 			<Page id={ dayPageLink( date ) } size={ config.pageSize }>
-				<View style={ this.styles.page }>
+				<View { ...optionalStartOfMonthId } style={ this.styles.page }>
 					<View style={ this.styles.header }>
 						<View style={ this.styles.meta }>
 							<View style={ this.styles.dateMain }>

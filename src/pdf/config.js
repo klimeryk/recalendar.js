@@ -17,6 +17,7 @@ class PdfConfig {
 				},
 			],
 		};
+		this.isMonthlyOverviewEnabled = true;
 		this.monthlyItinerary = [];
 		this.pageSize = [ '157mm', '209mm' ];
 		this.specialDates = {

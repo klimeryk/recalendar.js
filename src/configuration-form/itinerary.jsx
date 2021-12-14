@@ -21,8 +21,6 @@ export const ITINERARY_ITEM = 'item';
 export const ITINERARY_LINES = 'lines';
 
 class Itinerary extends React.Component {
-	onAddLinesRow = () => {};
-
 	handleItemChange = ( event ) => {
 		this.props.onChange(
 			ITINERARY_ITEM,

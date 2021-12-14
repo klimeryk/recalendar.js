@@ -20,6 +20,7 @@ import Itinerary, {
 	ITINERARY_ITEM,
 	ITINERARY_LINES,
 } from 'configuration-form/itinerary';
+import ToggleForm from 'configuration-form/toggle-form';
 import RecalendarPdf from 'pdf/recalendar';
 
 import './App.css';
@@ -34,6 +35,7 @@ class App extends React.PureComponent {
 		month: 0,
 		monthCount: 12,
 		blobUrl: null,
+		isMonthlyOverviewEnabled: true,
 		monthlyItinerary: [
 			{
 				type: ITINERARY_ITEM,
@@ -117,6 +119,7 @@ class App extends React.PureComponent {
 			year: this.state.year,
 			month: this.state.month,
 			monthCount: this.state.monthCount,
+			isMonthlyOverviewEnabled: this.state.isMonthlyOverviewEnabled,
 			monthlyItinerary: this.state.monthlyItinerary,
 			language: this.state.language,
 		} );
@@ -160,6 +163,10 @@ class App extends React.PureComponent {
 			value: '',
 		} );
 		this.setState( { monthlyItinerary: newItinerary } );
+	};
+
+	handleMonthlyOverviewToggle = ( event ) => {
+		this.setState( { isMonthlyOverviewEnabled: event.target.checked } );
 	};
 
 	renderMonths() {
@@ -226,28 +233,19 @@ class App extends React.PureComponent {
 								For how many months should the calendar be generated for.
 							</Form.Text>
 						</Form.Group>
-						<Card className="mt-3">
-							<Card.Header>
-								<Stack direction="horizontal">
-									<span>Monthly overview</span>
-									<Form.Check
-										id="monthly-overview-enabled"
-										type="checkbox"
-										label="Enabled"
-										className="ms-auto"
-									/>
-								</Stack>
-							</Card.Header>
-							<Card.Body>
-								<p>Monthly overview prepares you for the month. Bla bla bla.</p>
-								<Itinerary
-									itinerary={ this.state.monthlyItinerary }
-									onAdd={ this.handleMonthlyItineraryAdd }
-									onChange={ this.handleMonthlyItineraryChange }
-									onRemove={ this.handleMonthlyItineraryRemove }
-								/>
-							</Card.Body>
-						</Card>
+						<ToggleForm
+							title="Monthly overview lol"
+							onToggle={ this.handleMonthlyOverviewToggle }
+							toggledOn={ this.state.isMonthlyOverviewEnabled }
+						>
+							<p>Monthly overview prepares you for the month. Bla bla bla.</p>
+							<Itinerary
+								itinerary={ this.state.monthlyItinerary }
+								onAdd={ this.handleMonthlyItineraryAdd }
+								onChange={ this.handleMonthlyItineraryChange }
+								onRemove={ this.handleMonthlyItineraryRemove }
+							/>
+						</ToggleForm>
 						<Button
 							variant="primary"
 							className="mt-3 w-100"
