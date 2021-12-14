@@ -23,6 +23,7 @@ export const ITINERARY_LINES = 'lines';
 class Itinerary extends React.Component {
 	handleItemChange = ( event ) => {
 		this.props.onChange(
+			this.props.name,
 			ITINERARY_ITEM,
 			event.target.dataset.index,
 			event.target.value,
@@ -31,6 +32,7 @@ class Itinerary extends React.Component {
 
 	handleLinesChange = ( event ) => {
 		this.props.onChange(
+			this.props.name,
 			ITINERARY_LINES,
 			event.target.dataset.index,
 			event.target.value,
@@ -38,15 +40,15 @@ class Itinerary extends React.Component {
 	};
 
 	handleRemove = ( event ) => {
-		this.props.onRemove( event.target.dataset.index );
+		this.props.onRemove( this.props.name, event.target.dataset.index );
 	};
 
 	handleAddItem = () => {
-		this.props.onAdd( ITINERARY_ITEM );
+		this.props.onAdd( this.props.name, ITINERARY_ITEM );
 	};
 
 	handleAddLines = () => {
-		this.props.onAdd( ITINERARY_LINES );
+		this.props.onAdd( this.props.name, ITINERARY_LINES );
 	};
 
 	renderRow = ( { type, value }, index ) => {
@@ -82,7 +84,7 @@ class Itinerary extends React.Component {
 			<InputGroup key={ index }>
 				<FloatingLabel
 					className="flex-grow-1"
-					controlId="lines"
+					controlId={ 'lines-' + index }
 					label={ t( 'configuration.itinerary.placeholder.lines' ) }
 				>
 					<FormControl
@@ -115,13 +117,11 @@ class Itinerary extends React.Component {
 	}
 
 	render() {
-		const { itinerary, t } = this.props;
+		const { itinerary, t, title } = this.props;
 		return (
 			<Accordion className="mt-3" defaultActiveKey="0">
 				<Accordion.Item eventKey="0">
-					<Accordion.Header>
-						{t( 'configuration.itinerary.title' )}
-					</Accordion.Header>
+					<Accordion.Header>{title}</Accordion.Header>
 					<Accordion.Body>
 						<Stack gap={ 2 }>
 							{itinerary.map( this.renderRow )}
@@ -147,11 +147,13 @@ class Itinerary extends React.Component {
 }
 
 Itinerary.propTypes = {
+	name: PropTypes.string.isRequired,
 	itinerary: PropTypes.array.isRequired,
 	onAdd: PropTypes.func.isRequired,
 	onChange: PropTypes.func.isRequired,
 	onRemove: PropTypes.func.isRequired,
 	t: PropTypes.func.isRequired,
+	title: PropTypes.string.isRequired,
 };
 
 export default withTranslation( 'app' )( Itinerary );

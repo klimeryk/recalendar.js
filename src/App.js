@@ -21,6 +21,7 @@ import Itinerary, {
 	ITINERARY_LINES,
 } from 'configuration-form/itinerary';
 import ToggleForm from 'configuration-form/toggle-form';
+import { getWeekdays } from 'lib/date';
 import PdfConfig from 'pdf/config';
 import RecalendarPdf from 'pdf/recalendar';
 
@@ -38,6 +39,7 @@ class App extends React.PureComponent {
 		monthCount: this.props.initialState.monthCount,
 		isMonthOverviewEnabled: this.props.initialState.isMonthOverviewEnabled,
 		monthItinerary: this.props.initialState.monthItinerary,
+		dayItineraries: this.props.initialState.dayItineraries,
 	};
 
 	constructor( props ) {
@@ -105,6 +107,7 @@ class App extends React.PureComponent {
 			monthCount: this.state.monthCount,
 			isMonthOverviewEnabled: this.state.isMonthOverviewEnabled,
 			monthItinerary: this.state.monthItinerary,
+			dayItineraries: this.state.dayItineraries,
 			language: this.state.language,
 		} );
 	}
@@ -125,7 +128,7 @@ class App extends React.PureComponent {
 		return loading ? t( 'loading' ) : t( 'download-ready' );
 	};
 
-	handleMonthItineraryChange = ( type, index, value ) => {
+	handleMonthItineraryChange = ( name, type, index, value ) => {
 		const newItinerary = [ ...this.state.monthItinerary ];
 		newItinerary[ index ] = {
 			type,
@@ -134,13 +137,13 @@ class App extends React.PureComponent {
 		this.setState( { monthItinerary: newItinerary } );
 	};
 
-	handleMonthItineraryRemove = ( index ) => {
+	handleMonthItineraryRemove = ( name, index ) => {
 		const newItinerary = [ ...this.state.monthItinerary ];
 		newItinerary.splice( index, 1 );
 		this.setState( { monthItinerary: newItinerary } );
 	};
 
-	handleMonthItineraryAdd = ( type ) => {
+	handleMonthItineraryAdd = ( name, type ) => {
 		const newItinerary = [ ...this.state.monthItinerary ];
 		newItinerary.push( {
 			type,
@@ -153,6 +156,30 @@ class App extends React.PureComponent {
 		this.setState( { isMonthOverviewEnabled: event.target.checked } );
 	};
 
+	handleDayItineraryChange = ( name, type, index, value ) => {
+		const newItineraries = [ ...this.state.dayItineraries ];
+		newItineraries[ name ][ index ] = {
+			type,
+			value,
+		};
+		this.setState( { dayItineraries: newItineraries } );
+	};
+
+	handleDayItineraryRemove = ( name, index ) => {
+		const newItineraries = [ ...this.state.dayItineraries ];
+		newItineraries[ name ].splice( index, 1 );
+		this.setState( { dayItineraries: newItineraries } );
+	};
+
+	handleDayItineraryAdd = ( name, type ) => {
+		const newItineraries = [ ...this.state.dayItineraries ];
+		newItineraries[ name ].push( {
+			type,
+			value: '',
+		} );
+		this.setState( { dayItineraries: newItineraries } );
+	};
+
 	renderMonths() {
 		return dayjs
 			.localeData()
@@ -163,6 +190,29 @@ class App extends React.PureComponent {
 				</option>
 			) );
 	}
+
+	renderDayItineraries() {
+		return (
+			<Card className="mt-3">
+				<Card.Header>Day itineraries</Card.Header>
+				<Card.Body>{getWeekdays().map( this.renderDayItinerary )}</Card.Body>
+			</Card>
+		);
+	}
+
+	renderDayItinerary = ( { full: dayOfWeek }, index ) => {
+		return (
+			<Itinerary
+				key={ dayOfWeek }
+				name={ index.toString() }
+				title={ dayOfWeek }
+				itinerary={ this.state.dayItineraries[ index ] }
+				onAdd={ this.handleDayItineraryAdd }
+				onChange={ this.handleDayItineraryChange }
+				onRemove={ this.handleDayItineraryRemove }
+			/>
+		);
+	};
 
 	renderConfigurationForm() {
 		const { t } = this.props;
@@ -224,12 +274,15 @@ class App extends React.PureComponent {
 						>
 							<p>Month overview prepares you for the month. Bla bla bla.</p>
 							<Itinerary
+								name="monthItinerary"
+								title={ t( 'configuration.month.itinerary.title' ) }
 								itinerary={ this.state.monthItinerary }
 								onAdd={ this.handleMonthItineraryAdd }
 								onChange={ this.handleMonthItineraryChange }
 								onRemove={ this.handleMonthItineraryRemove }
 							/>
 						</ToggleForm>
+						{this.renderDayItineraries()}
 						<Button
 							variant="primary"
 							className="mt-3 w-100"

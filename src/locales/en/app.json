@@ -19,7 +19,6 @@
 			"viewer-title": "PDF Preview"
 		},
 		"itinerary": {
-			"title": "Itinerary",
 			"placeholder": {
 				"lines": "Number of lines"
 			},
@@ -31,6 +30,11 @@
 		},
 		"toggle-form": {
 			"enabled": "Enabled"
+		},
+		"month": {
+			"itinerary": {
+				"title": "Itinerary"
+			}
 		}
 	}
 }

@@ -11,6 +11,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 
 import { dayPageLink, monthOverviewLink } from 'lib/links';
+import Itinerary from 'pdf/components/itinerary';
 import MiniCalendar from 'pdf/components/mini-calendar';
 import PdfConfig from 'pdf/config';
 
@@ -43,14 +44,6 @@ class DayPage extends React.Component {
 		dateInfo: {
 			flexDirection: 'row',
 			paddingRight: 5,
-		},
-		line: {
-			borderBottom: '1 solid #AAA',
-			fontSize: 12,
-			fontWeight: 'bold',
-			height: 20,
-			minHeight: 20,
-			padding: '2 0 0 5',
 		},
 		nameOfDay: {
 			marginLeft: 'auto',
@@ -99,15 +92,6 @@ class DayPage extends React.Component {
 		) );
 	}
 
-	renderLines() {
-		const lines = [];
-		for ( let i = 0; i < 50; i++ ) {
-			lines.push( <Text key={ i } style={ this.styles.line }></Text> );
-		}
-
-		return lines;
-	}
-
 	render() {
 		const { date, config } = this.props;
 		const optionalStartOfMonthId =
@@ -149,7 +133,9 @@ class DayPage extends React.Component {
 						</View>
 						<MiniCalendar date={ date } config={ config } />
 					</View>
-					<View style={ this.styles.content }>{this.renderLines()}</View>
+					<View style={ this.styles.content }>
+						<Itinerary items={ config.dayItineraries[ date.weekday() ] } />
+					</View>
 				</View>
 			</Page>
 		);

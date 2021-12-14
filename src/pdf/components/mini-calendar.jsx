@@ -144,7 +144,7 @@ class MiniCalendar extends React.Component {
 		const weekdays = getWeekdays();
 		const daysOfTheWeek = weekdays.map( ( dayOfTheWeek, index ) => (
 			<Text key={ index } style={ [ day, this.styles.weekdayName ] }>
-				{dayOfTheWeek}
+				{dayOfTheWeek.min}
 			</Text>
 		) );
 
@@ -181,8 +181,8 @@ class MiniCalendar extends React.Component {
 		const days = [];
 		const weekdays = getWeekdays();
 		const weekendDays = [
-			weekdays[ weekdays.length - 1 ],
-			weekdays[ weekdays.length - 2 ],
+			weekdays[ weekdays.length - 1 ].min,
+			weekdays[ weekdays.length - 2 ].min,
 		];
 		for ( let i = 0; i < 7; i++ ) {
 			const currentDay = week.add( i, 'days' );

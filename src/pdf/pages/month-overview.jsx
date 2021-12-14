@@ -11,8 +11,8 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import { withTranslation } from 'react-i18next';
 
-import { ITINERARY_ITEM, ITINERARY_LINES } from 'configuration-form/itinerary';
 import { dayPageLink, monthOverviewLink } from 'lib/links';
+import Itinerary from 'pdf/components/itinerary';
 import MiniCalendar, { HIGHLIGHT_NONE } from 'pdf/components/mini-calendar';
 import PdfConfig from 'pdf/config';
 
@@ -41,14 +41,6 @@ class MonthOverviewPage extends React.Component {
 			flexDirection: 'column',
 			borderRight: '1 solid black',
 			justifyContent: 'center',
-		},
-		line: {
-			borderBottom: '1 solid #AAA',
-			fontSize: 12,
-			fontWeight: 'bold',
-			height: 20,
-			minHeight: 20,
-			padding: '2 0 0 5',
 		},
 		title: {
 			textTransform: 'uppercase',
@@ -189,34 +181,6 @@ class MonthOverviewPage extends React.Component {
 		return squares;
 	}
 
-	renderItineraryItem = ( { type, value }, index ) => {
-		switch ( type ) {
-			case ITINERARY_ITEM:
-				return this.renderItem( value, index );
-
-			case ITINERARY_LINES:
-			default:
-				return this.renderLines( value );
-		}
-	};
-
-	renderItem( text, index ) {
-		return (
-			<Text key={ index } style={ this.styles.line }>
-				{text}
-			</Text>
-		);
-	}
-
-	renderLines( count ) {
-		const lines = [];
-		for ( let i = 0; i < count; i++ ) {
-			lines.push( <Text key={ i } style={ this.styles.line }></Text> );
-		}
-
-		return lines;
-	}
-
 	render() {
 		const { t, date, config } = this.props;
 		return (
@@ -234,7 +198,7 @@ class MonthOverviewPage extends React.Component {
 					</View>
 					{this.renderHabitsTable()}
 					<View style={ this.styles.content }>
-						{config.monthItinerary.map( this.renderItineraryItem )}
+						<Itinerary items={ config.monthItinerary } />
 					</View>
 				</View>
 			</Page>

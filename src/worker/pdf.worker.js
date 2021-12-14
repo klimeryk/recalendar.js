@@ -34,6 +34,7 @@ self.onmessage = ( {
 		language,
 		isMonthOverviewEnabled,
 		monthItinerary,
+		dayItineraries,
 	},
 } ) => {
 	const config = new PdfConfig();
@@ -42,6 +43,7 @@ self.onmessage = ( {
 	config.monthCount = monthCount;
 	config.isMonthOverviewEnabled = isMonthOverviewEnabled;
 	config.monthItinerary = monthItinerary;
+	config.dayItineraries = dayItineraries;
 
 	require( `dayjs/locale/${language}` );
 	dayjs.locale( language );
