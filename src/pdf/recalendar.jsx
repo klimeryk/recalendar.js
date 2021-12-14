@@ -35,7 +35,7 @@ class RecalendarPdf extends React.Component {
 		let currentDate = startOfWeek.clone();
 		const endOfWeek = startOfWeek.add( 1, 'weeks' );
 		while ( currentDate.isBefore( endOfWeek ) ) {
-			if ( config.isMonthlyOverviewEnabled && currentDate.date() === 1 ) {
+			if ( config.isMonthOverviewEnabled && currentDate.date() === 1 ) {
 				weekPages.push(
 					<MonthOverviewPage
 						key={ 'month-overview' + currentDate.unix() }

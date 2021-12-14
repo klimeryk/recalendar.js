@@ -19,8 +19,8 @@ class PdfConfig {
 				},
 			],
 		};
-		this.isMonthlyOverviewEnabled = true;
-		this.monthlyItinerary = [
+		this.isMonthOverviewEnabled = true;
+		this.monthItinerary = [
 			{
 				type: ITINERARY_ITEM,
 				value: 'Main goal',

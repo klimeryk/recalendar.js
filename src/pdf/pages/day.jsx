@@ -111,7 +111,7 @@ class DayPage extends React.Component {
 	render() {
 		const { date, config } = this.props;
 		const optionalStartOfMonthId =
-			! config.isMonthlyOverviewEnabled && date.date() === 1
+			! config.isMonthOverviewEnabled && date.date() === 1
 				? { id: monthOverviewLink( date ) }
 				: {};
 		return (

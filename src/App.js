@@ -36,8 +36,8 @@ class App extends React.PureComponent {
 		year: this.props.initialState.year,
 		month: this.props.initialState.month,
 		monthCount: this.props.initialState.monthCount,
-		isMonthlyOverviewEnabled: this.props.initialState.isMonthlyOverviewEnabled,
-		monthlyItinerary: this.props.initialState.monthlyItinerary,
+		isMonthOverviewEnabled: this.props.initialState.isMonthOverviewEnabled,
+		monthItinerary: this.props.initialState.monthItinerary,
 	};
 
 	constructor( props ) {
@@ -103,8 +103,8 @@ class App extends React.PureComponent {
 			year: this.state.year,
 			month: this.state.month,
 			monthCount: this.state.monthCount,
-			isMonthlyOverviewEnabled: this.state.isMonthlyOverviewEnabled,
-			monthlyItinerary: this.state.monthlyItinerary,
+			isMonthOverviewEnabled: this.state.isMonthOverviewEnabled,
+			monthItinerary: this.state.monthItinerary,
 			language: this.state.language,
 		} );
 	}
@@ -125,32 +125,32 @@ class App extends React.PureComponent {
 		return loading ? t( 'loading' ) : t( 'download-ready' );
 	};
 
-	handleMonthlyItineraryChange = ( type, index, value ) => {
-		const newItinerary = [ ...this.state.monthlyItinerary ];
+	handleMonthItineraryChange = ( type, index, value ) => {
+		const newItinerary = [ ...this.state.monthItinerary ];
 		newItinerary[ index ] = {
 			type,
 			value,
 		};
-		this.setState( { monthlyItinerary: newItinerary } );
+		this.setState( { monthItinerary: newItinerary } );
 	};
 
-	handleMonthlyItineraryRemove = ( index ) => {
-		const newItinerary = [ ...this.state.monthlyItinerary ];
+	handleMonthItineraryRemove = ( index ) => {
+		const newItinerary = [ ...this.state.monthItinerary ];
 		newItinerary.splice( index, 1 );
-		this.setState( { monthlyItinerary: newItinerary } );
+		this.setState( { monthItinerary: newItinerary } );
 	};
 
-	handleMonthlyItineraryAdd = ( type ) => {
-		const newItinerary = [ ...this.state.monthlyItinerary ];
+	handleMonthItineraryAdd = ( type ) => {
+		const newItinerary = [ ...this.state.monthItinerary ];
 		newItinerary.push( {
 			type,
 			value: '',
 		} );
-		this.setState( { monthlyItinerary: newItinerary } );
+		this.setState( { monthItinerary: newItinerary } );
 	};
 
-	handleMonthlyOverviewToggle = ( event ) => {
-		this.setState( { isMonthlyOverviewEnabled: event.target.checked } );
+	handleMonthOverviewToggle = ( event ) => {
+		this.setState( { isMonthOverviewEnabled: event.target.checked } );
 	};
 
 	renderMonths() {
@@ -218,16 +218,16 @@ class App extends React.PureComponent {
 							</Form.Text>
 						</Form.Group>
 						<ToggleForm
-							title="Monthly overview"
-							onToggle={ this.handleMonthlyOverviewToggle }
-							toggledOn={ this.state.isMonthlyOverviewEnabled }
+							title="Month overview"
+							onToggle={ this.handleMonthOverviewToggle }
+							toggledOn={ this.state.isMonthOverviewEnabled }
 						>
-							<p>Monthly overview prepares you for the month. Bla bla bla.</p>
+							<p>Month overview prepares you for the month. Bla bla bla.</p>
 							<Itinerary
-								itinerary={ this.state.monthlyItinerary }
-								onAdd={ this.handleMonthlyItineraryAdd }
-								onChange={ this.handleMonthlyItineraryChange }
-								onRemove={ this.handleMonthlyItineraryRemove }
+								itinerary={ this.state.monthItinerary }
+								onAdd={ this.handleMonthItineraryAdd }
+								onChange={ this.handleMonthItineraryChange }
+								onRemove={ this.handleMonthItineraryRemove }
 							/>
 						</ToggleForm>
 						<Button

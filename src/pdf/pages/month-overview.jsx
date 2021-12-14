@@ -230,7 +230,7 @@ class MonthOverviewPage extends React.Component {
 					</View>
 					{this.renderHabitsTable()}
 					<View style={ this.styles.content }>
-						{config.monthlyItinerary.map( this.renderItineraryItem )}
+						{config.monthItinerary.map( this.renderItineraryItem )}
 					</View>
 				</View>
 			</Page>
