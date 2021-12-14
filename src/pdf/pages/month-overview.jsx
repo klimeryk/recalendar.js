@@ -189,10 +189,10 @@ class MonthOverviewPage extends React.Component {
 		return squares;
 	}
 
-	renderItineraryItem = ( { type, value } ) => {
+	renderItineraryItem = ( { type, value }, index ) => {
 		switch ( type ) {
 			case ITINERARY_ITEM:
-				return this.renderItem( value );
+				return this.renderItem( value, index );
 
 			case ITINERARY_LINES:
 			default:
@@ -200,8 +200,12 @@ class MonthOverviewPage extends React.Component {
 		}
 	};
 
-	renderItem( text ) {
-		return <Text style={ this.styles.line }>{text}</Text>;
+	renderItem( text, index ) {
+		return (
+			<Text key={ index } style={ this.styles.line }>
+				{text}
+			</Text>
+		);
 	}
 
 	renderLines( count ) {

@@ -63,7 +63,7 @@ class Itinerary extends React.Component {
 	renderItem( item, index ) {
 		const { t } = this.props;
 		return (
-			<InputGroup>
+			<InputGroup key={ index }>
 				<FormControl
 					placeholder="Itinerary item"
 					value={ item }
@@ -79,7 +79,7 @@ class Itinerary extends React.Component {
 	renderLines( numberOfLines, index ) {
 		const { t } = this.props;
 		return (
-			<InputGroup>
+			<InputGroup key={ index }>
 				<FloatingLabel
 					className="flex-grow-1"
 					controlId="lines"
