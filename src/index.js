@@ -8,10 +8,10 @@ import ReactDOM from 'react-dom';
 import { initReactI18next } from 'react-i18next';
 
 import './index.css';
-import App from './App';
 
 import 'config/dayjs';
 import { i18nConfiguration, webpackBackend } from 'config/i18n';
+import Loader from 'loader';
 import PdfConfig from 'pdf/config';
 
 // eslint-disable-next-line import/no-named-as-default-member
@@ -42,12 +42,10 @@ const loadingComponent = (
 	</Spinner>
 );
 
-const initialState = new PdfConfig();
-
 ReactDOM.render(
 	<React.StrictMode>
 		<Suspense fallback={ loadingComponent }>
-			<App initialState={ initialState } />
+			<Loader />
 		</Suspense>
 	</React.StrictMode>,
 	document.getElementById( 'root' ),
