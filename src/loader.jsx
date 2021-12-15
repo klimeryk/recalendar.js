@@ -22,4 +22,4 @@ class Loader extends React.Component {
 	}
 }
 
-export default withTranslation( 'app' )( Loader );
+export default withTranslation( [ 'app', 'config' ] )( Loader );

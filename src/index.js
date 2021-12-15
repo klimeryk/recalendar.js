@@ -20,7 +20,7 @@ i18n
 	.use( LanguageDetector )
 	.use( initReactI18next )
 	.init( {
-		...i18nConfiguration( [ 'app', 'pdf' ] ),
+		...i18nConfiguration( [ 'app', 'pdf', 'config' ] ),
 	} );
 
 i18n.on( 'languageChanged', ( newLanguage ) => {

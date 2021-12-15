@@ -18,7 +18,7 @@ i18n
 	.use( LanguageDetector )
 	.use( initReactI18next )
 	.init( {
-		...i18nConfiguration( [ 'pdf' ] ),
+		...i18nConfiguration( [ 'pdf', 'config' ] ),
 		preload: [ 'en', 'pl' ],
 		react: {
 			useSuspense: false,

@@ -25,10 +25,10 @@ class PdfConfig {
 		};
 		this.isMonthOverviewEnabled = true;
 		this.habits = [
-			t( [ 'configuration.month.habits.example1', 'page.month.habits.example1' ] ),
-			t( [ 'configuration.month.habits.example2', 'page.month.habits.example2' ] ),
-			t( [ 'configuration.month.habits.example3', 'page.month.habits.example3' ] ),
-			t( [ 'configuration.month.habits.example4', 'page.month.habits.example4' ] ),
+			t( 'habits.example1', { ns: 'config' } ),
+			t( 'habits.example2', { ns: 'config' } ),
+			t( 'habits.example3', { ns: 'config' } ),
+			t( 'habits.example4', { ns: 'config' } ),
 		];
 		this.monthItinerary = [
 			{
