@@ -10,6 +10,7 @@
 		"year": "Year",
 		"starting-month": "Starting month",
 		"month-count": "Number of months",
+		"first-day-of-week": "First day of week",
 		"button": {
 			"refresh": "Refesh preview",
 			"download": "Generate full calendar and download",

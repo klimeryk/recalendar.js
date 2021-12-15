@@ -36,6 +36,7 @@ class App extends React.PureComponent {
 		blobUrl: null,
 		year: this.props.initialState.year,
 		month: this.props.initialState.month,
+		firstDayOfWeek: this.props.initialState.firstDayOfWeek,
 		monthCount: this.props.initialState.monthCount,
 		isMonthOverviewEnabled: this.props.initialState.isMonthOverviewEnabled,
 		monthItinerary: this.props.initialState.monthItinerary,
@@ -84,6 +85,10 @@ class App extends React.PureComponent {
 		this.setState( { month: event.target.value } );
 	};
 
+	handleFirstDayOfWeekChange = ( event ) => {
+		this.setState( { firstDayOfWeek: event.target.value } );
+	};
+
 	handleMonthCountChange = ( event ) => {
 		this.setState( { monthCount: event.target.value } );
 	};
@@ -104,6 +109,7 @@ class App extends React.PureComponent {
 			isPreview,
 			year: this.state.year,
 			month: this.state.month,
+			firstDayOfWeek: this.state.firstDayOfWeek,
 			monthCount: this.state.monthCount,
 			isMonthOverviewEnabled: this.state.isMonthOverviewEnabled,
 			monthItinerary: this.state.monthItinerary,
@@ -191,6 +197,17 @@ class App extends React.PureComponent {
 			) );
 	}
 
+	renderDaysOfWeek() {
+		return dayjs
+			.localeData()
+			.weekdays()
+			.map( ( dayOfWeek, index ) => (
+				<option key={ index } value={ index }>
+					{dayOfWeek}
+				</option>
+			) );
+	}
+
 	renderDayItineraries() {
 		return (
 			<Card className="mt-3">
@@ -253,6 +270,15 @@ class App extends React.PureComponent {
 								October if you want your calendar to cover a semester, instead
 								of a calendar year.
 							</Form.Text>
+						</Form.Group>
+						<Form.Group controlId="firstDayOfWeek">
+							<Form.Label>{t( 'configuration.first-day-of-week' )}</Form.Label>
+							<Form.Select
+								value={ this.state.firstDayOfWeek }
+								onChange={ this.handleFirstDayOfWeekChange }
+							>
+								{this.renderDaysOfWeek()}
+							</Form.Select>
 						</Form.Group>
 						<Form.Group controlId="monthCount">
 							<Form.Label>{t( 'configuration.month-count' )}</Form.Label>

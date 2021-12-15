@@ -1,9 +1,12 @@
+import dayjs from 'dayjs';
+
 import { ITINERARY_ITEM, ITINERARY_LINES } from 'configuration-form/itinerary';
 
 class PdfConfig {
 	constructor() {
-		this.year = new Date().getFullYear();
+		this.year = dayjs().year();
 		this.month = 0;
+		this.firstDayOfWeek = dayjs.localeData().firstDayOfWeek();
 		this.monthCount = 12;
 		this.fontFamily = 'Lato';
 		this.fontDefinition = {

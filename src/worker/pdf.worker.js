@@ -30,6 +30,7 @@ self.onmessage = ( {
 		isPreview,
 		year,
 		month,
+		firstDayOfWeek,
 		monthCount,
 		language,
 		isMonthOverviewEnabled,
@@ -48,7 +49,7 @@ self.onmessage = ( {
 	require( `dayjs/locale/${language}` );
 	dayjs.locale( language );
 	dayjs.updateLocale( language, {
-		weekStart: 1, // Week starts on Monday
+		weekStart: firstDayOfWeek,
 	} );
 
 	Font.register( config.fontDefinition );
