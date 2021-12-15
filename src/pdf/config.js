@@ -1,4 +1,5 @@
 import dayjs from 'dayjs';
+import { t } from 'i18next';
 
 import { ITINERARY_ITEM, ITINERARY_LINES } from 'configuration-form/itinerary';
 
@@ -23,6 +24,12 @@ class PdfConfig {
 			],
 		};
 		this.isMonthOverviewEnabled = true;
+		this.habits = [
+			t( [ 'configuration.month.habits.example1', 'page.month.habits.example1' ] ),
+			t( [ 'configuration.month.habits.example2', 'page.month.habits.example2' ] ),
+			t( [ 'configuration.month.habits.example3', 'page.month.habits.example3' ] ),
+			t( [ 'configuration.month.habits.example4', 'page.month.habits.example4' ] ),
+		];
 		this.monthItinerary = [
 			{
 				type: ITINERARY_ITEM,
@@ -55,7 +62,6 @@ class PdfConfig {
 			'14-01': [ 'Ran out of reasons celebration' ],
 		};
 		this.weeklyTodos = [ 'Plan a trip', 'Some other TODO' ];
-		this.habits = [ 'Habit 1', 'Book', 'Game', 'Read' ];
 	}
 }
 

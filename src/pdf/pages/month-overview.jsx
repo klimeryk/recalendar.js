@@ -107,7 +107,7 @@ class MonthOverviewPage extends React.Component {
 
 	renderHabitsTable() {
 		const habits = this.props.config.habits;
-		if ( ! habits ) {
+		if ( habits.length === 0 ) {
 			return null;
 		}
 
@@ -132,7 +132,9 @@ class MonthOverviewPage extends React.Component {
 		return (
 			<View style={ this.styles.habitsHeader }>
 				<View style={ this.styles.habitContainer }>
-					<Text style={ this.styles.habitsTitle }>{t( 'page.month.habbits' )}</Text>
+					<Text style={ this.styles.habitsTitle }>
+						{t( 'page.month.habits.title' )}
+					</Text>
 				</View>
 				{days}
 			</View>

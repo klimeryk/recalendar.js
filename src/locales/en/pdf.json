@@ -10,7 +10,13 @@
 	},
 	"page": {
 		"month": {
-			"habbits": "Habbits"
+			"habits": {
+				"title": "Habits",
+				"example1": "Exercise",
+				"example2": "Book",
+				"example3": "Hobby",
+				"example4": "Date night"
+			}
 		},
 		"week": {
 			"title": "Week"

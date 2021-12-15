@@ -29,10 +29,25 @@
 				"lines": "Add empty lines"
 			}
 		},
+		"items-list": {
+			"button": {
+				"item": "Add item",
+				"remove": "Remove"
+			},
+			"empty": "Empty list",
+			"placeholder": "Item"
+		},
 		"toggle-form": {
 			"enabled": "Enabled"
 		},
 		"month": {
+			"habits": {
+				"title": "Habits",
+				"example1": "Exercise",
+				"example2": "Book",
+				"example3": "Hobby",
+				"example4": "Date night"
+			},
 			"itinerary": {
 				"title": "Itinerary"
 			}

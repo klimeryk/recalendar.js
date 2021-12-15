@@ -16,6 +16,7 @@ import { withTranslation } from 'react-i18next';
 import PdfWorker from './worker/pdf.worker.js'; // eslint-disable-line import/default
 
 import PdfPreview from 'components/pdf-preview';
+import ItemsList from 'configuration-form/items-list';
 import Itinerary, {
 	ITINERARY_ITEM,
 	ITINERARY_LINES,
@@ -39,6 +40,7 @@ class App extends React.PureComponent {
 		firstDayOfWeek: this.props.initialState.firstDayOfWeek,
 		monthCount: this.props.initialState.monthCount,
 		isMonthOverviewEnabled: this.props.initialState.isMonthOverviewEnabled,
+		habits: this.props.initialState.habits,
 		monthItinerary: this.props.initialState.monthItinerary,
 		dayItineraries: this.props.initialState.dayItineraries,
 	};
@@ -112,6 +114,7 @@ class App extends React.PureComponent {
 			firstDayOfWeek: this.state.firstDayOfWeek,
 			monthCount: this.state.monthCount,
 			isMonthOverviewEnabled: this.state.isMonthOverviewEnabled,
+			habits: this.state.habits,
 			monthItinerary: this.state.monthItinerary,
 			dayItineraries: this.state.dayItineraries,
 			language: this.state.language,
@@ -132,6 +135,24 @@ class App extends React.PureComponent {
 	handlePdfGeneration = ( { blob, url, loading, error } ) => {
 		const { t } = this.props;
 		return loading ? t( 'loading' ) : t( 'download-ready' );
+	};
+
+	handleHabitChange = ( name, index, value ) => {
+		const newHabits = [ ...this.state.habits ];
+		newHabits[ index ] = value;
+		this.setState( { habits: newHabits } );
+	};
+
+	handleHabitRemove = ( name, index ) => {
+		const newHabits = [ ...this.state.habits ];
+		newHabits.splice( index, 1 );
+		this.setState( { habits: newHabits } );
+	};
+
+	handleHabitAdd = ( name ) => {
+		const newHabits = [ ...this.state.habits ];
+		newHabits.push( '' );
+		this.setState( { habits: newHabits } );
 	};
 
 	handleMonthItineraryChange = ( name, type, index, value ) => {
@@ -299,6 +320,14 @@ class App extends React.PureComponent {
 							toggledOn={ this.state.isMonthOverviewEnabled }
 						>
 							<p>Month overview prepares you for the month. Bla bla bla.</p>
+							<ItemsList
+								name="habits"
+								title={ t( 'configuration.month.habits.title' ) }
+								items={ this.state.habits }
+								onAdd={ this.handleHabitAdd }
+								onChange={ this.handleHabitChange }
+								onRemove={ this.handleHabitRemove }
+							/>
 							<Itinerary
 								name="monthItinerary"
 								title={ t( 'configuration.month.itinerary.title' ) }

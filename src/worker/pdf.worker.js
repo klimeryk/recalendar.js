@@ -34,6 +34,7 @@ self.onmessage = ( {
 		monthCount,
 		language,
 		isMonthOverviewEnabled,
+		habits,
 		monthItinerary,
 		dayItineraries,
 	},
@@ -43,6 +44,7 @@ self.onmessage = ( {
 	config.month = month;
 	config.monthCount = monthCount;
 	config.isMonthOverviewEnabled = isMonthOverviewEnabled;
+	config.habits = habits;
 	config.monthItinerary = monthItinerary;
 	config.dayItineraries = dayItineraries;
 
