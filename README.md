@@ -1,70 +1,42 @@
-# Getting Started with Create React App
+# ReCalendar
+### Highly customizable calendar for ReMarkable tablets
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+ReCalendar allows you to generate your own, personalized calendar right in your browser. It's still WIP, but should be production ready mid-December.
 
-## Available Scripts
+It is the continuation of my previous efforts: https://github.com/klimeryk/recalendar. Although, basically all of the code had to be rewritten as I'm using a different PDF library, CSS engine, language, etc.
 
-In the project directory, you can run:
+## Features
 
-### `yarn start`
+ - Optimized for the [ReMarkable 2 tablet](https://remarkable.com/store/remarkable-2) (should work with version 1 as well) to use the full space available and minimize screen refreshes.
+ - No hacks needed - the generated PDF is a normal file, with links, etc. that you can simply upload normally to your tablet.
+ - Heavy use of links to allow quick and easy navigation.
+ - Lots of easy configuration options to tailor the calendar to your needs - plus access to the source code for even more advanced customization.
+ - Easily switch to any locale supported by PHP.
+ - Add extra pages to all or selected days of the week to suit your needs.
+ - Provide a list of special dates (anniversaries, birthdays, etc.) and let ReCalendar embed them into your personalized calendar - on monthly views, weekly overviews and finally, day entries.
+ - Track your habits monthly.
+ - Start the "year" on arbitrary month (can be useful for tracking academic years, etc.).
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Quickstart for developers/contributors
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+The usual dance, using `yarn`:
+```
+yarn install
+yarn start
+```
 
-### `yarn test`
+This should automatically open http://localhost:3000/ in your default browser.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Known issues
 
-### `yarn build`
+### It's slow to generate
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+The preview should be fairly quick - a few seconds. The preview covers only the first month. Generating the full calendar takes at least 12 times that ;) I've seen best performance from Chrome-based browsers. For some reason, Firefox (which is my primary browser) does not like handling large PDF blobs. But I've tried to make it work there as well.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### It does not cover the full page on my XYZ tablet/device
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+I only have ReMarkable 2 to test with and I wanted to take up all the available space on the screen for it. So it's been optimized for RM2's screen size. Please open a new issue if you think your device could benefit from this calendar!
 
-### `yarn eject`
+## License
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+[GPL-3.0 License](https://github.com/klimeryk/recalendar.js/blob/main/LICENSE). In particular, this means that you can do what you want with this code, but *you have to publish your changes with the same license*. Please consider submitting a PR, if you have an idea for a great improvement! 🙏 My main motivation was to scratch my own itch, but as a result I might have missed your use case so I'm happy to hear how this project can be improved 🙇
