@@ -42,6 +42,8 @@ class App extends React.PureComponent {
 		isMonthOverviewEnabled: this.props.initialState.isMonthOverviewEnabled,
 		habits: this.props.initialState.habits,
 		monthItinerary: this.props.initialState.monthItinerary,
+		isWeekOverviewEnabled: this.props.initialState.isWeekOverviewEnabled,
+		todos: this.props.initialState.todos,
 		dayItineraries: this.props.initialState.dayItineraries,
 	};
 
@@ -116,6 +118,8 @@ class App extends React.PureComponent {
 			isMonthOverviewEnabled: this.state.isMonthOverviewEnabled,
 			habits: this.state.habits,
 			monthItinerary: this.state.monthItinerary,
+			isWeekOverviewEnabled: this.state.isWeekOverviewEnabled,
+			todos: this.state.todos,
 			dayItineraries: this.state.dayItineraries,
 			language: this.state.language,
 		} );
@@ -181,6 +185,28 @@ class App extends React.PureComponent {
 
 	handleMonthOverviewToggle = ( event ) => {
 		this.setState( { isMonthOverviewEnabled: event.target.checked } );
+	};
+
+	handleWeekOverviewToggle = ( event ) => {
+		this.setState( { isWeekOverviewEnabled: event.target.checked } );
+	};
+
+	handleTodoChange = ( name, index, value ) => {
+		const newTodos = [ ...this.state.todos ];
+		newTodos[ index ] = value;
+		this.setState( { todos: newTodos } );
+	};
+
+	handleTodoRemove = ( name, index ) => {
+		const newTodos = [ ...this.state.todos ];
+		newTodos.splice( index, 1 );
+		this.setState( { todos: newTodos } );
+	};
+
+	handleTodoAdd = ( name ) => {
+		const newTodos = [ ...this.state.todos ];
+		newTodos.push( '' );
+		this.setState( { todos: newTodos } );
 	};
 
 	handleDayItineraryChange = ( name, type, index, value ) => {
@@ -315,6 +341,7 @@ class App extends React.PureComponent {
 							</Form.Text>
 						</Form.Group>
 						<ToggleForm
+							id="month-overview-toggle"
 							title="Month overview"
 							onToggle={ this.handleMonthOverviewToggle }
 							toggledOn={ this.state.isMonthOverviewEnabled }
@@ -335,6 +362,22 @@ class App extends React.PureComponent {
 								onAdd={ this.handleMonthItineraryAdd }
 								onChange={ this.handleMonthItineraryChange }
 								onRemove={ this.handleMonthItineraryRemove }
+							/>
+						</ToggleForm>
+						<ToggleForm
+							id="week-overview-toggle"
+							title="Week overview"
+							onToggle={ this.handleWeekOverviewToggle }
+							toggledOn={ this.state.isWeekOverviewEnabled }
+						>
+							<p>Week overview prepares you for the week. Bla bla bla.</p>
+							<ItemsList
+								name="todos"
+								title={ t( 'configuration.week.todos.title' ) }
+								items={ this.state.todos }
+								onAdd={ this.handleTodoAdd }
+								onChange={ this.handleTodoChange }
+								onRemove={ this.handleTodoRemove }
 							/>
 						</ToggleForm>
 						{this.renderDayItineraries()}

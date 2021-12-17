@@ -48,6 +48,8 @@ class PdfConfig {
 				value: 50,
 			},
 		];
+		this.isWeekOverviewEnabled = true;
+		this.todos = [ 'Plan a trip', 'Some other TODO' ];
 		this.dayItineraries = [ ...Array( 7 ).keys() ].map( () => [
 			{ type: ITINERARY_LINES, value: 50 },
 		] );
@@ -61,7 +63,6 @@ class PdfConfig {
 			],
 			'14-01': [ 'Ran out of reasons celebration' ],
 		};
-		this.weeklyTodos = [ 'Plan a trip', 'Some other TODO' ];
 	}
 }
 

@@ -10,7 +10,7 @@ import dayjs from 'dayjs';
 import PropTypes from 'prop-types';
 import React from 'react';
 
-import { dayPageLink, monthOverviewLink } from 'lib/links';
+import { dayPageLink, monthOverviewLink, weekOverviewLink } from 'lib/links';
 import Itinerary from 'pdf/components/itinerary';
 import MiniCalendar from 'pdf/components/mini-calendar';
 import PdfConfig from 'pdf/config';
@@ -98,10 +98,14 @@ class DayPage extends React.Component {
 			! config.isMonthOverviewEnabled && date.date() === 1
 				? { id: monthOverviewLink( date ) }
 				: {};
+		const optionalStartOfWeekId =
+			! config.isWeekOverviewEnabled && date.weekday() === 0
+				? { id: weekOverviewLink( date ) }
+				: {};
 		return (
 			<Page id={ dayPageLink( date ) } size={ config.pageSize }>
 				<View { ...optionalStartOfMonthId } style={ this.styles.page }>
-					<View style={ this.styles.header }>
+					<View { ...optionalStartOfWeekId } style={ this.styles.header }>
 						<View style={ this.styles.meta }>
 							<View style={ this.styles.dateMain }>
 								<Link

@@ -47,6 +47,11 @@
 			"itinerary": {
 				"title": "Itinerary"
 			}
+		},
+		"week": {
+			"todos": {
+				"title": "TODOs"
+			}
 		}
 	}
 }

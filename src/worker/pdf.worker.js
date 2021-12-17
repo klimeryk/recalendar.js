@@ -36,6 +36,8 @@ self.onmessage = ( {
 		isMonthOverviewEnabled,
 		habits,
 		monthItinerary,
+		isWeekOverviewEnabled,
+		todos,
 		dayItineraries,
 	},
 } ) => {
@@ -46,6 +48,8 @@ self.onmessage = ( {
 	config.isMonthOverviewEnabled = isMonthOverviewEnabled;
 	config.habits = habits;
 	config.monthItinerary = monthItinerary;
+	config.isWeekOverviewEnabled = isWeekOverviewEnabled;
+	config.todos = todos;
 	config.dayItineraries = dayItineraries;
 
 	require( `dayjs/locale/${language}` );

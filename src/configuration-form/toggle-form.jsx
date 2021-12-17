@@ -5,14 +5,14 @@ import Form from 'react-bootstrap/Form';
 import Stack from 'react-bootstrap/Stack';
 import { withTranslation } from 'react-i18next';
 
-function ToggleForm( { children, onToggle, t, title, toggledOn } ) {
+function ToggleForm( { children, id, onToggle, t, title, toggledOn } ) {
 	return (
 		<Card className="mt-3">
 			<Card.Header>
 				<Stack direction="horizontal">
 					<span>{title}</span>
 					<Form.Check
-						id="monthly-overview-enabled"
+						id={ id }
 						type="checkbox"
 						label={ t( 'configuration.toggle-form.enabled' ) }
 						className="ms-auto"
@@ -28,6 +28,7 @@ function ToggleForm( { children, onToggle, t, title, toggledOn } ) {
 
 ToggleForm.propTypes = {
 	children: PropTypes.node.isRequired,
+	id: PropTypes.string.isRequired,
 	onToggle: PropTypes.func.isRequired,
 	title: PropTypes.string.isRequired,
 	t: PropTypes.func.isRequired,
