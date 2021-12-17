@@ -154,11 +154,17 @@ class MiniCalendar extends React.Component {
 					{t( 'calendar.header.week-number' )}
 				</Text>
 				{daysOfTheWeek}
-				<Text
-					style={ [ day, this.styles.weekRetrospective, this.styles.weekdayName ] }
-				>
-					{t( 'calendar.header.retrospective' )}
-				</Text>
+				{this.props.config.isWeekRetrospectiveEnabled && (
+					<Text
+						style={ [
+							day,
+							this.styles.weekRetrospective,
+							this.styles.weekdayName,
+						] }
+					>
+						{t( 'calendar.header.retrospective' )}
+					</Text>
+				)}
 			</View>
 		);
 	}
@@ -238,12 +244,14 @@ class MiniCalendar extends React.Component {
 					{week.isoWeek()}
 				</Link>
 				{days}
-				<Link
-					src={ '#' + weekRetrospectiveLink( week ) }
-					style={ [ day, this.styles.weekRetrospective ] }
-				>
-					{t( 'calendar.body.retrospective' )}
-				</Link>
+				{config.isWeekRetrospectiveEnabled && (
+					<Link
+						src={ '#' + weekRetrospectiveLink( week ) }
+						style={ [ day, this.styles.weekRetrospective ] }
+					>
+						{t( 'calendar.body.retrospective' )}
+					</Link>
+				)}
 			</View>
 		);
 	}

@@ -39,6 +39,8 @@ self.onmessage = ( {
 		isWeekOverviewEnabled,
 		todos,
 		dayItineraries,
+		isWeekRetrospectiveEnabled,
+		weekRetrospectiveItinerary,
 	},
 } ) => {
 	const config = new PdfConfig();
@@ -51,6 +53,8 @@ self.onmessage = ( {
 	config.isWeekOverviewEnabled = isWeekOverviewEnabled;
 	config.todos = todos;
 	config.dayItineraries = dayItineraries;
+	config.isWeekRetrospectiveEnabled = isWeekRetrospectiveEnabled;
+	config.weekRetrospectiveItinerary = weekRetrospectiveItinerary;
 
 	require( `dayjs/locale/${language}` );
 	dayjs.locale( language );

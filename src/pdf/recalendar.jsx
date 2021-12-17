@@ -54,7 +54,9 @@ class RecalendarPdf extends React.Component {
 					<WeekOverviewPage date={ startOfWeek } config={ config } />
 				)}
 				{weekPages}
-				<WeekRetrospectivePage date={ startOfWeek } config={ config } />
+				{config.isWeekRetrospectiveEnabled && (
+					<WeekRetrospectivePage date={ startOfWeek } config={ config } />
+				)}
 			</React.Fragment>
 		);
 	}

@@ -53,6 +53,13 @@ class PdfConfig {
 		this.dayItineraries = [ ...Array( 7 ).keys() ].map( () => [
 			{ type: ITINERARY_LINES, value: 50 },
 		] );
+		this.isWeekRetrospectiveEnabled = true;
+		this.weekRetrospectiveItinerary = [
+			{
+				type: ITINERARY_LINES,
+				value: 50,
+			},
+		];
 		this.pageSize = [ '157mm', '209mm' ];
 		this.specialDates = {
 			'01-01': [ 'Special date 1', 'Special date for reason #2' ],

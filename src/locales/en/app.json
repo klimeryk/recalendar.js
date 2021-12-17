@@ -51,6 +51,11 @@
 		"week": {
 			"todos": {
 				"title": "TODOs"
+			},
+			"retrospective": {
+				"itinerary": {
+					"title": "Itinerary"
+				}
 			}
 		}
 	}

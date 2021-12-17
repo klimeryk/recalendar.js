@@ -9,6 +9,7 @@ import {
 	dayPageLink,
 	monthOverviewLink,
 } from 'lib/links';
+import Itinerary from 'pdf/components/itinerary';
 import MiniCalendar, { HIGHLIGHT_WEEK } from 'pdf/components/mini-calendar';
 import PdfConfig from 'pdf/config';
 
@@ -132,7 +133,9 @@ class WeekRetrospectivePage extends React.Component {
 							config={ config }
 						/>
 					</View>
-					<View style={ this.styles.content }>{this.renderLines()}</View>
+					<View style={ this.styles.content }>
+						<Itinerary items={ config.weekRetrospectiveItinerary } />
+					</View>
 				</View>
 			</Page>
 		);

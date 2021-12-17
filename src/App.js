@@ -45,6 +45,10 @@ class App extends React.PureComponent {
 		isWeekOverviewEnabled: this.props.initialState.isWeekOverviewEnabled,
 		todos: this.props.initialState.todos,
 		dayItineraries: this.props.initialState.dayItineraries,
+		isWeekRetrospectiveEnabled:
+			this.props.initialState.isWeekRetrospectiveEnabled,
+		weekRetrospectiveItinerary:
+			this.props.initialState.weekRetrospectiveItinerary,
 	};
 
 	constructor( props ) {
@@ -121,6 +125,8 @@ class App extends React.PureComponent {
 			isWeekOverviewEnabled: this.state.isWeekOverviewEnabled,
 			todos: this.state.todos,
 			dayItineraries: this.state.dayItineraries,
+			isWeekRetrospectiveEnabled: this.state.isWeekRetrospectiveEnabled,
+			weekRetrospectiveItinerary: this.state.weekRetrospectiveItinerary,
 			language: this.state.language,
 		} );
 	}
@@ -231,6 +237,34 @@ class App extends React.PureComponent {
 			value: '',
 		} );
 		this.setState( { dayItineraries: newItineraries } );
+	};
+
+	handleWeekRetrospectiveItineraryChange = ( name, type, index, value ) => {
+		const newItinerary = [ ...this.state.weekRetrospectiveItinerary ];
+		newItinerary[ index ] = {
+			type,
+			value,
+		};
+		this.setState( { weekRetrospectiveItinerary: newItinerary } );
+	};
+
+	handleWeekRetrospectiveItineraryRemove = ( name, index ) => {
+		const newItinerary = [ ...this.state.weekRetrospectiveItinerary ];
+		newItinerary.splice( index, 1 );
+		this.setState( { weekRetrospectiveItinerary: newItinerary } );
+	};
+
+	handleWeekRetrospectiveItineraryAdd = ( name, type ) => {
+		const newItinerary = [ ...this.state.weekRetrospectiveItinerary ];
+		newItinerary.push( {
+			type,
+			value: '',
+		} );
+		this.setState( { weekRetrospectiveItinerary: newItinerary } );
+	};
+
+	handleWeekRetrospectiveToggle = ( event ) => {
+		this.setState( { isWeekRetrospectiveEnabled: event.target.checked } );
 	};
 
 	renderMonths() {
@@ -381,6 +415,25 @@ class App extends React.PureComponent {
 							/>
 						</ToggleForm>
 						{this.renderDayItineraries()}
+						<ToggleForm
+							id="week-retrospective-toggle"
+							title="Week retrospective"
+							onToggle={ this.handleWeekRetrospectiveToggle }
+							toggledOn={ this.state.isWeekRetrospectiveEnabled }
+						>
+							<p>
+								Week retrospective gives you a place to reflect on your past
+								week.
+							</p>
+							<Itinerary
+								name="weekRetrospectiveItinerary"
+								title={ t( 'configuration.week.retrospective.itinerary.title' ) }
+								itinerary={ this.state.weekRetrospectiveItinerary }
+								onAdd={ this.handleWeekRetrospectiveItineraryAdd }
+								onChange={ this.handleWeekRetrospectiveItineraryChange }
+								onRemove={ this.handleWeekRetrospectiveItineraryRemove }
+							/>
+						</ToggleForm>
 						<Button
 							variant="primary"
 							className="mt-3 w-100"
