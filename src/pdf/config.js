@@ -3,6 +3,31 @@ import { t } from 'i18next';
 
 import { ITINERARY_ITEM, ITINERARY_LINES } from 'configuration-form/itinerary';
 
+const CONFIG_FIELDS = [
+	'year',
+	'month',
+	'firstDayOfWeek',
+	'monthCount',
+	'isMonthOverviewEnabled',
+	'habits',
+	'monthItinerary',
+	'isWeekOverviewEnabled',
+	'todos',
+	'dayItineraries',
+	'isWeekRetrospectiveEnabled',
+	'weekRetrospectiveItinerary',
+];
+
+export function hydrateFromObject( object ) {
+	return CONFIG_FIELDS.reduce(
+		( fields, field ) => ( {
+			...fields,
+			[ field ]: object[ field ],
+		} ),
+		{},
+	);
+}
+
 class PdfConfig {
 	constructor() {
 		this.year = dayjs().year();

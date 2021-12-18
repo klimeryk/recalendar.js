@@ -21,7 +21,7 @@ import ItemsList from 'configuration-form/items-list';
 import Itinerary from 'configuration-form/itinerary';
 import ToggleForm from 'configuration-form/toggle-form';
 import { getWeekdays } from 'lib/date';
-import PdfConfig from 'pdf/config';
+import PdfConfig, { hydrateFromObject } from 'pdf/config';
 
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -32,20 +32,7 @@ class App extends React.PureComponent {
 		isGeneratingPreview: false,
 		language: i18n.language,
 		blobUrl: null,
-		year: this.props.initialState.year,
-		month: this.props.initialState.month,
-		firstDayOfWeek: this.props.initialState.firstDayOfWeek,
-		monthCount: this.props.initialState.monthCount,
-		isMonthOverviewEnabled: this.props.initialState.isMonthOverviewEnabled,
-		habits: this.props.initialState.habits,
-		monthItinerary: this.props.initialState.monthItinerary,
-		isWeekOverviewEnabled: this.props.initialState.isWeekOverviewEnabled,
-		todos: this.props.initialState.todos,
-		dayItineraries: this.props.initialState.dayItineraries,
-		isWeekRetrospectiveEnabled:
-			this.props.initialState.isWeekRetrospectiveEnabled,
-		weekRetrospectiveItinerary:
-			this.props.initialState.weekRetrospectiveItinerary,
+		...hydrateFromObject( this.props.initialState ),
 	};
 
 	constructor( props ) {
@@ -112,19 +99,8 @@ class App extends React.PureComponent {
 	generatePdf( isPreview ) {
 		this.pdfWorker.postMessage( {
 			isPreview,
-			year: this.state.year,
-			month: this.state.month,
-			firstDayOfWeek: this.state.firstDayOfWeek,
-			monthCount: this.state.monthCount,
-			isMonthOverviewEnabled: this.state.isMonthOverviewEnabled,
-			habits: this.state.habits,
-			monthItinerary: this.state.monthItinerary,
-			isWeekOverviewEnabled: this.state.isWeekOverviewEnabled,
-			todos: this.state.todos,
-			dayItineraries: this.state.dayItineraries,
-			isWeekRetrospectiveEnabled: this.state.isWeekRetrospectiveEnabled,
-			weekRetrospectiveItinerary: this.state.weekRetrospectiveItinerary,
 			language: this.state.language,
+			...hydrateFromObject( this.state ),
 		} );
 	}
 

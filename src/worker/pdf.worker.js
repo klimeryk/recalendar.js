@@ -7,7 +7,7 @@ import React from 'react';
 import { initReactI18next } from 'react-i18next';
 
 import { i18nConfiguration, webpackBackend } from 'config/i18n';
-import PdfConfig from 'pdf/config';
+import PdfConfig, { hydrateFromObject } from 'pdf/config';
 import RecalendarPdf from 'pdf/recalendar';
 import 'config/dayjs';
 
@@ -24,37 +24,11 @@ i18n
 		},
 	} );
 
-self.onmessage = ( {
-	data: {
-		isPreview,
-		year,
-		month,
-		firstDayOfWeek,
-		monthCount,
-		language,
-		isMonthOverviewEnabled,
-		habits,
-		monthItinerary,
-		isWeekOverviewEnabled,
-		todos,
-		dayItineraries,
-		isWeekRetrospectiveEnabled,
-		weekRetrospectiveItinerary,
-	},
-} ) => {
+self.onmessage = ( { data } ) => {
 	const config = new PdfConfig();
-	config.year = year;
-	config.month = month;
-	config.monthCount = monthCount;
-	config.isMonthOverviewEnabled = isMonthOverviewEnabled;
-	config.habits = habits;
-	config.monthItinerary = monthItinerary;
-	config.isWeekOverviewEnabled = isWeekOverviewEnabled;
-	config.todos = todos;
-	config.dayItineraries = dayItineraries;
-	config.isWeekRetrospectiveEnabled = isWeekRetrospectiveEnabled;
-	config.weekRetrospectiveItinerary = weekRetrospectiveItinerary;
+	Object.assign( config, hydrateFromObject( data ) );
 
+	const { firstDayOfWeek, language, isPreview } = data;
 	require( `dayjs/locale/${language}` );
 	dayjs.locale( language );
 	dayjs.updateLocale( language, {
