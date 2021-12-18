@@ -14,40 +14,6 @@ export const ITINERARY_LINES = 'lines';
 export const ITINERARY_NEW_PAGE = 'new_page';
 
 class Itinerary extends React.Component {
-	handleItemChange = ( event ) => {
-		this.props.onChange(
-			this.props.name,
-			ITINERARY_ITEM,
-			event.target.dataset.index,
-			event.target.value,
-		);
-	};
-
-	handleLinesChange = ( event ) => {
-		this.props.onChange(
-			this.props.name,
-			ITINERARY_LINES,
-			event.target.dataset.index,
-			event.target.value,
-		);
-	};
-
-	handleRemove = ( event ) => {
-		this.props.onRemove( this.props.name, event.target.dataset.index );
-	};
-
-	handleAddItem = () => {
-		this.props.onAdd( this.props.name, ITINERARY_ITEM );
-	};
-
-	handleAddLines = () => {
-		this.props.onAdd( this.props.name, ITINERARY_LINES );
-	};
-
-	handleAddNewPage = () => {
-		this.props.onAdd( this.props.name, ITINERARY_NEW_PAGE );
-	};
-
 	renderRow = ( { type, value }, index ) => {
 		switch ( type ) {
 			case ITINERARY_ITEM:
@@ -63,13 +29,16 @@ class Itinerary extends React.Component {
 	};
 
 	renderItem( item, index ) {
+		const { field, onChange } = this.props;
 		return (
 			<InputGroup key={ index }>
 				<FormControl
 					placeholder="Itinerary item"
 					value={ item }
-					onChange={ this.handleItemChange }
+					onChange={ onChange }
 					data-index={ index }
+					data-type={ ITINERARY_ITEM }
+					data-field={ field }
 					required
 				/>
 				{this.renderRemoveButton( index )}
@@ -89,7 +58,7 @@ class Itinerary extends React.Component {
 	}
 
 	renderLines( numberOfLines, index ) {
-		const { t } = this.props;
+		const { field, onChange, t } = this.props;
 		return (
 			<InputGroup key={ index }>
 				<FloatingLabel
@@ -103,8 +72,10 @@ class Itinerary extends React.Component {
 						min={ 1 }
 						max={ 50 }
 						value={ numberOfLines }
-						onChange={ this.handleLinesChange }
+						onChange={ onChange }
 						data-index={ index }
+						data-type={ ITINERARY_LINES }
+						data-field={ field }
 						required
 					/>
 				</FloatingLabel>
@@ -114,12 +85,13 @@ class Itinerary extends React.Component {
 	}
 
 	renderRemoveButton( index ) {
-		const { t } = this.props;
+		const { field, onRemove, t } = this.props;
 		return (
 			<Button
 				variant="outline-danger"
-				onClick={ this.handleRemove }
+				onClick={ onRemove }
 				data-index={ index }
+				data-field={ field }
 			>
 				{t( 'configuration.itinerary.button.remove' )}
 			</Button>
@@ -127,7 +99,7 @@ class Itinerary extends React.Component {
 	}
 
 	render() {
-		const { eventKey, itinerary, t, title } = this.props;
+		const { eventKey, field, itinerary, onAdd, t, title } = this.props;
 		const accordionItem = (
 			<Accordion.Item eventKey={ eventKey || '0' }>
 				<Accordion.Header>{title}</Accordion.Header>
@@ -141,13 +113,28 @@ class Itinerary extends React.Component {
 						)}
 					</Stack>
 					<Stack direction="horizontal" className="mt-3" gap={ 3 }>
-						<Button variant="outline-secondary" onClick={ this.handleAddItem }>
+						<Button
+							variant="outline-secondary"
+							onClick={ onAdd }
+							data-type={ ITINERARY_ITEM }
+							data-field={ field }
+						>
 							{t( 'configuration.itinerary.button.item' )}
 						</Button>
-						<Button variant="outline-secondary" onClick={ this.handleAddLines }>
+						<Button
+							variant="outline-secondary"
+							onClick={ onAdd }
+							data-type={ ITINERARY_LINES }
+							data-field={ field }
+						>
 							{t( 'configuration.itinerary.button.lines' )}
 						</Button>
-						<Button variant="outline-secondary" onClick={ this.handleAddNewPage }>
+						<Button
+							variant="outline-secondary"
+							onClick={ onAdd }
+							data-type={ ITINERARY_NEW_PAGE }
+							data-field={ field }
+						>
 							{t( 'configuration.itinerary.button.page' )}
 						</Button>
 					</Stack>
@@ -168,7 +155,7 @@ class Itinerary extends React.Component {
 
 Itinerary.propTypes = {
 	eventKey: PropTypes.string,
-	name: PropTypes.string.isRequired,
+	field: PropTypes.string.isRequired,
 	itinerary: PropTypes.array.isRequired,
 	onAdd: PropTypes.func.isRequired,
 	onChange: PropTypes.func.isRequired,

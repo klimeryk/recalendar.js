@@ -103,6 +103,33 @@ class App extends React.PureComponent {
 		this.setState( { [ field ]: newItems } );
 	};
 
+	handleItineraryAdd = ( event ) => {
+		const field = event.target.dataset.field;
+		const newItinerary = [ ...this.state[ field ] ];
+		newItinerary.push( {
+			type: event.target.dataset.type,
+			value: '',
+		} );
+		this.setState( { [ field ]: newItinerary } );
+	};
+
+	handleItineraryChange = ( event ) => {
+		const field = event.target.dataset.field;
+		const newItinerary = [ ...this.state[ field ] ];
+		newItinerary[ event.target.dataset.index ] = {
+			type: event.target.dataset.type,
+			value: event.target.dataset.value,
+		};
+		this.setState( { [ field ]: newItinerary } );
+	};
+
+	handleItineraryRemove = ( event ) => {
+		const field = event.target.dataset.field;
+		const newItineraries = [ ...this.state[ field ] ];
+		newItineraries.splice( event.target.dataset.index, 1 );
+		this.setState( { [ field ]: newItineraries } );
+	};
+
 	handlePreview = ( event ) => {
 		event.preventDefault();
 		this.setState( { isGeneratingPreview: true } );
@@ -133,76 +160,31 @@ class App extends React.PureComponent {
 		return loading ? t( 'loading' ) : t( 'download-ready' );
 	};
 
-	handleMonthItineraryChange = ( name, type, index, value ) => {
-		const newItinerary = [ ...this.state.monthItinerary ];
-		newItinerary[ index ] = {
-			type,
-			value,
-		};
-		this.setState( { monthItinerary: newItinerary } );
-	};
-
-	handleMonthItineraryRemove = ( name, index ) => {
-		const newItinerary = [ ...this.state.monthItinerary ];
-		newItinerary.splice( index, 1 );
-		this.setState( { monthItinerary: newItinerary } );
-	};
-
-	handleMonthItineraryAdd = ( name, type ) => {
-		const newItinerary = [ ...this.state.monthItinerary ];
-		newItinerary.push( {
-			type,
-			value: '',
-		} );
-		this.setState( { monthItinerary: newItinerary } );
-	};
-
-	handleDayItineraryChange = ( name, type, index, value ) => {
+	handleDayItineraryChange = ( event ) => {
 		const newItineraries = [ ...this.state.dayItineraries ];
-		newItineraries[ name ][ index ] = {
+		const { field, index, type } = event.target.dataset;
+		newItineraries[ field ][ index ] = {
 			type,
-			value,
+			value: event.target.value,
 		};
 		this.setState( { dayItineraries: newItineraries } );
 	};
 
-	handleDayItineraryRemove = ( name, index ) => {
+	handleDayItineraryRemove = ( event ) => {
 		const newItineraries = [ ...this.state.dayItineraries ];
-		newItineraries[ name ].splice( index, 1 );
+		const { field, index } = event.target.dataset;
+		newItineraries[ field ].splice( index, 1 );
 		this.setState( { dayItineraries: newItineraries } );
 	};
 
-	handleDayItineraryAdd = ( name, type ) => {
+	handleDayItineraryAdd = ( event ) => {
 		const newItineraries = [ ...this.state.dayItineraries ];
-		newItineraries[ name ].push( {
+		const { field, type } = event.target.dataset;
+		newItineraries[ field ].push( {
 			type,
 			value: '',
 		} );
 		this.setState( { dayItineraries: newItineraries } );
-	};
-
-	handleWeekRetrospectiveItineraryChange = ( name, type, index, value ) => {
-		const newItinerary = [ ...this.state.weekRetrospectiveItinerary ];
-		newItinerary[ index ] = {
-			type,
-			value,
-		};
-		this.setState( { weekRetrospectiveItinerary: newItinerary } );
-	};
-
-	handleWeekRetrospectiveItineraryRemove = ( name, index ) => {
-		const newItinerary = [ ...this.state.weekRetrospectiveItinerary ];
-		newItinerary.splice( index, 1 );
-		this.setState( { weekRetrospectiveItinerary: newItinerary } );
-	};
-
-	handleWeekRetrospectiveItineraryAdd = ( name, type ) => {
-		const newItinerary = [ ...this.state.weekRetrospectiveItinerary ];
-		newItinerary.push( {
-			type,
-			value: '',
-		} );
-		this.setState( { weekRetrospectiveItinerary: newItinerary } );
 	};
 
 	renderMonths() {
@@ -245,7 +227,7 @@ class App extends React.PureComponent {
 			<Itinerary
 				key={ dayOfWeek }
 				eventKey={ index.toString() }
-				name={ index.toString() }
+				field={ index.toString() }
 				title={ dayOfWeek }
 				itinerary={ this.state.dayItineraries[ index ] }
 				onAdd={ this.handleDayItineraryAdd }
@@ -333,12 +315,12 @@ class App extends React.PureComponent {
 								onRemove={ this.handleItemRemove }
 							/>
 							<Itinerary
-								name="monthItinerary"
+								field="monthItinerary"
 								title={ t( 'configuration.month.itinerary.title' ) }
 								itinerary={ this.state.monthItinerary }
-								onAdd={ this.handleMonthItineraryAdd }
-								onChange={ this.handleMonthItineraryChange }
-								onRemove={ this.handleMonthItineraryRemove }
+								onAdd={ this.handleItineraryAdd }
+								onChange={ this.handleItineraryChange }
+								onRemove={ this.handleItineraryRemove }
 							/>
 						</ToggleForm>
 						<ToggleForm
@@ -369,12 +351,12 @@ class App extends React.PureComponent {
 								week.
 							</p>
 							<Itinerary
-								name="weekRetrospectiveItinerary"
+								field="weekRetrospectiveItinerary"
 								title={ t( 'configuration.week.retrospective.itinerary.title' ) }
 								itinerary={ this.state.weekRetrospectiveItinerary }
-								onAdd={ this.handleWeekRetrospectiveItineraryAdd }
-								onChange={ this.handleWeekRetrospectiveItineraryChange }
-								onRemove={ this.handleWeekRetrospectiveItineraryRemove }
+								onAdd={ this.handleItineraryAdd }
+								onChange={ this.handleItineraryChange }
+								onRemove={ this.handleItineraryRemove }
 							/>
 						</ToggleForm>
 						<Button
