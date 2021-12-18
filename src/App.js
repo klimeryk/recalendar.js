@@ -73,6 +73,10 @@ class App extends React.PureComponent {
 		this.setState( { [ event.target.id ]: event.target.value } );
 	};
 
+	handleToggle = ( event ) => {
+		this.setState( { [ event.target.id ]: event.target.checked } );
+	};
+
 	handleDownload = ( event ) => {
 		this.setState( { isGeneratingPdf: true } );
 		this.generatePdf( false );
@@ -150,14 +154,6 @@ class App extends React.PureComponent {
 		this.setState( { monthItinerary: newItinerary } );
 	};
 
-	handleMonthOverviewToggle = ( event ) => {
-		this.setState( { isMonthOverviewEnabled: event.target.checked } );
-	};
-
-	handleWeekOverviewToggle = ( event ) => {
-		this.setState( { isWeekOverviewEnabled: event.target.checked } );
-	};
-
 	handleTodoChange = ( name, index, value ) => {
 		const newTodos = [ ...this.state.todos ];
 		newTodos[ index ] = value;
@@ -222,10 +218,6 @@ class App extends React.PureComponent {
 			value: '',
 		} );
 		this.setState( { weekRetrospectiveItinerary: newItinerary } );
-	};
-
-	handleWeekRetrospectiveToggle = ( event ) => {
-		this.setState( { isWeekRetrospectiveEnabled: event.target.checked } );
 	};
 
 	renderMonths() {
@@ -341,9 +333,9 @@ class App extends React.PureComponent {
 							</Form.Text>
 						</Form.Group>
 						<ToggleForm
-							id="month-overview-toggle"
+							id="isMonthOverviewEnabled"
 							title="Month overview"
-							onToggle={ this.handleMonthOverviewToggle }
+							onToggle={ this.handleToggle }
 							toggledOn={ this.state.isMonthOverviewEnabled }
 						>
 							<p>Month overview prepares you for the month. Bla bla bla.</p>
@@ -365,9 +357,9 @@ class App extends React.PureComponent {
 							/>
 						</ToggleForm>
 						<ToggleForm
-							id="week-overview-toggle"
+							id="isWeekOverviewEnabled"
 							title="Week overview"
-							onToggle={ this.handleWeekOverviewToggle }
+							onToggle={ this.handleToggle }
 							toggledOn={ this.state.isWeekOverviewEnabled }
 						>
 							<p>Week overview prepares you for the week. Bla bla bla.</p>
@@ -382,9 +374,9 @@ class App extends React.PureComponent {
 						</ToggleForm>
 						{this.renderDayItineraries()}
 						<ToggleForm
-							id="week-retrospective-toggle"
+							id="isWeekRetrospectiveEnabled"
 							title="Week retrospective"
-							onToggle={ this.handleWeekRetrospectiveToggle }
+							onToggle={ this.handleToggle }
 							toggledOn={ this.state.isWeekRetrospectiveEnabled }
 						>
 							<p>
