@@ -69,20 +69,8 @@ class App extends React.PureComponent {
 		this.setState( { language: newLanguage } );
 	};
 
-	handleYearChange = ( event ) => {
-		this.setState( { year: event.target.value } );
-	};
-
-	handleMonthChange = ( event ) => {
-		this.setState( { month: event.target.value } );
-	};
-
-	handleFirstDayOfWeekChange = ( event ) => {
-		this.setState( { firstDayOfWeek: event.target.value } );
-	};
-
-	handleMonthCountChange = ( event ) => {
-		this.setState( { monthCount: event.target.value } );
+	handleFieldChange = ( event ) => {
+		this.setState( { [ event.target.id ]: event.target.value } );
 	};
 
 	handleDownload = ( event ) => {
@@ -313,14 +301,14 @@ class App extends React.PureComponent {
 							<Form.Control
 								type="number"
 								value={ this.state.year }
-								onChange={ this.handleYearChange }
+								onChange={ this.handleFieldChange }
 							/>
 						</Form.Group>
 						<Form.Group controlId="month">
 							<Form.Label>{t( 'configuration.starting-month' )}</Form.Label>
 							<Form.Select
 								value={ this.state.month }
-								onChange={ this.handleMonthChange }
+								onChange={ this.handleFieldChange }
 							>
 								{this.renderMonths()}
 							</Form.Select>
@@ -334,7 +322,7 @@ class App extends React.PureComponent {
 							<Form.Label>{t( 'configuration.first-day-of-week' )}</Form.Label>
 							<Form.Select
 								value={ this.state.firstDayOfWeek }
-								onChange={ this.handleFirstDayOfWeekChange }
+								onChange={ this.handleFieldChange }
 							>
 								{this.renderDaysOfWeek()}
 							</Form.Select>
@@ -344,7 +332,7 @@ class App extends React.PureComponent {
 							<Form.Control
 								type="number"
 								value={ this.state.monthCount }
-								onChange={ this.handleMonthCountChange }
+								onChange={ this.handleFieldChange }
 								min={ 1 }
 								max={ 12 }
 							/>
