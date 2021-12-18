@@ -26,6 +26,7 @@
 			"button": {
 				"remove": "Remove",
 				"item": "Add itinerary item",
+				"page": "Add new page",
 				"lines": "Add empty lines"
 			}
 		},

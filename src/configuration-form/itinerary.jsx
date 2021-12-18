@@ -19,6 +19,7 @@ import PdfConfig from 'pdf/config';
 
 export const ITINERARY_ITEM = 'item';
 export const ITINERARY_LINES = 'lines';
+export const ITINERARY_NEW_PAGE = 'new_page';
 
 class Itinerary extends React.Component {
 	handleItemChange = ( event ) => {
@@ -51,10 +52,17 @@ class Itinerary extends React.Component {
 		this.props.onAdd( this.props.name, ITINERARY_LINES );
 	};
 
+	handleAddNewPage = () => {
+		this.props.onAdd( this.props.name, ITINERARY_NEW_PAGE );
+	};
+
 	renderRow = ( { type, value }, index ) => {
 		switch ( type ) {
 			case ITINERARY_ITEM:
 				return this.renderItem( value, index );
+
+			case ITINERARY_NEW_PAGE:
+				return this.renderNewPage( value, index );
 
 			case ITINERARY_LINES:
 			default:
@@ -73,6 +81,18 @@ class Itinerary extends React.Component {
 					data-index={ index }
 					required
 				/>
+				{this.renderRemoveButton( index )}
+			</InputGroup>
+		);
+	}
+
+	renderNewPage( item, index ) {
+		const { t } = this.props;
+		return (
+			<InputGroup key={ index }>
+				<InputGroup.Text className="flex-grow-1">
+					New page break
+				</InputGroup.Text>
 				{this.renderRemoveButton( index )}
 			</InputGroup>
 		);
@@ -136,6 +156,9 @@ class Itinerary extends React.Component {
 						</Button>
 						<Button variant="outline-secondary" onClick={ this.handleAddLines }>
 							{t( 'configuration.itinerary.button.lines' )}
+						</Button>
+						<Button variant="outline-secondary" onClick={ this.handleAddNewPage }>
+							{t( 'configuration.itinerary.button.page' )}
 						</Button>
 					</Stack>
 				</Accordion.Body>

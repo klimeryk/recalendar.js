@@ -12,6 +12,7 @@ import {
 import Itinerary from 'pdf/components/itinerary';
 import MiniCalendar, { HIGHLIGHT_WEEK } from 'pdf/components/mini-calendar';
 import PdfConfig from 'pdf/config';
+import { getItemsOnExtraPages } from 'pdf/utils';
 
 class WeekRetrospectivePage extends React.Component {
 	styles = StyleSheet.create( {
@@ -99,45 +100,56 @@ class WeekRetrospectivePage extends React.Component {
 	render() {
 		const { t, date, config } = this.props;
 		return (
-			<Page id={ weekRetrospectiveLink( date ) } size={ config.pageSize }>
-				<View style={ this.styles.page }>
-					<View style={ this.styles.header }>
-						<View style={ this.styles.meta }>
-							<View style={ this.styles.dateMain }>
-								<Text style={ this.styles.title }>
-									{t( 'page.retrospective.title' )}
-								</Text>
-								<Link
-									src={ '#' + weekRetrospectiveLink( date.subtract( 1, 'week' ) ) }
-									style={ this.styles.weekArrow }
-								>
-									«
-								</Link>
-								<Text style={ this.styles.weekNumber }>{date.isoWeek()}</Text>
-								<Link
-									src={ '#' + weekRetrospectiveLink( date.add( 1, 'week' ) ) }
-									style={ this.styles.weekArrow }
-								>
-									»
-								</Link>
+			<>
+				<Page id={ weekRetrospectiveLink( date ) } size={ config.pageSize }>
+					<View style={ this.styles.page }>
+						<View style={ this.styles.header }>
+							<View style={ this.styles.meta }>
+								<View style={ this.styles.dateMain }>
+									<Text style={ this.styles.title }>
+										{t( 'page.retrospective.title' )}
+									</Text>
+									<Link
+										src={ '#' + weekRetrospectiveLink( date.subtract( 1, 'week' ) ) }
+										style={ this.styles.weekArrow }
+									>
+										«
+									</Link>
+									<Text style={ this.styles.weekNumber }>{date.isoWeek()}</Text>
+									<Link
+										src={ '#' + weekRetrospectiveLink( date.add( 1, 'week' ) ) }
+										style={ this.styles.weekArrow }
+									>
+										»
+									</Link>
+								</View>
+								<View style={ this.styles.dateInfo }>
+									<Text style={ this.styles.nameOfWeek }>
+										{this.getNameOfWeek()}
+									</Text>
+								</View>
 							</View>
-							<View style={ this.styles.dateInfo }>
-								<Text style={ this.styles.nameOfWeek }>
-									{this.getNameOfWeek()}
-								</Text>
-							</View>
+							<MiniCalendar
+								date={ date }
+								highlightMode={ HIGHLIGHT_WEEK }
+								config={ config }
+							/>
 						</View>
-						<MiniCalendar
-							date={ date }
-							highlightMode={ HIGHLIGHT_WEEK }
-							config={ config }
-						/>
+						<View style={ this.styles.content }>
+							<Itinerary items={ config.weekRetrospectiveItinerary } />
+						</View>
 					</View>
-					<View style={ this.styles.content }>
-						<Itinerary items={ config.weekRetrospectiveItinerary } />
-					</View>
-				</View>
-			</Page>
+				</Page>
+				{getItemsOnExtraPages( config.weekRetrospectiveItinerary ).map(
+					( items, index ) => (
+						<Page key={ index } size={ config.pageSize }>
+							<View style={ this.styles.page }>
+								<Itinerary items={ items } />
+							</View>
+						</Page>
+					),
+				)}
+			</>
 		);
 	}
 }

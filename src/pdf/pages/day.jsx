@@ -14,6 +14,7 @@ import { dayPageLink, monthOverviewLink, weekOverviewLink } from 'lib/links';
 import Itinerary from 'pdf/components/itinerary';
 import MiniCalendar from 'pdf/components/mini-calendar';
 import PdfConfig from 'pdf/config';
+import { getItemsOnExtraPages } from 'pdf/utils';
 
 class DayPage extends React.Component {
 	styles = StyleSheet.create( {
@@ -103,45 +104,58 @@ class DayPage extends React.Component {
 				? { id: weekOverviewLink( date ) }
 				: {};
 		return (
-			<Page id={ dayPageLink( date ) } size={ config.pageSize }>
-				<View { ...optionalStartOfMonthId } style={ this.styles.page }>
-					<View { ...optionalStartOfWeekId } style={ this.styles.header }>
-						<View style={ this.styles.meta }>
-							<View style={ this.styles.dateMain }>
-								<Link
-									src={ '#' + monthOverviewLink( date ) }
-									style={ this.styles.monthName }
-								>
-									{date.format( 'MMMM' )}
-								</Link>
-								<Link
-									src={ '#' + dayPageLink( date.subtract( 1, 'day' ) ) }
-									style={ this.styles.dayArrow }
-								>
-									«
-								</Link>
-								<Text style={ this.styles.dayNumber }>{date.format( 'DD' )}</Text>
-								<Link
-									src={ '#' + dayPageLink( date.add( 1, 'day' ) ) }
-									style={ this.styles.dayArrow }
-								>
-									»
-								</Link>
-							</View>
-							<View style={ this.styles.dateInfo }>
-								<View style={ this.styles.specialDateInfo }>
-									{this.renderSpecialDate()}
+			<>
+				<Page id={ dayPageLink( date ) } size={ config.pageSize }>
+					<View { ...optionalStartOfMonthId } style={ this.styles.page }>
+						<View { ...optionalStartOfWeekId } style={ this.styles.header }>
+							<View style={ this.styles.meta }>
+								<View style={ this.styles.dateMain }>
+									<Link
+										src={ '#' + monthOverviewLink( date ) }
+										style={ this.styles.monthName }
+									>
+										{date.format( 'MMMM' )}
+									</Link>
+									<Link
+										src={ '#' + dayPageLink( date.subtract( 1, 'day' ) ) }
+										style={ this.styles.dayArrow }
+									>
+										«
+									</Link>
+									<Text style={ this.styles.dayNumber }>{date.format( 'DD' )}</Text>
+									<Link
+										src={ '#' + dayPageLink( date.add( 1, 'day' ) ) }
+										style={ this.styles.dayArrow }
+									>
+										»
+									</Link>
 								</View>
-								<Text style={ this.styles.nameOfDay }>{date.format( 'dddd' )}</Text>
+								<View style={ this.styles.dateInfo }>
+									<View style={ this.styles.specialDateInfo }>
+										{this.renderSpecialDate()}
+									</View>
+									<Text style={ this.styles.nameOfDay }>
+										{date.format( 'dddd' )}
+									</Text>
+								</View>
 							</View>
+							<MiniCalendar date={ date } config={ config } />
 						</View>
-						<MiniCalendar date={ date } config={ config } />
+						<View style={ this.styles.content }>
+							<Itinerary items={ config.dayItineraries[ date.weekday() ] } />
+						</View>
 					</View>
-					<View style={ this.styles.content }>
-						<Itinerary items={ config.dayItineraries[ date.weekday() ] } />
-					</View>
-				</View>
-			</Page>
+				</Page>
+				{getItemsOnExtraPages( config.dayItineraries[ date.weekday() ] ).map(
+					( items, index ) => (
+						<Page key={ index } size={ config.pageSize }>
+							<View style={ this.styles.page }>
+								<Itinerary items={ items } />
+							</View>
+						</Page>
+					),
+				)}
+			</>
 		);
 	}
 }

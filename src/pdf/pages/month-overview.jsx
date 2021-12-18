@@ -15,6 +15,7 @@ import { dayPageLink, monthOverviewLink } from 'lib/links';
 import Itinerary from 'pdf/components/itinerary';
 import MiniCalendar, { HIGHLIGHT_NONE } from 'pdf/components/mini-calendar';
 import PdfConfig from 'pdf/config';
+import { getItemsOnExtraPages } from 'pdf/utils';
 
 const habitColumnWidth = 40;
 const habitSquareWidth = 13;
@@ -186,24 +187,33 @@ class MonthOverviewPage extends React.Component {
 	render() {
 		const { t, date, config } = this.props;
 		return (
-			<Page id={ monthOverviewLink( date ) } size={ config.pageSize }>
-				<View style={ this.styles.page }>
-					<View style={ this.styles.header }>
-						<View style={ this.styles.meta }>
-							<Text style={ this.styles.title }>{date.format( 'MMMM' )}</Text>
+			<>
+				<Page id={ monthOverviewLink( date ) } size={ config.pageSize }>
+					<View style={ this.styles.page }>
+						<View style={ this.styles.header }>
+							<View style={ this.styles.meta }>
+								<Text style={ this.styles.title }>{date.format( 'MMMM' )}</Text>
+							</View>
+							<MiniCalendar
+								date={ date }
+								highlightMode={ HIGHLIGHT_NONE }
+								config={ config }
+							/>
 						</View>
-						<MiniCalendar
-							date={ date }
-							highlightMode={ HIGHLIGHT_NONE }
-							config={ config }
-						/>
+						{this.renderHabitsTable()}
+						<View style={ this.styles.content }>
+							<Itinerary items={ config.monthItinerary } />
+						</View>
 					</View>
-					{this.renderHabitsTable()}
-					<View style={ this.styles.content }>
-						<Itinerary items={ config.monthItinerary } />
-					</View>
-				</View>
-			</Page>
+				</Page>
+				{getItemsOnExtraPages( config.monthItinerary ).map( ( items, index ) => (
+					<Page key={ index } size={ config.pageSize }>
+						<View style={ this.styles.page }>
+							<Itinerary items={ items } />
+						</View>
+					</Page>
+				) )}
+			</>
 		);
 	}
 }

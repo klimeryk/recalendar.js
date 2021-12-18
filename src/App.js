@@ -18,10 +18,7 @@ import PdfWorker from './worker/pdf.worker.js'; // eslint-disable-line import/de
 
 import PdfPreview from 'components/pdf-preview';
 import ItemsList from 'configuration-form/items-list';
-import Itinerary, {
-	ITINERARY_ITEM,
-	ITINERARY_LINES,
-} from 'configuration-form/itinerary';
+import Itinerary from 'configuration-form/itinerary';
 import ToggleForm from 'configuration-form/toggle-form';
 import { getWeekdays } from 'lib/date';
 import PdfConfig from 'pdf/config';
