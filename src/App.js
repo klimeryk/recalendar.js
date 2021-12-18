@@ -3,6 +3,7 @@ import { saveAs } from 'file-saver';
 import i18n, { changeLanguage } from 'i18next';
 import PropTypes from 'prop-types';
 import React from 'react';
+import Accordion from 'react-bootstrap/Accordion';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import Col from 'react-bootstrap/Col';
@@ -293,7 +294,11 @@ class App extends React.PureComponent {
 		return (
 			<Card className="mt-3">
 				<Card.Header>Day itineraries</Card.Header>
-				<Card.Body>{getWeekdays().map( this.renderDayItinerary )}</Card.Body>
+				<Card.Body>
+					<Accordion defaultActiveKey="0">
+						{getWeekdays().map( this.renderDayItinerary )}
+					</Accordion>
+				</Card.Body>
 			</Card>
 		);
 	}
@@ -302,6 +307,7 @@ class App extends React.PureComponent {
 		return (
 			<Itinerary
 				key={ dayOfWeek }
+				eventKey={ index.toString() }
 				name={ index.toString() }
 				title={ dayOfWeek }
 				itinerary={ this.state.dayItineraries[ index ] }

@@ -117,36 +117,44 @@ class Itinerary extends React.Component {
 	}
 
 	render() {
-		const { itinerary, t, title } = this.props;
+		const { eventKey, itinerary, t, title } = this.props;
+		const accordionItem = (
+			<Accordion.Item eventKey={ eventKey || '0' }>
+				<Accordion.Header>{title}</Accordion.Header>
+				<Accordion.Body>
+					<Stack gap={ 2 }>
+						{itinerary.map( this.renderRow )}
+						{itinerary.length === 0 && (
+							<Alert variant="secondary" className="mb-0">
+								Empty itinerary.
+							</Alert>
+						)}
+					</Stack>
+					<Stack direction="horizontal" className="mt-3" gap={ 3 }>
+						<Button variant="outline-secondary" onClick={ this.handleAddItem }>
+							{t( 'configuration.itinerary.button.item' )}
+						</Button>
+						<Button variant="outline-secondary" onClick={ this.handleAddLines }>
+							{t( 'configuration.itinerary.button.lines' )}
+						</Button>
+					</Stack>
+				</Accordion.Body>
+			</Accordion.Item>
+		);
+		if ( eventKey ) {
+			return accordionItem;
+		}
+
 		return (
 			<Accordion className="mt-3" defaultActiveKey="0">
-				<Accordion.Item eventKey="0">
-					<Accordion.Header>{title}</Accordion.Header>
-					<Accordion.Body>
-						<Stack gap={ 2 }>
-							{itinerary.map( this.renderRow )}
-							{itinerary.length === 0 && (
-								<Alert variant="secondary" className="mb-0">
-									Empty itinerary.
-								</Alert>
-							)}
-						</Stack>
-						<Stack direction="horizontal" className="mt-3" gap={ 3 }>
-							<Button variant="outline-secondary" onClick={ this.handleAddItem }>
-								{t( 'configuration.itinerary.button.item' )}
-							</Button>
-							<Button variant="outline-secondary" onClick={ this.handleAddLines }>
-								{t( 'configuration.itinerary.button.lines' )}
-							</Button>
-						</Stack>
-					</Accordion.Body>
-				</Accordion.Item>
+				{accordionItem}
 			</Accordion>
 		);
 	}
 }
 
 Itinerary.propTypes = {
+	eventKey: PropTypes.string,
 	name: PropTypes.string.isRequired,
 	itinerary: PropTypes.array.isRequired,
 	onAdd: PropTypes.func.isRequired,
