@@ -9,31 +9,16 @@ import Stack from 'react-bootstrap/Stack';
 import { withTranslation } from 'react-i18next';
 
 class ItemsList extends React.Component {
-	handleItemChange = ( event ) => {
-		this.props.onChange(
-			this.props.name,
-			event.target.dataset.index,
-			event.target.value,
-		);
-	};
-
-	handleRemove = ( event ) => {
-		this.props.onRemove( this.props.name, event.target.dataset.index );
-	};
-
-	handleAddItem = () => {
-		this.props.onAdd( this.props.name );
-	};
-
 	renderItem = ( item, index ) => {
-		const { t } = this.props;
+		const { field, onChange, t } = this.props;
 		return (
 			<InputGroup key={ index }>
 				<FormControl
 					placeholder={ t( 'configuration.items-list.placeholder' ) }
 					value={ item }
-					onChange={ this.handleItemChange }
+					onChange={ onChange }
 					data-index={ index }
+					data-field={ field }
 					required
 				/>
 				{this.renderRemoveButton( index )}
@@ -42,12 +27,13 @@ class ItemsList extends React.Component {
 	};
 
 	renderRemoveButton( index ) {
-		const { t } = this.props;
+		const { field, onRemove, t } = this.props;
 		return (
 			<Button
 				variant="outline-danger"
-				onClick={ this.handleRemove }
+				onClick={ onRemove }
 				data-index={ index }
+				data-field={ field }
 			>
 				{t( 'configuration.items-list.button.remove' )}
 			</Button>
@@ -55,7 +41,7 @@ class ItemsList extends React.Component {
 	}
 
 	render() {
-		const { items, t, title } = this.props;
+		const { items, field, onAdd, t, title } = this.props;
 		return (
 			<Accordion className="mt-3" defaultActiveKey="0">
 				<Accordion.Item eventKey="0">
@@ -70,7 +56,11 @@ class ItemsList extends React.Component {
 							)}
 						</Stack>
 						<Stack direction="horizontal" className="mt-3">
-							<Button variant="outline-secondary" onClick={ this.handleAddItem }>
+							<Button
+								variant="outline-secondary"
+								onClick={ onAdd }
+								data-field={ field }
+							>
 								{t( 'configuration.items-list.button.item' )}
 							</Button>
 						</Stack>
@@ -82,7 +72,7 @@ class ItemsList extends React.Component {
 }
 
 ItemsList.propTypes = {
-	name: PropTypes.string.isRequired,
+	field: PropTypes.string.isRequired,
 	items: PropTypes.array.isRequired,
 	onAdd: PropTypes.func.isRequired,
 	onChange: PropTypes.func.isRequired,

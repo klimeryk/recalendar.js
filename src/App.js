@@ -82,6 +82,27 @@ class App extends React.PureComponent {
 		this.generatePdf( false );
 	};
 
+	handleItemAdd = ( event ) => {
+		const field = event.target.dataset.field;
+		const newItems = [ ...this.state[ field ] ];
+		newItems.push( '' );
+		this.setState( { [ field ]: newItems } );
+	};
+
+	handleItemChange = ( event ) => {
+		const field = event.target.dataset.field;
+		const newItems = [ ...this.state[ field ] ];
+		newItems[ event.target.dataset.index ] = event.target.value;
+		this.setState( { [ field ]: newItems } );
+	};
+
+	handleItemRemove = ( event ) => {
+		const field = event.target.dataset.field;
+		const newItems = [ ...this.state[ field ] ];
+		newItems.splice( event.target.dataset.index, 1 );
+		this.setState( { [ field ]: newItems } );
+	};
+
 	handlePreview = ( event ) => {
 		event.preventDefault();
 		this.setState( { isGeneratingPreview: true } );
@@ -112,24 +133,6 @@ class App extends React.PureComponent {
 		return loading ? t( 'loading' ) : t( 'download-ready' );
 	};
 
-	handleHabitChange = ( name, index, value ) => {
-		const newHabits = [ ...this.state.habits ];
-		newHabits[ index ] = value;
-		this.setState( { habits: newHabits } );
-	};
-
-	handleHabitRemove = ( name, index ) => {
-		const newHabits = [ ...this.state.habits ];
-		newHabits.splice( index, 1 );
-		this.setState( { habits: newHabits } );
-	};
-
-	handleHabitAdd = ( name ) => {
-		const newHabits = [ ...this.state.habits ];
-		newHabits.push( '' );
-		this.setState( { habits: newHabits } );
-	};
-
 	handleMonthItineraryChange = ( name, type, index, value ) => {
 		const newItinerary = [ ...this.state.monthItinerary ];
 		newItinerary[ index ] = {
@@ -152,24 +155,6 @@ class App extends React.PureComponent {
 			value: '',
 		} );
 		this.setState( { monthItinerary: newItinerary } );
-	};
-
-	handleTodoChange = ( name, index, value ) => {
-		const newTodos = [ ...this.state.todos ];
-		newTodos[ index ] = value;
-		this.setState( { todos: newTodos } );
-	};
-
-	handleTodoRemove = ( name, index ) => {
-		const newTodos = [ ...this.state.todos ];
-		newTodos.splice( index, 1 );
-		this.setState( { todos: newTodos } );
-	};
-
-	handleTodoAdd = ( name ) => {
-		const newTodos = [ ...this.state.todos ];
-		newTodos.push( '' );
-		this.setState( { todos: newTodos } );
 	};
 
 	handleDayItineraryChange = ( name, type, index, value ) => {
@@ -340,12 +325,12 @@ class App extends React.PureComponent {
 						>
 							<p>Month overview prepares you for the month. Bla bla bla.</p>
 							<ItemsList
-								name="habits"
+								field="habits"
 								title={ t( 'configuration.month.habits.title' ) }
 								items={ this.state.habits }
-								onAdd={ this.handleHabitAdd }
-								onChange={ this.handleHabitChange }
-								onRemove={ this.handleHabitRemove }
+								onAdd={ this.handleItemAdd }
+								onChange={ this.handleItemChange }
+								onRemove={ this.handleItemRemove }
 							/>
 							<Itinerary
 								name="monthItinerary"
@@ -364,12 +349,12 @@ class App extends React.PureComponent {
 						>
 							<p>Week overview prepares you for the week. Bla bla bla.</p>
 							<ItemsList
-								name="todos"
+								field="todos"
 								title={ t( 'configuration.week.todos.title' ) }
 								items={ this.state.todos }
-								onAdd={ this.handleTodoAdd }
-								onChange={ this.handleTodoChange }
-								onRemove={ this.handleTodoRemove }
+								onAdd={ this.handleItemAdd }
+								onChange={ this.handleItemChange }
+								onRemove={ this.handleItemRemove }
 							/>
 						</ToggleForm>
 						{this.renderDayItineraries()}
