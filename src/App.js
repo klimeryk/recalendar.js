@@ -17,6 +17,7 @@ import { withTranslation } from 'react-i18next';
 import PdfWorker from './worker/pdf.worker.js'; // eslint-disable-line import/default
 
 import PdfPreview from 'components/pdf-preview';
+import AboutModal from 'configuration-form/about-modal';
 import ItemsList from 'configuration-form/items-list';
 import Itinerary from 'configuration-form/itinerary';
 import ToggleForm from 'configuration-form/toggle-form';
@@ -32,6 +33,7 @@ class App extends React.PureComponent {
 		isGeneratingPreview: false,
 		language: i18n.language,
 		blobUrl: null,
+		showAboutModal: false,
 		...hydrateFromObject( this.props.initialState ),
 	};
 
@@ -187,6 +189,14 @@ class App extends React.PureComponent {
 		this.setState( { dayItineraries: newItineraries } );
 	};
 
+	handleShowAboutModal = () => {
+		this.setState( { showAboutModal: true } );
+	};
+
+	handleHideAboutModal = () => {
+		this.setState( { showAboutModal: false } );
+	};
+
 	renderMonths() {
 		return dayjs
 			.localeData()
@@ -242,7 +252,18 @@ class App extends React.PureComponent {
 		const { isGeneratingPdf, isGeneratingPreview } = this.state;
 		return (
 			<Card className="my-3">
-				<Card.Header>ReCalendar</Card.Header>
+				<Card.Header>
+					<Stack direction="horizontal">
+						<span>ReCalendar</span>
+						<Button
+							className="ms-auto"
+							variant="info"
+							onClick={ this.handleShowAboutModal }
+						>
+							About
+						</Button>
+					</Stack>
+				</Card.Header>
 				<Card.Body>
 					<Form onSubmit={ this.handlePreview }>
 						<Form.Label htmlFor="languagePicker">
@@ -453,11 +474,15 @@ class App extends React.PureComponent {
 	}
 
 	render() {
-		const { blobUrl, isGeneratingPreview } = this.state;
+		const { blobUrl, isGeneratingPreview, showAboutModal } = this.state;
 
 		return (
 			<Container className="h-100" fluid>
 				<Row className="h-100">
+					<AboutModal
+						onHide={ this.handleHideAboutModal }
+						show={ showAboutModal }
+					/>
 					<Col className="h-100 overflow-auto">
 						{this.renderConfigurationForm()}
 					</Col>
