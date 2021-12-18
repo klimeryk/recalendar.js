@@ -22,7 +22,6 @@ import Itinerary from 'configuration-form/itinerary';
 import ToggleForm from 'configuration-form/toggle-form';
 import { getWeekdays } from 'lib/date';
 import PdfConfig from 'pdf/config';
-import RecalendarPdf from 'pdf/recalendar';
 
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -531,7 +530,7 @@ class App extends React.PureComponent {
 	}
 
 	render() {
-		const { config, blobUrl, isGeneratingPreview } = this.state;
+		const { blobUrl, isGeneratingPreview } = this.state;
 
 		return (
 			<Container className="h-100" fluid>

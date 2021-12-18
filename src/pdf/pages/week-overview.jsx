@@ -1,11 +1,4 @@
-import {
-	Document,
-	Page,
-	Text,
-	View,
-	StyleSheet,
-	Link,
-} from '@react-pdf/renderer';
+import { Page, Text, View, StyleSheet, Link } from '@react-pdf/renderer';
 import dayjs from 'dayjs';
 import PropTypes from 'prop-types';
 import React from 'react';

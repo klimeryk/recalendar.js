@@ -4,11 +4,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import { withTranslation } from 'react-i18next';
 
-import {
-	weekRetrospectiveLink,
-	dayPageLink,
-	monthOverviewLink,
-} from 'lib/links';
+import { weekRetrospectiveLink } from 'lib/links';
 import Itinerary from 'pdf/components/itinerary';
 import MiniCalendar, { HIGHLIGHT_WEEK } from 'pdf/components/mini-calendar';
 import PdfConfig from 'pdf/config';

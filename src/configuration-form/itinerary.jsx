@@ -1,21 +1,13 @@
-import dayjs from 'dayjs';
 import PropTypes from 'prop-types';
 import React from 'react';
 import Accordion from 'react-bootstrap/Accordion';
 import Alert from 'react-bootstrap/Alert';
 import Button from 'react-bootstrap/Button';
-import Card from 'react-bootstrap/Card';
-import Col from 'react-bootstrap/Col';
-import Container from 'react-bootstrap/Container';
 import FloatingLabel from 'react-bootstrap/FloatingLabel';
-import Form from 'react-bootstrap/Form';
 import FormControl from 'react-bootstrap/FormControl';
 import InputGroup from 'react-bootstrap/InputGroup';
-import Row from 'react-bootstrap/Row';
 import Stack from 'react-bootstrap/Stack';
 import { withTranslation } from 'react-i18next';
-
-import PdfConfig from 'pdf/config';
 
 export const ITINERARY_ITEM = 'item';
 export const ITINERARY_LINES = 'lines';
@@ -71,7 +63,6 @@ class Itinerary extends React.Component {
 	};
 
 	renderItem( item, index ) {
-		const { t } = this.props;
 		return (
 			<InputGroup key={ index }>
 				<FormControl
@@ -87,7 +78,6 @@ class Itinerary extends React.Component {
 	}
 
 	renderNewPage( item, index ) {
-		const { t } = this.props;
 		return (
 			<InputGroup key={ index }>
 				<InputGroup.Text className="flex-grow-1">

@@ -1,7 +1,6 @@
 import dayjs from 'dayjs';
 import i18n from 'i18next';
 import LanguageDetector from 'i18next-browser-languagedetector';
-//import Backend from 'i18next-http-backend';
 import React, { Suspense } from 'react';
 import Spinner from 'react-bootstrap/Spinner';
 import ReactDOM from 'react-dom';
@@ -12,7 +11,6 @@ import './index.css';
 import 'config/dayjs';
 import { i18nConfiguration, webpackBackend } from 'config/i18n';
 import Loader from 'loader';
-import PdfConfig from 'pdf/config';
 
 // eslint-disable-next-line import/no-named-as-default-member
 i18n

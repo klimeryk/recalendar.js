@@ -61,7 +61,7 @@
 		"no-undef": "error",
 		"no-underscore-dangle": "off",
 		"no-unreachable": "error",
-		"no-unused-vars": "off",
+		"no-unused-vars": "error",
 		"no-var": "error",
 		"object-curly-spacing": ["error", "always"],
 		"one-var": "off",

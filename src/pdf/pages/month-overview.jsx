@@ -1,11 +1,4 @@
-import {
-	Document,
-	Page,
-	Text,
-	View,
-	StyleSheet,
-	Link,
-} from '@react-pdf/renderer';
+import { Page, Text, View, StyleSheet, Link } from '@react-pdf/renderer';
 import dayjs from 'dayjs';
 import PropTypes from 'prop-types';
 import React from 'react';
@@ -185,7 +178,7 @@ class MonthOverviewPage extends React.Component {
 	}
 
 	render() {
-		const { t, date, config } = this.props;
+		const { date, config } = this.props;
 		return (
 			<>
 				<Page id={ monthOverviewLink( date ) } size={ config.pageSize }>
