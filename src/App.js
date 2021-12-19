@@ -322,11 +322,11 @@ class App extends React.PureComponent {
 						</Form.Group>
 						<ToggleForm
 							id="isMonthOverviewEnabled"
-							title="Month overview"
+							title={ t( 'configuration.month.title' ) }
 							onToggle={ this.handleToggle }
 							toggledOn={ this.state.isMonthOverviewEnabled }
 						>
-							<p>Month overview prepares you for the month. Bla bla bla.</p>
+							<p>{t( 'configuration.month.description' )}</p>
 							<ItemsList
 								field="habits"
 								title={ t( 'configuration.month.habits.title' ) }
@@ -475,6 +475,7 @@ class App extends React.PureComponent {
 
 	render() {
 		const { blobUrl, isGeneratingPreview, showAboutModal } = this.state;
+		const { t } = this.props;
 
 		return (
 			<Container className="h-100" fluid>
@@ -488,9 +489,7 @@ class App extends React.PureComponent {
 					</Col>
 					<Col className="py-3 h-100">
 						<Card className="h-100">
-							<Card.Header>
-								Calendar preview (only first month is rendered)
-							</Card.Header>
+							<Card.Header>{t( 'preview.title' )}</Card.Header>
 							<Card.Body>
 								{blobUrl && ! isGeneratingPreview
 									? this.renderPdfPreview()

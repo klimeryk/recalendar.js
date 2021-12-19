@@ -42,6 +42,8 @@
 			"enabled": "Enabled"
 		},
 		"month": {
+			"title": "Month overview",
+			"description": "The month overview is a place to set goals for the upcoming month, track habits and more.",
 			"habits": {
 				"title": "Habits"
 			},
@@ -59,5 +61,8 @@
 				}
 			}
 		}
+	},
+	"preview": {
+		"title": "Calendar preview (only first month is rendered)"
 	}
 }
