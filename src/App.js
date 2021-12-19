@@ -16,7 +16,7 @@ import { withTranslation } from 'react-i18next';
 
 import PdfWorker from './worker/pdf.worker.js'; // eslint-disable-line import/default
 
-import PdfPreview from 'components/pdf-preview';
+import PdfPreviewCard from 'components/pdf-preview-card';
 import AboutModal from 'configuration-form/about-modal';
 import ItemsList from 'configuration-form/items-list';
 import Itinerary from 'configuration-form/itinerary';
@@ -412,69 +412,7 @@ class App extends React.PureComponent {
 		);
 	}
 
-	renderPdfPreview() {
-		const { t } = this.props;
-		const { isGeneratingPdf, isGeneratingPreview, blobUrl } = this.state;
-		return (
-			<Stack direction="vertical" gap={ 3 } className="h-100">
-				<PdfPreview
-					blobUrl={ blobUrl }
-					title={ t( 'configuration.preview.viewer-title' ) }
-				/>
-				<Button
-					variant="secondary"
-					disabled={ isGeneratingPreview || isGeneratingPdf }
-					onClick={ this.handleDownload }
-				>
-					{isGeneratingPdf ? (
-						<>
-							<Spinner
-								as="span"
-								animation="border"
-								size="sm"
-								role="status"
-								aria-hidden="true"
-								className="me-1"
-							/>
-							Generating full calendar - this could take a minute or more...
-						</>
-					) : (
-						t( 'configuration.button.download' )
-					)}
-				</Button>
-			</Stack>
-		);
-	}
-
-	renderNoPreview() {
-		if ( this.state.isGeneratingPreview ) {
-			return (
-				<div className="h-100 d-flex align-items-center justify-content-center">
-					<Spinner
-						animation="border"
-						role="status"
-						size="sm"
-						className="me-1"
-					/>
-					Generating preview, please wait - it can take a minute.
-				</div>
-			);
-		}
-		return (
-			<Stack
-				direction="vertical"
-				className="h-100 d-flex align-items-center justify-content-center"
-			>
-				<p className="lead">
-					Use the configuration form to create your personalized calendar.
-				</p>
-				<p>The preview will appear here.</p>
-			</Stack>
-		);
-	}
-
 	render() {
-		const { blobUrl, isGeneratingPreview, showAboutModal } = this.state;
 		const { t } = this.props;
 
 		return (
@@ -482,7 +420,7 @@ class App extends React.PureComponent {
 				<Row className="h-100">
 					<AboutModal
 						onHide={ this.handleHideAboutModal }
-						show={ showAboutModal }
+						show={ this.state.showAboutModal }
 					/>
 					<Col className="h-100 overflow-auto">
 						{this.renderConfigurationForm()}
@@ -491,9 +429,12 @@ class App extends React.PureComponent {
 						<Card className="h-100">
 							<Card.Header>{t( 'preview.title' )}</Card.Header>
 							<Card.Body>
-								{blobUrl && ! isGeneratingPreview
-									? this.renderPdfPreview()
-									: this.renderNoPreview()}
+								<PdfPreviewCard
+									blobUrl={ this.state.blobUrl }
+									isGeneratingPdf={ this.state.isGeneratingPdf }
+									isGeneratingPreview={ this.state.isGeneratingPreview }
+									onDownload={ this.handleDownload }
+								/>
 							</Card.Body>
 						</Card>
 					</Col>
