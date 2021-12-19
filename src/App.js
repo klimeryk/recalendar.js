@@ -292,7 +292,7 @@ class App extends React.PureComponent {
 						</Button>
 					</Stack>
 				</Card.Header>
-				<Card.Body>
+				<Card.Body className="pb-0">
 					<Form onSubmit={ this.handlePreview }>
 						<Form.Label htmlFor="languagePicker">
 							{t( 'configuration.language.label' )}
@@ -408,7 +408,11 @@ class App extends React.PureComponent {
 								onRemove={ this.handleItineraryRemove }
 							/>
 						</ToggleForm>
-						<Stack direction="vertical" gap={ 2 } className="mt-3">
+						<Stack
+							direction="vertical"
+							gap={ 2 }
+							className="pt-3 position-sticky bg-body refresh-button"
+						>
 							<Button
 								variant="primary"
 								className="w-100"
@@ -434,7 +438,7 @@ class App extends React.PureComponent {
 							{isGeneratingPreview && (
 								<PdfProgress expectedTime={ this.state.lastPreviewTime } />
 							)}
-							<Form.Text className="text-muted">
+							<Form.Text className="text-muted pb-3">
 								{t( 'configuration.generation-description' )}
 							</Form.Text>
 						</Stack>

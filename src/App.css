@@ -11,3 +11,8 @@ body,
 .special-date {
 	min-width: 120px;
 }
+
+.refresh-button {
+	bottom: 0;
+	z-index: 2000;
+}
