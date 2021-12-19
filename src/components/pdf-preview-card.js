@@ -9,14 +9,15 @@ import PdfPreview from 'components/pdf-preview';
 
 class PdfPreviewCard extends React.PureComponent {
 	renderPdfPreview() {
-		const { blobUrl, isGeneratingPdf, isGeneratingPreview, t } = this.props;
+		const { blobUrl, isGeneratingPdf, isGeneratingPreview, onDownload, t } =
+			this.props;
 		return (
 			<Stack direction="vertical" gap={ 3 } className="h-100">
 				<PdfPreview blobUrl={ blobUrl } title={ t( 'preview.viewer-title' ) } />
 				<Button
 					variant="secondary"
 					disabled={ isGeneratingPreview || isGeneratingPdf }
-					onClick={ this.handleDownload }
+					onClick={ onDownload }
 				>
 					{isGeneratingPdf ? (
 						<>
