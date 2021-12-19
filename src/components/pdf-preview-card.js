@@ -12,10 +12,7 @@ class PdfPreviewCard extends React.PureComponent {
 		const { blobUrl, isGeneratingPdf, isGeneratingPreview, t } = this.props;
 		return (
 			<Stack direction="vertical" gap={ 3 } className="h-100">
-				<PdfPreview
-					blobUrl={ blobUrl }
-					title={ t( 'configuration.preview.viewer-title' ) }
-				/>
+				<PdfPreview blobUrl={ blobUrl } title={ t( 'preview.viewer-title' ) } />
 				<Button
 					variant="secondary"
 					disabled={ isGeneratingPreview || isGeneratingPdf }
@@ -31,7 +28,7 @@ class PdfPreviewCard extends React.PureComponent {
 								aria-hidden="true"
 								className="me-1"
 							/>
-							Generating full calendar - this could take a minute or more...
+							{t( 'preview.generating.full' )}
 						</>
 					) : (
 						t( 'configuration.button.download' )
@@ -42,7 +39,9 @@ class PdfPreviewCard extends React.PureComponent {
 	}
 
 	renderNoPreview() {
-		if ( this.props.isGeneratingPreview ) {
+		const { t, isGeneratingPreview } = this.props;
+
+		if ( isGeneratingPreview ) {
 			return (
 				<div className="h-100 d-flex align-items-center justify-content-center">
 					<Spinner
@@ -51,7 +50,7 @@ class PdfPreviewCard extends React.PureComponent {
 						size="sm"
 						className="me-1"
 					/>
-					Generating preview, please wait - it can take a minute.
+					{t( 'preview.generating.preview' )}
 				</div>
 			);
 		}
@@ -60,10 +59,8 @@ class PdfPreviewCard extends React.PureComponent {
 				direction="vertical"
 				className="h-100 d-flex align-items-center justify-content-center"
 			>
-				<p className="lead">
-					Use the configuration form to create your personalized calendar.
-				</p>
-				<p>The preview will appear here.</p>
+				<p className="lead">{t( 'preview.empty.title' )}</p>
+				<p>{t( 'preview.empty.subtitle' )}</p>
 			</Stack>
 		);
 	}

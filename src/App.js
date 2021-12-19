@@ -285,7 +285,7 @@ class App extends React.PureComponent {
 							/>
 						</Form.Group>
 						<Form.Group controlId="month">
-							<Form.Label>{t( 'configuration.starting-month' )}</Form.Label>
+							<Form.Label>{t( 'configuration.starting-month.label' )}</Form.Label>
 							<Form.Select
 								value={ this.state.month }
 								onChange={ this.handleFieldChange }
@@ -293,9 +293,7 @@ class App extends React.PureComponent {
 								{this.renderMonths()}
 							</Form.Select>
 							<Form.Text className="text-muted">
-								The first month in the generated calendar. Choose something like
-								October if you want your calendar to cover a semester, instead
-								of a calendar year.
+								{t( 'configuration.starting-month.description' )}
 							</Form.Text>
 						</Form.Group>
 						<Form.Group controlId="firstDayOfWeek">
@@ -308,7 +306,7 @@ class App extends React.PureComponent {
 							</Form.Select>
 						</Form.Group>
 						<Form.Group controlId="monthCount">
-							<Form.Label>{t( 'configuration.month-count' )}</Form.Label>
+							<Form.Label>{t( 'configuration.month-count.label' )}</Form.Label>
 							<Form.Control
 								type="number"
 								value={ this.state.monthCount }
@@ -317,7 +315,7 @@ class App extends React.PureComponent {
 								max={ 12 }
 							/>
 							<Form.Text className="text-muted">
-								For how many months should the calendar be generated for.
+								{t( 'configuration.month-count.description' )}
 							</Form.Text>
 						</Form.Group>
 						<ToggleForm
@@ -346,11 +344,11 @@ class App extends React.PureComponent {
 						</ToggleForm>
 						<ToggleForm
 							id="isWeekOverviewEnabled"
-							title="Week overview"
+							title={ t( 'configuration.week.title' ) }
 							onToggle={ this.handleToggle }
 							toggledOn={ this.state.isWeekOverviewEnabled }
 						>
-							<p>Week overview prepares you for the week. Bla bla bla.</p>
+							<p>{t( 'configuration.week.description' )}</p>
 							<ItemsList
 								field="todos"
 								title={ t( 'configuration.week.todos.title' ) }
@@ -363,14 +361,11 @@ class App extends React.PureComponent {
 						{this.renderDayItineraries()}
 						<ToggleForm
 							id="isWeekRetrospectiveEnabled"
-							title="Week retrospective"
+							title={ t( 'configuration.week.retrospective.title' ) }
 							onToggle={ this.handleToggle }
 							toggledOn={ this.state.isWeekRetrospectiveEnabled }
 						>
-							<p>
-								Week retrospective gives you a place to reflect on your past
-								week.
-							</p>
+							<p>{t( 'configuration.week.retrospective.description' )}</p>
 							<Itinerary
 								field="weekRetrospectiveItinerary"
 								title={ t( 'configuration.week.retrospective.itinerary.title' ) }
@@ -403,8 +398,7 @@ class App extends React.PureComponent {
 							)}
 						</Button>
 						<Form.Text className="text-muted">
-							PDF generation is done entirely in your browser - no data is sent
-							to our servers!
+							{t( 'configuration.generation-description' )}
 						</Form.Text>
 					</Form>
 				</Card.Body>

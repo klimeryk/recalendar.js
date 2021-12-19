@@ -8,16 +8,19 @@
 			"polish": "Polish"
 		},
 		"year": "Year",
-		"starting-month": "Starting month",
-		"month-count": "Number of months",
+		"starting-month": {
+			"label": "Starting month",
+			"description": "The first month in the generated calendar. Choose something like October if you want your calendar to cover a semester, instead of a calendar year."
+		},
+		"month-count": {
+			"label": "Number of months",
+			"description": "For how many months should the calendar be generated for."
+		},
 		"first-day-of-week": "First day of week",
 		"button": {
 			"refresh": "Refesh preview",
 			"download": "Generate full calendar and download",
 			"generating": "Generating, please wait..."
-		},
-		"preview": {
-			"viewer-title": "PDF Preview"
 		},
 		"itinerary": {
 			"placeholder": {
@@ -52,17 +55,31 @@
 			}
 		},
 		"week": {
+			"title": "Week overview",
+			"description": "Week overview gives you a zoom out of the week to makes plans easier.",
 			"todos": {
 				"title": "TODOs"
 			},
 			"retrospective": {
+				"title": "Week retrospective",
+				"description": "Week retrospective is a place to reflect on the past week - how it went, what did you learn, what could you improve for next week?",
 				"itinerary": {
 					"title": "Itinerary"
 				}
 			}
-		}
+		},
+		"generation-description": "PDF generation is done entirely in your browser - no data is sent to our servers!"
 	},
 	"preview": {
-		"title": "Calendar preview (only first month is rendered)"
+		"title": "Calendar preview (only first month is rendered)",
+		"viewer-title": "PDF Preview",
+		"generating": {
+			"full": "Generating full calendar - this could take more than a minute...",
+			"preview": "Generating preview, please wait - it can take a minute."
+		},
+		"empty": {
+			"title": "Use the configuration form to create your personalized calendar.",
+			"subtitle": "The preview will appear here."
+		}
 	}
 }
