@@ -6,6 +6,7 @@ import Stack from 'react-bootstrap/Stack';
 import { withTranslation } from 'react-i18next';
 
 import PdfPreview from 'components/pdf-preview';
+import PdfProgress from 'components/pdf-progress';
 
 class PdfPreviewCard extends React.PureComponent {
 	renderPdfPreview() {
@@ -35,6 +36,9 @@ class PdfPreviewCard extends React.PureComponent {
 						t( 'configuration.button.download' )
 					)}
 				</Button>
+				{isGeneratingPdf && (
+					<PdfProgress expectedTime={ this.props.expectedTime } />
+				)}
 			</Stack>
 		);
 	}
@@ -78,6 +82,7 @@ class PdfPreviewCard extends React.PureComponent {
 
 PdfPreviewCard.propTypes = {
 	blobUrl: PropTypes.string,
+	expectedTime: PropTypes.number.isRequired,
 	isGeneratingPdf: PropTypes.bool.isRequired,
 	isGeneratingPreview: PropTypes.bool.isRequired,
 	onDownload: PropTypes.func.isRequired,

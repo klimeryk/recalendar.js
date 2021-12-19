@@ -17,6 +17,7 @@ import { withTranslation } from 'react-i18next';
 import PdfWorker from './worker/pdf.worker.js'; // eslint-disable-line import/default
 
 import PdfPreviewCard from 'components/pdf-preview-card';
+import PdfProgress from 'components/pdf-progress';
 import AboutModal from 'configuration-form/about-modal';
 import ItemsList from 'configuration-form/items-list';
 import Itinerary from 'configuration-form/itinerary';
@@ -34,6 +35,8 @@ class App extends React.PureComponent {
 		language: i18n.language,
 		blobUrl: null,
 		showAboutModal: false,
+		lastPreviewTime: 10000,
+		lastFullTime: null,
 		...hydrateFromObject( this.props.initialState ),
 	};
 
@@ -139,6 +142,7 @@ class App extends React.PureComponent {
 	};
 
 	generatePdf( isPreview ) {
+		this.startTime = new Date();
 		this.pdfWorker.postMessage( {
 			isPreview,
 			language: this.state.language,
@@ -149,10 +153,16 @@ class App extends React.PureComponent {
 	handlePdfWorkerMessage = ( { data: { blob } } ) => {
 		const shouldTriggerDownload = this.state.isGeneratingPdf;
 		if ( this.state.isGeneratingPreview ) {
-			this.setState( { blobUrl: URL.createObjectURL( blob ) } );
+			const previewTime = new Date().getTime() - this.startTime.getTime();
+			this.setState( {
+				blobUrl: URL.createObjectURL( blob ),
+				lastPreviewTime: previewTime,
+			} );
 		}
 		this.setState( { isGeneratingPdf: false, isGeneratingPreview: false } );
 		if ( shouldTriggerDownload ) {
+			const fullTime = new Date().getTime() - this.startTime.getTime();
+			this.setState( { lastFullTime: fullTime } );
 			saveAs( blob, 'recalendar.pdf' );
 		}
 	};
@@ -375,31 +385,36 @@ class App extends React.PureComponent {
 								onRemove={ this.handleItineraryRemove }
 							/>
 						</ToggleForm>
-						<Button
-							variant="primary"
-							className="mt-3 w-100"
-							disabled={ isGeneratingPreview || isGeneratingPdf }
-							type="submit"
-						>
-							{isGeneratingPreview ? (
-								<>
-									<Spinner
-										as="span"
-										animation="border"
-										size="sm"
-										role="status"
-										aria-hidden="true"
-										className="me-1"
-									/>
-									{t( 'configuration.button.generating' )}
-								</>
-							) : (
-								t( 'configuration.button.refresh' )
+						<Stack direction="vertical" gap={ 2 } className="mt-3">
+							<Button
+								variant="primary"
+								className="w-100"
+								disabled={ isGeneratingPreview || isGeneratingPdf }
+								type="submit"
+							>
+								{isGeneratingPreview ? (
+									<>
+										<Spinner
+											as="span"
+											animation="border"
+											size="sm"
+											role="status"
+											aria-hidden="true"
+											className="me-1"
+										/>
+										{t( 'configuration.button.generating' )}
+									</>
+								) : (
+									t( 'configuration.button.refresh' )
+								)}
+							</Button>
+							{isGeneratingPreview && (
+								<PdfProgress expectedTime={ this.state.lastPreviewTime } />
 							)}
-						</Button>
-						<Form.Text className="text-muted">
-							{t( 'configuration.generation-description' )}
-						</Form.Text>
+							<Form.Text className="text-muted">
+								{t( 'configuration.generation-description' )}
+							</Form.Text>
+						</Stack>
 					</Form>
 				</Card.Body>
 			</Card>
@@ -428,6 +443,9 @@ class App extends React.PureComponent {
 							<Card.Body>
 								<PdfPreviewCard
 									blobUrl={ this.state.blobUrl }
+									expectedTime={
+										this.state.lastFullTime || 12 * this.state.lastPreviewTime
+									}
 									isGeneratingPdf={ this.state.isGeneratingPdf }
 									isGeneratingPreview={ this.state.isGeneratingPreview }
 									onDownload={ this.handleDownload }
