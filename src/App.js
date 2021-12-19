@@ -21,12 +21,13 @@ import PdfProgress from 'components/pdf-progress';
 import AboutModal from 'configuration-form/about-modal';
 import ItemsList from 'configuration-form/items-list';
 import Itinerary from 'configuration-form/itinerary';
+import SpecialDates from 'configuration-form/special-dates';
 import ToggleForm from 'configuration-form/toggle-form';
 import { getWeekdays } from 'lib/date';
 import PdfConfig, { hydrateFromObject } from 'pdf/config';
 
-import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import './App.css';
 
 class App extends React.PureComponent {
 	state = {
@@ -207,6 +208,23 @@ class App extends React.PureComponent {
 		this.setState( { showAboutModal: false } );
 	};
 
+	handleSpecialDateAdd = ( key, value ) => {
+		const newSpecialDates = Object.assign( {}, this.state.specialDates );
+		if ( ! newSpecialDates[ key ] ) {
+			newSpecialDates[ key ] = [];
+		}
+
+		newSpecialDates[ key ].push( value );
+		this.setState( { specialDates: newSpecialDates } );
+	};
+
+	handleSpecialDateRemove = ( event ) => {
+		const key = event.target.dataset.key;
+		const newSpecialDates = Object.assign( {}, this.state.specialDates );
+		delete newSpecialDates[ key ];
+		this.setState( { specialDates: newSpecialDates } );
+	};
+
 	renderMonths() {
 		return dayjs
 			.localeData()
@@ -328,6 +346,11 @@ class App extends React.PureComponent {
 								{t( 'configuration.month-count.description' )}
 							</Form.Text>
 						</Form.Group>
+						<SpecialDates
+							items={ this.state.specialDates }
+							onAdd={ this.handleSpecialDateAdd }
+							onRemove={ this.handleSpecialDateRemove }
+						/>
 						<ToggleForm
 							id="isMonthOverviewEnabled"
 							title={ t( 'configuration.month.title' ) }

@@ -16,6 +16,7 @@ const CONFIG_FIELDS = [
 	'dayItineraries',
 	'isWeekRetrospectiveEnabled',
 	'weekRetrospectiveItinerary',
+	'specialDates',
 ];
 
 export function hydrateFromObject( object ) {

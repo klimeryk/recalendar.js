@@ -3,3 +3,11 @@ body,
 #root {
 	height: 100%;
 }
+
+.input-group > .date-field {
+	width: 160px;
+}
+
+.special-date {
+	min-width: 120px;
+}
