@@ -421,7 +421,10 @@ class App extends React.PureComponent {
 					</Col>
 					<Col className="py-3 h-100">
 						<Card className="h-100">
-							<Card.Header>{t( 'preview.title' )}</Card.Header>
+							<Card.Header>
+								{t( 'preview.title' )}{' '}
+								<small className="text-muted">{t( 'preview.subtitle' )}</small>
+							</Card.Header>
 							<Card.Body>
 								<PdfPreviewCard
 									blobUrl={ this.state.blobUrl }
