@@ -20,11 +20,14 @@
 		"button": {
 			"refresh": "Refesh preview",
 			"download": "Generate full calendar and download",
-			"generating": "Generating, please wait..."
+			"generating": "Generating, please wait...",
+			"about": "About"
 		},
 		"itinerary": {
+			"empty": "Empty itinerary",
 			"placeholder": {
-				"lines": "Number of lines"
+				"lines": "Number of lines",
+				"page": "New page break"
 			},
 			"button": {
 				"remove": "Remove",

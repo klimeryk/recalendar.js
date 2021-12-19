@@ -47,10 +47,11 @@ class Itinerary extends React.Component {
 	}
 
 	renderNewPage( item, index ) {
+		const { t } = this.props;
 		return (
 			<InputGroup key={ index }>
 				<InputGroup.Text className="flex-grow-1">
-					New page break
+					{t( 'configuration.itinerary.placeholder.page' )}
 				</InputGroup.Text>
 				{this.renderRemoveButton( index )}
 			</InputGroup>
@@ -108,7 +109,7 @@ class Itinerary extends React.Component {
 						{itinerary.map( this.renderRow )}
 						{itinerary.length === 0 && (
 							<Alert variant="secondary" className="mb-0">
-								Empty itinerary.
+								{t( 'configuration.itinerary.empty' )}
 							</Alert>
 						)}
 					</Stack>

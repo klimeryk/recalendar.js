@@ -260,7 +260,7 @@ class App extends React.PureComponent {
 							variant="info"
 							onClick={ this.handleShowAboutModal }
 						>
-							About
+							{t( 'configuration.button.about' )}
 						</Button>
 					</Stack>
 				</Card.Header>
