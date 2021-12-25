@@ -19,6 +19,10 @@ const CONFIG_FIELDS = [
 	'specialDates',
 ];
 
+export const CONFIG_FILE = 'config.json';
+export const CONFIG_VERSION_1 = 'v1';
+export const CONFIG_CURRENT_VERSION = CONFIG_VERSION_1;
+
 export function hydrateFromObject( object ) {
 	return CONFIG_FIELDS.reduce(
 		( fields, field ) => ( {
