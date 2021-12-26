@@ -13,32 +13,38 @@ class PdfPreviewCard extends React.PureComponent {
 		const { blobUrl, isGeneratingPdf, isGeneratingPreview, onDownload, t } =
 			this.props;
 		return (
-			<Stack direction="vertical" gap={ 3 } className="h-100">
+			<Stack direction="vertical" className="h-100">
 				<PdfPreview blobUrl={ blobUrl } title={ t( 'preview.viewer-title' ) } />
-				<Button
-					variant="secondary"
-					disabled={ isGeneratingPreview || isGeneratingPdf }
-					onClick={ onDownload }
+				<Stack
+					direction="vertical"
+					gap={ 2 }
+					className="py-3 position-sticky bg-body refresh-button"
 				>
-					{isGeneratingPdf ? (
-						<>
-							<Spinner
-								as="span"
-								animation="border"
-								size="sm"
-								role="status"
-								aria-hidden="true"
-								className="me-1"
-							/>
-							{t( 'preview.generating.full' )}
-						</>
-					) : (
-						t( 'configuration.button.download' )
+					<Button
+						variant="secondary"
+						disabled={ isGeneratingPreview || isGeneratingPdf }
+						onClick={ onDownload }
+					>
+						{isGeneratingPdf ? (
+							<>
+								<Spinner
+									as="span"
+									animation="border"
+									size="sm"
+									role="status"
+									aria-hidden="true"
+									className="me-1"
+								/>
+								{t( 'preview.generating.full' )}
+							</>
+						) : (
+							t( 'configuration.button.download' )
+						)}
+					</Button>
+					{isGeneratingPdf && (
+						<PdfProgress expectedTime={ this.props.expectedTime } />
 					)}
-				</Button>
-				{isGeneratingPdf && (
-					<PdfProgress expectedTime={ this.props.expectedTime } />
-				)}
+				</Stack>
 			</Stack>
 		);
 	}

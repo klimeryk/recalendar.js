@@ -257,19 +257,6 @@ class Configuration extends React.PureComponent {
 			) );
 	}
 
-	renderDayItineraries() {
-		return (
-			<Card className="mt-3">
-				<Card.Header>Day itineraries</Card.Header>
-				<Card.Body>
-					<Accordion defaultActiveKey="0">
-						{getWeekdays().map( this.renderDayItinerary )}
-					</Accordion>
-				</Card.Body>
-			</Card>
-		);
-	}
-
 	renderDayItinerary = ( { full: dayOfWeek }, index ) => {
 		return (
 			<Itinerary
@@ -289,166 +276,181 @@ class Configuration extends React.PureComponent {
 		const { t } = this.props;
 		const { isGeneratingPdf, isGeneratingPreview } = this.state;
 		return (
-			<Card className="my-3">
-				<Card.Header>ReCalendar</Card.Header>
-				<Card.Body className="pb-0">
-					<Form onSubmit={ this.handlePreview }>
-						<Form.Control
-							type="file"
-							accept=".pdf"
-							onChange={ this.handleFileChange }
-						/>
-						<Form.Label htmlFor="languagePicker">
-							{t( 'configuration.language.label' )}
-						</Form.Label>
-						<Form.Select
-							value={ this.state.language }
-							onChange={ this.handleLanguageSelection }
-						>
-							<option value="en">{t( 'configuration.language.english' )}</option>
-							<option value="pl">{t( 'configuration.language.polish' )}</option>
-						</Form.Select>
-						<Form.Group controlId="year">
-							<Form.Label>{t( 'configuration.year' )}</Form.Label>
+			<Form onSubmit={ this.handlePreview }>
+				<Accordion defaultActiveKey="start" className="my-3">
+					<Accordion.Item eventKey="start">
+						<Accordion.Header>ReCalendar</Accordion.Header>
+						<Accordion.Body>
 							<Form.Control
-								type="number"
-								value={ this.state.year }
-								onChange={ this.handleFieldChange }
+								type="file"
+								accept=".pdf"
+								onChange={ this.handleFileChange }
 							/>
-						</Form.Group>
-						<Form.Group controlId="month">
-							<Form.Label>{t( 'configuration.starting-month.label' )}</Form.Label>
+							<Form.Label htmlFor="languagePicker">
+								{t( 'configuration.language.label' )}
+							</Form.Label>
 							<Form.Select
-								value={ this.state.month }
-								onChange={ this.handleFieldChange }
+								value={ this.state.language }
+								onChange={ this.handleLanguageSelection }
 							>
-								{this.renderMonths()}
+								<option value="en">
+									{t( 'configuration.language.english' )}
+								</option>
+								<option value="pl">{t( 'configuration.language.polish' )}</option>
 							</Form.Select>
-							<Form.Text className="text-muted">
-								{t( 'configuration.starting-month.description' )}
-							</Form.Text>
-						</Form.Group>
-						<Form.Group controlId="firstDayOfWeek">
-							<Form.Label>{t( 'configuration.first-day-of-week' )}</Form.Label>
-							<Form.Select
-								value={ this.state.firstDayOfWeek }
-								onChange={ this.handleFieldChange }
-							>
-								{this.renderDaysOfWeek()}
-							</Form.Select>
-						</Form.Group>
-						<Form.Group controlId="monthCount">
-							<Form.Label>{t( 'configuration.month-count.label' )}</Form.Label>
-							<Form.Control
-								type="number"
-								value={ this.state.monthCount }
-								onChange={ this.handleFieldChange }
-								min={ 1 }
-								max={ 12 }
-							/>
-							<Form.Text className="text-muted">
-								{t( 'configuration.month-count.description' )}
-							</Form.Text>
-						</Form.Group>
-						<SpecialDates
-							items={ this.state.specialDates }
-							onAdd={ this.handleSpecialDateAdd }
-							onRemove={ this.handleSpecialDateRemove }
+							<Form.Group controlId="year">
+								<Form.Label>{t( 'configuration.year' )}</Form.Label>
+								<Form.Control
+									type="number"
+									value={ this.state.year }
+									onChange={ this.handleFieldChange }
+								/>
+							</Form.Group>
+							<Form.Group controlId="month">
+								<Form.Label>
+									{t( 'configuration.starting-month.label' )}
+								</Form.Label>
+								<Form.Select
+									value={ this.state.month }
+									onChange={ this.handleFieldChange }
+								>
+									{this.renderMonths()}
+								</Form.Select>
+								<Form.Text className="text-muted">
+									{t( 'configuration.starting-month.description' )}
+								</Form.Text>
+							</Form.Group>
+							<Form.Group controlId="firstDayOfWeek">
+								<Form.Label>{t( 'configuration.first-day-of-week' )}</Form.Label>
+								<Form.Select
+									value={ this.state.firstDayOfWeek }
+									onChange={ this.handleFieldChange }
+								>
+									{this.renderDaysOfWeek()}
+								</Form.Select>
+							</Form.Group>
+							<Form.Group controlId="monthCount">
+								<Form.Label>{t( 'configuration.month-count.label' )}</Form.Label>
+								<Form.Control
+									type="number"
+									value={ this.state.monthCount }
+									onChange={ this.handleFieldChange }
+									min={ 1 }
+									max={ 12 }
+								/>
+								<Form.Text className="text-muted">
+									{t( 'configuration.month-count.description' )}
+								</Form.Text>
+							</Form.Group>
+						</Accordion.Body>
+					</Accordion.Item>
+					<SpecialDates
+						items={ this.state.specialDates }
+						onAdd={ this.handleSpecialDateAdd }
+						onRemove={ this.handleSpecialDateRemove }
+					/>
+					<ToggleForm
+						id="isMonthOverviewEnabled"
+						title={ t( 'configuration.month.title' ) }
+						onToggle={ this.handleToggle }
+						toggledOn={ this.state.isMonthOverviewEnabled }
+					>
+						<p className="mb-0">{t( 'configuration.month.description' )}</p>
+						<ItemsList
+							field="habits"
+							title={ t( 'configuration.month.habits.title' ) }
+							items={ this.state.habits }
+							onAdd={ this.handleItemAdd }
+							onChange={ this.handleItemChange }
+							onRemove={ this.handleItemRemove }
 						/>
-						<ToggleForm
-							id="isMonthOverviewEnabled"
-							title={ t( 'configuration.month.title' ) }
-							onToggle={ this.handleToggle }
-							toggledOn={ this.state.isMonthOverviewEnabled }
-						>
-							<p>{t( 'configuration.month.description' )}</p>
-							<ItemsList
-								field="habits"
-								title={ t( 'configuration.month.habits.title' ) }
-								items={ this.state.habits }
-								onAdd={ this.handleItemAdd }
-								onChange={ this.handleItemChange }
-								onRemove={ this.handleItemRemove }
-							/>
-							<Itinerary
-								field="monthItinerary"
-								title={ t( 'configuration.month.itinerary.title' ) }
-								itinerary={ this.state.monthItinerary }
-								onAdd={ this.handleItineraryAdd }
-								onChange={ this.handleItineraryChange }
-								onRemove={ this.handleItineraryRemove }
-							/>
-						</ToggleForm>
-						<ToggleForm
-							id="isWeekOverviewEnabled"
-							title={ t( 'configuration.week.title' ) }
-							onToggle={ this.handleToggle }
-							toggledOn={ this.state.isWeekOverviewEnabled }
-						>
-							<p>{t( 'configuration.week.description' )}</p>
-							<ItemsList
-								field="todos"
-								title={ t( 'configuration.week.todos.title' ) }
-								items={ this.state.todos }
-								onAdd={ this.handleItemAdd }
-								onChange={ this.handleItemChange }
-								onRemove={ this.handleItemRemove }
-							/>
-						</ToggleForm>
-						{this.renderDayItineraries()}
-						<ToggleForm
-							id="isWeekRetrospectiveEnabled"
-							title={ t( 'configuration.week.retrospective.title' ) }
-							onToggle={ this.handleToggle }
-							toggledOn={ this.state.isWeekRetrospectiveEnabled }
-						>
-							<p>{t( 'configuration.week.retrospective.description' )}</p>
-							<Itinerary
-								field="weekRetrospectiveItinerary"
-								title={ t( 'configuration.week.retrospective.itinerary.title' ) }
-								itinerary={ this.state.weekRetrospectiveItinerary }
-								onAdd={ this.handleItineraryAdd }
-								onChange={ this.handleItineraryChange }
-								onRemove={ this.handleItineraryRemove }
-							/>
-						</ToggleForm>
-						<Stack
-							direction="vertical"
-							gap={ 2 }
-							className="pt-3 position-sticky bg-body refresh-button"
-						>
-							<Button
-								variant="primary"
-								className="w-100"
-								disabled={ isGeneratingPreview || isGeneratingPdf }
-								type="submit"
-							>
-								{isGeneratingPreview ? (
-									<>
-										<Spinner
-											as="span"
-											animation="border"
-											size="sm"
-											role="status"
-											aria-hidden="true"
-											className="me-1"
-										/>
-										{t( 'configuration.button.generating' )}
-									</>
-								) : (
-									t( 'configuration.button.refresh' )
-								)}
-							</Button>
-							{isGeneratingPreview && (
-								<PdfProgress expectedTime={ this.state.lastPreviewTime } />
-							)}
-							<Form.Text className="text-muted pb-3">
-								{t( 'configuration.generation-description' )}
-							</Form.Text>
-						</Stack>
-					</Form>
-				</Card.Body>
-			</Card>
+						<Itinerary
+							field="monthItinerary"
+							title={ t( 'configuration.month.itinerary.title' ) }
+							itinerary={ this.state.monthItinerary }
+							onAdd={ this.handleItineraryAdd }
+							onChange={ this.handleItineraryChange }
+							onRemove={ this.handleItineraryRemove }
+						/>
+					</ToggleForm>
+					<ToggleForm
+						id="isWeekOverviewEnabled"
+						title={ t( 'configuration.week.title' ) }
+						onToggle={ this.handleToggle }
+						toggledOn={ this.state.isWeekOverviewEnabled }
+					>
+						<p className="mb-0">{t( 'configuration.week.description' )}</p>
+						<ItemsList
+							field="todos"
+							title={ t( 'configuration.week.todos.title' ) }
+							items={ this.state.todos }
+							onAdd={ this.handleItemAdd }
+							onChange={ this.handleItemChange }
+							onRemove={ this.handleItemRemove }
+						/>
+					</ToggleForm>
+					<Accordion.Item eventKey="dayItineraries">
+						<Accordion.Header>Day itineraries</Accordion.Header>
+						<Accordion.Body>
+							<Accordion defaultActiveKey="0">
+								{getWeekdays().map( this.renderDayItinerary )}
+							</Accordion>
+						</Accordion.Body>
+					</Accordion.Item>
+					<ToggleForm
+						id="isWeekRetrospectiveEnabled"
+						title={ t( 'configuration.week.retrospective.title' ) }
+						onToggle={ this.handleToggle }
+						toggledOn={ this.state.isWeekRetrospectiveEnabled }
+					>
+						<p className="mb-0">
+							{t( 'configuration.week.retrospective.description' )}
+						</p>
+						<Itinerary
+							field="weekRetrospectiveItinerary"
+							title={ t( 'configuration.week.retrospective.itinerary.title' ) }
+							itinerary={ this.state.weekRetrospectiveItinerary }
+							onAdd={ this.handleItineraryAdd }
+							onChange={ this.handleItineraryChange }
+							onRemove={ this.handleItineraryRemove }
+						/>
+					</ToggleForm>
+				</Accordion>
+				<Stack
+					direction="vertical"
+					gap={ 2 }
+					className="pt-3 position-sticky bg-body refresh-button"
+				>
+					<Button
+						variant="primary"
+						className="w-100"
+						disabled={ isGeneratingPreview || isGeneratingPdf }
+						type="submit"
+					>
+						{isGeneratingPreview ? (
+							<>
+								<Spinner
+									as="span"
+									animation="border"
+									size="sm"
+									role="status"
+									aria-hidden="true"
+									className="me-1"
+								/>
+								{t( 'configuration.button.generating' )}
+							</>
+						) : (
+							t( 'configuration.button.refresh' )
+						)}
+					</Button>
+					{isGeneratingPreview && (
+						<PdfProgress expectedTime={ this.state.lastPreviewTime } />
+					)}
+					<Form.Text className="text-muted pb-3">
+						{t( 'configuration.generation-description' )}
+					</Form.Text>
+				</Stack>
+			</Form>
 		);
 	}
 
@@ -466,7 +468,7 @@ class Configuration extends React.PureComponent {
 									{t( 'preview.title' )}{' '}
 									<small className="text-muted">{t( 'preview.subtitle' )}</small>
 								</Card.Header>
-								<Card.Body>
+								<Card.Body className="pb-0">
 									<PdfPreviewCard
 										blobUrl={ this.state.blobUrl }
 										expectedTime={

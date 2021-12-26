@@ -50,7 +50,8 @@
 			"placeholder": "Item"
 		},
 		"toggle-form": {
-			"enabled": "Enabled"
+			"enabled": "Enabled",
+			"disabled": "Disabled"
 		},
 		"month": {
 			"title": "Month overview",

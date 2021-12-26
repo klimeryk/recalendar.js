@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import Accordion from 'react-bootstrap/Accordion';
 import Alert from 'react-bootstrap/Alert';
+import Badge from 'react-bootstrap/Badge';
 import Button from 'react-bootstrap/Button';
 import FormControl from 'react-bootstrap/FormControl';
 import InputGroup from 'react-bootstrap/InputGroup';
@@ -71,49 +72,52 @@ class SpecialDates extends React.Component {
 		const { items, t } = this.props;
 		const keys = Object.keys( items );
 		return (
-			<Accordion className="mt-3" defaultActiveKey="0">
-				<Accordion.Item eventKey="0">
-					<Accordion.Header>
+			<Accordion.Item eventKey="specialDates">
+				<Accordion.Header>
+					<Stack direction="horizontal" className="w-100">
 						{t( 'configuration.special-dates.title' )}
-					</Accordion.Header>
-					<Accordion.Body>
-						<p>{t( 'configuration.special-dates.description' )}</p>
-						<Stack gap={ 2 }>
-							{keys ? (
-								this.renderItems( keys )
-							) : (
-								<Alert variant="secondary" className="mb-0">
-									{t( 'configuration.special-dates.empty' )}
-								</Alert>
-							)}
-						</Stack>
-						<Stack direction="horizontal" className="mt-3">
-							<InputGroup>
-								<FormControl
-									className="flex-grow-0 date-field"
-									value={ date }
-									onChange={ this.onChange }
-									type="date"
-									data-field="date"
-								/>
-								<FormControl
-									placeholder={ t( 'configuration.special-dates.placeholder' ) }
-									value={ value }
-									onChange={ this.onChange }
-									data-field="value"
-								/>
-								<Button
-									variant="outline-secondary"
-									disabled={ ! date || ! value }
-									onClick={ this.onAddClick }
-								>
-									{t( 'configuration.special-dates.button.item' )}
-								</Button>
-							</InputGroup>
-						</Stack>
-					</Accordion.Body>
-				</Accordion.Item>
-			</Accordion>
+						<Badge bg="info" className="ms-auto me-3">
+							{keys.length}
+						</Badge>
+					</Stack>
+				</Accordion.Header>
+				<Accordion.Body>
+					<p>{t( 'configuration.special-dates.description' )}</p>
+					<Stack gap={ 2 }>
+						{keys ? (
+							this.renderItems( keys )
+						) : (
+							<Alert variant="secondary" className="mb-0">
+								{t( 'configuration.special-dates.empty' )}
+							</Alert>
+						)}
+					</Stack>
+					<Stack direction="horizontal" className="mt-3">
+						<InputGroup>
+							<FormControl
+								className="flex-grow-0 date-field"
+								value={ date }
+								onChange={ this.onChange }
+								type="date"
+								data-field="date"
+							/>
+							<FormControl
+								placeholder={ t( 'configuration.special-dates.placeholder' ) }
+								value={ value }
+								onChange={ this.onChange }
+								data-field="value"
+							/>
+							<Button
+								variant="outline-secondary"
+								disabled={ ! date || ! value }
+								onClick={ this.onAddClick }
+							>
+								{t( 'configuration.special-dates.button.item' )}
+							</Button>
+						</InputGroup>
+					</Stack>
+				</Accordion.Body>
+			</Accordion.Item>
 		);
 	}
 }

@@ -73,26 +73,6 @@ class Home extends React.PureComponent {
 						/>
 					</li>
 				</ul>
-				<h4>{t( 'about.faq.title' )}</h4>
-				<ul>
-					<li>
-						<Trans
-							t={ t }
-							i18nKey="about.faq.slow"
-							components={ featureComponents }
-						/>
-					</li>
-					<li>
-						<Trans
-							t={ t }
-							i18nKey="about.faq.issues"
-							components={ {
-								bold: <b />,
-								github: this.link( RECALENDAR_JS_GITHUB ),
-							} }
-						/>
-					</li>
-				</ul>
 				<h4>{t( 'about.learn-more.title' )}</h4>
 				<ul>
 					<li>

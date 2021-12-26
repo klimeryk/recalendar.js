@@ -1,28 +1,44 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import Card from 'react-bootstrap/Card';
-import Form from 'react-bootstrap/Form';
+import Accordion from 'react-bootstrap/Accordion';
+import Badge from 'react-bootstrap/Badge';
 import Stack from 'react-bootstrap/Stack';
+import ToggleButton from 'react-bootstrap/ToggleButton';
 import { withTranslation } from 'react-i18next';
 
 function ToggleForm( { children, id, onToggle, t, title, toggledOn } ) {
+	const label = toggledOn
+		? t( 'configuration.toggle-form.enabled' )
+		: t( 'configuration.toggle-form.disabled' );
 	return (
-		<Card className="mt-3">
-			<Card.Header>
-				<Stack direction="horizontal">
-					<span>{title}</span>
-					<Form.Check
+		<Accordion.Item eventKey={ id }>
+			<Accordion.Header>
+				<Stack direction="horizontal" className="w-100">
+					{title}
+					<Badge
+						bg={ toggledOn ? 'success' : 'secondary' }
+						className="ms-auto me-3"
+					>
+						{label}
+					</Badge>
+				</Stack>
+			</Accordion.Header>
+			<Accordion.Body>
+				<Stack>
+					<ToggleButton
+						className="mb-1"
 						id={ id }
 						type="checkbox"
-						label={ t( 'configuration.toggle-form.enabled' ) }
-						className="ms-auto"
+						variant="outline-success"
 						checked={ toggledOn }
 						onChange={ onToggle }
-					/>
+					>
+						{label}
+					</ToggleButton>
+					{children}
 				</Stack>
-			</Card.Header>
-			<Card.Body>{children}</Card.Body>
-		</Card>
+			</Accordion.Body>
+		</Accordion.Item>
 	);
 }
 

@@ -11,6 +11,7 @@ import './index.css';
 
 import 'config/dayjs';
 import { i18nConfiguration, webpackBackend } from 'config/i18n';
+import Faq from 'faq';
 import Home from 'home';
 import Loader from 'loader';
 import Navigation from 'navigation';
@@ -51,7 +52,7 @@ ReactDOM.render(
 					<Route path="/" element={ <Navigation /> }>
 						<Route index element={ <Home /> } />
 						<Route path="configuration" element={ <Loader /> } />
-						<Route path="faq" element={ <h1>FAQ</h1> } />
+						<Route path="faq" element={ <Faq /> } />
 					</Route>
 				</Routes>
 			</Suspense>
