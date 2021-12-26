@@ -5,12 +5,15 @@ import React, { Suspense } from 'react';
 import Spinner from 'react-bootstrap/Spinner';
 import ReactDOM from 'react-dom';
 import { initReactI18next } from 'react-i18next';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
 import './index.css';
 
 import 'config/dayjs';
 import { i18nConfiguration, webpackBackend } from 'config/i18n';
+import Home from 'home';
 import Loader from 'loader';
+import Navigation from 'navigation';
 
 // eslint-disable-next-line import/no-named-as-default-member
 i18n
@@ -42,9 +45,17 @@ const loadingComponent = (
 
 ReactDOM.render(
 	<React.StrictMode>
-		<Suspense fallback={ loadingComponent }>
-			<Loader />
-		</Suspense>
+		<BrowserRouter>
+			<Suspense fallback={ loadingComponent }>
+				<Routes>
+					<Route path="/" element={ <Navigation /> }>
+						<Route index element={ <Home /> } />
+						<Route path="configuration" element={ <Loader /> } />
+						<Route path="faq" element={ <h1>FAQ</h1> } />
+					</Route>
+				</Routes>
+			</Suspense>
+		</BrowserRouter>
 	</React.StrictMode>,
 	document.getElementById( 'root' ),
 );

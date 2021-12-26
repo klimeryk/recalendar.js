@@ -18,7 +18,6 @@ import PdfWorker from './worker/pdf.worker.js'; // eslint-disable-line import/de
 
 import PdfPreviewCard from 'components/pdf-preview-card';
 import PdfProgress from 'components/pdf-progress';
-import AboutModal from 'configuration-form/about-modal';
 import ItemsList from 'configuration-form/items-list';
 import Itinerary from 'configuration-form/itinerary';
 import SpecialDates from 'configuration-form/special-dates';
@@ -28,15 +27,14 @@ import { getWeekdays } from 'lib/date';
 import PdfConfig, { hydrateFromObject, CONFIG_FILE } from 'pdf/config';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
-import './App.css';
+import './app.css';
 
-class App extends React.PureComponent {
+class Configuration extends React.PureComponent {
 	state = {
 		isGeneratingPdf: false,
 		isGeneratingPreview: false,
 		language: i18n.language,
 		blobUrl: null,
-		showAboutModal: false,
 		lastPreviewTime: 10000,
 		lastFullTime: null,
 		...hydrateFromObject( this.props.initialState ),
@@ -220,14 +218,6 @@ class App extends React.PureComponent {
 		this.setState( { dayItineraries: newItineraries } );
 	};
 
-	handleShowAboutModal = () => {
-		this.setState( { showAboutModal: true } );
-	};
-
-	handleHideAboutModal = () => {
-		this.setState( { showAboutModal: false } );
-	};
-
 	handleSpecialDateAdd = ( key, value ) => {
 		const newSpecialDates = Object.assign( {}, this.state.specialDates );
 		if ( ! newSpecialDates[ key ] ) {
@@ -300,18 +290,7 @@ class App extends React.PureComponent {
 		const { isGeneratingPdf, isGeneratingPreview } = this.state;
 		return (
 			<Card className="my-3">
-				<Card.Header>
-					<Stack direction="horizontal">
-						<span>ReCalendar</span>
-						<Button
-							className="ms-auto"
-							variant="info"
-							onClick={ this.handleShowAboutModal }
-						>
-							{t( 'configuration.button.about' )}
-						</Button>
-					</Stack>
-				</Card.Header>
+				<Card.Header>ReCalendar</Card.Header>
 				<Card.Body className="pb-0">
 					<Form onSubmit={ this.handlePreview }>
 						<Form.Control
@@ -479,31 +458,27 @@ class App extends React.PureComponent {
 		return (
 			<Container className="h-100" fluid>
 				<Row className="h-100">
-					<AboutModal
-						onHide={ this.handleHideAboutModal }
-						show={ this.state.showAboutModal }
-					/>
-					<Col className="h-100 overflow-auto">
-						{this.renderConfigurationForm()}
-					</Col>
-					<Col className="py-3 h-100">
-						<Card className="h-100">
-							<Card.Header>
-								{t( 'preview.title' )}{' '}
-								<small className="text-muted">{t( 'preview.subtitle' )}</small>
-							</Card.Header>
-							<Card.Body>
-								<PdfPreviewCard
-									blobUrl={ this.state.blobUrl }
-									expectedTime={
-										this.state.lastFullTime || 12 * this.state.lastPreviewTime
-									}
-									isGeneratingPdf={ this.state.isGeneratingPdf }
-									isGeneratingPreview={ this.state.isGeneratingPreview }
-									onDownload={ this.handleDownload }
-								/>
-							</Card.Body>
-						</Card>
+					<Col>{this.renderConfigurationForm()}</Col>
+					<Col>
+						<div className="pt-3 pb-3 position-sticky top-0 vh-100">
+							<Card className="h-100">
+								<Card.Header>
+									{t( 'preview.title' )}{' '}
+									<small className="text-muted">{t( 'preview.subtitle' )}</small>
+								</Card.Header>
+								<Card.Body>
+									<PdfPreviewCard
+										blobUrl={ this.state.blobUrl }
+										expectedTime={
+											this.state.lastFullTime || 12 * this.state.lastPreviewTime
+										}
+										isGeneratingPdf={ this.state.isGeneratingPdf }
+										isGeneratingPreview={ this.state.isGeneratingPreview }
+										onDownload={ this.handleDownload }
+									/>
+								</Card.Body>
+							</Card>
+						</div>
 					</Col>
 				</Row>
 			</Container>
@@ -511,9 +486,9 @@ class App extends React.PureComponent {
 	}
 }
 
-App.propTypes = {
+Configuration.propTypes = {
 	initialState: PropTypes.instanceOf( PdfConfig ).isRequired,
 	t: PropTypes.func.isRequired,
 };
 
-export default withTranslation( [ 'app' ] )( App );
+export default withTranslation( [ 'app' ] )( Configuration );

@@ -1,7 +1,7 @@
 import React from 'react';
 import { withTranslation } from 'react-i18next';
 
-import App from 'App';
+import Configuration from 'configuration';
 import PdfConfig from 'pdf/config';
 
 class Loader extends React.Component {
@@ -15,7 +15,7 @@ class Loader extends React.Component {
 			return null;
 		}
 
-		return <App initialState={ this.state.config } />;
+		return <Configuration initialState={ this.state.config } />;
 	}
 }
 

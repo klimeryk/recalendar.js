@@ -1,6 +1,11 @@
 {
 	"loading": "Loading...",
 	"download-ready": "Download now!",
+	"navigation": {
+		"home": "Home",
+		"configuration": "Configure",
+		"faq": "FAQ"
+	},
 	"configuration": {
 		"language": {
 			"label": "Language",
