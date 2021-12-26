@@ -18,13 +18,13 @@ import PdfWorker from './worker/pdf.worker.js'; // eslint-disable-line import/de
 
 import PdfPreviewCard from 'components/pdf-preview-card';
 import PdfProgress from 'components/pdf-progress';
+import ConfigurationSelector from 'configuration-form/configuration-selector';
 import ItemsList from 'configuration-form/items-list';
 import Itinerary from 'configuration-form/itinerary';
 import SpecialDates from 'configuration-form/special-dates';
 import ToggleForm from 'configuration-form/toggle-form';
-import { getJsonAttachment } from 'lib/attachments';
 import { getWeekdays } from 'lib/date';
-import PdfConfig, { hydrateFromObject, CONFIG_FILE } from 'pdf/config';
+import PdfConfig, { hydrateFromObject } from 'pdf/config';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './app.css';
@@ -56,23 +56,8 @@ class Configuration extends React.PureComponent {
 		}
 	}
 
-	handleFileChange = ( event ) => {
-		const file = event.target.files[ 0 ];
-		const reader = new FileReader();
-		reader.onload = async function( onLoadEvent ) {
-			const attachment = await getJsonAttachment(
-				onLoadEvent.target.result,
-				CONFIG_FILE,
-			);
-
-			if ( ! attachment ) {
-				return;
-			}
-
-			// TODO: rehydrate state from this
-		};
-
-		reader.readAsArrayBuffer( file );
+	handleConfigChange = ( newConfig ) => {
+		this.setState( { ...hydrateFromObject( newConfig ) } );
 	};
 
 	handleFieldChange = ( event ) => {
@@ -261,13 +246,14 @@ class Configuration extends React.PureComponent {
 			<Form onSubmit={ this.handlePreview }>
 				<Accordion defaultActiveKey="start" className="my-3">
 					<Accordion.Item eventKey="start">
-						<Accordion.Header>ReCalendar</Accordion.Header>
+						<Accordion.Header>Start</Accordion.Header>
 						<Accordion.Body>
-							<Form.Control
-								type="file"
-								accept=".pdf"
-								onChange={ this.handleFileChange }
-							/>
+							<ConfigurationSelector onConfigChange={ this.handleConfigChange } />
+						</Accordion.Body>
+					</Accordion.Item>
+					<Accordion.Item eventKey="general">
+						<Accordion.Header>General options</Accordion.Header>
+						<Accordion.Body>
 							<Form.Group controlId="year">
 								<Form.Label>{t( 'configuration.year' )}</Form.Label>
 								<Form.Control
