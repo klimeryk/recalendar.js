@@ -23,8 +23,9 @@ import ItemsList from 'configuration-form/items-list';
 import Itinerary from 'configuration-form/itinerary';
 import SpecialDates from 'configuration-form/special-dates';
 import ToggleForm from 'configuration-form/toggle-form';
+import { getJsonAttachment } from 'lib/attachments';
 import { getWeekdays } from 'lib/date';
-import PdfConfig, { hydrateFromObject } from 'pdf/config';
+import PdfConfig, { hydrateFromObject, CONFIG_FILE } from 'pdf/config';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
@@ -65,6 +66,25 @@ class App extends React.PureComponent {
 			URL.revokeObjectURL( prevState.blobUrl );
 		}
 	}
+
+	handleFileChange = ( event ) => {
+		const file = event.target.files[ 0 ];
+		const reader = new FileReader();
+		reader.onload = async function( onLoadEvent ) {
+			const attachment = await getJsonAttachment(
+				onLoadEvent.target.result,
+				CONFIG_FILE,
+			);
+
+			if ( ! attachment ) {
+				return;
+			}
+
+			// TODO: rehydrate state from this
+		};
+
+		reader.readAsArrayBuffer( file );
+	};
 
 	handleLanguageSelection = ( event ) => {
 		const newLanguage = event.target.value;
@@ -294,6 +314,11 @@ class App extends React.PureComponent {
 				</Card.Header>
 				<Card.Body className="pb-0">
 					<Form onSubmit={ this.handlePreview }>
+						<Form.Control
+							type="file"
+							accept=".pdf"
+							onChange={ this.handleFileChange }
+						/>
 						<Form.Label htmlFor="languagePicker">
 							{t( 'configuration.language.label' )}
 						</Form.Label>

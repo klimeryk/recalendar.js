@@ -65,7 +65,7 @@ self.onmessage = ( { data } ) => {
 				options: {
 					name: CONFIG_FILE,
 					type: 'application/json',
-					hidden: true,
+					hidden: false,
 				},
 			},
 		],
