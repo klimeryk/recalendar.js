@@ -16,3 +16,7 @@ body,
 	bottom: 0;
 	z-index: 1050;
 }
+
+.language-select {
+	min-width: 150px;
+}

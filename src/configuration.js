@@ -1,6 +1,6 @@
 import dayjs from 'dayjs';
 import { saveAs } from 'file-saver';
-import i18n, { changeLanguage } from 'i18next';
+import i18n from 'i18next';
 import PropTypes from 'prop-types';
 import React from 'react';
 import Accordion from 'react-bootstrap/Accordion';
@@ -33,7 +33,6 @@ class Configuration extends React.PureComponent {
 	state = {
 		isGeneratingPdf: false,
 		isGeneratingPreview: false,
-		language: i18n.language,
 		blobUrl: null,
 		lastPreviewTime: 10000,
 		lastFullTime: null,
@@ -45,14 +44,6 @@ class Configuration extends React.PureComponent {
 
 		this.pdfWorker = new PdfWorker();
 		this.pdfWorker.onmessage = this.handlePdfWorkerMessage;
-	}
-
-	componentDidMount() {
-		i18n.on( 'languageChanged', this.handleLanguageChange );
-	}
-
-	componentWillUnmount() {
-		i18n.off( 'languageChanged', this.handleLanguageChange );
 	}
 
 	componentDidUpdate( prevProps, prevState ) {
@@ -82,15 +73,6 @@ class Configuration extends React.PureComponent {
 		};
 
 		reader.readAsArrayBuffer( file );
-	};
-
-	handleLanguageSelection = ( event ) => {
-		const newLanguage = event.target.value;
-		changeLanguage( newLanguage );
-	};
-
-	handleLanguageChange = ( newLanguage ) => {
-		this.setState( { language: newLanguage } );
 	};
 
 	handleFieldChange = ( event ) => {
@@ -164,7 +146,7 @@ class Configuration extends React.PureComponent {
 		this.startTime = new Date();
 		this.pdfWorker.postMessage( {
 			isPreview,
-			language: this.state.language,
+			language: i18n.language,
 			...hydrateFromObject( this.state ),
 		} );
 	}
@@ -286,18 +268,6 @@ class Configuration extends React.PureComponent {
 								accept=".pdf"
 								onChange={ this.handleFileChange }
 							/>
-							<Form.Label htmlFor="languagePicker">
-								{t( 'configuration.language.label' )}
-							</Form.Label>
-							<Form.Select
-								value={ this.state.language }
-								onChange={ this.handleLanguageSelection }
-							>
-								<option value="en">
-									{t( 'configuration.language.english' )}
-								</option>
-								<option value="pl">{t( 'configuration.language.polish' )}</option>
-							</Form.Select>
 							<Form.Group controlId="year">
 								<Form.Label>{t( 'configuration.year' )}</Form.Label>
 								<Form.Control
