@@ -4,6 +4,7 @@
 	"navigation": {
 		"home": "Home",
 		"configuration": "Configure",
+		"features": "Features",
 		"faq": "FAQ"
 	},
 	"configuration": {

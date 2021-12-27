@@ -12,7 +12,15 @@ import './index.css';
 import 'config/dayjs';
 import { i18nConfiguration, webpackBackend } from 'config/i18n';
 import Faq from 'faq';
+import Features from 'features';
 import Home from 'home';
+import {
+	stripSlashes,
+	HOME_PATH,
+	CONFIGURATOR_PATH,
+	FEATURES_PATH,
+	FAQ_PATH,
+} from 'lib/paths';
 import Loader from 'loader';
 import Navigation from 'navigation';
 
@@ -49,10 +57,14 @@ ReactDOM.render(
 		<BrowserRouter>
 			<Suspense fallback={ loadingComponent }>
 				<Routes>
-					<Route path="/" element={ <Navigation /> }>
+					<Route path={ HOME_PATH } element={ <Navigation /> }>
 						<Route index element={ <Home /> } />
-						<Route path="configuration" element={ <Loader /> } />
-						<Route path="faq" element={ <Faq /> } />
+						<Route
+							path={ stripSlashes( CONFIGURATOR_PATH ) }
+							element={ <Loader /> }
+						/>
+						<Route path={ stripSlashes( FEATURES_PATH ) } element={ <Features /> } />
+						<Route path={ stripSlashes( FAQ_PATH ) } element={ <Faq /> } />
 					</Route>
 				</Routes>
 			</Suspense>

@@ -10,7 +10,12 @@ import { withTranslation } from 'react-i18next';
 import { LinkContainer } from 'react-router-bootstrap';
 import { Outlet } from 'react-router-dom';
 
-import { HOME_PATH, CONFIGURATOR_PATH, FAQ_PATH } from 'lib/paths';
+import {
+	HOME_PATH,
+	CONFIGURATOR_PATH,
+	FEATURES_PATH,
+	FAQ_PATH,
+} from 'lib/paths';
 
 class Navigation extends React.Component {
 	state = {
@@ -52,6 +57,11 @@ class Navigation extends React.Component {
 								<Nav.Item>
 									<LinkContainer to={ CONFIGURATOR_PATH }>
 										<Nav.Link>{t( 'navigation.configuration' )}</Nav.Link>
+									</LinkContainer>
+								</Nav.Item>
+								<Nav.Item>
+									<LinkContainer to={ FEATURES_PATH }>
+										<Nav.Link>{t( 'navigation.features' )}</Nav.Link>
 									</LinkContainer>
 								</Nav.Item>
 								<Nav.Item>
