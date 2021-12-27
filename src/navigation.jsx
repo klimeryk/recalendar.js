@@ -51,22 +51,26 @@ class Navigation extends React.Component {
 							<Nav className="me-auto" variant="pills">
 								<Nav.Item>
 									<LinkContainer to={ HOME_PATH }>
-										<Nav.Link>{t( 'navigation.home' )}</Nav.Link>
+										<Nav.Link active={ false }>{t( 'navigation.home' )}</Nav.Link>
 									</LinkContainer>
 								</Nav.Item>
 								<Nav.Item>
 									<LinkContainer to={ CONFIGURATOR_PATH }>
-										<Nav.Link>{t( 'navigation.configuration' )}</Nav.Link>
+										<Nav.Link active={ false }>
+											{t( 'navigation.configuration' )}
+										</Nav.Link>
 									</LinkContainer>
 								</Nav.Item>
 								<Nav.Item>
 									<LinkContainer to={ FEATURES_PATH }>
-										<Nav.Link>{t( 'navigation.features' )}</Nav.Link>
+										<Nav.Link active={ false }>
+											{t( 'navigation.features' )}
+										</Nav.Link>
 									</LinkContainer>
 								</Nav.Item>
 								<Nav.Item>
 									<LinkContainer to={ FAQ_PATH }>
-										<Nav.Link>{t( 'navigation.faq' )}</Nav.Link>
+										<Nav.Link active={ false }>{t( 'navigation.faq' )}</Nav.Link>
 									</LinkContainer>
 								</Nav.Item>
 							</Nav>
