@@ -1,22 +1,127 @@
 {
 	"loading": "Generowanie...",
 	"download-ready": "Pobierz teraz!",
+	"navigation": {
+		"home": "Strona główna",
+		"configuration": "Stwórz swój kalendarz",
+		"features": "Funkcje",
+		"faq": "Pytania i odpowiedzi"
+	},
+	"language": {
+		"label": "Język",
+		"english": "Angielski",
+		"polish": "Polski"
+	},
 	"configuration": {
-		"language": {
-			"label": "Język",
-			"english": "Angielski",
-			"polish": "Polski"
+		"selector": {
+			"label": "Początek",
+			"template": {
+				"label": "Rozpocznij wybierając jeden z przykładowych szablonów:",
+				"basic": "Podstawowy",
+				"advanced": "Zaawansowany",
+				"blank": "Pusty",
+				"minimalistic": "Minimalistyczny"
+			},
+			"upload": {
+				"label": "Albo załaduj wcześniej wygenrowany ReCalendar PDF i użyj jego konfiguracji:",
+				"loading": "Wczytywanie konfiguracji z pliku PDF, proszę czekać...",
+				"error": "Nie udało się wczytać konfiguracji z tego pliku PDF - czy na pewno został wygenerowany korzystając z tej strony?",
+				"success": "Konfiguracja wczytana z pliku PDF - witamy ponownie!"
+			}
 		},
-		"year": "Rok",
-		"starting-month": "Pierwszy miesiąc",
-		"month-count": "Liczba miesięcy",
+		"general": {
+			"label": "Ogólne opcje",
+			"year": "Rok",
+			"starting-month": {
+				"label": "Miesiąc początkowy",
+				"description": "Pierwszy miesiąc w kalendarzu. Wybierz na przykład październik, jeśli kalendarz ma być na cały semestr, a nie rok kalendarzowy."
+			},
+			"month-count": {
+				"label": "Liczba miesięcy",
+				"description": "Ile miesięcy ma zawierać kalendarz."
+			},
+			"first-day-of-week": "Pierwszy dzień tygodnia"
+		},
 		"button": {
 			"refresh": "Odśwież podgląd",
-			"download": "Wygeneruj i pobierz pełny kalendarz",
+			"download": "Wygeneruj pełny kaledarz i pobierz",
 			"generating": "Generowanie, proszę czekać..."
 		},
-		"preview": {
-			"viewer-title": "Podgląd PDF"
+		"itinerary": {
+			"empty": "Pust plan",
+			"placeholder": {
+				"lines": "Liczba linii",
+				"page": "Rozpocznij nową stronę"
+			},
+			"button": {
+				"remove": "Usuń",
+				"item": "Dodaj nową pozycję",
+				"page": "Rozpocznij nową stronę",
+				"lines": "Dodaj puste linie"
+			}
+		},
+		"items-list": {
+			"button": {
+				"item": "Dodaj pozycję",
+				"remove": "Usuń"
+			},
+			"empty": "Pust lista",
+			"placeholder": "Pozycja"
+		},
+		"toggle-form": {
+			"enabled": "Włączony",
+			"disabled": "Wyłączony"
+		},
+		"month": {
+			"title": "Przegląd miesiąca",
+			"description": "Przegląd miesiąca pozwala ustalić cele na nadchodzący miesiąc, śledzić nawyki i sporządzić inne plany.",
+			"habits": {
+				"title": "Nawyki"
+			},
+			"itinerary": {
+				"title": "Plan"
+			}
+		},
+		"week": {
+			"title": "Przegląd tygodnia",
+			"description": "Przegląd tygodnia pokazuje podgląd nadchodzących dni, aby ułatwić rozplanowanie tygodnia.",
+			"todos": {
+				"title": "Do zrobienia"
+			},
+			"retrospective": {
+				"title": "Podsumowanie tygodnia",
+				"description": "Podsumowanie tygodnia to miejsce na refleksję nad minionym tygodniem - co poszło dobrze, nad czym trzeba popracować.",
+				"itinerary": {
+					"title": "Plan"
+				}
+			}
+		},
+		"day": {
+			"title": "Plany dnia"
+		},
+		"special-dates": {
+			"title": "Specjalne daty",
+			"description": "Tutaj możesz dodać urodziny, imieniny, uroczystości, święta i tym podobne. Zostaną one automatycznie umieszczone w kalendarzu tak żeby o nich nie zapomnieć.",
+			"empty": "Brak dat",
+			"placeholder": "Jaka okazja?",
+			"button": {
+				"item": "Dodaj datę",
+				"remove": "Usuń"
+			}
+		},
+		"generation-description": "Generacja pliku PDF jest wykonywana w pełni w Twojej przeglądarce - żadne dane nie są przesyłane do naszych serwerów!"
+	},
+	"preview": {
+		"title": "Podgląd kalendarza",
+		"subtitle": "(tylko pierwszy miesiąc jest widoczny na podglądzie)",
+		"viewer-title": "Podgląd PDF",
+		"generating": {
+			"full": "Generowanie pełnego kalendarza - może to zająć ponad minutę...",
+			"preview": "Generowanie podglądu, proszę czekać..."
+		},
+		"empty": {
+			"title": "Użyj konfiguratora, aby stworzyć swój spersonalizowany kalendarz.",
+			"subtitle": "Tutaj zostanie wyświetlony podgląd."
 		}
 	}
 }

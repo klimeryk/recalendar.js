@@ -45,8 +45,7 @@
 		"button": {
 			"refresh": "Refesh preview",
 			"download": "Generate full calendar and download",
-			"generating": "Generating, please wait...",
-			"about": "About"
+			"generating": "Generating, please wait..."
 		},
 		"itinerary": {
 			"empty": "Empty itinerary",
@@ -57,7 +56,7 @@
 			"button": {
 				"remove": "Remove",
 				"item": "Add itinerary item",
-				"page": "Add new page",
+				"page": "Start a new page",
 				"lines": "Add empty lines"
 			}
 		},
@@ -75,7 +74,7 @@
 		},
 		"month": {
 			"title": "Month overview",
-			"description": "The month overview is a place to set goals for the upcoming month, track habits and more.",
+			"description": "The month overview is a place to set goals for the upcoming month, track habits and make other plans.",
 			"habits": {
 				"title": "Habits"
 			},
@@ -114,7 +113,7 @@
 	},
 	"preview": {
 		"title": "Calendar preview",
-		"subtitle": "(only first month is rendered)",
+		"subtitle": "(only first month is rendered for preview)",
 		"viewer-title": "PDF Preview",
 		"generating": {
 			"full": "Generating full calendar - this could take more than a minute...",
