@@ -102,26 +102,27 @@ class ConfigurationSelector extends React.Component {
 	};
 
 	renderStatusMessage() {
+		const { t } = this.props;
+
 		switch ( this.state.status ) {
 			case STATUS_LOADING:
 				return (
 					<Alert variant="info" className="mt-2 mb-0">
-						Reading config from PDF file, please wait...
+						{t( 'configuration.selector.upload.loading' )}
 					</Alert>
 				);
 
 			case STATUS_ERROR:
 				return (
 					<Alert variant="danger" className="mt-2 mb-0">
-						Was not able to load ReCalendar config from this PDF - are you sure
-						it was generated using this website?
+						{t( 'configuration.selector.upload.error' )}
 					</Alert>
 				);
 
 			case STATUS_SUCCESS:
 				return (
 					<Alert variant="success" className="mt-2 mb-0">
-						Config loaded from PDF - welcome back!
+						{t( 'configuration.selector.upload.success' )}
 					</Alert>
 				);
 
@@ -132,43 +133,42 @@ class ConfigurationSelector extends React.Component {
 	}
 
 	render() {
+		const { t } = this.props;
 		return (
 			<Stack>
-				<Form.Label>Start by selecting a template:</Form.Label>
+				<Form.Label>{t( 'configuration.selector.template.label' )}</Form.Label>
 				<ButtonGroup aria-label="Config templates">
 					<Button
 						variant="info"
 						data-template={ TEMPLATE_BASIC }
 						onClick={ this.handleTemplateSelect }
 					>
-						Basic
+						{t( 'configuration.selector.template.basic' )}
 					</Button>
 					<Button
 						variant="primary"
 						data-template={ TEMPLATE_ADVANCED }
 						onClick={ this.handleTemplateSelect }
 					>
-						Advanced
+						{t( 'configuration.selector.template.advanced' )}
 					</Button>
 					<Button
 						variant="blank"
 						data-template={ TEMPLATE_BLANK }
 						onClick={ this.handleTemplateSelect }
 					>
-						Blank
+						{t( 'configuration.selector.template.blank' )}
 					</Button>
 					<Button
 						variant="dark"
 						data-template={ TEMPLATE_MINIMALISTIC }
 						onClick={ this.handleTemplateSelect }
 					>
-						Minimalistic
+						{t( 'configuration.selector.template.minimalistic' )}
 					</Button>
 				</ButtonGroup>
 				<Form.Group controlId="configurationFile" className="mt-3">
-					<Form.Label>
-						Or upload previously generated ReCalendar PDF to use its config:
-					</Form.Label>
+					<Form.Label>{t( 'configuration.selector.upload.label' )}</Form.Label>
 					<Form.Control
 						type="file"
 						accept=".pdf"

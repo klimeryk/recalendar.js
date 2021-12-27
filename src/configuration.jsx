@@ -246,16 +246,20 @@ class Configuration extends React.PureComponent {
 			<Form onSubmit={ this.handlePreview }>
 				<Accordion defaultActiveKey="start" className="my-3">
 					<Accordion.Item eventKey="start">
-						<Accordion.Header>Start</Accordion.Header>
+						<Accordion.Header>
+							{t( 'configuration.selector.label' )}
+						</Accordion.Header>
 						<Accordion.Body>
 							<ConfigurationSelector onConfigChange={ this.handleConfigChange } />
 						</Accordion.Body>
 					</Accordion.Item>
 					<Accordion.Item eventKey="general">
-						<Accordion.Header>General options</Accordion.Header>
+						<Accordion.Header>
+							{t( 'configuration.general.label' )}
+						</Accordion.Header>
 						<Accordion.Body>
 							<Form.Group controlId="year">
-								<Form.Label>{t( 'configuration.year' )}</Form.Label>
+								<Form.Label>{t( 'configuration.general.year' )}</Form.Label>
 								<Form.Control
 									type="number"
 									value={ this.state.year }
@@ -264,7 +268,7 @@ class Configuration extends React.PureComponent {
 							</Form.Group>
 							<Form.Group controlId="month">
 								<Form.Label>
-									{t( 'configuration.starting-month.label' )}
+									{t( 'configuration.general.starting-month.label' )}
 								</Form.Label>
 								<Form.Select
 									value={ this.state.month }
@@ -273,11 +277,13 @@ class Configuration extends React.PureComponent {
 									{this.renderMonths()}
 								</Form.Select>
 								<Form.Text className="text-muted">
-									{t( 'configuration.starting-month.description' )}
+									{t( 'configuration.general.starting-month.description' )}
 								</Form.Text>
 							</Form.Group>
 							<Form.Group controlId="firstDayOfWeek">
-								<Form.Label>{t( 'configuration.first-day-of-week' )}</Form.Label>
+								<Form.Label>
+									{t( 'configuration.general.first-day-of-week' )}
+								</Form.Label>
 								<Form.Select
 									value={ this.state.firstDayOfWeek }
 									onChange={ this.handleFieldChange }
@@ -286,7 +292,9 @@ class Configuration extends React.PureComponent {
 								</Form.Select>
 							</Form.Group>
 							<Form.Group controlId="monthCount">
-								<Form.Label>{t( 'configuration.month-count.label' )}</Form.Label>
+								<Form.Label>
+									{t( 'configuration.general.month-count.label' )}
+								</Form.Label>
 								<Form.Control
 									type="number"
 									value={ this.state.monthCount }
@@ -295,7 +303,7 @@ class Configuration extends React.PureComponent {
 									max={ 12 }
 								/>
 								<Form.Text className="text-muted">
-									{t( 'configuration.month-count.description' )}
+									{t( 'configuration.general.month-count.description' )}
 								</Form.Text>
 							</Form.Group>
 						</Accordion.Body>
@@ -346,7 +354,7 @@ class Configuration extends React.PureComponent {
 						/>
 					</ToggleForm>
 					<Accordion.Item eventKey="dayItineraries">
-						<Accordion.Header>Day itineraries</Accordion.Header>
+						<Accordion.Header>{t( 'configuration.day.title' )}</Accordion.Header>
 						<Accordion.Body>
 							<Accordion defaultActiveKey="0">
 								{getWeekdays().map( this.renderDayItinerary )}

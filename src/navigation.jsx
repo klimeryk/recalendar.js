@@ -69,18 +69,16 @@ class Navigation extends React.Component {
 								className="text-light me-3"
 								htmlFor="languagePicker"
 							>
-								{t( 'configuration.language.label' )}
+								{t( 'language.label' )}
 							</Form.Label>
 							<Form.Select
-								aria-label={ t( 'configuration.language.label' ) }
+								aria-label={ t( 'language.label' ) }
 								className="language-select"
 								value={ this.state.language }
 								onChange={ this.handleLanguageSelection }
 							>
-								<option value="en">
-									{t( 'configuration.language.english' )}
-								</option>
-								<option value="pl">{t( 'configuration.language.polish' )}</option>
+								<option value="en">{t( 'language.english' )}</option>
+								<option value="pl">{t( 'language.polish' )}</option>
 							</Form.Select>
 						</Stack>
 					</Navbar.Collapse>

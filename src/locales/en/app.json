@@ -7,22 +7,41 @@
 		"features": "Features",
 		"faq": "FAQ"
 	},
+	"language": {
+		"label": "Language",
+		"english": "English",
+		"polish": "Polish"
+	},
 	"configuration": {
-		"language": {
-			"label": "Language",
-			"english": "English",
-			"polish": "Polish"
+		"selector": {
+			"label": "Start",
+			"template": {
+				"label": "Start by selecting a template:",
+				"basic": "Basic",
+				"advanced": "Advanced",
+				"blank": "Blank",
+				"minimalistic": "Minimalistic"
+			},
+			"upload": {
+				"label": "Or upload previously generated ReCalendar PDF to use its config:",
+				"loading": "Reading config from PDF file, please wait...",
+				"error": "Was not able to load ReCalendar config from this PDF - are you sure it was generated using this website?",
+				"success": "Config loaded from PDF - welcome back!"
+			}
 		},
-		"year": "Year",
-		"starting-month": {
-			"label": "Starting month",
-			"description": "The first month in the generated calendar. Choose something like October if you want your calendar to cover a semester, instead of a calendar year."
+		"general": {
+			"label": "General options",
+			"year": "Year",
+			"starting-month": {
+				"label": "Starting month",
+				"description": "The first month in the generated calendar. Choose something like October if you want your calendar to cover a semester, instead of a calendar year."
+			},
+			"month-count": {
+				"label": "Number of months",
+				"description": "For how many months should the calendar be generated for."
+			},
+			"first-day-of-week": "First day of week"
 		},
-		"month-count": {
-			"label": "Number of months",
-			"description": "For how many months should the calendar be generated for."
-		},
-		"first-day-of-week": "First day of week",
 		"button": {
 			"refresh": "Refesh preview",
 			"download": "Generate full calendar and download",
@@ -77,6 +96,9 @@
 					"title": "Itinerary"
 				}
 			}
+		},
+		"day": {
+			"title": "Day itineraries"
 		},
 		"special-dates": {
 			"title": "Special dates",
