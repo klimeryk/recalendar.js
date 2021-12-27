@@ -1,6 +1,6 @@
 export function i18nConfiguration( namespaces ) {
 	return {
-		debug: true,
+		debug: process.env.NODE_ENV === 'development',
 		fallbackLng: 'en',
 		supportedLngs: [ 'en', 'pl' ],
 		ns: namespaces,
