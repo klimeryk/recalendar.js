@@ -10,7 +10,9 @@
 	},
 	"page": {
 		"month": {
-			"habbits": "Nawyki"
+			"habits": {
+				"title": "Nawyki"
+			}
 		},
 		"week": {
 			"title": "Tydzień"
