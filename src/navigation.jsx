@@ -37,7 +37,7 @@ class Navigation extends React.Component {
 		return (
 			<>
 				<Navbar bg="dark" variant="dark" expand="md">
-					<Container>
+					<Container fluid>
 						<Navbar.Brand href="#home">ReCalendar</Navbar.Brand>
 						<Navbar.Toggle aria-controls="basic-navbar-nav" />
 						<Navbar.Collapse id="basic-navbar-nav">
