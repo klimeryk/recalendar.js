@@ -43,16 +43,22 @@ class Navigation extends React.Component {
 						<Navbar.Brand href={ HOME_PATH }>ReCalendar</Navbar.Brand>
 						<Navbar.Toggle aria-controls="basic-navbar-nav" />
 						<Navbar.Collapse id="basic-navbar-nav">
-							<Nav className="me-auto">
-								<LinkContainer to={ HOME_PATH }>
-									<Nav.Link>{t( 'navigation.home' )}</Nav.Link>
-								</LinkContainer>
-								<LinkContainer to={ CONFIGURATOR_PATH }>
-									<Nav.Link>{t( 'navigation.configuration' )}</Nav.Link>
-								</LinkContainer>
-								<LinkContainer to={ FAQ_PATH }>
-									<Nav.Link>{t( 'navigation.faq' )}</Nav.Link>
-								</LinkContainer>
+							<Nav className="me-auto" variant="pills">
+								<Nav.Item>
+									<LinkContainer to={ HOME_PATH }>
+										<Nav.Link>{t( 'navigation.home' )}</Nav.Link>
+									</LinkContainer>
+								</Nav.Item>
+								<Nav.Item>
+									<LinkContainer to={ CONFIGURATOR_PATH }>
+										<Nav.Link>{t( 'navigation.configuration' )}</Nav.Link>
+									</LinkContainer>
+								</Nav.Item>
+								<Nav.Item>
+									<LinkContainer to={ FAQ_PATH }>
+										<Nav.Link>{t( 'navigation.faq' )}</Nav.Link>
+									</LinkContainer>
+								</Nav.Item>
 							</Nav>
 							<Stack direction="horizontal">
 								<Form.Label
