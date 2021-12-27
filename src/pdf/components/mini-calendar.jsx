@@ -43,7 +43,7 @@ class MiniCalendar extends React.Component {
 			color: 'black',
 			fontWeight: 'normal',
 			textAlign: 'center',
-			padding: 2,
+			padding: '1 2',
 			border: '1 solid white',
 		},
 		header: {
@@ -94,7 +94,7 @@ class MiniCalendar extends React.Component {
 			color: '#999',
 			border: 'none',
 			borderLeft: '1 solid black',
-			paddingTop: 3,
+			paddingTop: 1,
 		},
 		weekdayName: {
 			fontWeight: 'bold',
@@ -116,7 +116,7 @@ class MiniCalendar extends React.Component {
 					{'<'}
 				</Link>
 				<Link src={ '#' + monthOverviewLink( date ) } style={ [ monthName, push ] }>
-					{date.format( 'MMMM' )}
+					{date.format( 'MMM' )}
 				</Link>
 				<Link src={ '#' + yearOverviewLink() } style={ monthName }>
 					{date.format( 'YYYY' )}

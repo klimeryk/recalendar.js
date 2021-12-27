@@ -46,7 +46,7 @@ class DayPage extends React.Component {
 		nameOfDay: {
 			marginLeft: 'auto',
 			textTransform: 'uppercase',
-			fontSize: 25,
+			fontSize: 22,
 		},
 		dayArrow: {
 			color: '#AAA',
@@ -61,6 +61,7 @@ class DayPage extends React.Component {
 			justifyContent: 'center',
 			color: 'black',
 			padding: '10 5',
+			fontSize: 20,
 		},
 		dayNumber: {
 			fontSize: 55,
