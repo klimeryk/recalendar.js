@@ -4,10 +4,10 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import { withTranslation } from 'react-i18next';
 
-import { dayPageLink, monthOverviewLink } from 'lib/links';
 import Itinerary from 'pdf/components/itinerary';
 import MiniCalendar, { HIGHLIGHT_NONE } from 'pdf/components/mini-calendar';
 import PdfConfig from 'pdf/config';
+import { dayPageLink, monthOverviewLink } from 'pdf/lib/links';
 import { getItemsOnExtraPages } from 'pdf/utils';
 
 const habitColumnWidth = 40;

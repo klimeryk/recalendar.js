@@ -3,10 +3,14 @@ import dayjs from 'dayjs';
 import PropTypes from 'prop-types';
 import React from 'react';
 
-import { dayPageLink, monthOverviewLink, weekOverviewLink } from 'lib/links';
 import Itinerary from 'pdf/components/itinerary';
 import MiniCalendar from 'pdf/components/mini-calendar';
 import PdfConfig from 'pdf/config';
+import {
+	dayPageLink,
+	monthOverviewLink,
+	weekOverviewLink,
+} from 'pdf/lib/links';
 import { getItemsOnExtraPages } from 'pdf/utils';
 
 class DayPage extends React.Component {

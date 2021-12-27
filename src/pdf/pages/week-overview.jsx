@@ -4,9 +4,9 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import { withTranslation } from 'react-i18next';
 
-import { weekOverviewLink, dayPageLink } from 'lib/links';
 import MiniCalendar, { HIGHLIGHT_WEEK } from 'pdf/components/mini-calendar';
 import PdfConfig from 'pdf/config';
+import { weekOverviewLink, dayPageLink } from 'pdf/lib/links';
 
 class WeekOverviewPage extends React.Component {
 	styles = StyleSheet.create( {

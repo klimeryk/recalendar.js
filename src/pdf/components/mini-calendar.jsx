@@ -5,14 +5,14 @@ import React from 'react';
 import { withTranslation } from 'react-i18next';
 
 import { getWeekdays } from 'lib/date';
+import PdfConfig from 'pdf/config';
 import {
 	dayPageLink,
 	monthOverviewLink,
 	weekOverviewLink,
 	weekRetrospectiveLink,
 	yearOverviewLink,
-} from 'lib/links';
-import PdfConfig from 'pdf/config';
+} from 'pdf/lib/links';
 
 export const HIGHLIGHT_WEEK = 'HIGHLIGHT_WEEK';
 export const HIGHLIGHT_DAY = 'HIGHLIGHT_DAY';
