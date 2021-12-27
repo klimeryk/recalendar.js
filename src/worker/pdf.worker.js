@@ -39,6 +39,11 @@ function encodeConfig( data ) {
 	);
 }
 
+// Effectively disables hyphenation
+function hyphenationCallback( word ) {
+	return [ word ];
+}
+
 self.onmessage = ( { data } ) => {
 	const config = new PdfConfig();
 	Object.assign( config, hydrateFromObject( data ) );
@@ -53,6 +58,7 @@ self.onmessage = ( { data } ) => {
 		weekStart: firstDayOfWeek,
 	} );
 
+	Font.registerHyphenationCallback( hyphenationCallback );
 	Font.register( config.fontDefinition );
 
 	const document = React.createElement(
