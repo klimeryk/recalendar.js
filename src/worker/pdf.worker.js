@@ -1,7 +1,6 @@
 /* eslint-disable no-restricted-globals */
-//import { Font, pdf } from '@react-pdf/renderer';
 import dayjs from 'dayjs';
-import i18n from 'i18next';
+import i18n, { changeLanguage } from 'i18next';
 import LanguageDetector from 'i18next-browser-languagedetector';
 import React from 'react';
 import { initReactI18next } from 'react-i18next';
@@ -45,6 +44,9 @@ self.onmessage = ( { data } ) => {
 	Object.assign( config, hydrateFromObject( data ) );
 
 	const { firstDayOfWeek, language, isPreview } = data;
+
+	changeLanguage( language );
+
 	require( `dayjs/locale/${language}` );
 	dayjs.locale( language );
 	dayjs.updateLocale( language, {
