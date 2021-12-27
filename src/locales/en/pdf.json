@@ -19,6 +19,10 @@
 		},
 		"retrospective": {
 			"title": "Retrospective for week"
+		},
+		"last": {
+			"title": "Generated using <recalendar>https://recalendar.me/</recalendar>",
+			"subtitle": "You can upload this PDF there again to load the same configuration that was used to create it and quickly generate a similar one for the new year!"
 		}
 	}
 }

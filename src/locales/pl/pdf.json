@@ -17,6 +17,10 @@
 		},
 		"retrospective": {
 			"title": "Podsumowanie tygodnia"
+		},
+		"last": {
+			"title": "Wygenerowano korzystając z <recalendar>https://recalendar.me/</recalendar>",
+			"subtitle": "Możesz wczytać ten plik PDF na powyższej stronie, aby załadować tą samą konfigurację, która została użyta do stworzenia go i szybko wygenerować kalendarz na następny rok!"
 		}
 	}
 }

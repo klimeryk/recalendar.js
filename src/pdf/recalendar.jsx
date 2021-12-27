@@ -5,6 +5,7 @@ import React from 'react';
 
 import PdfConfig from 'pdf/config';
 import DayPage from 'pdf/pages/day';
+import LastPage from 'pdf/pages/last';
 import MonthOverviewPage from 'pdf/pages/month-overview';
 import WeekOverviewPage from 'pdf/pages/week-overview';
 import WeekRetrospectivePage from 'pdf/pages/week-retrospective';
@@ -63,6 +64,7 @@ class RecalendarPdf extends React.Component {
 			day: 1,
 		} );
 		const endDate = currentDate.add( monthCount, 'months' );
+
 		pageList.push(
 			<YearOverviewPage
 				key={ 'year-overview-' + year }
@@ -81,6 +83,9 @@ class RecalendarPdf extends React.Component {
 				break;
 			}
 		}
+
+		pageList.push( <LastPage key="last" config={ this.props.config } /> );
+
 		return pageList;
 	}
 
