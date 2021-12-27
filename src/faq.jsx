@@ -5,18 +5,10 @@ import { withTranslation, Trans } from 'react-i18next';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './app.css';
-
-const RECALENDAR_JS_GITHUB = 'https://github.com/klimeryk/recalendar.js/';
+import ExternalLink from 'components/external-link';
+import { RECALENDAR_JS_GITHUB } from 'lib/paths';
 
 class Faq extends React.PureComponent {
-	link( url, children = null ) {
-		return (
-			<a href={ url } target="_blank" rel="noopener noreferrer">
-				{children}
-			</a>
-		);
-	}
-
 	render() {
 		const { t } = this.props;
 
@@ -41,7 +33,7 @@ class Faq extends React.PureComponent {
 							i18nKey="about.faq.issues"
 							components={ {
 								bold: <b />,
-								github: this.link( RECALENDAR_JS_GITHUB ),
+								github: <ExternalLink url={ RECALENDAR_JS_GITHUB } />,
 							} }
 						/>
 					</li>

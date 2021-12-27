@@ -10,6 +10,8 @@ import { withTranslation } from 'react-i18next';
 import { LinkContainer } from 'react-router-bootstrap';
 import { Outlet } from 'react-router-dom';
 
+import { HOME_PATH, CONFIGURATOR_PATH, FAQ_PATH } from 'lib/paths';
+
 class Navigation extends React.Component {
 	state = {
 		language: i18n.language,
@@ -38,17 +40,17 @@ class Navigation extends React.Component {
 			<>
 				<Navbar bg="dark" variant="dark" expand="md">
 					<Container fluid>
-						<Navbar.Brand href="#home">ReCalendar</Navbar.Brand>
+						<Navbar.Brand href={ HOME_PATH }>ReCalendar</Navbar.Brand>
 						<Navbar.Toggle aria-controls="basic-navbar-nav" />
 						<Navbar.Collapse id="basic-navbar-nav">
 							<Nav className="me-auto">
-								<LinkContainer to="/">
+								<LinkContainer to={ HOME_PATH }>
 									<Nav.Link>{t( 'navigation.home' )}</Nav.Link>
 								</LinkContainer>
-								<LinkContainer to="/configuration">
+								<LinkContainer to={ CONFIGURATOR_PATH }>
 									<Nav.Link>{t( 'navigation.configuration' )}</Nav.Link>
 								</LinkContainer>
-								<LinkContainer to="/faq">
+								<LinkContainer to={ FAQ_PATH }>
 									<Nav.Link>{t( 'navigation.faq' )}</Nav.Link>
 								</LinkContainer>
 							</Nav>
