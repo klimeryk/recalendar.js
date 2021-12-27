@@ -67,8 +67,11 @@ class MiniCalendar extends React.Component {
 			fontSize: 12,
 			fontWeight: 'bold',
 		},
-		push: {
+		pushLeft: {
 			marginLeft: 'auto',
+		},
+		pushRight: {
+			marginRight: 'auto',
 		},
 		currentDay: {
 			backgroundColor: '#CCC',
@@ -105,17 +108,17 @@ class MiniCalendar extends React.Component {
 	} );
 
 	renderMonthName() {
-		const { monthArrow, monthName, push, header } = this.styles;
+		const { monthArrow, monthName, pushLeft, pushRight, header } = this.styles;
 		const { date } = this.props;
 		return (
 			<View style={ header }>
 				<Link
 					src={ '#' + monthOverviewLink( date.subtract( 1, 'month' ) ) }
-					style={ monthArrow }
+					style={ [ monthArrow, pushLeft ] }
 				>
 					{'<'}
 				</Link>
-				<Link src={ '#' + monthOverviewLink( date ) } style={ [ monthName, push ] }>
+				<Link src={ '#' + monthOverviewLink( date ) } style={ monthName }>
 					{date.format( 'MMM' )}
 				</Link>
 				<Link src={ '#' + yearOverviewLink() } style={ monthName }>
@@ -123,7 +126,7 @@ class MiniCalendar extends React.Component {
 				</Link>
 				<Link
 					src={ '#' + monthOverviewLink( date.add( 1, 'month' ) ) }
-					style={ [ monthArrow, push ] }
+					style={ [ monthArrow, pushRight ] }
 				>
 					{'>'}
 				</Link>
