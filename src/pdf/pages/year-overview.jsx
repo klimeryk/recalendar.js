@@ -13,7 +13,6 @@ class YearOverviewPage extends React.Component {
 			fontSize: 55,
 			fontWeight: 'bold',
 			textAlign: 'center',
-			marginBottom: 20,
 		},
 		calendars: {
 			flexDirection: 'row',

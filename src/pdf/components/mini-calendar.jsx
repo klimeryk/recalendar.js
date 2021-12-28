@@ -53,7 +53,7 @@ class MiniCalendar extends React.Component {
 			flexBasis: 20,
 			flexGrow: 0,
 			textAlign: 'center',
-			padding: 5,
+			padding: '2 5',
 			textDecoration: 'none',
 			color: '#AAA',
 			fontSize: 12,
@@ -61,7 +61,7 @@ class MiniCalendar extends React.Component {
 		},
 		monthName: {
 			textTransform: 'uppercase',
-			padding: 5,
+			padding: '2 5',
 			textDecoration: 'none',
 			color: '#888',
 			fontSize: 12,
@@ -92,6 +92,7 @@ class MiniCalendar extends React.Component {
 			borderRight: '1 solid black',
 			fontSize: 10,
 			justifyContent: 'center',
+			width: 20,
 		},
 		weekRetrospective: {
 			color: '#999',
@@ -104,6 +105,7 @@ class MiniCalendar extends React.Component {
 			color: 'black',
 			border: 'none',
 			borderBottom: '1 solid black',
+			fontSize: 9,
 		},
 	} );
 
