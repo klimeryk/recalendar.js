@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import { withTranslation } from 'react-i18next';
 
+import { getWeekdays } from 'lib/date';
 import Itinerary from 'pdf/components/itinerary';
 import MiniCalendar, { HIGHLIGHT_NONE } from 'pdf/components/mini-calendar';
 import PdfConfig from 'pdf/config';
@@ -101,6 +102,9 @@ class MonthOverviewPage extends React.Component {
 			borderBottom: '1 solid #AAA',
 			textDecoration: 'none',
 		},
+		weekendDay: {
+			backgroundColor: '#EEE',
+		},
 	} );
 
 	renderHabitsTable() {
@@ -164,14 +168,23 @@ class MonthOverviewPage extends React.Component {
 	}
 
 	renderHabitSquares() {
+		const weekdays = getWeekdays();
+		const weekendDays = [
+			weekdays[ weekdays.length - 1 ].min,
+			weekdays[ weekdays.length - 2 ].min,
+		];
 		let currentDate = this.props.date.startOf( 'month' );
 		const endOfMonth = this.props.date.endOf( 'month' );
 		const squares = [];
 		while ( currentDate.isBefore( endOfMonth ) ) {
+			const styles = [ this.styles.habitSquare ];
+			if ( weekendDays.includes( currentDate.format( 'dd' ) ) ) {
+				styles.push( this.styles.weekendDay );
+			}
 			squares.push(
 				<Link
 					key={ currentDate.date() }
-					style={ this.styles.habitSquare }
+					style={ styles }
 					src={ '#' + dayPageLink( currentDate ) }
 				/>,
 			);
