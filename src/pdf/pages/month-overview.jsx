@@ -57,7 +57,7 @@ class MonthOverviewPage extends React.Component {
 			fontWeight: 'normal',
 		},
 		habitDay: {
-			fontSize: 6,
+			fontSize: 8,
 			flexDirection: 'column',
 			borderRight: '1 solid #AAA',
 			borderBottom: '1 solid #AAA',
@@ -68,14 +68,18 @@ class MonthOverviewPage extends React.Component {
 			color: 'black',
 			width: habitSquareWidth,
 			minWidth: habitSquareWidth,
+			height: habitSquareWidth,
 		},
 		habitDayDate: {
 			fontWeight: 'bold',
+			position: 'relative',
+			top: -1,
 		},
 		habitDayOfWeek: {
-			height: 5,
-			fontSize: 4,
+			fontSize: 6,
 			textAlign: 'center',
+			position: 'relative',
+			top: -2,
 		},
 		habitRow: {
 			flexDirection: 'row',
