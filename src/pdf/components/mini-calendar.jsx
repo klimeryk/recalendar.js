@@ -21,7 +21,7 @@ export const HIGHLIGHT_NONE = 'HIGHLIGHT_NONE';
 class MiniCalendar extends React.Component {
 	styles = StyleSheet.create( {
 		body: {
-			fontSize: 8,
+			fontSize: 10,
 			padding: '0 5 5 5',
 			width: 145,
 		},
@@ -43,7 +43,7 @@ class MiniCalendar extends React.Component {
 			color: 'black',
 			fontWeight: 'normal',
 			textAlign: 'center',
-			padding: '1 2',
+			padding: '1',
 			border: '1 solid white',
 		},
 		header: {
@@ -90,14 +90,14 @@ class MiniCalendar extends React.Component {
 			color: '#999',
 			border: 'none',
 			borderRight: '1 solid black',
-			fontSize: 7,
+			fontSize: 10,
 			justifyContent: 'center',
 		},
 		weekRetrospective: {
 			color: '#999',
 			border: 'none',
 			borderLeft: '1 solid black',
-			paddingTop: 1,
+			paddingTop: 2,
 		},
 		weekdayName: {
 			fontWeight: 'bold',
@@ -146,7 +146,14 @@ class MiniCalendar extends React.Component {
 
 		return (
 			<View style={ week }>
-				<Text style={ [ day, this.styles.weekNumber, this.styles.weekdayName ] }>
+				<Text
+					style={ [
+						day,
+						this.styles.weekNumber,
+						this.styles.weekdayName,
+						{ paddingTop: 1 },
+					] }
+				>
 					{t( 'calendar.header.week-number' )}
 				</Text>
 				{daysOfTheWeek}
@@ -156,6 +163,7 @@ class MiniCalendar extends React.Component {
 							day,
 							this.styles.weekRetrospective,
 							this.styles.weekdayName,
+							{ paddingTop: 1 },
 						] }
 					>
 						{t( 'calendar.header.retrospective' )}
