@@ -92,7 +92,7 @@
 			},
 			"retrospective": {
 				"title": "Rétrospective de la semaine",
-				"description": "La rétrospective de la semaine est un endroit prendre du recul sur la semaine passée - Comment elle s'est passée, qu'avez-vous appris, que faire pour améliorer la semaine prochaine?",
+				"description": "La rétrospective de la semaine est un endroit pour prendre du recul sur la semaine passée - Comment s'est-t-elle passée, qu'avez-vous appris, que faire pour améliorer la semaine prochaine?",
 				"itinerary": {
 					"title": "Planning"
 				}
@@ -111,7 +111,7 @@
 				"remove": "Supprimer"
 			}
 		},
-		"generation-description": "La génération de PDF se fait entièrement dans votre navigateur - aucune donnée n'est envoyéé à nos serveurs!"
+		"generation-description": "La génération de PDF se fait entièrement dans votre navigateur - aucune donnée n'est envoyée à nos serveurs!"
 	},
 	"preview": {
 		"title": "Aperçu du calendrier",
@@ -122,7 +122,7 @@
 			"preview": "Génération de l'aperçu, veuillez patienter - cela peut prendre une minute."
 		},
 		"empty": {
-			"title": "Utiliser le formulaire de configuration pour créer votre calendrier personalisé.",
+			"title": "Utilisez le formulaire de configuration pour créer votre calendrier personalisé.",
 			"subtitle": "L'aperçu s'affichera ici."
 		}
 	}
