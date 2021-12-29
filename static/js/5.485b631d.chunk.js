@@ -1,2 +1,0 @@
-((self||this)["webpackJsonprecalendar.js"]=(self||this)["webpackJsonprecalendar.js"]||[]).push([[5],{741:function(e){e.exports=JSON.parse('{"loading":"Generowanie...","download-ready":"Pobierz teraz!","configuration":{"language":{"label":"J\u0119zyk","english":"Angielski","polish":"Polski"},"year":"Rok","starting-month":"Pierwszy miesi\u0105c","month-count":"Liczba miesi\u0119cy"}}')}}]);
-//# sourceMappingURL=5.485b631d.chunk.js.map
