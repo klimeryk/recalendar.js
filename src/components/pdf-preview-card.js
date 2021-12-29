@@ -68,7 +68,7 @@ class PdfPreviewCard extends React.PureComponent {
 		return (
 			<Stack
 				direction="vertical"
-				className="h-100 d-flex align-items-center justify-content-center"
+				className="h-100 d-flex align-items-center justify-content-center text-center"
 			>
 				<p className="lead">{t( 'preview.empty.title' )}</p>
 				<p>{t( 'preview.empty.subtitle' )}</p>
