@@ -23,7 +23,7 @@ i18n
 	.use( initReactI18next )
 	.init( {
 		...i18nConfiguration( [ 'pdf', 'config' ] ),
-		preload: [ 'en', 'pl' ],
+		preload: [ 'en', 'pl', 'es', 'fr' ],
 		react: {
 			useSuspense: false,
 		},

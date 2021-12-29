@@ -1,0 +1,129 @@
+{
+	"loading": "Cargando...",
+	"download-ready": "Descargar ahora!",
+	"navigation": {
+		"home": "Inicio",
+		"configuration": "Crear el calendario",
+		"features": "Características",
+		"faq": "FAQ"
+	},
+	"language": {
+		"label": "Idioma",
+		"english": "Inglés",
+		"polish": "Polaco",
+		"french": "Francés",
+		"spanish": "Español"
+	},
+	"configuration": {
+		"selector": {
+			"label": "Empezar",
+			"template": {
+				"label": "Empiece con una plantilla:",
+				"basic": "Simple",
+				"advanced": "Avanzada",
+				"blank": "Vacía",
+				"minimalistic": "Minimalista"
+			},
+			"upload": {
+				"label": "O cargue el PDF de ReCalendar generado previamente para usar su configuración:",
+				"loading": "Leyendo la configuración desde un archivo PDF... por favor, espere...",
+				"error": "No se pudo cargar la configuración de ReCalendar desde este PDF. ¿Está seguro de que se generó con este sitio?",
+				"success": "Configuración cargada desde el PDF - bienvenido de nuevo!"
+			}
+		},
+		"general": {
+			"label": "Opciones generales",
+			"year": "Año",
+			"starting-month": {
+				"label": "Mes de inicio",
+				"description": "El primer mes del calendario generado. Elija algo como octubre si desea que su calendario cubra un semestre, en lugar de un año."
+			},
+			"month-count": {
+				"label": "Cantidad de meses",
+				"description": "¿Cuántos meses quiere generar en su calendario?"
+			},
+			"first-day-of-week": "Primer día de la semana"
+		},
+		"button": {
+			"refresh": "Actualizar avance",
+			"download": "Genera el calendario completo y descarga",
+			"generating": "Generando, por favor espere..."
+		},
+		"itinerary": {
+			"empty": "Planificación vacía",
+			"placeholder": {
+				"lines": "Candida de líneas",
+				"page": "Nuevo salto de página"
+			},
+			"button": {
+				"remove": "Quitar",
+				"item": "Agregar un elemento de planificación",
+				"page": "Iniciar una nueva página",
+				"lines": "Agregar líneas"
+			}
+		},
+		"items-list": {
+			"button": {
+				"item": "Añadir un elemento",
+				"remove": "Quitar"
+			},
+			"empty": "Lista vacía",
+			"placeholder": "Elemento"
+		},
+		"toggle-form": {
+			"enabled": "Activado",
+			"disabled": "Desactivado"
+		},
+		"month": {
+			"title": "Resumen del mes",
+			"description": "El resumen del mes es un lugar para establecer objetivos para el próximo mes, realizar un seguimiento de los hábitos y hacer otros planes.",
+			"habits": {
+				"title": "Hábitos"
+			},
+			"itinerary": {
+				"title": "Planificación"
+			}
+		},
+		"week": {
+			"title": "Resumen de la semana",
+			"description": "El resumen de la semana le muestra una vista general de la semana para facilitar los planes.",
+			"todos": {
+				"title": "To-do list"
+			},
+			"retrospective": {
+				"title": "Retrospectiva de la semana",
+				"description": "La retrospectiva de la semana es un lugar para reflexionar sobre la semana pasada: ¿cómo fue, qué aprendio, que podría mejorar para la próxima semana?",
+				"itinerary": {
+					"title": "Planificación"
+				}
+			}
+		},
+		"day": {
+			"title": "Planificación diaria"
+		},
+		"special-dates": {
+			"title": "Fechas importantes",
+			"description": "Agregue sus cumpleaños, celebraciones, eventos, etc. Aquí puede recibir recordatorios sobre ellas en resúmenes semanales y páginas de días a medida que se acercan.",
+			"empty": "Sin fechas",
+			"placeholder": "¿Cuál es la ocasión?",
+			"button": {
+				"item": "Agregar fecha",
+				"remove": "Quitar"
+			}
+		},
+		"generation-description": "La generación de PDF se realiza completamente en su navegador, ¡no se envían datos a nuestros servidores!"
+	},
+	"preview": {
+		"title": "Vista previa del calendario",
+		"subtitle": "(solo se procesa el primer mes para la vista previa)",
+		"viewer-title": "Vista previa PDF",
+		"generating": {
+			"full": "Generando del calendario completo: esto podría llevar más de un minuto...",
+			"preview": "Generando la vista previa; espere, puede demorar un minuto."
+		},
+		"empty": {
+			"title": "Utilice el formulario de configuración para crear su calendario personalizado.",
+			"subtitle": "La vista previa aparecerá aquí."
+		}
+	}
+}

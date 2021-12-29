@@ -78,6 +78,8 @@ class Navigation extends React.Component {
 								onChange={ this.handleLanguageSelection }
 							>
 								<option value="en">{t( 'language.english' )}</option>
+								<option value="fr">{t( 'language.french' )}</option>
+								<option value="es">{t( 'language.spanish' )}</option>
 								<option value="pl">{t( 'language.polish' )}</option>
 							</Form.Select>
 						</Stack>

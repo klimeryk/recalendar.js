@@ -10,7 +10,9 @@
 	"language": {
 		"label": "Language",
 		"english": "English",
-		"polish": "Polish"
+		"polish": "Polish",
+		"french": "French",
+		"spanish": "Spanish"
 	},
 	"configuration": {
 		"selector": {

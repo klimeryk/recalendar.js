@@ -1,0 +1,129 @@
+{
+	"loading": "Chargement en cours...",
+	"download-ready": "Téléchargez maintenant!",
+	"navigation": {
+		"home": "Accueil",
+		"configuration": "Créer son calendrier",
+		"features": "Caractéristiques",
+		"faq": "FAQ"
+	},
+	"language": {
+		"label": "Langue",
+		"english": "Anglais",
+		"polish": "Polonais",
+		"french": "Français",
+		"spanish": "Espagnol"
+	},
+	"configuration": {
+		"selector": {
+			"label": "Commencer",
+			"template": {
+				"label": "Commencez par sélectioner un modèle:",
+				"basic": "Simple",
+				"advanced": "Avancé",
+				"blank": "Vide",
+				"minimalistic": "Minimaliste"
+			},
+			"upload": {
+				"label": "Ou importez un PDF ReCalendar déjà généré pour utiliser sa configuration:",
+				"loading": "Configuration en cours, veuillez patienter...",
+				"error": "Échec de l'importation de la configuration du PDF ReCalendar. Êtes-vous sûr que le ficher a été généré sur ce site?",
+				"success": "Configuration importée - content de vous revoir!"
+			}
+		},
+		"general": {
+			"label": "Options générales",
+			"year": "Année",
+			"starting-month": {
+				"label": "Mois de départ",
+				"description": "Le premier mois dans le calendrier généré. Choisissez par example Octobre si vous désirez un calendrier pour un semestre plutôt qu'une année."
+			},
+			"month-count": {
+				"label": "Nombre de mois",
+				"description": "Combien de mois voulez-vous générer dans votre calendrier?"
+			},
+			"first-day-of-week": "Premier jour de la semaine"
+		},
+		"button": {
+			"refresh": "Actualiser l'aperçu",
+			"download": "Générer le calendrier complet et télécharger",
+			"generating": "Génération PDF en cours, veuillez patienter..."
+		},
+		"itinerary": {
+			"empty": "Planning vide",
+			"placeholder": {
+				"lines": "Nombre de lignes",
+				"page": "Nouveau saut de page"
+			},
+			"button": {
+				"remove": "Supprimer",
+				"item": "Ajouter un élément au planning",
+				"page": "Ouvrir une nouvelle page",
+				"lines": "Ajouter une ligne"
+			}
+		},
+		"items-list": {
+			"button": {
+				"item": "Ajouter un élément",
+				"remove": "Supprimer"
+			},
+			"empty": "Liste vide",
+			"placeholder": "Élément"
+		},
+		"toggle-form": {
+			"enabled": "Activé",
+			"disabled": "Désactivé"
+		},
+		"month": {
+			"title": "Aperçu du mois",
+			"description": "L'aperçu du mois est un endroit pour définir ses objectifs pour le mois à venir, suivre ses habitudes et planifier.",
+			"habits": {
+				"title": "Habitudes"
+			},
+			"itinerary": {
+				"title": "Planning"
+			}
+		},
+		"week": {
+			"title": "Aperçu de la semaine",
+			"description": "L'Aperçu de la semaine donne une vue générale de la semaine pour rendre la planification plus facile.",
+			"todos": {
+				"title": "To-do lists"
+			},
+			"retrospective": {
+				"title": "Rétrospective de la semaine",
+				"description": "La rétrospective de la semaine est un endroit prendre du recul sur la semaine passée - Comment elle s'est passée, qu'avez-vous appris, que faire pour améliorer la semaine prochaine?",
+				"itinerary": {
+					"title": "Planning"
+				}
+			}
+		},
+		"day": {
+			"title": "Planning journalier"
+		},
+		"special-dates": {
+			"title": "Dates importantes",
+			"description": "Ajoutez des anniversaires, célébrations, évènements, etc. Ici, vous pouvez recevoir des rappels de ces dates dans l'aperçu de la semaine et les pages journalières.",
+			"empty": "Aucune date",
+			"placeholder": "Pour quelle occasion?",
+			"button": {
+				"item": "Ajouter une date",
+				"remove": "Supprimer"
+			}
+		},
+		"generation-description": "La génération de PDF se fait entièrement dans votre navigateur - aucune donnée n'est envoyéé à nos serveurs!"
+	},
+	"preview": {
+		"title": "Aperçu du calendrier",
+		"subtitle": "(le premier mois seulement apparaît dans l'aperçu)",
+		"viewer-title": "Aperçu du PDF",
+		"generating": {
+			"full": "Génération du calendrier complet en cours - cela peut prendre plus d'une minute...",
+			"preview": "Génération de l'aperçu, veuillez patienter - cela peut prendre une minute."
+		},
+		"empty": {
+			"title": "Utiliser le formulaire de configuration pour créer votre calendrier personalisé.",
+			"subtitle": "L'aperçu s'affichera ici."
+		}
+	}
+}

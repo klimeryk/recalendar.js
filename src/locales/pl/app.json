@@ -10,7 +10,9 @@
 	"language": {
 		"label": "Język",
 		"english": "Angielski",
-		"polish": "Polski"
+		"polish": "Polski",
+		"french": "Francuski",
+		"spanish": "Hiszpański"
 	},
 	"configuration": {
 		"selector": {
