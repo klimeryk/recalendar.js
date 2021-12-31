@@ -80,9 +80,16 @@ class PdfConfig {
 		];
 		this.isWeekOverviewEnabled = true;
 		this.todos = [ 'Plan a trip', 'Some other TODO' ];
-		this.dayItineraries = [ ...Array( 7 ).keys() ].map( () => [
-			{ type: ITINERARY_LINES, value: 50 },
-		] );
+
+		let dayOfWeek = this.firstDayOfWeek;
+		this.dayItineraries = [ ...Array( 7 ).keys() ].map( () => {
+			const itinerary = {
+				dayOfWeek,
+				items: [ { type: ITINERARY_LINES, value: 50 } ],
+			};
+			dayOfWeek = ++dayOfWeek % 7;
+			return itinerary;
+		} );
 		this.isWeekRetrospectiveEnabled = true;
 		this.weekRetrospectiveItinerary = [
 			{

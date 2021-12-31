@@ -140,11 +140,11 @@ class DayPage extends React.Component {
 							<MiniCalendar date={ date } config={ config } />
 						</View>
 						<View style={ this.styles.content }>
-							<Itinerary items={ config.dayItineraries[ date.weekday() ] } />
+							<Itinerary items={ config.dayItineraries[ date.weekday() ].items } />
 						</View>
 					</View>
 				</Page>
-				{getItemsOnExtraPages( config.dayItineraries[ date.weekday() ] ).map(
+				{getItemsOnExtraPages( config.dayItineraries[ date.weekday() ].items ).map(
 					( items, index ) => (
 						<Page key={ index } size={ config.pageSize }>
 							<View style={ this.styles.page }>

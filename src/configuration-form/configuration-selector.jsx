@@ -28,6 +28,7 @@ class ConfigurationSelector extends React.Component {
 
 	handleTemplateSelect = ( event ) => {
 		const config = new PdfConfig();
+		let dayOfWeek = config.firstDayOfWeek;
 
 		switch ( event.target.dataset.template ) {
 			case TEMPLATE_BASIC:
@@ -35,10 +36,17 @@ class ConfigurationSelector extends React.Component {
 				break;
 
 			case TEMPLATE_ADVANCED:
-				config.dayItineraries = [ ...Array( 7 ).keys() ].map( () => [
-					{ type: ITINERARY_ITEM, value: 'Super advanced' },
-					{ type: ITINERARY_LINES, value: 50 },
-				] );
+				config.dayItineraries = [ ...Array( 7 ).keys() ].map( () => {
+					const itinerary = {
+						dayOfWeek,
+						items: [
+							{ type: ITINERARY_ITEM, value: 'Super advanced' },
+							{ type: ITINERARY_LINES, value: 50 },
+						],
+					};
+					dayOfWeek = ++dayOfWeek % 7;
+					return itinerary;
+				} );
 				break;
 
 			case TEMPLATE_BLANK:
@@ -46,7 +54,14 @@ class ConfigurationSelector extends React.Component {
 				config.habits = [];
 				config.monthItinerary = [];
 				config.todos = [];
-				config.dayItineraries = [ ...Array( 7 ).keys() ].map( () => [] );
+				config.dayItineraries = [ ...Array( 7 ).keys() ].map( () => {
+					const itinerary = {
+						dayOfWeek,
+						items: [],
+					};
+					dayOfWeek = ++dayOfWeek % 7;
+					return itinerary;
+				} );
 				config.weekRetrospectiveItinerary = [];
 				break;
 
@@ -57,7 +72,14 @@ class ConfigurationSelector extends React.Component {
 				config.monthItinerary = [];
 				config.isWeekOverviewEnabled = false;
 				config.todos = [];
-				config.dayItineraries = [ ...Array( 7 ).keys() ].map( () => [] );
+				config.dayItineraries = [ ...Array( 7 ).keys() ].map( () => {
+					const itinerary = {
+						dayOfWeek,
+						items: [],
+					};
+					dayOfWeek = ++dayOfWeek % 7;
+					return itinerary;
+				} );
 				config.isWeekRetrospectiveEnabled = false;
 				config.weekRetrospectiveItinerary = [];
 				break;

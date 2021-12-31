@@ -62,6 +62,30 @@ class Configuration extends React.PureComponent {
 
 	handleFieldChange = ( event ) => {
 		this.setState( { [ event.target.id ]: event.target.value } );
+		if ( event.target.id === 'firstDayOfWeek' ) {
+			const newFirstDayOfWeek = Number( event.target.value );
+			dayjs.updateLocale( i18n.language, {
+				weekStart: newFirstDayOfWeek,
+			} );
+
+			const newFirstDayOfWeekIndex = this.state.dayItineraries.findIndex(
+				this.isDayOfWeek( newFirstDayOfWeek ),
+			);
+			if ( newFirstDayOfWeekIndex === -1 ) {
+				return;
+			}
+
+			const dayItinerariesReordered = [
+				...this.state.dayItineraries.slice( newFirstDayOfWeekIndex ),
+				...this.state.dayItineraries.slice( 0, newFirstDayOfWeekIndex ),
+			];
+
+			this.setState( { dayItineraries: dayItinerariesReordered } );
+		}
+	};
+
+	isDayOfWeek = ( dayOfWeek ) => {
+		return ( item ) => item.dayOfWeek === dayOfWeek;
 	};
 
 	handleToggle = ( event ) => {
@@ -161,7 +185,7 @@ class Configuration extends React.PureComponent {
 	handleDayItineraryChange = ( event ) => {
 		const newItineraries = [ ...this.state.dayItineraries ];
 		const { field, index, type } = event.target.dataset;
-		newItineraries[ field ][ index ] = {
+		newItineraries[ field ].items[ index ] = {
 			type,
 			value: event.target.value,
 		};
@@ -171,14 +195,14 @@ class Configuration extends React.PureComponent {
 	handleDayItineraryRemove = ( event ) => {
 		const newItineraries = [ ...this.state.dayItineraries ];
 		const { field, index } = event.target.dataset;
-		newItineraries[ field ].splice( index, 1 );
+		newItineraries[ field ].items.splice( index, 1 );
 		this.setState( { dayItineraries: newItineraries } );
 	};
 
 	handleDayItineraryAdd = ( event ) => {
 		const newItineraries = [ ...this.state.dayItineraries ];
 		const { field, type } = event.target.dataset;
-		newItineraries[ field ].push( {
+		newItineraries[ field ].items.push( {
 			type,
 			value: '',
 		} );
@@ -231,7 +255,7 @@ class Configuration extends React.PureComponent {
 				eventKey={ index.toString() }
 				field={ index.toString() }
 				title={ dayOfWeek }
-				itinerary={ this.state.dayItineraries[ index ] }
+				itinerary={ this.state.dayItineraries[ index ].items }
 				onAdd={ this.handleDayItineraryAdd }
 				onChange={ this.handleDayItineraryChange }
 				onRemove={ this.handleDayItineraryRemove }
