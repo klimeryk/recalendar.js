@@ -133,7 +133,7 @@ class Configuration extends React.PureComponent {
 		const newItinerary = [ ...this.state[ field ] ];
 		newItinerary[ event.target.dataset.index ] = {
 			type: event.target.dataset.type,
-			value: event.target.dataset.value,
+			value: event.target.value,
 		};
 		this.setState( { [ field ]: newItinerary } );
 	};
