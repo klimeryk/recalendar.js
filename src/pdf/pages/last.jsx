@@ -28,7 +28,7 @@ class LastPage extends React.Component {
 	render() {
 		const { config, t } = this.props;
 		return (
-			<Page id={ yearOverviewLink() } size={ config.pageSize }>
+			<Page size={ config.pageSize }>
 				<View style={ this.styles.center }>
 					<Text style={ this.styles.title }>
 						<Trans
