@@ -30,3 +30,10 @@ export function getWeekendDays( weekendDayIndexes ) {
 
 	return weekendDays;
 }
+
+export function getWeekNumber( day ) {
+	// As per ISO week specification, we need to check Thursday
+	// on a given week to figure out the accurate week number.
+	// https://en.wikipedia.org/wiki/ISO_week_date
+	return day.day( 4 ).isoWeek();
+}

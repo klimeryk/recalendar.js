@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import { withTranslation } from 'react-i18next';
 
+import { getWeekNumber } from 'lib/date';
 import MiniCalendar, { HIGHLIGHT_WEEK } from 'pdf/components/mini-calendar';
 import PdfConfig from 'pdf/config';
 import { weekOverviewLink, dayPageLink } from 'pdf/lib/links';
@@ -184,7 +185,9 @@ class WeekOverviewPage extends React.Component {
 								>
 									«
 								</Link>
-								<Text style={ this.styles.weekNumber }>{date.isoWeek()}</Text>
+								<Text style={ this.styles.weekNumber }>
+									{getWeekNumber( date )}
+								</Text>
 								<Link
 									src={ '#' + weekOverviewLink( date.add( 1, 'week' ) ) }
 									style={ this.styles.weekArrow }

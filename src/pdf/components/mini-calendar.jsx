@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import { withTranslation } from 'react-i18next';
 
-import { getWeekdays, getWeekendDays } from 'lib/date';
+import { getWeekdays, getWeekendDays, getWeekNumber } from 'lib/date';
 import PdfConfig from 'pdf/config';
 import {
 	dayPageLink,
@@ -192,6 +192,7 @@ class MiniCalendar extends React.Component {
 		const { day } = this.styles;
 		const days = [];
 		const weekendDays = getWeekendDays( config.weekendDays );
+		const weekNumber = getWeekNumber( week );
 
 		for ( let i = 0; i < 7; i++ ) {
 			const currentDay = week.add( i, 'days' );
@@ -206,7 +207,7 @@ class MiniCalendar extends React.Component {
 
 			if (
 				this.props.highlightMode === HIGHLIGHT_WEEK &&
-				currentDay.isoWeek() === this.props.date.isoWeek()
+				weekNumber === getWeekNumber( this.props.date )
 			) {
 				dayStyles.push( this.styles.currentWeekDay );
 			}
@@ -234,17 +235,17 @@ class MiniCalendar extends React.Component {
 		const weekStyles = [ this.styles.week ];
 		if (
 			this.props.highlightMode === HIGHLIGHT_WEEK &&
-			week.isoWeek() === this.props.date.isoWeek()
+			weekNumber === getWeekNumber( this.props.date )
 		) {
 			weekStyles.push( this.styles.currentWeek );
 		}
 		return (
-			<View key={ week.isoWeek() } style={ weekStyles }>
+			<View key={ weekNumber } style={ weekStyles }>
 				<Link
 					src={ '#' + weekOverviewLink( week ) }
 					style={ [ day, this.styles.weekNumber ] }
 				>
-					{week.isoWeek()}
+					{weekNumber}
 				</Link>
 				{days}
 				{config.isWeekRetrospectiveEnabled && (

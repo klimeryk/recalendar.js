@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import { withTranslation } from 'react-i18next';
 
+import { getWeekNumber } from 'lib/date';
 import Itinerary from 'pdf/components/itinerary';
 import MiniCalendar, { HIGHLIGHT_WEEK } from 'pdf/components/mini-calendar';
 import PdfConfig from 'pdf/config';
@@ -111,7 +112,9 @@ class WeekRetrospectivePage extends React.Component {
 									>
 										«
 									</Link>
-									<Text style={ this.styles.weekNumber }>{date.isoWeek()}</Text>
+									<Text style={ this.styles.weekNumber }>
+										{getWeekNumber( date )}
+									</Text>
 									<Link
 										src={ '#' + weekRetrospectiveLink( date.add( 1, 'week' ) ) }
 										style={ this.styles.weekArrow }
