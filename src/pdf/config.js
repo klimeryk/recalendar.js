@@ -38,6 +38,7 @@ class PdfConfig {
 		this.year = dayjs().year();
 		this.month = 0;
 		this.firstDayOfWeek = dayjs.localeData().firstDayOfWeek();
+		this.weekendDays = [ 0, 6 ];
 		this.monthCount = 12;
 		this.fontFamily = 'Lato';
 		this.fontDefinition = {

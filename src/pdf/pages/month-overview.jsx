@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import { withTranslation } from 'react-i18next';
 
-import { getWeekdays } from 'lib/date';
+import { getWeekendDays } from 'lib/date';
 import Itinerary from 'pdf/components/itinerary';
 import MiniCalendar, { HIGHLIGHT_NONE } from 'pdf/components/mini-calendar';
 import PdfConfig from 'pdf/config';
@@ -116,7 +116,7 @@ class MonthOverviewPage extends React.Component {
 		return (
 			<View style={ this.styles.habitsTable }>
 				{this.renderHabitsHeader()}
-				{habits.map( ( habit ) => this.renderHabit( habit ) )}
+				{habits.map( this.renderHabit )}
 			</View>
 		);
 	}
@@ -156,7 +156,7 @@ class MonthOverviewPage extends React.Component {
 		);
 	}
 
-	renderHabit( habit ) {
+	renderHabit = ( habit ) => {
 		return (
 			<View key={ habit } style={ this.styles.habitRow }>
 				<View style={ this.styles.habitContainer }>
@@ -165,20 +165,16 @@ class MonthOverviewPage extends React.Component {
 				{this.renderHabitSquares()}
 			</View>
 		);
-	}
+	};
 
 	renderHabitSquares() {
-		const weekdays = getWeekdays();
-		const weekendDays = [
-			weekdays[ weekdays.length - 1 ].min,
-			weekdays[ weekdays.length - 2 ].min,
-		];
+		const weekendDays = getWeekendDays( this.props.config.weekendDays );
 		let currentDate = this.props.date.startOf( 'month' );
 		const endOfMonth = this.props.date.endOf( 'month' );
 		const squares = [];
 		while ( currentDate.isBefore( endOfMonth ) ) {
 			const styles = [ this.styles.habitSquare ];
-			if ( weekendDays.includes( currentDate.format( 'dd' ) ) ) {
+			if ( weekendDays.includes( currentDate.day() ) ) {
 				styles.push( this.styles.weekendDay );
 			}
 			squares.push(

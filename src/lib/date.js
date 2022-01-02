@@ -16,5 +16,17 @@ export function getWeekdays() {
 		full: weekdaysFull[ indexOfDay ],
 		short: weekdaysShort[ indexOfDay ],
 		min: weekdaysMin[ indexOfDay ],
+		index: indexOfDay,
 	} ) );
+}
+
+export function getWeekendDays( weekendDayIndexes ) {
+	const weekendDays = [];
+	getWeekdays().forEach( ( { index } ) => {
+		if ( weekendDayIndexes.includes( index ) ) {
+			weekendDays.push( index );
+		}
+	} );
+
+	return weekendDays;
 }

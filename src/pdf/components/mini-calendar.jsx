@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import { withTranslation } from 'react-i18next';
 
-import { getWeekdays } from 'lib/date';
+import { getWeekdays, getWeekendDays } from 'lib/date';
 import PdfConfig from 'pdf/config';
 import {
 	dayPageLink,
@@ -191,11 +191,8 @@ class MiniCalendar extends React.Component {
 		const { config, t } = this.props;
 		const { day } = this.styles;
 		const days = [];
-		const weekdays = getWeekdays();
-		const weekendDays = [
-			weekdays[ weekdays.length - 1 ].min,
-			weekdays[ weekdays.length - 2 ].min,
-		];
+		const weekendDays = getWeekendDays( config.weekendDays );
+
 		for ( let i = 0; i < 7; i++ ) {
 			const currentDay = week.add( i, 'days' );
 			const dayStyles = [ day ];
@@ -214,7 +211,7 @@ class MiniCalendar extends React.Component {
 				dayStyles.push( this.styles.currentWeekDay );
 			}
 
-			if ( weekendDays.includes( currentDay.format( 'dd' ) ) ) {
+			if ( weekendDays.includes( currentDay.day() ) ) {
 				dayStyles.push( this.styles.weekendDay );
 			}
 
