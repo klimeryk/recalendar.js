@@ -262,7 +262,6 @@ class Configuration extends React.PureComponent {
 		return (
 			<Itinerary
 				key={ dayOfWeek }
-				eventKey={ index.toString() }
 				field={ index.toString() }
 				title={ dayOfWeek }
 				itinerary={ this.state.dayItineraries[ index ].items }
@@ -355,22 +354,24 @@ class Configuration extends React.PureComponent {
 						toggledOn={ this.state.isMonthOverviewEnabled }
 					>
 						<p className="mb-0">{t( 'configuration.month.description' )}</p>
-						<ItemsList
-							field="habits"
-							title={ t( 'configuration.month.habits.title' ) }
-							items={ this.state.habits }
-							onAdd={ this.handleItemAdd }
-							onChange={ this.handleItemChange }
-							onRemove={ this.handleItemRemove }
-						/>
-						<Itinerary
-							field="monthItinerary"
-							title={ t( 'configuration.month.itinerary.title' ) }
-							itinerary={ this.state.monthItinerary }
-							onAdd={ this.handleItineraryAdd }
-							onChange={ this.handleItineraryChange }
-							onRemove={ this.handleItineraryRemove }
-						/>
+						<Accordion className="mt-3" defaultActiveKey="habits">
+							<ItemsList
+								field="habits"
+								title={ t( 'configuration.month.habits.title' ) }
+								items={ this.state.habits }
+								onAdd={ this.handleItemAdd }
+								onChange={ this.handleItemChange }
+								onRemove={ this.handleItemRemove }
+							/>
+							<Itinerary
+								field="monthItinerary"
+								title={ t( 'configuration.month.itinerary.title' ) }
+								itinerary={ this.state.monthItinerary }
+								onAdd={ this.handleItineraryAdd }
+								onChange={ this.handleItineraryChange }
+								onRemove={ this.handleItineraryRemove }
+							/>
+						</Accordion>
 					</ToggleForm>
 					<ToggleForm
 						id="isWeekOverviewEnabled"
@@ -379,14 +380,16 @@ class Configuration extends React.PureComponent {
 						toggledOn={ this.state.isWeekOverviewEnabled }
 					>
 						<p className="mb-0">{t( 'configuration.week.description' )}</p>
-						<ItemsList
-							field="todos"
-							title={ t( 'configuration.week.todos.title' ) }
-							items={ this.state.todos }
-							onAdd={ this.handleItemAdd }
-							onChange={ this.handleItemChange }
-							onRemove={ this.handleItemRemove }
-						/>
+						<Accordion className="mt-3" defaultActiveKey="todos">
+							<ItemsList
+								field="todos"
+								title={ t( 'configuration.week.todos.title' ) }
+								items={ this.state.todos }
+								onAdd={ this.handleItemAdd }
+								onChange={ this.handleItemChange }
+								onRemove={ this.handleItemRemove }
+							/>
+						</Accordion>
 					</ToggleForm>
 					<Accordion.Item eventKey="dayItineraries">
 						<Accordion.Header>{t( 'configuration.day.title' )}</Accordion.Header>
@@ -405,14 +408,19 @@ class Configuration extends React.PureComponent {
 						<p className="mb-0">
 							{t( 'configuration.week.retrospective.description' )}
 						</p>
-						<Itinerary
-							field="weekRetrospectiveItinerary"
-							title={ t( 'configuration.week.retrospective.itinerary.title' ) }
-							itinerary={ this.state.weekRetrospectiveItinerary }
-							onAdd={ this.handleItineraryAdd }
-							onChange={ this.handleItineraryChange }
-							onRemove={ this.handleItineraryRemove }
-						/>
+						<Accordion
+							className="mt-3"
+							defaultActiveKey="weekRetrospectiveItinerary"
+						>
+							<Itinerary
+								field="weekRetrospectiveItinerary"
+								title={ t( 'configuration.week.retrospective.itinerary.title' ) }
+								itinerary={ this.state.weekRetrospectiveItinerary }
+								onAdd={ this.handleItineraryAdd }
+								onChange={ this.handleItineraryChange }
+								onRemove={ this.handleItineraryRemove }
+							/>
+						</Accordion>
 					</ToggleForm>
 				</Accordion>
 				<Stack

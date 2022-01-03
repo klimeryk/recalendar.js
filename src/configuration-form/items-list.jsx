@@ -43,30 +43,28 @@ class ItemsList extends React.Component {
 	render() {
 		const { items, field, onAdd, t, title } = this.props;
 		return (
-			<Accordion className="mt-3" defaultActiveKey="0">
-				<Accordion.Item eventKey="0">
-					<Accordion.Header>{title}</Accordion.Header>
-					<Accordion.Body>
-						<Stack gap={ 2 }>
-							{items.map( this.renderItem )}
-							{items.length === 0 && (
-								<Alert variant="secondary" className="mb-0">
-									{t( 'configuration.items-list.empty' )}
-								</Alert>
-							)}
-						</Stack>
-						<Stack direction="horizontal" className="mt-3">
-							<Button
-								variant="outline-secondary"
-								onClick={ onAdd }
-								data-field={ field }
-							>
-								{t( 'configuration.items-list.button.item' )}
-							</Button>
-						</Stack>
-					</Accordion.Body>
-				</Accordion.Item>
-			</Accordion>
+			<Accordion.Item eventKey={ field }>
+				<Accordion.Header>{title}</Accordion.Header>
+				<Accordion.Body>
+					<Stack gap={ 2 }>
+						{items.map( this.renderItem )}
+						{items.length === 0 && (
+							<Alert variant="secondary" className="mb-0">
+								{t( 'configuration.items-list.empty' )}
+							</Alert>
+						)}
+					</Stack>
+					<Stack direction="horizontal" className="mt-3">
+						<Button
+							variant="outline-secondary"
+							onClick={ onAdd }
+							data-field={ field }
+						>
+							{t( 'configuration.items-list.button.item' )}
+						</Button>
+					</Stack>
+				</Accordion.Body>
+			</Accordion.Item>
 		);
 	}
 }

@@ -101,9 +101,9 @@ class Itinerary extends React.Component {
 	}
 
 	render() {
-		const { eventKey, field, itinerary, onAdd, onCopy, t, title } = this.props;
-		const accordionItem = (
-			<Accordion.Item eventKey={ eventKey || '0' }>
+		const { field, itinerary, onAdd, onCopy, t, title } = this.props;
+		return (
+			<Accordion.Item eventKey={ field }>
 				<Accordion.Header>{title}</Accordion.Header>
 				<Accordion.Body>
 					<Stack gap={ 2 }>
@@ -155,20 +155,10 @@ class Itinerary extends React.Component {
 				</Accordion.Body>
 			</Accordion.Item>
 		);
-		if ( eventKey ) {
-			return accordionItem;
-		}
-
-		return (
-			<Accordion className="mt-3" defaultActiveKey="0">
-				{accordionItem}
-			</Accordion>
-		);
 	}
 }
 
 Itinerary.propTypes = {
-	eventKey: PropTypes.string,
 	field: PropTypes.string.isRequired,
 	itinerary: PropTypes.array.isRequired,
 	onAdd: PropTypes.func.isRequired,
