@@ -199,6 +199,16 @@ class Configuration extends React.PureComponent {
 		this.setState( { dayItineraries: newItineraries } );
 	};
 
+	handleDayItineraryCopy = ( event ) => {
+		const { field } = event.target.dataset;
+		const itemsToCopy = [ ...this.state.dayItineraries[ field ].items ];
+		const newItineraries = this.state.dayItineraries.map( ( itinerary ) => ( {
+			...itinerary,
+			items: [ ...itemsToCopy ],
+		} ) );
+		this.setState( { dayItineraries: newItineraries } );
+	};
+
 	handleDayItineraryAdd = ( event ) => {
 		const newItineraries = [ ...this.state.dayItineraries ];
 		const { field, type } = event.target.dataset;
@@ -259,6 +269,7 @@ class Configuration extends React.PureComponent {
 				onAdd={ this.handleDayItineraryAdd }
 				onChange={ this.handleDayItineraryChange }
 				onRemove={ this.handleDayItineraryRemove }
+				onCopy={ this.handleDayItineraryCopy }
 			/>
 		);
 	};
