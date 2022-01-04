@@ -73,7 +73,7 @@ class ConfigurationSelector extends React.Component {
 				config.habits = [];
 				config.isMonthOverviewEnabled = false;
 				config.monthItinerary = [];
-				config.isWeekOverviewEnabled = false;
+				config.isWeekOverviewEnabled = true;
 				config.todos = [];
 				config.dayItineraries = [ ...Array( 7 ).keys() ].map( () => {
 					const itinerary = {
