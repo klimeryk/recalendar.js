@@ -22,12 +22,14 @@ import ConfigurationSelector from 'configuration-form/configuration-selector';
 import ItemsList from 'configuration-form/items-list';
 import Itinerary from 'configuration-form/itinerary';
 import SpecialDates from 'configuration-form/special-dates';
-import ToggleForm from 'configuration-form/toggle-form';
+import ToggleAccordionItem from 'configuration-form/toggle-accordion-item';
 import { getWeekdays } from 'lib/date';
 import PdfConfig, { hydrateFromObject } from 'pdf/config';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './app.css';
+
+const DAY_ITINERARY_ID_PREFIX = 'day-itinerary-';
 
 class Configuration extends React.PureComponent {
 	state = {
@@ -90,6 +92,14 @@ class Configuration extends React.PureComponent {
 
 	handleToggle = ( event ) => {
 		this.setState( { [ event.target.id ]: event.target.checked } );
+	};
+
+	handleDayItineraryToggle = ( event ) => {
+		const id = Number( event.target.id.replace( DAY_ITINERARY_ID_PREFIX, '' ) );
+		const newItineraries = [ ...this.state.dayItineraries ];
+		newItineraries[ id ].isEnabled = event.target.checked;
+
+		this.setState( { dayItineraries: newItineraries } );
 	};
 
 	handleDownload = ( event ) => {
@@ -205,6 +215,7 @@ class Configuration extends React.PureComponent {
 		const newItineraries = this.state.dayItineraries.map( ( itinerary ) => ( {
 			...itinerary,
 			items: [ ...itemsToCopy ],
+			isEnabled: this.state.dayItineraries[ field ].isEnabled,
 		} ) );
 		this.setState( { dayItineraries: newItineraries } );
 	};
@@ -260,16 +271,22 @@ class Configuration extends React.PureComponent {
 
 	renderDayItinerary = ( { full: dayOfWeek }, index ) => {
 		return (
-			<Itinerary
+			<ToggleAccordionItem
 				key={ dayOfWeek }
-				field={ index.toString() }
+				id={ DAY_ITINERARY_ID_PREFIX + index }
 				title={ dayOfWeek }
-				itinerary={ this.state.dayItineraries[ index ].items }
-				onAdd={ this.handleDayItineraryAdd }
-				onChange={ this.handleDayItineraryChange }
-				onRemove={ this.handleDayItineraryRemove }
-				onCopy={ this.handleDayItineraryCopy }
-			/>
+				onToggle={ this.handleDayItineraryToggle }
+				toggledOn={ this.state.dayItineraries[ index ].isEnabled }
+			>
+				<Itinerary
+					field={ index.toString() }
+					itinerary={ this.state.dayItineraries[ index ].items }
+					onAdd={ this.handleDayItineraryAdd }
+					onChange={ this.handleDayItineraryChange }
+					onRemove={ this.handleDayItineraryRemove }
+					onCopy={ this.handleDayItineraryCopy }
+				/>
+			</ToggleAccordionItem>
 		);
 	};
 
@@ -347,7 +364,7 @@ class Configuration extends React.PureComponent {
 						onAdd={ this.handleSpecialDateAdd }
 						onRemove={ this.handleSpecialDateRemove }
 					/>
-					<ToggleForm
+					<ToggleAccordionItem
 						id="isMonthOverviewEnabled"
 						title={ t( 'configuration.month.title' ) }
 						onToggle={ this.handleToggle }
@@ -363,17 +380,23 @@ class Configuration extends React.PureComponent {
 								onChange={ this.handleItemChange }
 								onRemove={ this.handleItemRemove }
 							/>
-							<Itinerary
-								field="monthItinerary"
-								title={ t( 'configuration.month.itinerary.title' ) }
-								itinerary={ this.state.monthItinerary }
-								onAdd={ this.handleItineraryAdd }
-								onChange={ this.handleItineraryChange }
-								onRemove={ this.handleItineraryRemove }
-							/>
+							<Accordion.Item eventKey="monthItinerary">
+								<Accordion.Header>
+									{t( 'configuration.month.itinerary.title' )}
+								</Accordion.Header>
+								<Accordion.Body>
+									<Itinerary
+										field="monthItinerary"
+										itinerary={ this.state.monthItinerary }
+										onAdd={ this.handleItineraryAdd }
+										onChange={ this.handleItineraryChange }
+										onRemove={ this.handleItineraryRemove }
+									/>
+								</Accordion.Body>
+							</Accordion.Item>
 						</Accordion>
-					</ToggleForm>
-					<ToggleForm
+					</ToggleAccordionItem>
+					<ToggleAccordionItem
 						id="isWeekOverviewEnabled"
 						title={ t( 'configuration.week.title' ) }
 						onToggle={ this.handleToggle }
@@ -390,7 +413,7 @@ class Configuration extends React.PureComponent {
 								onRemove={ this.handleItemRemove }
 							/>
 						</Accordion>
-					</ToggleForm>
+					</ToggleAccordionItem>
 					<Accordion.Item eventKey="dayItineraries">
 						<Accordion.Header>{t( 'configuration.day.title' )}</Accordion.Header>
 						<Accordion.Body>
@@ -399,7 +422,7 @@ class Configuration extends React.PureComponent {
 							</Accordion>
 						</Accordion.Body>
 					</Accordion.Item>
-					<ToggleForm
+					<ToggleAccordionItem
 						id="isWeekRetrospectiveEnabled"
 						title={ t( 'configuration.week.retrospective.title' ) }
 						onToggle={ this.handleToggle }
@@ -412,16 +435,22 @@ class Configuration extends React.PureComponent {
 							className="mt-3"
 							defaultActiveKey="weekRetrospectiveItinerary"
 						>
-							<Itinerary
-								field="weekRetrospectiveItinerary"
-								title={ t( 'configuration.week.retrospective.itinerary.title' ) }
-								itinerary={ this.state.weekRetrospectiveItinerary }
-								onAdd={ this.handleItineraryAdd }
-								onChange={ this.handleItineraryChange }
-								onRemove={ this.handleItineraryRemove }
-							/>
+							<Accordion.Item eventKey="weekRetrospectiveItinerary">
+								<Accordion.Header>
+									{t( 'configuration.week.retrospective.itinerary.title' )}
+								</Accordion.Header>
+								<Accordion.Body>
+									<Itinerary
+										field="weekRetrospectiveItinerary"
+										itinerary={ this.state.weekRetrospectiveItinerary }
+										onAdd={ this.handleItineraryAdd }
+										onChange={ this.handleItineraryChange }
+										onRemove={ this.handleItineraryRemove }
+									/>
+								</Accordion.Body>
+							</Accordion.Item>
 						</Accordion>
-					</ToggleForm>
+					</ToggleAccordionItem>
 				</Accordion>
 				<Stack
 					direction="vertical"

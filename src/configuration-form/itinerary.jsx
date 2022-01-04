@@ -1,6 +1,5 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import Accordion from 'react-bootstrap/Accordion';
 import Alert from 'react-bootstrap/Alert';
 import Button from 'react-bootstrap/Button';
 import ButtonGroup from 'react-bootstrap/ButtonGroup';
@@ -101,59 +100,56 @@ class Itinerary extends React.Component {
 	}
 
 	render() {
-		const { field, itinerary, onAdd, onCopy, t, title } = this.props;
+		const { field, itinerary, onAdd, onCopy, t } = this.props;
 		return (
-			<Accordion.Item eventKey={ field }>
-				<Accordion.Header>{title}</Accordion.Header>
-				<Accordion.Body>
-					<Stack gap={ 2 }>
-						{itinerary.map( this.renderRow )}
-						{itinerary.length === 0 && (
-							<Alert variant="secondary" className="mb-0">
-								{t( 'configuration.itinerary.empty' )}
-							</Alert>
-						)}
-						<Stack direction="horizontal" gap={ 3 }>
-							<ButtonGroup>
-								<Button
-									variant="outline-secondary"
-									onClick={ onAdd }
-									data-type={ ITINERARY_ITEM }
-									data-field={ field }
-								>
-									{t( 'configuration.itinerary.button.item' )}
-								</Button>
-								<Button
-									variant="outline-secondary"
-									onClick={ onAdd }
-									data-type={ ITINERARY_LINES }
-									data-field={ field }
-								>
-									{t( 'configuration.itinerary.button.lines' )}
-								</Button>
-								<Button
-									variant="outline-secondary"
-									onClick={ onAdd }
-									data-type={ ITINERARY_NEW_PAGE }
-									data-field={ field }
-								>
-									{t( 'configuration.itinerary.button.page' )}
-								</Button>
-							</ButtonGroup>
-						</Stack>
-					</Stack>
-					{onCopy && (
-						<Button
-							variant="outline-danger"
-							className="mt-3"
-							onClick={ onCopy }
-							data-field={ field }
-						>
-							{t( 'configuration.itinerary.button.copy' )}
-						</Button>
+			<>
+				<Stack gap={ 2 }>
+					{itinerary.map( this.renderRow )}
+					{itinerary.length === 0 && (
+						<Alert variant="secondary" className="mb-0">
+							{t( 'configuration.itinerary.empty' )}
+						</Alert>
 					)}
-				</Accordion.Body>
-			</Accordion.Item>
+					<Stack direction="horizontal" gap={ 3 }>
+						<ButtonGroup>
+							<Button
+								variant="outline-secondary"
+								onClick={ onAdd }
+								data-type={ ITINERARY_ITEM }
+								data-field={ field }
+							>
+								{t( 'configuration.itinerary.button.item' )}
+							</Button>
+							<Button
+								variant="outline-secondary"
+								onClick={ onAdd }
+								data-type={ ITINERARY_LINES }
+								data-field={ field }
+							>
+								{t( 'configuration.itinerary.button.lines' )}
+							</Button>
+							<Button
+								variant="outline-secondary"
+								onClick={ onAdd }
+								data-type={ ITINERARY_NEW_PAGE }
+								data-field={ field }
+							>
+								{t( 'configuration.itinerary.button.page' )}
+							</Button>
+						</ButtonGroup>
+					</Stack>
+				</Stack>
+				{onCopy && (
+					<Button
+						variant="outline-danger"
+						className="mt-3"
+						onClick={ onCopy }
+						data-field={ field }
+					>
+						{t( 'configuration.itinerary.button.copy' )}
+					</Button>
+				)}
+			</>
 		);
 	}
 }
@@ -166,7 +162,6 @@ Itinerary.propTypes = {
 	onCopy: PropTypes.func,
 	onRemove: PropTypes.func.isRequired,
 	t: PropTypes.func.isRequired,
-	title: PropTypes.string.isRequired,
 };
 
 export default withTranslation( 'app' )( Itinerary );

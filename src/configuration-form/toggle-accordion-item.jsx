@@ -6,7 +6,7 @@ import Stack from 'react-bootstrap/Stack';
 import ToggleButton from 'react-bootstrap/ToggleButton';
 import { withTranslation } from 'react-i18next';
 
-function ToggleForm( { children, id, onToggle, t, title, toggledOn } ) {
+function ToggleAccordionItem( { children, id, onToggle, t, title, toggledOn } ) {
 	const label = toggledOn
 		? t( 'configuration.toggle-form.enabled' )
 		: t( 'configuration.toggle-form.disabled' );
@@ -42,7 +42,7 @@ function ToggleForm( { children, id, onToggle, t, title, toggledOn } ) {
 	);
 }
 
-ToggleForm.propTypes = {
+ToggleAccordionItem.propTypes = {
 	children: PropTypes.node.isRequired,
 	id: PropTypes.string.isRequired,
 	onToggle: PropTypes.func.isRequired,
@@ -51,4 +51,4 @@ ToggleForm.propTypes = {
 	toggledOn: PropTypes.bool.isRequired,
 };
 
-export default withTranslation( 'app' )( ToggleForm );
+export default withTranslation( 'app' )( ToggleAccordionItem );

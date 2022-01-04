@@ -9,6 +9,7 @@ import { withTranslation } from 'react-i18next';
 
 import { ITINERARY_ITEM, ITINERARY_LINES } from 'configuration-form/itinerary';
 import { getJsonAttachment } from 'lib/attachments';
+import { convertConfigToCurrentVersion } from 'lib/config-compat';
 import PdfConfig, { CONFIG_FILE } from 'pdf/config';
 
 const STATUS_EMPTY = 'EMPTY';
@@ -43,6 +44,7 @@ class ConfigurationSelector extends React.Component {
 							{ type: ITINERARY_ITEM, value: 'Super advanced' },
 							{ type: ITINERARY_LINES, value: 50 },
 						],
+						isEnabled: true,
 					};
 					dayOfWeek = ++dayOfWeek % 7;
 					return itinerary;
@@ -58,6 +60,7 @@ class ConfigurationSelector extends React.Component {
 					const itinerary = {
 						dayOfWeek,
 						items: [],
+						isEnabled: true,
 					};
 					dayOfWeek = ++dayOfWeek % 7;
 					return itinerary;
@@ -76,6 +79,7 @@ class ConfigurationSelector extends React.Component {
 					const itinerary = {
 						dayOfWeek,
 						items: [],
+						isEnabled: false,
 					};
 					dayOfWeek = ++dayOfWeek % 7;
 					return itinerary;
@@ -120,7 +124,7 @@ class ConfigurationSelector extends React.Component {
 			status: STATUS_SUCCESS,
 		} );
 
-		this.props.onConfigChange( attachment );
+		this.props.onConfigChange( convertConfigToCurrentVersion( attachment ) );
 	};
 
 	renderStatusMessage() {

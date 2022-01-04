@@ -21,7 +21,8 @@ const CONFIG_FIELDS = [
 
 export const CONFIG_FILE = 'config.json';
 export const CONFIG_VERSION_1 = 'v1';
-export const CONFIG_CURRENT_VERSION = CONFIG_VERSION_1;
+export const CONFIG_VERSION_2 = 'v2';
+export const CONFIG_CURRENT_VERSION = CONFIG_VERSION_2;
 
 export function hydrateFromObject( object ) {
 	return CONFIG_FIELDS.reduce(
@@ -87,6 +88,7 @@ class PdfConfig {
 			const itinerary = {
 				dayOfWeek,
 				items: [ { type: ITINERARY_LINES, value: 50 } ],
+				isEnabled: true,
 			};
 			dayOfWeek = ++dayOfWeek % 7;
 			return itinerary;

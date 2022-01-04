@@ -91,8 +91,21 @@ class DayPage extends React.Component {
 		) );
 	}
 
+	renderExtraItems = ( items, index ) => (
+		<Page key={ index } size={ this.props.config.pageSize }>
+			<View style={ this.styles.page }>
+				<Itinerary items={ items } />
+			</View>
+		</Page>
+	);
+
 	render() {
 		const { date, config } = this.props;
+		const { items, isEnabled } = config.dayItineraries[ date.weekday() ];
+		if ( ! isEnabled ) {
+			return null;
+		}
+
 		const optionalStartOfMonthId =
 			! config.isMonthOverviewEnabled && date.date() === 1
 				? { id: monthOverviewLink( date ) }
@@ -140,19 +153,11 @@ class DayPage extends React.Component {
 							<MiniCalendar date={ date } config={ config } />
 						</View>
 						<View style={ this.styles.content }>
-							<Itinerary items={ config.dayItineraries[ date.weekday() ].items } />
+							<Itinerary items={ items } />
 						</View>
 					</View>
 				</Page>
-				{getItemsOnExtraPages( config.dayItineraries[ date.weekday() ].items ).map(
-					( items, index ) => (
-						<Page key={ index } size={ config.pageSize }>
-							<View style={ this.styles.page }>
-								<Itinerary items={ items } />
-							</View>
-						</Page>
-					),
-				)}
+				{getItemsOnExtraPages( items ).map( this.renderExtraItems )}
 			</>
 		);
 	}
