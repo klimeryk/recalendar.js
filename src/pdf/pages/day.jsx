@@ -8,6 +8,8 @@ import MiniCalendar from 'pdf/components/mini-calendar';
 import PdfConfig from 'pdf/config';
 import {
 	dayPageLink,
+	nextDayPageLink,
+	previousDayPageLink,
 	monthOverviewLink,
 	weekOverviewLink,
 } from 'pdf/lib/links';
@@ -128,14 +130,14 @@ class DayPage extends React.Component {
 										{date.format( 'MMMM' )}
 									</Link>
 									<Link
-										src={ '#' + dayPageLink( date.subtract( 1, 'day' ) ) }
+										src={ '#' + previousDayPageLink( date, config ) }
 										style={ this.styles.dayArrow }
 									>
 										«
 									</Link>
 									<Text style={ this.styles.dayNumber }>{date.format( 'DD' )}</Text>
 									<Link
-										src={ '#' + dayPageLink( date.add( 1, 'day' ) ) }
+										src={ '#' + nextDayPageLink( date, config ) }
 										style={ this.styles.dayArrow }
 									>
 										»
