@@ -22,7 +22,7 @@ i18n
 	} );
 
 i18n.on( 'languageChanged', ( newLanguage ) => {
-	require( 'dayjs/locale/' + newLanguage );
+	require( 'dayjs/locale/' + newLanguage + '.js' );
 	dayjs.locale( newLanguage );
 	dayjs.updateLocale( newLanguage, {
 		weekStart: 1, // Week starts on Monday

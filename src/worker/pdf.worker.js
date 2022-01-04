@@ -52,7 +52,7 @@ self.onmessage = ( { data } ) => {
 
 	changeLanguage( language );
 
-	require( `dayjs/locale/${language}` );
+	require( `dayjs/locale/${language}.js` );
 	dayjs.locale( language );
 	dayjs.updateLocale( language, {
 		weekStart: firstDayOfWeek,
