@@ -29,7 +29,7 @@ function ToggleAccordionItem( { children, id, onToggle, t, title, toggledOn } ) 
 						className="mb-1"
 						id={ id }
 						type="checkbox"
-						variant="outline-success"
+						variant={ toggledOn ? 'outline-success' : 'outline-secondary' }
 						checked={ toggledOn }
 						onChange={ onToggle }
 					>
