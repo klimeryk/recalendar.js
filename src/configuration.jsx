@@ -9,6 +9,7 @@ import Card from 'react-bootstrap/Card';
 import Col from 'react-bootstrap/Col';
 import Container from 'react-bootstrap/Container';
 import Form from 'react-bootstrap/Form';
+import ListGroup from 'react-bootstrap/ListGroup';
 import Row from 'react-bootstrap/Row';
 import Spinner from 'react-bootstrap/Spinner';
 import Stack from 'react-bootstrap/Stack';
@@ -100,6 +101,21 @@ class Configuration extends React.PureComponent {
 		newItineraries[ id ].isEnabled = event.target.checked;
 
 		this.setState( { dayItineraries: newItineraries } );
+	};
+
+	handleWeekendChange = ( event ) => {
+		const dayOfWeek = Number( event.target.dataset.index );
+		const newWeekendDays = [ ...this.state.weekendDays ];
+		const indexInArray = newWeekendDays.indexOf( dayOfWeek );
+		if ( event.target.checked ) {
+			if ( indexInArray === -1 ) {
+				newWeekendDays.push( dayOfWeek );
+			}
+		} else if ( indexInArray !== -1 ) {
+			newWeekendDays.splice( indexInArray, 1 );
+		}
+
+		this.setState( { weekendDays: newWeekendDays } );
 	};
 
 	handleDownload = ( event ) => {
@@ -259,14 +275,26 @@ class Configuration extends React.PureComponent {
 	}
 
 	renderDaysOfWeek() {
-		return dayjs
-			.localeData()
-			.weekdays()
-			.map( ( dayOfWeek, index ) => (
-				<option key={ index } value={ index }>
-					{dayOfWeek}
-				</option>
-			) );
+		return getWeekdays().map( ( { full, index } ) => (
+			<option key={ full } value={ index }>
+				{full}
+			</option>
+		) );
+	}
+
+	renderWeekendSelection() {
+		return getWeekdays().map( ( { full, index } ) => (
+			<ListGroup.Item key={ full } value={ index }>
+				<Form.Check
+					id={ 'weekend-' + index }
+					type="checkbox"
+					label={ full }
+					data-index={ index }
+					checked={ this.state.weekendDays.includes( index ) }
+					onChange={ this.handleWeekendChange }
+				/>
+			</ListGroup.Item>
+		) );
 	}
 
 	renderDayItinerary = ( { full: dayOfWeek }, index ) => {
@@ -357,6 +385,8 @@ class Configuration extends React.PureComponent {
 									{t( 'configuration.general.month-count.description' )}
 								</Form.Text>
 							</Form.Group>
+							<Form.Label>{t( 'configuration.general.weekend' )}</Form.Label>
+							<ListGroup>{this.renderWeekendSelection()}</ListGroup>
 						</Accordion.Body>
 					</Accordion.Item>
 					<SpecialDates

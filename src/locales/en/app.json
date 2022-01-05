@@ -42,7 +42,8 @@
 				"label": "Number of months",
 				"description": "For how many months should the calendar be generated for."
 			},
-			"first-day-of-week": "First day of week"
+			"first-day-of-week": "First day of week",
+			"weekend": "Weekend"
 		},
 		"button": {
 			"refresh": "Refesh preview",

@@ -42,7 +42,8 @@
 				"label": "Liczba miesięcy",
 				"description": "Ile miesięcy ma zawierać kalendarz."
 			},
-			"first-day-of-week": "Pierwszy dzień tygodnia"
+			"first-day-of-week": "Pierwszy dzień tygodnia",
+			"weekend": "Weekend"
 		},
 		"button": {
 			"refresh": "Odśwież podgląd",

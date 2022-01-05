@@ -42,7 +42,8 @@
 				"label": "Nombre de mois",
 				"description": "Combien de mois voulez-vous générer dans votre calendrier?"
 			},
-			"first-day-of-week": "Premier jour de la semaine"
+			"first-day-of-week": "Premier jour de la semaine",
+			"weekend": "Weekend"
 		},
 		"button": {
 			"refresh": "Actualiser l'aperçu",

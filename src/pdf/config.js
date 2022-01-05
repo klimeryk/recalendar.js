@@ -8,6 +8,7 @@ const CONFIG_FIELDS = [
 	'month',
 	'firstDayOfWeek',
 	'monthCount',
+	'weekendDays',
 	'isMonthOverviewEnabled',
 	'habits',
 	'monthItinerary',

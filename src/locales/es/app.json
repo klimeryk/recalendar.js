@@ -42,7 +42,8 @@
 				"label": "Cantidad de meses",
 				"description": "¿Cuántos meses quiere generar en su calendario?"
 			},
-			"first-day-of-week": "Primer día de la semana"
+			"first-day-of-week": "Primer día de la semana",
+			"weekend": "Weekend"
 		},
 		"button": {
 			"refresh": "Actualizar avance",
