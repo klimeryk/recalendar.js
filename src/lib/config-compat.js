@@ -1,13 +1,18 @@
-import { CONFIG_VERSION_1, CONFIG_CURRENT_VERSION } from 'pdf/config';
+import PdfConfig, {
+	CONFIG_VERSION_1,
+	CONFIG_CURRENT_VERSION,
+} from 'pdf/config';
 
 export function convertConfigToCurrentVersion( config ) {
-	switch ( config.version ) {
+	const configWithDefaults = Object.assign( new PdfConfig(), config );
+
+	switch ( configWithDefaults.version ) {
 		case CONFIG_VERSION_1:
-			return convertFromVersion1( config );
+			return convertFromVersion1( configWithDefaults );
 
 		case CONFIG_CURRENT_VERSION:
 		default:
-			return config;
+			return configWithDefaults;
 	}
 }
 
