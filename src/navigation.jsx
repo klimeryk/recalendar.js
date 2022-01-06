@@ -81,6 +81,7 @@ class Navigation extends React.Component {
 								<option value="fr">{t( 'language.french' )}</option>
 								<option value="es">{t( 'language.spanish' )}</option>
 								<option value="pl">{t( 'language.polish' )}</option>
+								<option value="nl">{t( 'language.norwegian' )}</option>
 							</Form.Select>
 						</Stack>
 					</Navbar.Collapse>

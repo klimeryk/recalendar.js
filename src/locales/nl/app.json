@@ -1,0 +1,131 @@
+{
+	"loading": "Laster...",
+	"download-ready": "Last ned nå!",
+	"navigation": {
+		"home": "Hjem",
+		"configuration": "Lag din kalender",
+		"features": "Funksjoner",
+		"faq": "FAQ"
+	},
+	"language": {
+		"label": "Språk",
+		"english": "Engelsk",
+		"polish": "Polsk",
+		"french": "Fransk",
+		"spanish": "Spansk"
+	},
+	"configuration": {
+		"selector": {
+			"label": "Start",
+			"template": {
+				"label": "Start ved å velge en mal:",
+				"basic": "Grunnleggende",
+				"advanced": "Avansert",
+				"blank": "Tom",
+				"minimalistic": "Minimalistisk"
+			},
+			"upload": {
+				"label": "Eller last opp en tidligere generert ReCalendar PDF for å bruke lik konfigurasjon:",
+				"loading": "Leser konfigurasjon fra PDF-fil, vennligst vent...",
+				"error": "Klarte ikke laste ReCalendar konfigurasjon fra denne PDFen - er du sikker på om den ble generert med denne nettsiden?",
+				"success": "Konfigurasjon lastet fra PDF - velkommen tilbake!"
+			}
+		},
+		"general": {
+			"label": "Generelle innstillinger",
+			"year": "År",
+			"starting-month": {
+				"label": "Startmåned",
+				"description": "Den første måneden i den genererte kalenderen. Velg for eksempel August om du vil dekke et semester, istedet for et kalenderår."
+			},
+			"month-count": {
+				"label": "Antall måneder",
+				"description": "For hvor mange måneder skal kalenderen genereres for."
+			},
+			"first-day-of-week": "Første dag i uka",
+			"weekend": "Helg"
+		},
+		"button": {
+			"refresh": "Oppdater forhåndsvisning",
+			"download": "Generer full kalender og last ned",
+			"generating": "Genererer, vennligst vent..."
+		},
+		"itinerary": {
+			"empty": "Ingen avtaler",
+			"placeholder": {
+				"lines": "Antall linjer",
+				"page": "Nytt sideskift"
+			},
+			"button": {
+				"copy": "Kopier disse avtalene til alle andre dager",
+				"remove": "Fjern",
+				"item": "Legg til avtale",
+				"page": "Start en ny side",
+				"lines": "Legg til tomme linjer"
+			}
+		},
+		"items-list": {
+			"button": {
+				"item": "Legg til element",
+				"remove": "Fjern"
+			},
+			"empty": "Tom liste",
+			"placeholder": "Element"
+		},
+		"toggle-form": {
+			"enabled": "Aktivert",
+			"disabled": "Ikke aktivert"
+		},
+		"month": {
+			"title": "Månedsoversikt",
+			"description": "Månedsoversikten er et sted for å sette mål for den kommende måneden, spore vaner og lage andre planer.",
+			"habits": {
+				"title": "Vaner"
+			},
+			"itinerary": {
+				"title": "Avtaler"
+			}
+		},
+		"week": {
+			"title": "Ukeoversikt",
+			"description": "Ukeoverisktengir deg en overiskt over uka for å lettere lage planer.",
+			"todos": {
+				"title": "TODOs"
+			},
+			"retrospective": {
+				"title": "Forrige uke",
+				"description": "Forrige uke er et sted for å reflektere over den foregående uka - hvordan det gikk, hva du lærte, hva kan gjøres bedre neste uke?",
+				"itinerary": {
+					"title": "Avtaler"
+				}
+			}
+		},
+		"day": {
+			"title": "Daglige avtaler"
+		},
+		"special-dates": {
+			"title": "Spesielle datoer",
+			"description": "Legg til bursdager, feiringer, arrangementer, m.m. her for å få påminnelser om dem i ukesoversikter og dagsoversikter når de nærmer seg.",
+			"empty": "Ingen datoer",
+			"placeholder": "Hva er anledningen?",
+			"button": {
+				"item": "Legg til dato",
+				"remove": "Fjern"
+			}
+		},
+		"generation-description": "PDF generering er gjort i sin helhet gjort i netteleseren - ingen data sendes til våre servere!"
+	},
+	"preview": {
+		"title": "Kalenderforhåndsvisning",
+		"subtitle": "(kun den første måneden genereres i forhåndsvisningen)",
+		"viewer-title": "PDF Forhåndsvisning",
+		"generating": {
+			"full": "Genererer full kalender - dette kan ta mer enn et minutt...",
+			"preview": "Geneerer forhåndsvisning, vennlist vent - det kan ta litt tid."
+		},
+		"empty": {
+			"title": "Bruk konfigureringsskjema for å lage din personlige kalender.",
+			"subtitle": "Forhåndsvisningen vil vises her."
+		}
+	}
+}
