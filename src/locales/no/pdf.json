@@ -1,0 +1,28 @@
+{
+	"calendar": {
+		"header": {
+			"week-number": "Uke#",
+			"retrospective": "FU"
+		},
+		"body": {
+			"retrospective": "F"
+		}
+	},
+	"page": {
+		"month": {
+			"habits": {
+				"title": "Vaner"
+			}
+		},
+		"week": {
+			"title": "Uke"
+		},
+		"retrospective": {
+			"title": "Forrige uke for uke"
+		},
+		"last": {
+			"title": "Generert av <recalendar>https://recalendar.me/</recalendar>",
+			"subtitle": "Du kan laste opp denne PDFen der for å bruke samme konfigurasjon som ble brukt for å generere denne og raskt lage en lignenede en for det nye året!"
+		}
+	}
+}
