@@ -1,0 +1,132 @@
+{
+	"loading": "Lade...",
+	"download-ready": "Jetzt herunterladen!",
+	"navigation": {
+		"home": "Start",
+		"configuration": "Kalender erzeugen",
+		"features": "Features",
+		"faq": "FAQ"
+	},
+	"language": {
+		"label": "Sprache",
+		"english": "Englisch",
+		"polish": "Polnisch",
+		"french": "Französisch",
+		"spanish": "Spanisch",
+		"german": "Deutsch"
+	},
+	"configuration": {
+		"selector": {
+			"label": "Start",
+			"template": {
+				"label": "Wähle eine Vorlage aus:",
+				"basic": "Einfach",
+				"advanced": "Fortschritten",
+				"blank": "Leer",
+				"minimalistic": "Minimalistisch"
+			},
+			"upload": {
+				"label": "Lade einen existierenden ReCalendar PDF hoch um die Konfiguration zu übernehmen:",
+				"loading": "Lese Konfiguration aus der PDF Datei, bitte warten...",
+				"error": "Es konnte keine Konfigurationa aus dem PDF übernommen werden - bist du sicher, dass das PDF mit dieser Website generiert worden ist?",
+				"success": "Konfiguration aus existiermendem PDF geladen - Willkommen zurück!"
+			}
+		},
+		"general": {
+			"label": "Allgemeine Optionen",
+			"year": "Jahr",
+			"starting-month": {
+				"label": "Start-Monat",
+				"description": "Das erste Monat, welches im Kalender enthalten seinsoll. Du kannst zB Oktober auswählen um einen Kalender für ein Semster, statt für ein Jahr zu erzeugen."
+			},
+			"month-count": {
+				"label": "Anzahl der Monate",
+				"description": "Für wie viele Monate möchtest du einen Kalender erzeugen?"
+			},
+			"first-day-of-week": "Erster Tag der Woche",
+			"weekend": "Wochenende"
+		},
+		"button": {
+			"refresh": "Vorschau aktualisieren",
+			"download": "Kalender erzeugen und herunterladen",
+			"generating": "Kalender wird erzeugt, bitte warten..."
+		},
+		"itinerary": {
+			"empty": "Leerer Zeitplan",
+			"placeholder": {
+				"lines": "Zeilenanzahl",
+				"page": "Neue Seite"
+			},
+			"button": {
+				"copy": "Zeitplan für die komplette Woche übernehmen",
+				"remove": "Entfernen",
+				"item": "Eintrag hinzufügen",
+				"page": "Neue Seite hinzufügen",
+				"lines": "Leere Zeilen hinzufügen"
+			}
+		},
+		"items-list": {
+			"button": {
+				"item": "Eintrag hinzufügen",
+				"remove": "Entfernen"
+			},
+			"empty": "Leere Liste",
+			"placeholder": "Eintrag"
+		},
+		"toggle-form": {
+			"enabled": "Aktiviert",
+			"disabled": "Deaktiviert"
+		},
+		"month": {
+			"title": "Monatsübersicht",
+			"description": "In der Monatsübersicht kannst du Ziele für das kommende Monat festhalten, deine Gewohnehiten tracken oder andere Pläne aufzeichnen.",
+			"habits": {
+				"title": "Gewohnheiten"
+			},
+			"itinerary": {
+				"title": "Zeitplan"
+			}
+		},
+		"week": {
+			"title": "Wochenübersicht",
+			"description": "Die Wochenübersicht gibt dir Vogelperspektive über deine Woche und macht die Planung einfacher.",
+			"todos": {
+				"title": "Aufgaben"
+			},
+			"retrospective": {
+				"title": "Wochenrückblick",
+				"description": "Das ist der Ort an dem du deine vergangene Woche revue passieren lassen kannst. Was ist gut gelaufen, was hast du gelernt, was kannst du kommende Woche verbessern?",
+				"itinerary": {
+					"title": "Zeitplan"
+				}
+			}
+		},
+		"day": {
+			"title": "Tagesplan"
+		},
+		"special-dates": {
+			"title": "Besondere Termine",
+			"description": "Füge hier Geburtstage, Feiertage und wichtige Ereignisse hinzu. Diese tauchen dann in den Wochenübersichten und deinen Tagesplänen auf.",
+			"empty": "Keine Termine",
+			"placeholder": "Was ist der Anlass?",
+			"button": {
+				"item": "Termin hinzufügen",
+				"remove": "Entfernen"
+			}
+		},
+		"generation-description": "Dein PDF wird komplett im Browser erzeugt - keine Daten werden zu unseren Servern geschickt."
+	},
+	"preview": {
+		"title": "Vorschau",
+		"subtitle": "(in der Vorschau ist nur das erste Monat verfügbar)",
+		"viewer-title": "PDF Vorschau",
+		"generating": {
+			"full": "Erzeuge vollständigen Kalender - da könnte durchaus eine MInute dauern - wie wär's mit einem Kaffee?",
+			"preview": "Erzeuge Vorschau - das kann eine Minute dauern."
+		},
+		"empty": {
+			"title": "Benutze folgendes Formular um einen personalisierten Kalender zu erzeugen.",
+			"subtitle": "Die Vorschau wird hier angezeigt."
+		}
+	}
+}
