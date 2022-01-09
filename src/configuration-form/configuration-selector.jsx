@@ -4,7 +4,9 @@ import Alert from 'react-bootstrap/Alert';
 import Button from 'react-bootstrap/Button';
 import ButtonGroup from 'react-bootstrap/ButtonGroup';
 import Form from 'react-bootstrap/Form';
+import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
 import Stack from 'react-bootstrap/Stack';
+import Tooltip from 'react-bootstrap/Tooltip';
 import { withTranslation } from 'react-i18next';
 
 import { ITINERARY_ITEM, ITINERARY_LINES } from 'configuration-form/itinerary';
@@ -17,10 +19,10 @@ const STATUS_LOADING = 'LOADING';
 const STATUS_ERROR = 'ERROR';
 const STATUS_SUCCESS = 'SUCCESS';
 
-const TEMPLATE_BASIC = 'BASIC';
-const TEMPLATE_ADVANCED = 'ADVANCED';
-const TEMPLATE_BLANK = 'BLANK';
-const TEMPLATE_MINIMALISTIC = 'MINIMALISTIC';
+const TEMPLATE_BASIC = 'basic';
+const TEMPLATE_ADVANCED = 'advanced';
+const TEMPLATE_BLANK = 'blank';
+const TEMPLATE_MINIMALISTIC = 'minimalistic';
 
 class ConfigurationSelector extends React.Component {
 	state = {
@@ -158,40 +160,41 @@ class ConfigurationSelector extends React.Component {
 		}
 	}
 
+	renderButton = ( { template, style } ) => {
+		const { t } = this.props;
+		return (
+			<OverlayTrigger
+				key={ template }
+				placement="bottom"
+				overlay={
+					<Tooltip>
+						{t( `configuration.selector.template.${template}.description` )}
+					</Tooltip>
+				}
+			>
+				<Button
+					variant={ style }
+					data-template={ template }
+					onClick={ this.handleTemplateSelect }
+				>
+					{t( `configuration.selector.template.${template}.label` )}
+				</Button>
+			</OverlayTrigger>
+		);
+	};
+
 	render() {
 		const { t } = this.props;
 		return (
 			<Stack>
 				<Form.Label>{t( 'configuration.selector.template.label' )}</Form.Label>
 				<ButtonGroup aria-label="Config templates">
-					<Button
-						variant="info"
-						data-template={ TEMPLATE_BASIC }
-						onClick={ this.handleTemplateSelect }
-					>
-						{t( 'configuration.selector.template.basic' )}
-					</Button>
-					<Button
-						variant="primary"
-						data-template={ TEMPLATE_ADVANCED }
-						onClick={ this.handleTemplateSelect }
-					>
-						{t( 'configuration.selector.template.advanced' )}
-					</Button>
-					<Button
-						variant="blank"
-						data-template={ TEMPLATE_BLANK }
-						onClick={ this.handleTemplateSelect }
-					>
-						{t( 'configuration.selector.template.blank' )}
-					</Button>
-					<Button
-						variant="dark"
-						data-template={ TEMPLATE_MINIMALISTIC }
-						onClick={ this.handleTemplateSelect }
-					>
-						{t( 'configuration.selector.template.minimalistic' )}
-					</Button>
+					{[
+						{ template: TEMPLATE_BASIC, style: 'info' },
+						{ template: TEMPLATE_ADVANCED, style: 'primary' },
+						{ template: TEMPLATE_BLANK, style: 'blank' },
+						{ template: TEMPLATE_MINIMALISTIC, style: 'dark' },
+					].map( this.renderButton )}
 				</ButtonGroup>
 				<Form.Group controlId="configurationFile" className="mt-3">
 					<Form.Label>{t( 'configuration.selector.upload.label' )}</Form.Label>

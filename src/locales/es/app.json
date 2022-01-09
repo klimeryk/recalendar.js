@@ -19,10 +19,18 @@
 			"label": "Empezar",
 			"template": {
 				"label": "Empiece con una plantilla:",
-				"basic": "Simple",
-				"advanced": "Avanzada",
-				"blank": "Vacía",
-				"minimalistic": "Minimalista"
+				"basic": {
+					"label": "Simple"
+				},
+				"advanced": {
+					"label": "Avanzada"
+				},
+				"blank": {
+					"label": "Vacía"
+				},
+				"minimalistic": {
+					"label": "Minimalista"
+				}
 			},
 			"upload": {
 				"label": "O cargue el PDF de ReCalendar generado previamente para usar su configuración:",

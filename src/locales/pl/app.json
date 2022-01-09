@@ -19,10 +19,22 @@
 			"label": "Początek",
 			"template": {
 				"label": "Rozpocznij wybierając jeden z przykładowych szablonów:",
-				"basic": "Podstawowy",
-				"advanced": "Zaawansowany",
-				"blank": "Pusty",
-				"minimalistic": "Minimalistyczny"
+				"basic": {
+					"label": "Podstawowy",
+					"description": "Domyślne ustawienia - dobry punkt początkowy."
+				},
+				"advanced": {
+					"label": "Zaawansowany",
+					"description": "Bazuje na szabolnie Podstawowym - dodaje rozbudowane plany dnia."
+				},
+				"blank": {
+					"label": "Minimalistyczny",
+					"description": "Bazuje na szablonie Podstawowym, ale ustawia puste dni specjalne, TODO, plany, itd."
+				},
+				"minimalistic": {
+					"label": "Minimalistyczny",
+					"description": "Wyłącza wszystko oprócz przeglądu tygodnia."
+				}
 			},
 			"upload": {
 				"label": "Albo załaduj wcześniej wygenrowany ReCalendar PDF i użyj jego konfiguracji:",

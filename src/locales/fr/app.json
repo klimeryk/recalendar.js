@@ -19,10 +19,18 @@
 			"label": "Commencer",
 			"template": {
 				"label": "Commencez par sélectioner un modèle:",
-				"basic": "Simple",
-				"advanced": "Avancé",
-				"blank": "Vide",
-				"minimalistic": "Minimaliste"
+				"basic": {
+					"label": "Simple"
+				},
+				"advanced": {
+					"label": "Avancé"
+				},
+				"blank": {
+					"label": "Vide"
+				},
+				"minimalistic": {
+					"label": "Minimaliste"
+				}
 			},
 			"upload": {
 				"label": "Ou importez un PDF ReCalendar déjà généré pour utiliser sa configuration:",

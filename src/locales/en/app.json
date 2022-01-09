@@ -19,10 +19,22 @@
 			"label": "Start",
 			"template": {
 				"label": "Start by selecting a template:",
-				"basic": "Basic",
-				"advanced": "Advanced",
-				"blank": "Blank",
-				"minimalistic": "Minimalistic"
+				"basic": {
+					"label": "Basic",
+					"description": "Default settings - good starting point."
+				},
+				"advanced": {
+					"label": "Advanced",
+					"description": "Expands the Basic template by adding individual day itineraries."
+				},
+				"blank": {
+					"label": "Blank",
+					"description": "Based on Basic template, but with empty habits, TODOs, special dates, etc."
+				},
+				"minimalistic": {
+					"label": "Minimalistic",
+					"description": "Disables everything except weekly overviews."
+				}
 			},
 			"upload": {
 				"label": "Or upload previously generated ReCalendar PDF to use its config:",
