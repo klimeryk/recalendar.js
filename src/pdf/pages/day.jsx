@@ -63,7 +63,7 @@ class DayPage extends React.Component {
 		if ( this.props.config.isLeftHanded ) {
 			stylesObject.header.flexDirection = 'row-reverse';
 
-			stylesObject.meta.borderLeft = stylesObject.meta.borderRight;
+			stylesObject.meta.borderLeft = '1 solid black';
 			stylesObject.meta.borderRight = 'none';
 
 			delete stylesObject.dateMain.marginLeft;
