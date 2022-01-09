@@ -9,7 +9,11 @@ import Stack from 'react-bootstrap/Stack';
 import Tooltip from 'react-bootstrap/Tooltip';
 import { withTranslation } from 'react-i18next';
 
-import { ITINERARY_ITEM, ITINERARY_LINES } from 'configuration-form/itinerary';
+import {
+	ITINERARY_ITEM,
+	ITINERARY_LINES,
+	ITINERARY_NEW_PAGE,
+} from 'configuration-form/itinerary';
 import { getJsonAttachment } from 'lib/attachments';
 import { convertConfigToCurrentVersion } from 'lib/config-compat';
 import PdfConfig, { CONFIG_FILE } from 'pdf/config';
@@ -42,15 +46,20 @@ class ConfigurationSelector extends React.Component {
 				config.dayItineraries = [ ...Array( 7 ).keys() ].map( () => {
 					const itinerary = {
 						dayOfWeek,
-						items: [
-							{ type: ITINERARY_ITEM, value: 'Super advanced' },
-							{ type: ITINERARY_LINES, value: 50 },
-						],
+						items: this.generateAdvancedDayItems( dayOfWeek ),
 						isEnabled: true,
 					};
 					dayOfWeek = ++dayOfWeek % 7;
 					return itinerary;
 				} );
+				config.weekRetrospectiveItinerary = [
+					{ type: ITINERARY_ITEM, value: 'Wins of the week' },
+					{ type: ITINERARY_LINES, value: 7 },
+					{ type: ITINERARY_ITEM, value: 'New discoveries' },
+					{ type: ITINERARY_LINES, value: 7 },
+					{ type: ITINERARY_ITEM, value: 'What did not go well?' },
+					{ type: ITINERARY_LINES, value: 15 },
+				];
 				break;
 
 			case TEMPLATE_BLANK:
@@ -96,6 +105,30 @@ class ConfigurationSelector extends React.Component {
 
 		this.props.onConfigChange( config );
 	};
+
+	generateAdvancedDayItems( dayOfWeek ) {
+		const items = [];
+		for ( let i = 8; i <= 20; i += 2 ) {
+			items.push( {
+				type: ITINERARY_ITEM,
+				value: i.toString().padStart( 2, 0 ) + ':00',
+			} );
+			items.push( { type: ITINERARY_LINES, value: 2 } );
+		}
+
+		items.push( { type: ITINERARY_LINES, value: 20 } );
+
+		if ( dayOfWeek === 1 ) {
+			items.push( { type: ITINERARY_NEW_PAGE, value: '' } );
+			items.push( {
+				type: ITINERARY_ITEM,
+				value: 'Additional page for extra Monday notes',
+			} );
+			items.push( { type: ITINERARY_LINES, value: 50 } );
+		}
+
+		return items;
+	}
 
 	handleFileChange = ( event ) => {
 		this.setState( {
