@@ -4,7 +4,6 @@ import React from 'react';
 import { withTranslation, Trans } from 'react-i18next';
 
 import PdfConfig from 'pdf/config';
-import { yearOverviewLink } from 'pdf/lib/links';
 
 class LastPage extends React.Component {
 	styles = StyleSheet.create( {
