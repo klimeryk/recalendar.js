@@ -96,15 +96,6 @@ class WeekRetrospectivePage extends React.Component {
 		return `${beginningOfWeek} - ${endOfWeek}`;
 	}
 
-	renderLines() {
-		const lines = [];
-		for ( let i = 0; i < 50; i++ ) {
-			lines.push( <Text key={ i } style={ this.styles.line }></Text> );
-		}
-
-		return lines;
-	}
-
 	render() {
 		const { t, date, config } = this.props;
 		return (
