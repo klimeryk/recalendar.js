@@ -34,6 +34,7 @@ class ConfigurationSelector extends React.Component {
 	};
 
 	handleTemplateSelect = ( event ) => {
+		const { t } = this.props;
 		const config = new PdfConfig();
 		let dayOfWeek = config.firstDayOfWeek;
 
@@ -53,11 +54,26 @@ class ConfigurationSelector extends React.Component {
 					return itinerary;
 				} );
 				config.weekRetrospectiveItinerary = [
-					{ type: ITINERARY_ITEM, value: 'Wins of the week' },
+					{
+						type: ITINERARY_ITEM,
+						value: t( 'templates.advanced.retrospective.wins', {
+							ns: 'config',
+						} ),
+					},
 					{ type: ITINERARY_LINES, value: 7 },
-					{ type: ITINERARY_ITEM, value: 'New discoveries' },
+					{
+						type: ITINERARY_ITEM,
+						value: t( 'templates.advanced.retrospective.discoveries', {
+							ns: 'config',
+						} ),
+					},
 					{ type: ITINERARY_LINES, value: 7 },
-					{ type: ITINERARY_ITEM, value: 'What did not go well?' },
+					{
+						type: ITINERARY_ITEM,
+						value: t( 'templates.advanced.retrospective.fails', {
+							ns: 'config',
+						} ),
+					},
 					{ type: ITINERARY_LINES, value: 15 },
 				];
 				break;
@@ -122,7 +138,7 @@ class ConfigurationSelector extends React.Component {
 			items.push( { type: ITINERARY_NEW_PAGE, value: '' } );
 			items.push( {
 				type: ITINERARY_ITEM,
-				value: 'Additional page for extra Monday notes',
+				value: this.props.t( 'templates.advanced.day.monday', { ns: 'config' } ),
 			} );
 			items.push( { type: ITINERARY_LINES, value: 50 } );
 		}
@@ -248,4 +264,4 @@ ConfigurationSelector.propTypes = {
 	t: PropTypes.func.isRequired,
 };
 
-export default withTranslation( [ 'app' ] )( ConfigurationSelector );
+export default withTranslation( [ 'app', 'config' ] )( ConfigurationSelector );

@@ -68,7 +68,7 @@ class PdfConfig {
 		this.monthItinerary = [
 			{
 				type: ITINERARY_ITEM,
-				value: 'Main goal',
+				value: t( 'month.goal', { ns: 'config' } ),
 			},
 			{
 				type: ITINERARY_LINES,
@@ -76,7 +76,7 @@ class PdfConfig {
 			},
 			{
 				type: ITINERARY_ITEM,
-				value: 'Notes',
+				value: t( 'month.notes', { ns: 'config' } ),
 			},
 			{
 				type: ITINERARY_LINES,
@@ -84,7 +84,10 @@ class PdfConfig {
 			},
 		];
 		this.isWeekOverviewEnabled = true;
-		this.todos = [ 'Plan a trip', 'Some other TODO' ];
+		this.todos = [
+			t( 'todos.example1', { ns: 'config' } ),
+			t( 'todos.example2', { ns: 'config' } ),
+		];
 
 		let dayOfWeek = this.firstDayOfWeek;
 		this.dayItineraries = [ ...Array( 7 ).keys() ].map( () => {
@@ -105,13 +108,16 @@ class PdfConfig {
 		];
 		this.pageSize = [ '157mm', '209mm' ];
 		this.specialDates = {
-			'01-01': [ 'Special date 1', 'Special date for reason #2' ],
-			'03-01': [ 'Some other celebration' ],
-			'13-01': [
-				'Some other other celebration that is very long',
-				"Let's add another one",
+			'01-01': [
+				t( 'special-dates.example1', { ns: 'config' } ),
+				t( 'special-dates.example2', { ns: 'config' } ),
 			],
-			'14-01': [ 'Ran out of reasons celebration' ],
+			'03-01': [ t( 'special-dates.example3', { ns: 'config' } ) ],
+			'13-01': [
+				t( 'special-dates.example4', { ns: 'config' } ),
+				t( 'special-dates.example5', { ns: 'config' } ),
+			],
+			'14-01': [ t( 'special-dates.example6', { ns: 'config' } ) ],
 		};
 	}
 }

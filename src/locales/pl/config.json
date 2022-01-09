@@ -4,5 +4,33 @@
 		"example2": "Książka",
 		"example3": "Hobby",
 		"example4": "Randka"
+	},
+	"templates": {
+		"advanced": {
+			"day": {
+				"monday": "Dodatkowa strona na poniedziałkowe notatki"
+			},
+			"retrospective": {
+				"wins": "Co poszło dobrze?",
+				"discoveries": "Nowe odkrycia",
+				"fails": "Co poszło źle?"
+			}
+		}
+	},
+	"month": {
+		"goal": "Główny cel",
+		"notes": "Notatki"
+	},
+	"todos": {
+		"example1": "Zaplanować wyjazd",
+		"example2": "Coś innego do zrobienia"
+	},
+	"special-dates": {
+		"example1": "Urodziny Jana Kowalskiego",
+		"example2": "Powód #2 do świętowania tego samego dnia",
+		"example3": "Coś innego do świętowania",
+		"example4": "Powód do świętowania, który jest długi na co najmniej dwie linijki",
+		"example5": "Kolejny powód do świetowania",
+		"example6": "Świętowanie z powodu braku powodów do świętowania"
 	}
 }
