@@ -9,6 +9,7 @@ import Itinerary from 'pdf/components/itinerary';
 import MiniCalendar, { HIGHLIGHT_NONE } from 'pdf/components/mini-calendar';
 import PdfConfig from 'pdf/config';
 import { dayPageLink, monthOverviewLink } from 'pdf/lib/links';
+import { page } from 'pdf/styles';
 import { getItemsOnExtraPages } from 'pdf/utils';
 
 const habitColumnWidth = 40;
@@ -18,97 +19,93 @@ class MonthOverviewPage extends React.Component {
 	constructor( props ) {
 		super( props );
 
-		const stylesObject = {
-			page: {
-				flex: 1,
-				width: '100%',
-				height: '100%',
-				flexGrow: 1,
-				flexDirection: 'column',
+		const stylesObject = Object.assign(
+			{
+				content: {
+					flexGrow: 1,
+				},
+				header: {
+					flexGrow: 0,
+					flexDirection: 'row',
+					borderBottom: '1 solid black',
+				},
+				meta: {
+					flexGrow: 1,
+					flexDirection: 'column',
+					borderRight: '1 solid black',
+					justifyContent: 'center',
+				},
+				title: {
+					textTransform: 'uppercase',
+					color: 'black',
+					padding: '10 5',
+					fontSize: 35,
+					fontWeight: 'bold',
+					marginLeft: 'auto',
+				},
+				habitsTable: {
+					flexGrow: 0,
+					flexDirection: 'column',
+					fontSize: 8,
+				},
+				habitsHeader: {
+					flexDirection: 'row',
+					alignItems: 'center',
+				},
+				habitsTitle: {
+					fontWeight: 'normal',
+				},
+				habitDay: {
+					fontSize: 8,
+					flexDirection: 'column',
+					borderRight: '1 solid #AAA',
+					borderBottom: '1 solid #AAA',
+					justifyContent: 'center',
+					alignItems: 'center',
+					textAlign: 'center',
+					textDecoration: 'none',
+					color: 'black',
+					width: habitSquareWidth,
+					minWidth: habitSquareWidth,
+					height: habitSquareWidth,
+				},
+				habitDayDate: {
+					fontWeight: 'bold',
+					position: 'relative',
+					top: -1,
+				},
+				habitDayOfWeek: {
+					fontSize: 6,
+					textAlign: 'center',
+					position: 'relative',
+					top: -2,
+				},
+				habitRow: {
+					flexDirection: 'row',
+				},
+				habitContainer: {
+					justifyContent: 'center',
+					alignItems: 'center',
+					height: habitSquareWidth,
+					borderRight: '1 solid #AAA',
+					borderBottom: '1 solid #AAA',
+					width: habitColumnWidth,
+					fontWeight: 'bold',
+				},
+				habitSquare: {
+					height: habitSquareWidth,
+					width: habitSquareWidth,
+					minWidth: habitSquareWidth,
+					borderRight: '1 solid #AAA',
+					borderBottom: '1 solid #AAA',
+					textDecoration: 'none',
+				},
+				weekendDay: {
+					backgroundColor: '#EEE',
+				},
 			},
-			content: {
-				flexGrow: 1,
-			},
-			header: {
-				flexGrow: 0,
-				flexDirection: 'row',
-				borderBottom: '1 solid black',
-			},
-			meta: {
-				flexGrow: 1,
-				flexDirection: 'column',
-				borderRight: '1 solid black',
-				justifyContent: 'center',
-			},
-			title: {
-				textTransform: 'uppercase',
-				color: 'black',
-				padding: '10 5',
-				fontSize: 35,
-				fontWeight: 'bold',
-				marginLeft: 'auto',
-			},
-			habitsTable: {
-				flexGrow: 0,
-				flexDirection: 'column',
-				fontSize: 8,
-			},
-			habitsHeader: {
-				flexDirection: 'row',
-				alignItems: 'center',
-			},
-			habitsTitle: {
-				fontWeight: 'normal',
-			},
-			habitDay: {
-				fontSize: 8,
-				flexDirection: 'column',
-				borderRight: '1 solid #AAA',
-				borderBottom: '1 solid #AAA',
-				justifyContent: 'center',
-				alignItems: 'center',
-				textAlign: 'center',
-				textDecoration: 'none',
-				color: 'black',
-				width: habitSquareWidth,
-				minWidth: habitSquareWidth,
-				height: habitSquareWidth,
-			},
-			habitDayDate: {
-				fontWeight: 'bold',
-				position: 'relative',
-				top: -1,
-			},
-			habitDayOfWeek: {
-				fontSize: 6,
-				textAlign: 'center',
-				position: 'relative',
-				top: -2,
-			},
-			habitRow: {
-				flexDirection: 'row',
-			},
-			habitContainer: {
-				justifyContent: 'center',
-				alignItems: 'center',
-				height: habitSquareWidth,
-				borderRight: '1 solid #AAA',
-				borderBottom: '1 solid #AAA',
-				width: habitColumnWidth,
-				fontWeight: 'bold',
-			},
-			habitSquare: {
-				height: habitSquareWidth,
-				width: habitSquareWidth,
-				minWidth: habitSquareWidth,
-				borderRight: '1 solid #AAA',
-				borderBottom: '1 solid #AAA',
-				textDecoration: 'none',
-			},
-			weekendDay: {
-				backgroundColor: '#EEE',
-			},
-		};
+			{ page },
+		);
 
 		if ( this.props.config.isLeftHanded ) {
 			stylesObject.header.flexDirection = 'row-reverse';

@@ -13,75 +13,52 @@ import {
 	monthOverviewLink,
 	weekOverviewLink,
 } from 'pdf/lib/links';
+import {
+	arrow,
+	content,
+	dateInfo,
+	dateMain,
+	header,
+	meta,
+	page,
+} from 'pdf/styles';
 import { getItemsOnExtraPages } from 'pdf/utils';
 
 class DayPage extends React.Component {
 	constructor( props ) {
 		super( props );
 
-		const stylesObject = {
-			page: {
-				flex: 1,
-				width: '100%',
-				height: '100%',
-				flexGrow: 1,
-				flexDirection: 'column',
+		const stylesObject = Object.assign(
+			{
+				nameOfDay: {
+					marginLeft: 'auto',
+					textTransform: 'uppercase',
+					fontSize: 22,
+				},
+				monthName: {
+					textTransform: 'uppercase',
+					textDecoration: 'none',
+					justifyContent: 'center',
+					color: 'black',
+					padding: '10 5',
+					fontSize: 20,
+				},
+				dayNumber: {
+					fontSize: 55,
+					fontWeight: 'bold',
+				},
+				specialDateInfo: {
+					flexDirection: 'column',
+					width: 130,
+				},
+				specialDate: {
+					fontSize: 10,
+					marginLeft: 5,
+					fontStyle: 'italic',
+				},
 			},
-			content: {
-				flexGrow: 1,
-				borderTop: '1 solid black',
-			},
-			header: {
-				flexGrow: 0,
-				flexDirection: 'row',
-			},
-			meta: {
-				flexGrow: 1,
-				flexDirection: 'column',
-				borderRight: '1 solid black',
-			},
-			dateMain: {
-				flexDirection: 'row',
-				marginLeft: 'auto',
-			},
-			dateInfo: {
-				flexDirection: 'row',
-				paddingRight: 5,
-			},
-			nameOfDay: {
-				marginLeft: 'auto',
-				textTransform: 'uppercase',
-				fontSize: 22,
-			},
-			dayArrow: {
-				color: '#AAA',
-				textDecoration: 'none',
-				justifyContent: 'center',
-				padding: '10 5',
-				fontSize: 20,
-			},
-			monthName: {
-				textTransform: 'uppercase',
-				textDecoration: 'none',
-				justifyContent: 'center',
-				color: 'black',
-				padding: '10 5',
-				fontSize: 20,
-			},
-			dayNumber: {
-				fontSize: 55,
-				fontWeight: 'bold',
-			},
-			specialDateInfo: {
-				flexDirection: 'column',
-				width: 130,
-			},
-			specialDate: {
-				fontSize: 10,
-				marginLeft: 5,
-				fontStyle: 'italic',
-			},
-		};
+			{ arrow, content, dateInfo, dateMain, header, meta, page },
+		);
 
 		if ( this.props.config.isLeftHanded ) {
 			stylesObject.header.flexDirection = 'row-reverse';
@@ -150,14 +127,14 @@ class DayPage extends React.Component {
 									</Link>
 									<Link
 										src={ '#' + previousDayPageLink( date, config ) }
-										style={ this.styles.dayArrow }
+										style={ this.styles.arrow }
 									>
 										«
 									</Link>
 									<Text style={ this.styles.dayNumber }>{date.format( 'DD' )}</Text>
 									<Link
 										src={ '#' + nextDayPageLink( date, config ) }
-										style={ this.styles.dayArrow }
+										style={ this.styles.arrow }
 									>
 										»
 									</Link>

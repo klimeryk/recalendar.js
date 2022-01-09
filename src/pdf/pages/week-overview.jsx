@@ -8,111 +8,88 @@ import { getWeekNumber } from 'lib/date';
 import MiniCalendar, { HIGHLIGHT_WEEK } from 'pdf/components/mini-calendar';
 import PdfConfig from 'pdf/config';
 import { weekOverviewLink, dayPageLink } from 'pdf/lib/links';
+import {
+	arrow,
+	content,
+	dateInfo,
+	dateMain,
+	header,
+	meta,
+	page,
+} from 'pdf/styles';
 
 class WeekOverviewPage extends React.Component {
 	constructor( props ) {
 		super( props );
 
-		const stylesObject = {
-			page: {
-				flex: 1,
-				width: '100%',
-				height: '100%',
-				flexGrow: 1,
-				flexDirection: 'column',
+		const stylesObject = Object.assign(
+			{
+				nameOfWeek: {
+					marginLeft: 'auto',
+					textTransform: 'uppercase',
+					fontSize: 20,
+				},
+				title: {
+					textTransform: 'uppercase',
+					textDecoration: 'none',
+					justifyContent: 'center',
+					textAlign: 'right',
+					color: 'black',
+					padding: '10 5',
+				},
+				weekNumber: {
+					fontSize: 55,
+					fontWeight: 'bold',
+					textAlign: 'center',
+					width: 60,
+				},
+				days: {
+					flexDirection: 'row',
+					flexWrap: 'wrap',
+					flexGrow: 1,
+					paddingTop: 1,
+					paddingLeft: 1,
+				},
+				day: {
+					width: '33.5%',
+					height: '33.5%',
+					border: '1 solid black',
+					flexDirection: 'column',
+					marginTop: -1,
+					marginLeft: -1,
+					padding: 5,
+					textDecoration: 'none',
+					color: 'black',
+				},
+				dayDate: {
+					flexDirection: 'row',
+					flexGrow: 1,
+					marginBottom: 2,
+				},
+				dayOfWeek: {
+					fontSize: 12,
+					fontWeight: 'bold',
+				},
+				shortDate: {
+					fontSize: 12,
+					textTransform: 'uppercase',
+					marginLeft: 'auto',
+				},
+				todos: {
+					width: '66.6%',
+					height: '33.5%',
+					flexDirection: 'column',
+					padding: 5,
+				},
+				todo: {
+					fontSize: 10,
+				},
+				specialItem: {
+					fontSize: 10,
+				},
 			},
-			content: {
-				flexGrow: 1,
-				borderTop: '1 solid black',
-			},
-			header: {
-				flexGrow: 0,
-				flexDirection: 'row',
-			},
-			meta: {
-				flexGrow: 1,
-				flexDirection: 'column',
-				borderRight: '1 solid black',
-			},
-			dateMain: {
-				flexDirection: 'row',
-				marginLeft: 'auto',
-			},
-			dateInfo: {
-				flexDirection: 'row',
-				paddingRight: 5,
-			},
-			nameOfWeek: {
-				marginLeft: 'auto',
-				textTransform: 'uppercase',
-				fontSize: 20,
-			},
-			weekArrow: {
-				color: '#AAA',
-				textDecoration: 'none',
-				justifyContent: 'center',
-				padding: '10 5',
-				fontSize: 20,
-			},
-			title: {
-				textTransform: 'uppercase',
-				textDecoration: 'none',
-				justifyContent: 'center',
-				textAlign: 'right',
-				color: 'black',
-				padding: '10 5',
-			},
-			weekNumber: {
-				fontSize: 55,
-				fontWeight: 'bold',
-				textAlign: 'center',
-				width: 60,
-			},
-			days: {
-				flexDirection: 'row',
-				flexWrap: 'wrap',
-				flexGrow: 1,
-				paddingTop: 1,
-				paddingLeft: 1,
-			},
-			day: {
-				width: '33.5%',
-				height: '33.5%',
-				border: '1 solid black',
-				flexDirection: 'column',
-				marginTop: -1,
-				marginLeft: -1,
-				padding: 5,
-				textDecoration: 'none',
-				color: 'black',
-			},
-			dayDate: {
-				flexDirection: 'row',
-				flexGrow: 1,
-				marginBottom: 2,
-			},
-			dayOfWeek: {
-				fontSize: 12,
-				fontWeight: 'bold',
-			},
-			shortDate: {
-				fontSize: 12,
-				textTransform: 'uppercase',
-				marginLeft: 'auto',
-			},
-			todos: {
-				width: '66.6%',
-				height: '33.5%',
-				flexDirection: 'column',
-				padding: 5,
-			},
-			todo: {
-				fontSize: 10,
-			},
-			specialItem: {
-				fontSize: 10,
-			},
-		};
+			{ arrow, content, dateInfo, dateMain, header, meta, page },
+		);
 
 		if ( this.props.config.isLeftHanded ) {
 			stylesObject.header.flexDirection = 'row-reverse';
@@ -199,7 +176,7 @@ class WeekOverviewPage extends React.Component {
 								<Link style={ this.styles.title }>{t( 'page.week.title' )}</Link>
 								<Link
 									src={ '#' + weekOverviewLink( date.subtract( 1, 'week' ) ) }
-									style={ this.styles.weekArrow }
+									style={ this.styles.arrow }
 								>
 									«
 								</Link>
@@ -208,7 +185,7 @@ class WeekOverviewPage extends React.Component {
 								</Text>
 								<Link
 									src={ '#' + weekOverviewLink( date.add( 1, 'week' ) ) }
-									style={ this.styles.weekArrow }
+									style={ this.styles.arrow }
 								>
 									»
 								</Link>

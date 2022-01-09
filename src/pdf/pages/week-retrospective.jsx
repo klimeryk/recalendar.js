@@ -9,69 +9,46 @@ import Itinerary from 'pdf/components/itinerary';
 import MiniCalendar, { HIGHLIGHT_WEEK } from 'pdf/components/mini-calendar';
 import PdfConfig from 'pdf/config';
 import { weekRetrospectiveLink } from 'pdf/lib/links';
+import {
+	arrow,
+	content,
+	dateInfo,
+	dateMain,
+	header,
+	meta,
+	page,
+} from 'pdf/styles';
 import { getItemsOnExtraPages } from 'pdf/utils';
 
 class WeekRetrospectivePage extends React.Component {
 	constructor( props ) {
 		super( props );
 
-		const stylesObject = {
-			page: {
-				flex: 1,
-				width: '100%',
-				height: '100%',
-				flexGrow: 1,
-				flexDirection: 'column',
+		const stylesObject = Object.assign(
+			{
+				nameOfWeek: {
+					marginLeft: 'auto',
+					textTransform: 'uppercase',
+					fontSize: 20,
+				},
+				title: {
+					textTransform: 'uppercase',
+					textDecoration: 'none',
+					justifyContent: 'center',
+					textAlign: 'right',
+					color: 'black',
+					padding: '10 5',
+					width: 170,
+				},
+				weekNumber: {
+					fontSize: 55,
+					fontWeight: 'bold',
+					textAlign: 'center',
+					width: 60,
+				},
 			},
-			content: {
-				flexGrow: 1,
-				borderTop: '1 solid black',
-			},
-			header: {
-				flexGrow: 0,
-				flexDirection: 'row',
-			},
-			meta: {
-				flexGrow: 1,
-				flexDirection: 'column',
-				borderRight: '1 solid black',
-			},
-			dateMain: {
-				flexDirection: 'row',
-				marginLeft: 'auto',
-			},
-			dateInfo: {
-				flexDirection: 'row',
-				paddingRight: 5,
-			},
-			nameOfWeek: {
-				marginLeft: 'auto',
-				textTransform: 'uppercase',
-				fontSize: 20,
-			},
-			weekArrow: {
-				color: '#AAA',
-				textDecoration: 'none',
-				justifyContent: 'center',
-				padding: '10 5',
-				fontSize: 20,
-			},
-			title: {
-				textTransform: 'uppercase',
-				textDecoration: 'none',
-				justifyContent: 'center',
-				textAlign: 'right',
-				color: 'black',
-				padding: '10 5',
-				width: 170,
-			},
-			weekNumber: {
-				fontSize: 55,
-				fontWeight: 'bold',
-				textAlign: 'center',
-				width: 60,
-			},
-		};
+			{ arrow, content, dateInfo, dateMain, header, meta, page },
+		);
 
 		if ( this.props.config.isLeftHanded ) {
 			stylesObject.header.flexDirection = 'row-reverse';
@@ -110,7 +87,7 @@ class WeekRetrospectivePage extends React.Component {
 									</Text>
 									<Link
 										src={ '#' + weekRetrospectiveLink( date.subtract( 1, 'week' ) ) }
-										style={ this.styles.weekArrow }
+										style={ this.styles.arrow }
 									>
 										«
 									</Link>
@@ -119,7 +96,7 @@ class WeekRetrospectivePage extends React.Component {
 									</Text>
 									<Link
 										src={ '#' + weekRetrospectiveLink( date.add( 1, 'week' ) ) }
-										style={ this.styles.weekArrow }
+										style={ this.styles.arrow }
 									>
 										»
 									</Link>
