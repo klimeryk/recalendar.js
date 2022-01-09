@@ -1,70 +1,20 @@
-import { Page, Text, View, StyleSheet, Link } from '@react-pdf/renderer';
+import { Page, View, StyleSheet } from '@react-pdf/renderer';
 import dayjs from 'dayjs';
 import PropTypes from 'prop-types';
 import React from 'react';
 import { withTranslation } from 'react-i18next';
 
 import { getWeekNumber } from 'lib/date';
+import Header from 'pdf/components/header';
 import Itinerary from 'pdf/components/itinerary';
 import MiniCalendar, { HIGHLIGHT_WEEK } from 'pdf/components/mini-calendar';
 import PdfConfig from 'pdf/config';
 import { weekRetrospectiveLink } from 'pdf/lib/links';
-import {
-	arrow,
-	content,
-	dateInfo,
-	dateMain,
-	header,
-	meta,
-	page,
-} from 'pdf/styles';
+import { content, page } from 'pdf/styles';
 import { getItemsOnExtraPages } from 'pdf/utils';
 
 class WeekRetrospectivePage extends React.Component {
-	constructor( props ) {
-		super( props );
-
-		const stylesObject = Object.assign(
-			{
-				nameOfWeek: {
-					marginLeft: 'auto',
-					textTransform: 'uppercase',
-					fontSize: 20,
-				},
-				title: {
-					textTransform: 'uppercase',
-					textDecoration: 'none',
-					justifyContent: 'center',
-					textAlign: 'right',
-					color: 'black',
-					padding: '10 5',
-					width: 170,
-				},
-				weekNumber: {
-					fontSize: 55,
-					fontWeight: 'bold',
-					textAlign: 'center',
-					width: 60,
-				},
-			},
-			{ arrow, content, dateInfo, dateMain, header, meta, page },
-		);
-
-		if ( this.props.config.isLeftHanded ) {
-			stylesObject.header.flexDirection = 'row-reverse';
-
-			stylesObject.meta.borderLeft = '1 solid black';
-			stylesObject.meta.borderRight = 'none';
-
-			delete stylesObject.dateMain.marginLeft;
-			delete stylesObject.nameOfWeek.marginLeft;
-
-			stylesObject.title.textAlign = 'left';
-			stylesObject.nameOfWeek.margin = '0 5';
-		}
-
-		this.styles = StyleSheet.create( stylesObject );
-	}
+	styles = StyleSheet.create( Object.assign( {}, { content, page } ) );
 
 	getNameOfWeek() {
 		const { date } = this.props;
@@ -79,40 +29,23 @@ class WeekRetrospectivePage extends React.Component {
 			<>
 				<Page id={ weekRetrospectiveLink( date ) } size={ config.pageSize }>
 					<View style={ this.styles.page }>
-						<View style={ this.styles.header }>
-							<View style={ this.styles.meta }>
-								<View style={ this.styles.dateMain }>
-									<Text style={ this.styles.title }>
-										{t( 'page.retrospective.title' )}
-									</Text>
-									<Link
-										src={ '#' + weekRetrospectiveLink( date.subtract( 1, 'week' ) ) }
-										style={ this.styles.arrow }
-									>
-										«
-									</Link>
-									<Text style={ this.styles.weekNumber }>
-										{getWeekNumber( date )}
-									</Text>
-									<Link
-										src={ '#' + weekRetrospectiveLink( date.add( 1, 'week' ) ) }
-										style={ this.styles.arrow }
-									>
-										»
-									</Link>
-								</View>
-								<View style={ this.styles.dateInfo }>
-									<Text style={ this.styles.nameOfWeek }>
-										{this.getNameOfWeek()}
-									</Text>
-								</View>
-							</View>
-							<MiniCalendar
-								date={ date }
-								highlightMode={ HIGHLIGHT_WEEK }
-								config={ config }
-							/>
-						</View>
+						<Header
+							isLeftHanded={ config.isLeftHanded }
+							title={ t( 'page.retrospective.title' ) }
+							subtitle={ this.getNameOfWeek() }
+							number={ getWeekNumber( date ).toString() }
+							previousLink={
+								'#' + weekRetrospectiveLink( date.subtract( 1, 'week' ) )
+							}
+							nextLink={ '#' + weekRetrospectiveLink( date.add( 1, 'week' ) ) }
+							calendar={
+								<MiniCalendar
+									date={ date }
+									highlightMode={ HIGHLIGHT_WEEK }
+									config={ config }
+								/>
+							}
+						/>
 						<View style={ this.styles.content }>
 							<Itinerary items={ config.weekRetrospectiveItinerary } />
 						</View>

@@ -1,8 +1,9 @@
-import { Page, Text, View, StyleSheet, Link } from '@react-pdf/renderer';
+import { Page, View, StyleSheet } from '@react-pdf/renderer';
 import dayjs from 'dayjs';
 import PropTypes from 'prop-types';
 import React from 'react';
 
+import Header from 'pdf/components/header';
 import Itinerary from 'pdf/components/itinerary';
 import MiniCalendar from 'pdf/components/mini-calendar';
 import PdfConfig from 'pdf/config';
@@ -13,81 +14,11 @@ import {
 	monthOverviewLink,
 	weekOverviewLink,
 } from 'pdf/lib/links';
-import {
-	arrow,
-	content,
-	dateInfo,
-	dateMain,
-	header,
-	meta,
-	page,
-} from 'pdf/styles';
+import { content, page } from 'pdf/styles';
 import { getItemsOnExtraPages } from 'pdf/utils';
 
 class DayPage extends React.Component {
-	constructor( props ) {
-		super( props );
-
-		const stylesObject = Object.assign(
-			{
-				nameOfDay: {
-					marginLeft: 'auto',
-					textTransform: 'uppercase',
-					fontSize: 22,
-				},
-				monthName: {
-					textTransform: 'uppercase',
-					textDecoration: 'none',
-					justifyContent: 'center',
-					color: 'black',
-					padding: '10 5',
-					fontSize: 20,
-				},
-				dayNumber: {
-					fontSize: 55,
-					fontWeight: 'bold',
-				},
-				specialDateInfo: {
-					flexDirection: 'column',
-					width: 130,
-				},
-				specialDate: {
-					fontSize: 10,
-					marginLeft: 5,
-					fontStyle: 'italic',
-				},
-			},
-			{ arrow, content, dateInfo, dateMain, header, meta, page },
-		);
-
-		if ( this.props.config.isLeftHanded ) {
-			stylesObject.header.flexDirection = 'row-reverse';
-
-			stylesObject.meta.borderLeft = '1 solid black';
-			stylesObject.meta.borderRight = 'none';
-
-			delete stylesObject.dateMain.marginLeft;
-			delete stylesObject.nameOfDay.marginLeft;
-
-			stylesObject.dateInfo.flexDirection = 'row-reverse';
-			stylesObject.nameOfDay.margin = '0 5';
-		}
-
-		this.styles = StyleSheet.create( stylesObject );
-	}
-
-	renderSpecialDate() {
-		const specialDateKey = this.props.date.format( 'DD-MM' );
-		if ( ! this.props.config.specialDates[ specialDateKey ] ) {
-			return null;
-		}
-
-		return this.props.config.specialDates[ specialDateKey ].map( ( text, index ) => (
-			<Text key={ index } style={ this.styles.specialDate }>
-				» {text}
-			</Text>
-		) );
-	}
+	styles = StyleSheet.create( Object.assign( {}, { content, page } ) );
 
 	renderExtraItems = ( items, index ) => (
 		<Page key={ index } size={ this.props.config.pageSize }>
@@ -104,6 +35,8 @@ class DayPage extends React.Component {
 			return null;
 		}
 
+		const specialDateKey = this.props.date.format( 'DD-MM' );
+		const specialItems = this.props.config.specialDates[ specialDateKey ];
 		const optionalStartOfMonthId =
 			! config.isMonthOverviewEnabled && date.date() === 1
 				? { id: monthOverviewLink( date ) }
@@ -116,40 +49,18 @@ class DayPage extends React.Component {
 			<>
 				<Page id={ dayPageLink( date ) } size={ config.pageSize }>
 					<View { ...optionalStartOfMonthId } style={ this.styles.page }>
-						<View { ...optionalStartOfWeekId } style={ this.styles.header }>
-							<View style={ this.styles.meta }>
-								<View style={ this.styles.dateMain }>
-									<Link
-										src={ '#' + monthOverviewLink( date ) }
-										style={ this.styles.monthName }
-									>
-										{date.format( 'MMMM' )}
-									</Link>
-									<Link
-										src={ '#' + previousDayPageLink( date, config ) }
-										style={ this.styles.arrow }
-									>
-										«
-									</Link>
-									<Text style={ this.styles.dayNumber }>{date.format( 'DD' )}</Text>
-									<Link
-										src={ '#' + nextDayPageLink( date, config ) }
-										style={ this.styles.arrow }
-									>
-										»
-									</Link>
-								</View>
-								<View style={ this.styles.dateInfo }>
-									<View style={ this.styles.specialDateInfo }>
-										{this.renderSpecialDate()}
-									</View>
-									<Text style={ this.styles.nameOfDay }>
-										{date.format( 'dddd' )}
-									</Text>
-								</View>
-							</View>
-							<MiniCalendar date={ date } config={ config } />
-						</View>
+						<Header
+							{ ...optionalStartOfWeekId }
+							isLeftHanded={ config.isLeftHanded }
+							title={ date.format( 'MMMM' ) }
+							titleLink={ '#' + monthOverviewLink( date ) }
+							subtitle={ date.format( 'dddd' ) }
+							number={ date.format( 'DD' ) }
+							previousLink={ '#' + previousDayPageLink( date, config ) }
+							nextLink={ '#' + nextDayPageLink( date, config ) }
+							calendar={ <MiniCalendar date={ date } config={ config } /> }
+							specialItems={ specialItems }
+						/>
 						<View style={ this.styles.content }>
 							<Itinerary items={ items } />
 						</View>
