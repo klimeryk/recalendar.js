@@ -34,6 +34,10 @@
 		"general": {
 			"label": "General options",
 			"year": "Year",
+			"left-handed": {
+				"label": "Left-handed version",
+				"description": "Optimizes the layout for left-handed use."
+			},
 			"starting-month": {
 				"label": "Starting month",
 				"description": "The first month in the generated calendar. Choose something like October if you want your calendar to cover a semester, instead of a calendar year."

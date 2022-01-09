@@ -12,71 +12,82 @@ import { weekRetrospectiveLink } from 'pdf/lib/links';
 import { getItemsOnExtraPages } from 'pdf/utils';
 
 class WeekRetrospectivePage extends React.Component {
-	styles = StyleSheet.create( {
-		page: {
-			flex: 1,
-			width: '100%',
-			height: '100%',
-			flexGrow: 1,
-			flexDirection: 'column',
-		},
-		content: {
-			flexGrow: 1,
-			borderTop: '1 solid black',
-		},
-		header: {
-			flexGrow: 0,
-			flexDirection: 'row',
-		},
-		meta: {
-			flexGrow: 1,
-			flexDirection: 'column',
-			borderRight: '1 solid black',
-		},
-		dateMain: {
-			flexDirection: 'row',
-			marginLeft: 'auto',
-		},
-		dateInfo: {
-			flexDirection: 'row',
-			paddingRight: 5,
-		},
-		line: {
-			borderBottom: '1 solid #AAA',
-			fontSize: 12,
-			fontWeight: 'bold',
-			height: 20,
-			minHeight: 20,
-			padding: '2 0 0 5',
-		},
-		nameOfWeek: {
-			marginLeft: 'auto',
-			textTransform: 'uppercase',
-			fontSize: 20,
-		},
-		weekArrow: {
-			color: '#AAA',
-			textDecoration: 'none',
-			justifyContent: 'center',
-			padding: '10 5',
-			fontSize: 20,
-		},
-		title: {
-			textTransform: 'uppercase',
-			textDecoration: 'none',
-			justifyContent: 'center',
-			textAlign: 'right',
-			color: 'black',
-			padding: '10 5',
-			width: 200,
-		},
-		weekNumber: {
-			fontSize: 55,
-			fontWeight: 'bold',
-			textAlign: 'center',
-			width: 60,
-		},
-	} );
+	constructor( props ) {
+		super( props );
+
+		const stylesObject = {
+			page: {
+				flex: 1,
+				width: '100%',
+				height: '100%',
+				flexGrow: 1,
+				flexDirection: 'column',
+			},
+			content: {
+				flexGrow: 1,
+				borderTop: '1 solid black',
+			},
+			header: {
+				flexGrow: 0,
+				flexDirection: 'row',
+			},
+			meta: {
+				flexGrow: 1,
+				flexDirection: 'column',
+				borderRight: '1 solid black',
+			},
+			dateMain: {
+				flexDirection: 'row',
+				marginLeft: 'auto',
+			},
+			dateInfo: {
+				flexDirection: 'row',
+				paddingRight: 5,
+			},
+			nameOfWeek: {
+				marginLeft: 'auto',
+				textTransform: 'uppercase',
+				fontSize: 20,
+			},
+			weekArrow: {
+				color: '#AAA',
+				textDecoration: 'none',
+				justifyContent: 'center',
+				padding: '10 5',
+				fontSize: 20,
+			},
+			title: {
+				textTransform: 'uppercase',
+				textDecoration: 'none',
+				justifyContent: 'center',
+				textAlign: 'right',
+				color: 'black',
+				padding: '10 5',
+				width: 170,
+			},
+			weekNumber: {
+				fontSize: 55,
+				fontWeight: 'bold',
+				textAlign: 'center',
+				width: 60,
+			},
+		};
+
+		if ( this.props.config.isLeftHanded ) {
+			stylesObject.header.flexDirection = 'row-reverse';
+
+			stylesObject.meta.borderLeft = stylesObject.meta.borderRight;
+			stylesObject.meta.borderRight = 'none';
+
+			delete stylesObject.dateMain.marginLeft;
+			delete stylesObject.nameOfWeek.marginLeft;
+
+			stylesObject.title.textAlign = 'left';
+			stylesObject.nameOfWeek.margin = '0 5';
+		}
+
+		this.styles = StyleSheet.create( stylesObject );
+	}
 
 	getNameOfWeek() {
 		const { date } = this.props;

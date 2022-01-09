@@ -15,97 +15,112 @@ const habitColumnWidth = 40;
 const habitSquareWidth = 13;
 
 class MonthOverviewPage extends React.Component {
-	styles = StyleSheet.create( {
-		page: {
-			flex: 1,
-			width: '100%',
-			height: '100%',
-			flexGrow: 1,
-			flexDirection: 'column',
-		},
-		content: {
-			flexGrow: 1,
-		},
-		header: {
-			flexGrow: 0,
-			flexDirection: 'row',
-			borderBottom: '1 solid black',
-		},
-		meta: {
-			flexGrow: 1,
-			flexDirection: 'column',
-			borderRight: '1 solid black',
-			justifyContent: 'center',
-		},
-		title: {
-			textTransform: 'uppercase',
-			color: 'black',
-			padding: '10 5',
-			fontSize: 35,
-			fontWeight: 'bold',
-			marginLeft: 'auto',
-		},
-		habitsTable: {
-			flexGrow: 0,
-			flexDirection: 'column',
-			fontSize: 8,
-		},
-		habitsHeader: {
-			flexDirection: 'row',
-			alignItems: 'center',
-		},
-		habitsTitle: {
-			fontWeight: 'normal',
-		},
-		habitDay: {
-			fontSize: 8,
-			flexDirection: 'column',
-			borderRight: '1 solid #AAA',
-			borderBottom: '1 solid #AAA',
-			justifyContent: 'center',
-			alignItems: 'center',
-			textAlign: 'center',
-			textDecoration: 'none',
-			color: 'black',
-			width: habitSquareWidth,
-			minWidth: habitSquareWidth,
-			height: habitSquareWidth,
-		},
-		habitDayDate: {
-			fontWeight: 'bold',
-			position: 'relative',
-			top: -1,
-		},
-		habitDayOfWeek: {
-			fontSize: 6,
-			textAlign: 'center',
-			position: 'relative',
-			top: -2,
-		},
-		habitRow: {
-			flexDirection: 'row',
-		},
-		habitContainer: {
-			justifyContent: 'center',
-			alignItems: 'center',
-			height: habitSquareWidth,
-			borderRight: '1 solid #AAA',
-			borderBottom: '1 solid #AAA',
-			width: habitColumnWidth,
-			fontWeight: 'bold',
-		},
-		habitSquare: {
-			height: habitSquareWidth,
-			width: habitSquareWidth,
-			minWidth: habitSquareWidth,
-			borderRight: '1 solid #AAA',
-			borderBottom: '1 solid #AAA',
-			textDecoration: 'none',
-		},
-		weekendDay: {
-			backgroundColor: '#EEE',
-		},
-	} );
+	constructor( props ) {
+		super( props );
+
+		const stylesObject = {
+			page: {
+				flex: 1,
+				width: '100%',
+				height: '100%',
+				flexGrow: 1,
+				flexDirection: 'column',
+			},
+			content: {
+				flexGrow: 1,
+			},
+			header: {
+				flexGrow: 0,
+				flexDirection: 'row',
+				borderBottom: '1 solid black',
+			},
+			meta: {
+				flexGrow: 1,
+				flexDirection: 'column',
+				borderRight: '1 solid black',
+				justifyContent: 'center',
+			},
+			title: {
+				textTransform: 'uppercase',
+				color: 'black',
+				padding: '10 5',
+				fontSize: 35,
+				fontWeight: 'bold',
+				marginLeft: 'auto',
+			},
+			habitsTable: {
+				flexGrow: 0,
+				flexDirection: 'column',
+				fontSize: 8,
+			},
+			habitsHeader: {
+				flexDirection: 'row',
+				alignItems: 'center',
+			},
+			habitsTitle: {
+				fontWeight: 'normal',
+			},
+			habitDay: {
+				fontSize: 8,
+				flexDirection: 'column',
+				borderRight: '1 solid #AAA',
+				borderBottom: '1 solid #AAA',
+				justifyContent: 'center',
+				alignItems: 'center',
+				textAlign: 'center',
+				textDecoration: 'none',
+				color: 'black',
+				width: habitSquareWidth,
+				minWidth: habitSquareWidth,
+				height: habitSquareWidth,
+			},
+			habitDayDate: {
+				fontWeight: 'bold',
+				position: 'relative',
+				top: -1,
+			},
+			habitDayOfWeek: {
+				fontSize: 6,
+				textAlign: 'center',
+				position: 'relative',
+				top: -2,
+			},
+			habitRow: {
+				flexDirection: 'row',
+			},
+			habitContainer: {
+				justifyContent: 'center',
+				alignItems: 'center',
+				height: habitSquareWidth,
+				borderRight: '1 solid #AAA',
+				borderBottom: '1 solid #AAA',
+				width: habitColumnWidth,
+				fontWeight: 'bold',
+			},
+			habitSquare: {
+				height: habitSquareWidth,
+				width: habitSquareWidth,
+				minWidth: habitSquareWidth,
+				borderRight: '1 solid #AAA',
+				borderBottom: '1 solid #AAA',
+				textDecoration: 'none',
+			},
+			weekendDay: {
+				backgroundColor: '#EEE',
+			},
+		};
+
+		if ( this.props.config.isLeftHanded ) {
+			stylesObject.header.flexDirection = 'row-reverse';
+
+			stylesObject.meta.borderLeft = stylesObject.meta.borderRight;
+			stylesObject.meta.borderRight = 'none';
+
+			delete stylesObject.title.marginLeft;
+		}
+
+		this.styles = StyleSheet.create( stylesObject );
+	}
 
 	renderHabitsTable() {
 		const habits = this.props.config.habits;

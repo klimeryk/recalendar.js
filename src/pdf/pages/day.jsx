@@ -16,69 +16,88 @@ import {
 import { getItemsOnExtraPages } from 'pdf/utils';
 
 class DayPage extends React.Component {
-	styles = StyleSheet.create( {
-		page: {
-			flex: 1,
-			width: '100%',
-			height: '100%',
-			flexGrow: 1,
-			flexDirection: 'column',
-		},
-		content: {
-			flexGrow: 1,
-			borderTop: '1 solid black',
-		},
-		header: {
-			flexGrow: 0,
-			flexDirection: 'row',
-		},
-		meta: {
-			flexGrow: 1,
-			flexDirection: 'column',
-			borderRight: '1 solid black',
-		},
-		dateMain: {
-			flexDirection: 'row',
-			marginLeft: 'auto',
-		},
-		dateInfo: {
-			flexDirection: 'row',
-			paddingRight: 5,
-		},
-		nameOfDay: {
-			marginLeft: 'auto',
-			textTransform: 'uppercase',
-			fontSize: 22,
-		},
-		dayArrow: {
-			color: '#AAA',
-			textDecoration: 'none',
-			justifyContent: 'center',
-			padding: '10 5',
-			fontSize: 20,
-		},
-		monthName: {
-			textTransform: 'uppercase',
-			textDecoration: 'none',
-			justifyContent: 'center',
-			color: 'black',
-			padding: '10 5',
-			fontSize: 20,
-		},
-		dayNumber: {
-			fontSize: 55,
-			fontWeight: 'bold',
-		},
-		specialDateInfo: {
-			flexDirection: 'column',
-			width: 130,
-		},
-		specialDate: {
-			fontSize: 10,
-			marginLeft: 5,
-			fontStyle: 'italic',
-		},
-	} );
+	constructor( props ) {
+		super( props );
+
+		const stylesObject = {
+			page: {
+				flex: 1,
+				width: '100%',
+				height: '100%',
+				flexGrow: 1,
+				flexDirection: 'column',
+			},
+			content: {
+				flexGrow: 1,
+				borderTop: '1 solid black',
+			},
+			header: {
+				flexGrow: 0,
+				flexDirection: 'row',
+			},
+			meta: {
+				flexGrow: 1,
+				flexDirection: 'column',
+				borderRight: '1 solid black',
+			},
+			dateMain: {
+				flexDirection: 'row',
+				marginLeft: 'auto',
+			},
+			dateInfo: {
+				flexDirection: 'row',
+				paddingRight: 5,
+			},
+			nameOfDay: {
+				marginLeft: 'auto',
+				textTransform: 'uppercase',
+				fontSize: 22,
+			},
+			dayArrow: {
+				color: '#AAA',
+				textDecoration: 'none',
+				justifyContent: 'center',
+				padding: '10 5',
+				fontSize: 20,
+			},
+			monthName: {
+				textTransform: 'uppercase',
+				textDecoration: 'none',
+				justifyContent: 'center',
+				color: 'black',
+				padding: '10 5',
+				fontSize: 20,
+			},
+			dayNumber: {
+				fontSize: 55,
+				fontWeight: 'bold',
+			},
+			specialDateInfo: {
+				flexDirection: 'column',
+				width: 130,
+			},
+			specialDate: {
+				fontSize: 10,
+				marginLeft: 5,
+				fontStyle: 'italic',
+			},
+		};
+
+		if ( this.props.config.isLeftHanded ) {
+			stylesObject.header.flexDirection = 'row-reverse';
+
+			stylesObject.meta.borderLeft = stylesObject.meta.borderRight;
+			stylesObject.meta.borderRight = 'none';
+
+			delete stylesObject.dateMain.marginLeft;
+			delete stylesObject.nameOfDay.marginLeft;
+
+			stylesObject.dateInfo.flexDirection = 'row-reverse';
+			stylesObject.nameOfDay.margin = '0 5';
+		}
+
+		this.styles = StyleSheet.create( stylesObject );
+	}
 
 	renderSpecialDate() {
 		const specialDateKey = this.props.date.format( 'DD-MM' );

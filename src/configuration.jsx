@@ -64,7 +64,11 @@ class Configuration extends React.PureComponent {
 	};
 
 	handleFieldChange = ( event ) => {
-		this.setState( { [ event.target.id ]: event.target.value } );
+		const value =
+			event.target.type !== 'checkbox'
+				? event.target.value
+				: event.target.checked;
+		this.setState( { [ event.target.id ]: value } );
 		if ( event.target.id === 'firstDayOfWeek' ) {
 			const newFirstDayOfWeek = Number( event.target.value );
 			dayjs.updateLocale( i18n.language, {
@@ -344,6 +348,18 @@ class Configuration extends React.PureComponent {
 									value={ this.state.year }
 									onChange={ this.handleFieldChange }
 								/>
+							</Form.Group>
+							<Form.Group controlId="isLeftHanded" className="mt-2">
+								<Form.Check
+									label={ t( 'configuration.general.left-handed.label' ) }
+									type="checkbox"
+									checked={ this.state.isLeftHanded }
+									value={ this.state.isLeftHanded }
+									onChange={ this.handleFieldChange }
+								/>
+								<Form.Text className="text-muted">
+									{t( 'configuration.general.left-handed.description' )}
+								</Form.Text>
 							</Form.Group>
 							<Form.Group controlId="month">
 								<Form.Label>

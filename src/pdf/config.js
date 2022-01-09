@@ -9,6 +9,7 @@ const CONFIG_FIELDS = [
 	'firstDayOfWeek',
 	'monthCount',
 	'weekendDays',
+	'isLeftHanded',
 	'isMonthOverviewEnabled',
 	'habits',
 	'monthItinerary',
@@ -41,6 +42,7 @@ class PdfConfig {
 		this.month = 0;
 		this.firstDayOfWeek = dayjs.localeData().firstDayOfWeek();
 		this.weekendDays = [ 0, 6 ];
+		this.isLeftHanded = false;
 		this.monthCount = 12;
 		this.fontFamily = 'Lato';
 		this.fontDefinition = {
