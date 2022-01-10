@@ -1,0 +1,28 @@
+{
+  "calendar": {
+    "header": {
+      "week-number": "U#",
+      "retrospective": "TB"
+    },
+    "body": {
+      "retrospective": "T"
+    }
+  },
+  "page": {
+    "month": {
+      "habits": {
+        "title": "Vaner"
+      }
+    },
+    "week": {
+      "title": "Uge"
+    },
+    "retrospective": {
+      "title": "Tilbageblik for ugen"
+    },
+    "last": {
+      "title": "Genereret ved hjælp af <recalendar>https://recalendar.me/</recalendar>",
+      "subtitle": "Du kan indlæse denne PDF igen for at få samme konfiguration hvis du ønsker hurtigt at generere en lignende kalender for det nye år!"
+    }
+  }
+}

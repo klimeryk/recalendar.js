@@ -1,0 +1,36 @@
+{
+  "habits": {
+    "example1": "Træning",
+    "example2": "Bog",
+    "example3": "Hobby",
+    "example4": "Date Night"
+  },
+  "templates": {
+    "advanced": {
+      "day": {
+        "monday": "Ekstra side til yderligere mandagsnoter"
+      },
+      "retrospective": {
+        "wins": "Ugens opture",
+        "discoveries": "Nye ting jeg har lært",
+        "fails": "Hvad gik godt?"
+      }
+    }
+  },
+  "month": {
+    "goal": "Primære mål",
+    "notes": "Noter"
+  },
+  "todos": {
+    "example1": "Planlæg en tur",
+    "example2": "En anden TODO"
+  },
+  "special-dates": {
+    "example1": "Speciel dato 1",
+    "example2": "Speciel dato af en anden årsag",
+    "example3": "En anden fejring",
+    "example4": "En anden fejring hvor teksten er meget lang og fylder mere",
+    "example5": "Lad os tilføje et punkt mere",
+    "example6": "Kan ikke finde på flere ting at fejre"
+  }
+}
