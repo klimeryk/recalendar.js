@@ -13,7 +13,8 @@
 		"polish": "Polish",
 		"french": "French",
 		"spanish": "Spanish",
-		"norwegian": "Norwegian"
+		"norwegian": "Norwegian",
+		"danish": "Danish"
 	},
 	"configuration": {
 		"selector": {
