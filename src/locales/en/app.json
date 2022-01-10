@@ -62,7 +62,7 @@
 			"weekend": "Weekend"
 		},
 		"button": {
-			"refresh": "Refesh preview",
+			"refresh": "Refresh preview",
 			"download": "Generate full calendar and download",
 			"generating": "Generating, please wait..."
 		},
