@@ -1,0 +1,2 @@
+self.webpackChunk([3],{708:function(e){e.exports=JSON.parse('{"calendar":{"header":{"week-number":"W#","retrospective":"Re"},"body":{"retrospective":"R"}},"page":{"month":{"habits":{"title":"Habits"}},"week":{"title":"Week"},"retrospective":{"title":"Retrospective for week"},"last":{"title":"Generated using <recalendar>https://recalendar.me/</recalendar>","subtitle":"You can upload this PDF there again to load the same configuration that was used to create it and quickly generate a similar one for the new year!"}}}')}});
+//# sourceMappingURL=3.19a60f14.chunk.worker.js.map
