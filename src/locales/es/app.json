@@ -12,7 +12,8 @@
 		"english": "Inglés",
 		"polish": "Polaco",
 		"french": "Francés",
-		"spanish": "Español"
+		"spanish": "Español",
+		"german": "Alemán"
 	},
 	"configuration": {
 		"selector": {
