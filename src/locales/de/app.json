@@ -3,7 +3,7 @@
 	"download-ready": "Jetzt herunterladen!",
 	"navigation": {
 		"home": "Start",
-		"configuration": "Kalender erzeugen",
+		"configuration": "Kalender erstellen",
 		"features": "Features",
 		"faq": "FAQ"
 	},
@@ -26,10 +26,10 @@
 				"minimalistic": "Minimalistisch"
 			},
 			"upload": {
-				"label": "Lade einen existierenden ReCalendar PDF hoch um die Konfiguration zu übernehmen:",
-				"loading": "Lese Konfiguration aus der PDF Datei, bitte warten...",
-				"error": "Es konnte keine Konfigurationa aus dem PDF übernommen werden - bist du sicher, dass das PDF mit dieser Website generiert worden ist?",
-				"success": "Konfiguration aus existiermendem PDF geladen - Willkommen zurück!"
+				"label": "Lade einen bestehendes ReCalendar PDF hoch um die Konfiguration zu übernehmen:",
+				"loading": "Lese Konfiguration aus dem PDF, bitte warten...",
+				"error": "Es konnte keine Konfiguration aus dem PDF übernommen werden - bist du sicher, dass das PDF mit dieser Website generiert worden ist?",
+				"success": "Konfiguration aus bestehendem PDF geladen - Willkommen zurück!"
 			}
 		},
 		"general": {
@@ -37,19 +37,19 @@
 			"year": "Jahr",
 			"starting-month": {
 				"label": "Start-Monat",
-				"description": "Das erste Monat, welches im Kalender enthalten seinsoll. Du kannst zB Oktober auswählen um einen Kalender für ein Semster, statt für ein Jahr zu erzeugen."
+				"description": "Das erste Monat, welches im Kalender enthalten seinsoll. Du kannst zB Oktober auswählen um einen Kalender für ein Semster, statt für ein Jahr zu erstellen."
 			},
 			"month-count": {
 				"label": "Anzahl der Monate",
-				"description": "Für wie viele Monate möchtest du einen Kalender erzeugen?"
+				"description": "Für wie viele Monate möchtest du einen Kalender erstellen?"
 			},
 			"first-day-of-week": "Erster Tag der Woche",
 			"weekend": "Wochenende"
 		},
 		"button": {
 			"refresh": "Vorschau aktualisieren",
-			"download": "Kalender erzeugen und herunterladen",
-			"generating": "Kalender wird erzeugt, bitte warten..."
+			"download": "Kalender erstellen und herunterladen",
+			"generating": "Kalender wird erstellt, bitte warten..."
 		},
 		"itinerary": {
 			"empty": "Leerer Zeitplan",
@@ -125,7 +125,7 @@
 			"preview": "Erzeuge Vorschau - das kann eine Minute dauern."
 		},
 		"empty": {
-			"title": "Benutze folgendes Formular um einen personalisierten Kalender zu erzeugen.",
+			"title": "Benutze folgendes Formular um einen personalisierten Kalender zu erstellen.",
 			"subtitle": "Die Vorschau wird hier angezeigt."
 		}
 	}

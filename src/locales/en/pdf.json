@@ -2,7 +2,7 @@
 	"calendar": {
 		"header": {
 			"week-number": "W#",
-			"retrospective": "Rü"
+			"retrospective": "Re"
 		},
 		"body": {
 			"retrospective": "R"
@@ -11,18 +11,18 @@
 	"page": {
 		"month": {
 			"habits": {
-				"title": "Gewohnheiten"
+				"title": "Habits"
 			}
 		},
 		"week": {
-			"title": "Woche"
+			"title": "Week"
 		},
 		"retrospective": {
-			"title": "Wochenrückblick"
+			"title": "Retrospective for week"
 		},
 		"last": {
-			"title": "Erzeugt via <recalendar>https://recalendar.me/</recalendar>",
-			"subtitle": "Du kannst dieses PDF erneut hochladen um die Konfiguration aus dem PDF zu verwenden um weitere Kalender zu erzeugen. Zum Beispiel für nächstes Jahr?"
+			"title": "Generated using <recalendar>https://recalendar.me/</recalendar>",
+			"subtitle": "You can upload this PDF there again to load the same configuration that was used to create it and quickly generate a similar one for the new year!"
 		}
 	}
 }

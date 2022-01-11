@@ -1,8 +1,10 @@
+
+
 {
 	"habits": {
-		"example1": "Exercise",
-		"example2": "Book",
-		"example3": "Hobby",
-		"example4": "Date night"
+		"example1": "Sport",
+		"example2": "Lesen",
+		"example3": "Modelleisenbahn",
+		"example4": "Date Night"
 	}
 }
