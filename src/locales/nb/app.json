@@ -9,10 +9,11 @@
 	},
 	"language": {
 		"label": "Språk",
-		"english": "Engelsk",
-		"polish": "Polsk",
-		"french": "Fransk",
-		"spanish": "Spansk"
+		"en": "Engelsk",
+		"pl": "Polsk",
+		"fr": "Fransk",
+		"es": "Spansk",
+		"nb": "Norsk"
 	},
 	"configuration": {
 		"selector": {

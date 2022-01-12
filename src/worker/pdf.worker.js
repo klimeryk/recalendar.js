@@ -5,7 +5,11 @@ import LanguageDetector from 'i18next-browser-languagedetector';
 import React from 'react';
 import { initReactI18next } from 'react-i18next';
 
-import { i18nConfiguration, webpackBackend } from 'config/i18n';
+import {
+	i18nConfiguration,
+	webpackBackend,
+	getSupportedLocales,
+} from 'config/i18n';
 import { utf8ToBase64 } from 'lib/base64';
 import { Font, pdf } from 'lib/pdf';
 import PdfConfig, {
@@ -23,7 +27,7 @@ i18n
 	.use( initReactI18next )
 	.init( {
 		...i18nConfiguration( [ 'pdf', 'config' ] ),
-		preload: [ 'en', 'pl', 'es', 'fr', 'nb', 'da' ],
+		preload: getSupportedLocales(),
 		react: {
 			useSuspense: false,
 		},

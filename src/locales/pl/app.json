@@ -9,12 +9,12 @@
 	},
 	"language": {
 		"label": "Język",
-		"english": "Angielski",
-		"polish": "Polski",
-		"french": "Francuski",
-		"spanish": "Hiszpański",
-		"norwegian": "Norweski",
-		"danish": "Duński"
+		"en": "Angielski",
+		"pl": "Polski",
+		"fr": "Francuski",
+		"es": "Hiszpański",
+		"nb": "Norweski",
+		"da": "Duński"
 	},
 	"configuration": {
 		"selector": {

@@ -9,11 +9,8 @@
 
 ### For developers
 
- - Copy the `en` folder from https://github.com/klimeryk/recalendar.js/tree/master/src/locales/ and rename it to your language's code.
+ - Copy the `en` folder from https://github.com/klimeryk/recalendar.js/tree/master/src/locales/ and rename it to the appropriate locale. It has to match the locale that [day.js](https://day.js.org/docs/en/i18n/i18n) supports. The list is available [here](https://github.com/iamkun/dayjs/tree/dev/src/locale).
  - Translate the strings in each `*.json` file, as described in the above section.
- - Add your language code:
-    - https://github.com/klimeryk/recalendar.js/blob/master/src/config/i18n.js#L5
-	- https://github.com/klimeryk/recalendar.js/blob/master/src/worker/pdf.worker.js#L26
-	- https://github.com/klimeryk/recalendar.js/blob/f20a94d89c55358fad62d3a3c76449221e633283/src/navigation.jsx#L83
- - You should now be able to see the language in your local version.
+ - Add your language to [the English `app.json` file, `language` section](https://github.com/klimeryk/recalendar.js/blob/master/src/locales/en/app.json), so that there will be a fallback version for all other languages. You probably want to do the same for your language too.
+ - You should now be able to see the language in your local, development version.
  - Check the console for any warnings or errors if the language is not visible or not working.

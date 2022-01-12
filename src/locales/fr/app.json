@@ -9,10 +9,10 @@
 	},
 	"language": {
 		"label": "Langue",
-		"english": "Anglais",
-		"polish": "Polonais",
-		"french": "Français",
-		"spanish": "Espagnol"
+		"en": "Anglais",
+		"pl": "Polonais",
+		"fr": "Français",
+		"es": "Espagnol"
 	},
 	"configuration": {
 		"selector": {

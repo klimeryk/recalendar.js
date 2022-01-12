@@ -1,148 +1,148 @@
 {
-  "loading": "indlæser...",
-  "download-ready": "Download nu!",
-  "navigation": {
-    "home": "Hjem",
-    "configuration": "Lav din egen kalender",
-    "features": "Egenskaber",
-    "faq": "FAQ"
-  },
-  "language": {
-    "label": "Sprog",
-    "english": "Engelsk",
-    "polish": "Polsk",
-    "french": "Fransk",
-    "spanish": "Spansk",
-    "danish": "Dansk"
-  },
-  "configuration": {
-    "selector": {
-      "label": "Start",
-      "template": {
-        "label": "Start med at vælge en skabelon",
-        "basic": {
-          "label": "Simpel",
-          "description": "Standard indstillinger - et godt udgangspunkt"
-        },
-        "advanced": {
-          "label": "Advanceret",
-          "description": "Bygger ovenpå den simple skabelon ved at tilføje individuelle punkter pr dag"
-        },
-        "blank": {
-          "label": "Blank",
-          "description": "Som den Simple Template men unden nogen former for specielle datoer, TODOs osv"
-        },
-        "minimalistic": {
-          "label": "Minimalistisk",
-          "description": "Fjerner alt pånær den ugentlige oversigt"
-        }
-      },
-      "upload": {
-        "label": "Eller overfør en tidligere genereret ReCalendar PDF for at bruge dens konfiguration",
-        "loading": "Indlæser konfiguration fra PDF filen, Vent venligst...",
-        "error": "Kunne desværre ikke indlæse konfigurationen fra denne ReCalendar PDF - Er du sikker på at den er genereret på denne hjemmeside?",
-        "success": "Konfigurtion indlæst fra PDF - velkommen tilbage!"
-      }
-    },
-    "general": {
-      "label": "Generelle indstillinger",
-      "year": "År",
-      "left-handed": {
-        "label": "venstrehåndsversion",
-        "description": "Optimimerer layout til brug af en venstrehåndet"
-      },
-      "starting-month": {
-        "label": "Start måned",
-        "description": "Den første måned i den genererede kalender. Vælg f.eks. september hvis du ønsker at den skal dække det et skoleår i stedet for et kalenderår."
-      },
-      "month-count": {
-        "label": "Antal måneder",
-        "description": "Hvor mange måneder skal der være i den færdige kalendr."
-      },
-      "first-day-of-week": "Første dag på ugen",
-      "weekend": "Weekend"
-    },
-    "button": {
-      "refresh": "Opdatér forhåndsvisning",
-      "download": "Generer den fulde kalendar og download",
-      "generating": "Genererer, vent venligst..."
-    },
-    "itinerary": {
-      "empty": "Tom plan",
-      "placeholder": {
-        "lines": "Antal linjer",
-        "page": "Skift til ny side"
-      },
-      "button": {
-        "copy": "Kopier dette punkt fra planen til alle andre dage også",
-        "remove": "Fjern",
-        "item": "Tilføj punkt til planen",
-        "page": "Start en ny side",
-        "lines": "Tilføj tomme linjer"
-      }
-    },
-    "items-list": {
-      "button": {
-        "item": "Tilføj punkt",
-        "remove": "Fjern"
-      },
-      "empty": "Tøm listen",
-      "placeholder": "Punkt"
-    },
-    "toggle-form": {
-      "enabled": "Slået til",
-      "disabled": "Slået fra"
-    },
-    "month": {
-      "title": "Månedsoversigt",
-      "description": "Månedsoversigten er stedet hvor du kan sætte dine mål for den kommende måned, holde styr på dine vaner og lægge planer.",
-      "habits": {
-        "title": "Vaner"
-      },
-      "itinerary": {
-        "title": "Plan"
-      }
-    },
-    "week": {
-      "title": "Ugeoversigt",
-      "description": "Ugeoversigten giver dig et overblik over ugen for at lette planlægningen",
-      "todos": {
-        "title": "Gøremål/TODOs"
-      },
-      "retrospective": {
-        "title": "Tilbageblik på ugen",
-        "description": "I tilbageblik på ugen kan di reflektere over hvordan den forgangne uge er gået - hvad der skete, hvordan det gik og hvad du kunne forbedre til næste uge?",
-        "itinerary": {
-          "title": "Plan"
-        }
-      }
-    },
-    "day": {
-      "title": "Dagsplan"
-    },
-    "special-dates": {
-      "title": "Specielle datoer",
-      "description": "Tilføj dine fødselsdage, fejringer, arrangementer, osv her for at få påmindelse om dem i din ugeoversigt og dagsoversigt når du kommer til dem.",
-      "empty": "Ingen datoer",
-      "placeholder": "Hvad er anledningen?",
-      "button": {
-        "item": "Tilføj dato",
-        "remove": "Fjern"
-      }
-    },
-    "generation-description": "PDF genereringen sker udelukkende i din browser - ingen data bliver sendt til vores servere!"
-  },
-  "preview": {
-    "title": "Kalender forhåndsvisning",
-    "subtitle": "(Kun første måned er vist i forhåndvisning)",
-    "viewer-title": "PDF forhåndsvisning",
-    "generating": {
-      "full": "Genererer fuld kalender - dette kan godt tage over et minut...",
-      "preview": "Genererer forhåndsvisning, vent venligst - detta kan tage et øjeblik."
-    },
-    "empty": {
-      "title": "Brug tilpasningsformen for at lave din egen personlige kalender",
-      "subtitle": "Her kommer forhåndsvisningen."
-    }
-  }
+	"loading": "indlæser...",
+	"download-ready": "Download nu!",
+	"navigation": {
+		"home": "Hjem",
+		"configuration": "Lav din egen kalender",
+		"features": "Egenskaber",
+		"faq": "FAQ"
+	},
+	"language": {
+		"label": "Sprog",
+		"en": "Engelsk",
+		"pl": "Polsk",
+		"fr": "Fransk",
+		"es": "Spansk",
+		"da": "Dansk"
+	},
+	"configuration": {
+		"selector": {
+			"label": "Start",
+			"template": {
+				"label": "Start med at vælge en skabelon",
+				"basic": {
+					"label": "Simpel",
+					"description": "Standard indstillinger - et godt udgangspunkt"
+				},
+				"advanced": {
+					"label": "Advanceret",
+					"description": "Bygger ovenpå den simple skabelon ved at tilføje individuelle punkter pr dag"
+				},
+				"blank": {
+					"label": "Blank",
+					"description": "Som den Simple Template men unden nogen former for specielle datoer, TODOs osv"
+				},
+				"minimalistic": {
+					"label": "Minimalistisk",
+					"description": "Fjerner alt pånær den ugentlige oversigt"
+				}
+			},
+			"upload": {
+				"label": "Eller overfør en tidligere genereret ReCalendar PDF for at bruge dens konfiguration",
+				"loading": "Indlæser konfiguration fra PDF filen, Vent venligst...",
+				"error": "Kunne desværre ikke indlæse konfigurationen fra denne ReCalendar PDF - Er du sikker på at den er genereret på denne hjemmeside?",
+				"success": "Konfigurtion indlæst fra PDF - velkommen tilbage!"
+			}
+		},
+		"general": {
+			"label": "Generelle indstillinger",
+			"year": "År",
+			"left-handed": {
+				"label": "venstrehåndsversion",
+				"description": "Optimimerer layout til brug af en venstrehåndet"
+			},
+			"starting-month": {
+				"label": "Start måned",
+				"description": "Den første måned i den genererede kalender. Vælg f.eks. september hvis du ønsker at den skal dække det et skoleår i stedet for et kalenderår."
+			},
+			"month-count": {
+				"label": "Antal måneder",
+				"description": "Hvor mange måneder skal der være i den færdige kalendr."
+			},
+			"first-day-of-week": "Første dag på ugen",
+			"weekend": "Weekend"
+		},
+		"button": {
+			"refresh": "Opdatér forhåndsvisning",
+			"download": "Generer den fulde kalendar og download",
+			"generating": "Genererer, vent venligst..."
+		},
+		"itinerary": {
+			"empty": "Tom plan",
+			"placeholder": {
+				"lines": "Antal linjer",
+				"page": "Skift til ny side"
+			},
+			"button": {
+				"copy": "Kopier dette punkt fra planen til alle andre dage også",
+				"remove": "Fjern",
+				"item": "Tilføj punkt til planen",
+				"page": "Start en ny side",
+				"lines": "Tilføj tomme linjer"
+			}
+		},
+		"items-list": {
+			"button": {
+				"item": "Tilføj punkt",
+				"remove": "Fjern"
+			},
+			"empty": "Tøm listen",
+			"placeholder": "Punkt"
+		},
+		"toggle-form": {
+			"enabled": "Slået til",
+			"disabled": "Slået fra"
+		},
+		"month": {
+			"title": "Månedsoversigt",
+			"description": "Månedsoversigten er stedet hvor du kan sætte dine mål for den kommende måned, holde styr på dine vaner og lægge planer.",
+			"habits": {
+				"title": "Vaner"
+			},
+			"itinerary": {
+				"title": "Plan"
+			}
+		},
+		"week": {
+			"title": "Ugeoversigt",
+			"description": "Ugeoversigten giver dig et overblik over ugen for at lette planlægningen",
+			"todos": {
+				"title": "Gøremål/TODOs"
+			},
+			"retrospective": {
+				"title": "Tilbageblik på ugen",
+				"description": "I tilbageblik på ugen kan di reflektere over hvordan den forgangne uge er gået - hvad der skete, hvordan det gik og hvad du kunne forbedre til næste uge?",
+				"itinerary": {
+					"title": "Plan"
+				}
+			}
+		},
+		"day": {
+			"title": "Dagsplan"
+		},
+		"special-dates": {
+			"title": "Specielle datoer",
+			"description": "Tilføj dine fødselsdage, fejringer, arrangementer, osv her for at få påmindelse om dem i din ugeoversigt og dagsoversigt når du kommer til dem.",
+			"empty": "Ingen datoer",
+			"placeholder": "Hvad er anledningen?",
+			"button": {
+				"item": "Tilføj dato",
+				"remove": "Fjern"
+			}
+		},
+		"generation-description": "PDF genereringen sker udelukkende i din browser - ingen data bliver sendt til vores servere!"
+	},
+	"preview": {
+		"title": "Kalender forhåndsvisning",
+		"subtitle": "(Kun første måned er vist i forhåndvisning)",
+		"viewer-title": "PDF forhåndsvisning",
+		"generating": {
+			"full": "Genererer fuld kalender - dette kan godt tage over et minut...",
+			"preview": "Genererer forhåndsvisning, vent venligst - detta kan tage et øjeblik."
+		},
+		"empty": {
+			"title": "Brug tilpasningsformen for at lave din egen personlige kalender",
+			"subtitle": "Her kommer forhåndsvisningen."
+		}
+	}
 }

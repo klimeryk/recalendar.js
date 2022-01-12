@@ -8,6 +8,7 @@ import Navbar from 'react-bootstrap/Navbar';
 import Stack from 'react-bootstrap/Stack';
 import { withTranslation } from 'react-i18next';
 
+import { getSupportedLocales } from 'config/i18n';
 import {
 	HOME_PATH,
 	CONFIGURATOR_PATH,
@@ -35,6 +36,14 @@ class Navigation extends React.Component {
 
 	handleLanguageChange = ( newLanguage ) => {
 		this.setState( { language: newLanguage } );
+	};
+
+	renderLanguageOption = ( language ) => {
+		return (
+			<option key={ language } value={ language }>
+				{this.props.t( 'language.' + language )}
+			</option>
+		);
 	};
 
 	render() {
@@ -77,12 +86,7 @@ class Navigation extends React.Component {
 								value={ this.state.language }
 								onChange={ this.handleLanguageSelection }
 							>
-								<option value="en">{t( 'language.english' )}</option>
-								<option value="fr">{t( 'language.french' )}</option>
-								<option value="es">{t( 'language.spanish' )}</option>
-								<option value="pl">{t( 'language.polish' )}</option>
-								<option value="nb">{t( 'language.norwegian' )}</option>
-								<option value="da">{t( 'language.danish' )}</option>
+								{getSupportedLocales().map( this.renderLanguageOption )}
 							</Form.Select>
 						</Stack>
 					</Navbar.Collapse>
