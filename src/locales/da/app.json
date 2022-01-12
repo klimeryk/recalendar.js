@@ -8,12 +8,7 @@
 		"faq": "FAQ"
 	},
 	"language": {
-		"label": "Sprog",
-		"en": "Engelsk",
-		"pl": "Polsk",
-		"fr": "Fransk",
-		"es": "Spansk",
-		"da": "Dansk"
+		"label": "Sprog"
 	},
 	"configuration": {
 		"selector": {

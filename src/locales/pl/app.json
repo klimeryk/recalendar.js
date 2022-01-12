@@ -8,13 +8,7 @@
 		"faq": "Pytania i odpowiedzi"
 	},
 	"language": {
-		"label": "Język",
-		"en": "Angielski",
-		"pl": "Polski",
-		"fr": "Francuski",
-		"es": "Hiszpański",
-		"nb": "Norweski",
-		"da": "Duński"
+		"label": "Język"
 	},
 	"configuration": {
 		"selector": {

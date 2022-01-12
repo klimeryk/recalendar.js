@@ -8,11 +8,7 @@
 		"faq": "FAQ"
 	},
 	"language": {
-		"label": "Idioma",
-		"en": "Inglés",
-		"pl": "Polaco",
-		"fr": "Francés",
-		"es": "Español"
+		"label": "Idioma"
 	},
 	"configuration": {
 		"selector": {

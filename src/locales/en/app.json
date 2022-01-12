@@ -10,11 +10,11 @@
 	"language": {
 		"label": "Language",
 		"en": "English",
-		"pl": "Polish",
-		"fr": "French",
-		"es": "Spanish",
-		"nb": "Norwegian",
-		"da": "Danish"
+		"pl": "Polski",
+		"fr": "Français",
+		"es": "Español",
+		"nb": "Norsk",
+		"da": "Dansk"
 	},
 	"configuration": {
 		"selector": {
