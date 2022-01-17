@@ -78,7 +78,7 @@ class MonthOverviewPage extends React.Component {
 					fontSize: 6,
 					textAlign: 'center',
 					position: 'relative',
-					top: -2,
+					top: -1,
 				},
 				habitRow: {
 					flexDirection: 'row',
@@ -163,7 +163,7 @@ class MonthOverviewPage extends React.Component {
 				style={ this.styles.habitDay }
 			>
 				<Text style={ this.styles.habitDayDate }>{day.format( 'D' )}</Text>
-				<Text style={ this.styles.habitDayOfWeek }>{day.format( 'ddd' )}</Text>
+				<Text style={ this.styles.habitDayOfWeek }>{day.format( 'dd' )}</Text>
 			</Link>
 		);
 	}
