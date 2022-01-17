@@ -17,6 +17,7 @@ import PdfConfig, {
 	CONFIG_CURRENT_VERSION,
 	CONFIG_FILE,
 } from 'pdf/config';
+import { getFontDefinition } from 'pdf/lib/fonts';
 import RecalendarPdf from 'pdf/recalendar';
 import 'config/dayjs';
 
@@ -63,7 +64,7 @@ self.onmessage = ( { data } ) => {
 	} );
 
 	Font.registerHyphenationCallback( hyphenationCallback );
-	Font.register( config.fontDefinition );
+	Font.register( getFontDefinition( config.fontFamily ) );
 
 	const document = React.createElement(
 		RecalendarPdf,

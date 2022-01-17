@@ -26,6 +26,7 @@ import SpecialDates from 'configuration-form/special-dates';
 import ToggleAccordionItem from 'configuration-form/toggle-accordion-item';
 import { getWeekdays } from 'lib/date';
 import PdfConfig, { hydrateFromObject } from 'pdf/config';
+import { AVAILABLE_FONTS } from 'pdf/lib/fonts';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './app.css';
@@ -267,6 +268,14 @@ class Configuration extends React.PureComponent {
 		this.setState( { specialDates: newSpecialDates } );
 	};
 
+	renderFonts() {
+		return AVAILABLE_FONTS.map( ( font ) => (
+			<option key={ font } value={ font }>
+				{font}
+			</option>
+		) );
+	}
+
 	renderMonths() {
 		return dayjs
 			.localeData()
@@ -341,6 +350,15 @@ class Configuration extends React.PureComponent {
 							{t( 'configuration.general.label' )}
 						</Accordion.Header>
 						<Accordion.Body>
+							<Form.Group controlId="fontFamily">
+								<Form.Label>{t( 'configuration.general.font' )}</Form.Label>
+								<Form.Select
+									value={ this.state.fontFamily }
+									onChange={ this.handleFieldChange }
+								>
+									{this.renderFonts()}
+								</Form.Select>
+							</Form.Group>
 							<Form.Group controlId="year">
 								<Form.Label>{t( 'configuration.general.year' )}</Form.Label>
 								<Form.Control

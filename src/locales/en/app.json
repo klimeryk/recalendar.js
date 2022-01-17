@@ -47,6 +47,7 @@
 		},
 		"general": {
 			"label": "General options",
+			"font": "Font",
 			"year": "Year",
 			"left-handed": {
 				"label": "Left-handed version",

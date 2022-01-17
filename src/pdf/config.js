@@ -2,8 +2,10 @@ import dayjs from 'dayjs';
 import { t } from 'i18next';
 
 import { ITINERARY_ITEM, ITINERARY_LINES } from 'configuration-form/itinerary';
+import { LATO } from 'pdf/lib/fonts';
 
 const CONFIG_FIELDS = [
+	'fontFamily',
 	'year',
 	'month',
 	'firstDayOfWeek',
@@ -44,20 +46,7 @@ class PdfConfig {
 		this.weekendDays = [ 0, 6 ];
 		this.isLeftHanded = false;
 		this.monthCount = 12;
-		this.fontFamily = 'Lato';
-		this.fontDefinition = {
-			family: this.fontFamily,
-			fonts: [
-				{ src: '/fonts/Lato/Lato-Regular.ttf' },
-				{ src: '/fonts/Lato/Lato-Italic.ttf', fontStyle: 'italic' },
-				{ src: '/fonts/Lato/Lato-Bold.ttf', fontWeight: 700 },
-				{
-					src: '/fonts/Lato/Lato-BoldItalic.ttf',
-					fontStyle: 'italic',
-					fontWeight: 700,
-				},
-			],
-		};
+		this.fontFamily = LATO;
 		this.isMonthOverviewEnabled = true;
 		this.habits = [
 			t( 'habits.example1', { ns: 'config' } ),
