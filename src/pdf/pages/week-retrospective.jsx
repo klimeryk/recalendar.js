@@ -10,11 +10,13 @@ import Itinerary from 'pdf/components/itinerary';
 import MiniCalendar, { HIGHLIGHT_WEEK } from 'pdf/components/mini-calendar';
 import PdfConfig from 'pdf/config';
 import { weekRetrospectiveLink } from 'pdf/lib/links';
-import { content, page } from 'pdf/styles';
+import { content, pageStyle } from 'pdf/styles';
 import { getItemsOnExtraPages } from 'pdf/utils';
 
 class WeekRetrospectivePage extends React.Component {
-	styles = StyleSheet.create( Object.assign( {}, { content, page } ) );
+	styles = StyleSheet.create(
+		Object.assign( {}, { content, page: pageStyle( this.props.config ) } ),
+	);
 
 	getNameOfWeek() {
 		const { date } = this.props;
@@ -32,7 +34,9 @@ class WeekRetrospectivePage extends React.Component {
 						<Header
 							isLeftHanded={ config.isLeftHanded }
 							title={ t( 'page.retrospective.title' ) }
+							titleSize={ 15 }
 							subtitle={ this.getNameOfWeek() }
+							subtitleSize={ 18 }
 							number={ getWeekNumber( date ).toString() }
 							previousLink={
 								'#' + weekRetrospectiveLink( date.subtract( 1, 'week' ) )

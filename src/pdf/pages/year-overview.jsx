@@ -20,6 +20,7 @@ class YearOverviewPage extends React.Component {
 			justifyContent: 'center',
 		},
 	} );
+
 	renderCalendars() {
 		const calendars = [];
 		const { startDate, endDate, config } = this.props;

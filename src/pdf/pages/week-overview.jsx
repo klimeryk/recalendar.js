@@ -9,7 +9,7 @@ import Header from 'pdf/components/header';
 import MiniCalendar, { HIGHLIGHT_WEEK } from 'pdf/components/mini-calendar';
 import PdfConfig from 'pdf/config';
 import { weekOverviewLink, dayPageLink } from 'pdf/lib/links';
-import { content, page } from 'pdf/styles';
+import { content, pageStyle } from 'pdf/styles';
 
 class WeekOverviewPage extends React.Component {
 	styles = StyleSheet.create(
@@ -60,7 +60,7 @@ class WeekOverviewPage extends React.Component {
 					fontSize: 10,
 				},
 			},
-			{ content, page },
+			{ content, page: pageStyle( this.props.config ) },
 		),
 	);
 

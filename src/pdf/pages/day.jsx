@@ -14,11 +14,13 @@ import {
 	monthOverviewLink,
 	weekOverviewLink,
 } from 'pdf/lib/links';
-import { content, page } from 'pdf/styles';
+import { content, pageStyle } from 'pdf/styles';
 import { getItemsOnExtraPages } from 'pdf/utils';
 
 class DayPage extends React.Component {
-	styles = StyleSheet.create( Object.assign( {}, { content, page } ) );
+	styles = StyleSheet.create(
+		Object.assign( {}, { content, page: pageStyle( this.props.config ) } ),
+	);
 
 	renderExtraItems = ( items, index ) => (
 		<Page key={ index } size={ this.props.config.pageSize }>

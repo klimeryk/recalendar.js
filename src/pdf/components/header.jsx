@@ -2,73 +2,69 @@ import { Text, View, StyleSheet, Link } from '@react-pdf/renderer';
 import PropTypes from 'prop-types';
 import React from 'react';
 
-import { page } from 'pdf/styles';
-
 class Header extends React.PureComponent {
 	constructor( props ) {
 		super( props );
 
-		const stylesObject = Object.assign(
-			{
-				header: {
-					flexGrow: 0,
-					flexDirection: 'row',
-				},
-				meta: {
-					flexGrow: 1,
-					flexDirection: 'column',
-					borderRight: '1 solid black',
-				},
-				dateMain: {
-					flexDirection: 'row',
-					marginLeft: 'auto',
-				},
-				dateInfo: {
-					flex: 1,
-					flexDirection: 'row',
-					paddingRight: 5,
-				},
-				subtitle: {
-					marginLeft: 'auto',
-					textTransform: 'uppercase',
-					textAlign: 'right',
-					margin: '0 5',
-					fontSize: 22,
-					flex: 1,
-				},
-				title: {
-					textTransform: 'uppercase',
-					textDecoration: 'none',
-					justifyContent: 'center',
-					textAlign: 'right',
-					color: 'black',
-					padding: '10 5',
-					fontSize: 20,
-					maxWidth: 200,
-				},
-				arrow: {
-					color: '#AAA',
-					textDecoration: 'none',
-					justifyContent: 'center',
-					padding: '10 5',
-					fontSize: 20,
-				},
-				dayNumber: {
-					fontSize: 55,
-					fontWeight: 'bold',
-				},
-				specialItems: {
-					flexDirection: 'column',
-					width: 130,
-				},
-				specialItem: {
-					fontSize: 10,
-					marginLeft: 5,
-					fontStyle: 'italic',
-				},
+		const stylesObject = {
+			header: {
+				flexGrow: 0,
+				flexDirection: 'row',
 			},
-			{ page },
-		);
+			meta: {
+				flexGrow: 1,
+				flexDirection: 'column',
+				borderRight: '1 solid black',
+			},
+			dateMain: {
+				flexDirection: 'row',
+				marginLeft: 'auto',
+			},
+			dateInfo: {
+				flex: 1,
+				flexDirection: 'row',
+				paddingRight: 5,
+			},
+			subtitle: {
+				marginLeft: 'auto',
+				textTransform: 'uppercase',
+				textAlign: 'right',
+				margin: '0 5',
+				fontSize: props.subtitleSize,
+				flex: 1,
+			},
+			title: {
+				textTransform: 'uppercase',
+				textDecoration: 'none',
+				justifyContent: 'center',
+				textAlign: 'right',
+				color: 'black',
+				padding: '10 5',
+				fontSize: props.titleSize,
+				maxWidth: 165,
+			},
+			arrow: {
+				color: '#AAA',
+				textDecoration: 'none',
+				justifyContent: 'center',
+				padding: '10 5',
+				fontSize: 20,
+			},
+			dayNumber: {
+				fontSize: 55,
+				fontWeight: 'bold',
+				marginBottom: -5,
+			},
+			specialItems: {
+				flexDirection: 'column',
+				width: 130,
+			},
+			specialItem: {
+				fontSize: 10,
+				marginLeft: 5,
+				fontStyle: 'italic',
+			},
+		};
 
 		if ( this.props.isLeftHanded ) {
 			stylesObject.header.flexDirection = 'row-reverse';
@@ -140,6 +136,11 @@ class Header extends React.PureComponent {
 	}
 }
 
+Header.defaultProps = {
+	titleSize: 20,
+	subtitleSize: 20,
+};
+
 Header.propTypes = {
 	id: PropTypes.string,
 	children: PropTypes.node,
@@ -148,8 +149,10 @@ Header.propTypes = {
 	number: PropTypes.string.isRequired,
 	specialItems: PropTypes.array,
 	subtitle: PropTypes.string.isRequired,
+	subtitleSize: PropTypes.number,
 	title: PropTypes.string.isRequired,
 	titleLink: PropTypes.string,
+	titleSize: PropTypes.number,
 	previousLink: PropTypes.string.isRequired,
 	nextLink: PropTypes.string.isRequired,
 };

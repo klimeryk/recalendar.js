@@ -9,15 +9,15 @@ import Itinerary from 'pdf/components/itinerary';
 import MiniCalendar, { HIGHLIGHT_NONE } from 'pdf/components/mini-calendar';
 import PdfConfig from 'pdf/config';
 import { dayPageLink, monthOverviewLink } from 'pdf/lib/links';
-import { page } from 'pdf/styles';
+import { pageStyle } from 'pdf/styles';
 import { getItemsOnExtraPages } from 'pdf/utils';
-
-const habitColumnWidth = 40;
-const habitSquareWidth = 13;
 
 class MonthOverviewPage extends React.Component {
 	constructor( props ) {
 		super( props );
+
+		const habitColumnWidth = 40;
+		const habitSquareWidth = props.config.alwaysOnSidebar ? 12 : 13;
 
 		const stylesObject = Object.assign(
 			{
@@ -104,7 +104,7 @@ class MonthOverviewPage extends React.Component {
 					backgroundColor: '#EEE',
 				},
 			},
-			{ page },
+			{ page: pageStyle( props.config ) },
 		);
 
 		if ( this.props.config.isLeftHanded ) {

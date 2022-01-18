@@ -53,6 +53,10 @@
 				"label": "Left-handed version",
 				"description": "Optimizes the layout for left-handed use."
 			},
+			"sidebar": {
+				"label": "Leave permanent space for side toolbar",
+				"description": "If you prefer to keep the side toolbar always open, check this option to make sure the calendar's content will never be covered by it."
+			},
 			"starting-month": {
 				"label": "Starting month",
 				"description": "The first month in the generated calendar. Choose something like October if you want your calendar to cover a semester, instead of a calendar year."

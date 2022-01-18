@@ -359,14 +359,6 @@ class Configuration extends React.PureComponent {
 									{this.renderFonts()}
 								</Form.Select>
 							</Form.Group>
-							<Form.Group controlId="year">
-								<Form.Label>{t( 'configuration.general.year' )}</Form.Label>
-								<Form.Control
-									type="number"
-									value={ this.state.year }
-									onChange={ this.handleFieldChange }
-								/>
-							</Form.Group>
 							<Form.Group controlId="isLeftHanded" className="mt-2">
 								<Form.Check
 									label={ t( 'configuration.general.left-handed.label' ) }
@@ -378,6 +370,26 @@ class Configuration extends React.PureComponent {
 								<Form.Text className="text-muted">
 									{t( 'configuration.general.left-handed.description' )}
 								</Form.Text>
+							</Form.Group>
+							<Form.Group controlId="alwaysOnSidebar" className="mt-2">
+								<Form.Check
+									label={ t( 'configuration.general.sidebar.label' ) }
+									type="checkbox"
+									checked={ this.state.alwaysOnSidebar }
+									value={ this.state.alwaysOnSidebar }
+									onChange={ this.handleFieldChange }
+								/>
+								<Form.Text className="text-muted">
+									{t( 'configuration.general.sidebar.description' )}
+								</Form.Text>
+							</Form.Group>
+							<Form.Group controlId="year">
+								<Form.Label>{t( 'configuration.general.year' )}</Form.Label>
+								<Form.Control
+									type="number"
+									value={ this.state.year }
+									onChange={ this.handleFieldChange }
+								/>
 							</Form.Group>
 							<Form.Group controlId="month">
 								<Form.Label>
