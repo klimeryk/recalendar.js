@@ -1,11 +1,11 @@
-import { Page, Text, View, StyleSheet } from '@react-pdf/renderer';
+import { Page, View, Link, StyleSheet } from '@react-pdf/renderer';
 import dayjs from 'dayjs';
 import PropTypes from 'prop-types';
 import React from 'react';
 
 import MiniCalendar, { HIGHLIGHT_NONE } from 'pdf/components/mini-calendar';
 import PdfConfig from 'pdf/config';
-import { yearOverviewLink } from 'pdf/lib/links';
+import { yearOverviewLink, yearNotesLink } from 'pdf/lib/links';
 
 class YearOverviewPage extends React.Component {
 	styles = StyleSheet.create( {
@@ -13,6 +13,9 @@ class YearOverviewPage extends React.Component {
 			fontSize: 55,
 			fontWeight: 'bold',
 			textAlign: 'center',
+			color: 'black',
+			textDecoration: 'none',
+			justifyContent: 'center',
 		},
 		calendars: {
 			flexDirection: 'row',
@@ -46,7 +49,7 @@ class YearOverviewPage extends React.Component {
 		const { config, startDate } = this.props;
 		return (
 			<Page id={ yearOverviewLink() } size={ config.pageSize }>
-				<Text style={ this.styles.year }>{startDate.year()}</Text>
+				<Link src={ '#' + yearNotesLink() } style={ this.styles.year }>{startDate.year()}</Link>
 				<View style={ this.styles.calendars }>{this.renderCalendars()}</View>
 			</Page>
 		);

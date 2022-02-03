@@ -55,3 +55,7 @@ export function weekRetrospectiveLink( date, config ) {
 export function yearOverviewLink() {
 	return 'year-overview';
 }
+
+export function yearNotesLink() {
+	return 'year-notes';
+}
