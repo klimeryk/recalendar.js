@@ -10,6 +10,7 @@ import LastPage from '~/pdf/pages/last';
 import MonthOverviewPage from '~/pdf/pages/month-overview';
 import WeekOverviewPage from '~/pdf/pages/week-overview';
 import WeekRetrospectivePage from '~/pdf/pages/week-retrospective';
+import YearNotesPage from '~/pdf/pages/year-notes';
 import YearOverviewPage from '~/pdf/pages/year-overview';
 
 class RecalendarPdf extends React.Component {
@@ -23,13 +24,28 @@ class RecalendarPdf extends React.Component {
 		},
 	} );
 
-	renderWeek( startOfWeek ) {
+	renderWeek( startOfWeek, endDate ) {
 		const { config } = this.props;
 
 		const weekPages = [];
 		let currentDate = startOfWeek.clone();
 		const endOfWeek = startOfWeek.add( 1, 'weeks' );
 		while ( currentDate.isBefore( endOfWeek ) ) {
+			if (
+				config.isYearNotesEnabled &&
+				currentDate.month() === 0 &&
+				currentDate.date() === 1 &&
+				currentDate.year() > config.year &&
+				currentDate.isBefore( endDate )
+			) {
+				weekPages.push(
+					<YearNotesPage
+						key={ 'year-notes-' + currentDate.year() }
+						date={ currentDate }
+						config={ config }
+					/>,
+				);
+			}
 			if ( config.isMonthOverviewEnabled && currentDate.date() === 1 ) {
 				weekPages.push(
 					<MonthOverviewPage
@@ -57,7 +73,8 @@ class RecalendarPdf extends React.Component {
 	}
 
 	renderCalendar() {
-		const { year, month, monthCount } = this.props.config;
+		const { config } = this.props;
+		const { year, month, monthCount } = config;
 		const pageList = [];
 		let currentDate = dayjs.utc( {
 			year,
@@ -71,13 +88,22 @@ class RecalendarPdf extends React.Component {
 				key={ 'year-overview-' + year }
 				startDate={ currentDate }
 				endDate={ endDate }
-				config={ this.props.config }
+				config={ config }
 			/>,
 		);
+		if ( config.isYearNotesEnabled ) {
+			pageList.push(
+				<YearNotesPage
+					key={ 'year-notes-' + year }
+					date={ currentDate }
+					config={ config }
+				/>,
+			);
+		}
 
 		currentDate = currentDate.startOf( 'week' );
 		while ( currentDate.isBefore( endDate ) ) {
-			pageList.push( this.renderWeek( currentDate ) );
+			pageList.push( this.renderWeek( currentDate, endDate ) );
 
 			currentDate = currentDate.add( 1, 'weeks' );
 			if ( this.props.isPreview && currentDate.month() === month + 1 ) {
@@ -85,7 +111,7 @@ class RecalendarPdf extends React.Component {
 			}
 		}
 
-		pageList.push( <LastPage key="last" config={ this.props.config } /> );
+		pageList.push( <LastPage key="last" config={ config } /> );
 
 		return pageList;
 	}

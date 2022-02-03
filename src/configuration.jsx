@@ -661,6 +661,31 @@ class Configuration extends React.PureComponent {
 						onRemove={ this.handleItemRemove }
 					/>
 					<ToggleAccordionItem
+						id="isYearNotesEnabled"
+						title={ t( 'configuration.year.notes.title' ) }
+						onToggle={ this.handleToggle }
+						toggledOn={ this.state.isYearNotesEnabled }
+					>
+						<p className="mb-0">{t( 'configuration.year.notes.description' )}</p>
+						<Accordion className="mt-3" defaultActiveKey="yearNotesItinerary">
+							<Accordion.Item eventKey="yearNotesItinerary">
+								<Accordion.Header>
+									{t( 'configuration.year.notes.itinerary.title' )}
+								</Accordion.Header>
+								<Accordion.Body>
+									<Itinerary
+										field="yearNotesItinerary"
+										itinerary={ this.state.yearNotesItinerary }
+										onAdd={ this.handleItineraryAdd }
+										onChange={ this.handleItineraryChange }
+										onDragEnd={ this.handleDragEnd }
+										onRemove={ this.handleItineraryRemove }
+									/>
+								</Accordion.Body>
+							</Accordion.Item>
+						</Accordion>
+					</ToggleAccordionItem>
+					<ToggleAccordionItem
 						id="isMonthOverviewEnabled"
 						title={ t( 'configuration.month.title' ) }
 						onToggle={ this.handleToggle }

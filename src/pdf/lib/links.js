@@ -90,3 +90,7 @@ export function weekRetrospectiveLink( date ) {
 export function yearOverviewLink() {
 	return 'year-overview';
 }
+
+export function yearNotesLink( date ) {
+	return 'year-notes-' + date.format( 'YYYY' );
+}

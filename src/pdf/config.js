@@ -22,6 +22,8 @@ const CONFIG_FIELDS = [
 	'weekendDays',
 	'isLeftHanded',
 	'alwaysOnSidebar',
+	'isYearNotesEnabled',
+	'yearNotesItinerary',
 	'isMonthOverviewEnabled',
 	'habits',
 	'monthItinerary',
@@ -63,6 +65,13 @@ class PdfConfig {
 		this.alwaysOnSidebar = false;
 		this.monthCount = 12;
 		this.fontFamily = LATO;
+		this.isYearNotesEnabled = true;
+		this.yearNotesItinerary = [
+			{
+				type: ITINERARY_LINES,
+				value: 50,
+			},
+		];
 		this.isMonthOverviewEnabled = true;
 		this.habits = [
 			t( 'habits.example1', { ns: 'config' } ),
@@ -164,6 +173,7 @@ class PdfConfig {
 			'specialDates',
 			'todos',
 			'weekRetrospectiveItinerary',
+			'yearNotesItinerary',
 		];
 
 		fieldsRequiringUniqueIds.forEach( ( field ) => {

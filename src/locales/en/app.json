@@ -147,6 +147,15 @@
 			"enabled": "Enabled",
 			"disabled": "Disabled"
 		},
+		"year": {
+			"notes": {
+				"title": "Year notes",
+				"description": "Year notes is a place to set the goals, plans and dreams for the upcoming year. One page is added at the start of the calendar, and another before each new year that it spans.",
+				"itinerary": {
+					"title": "Itinerary"
+				}
+			}
+		},
 		"month": {
 			"title": "Month overview",
 			"description": "The month overview is a place to set goals for the upcoming month, track habits and make other plans.",
