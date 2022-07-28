@@ -2,6 +2,7 @@ export function i18nConfiguration( namespaces ) {
 	return {
 		debug: process.env.NODE_ENV === 'development',
 		fallbackLng: 'en',
+		load: 'currentOnly',
 		supportedLngs: getSupportedLocales(),
 		ns: namespaces,
 		interpolation: {

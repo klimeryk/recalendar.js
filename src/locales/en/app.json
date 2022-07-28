@@ -14,7 +14,8 @@
 		"fr": "Français",
 		"es": "Español",
 		"nb": "Norsk",
-		"da": "Dansk"
+		"da": "Dansk",
+		"pt-BR": "Português (Brasil)"
 	},
 	"configuration": {
 		"selector": {

@@ -22,9 +22,12 @@ i18n
 	} );
 
 i18n.on( 'languageChanged', ( newLanguage ) => {
-	require( 'dayjs/locale/' + newLanguage + '.js' );
-	dayjs.locale( newLanguage );
-	dayjs.updateLocale( newLanguage, {
+	// This is needed for locales like pt-BR. i18next expects pt-BR,
+	// while dayjs expects pt-br.
+	const dayjsLanguage = newLanguage.toLowerCase();
+	require( 'dayjs/locale/' + dayjsLanguage + '.js' );
+	dayjs.locale( dayjsLanguage );
+	dayjs.updateLocale( dayjsLanguage, {
 		weekStart: 1, // Week starts on Monday
 	} );
 } );

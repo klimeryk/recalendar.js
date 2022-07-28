@@ -56,9 +56,12 @@ self.onmessage = ( { data } ) => {
 
 	changeLanguage( language );
 
-	require( `dayjs/locale/${language}.js` );
-	dayjs.locale( language );
-	dayjs.updateLocale( language, {
+	// This is needed for locales like pt-BR. i18next expects pt-BR,
+	// while dayjs expects pt-br.
+	const dayjsLanguage = language.toLowerCase();
+	require( `dayjs/locale/${dayjsLanguage}.js` );
+	dayjs.locale( dayjsLanguage );
+	dayjs.updateLocale( dayjsLanguage, {
 		weekStart: firstDayOfWeek,
 	} );
 

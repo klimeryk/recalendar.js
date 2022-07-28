@@ -1,0 +1,36 @@
+{
+	"habits": {
+		"example1": "Exercício",
+		"example2": "Livro",
+		"example3": "Hobby",
+		"example4": "Encontro"
+	},
+	"templates": {
+		"advanced": {
+			"day": {
+				"monday": "Página adicional para notas extras na Segunda"
+			},
+			"retrospective": {
+				"wins": "Vitórias da semaana",
+				"discoveries": "Novas descobertas",
+				"fails": "O que não funcionou direito?"
+			}
+		}
+	},
+	"month": {
+		"goal": "Objetivo principal",
+		"notes": "Notas"
+	},
+	"todos": {
+		"example1": "Planejar uma viagem",
+		"example2": "Algum outro afazer"
+	},
+	"special-dates": {
+		"example1": "Data especial date 1",
+		"example2": "Data especial pelo motivo #2",
+		"example3": "Alguma outra celebração",
+		"example4": "Alguma outra celebração que é muito longa",
+		"example5": "Vamos adicionar mais uma",
+		"example6": "Acabaram os motivos de celebração"
+	}
+}
