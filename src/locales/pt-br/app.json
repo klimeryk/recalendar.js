@@ -8,14 +8,7 @@
 		"faq": "FAQ"
 	},
 	"language": {
-		"label": "Language",
-		"en": "English",
-		"pl": "Polski",
-		"fr": "Français",
-		"es": "Español",
-		"nb": "Norsk",
-		"da": "Dansk",
-		"pt-br": "Português (Brasil)"
+		"label": "Português (Brasil)"
 	},
 	"configuration": {
 		"selector": {
@@ -70,7 +63,7 @@
 			"weekend": "Fim de semana"
 		},
 		"button": {
-			"refresh": "Recarrega preview",
+			"refresh": "Recarrega prévia",
 			"download": "Gera o calendário completo e faz o download",
 			"generating": "Gerando, por favor aguarde..."
 		},
