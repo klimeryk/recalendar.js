@@ -1,0 +1,155 @@
+{
+	"loading": "Carregando...",
+	"download-ready": "Download pronto!",
+	"navigation": {
+		"home": "Início",
+		"configuration": "Crie seu calendário",
+		"features": "Features",
+		"faq": "FAQ"
+	},
+	"language": {
+		"label": "Language",
+		"en": "English",
+		"pl": "Polski",
+		"fr": "Français",
+		"es": "Español",
+		"nb": "Norsk",
+		"da": "Dansk",
+		"pt-br": "Português (Brasil)"
+	},
+	"configuration": {
+		"selector": {
+			"label": "Início",
+			"template": {
+				"label": "Comece selecionando um template:",
+				"basic": {
+					"label": "Básico",
+					"description": "Configurações padrão - bom ponto de partida."
+				},
+				"advanced": {
+					"label": "Avançado",
+					"description": "Expande o template Básico adicionando itinerários individuais aos dias."
+				},
+				"blank": {
+					"label": "Vazio",
+					"description": "Baseado no template Básico, mas com hábitos, TODOs, datas especiais, etc vazios"
+				},
+				"minimalistic": {
+					"label": "Minimalista",
+					"description": "Desabilita tudo menos visões gerais semanais."
+				}
+			},
+			"upload": {
+				"label": "Ou faça o upload de um PDF do ReCalendar gerado anteriormente para usar sua configuração:",
+				"loading": "Lendo configuração de arquivo PDF, por favor aguarde...",
+				"error": "Não foi possível carregar uma configuração de ReCalendar desse arquivo de PDF - você tem certeza que ele foi gerado usando esse website?",
+				"success": "Configuração carregada do PDF - bem vindo(a) de volta!"
+			}
+		},
+		"general": {
+			"label": "Opções gerais",
+			"font": "Fonte",
+			"year": "Ano",
+			"left-handed": {
+				"label": "Versão de canhoto",
+				"description": "Otimiza o layout para canhotos."
+			},
+			"sidebar": {
+				"label": "Deixar espaço permanente para a barra lateral",
+				"description": "Se você prefere manter a barra lateral sempre aberta, seleciona essa opção para ter certeza que o conteúdo do calendário nunca será coberto por ela."
+			},
+			"starting-month": {
+				"label": "Mês inicial",
+				"description": "O primeiro mês gerado no calendário. Escolha algo como Outubro se deseja que o calendário cubra um semestre em vez de um calendário de um ano."
+			},
+			"month-count": {
+				"label": "Número de meses",
+				"description": "Para quantos meses o calendário deve ser gerado."
+			},
+			"first-day-of-week": "Primeiro dia da semana",
+			"weekend": "Fim de semana"
+		},
+		"button": {
+			"refresh": "Recarrega preview",
+			"download": "Gera o calendário completo e faz o download",
+			"generating": "Gerando, por favor aguarde..."
+		},
+		"itinerary": {
+			"empty": "Itinerário vazio",
+			"placeholder": {
+				"lines": "Número de linhas",
+				"page": "Nova quebra de página"
+			},
+			"button": {
+				"copy": "Copia esse itinerário para todos os outros dias",
+				"remove": "Remove",
+				"item": "Adiciona item de itinerário",
+				"page": "Inicia uma nova página",
+				"lines": "Adiciona linhas vazias"
+			}
+		},
+		"items-list": {
+			"button": {
+				"item": "Adiciona item",
+				"remove": "Remove"
+			},
+			"empty": "Lista vazia",
+			"placeholder": "Item"
+		},
+		"toggle-form": {
+			"enabled": "Habilitado",
+			"disabled": "Desabilitado"
+		},
+		"month": {
+			"title": "Visão geral do mês",
+			"description": "A visão geral do mês é um espaço para definir metas para o próximo mês, acompanhar hábitos e fazer outros planos.",
+			"habits": {
+				"title": "Hábitos"
+			},
+			"itinerary": {
+				"title": "Itinerário"
+			}
+		},
+		"week": {
+			"title": "Visão geral da semana",
+			"description": "A visão geral da semana dá uma visão mais ampla da semana para facilitar o planejamento.",
+			"todos": {
+				"title": "TODOs"
+			},
+			"retrospective": {
+				"title": "Retrospectiva da semana",
+				"description": "A retrospectiva da semana é um espaço para refletir sobre a semana passada - como ela foi, o que você aprendeu e o que pode ser melhorado para a próxima?",
+				"itinerary": {
+					"title": "Itinerário"
+				}
+			}
+		},
+		"day": {
+			"title": "Itinerário do dia"
+		},
+		"special-dates": {
+			"title": "Datas especiais",
+			"description": "Adicione seus aniversários, celebrações, eventos e etc para receber lembretes deles nas visões gerais semanais e nas páginas diárias a medida que suas datas se aproximam.",
+			"empty": "Sem datas",
+			"placeholder": "Qual a ocasião?",
+			"button": {
+				"item": "Adiciona data",
+				"remove": "Remove"
+			}
+		},
+		"generation-description": "A geração do PDF é feita inteiramente no seu navegador - nenhum dado é enviado aos nossos servidores!"
+	},
+	"preview": {
+		"title": "Prévia do calendário",
+		"subtitle": "(apenas o primeiro mês é renderizado para a prévia)",
+		"viewer-title": "Prévia do PDF",
+		"generating": {
+			"full": "Gerando calendário completo - isso pode levar mais que um minut...",
+			"preview": "Gerando prévia, por favor aguarde - isso pode levar um minuto."
+		},
+		"empty": {
+			"title": "Use o formulário de configuração para criar seu calendário personalizado.",
+			"subtitle": "A prévia vai aparecer aqui."
+		}
+	}
+}

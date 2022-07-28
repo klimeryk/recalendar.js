@@ -1,0 +1,28 @@
+{
+	"calendar": {
+		"header": {
+			"week-number": "S#",
+			"retrospective": "Re"
+		},
+		"body": {
+			"retrospective": "R"
+		}
+	},
+	"page": {
+		"month": {
+			"habits": {
+				"title": "Hábitos"
+			}
+		},
+		"week": {
+			"title": "Semana"
+		},
+		"retrospective": {
+			"title": "Retrospectiva para semana"
+		},
+		"last": {
+			"title": "Gerado usando <recalendar>https://recalendar.me/</recalendar>",
+			"subtitle": "Você pode fazer o upload desse PDF no site novamente para carregar as mesmas configurações que foram usadas para criar esse calendário e rapidamente gerar um simular para o ano novo!"
+		}
+	}
+}
