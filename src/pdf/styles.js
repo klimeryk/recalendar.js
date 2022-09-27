@@ -1,4 +1,4 @@
-export function pageStyle( { alwaysOnSidebar, isLeftHanded } ) {
+export function pageStyle( { alwaysOnSidebar, isLeftHanded, supernoteToolbar } ) {
 	return {
 		flex: 1,
 		width: '100%',
@@ -7,6 +7,7 @@ export function pageStyle( { alwaysOnSidebar, isLeftHanded } ) {
 		flexDirection: 'column',
 		paddingLeft: alwaysOnSidebar && ! isLeftHanded ? 31 : 0,
 		paddingRight: alwaysOnSidebar && isLeftHanded ? 31 : 0,
+		paddingTop: supernoteToolbar ? 31 : 0,
 	};
 }
 

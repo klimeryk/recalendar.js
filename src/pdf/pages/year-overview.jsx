@@ -6,6 +6,7 @@ import React from 'react';
 import MiniCalendar, { HIGHLIGHT_NONE } from 'pdf/components/mini-calendar';
 import PdfConfig from 'pdf/config';
 import { yearOverviewLink } from 'pdf/lib/links';
+import { pageStyle } from 'pdf/styles';
 
 class YearOverviewPage extends React.Component {
 	styles = StyleSheet.create( {
@@ -19,6 +20,7 @@ class YearOverviewPage extends React.Component {
 			flexWrap: 'wrap',
 			justifyContent: 'center',
 		},
+		page: pageStyle( this.props.config ),
 	} );
 
 	renderCalendars() {

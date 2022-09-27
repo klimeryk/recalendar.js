@@ -13,6 +13,7 @@ const CONFIG_FIELDS = [
 	'weekendDays',
 	'isLeftHanded',
 	'alwaysOnSidebar',
+	'supernoteToolbar',
 	'isMonthOverviewEnabled',
 	'habits',
 	'monthItinerary',
@@ -47,6 +48,7 @@ class PdfConfig {
 		this.weekendDays = [ 0, 6 ];
 		this.isLeftHanded = false;
 		this.alwaysOnSidebar = false;
+		this.supernoteToolbar = true;
 		this.monthCount = 12;
 		this.fontFamily = LATO;
 		this.isMonthOverviewEnabled = true;

@@ -383,6 +383,18 @@ class Configuration extends React.PureComponent {
 									{t( 'configuration.general.sidebar.description' )}
 								</Form.Text>
 							</Form.Group>
+							<Form.Group controlId="supernoteToolbar" className="mt-2">
+								<Form.Check
+									label={ t( 'configuration.general.supernoteToolbar.label' ) }
+									type="checkbox"
+									checked={ this.state.supernoteToolbar }
+									value={ this.state.supernoteToolbar }
+									onChange={ this.handleFieldChange }
+								/>
+								<Form.Text className="text-muted">
+									{t( 'configuration.general.supernoteToolbar.description' )}
+								</Form.Text>
+							</Form.Group>
 							<Form.Group controlId="year">
 								<Form.Label>{t( 'configuration.general.year' )}</Form.Label>
 								<Form.Control
