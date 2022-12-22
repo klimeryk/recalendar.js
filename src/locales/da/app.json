@@ -20,7 +20,7 @@
 					"description": "Standard indstillinger - et godt udgangspunkt"
 				},
 				"advanced": {
-					"label": "Advanceret",
+					"label": "Avanceret",
 					"description": "Bygger ovenpå den simple skabelon ved at tilføje individuelle punkter pr dag"
 				},
 				"blank": {
@@ -36,23 +36,23 @@
 				"label": "Eller overfør en tidligere genereret ReCalendar PDF for at bruge dens konfiguration",
 				"loading": "Indlæser konfiguration fra PDF filen, Vent venligst...",
 				"error": "Kunne desværre ikke indlæse konfigurationen fra denne ReCalendar PDF - Er du sikker på at den er genereret på denne hjemmeside?",
-				"success": "Konfigurtion indlæst fra PDF - velkommen tilbage!"
+				"success": "Konfiguration indlæst fra PDF - velkommen tilbage!"
 			}
 		},
 		"general": {
 			"label": "Generelle indstillinger",
 			"year": "År",
 			"left-handed": {
-				"label": "venstrehåndsversion",
-				"description": "Optimimerer layout til brug af en venstrehåndet"
+				"label": "Venstrehåndsversion",
+				"description": "Optimerer layout til brug af en venstrehåndet"
 			},
 			"starting-month": {
 				"label": "Start måned",
-				"description": "Den første måned i den genererede kalender. Vælg f.eks. september hvis du ønsker at den skal dække det et skoleår i stedet for et kalenderår."
+				"description": "Den første måned i den genererede kalender. Vælg f.eks. september hvis du ønsker at den skal dække et skoleår i stedet for et kalenderår."
 			},
 			"month-count": {
 				"label": "Antal måneder",
-				"description": "Hvor mange måneder skal der være i den færdige kalendr."
+				"description": "Hvor mange måneder skal der være i den færdige kalender."
 			},
 			"first-day-of-week": "Første dag på ugen",
 			"weekend": "Weekend"
@@ -106,7 +106,7 @@
 			},
 			"retrospective": {
 				"title": "Tilbageblik på ugen",
-				"description": "I tilbageblik på ugen kan di reflektere over hvordan den forgangne uge er gået - hvad der skete, hvordan det gik og hvad du kunne forbedre til næste uge?",
+				"description": "I tilbageblik på ugen kan du reflektere over hvordan den forgangne uge er gået - hvad der skete, hvordan det gik og hvad du kunne forbedre til næste uge?",
 				"itinerary": {
 					"title": "Plan"
 				}
