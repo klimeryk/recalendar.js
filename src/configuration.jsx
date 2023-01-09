@@ -15,8 +15,6 @@ import Spinner from 'react-bootstrap/Spinner';
 import Stack from 'react-bootstrap/Stack';
 import { withTranslation } from 'react-i18next';
 
-import PdfWorker from './worker/pdf.worker.js'; // eslint-disable-line import/default
-
 import PdfPreviewCard from 'components/pdf-preview-card';
 import PdfProgress from 'components/pdf-progress';
 import ConfigurationSelector from 'configuration-form/configuration-selector';
@@ -46,7 +44,9 @@ class Configuration extends React.PureComponent {
 	constructor( props ) {
 		super( props );
 
-		this.pdfWorker = new PdfWorker();
+		this.pdfWorker = new Worker(
+			new URL( './worker/pdf.worker.js', import.meta.url ),
+		);
 		this.pdfWorker.onmessage = this.handlePdfWorkerMessage;
 	}
 
