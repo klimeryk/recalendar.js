@@ -3,7 +3,8 @@
 	"version": "0.1.0",
 	"private": true,
 	"dependencies": {
-		"@react-pdf/renderer": "^2.0.21",
+		"@react-pdf/pdfkit": "^3.0.1",
+		"@react-pdf/renderer": "^2.3.0",
 		"assert": "^2.0.0",
 		"bootstrap": "5.2.3",
 		"browserify-zlib": "^0.2.0",

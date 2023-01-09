@@ -1,11 +1,10 @@
-// Copied from https://github.com/diegomura/react-pdf/blob/aa5a438c75e84c6/packages/renderer/src/index.js
+// Copied from react-pdf/blob/87abdd00e62287dccf89c8d260b18dc758482b31/packages/renderer/src/index.js
 
 import FontStore from '@react-pdf/font';
 import layoutDocument from '@react-pdf/layout';
 import PDFDocument from '@react-pdf/pdfkit';
 import renderPDF from '@react-pdf/render';
 import { createRenderer } from '@react-pdf/renderer';
-import BlobStream from 'blob-stream';
 
 const fontStore = new FontStore();
 
@@ -38,7 +37,7 @@ const pdf = ( initialValue, { attachments = [] } ) => {
 
 	const render = async ( compress = true ) => {
 		const props = container.document.props || {};
-		const { pdfVersion, language } = props;
+		const { pdfVersion, language, pageLayout, pageMode } = props;
 
 		const ctx = new PDFDocument( {
 			compress,
@@ -46,6 +45,8 @@ const pdf = ( initialValue, { attachments = [] } ) => {
 			lang: language,
 			displayTitle: true,
 			autoFirstPage: false,
+			pageLayout,
+			pageMode,
 		} );
 
 		attachments.forEach( ( { src, options = {} } ) => {
@@ -64,21 +65,25 @@ const pdf = ( initialValue, { attachments = [] } ) => {
 	};
 
 	const toBlob = async () => {
+		const chunks = [];
 		const instance = await render();
-		const stream = instance.pipe( BlobStream() );
 
 		return new Promise( ( resolve, reject ) => {
-			stream.on( 'finish', () => {
+			instance.on( 'data', ( chunk ) => {
+				chunks.push(
+					chunk instanceof Uint8Array ? chunk : new Uint8Array( chunk ),
+				);
+			} );
+
+			instance.on( 'end', () => {
 				try {
-					const blob = stream.toBlob( 'application/pdf' );
+					const blob = new Blob( chunks, { type: 'application/pdf' } );
 					callOnRender( { blob } );
 					resolve( blob );
 				} catch ( error ) {
 					reject( error );
 				}
 			} );
-
-			stream.on( 'error', reject );
 		} );
 	};
 
@@ -87,6 +92,12 @@ const pdf = ( initialValue, { attachments = [] } ) => {
 		return render();
 	};
 
+	/*
+	 * TODO: remove this method in next major release. it is buggy
+	 * see
+	 * - https://github.com/diegomura/react-pdf/issues/2112
+	 * - https://github.com/diegomura/react-pdf/issues/2095
+	 */
 	const toString = async () => {
 		let result = '';
 		const instance = await render( false );
