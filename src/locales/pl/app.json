@@ -14,17 +14,17 @@
 		"selector": {
 			"label": "Początek",
 			"template": {
-				"label": "Rozpocznij wybierając jeden z przykładowych szablonów:",
+				"label": "Rozpocznij, wybierając jeden z przykładowych szablonów:",
 				"basic": {
 					"label": "Podstawowy",
 					"description": "Domyślne ustawienia - dobry punkt początkowy."
 				},
 				"advanced": {
 					"label": "Zaawansowany",
-					"description": "Bazuje na szabolnie Podstawowym - dodaje rozbudowane plany dnia."
+					"description": "Bazuje na szablonie Podstawowym - dodaje rozbudowane plany dnia."
 				},
 				"blank": {
-					"label": "Minimalistyczny",
+					"label": "Pusty",
 					"description": "Bazuje na szablonie Podstawowym, ale ustawia puste dni specjalne, TODO, plany, itd."
 				},
 				"minimalistic": {
@@ -33,7 +33,7 @@
 				}
 			},
 			"upload": {
-				"label": "Albo załaduj wcześniej wygenrowany ReCalendar PDF i użyj jego konfiguracji:",
+				"label": "Albo załaduj wcześniej wygenerowany ReCalendar PDF i użyj jego konfiguracji:",
 				"loading": "Wczytywanie konfiguracji z pliku PDF, proszę czekać...",
 				"error": "Nie udało się wczytać konfiguracji z tego pliku PDF - czy na pewno został wygenerowany korzystając z tej strony?",
 				"success": "Konfiguracja wczytana z pliku PDF - witamy ponownie!"
@@ -64,7 +64,7 @@
 		},
 		"button": {
 			"refresh": "Odśwież podgląd",
-			"download": "Wygeneruj pełny kaledarz i pobierz",
+			"download": "Wygeneruj pełny kalendarz i pobierz",
 			"generating": "Generowanie, proszę czekać..."
 		},
 		"itinerary": {
