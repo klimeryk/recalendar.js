@@ -6,28 +6,13 @@ import Button from 'react-bootstrap/Button';
 import FormControl from 'react-bootstrap/FormControl';
 import InputGroup from 'react-bootstrap/InputGroup';
 import Stack from 'react-bootstrap/Stack';
-import { withTranslation } from 'react-i18next';
+import { useTranslation } from 'react-i18next';
 
-class ItemsList extends React.Component {
-	renderItem = ( item, index ) => {
-		const { field, onChange, t } = this.props;
-		return (
-			<InputGroup key={ index }>
-				<FormControl
-					placeholder={ t( 'configuration.items-list.placeholder' ) }
-					value={ item }
-					onChange={ onChange }
-					data-index={ index }
-					data-field={ field }
-					required
-				/>
-				{this.renderRemoveButton( index )}
-			</InputGroup>
-		);
-	};
+function ItemsList( props ) {
+	const { t } = useTranslation( 'app' );
 
-	renderRemoveButton( index ) {
-		const { field, onRemove, t } = this.props;
+	function renderRemoveButton( index ) {
+		const { field, onRemove } = props;
 		return (
 			<Button
 				variant="outline-danger"
@@ -40,33 +25,48 @@ class ItemsList extends React.Component {
 		);
 	}
 
-	render() {
-		const { items, field, onAdd, t, title } = this.props;
+	function renderItem( item, index ) {
+		const { field, onChange } = props;
 		return (
-			<Accordion.Item eventKey={ field }>
-				<Accordion.Header>{title}</Accordion.Header>
-				<Accordion.Body>
-					<Stack gap={ 2 }>
-						{items.map( this.renderItem )}
-						{items.length === 0 && (
-							<Alert variant="secondary" className="mb-0">
-								{t( 'configuration.items-list.empty' )}
-							</Alert>
-						)}
-					</Stack>
-					<Stack direction="horizontal" className="mt-3">
-						<Button
-							variant="outline-secondary"
-							onClick={ onAdd }
-							data-field={ field }
-						>
-							{t( 'configuration.items-list.button.item' )}
-						</Button>
-					</Stack>
-				</Accordion.Body>
-			</Accordion.Item>
+			<InputGroup key={ index }>
+				<FormControl
+					placeholder={ t( 'configuration.items-list.placeholder' ) }
+					value={ item }
+					onChange={ onChange }
+					data-index={ index }
+					data-field={ field }
+					required
+				/>
+				{renderRemoveButton( index )}
+			</InputGroup>
 		);
 	}
+
+	const { items, field, onAdd, title } = props;
+	return (
+		<Accordion.Item eventKey={ field }>
+			<Accordion.Header>{title}</Accordion.Header>
+			<Accordion.Body>
+				<Stack gap={ 2 }>
+					{items.map( renderItem )}
+					{items.length === 0 && (
+						<Alert variant="secondary" className="mb-0">
+							{t( 'configuration.items-list.empty' )}
+						</Alert>
+					)}
+				</Stack>
+				<Stack direction="horizontal" className="mt-3">
+					<Button
+						variant="outline-secondary"
+						onClick={ onAdd }
+						data-field={ field }
+					>
+						{t( 'configuration.items-list.button.item' )}
+					</Button>
+				</Stack>
+			</Accordion.Body>
+		</Accordion.Item>
+	);
 }
 
 ItemsList.propTypes = {
@@ -75,8 +75,7 @@ ItemsList.propTypes = {
 	onAdd: PropTypes.func.isRequired,
 	onChange: PropTypes.func.isRequired,
 	onRemove: PropTypes.func.isRequired,
-	t: PropTypes.func.isRequired,
 	title: PropTypes.string.isRequired,
 };
 
-export default withTranslation( 'app' )( ItemsList );
+export default ItemsList;
