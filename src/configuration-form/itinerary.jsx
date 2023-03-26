@@ -7,59 +7,58 @@ import FloatingLabel from 'react-bootstrap/FloatingLabel';
 import FormControl from 'react-bootstrap/FormControl';
 import InputGroup from 'react-bootstrap/InputGroup';
 import Stack from 'react-bootstrap/Stack';
-import { withTranslation } from 'react-i18next';
+import { useTranslation } from 'react-i18next';
 
 export const ITINERARY_ITEM = 'item';
 export const ITINERARY_LINES = 'lines';
 export const ITINERARY_NEW_PAGE = 'new_page';
 
-class Itinerary extends React.Component {
-	renderRow = ( { type, value }, index ) => {
+function Itinerary( props ) {
+	const { t } = useTranslation( 'app' );
+
+	function renderRow( { type, value }, index ) {
 		switch ( type ) {
 			case ITINERARY_ITEM:
-				return this.renderItem( value, index );
+				return renderItem( value, index );
 
 			case ITINERARY_NEW_PAGE:
-				return this.renderNewPage( value, index );
+				return renderNewPage( value, index );
 
 			case ITINERARY_LINES:
 			default:
-				return this.renderLines( value, index );
+				return renderLines( value, index );
 		}
-	};
+	}
 
-	renderItem( item, index ) {
-		const { field, onChange } = this.props;
+	function renderItem( item, index ) {
 		return (
 			<InputGroup key={ index }>
 				<FormControl
 					placeholder="Itinerary item"
 					value={ item }
-					onChange={ onChange }
+					onChange={ props.onChange }
 					data-index={ index }
 					data-type={ ITINERARY_ITEM }
-					data-field={ field }
+					data-field={ props.field }
 					required
 				/>
-				{this.renderRemoveButton( index )}
+				{renderRemoveButton( index )}
 			</InputGroup>
 		);
 	}
 
-	renderNewPage( item, index ) {
-		const { t } = this.props;
+	function renderNewPage( item, index ) {
 		return (
 			<InputGroup key={ index }>
 				<InputGroup.Text className="flex-grow-1">
 					{t( 'configuration.itinerary.placeholder.page' )}
 				</InputGroup.Text>
-				{this.renderRemoveButton( index )}
+				{renderRemoveButton( index )}
 			</InputGroup>
 		);
 	}
 
-	renderLines( numberOfLines, index ) {
-		const { field, onChange, t } = this.props;
+	function renderLines( numberOfLines, index ) {
 		return (
 			<InputGroup key={ index }>
 				<FloatingLabel
@@ -73,85 +72,82 @@ class Itinerary extends React.Component {
 						min={ 1 }
 						max={ 50 }
 						value={ numberOfLines }
-						onChange={ onChange }
+						onChange={ props.onChange }
 						data-index={ index }
 						data-type={ ITINERARY_LINES }
-						data-field={ field }
+						data-field={ props.field }
 						required
 					/>
 				</FloatingLabel>
-				{this.renderRemoveButton( index )}
+				{renderRemoveButton( index )}
 			</InputGroup>
 		);
 	}
 
-	renderRemoveButton( index ) {
-		const { field, onRemove, t } = this.props;
+	function renderRemoveButton( index ) {
 		return (
 			<Button
 				variant="outline-danger"
-				onClick={ onRemove }
+				onClick={ props.onRemove }
 				data-index={ index }
-				data-field={ field }
+				data-field={ props.field }
 			>
 				{t( 'configuration.itinerary.button.remove' )}
 			</Button>
 		);
 	}
 
-	render() {
-		const { field, itinerary, onAdd, onCopy, t } = this.props;
-		return (
-			<>
-				<Stack gap={ 2 }>
-					{itinerary.map( this.renderRow )}
-					{itinerary.length === 0 && (
-						<Alert variant="secondary" className="mb-0">
-							{t( 'configuration.itinerary.empty' )}
-						</Alert>
-					)}
-					<Stack direction="horizontal" gap={ 3 }>
-						<ButtonGroup>
-							<Button
-								variant="outline-secondary"
-								onClick={ onAdd }
-								data-type={ ITINERARY_ITEM }
-								data-field={ field }
-							>
-								{t( 'configuration.itinerary.button.item' )}
-							</Button>
-							<Button
-								variant="outline-secondary"
-								onClick={ onAdd }
-								data-type={ ITINERARY_LINES }
-								data-field={ field }
-							>
-								{t( 'configuration.itinerary.button.lines' )}
-							</Button>
-							<Button
-								variant="outline-secondary"
-								onClick={ onAdd }
-								data-type={ ITINERARY_NEW_PAGE }
-								data-field={ field }
-							>
-								{t( 'configuration.itinerary.button.page' )}
-							</Button>
-						</ButtonGroup>
-					</Stack>
-				</Stack>
-				{onCopy && (
-					<Button
-						variant="outline-danger"
-						className="mt-3"
-						onClick={ onCopy }
-						data-field={ field }
-					>
-						{t( 'configuration.itinerary.button.copy' )}
-					</Button>
+	const { field, itinerary, onAdd, onCopy } = props;
+	return (
+		<>
+			<Stack gap={ 2 }>
+				{itinerary.map( renderRow )}
+				{itinerary.length === 0 && (
+					<Alert variant="secondary" className="mb-0">
+						{t( 'configuration.itinerary.empty' )}
+					</Alert>
 				)}
-			</>
-		);
-	}
+				<Stack direction="horizontal" gap={ 3 }>
+					<ButtonGroup>
+						<Button
+							variant="outline-secondary"
+							onClick={ onAdd }
+							data-type={ ITINERARY_ITEM }
+							data-field={ field }
+						>
+							{t( 'configuration.itinerary.button.item' )}
+						</Button>
+						<Button
+							variant="outline-secondary"
+							onClick={ onAdd }
+							data-type={ ITINERARY_LINES }
+							data-field={ field }
+						>
+							{t( 'configuration.itinerary.button.lines' )}
+						</Button>
+						<Button
+							variant="outline-secondary"
+							onClick={ onAdd }
+							data-type={ ITINERARY_NEW_PAGE }
+							data-field={ field }
+						>
+							{t( 'configuration.itinerary.button.page' )}
+						</Button>
+					</ButtonGroup>
+				</Stack>
+			</Stack>
+			{onCopy && (
+				<Button
+					variant="outline-danger"
+					className="mt-3"
+					onClick={ onCopy }
+					data-field={ field }
+				>
+					{t( 'configuration.itinerary.button.copy' )}
+				</Button>
+			)}
+		</>
+	);
 }
 
 Itinerary.propTypes = {
@@ -161,7 +157,6 @@ Itinerary.propTypes = {
 	onChange: PropTypes.func.isRequired,
 	onCopy: PropTypes.func,
 	onRemove: PropTypes.func.isRequired,
-	t: PropTypes.func.isRequired,
 };
 
-export default withTranslation( 'app' )( Itinerary );
+export default Itinerary;
