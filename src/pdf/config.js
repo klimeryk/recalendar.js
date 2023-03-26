@@ -2,6 +2,7 @@ import dayjs from 'dayjs';
 import { t } from 'i18next';
 
 import { ITINERARY_ITEM, ITINERARY_LINES } from 'configuration-form/itinerary';
+import { wrapWithId } from 'lib/id-utils';
 import { LATO } from 'pdf/lib/fonts';
 
 const CONFIG_FIELDS = [
@@ -111,6 +112,27 @@ class PdfConfig {
 			],
 			'14-01': [ t( 'special-dates.example6', { ns: 'config' } ) ],
 		};
+
+		this.ensureUniqueIds();
+	}
+
+	ensureUniqueIds() {
+		const fieldsRequiringUniqueIds = [
+			'habits',
+			'monthItinerary',
+			'todos',
+			'weekRetrospectiveItinerary',
+		];
+
+		fieldsRequiringUniqueIds.forEach( ( field ) => {
+			const thisField = this[ field ];
+			this[ field ] = thisField.map( wrapWithId );
+		} );
+
+		this.dayItineraries = this.dayItineraries.map( ( dayItinerary ) => {
+			dayItinerary.items = dayItinerary.items.map( wrapWithId );
+			return dayItinerary;
+		} );
 	}
 }
 

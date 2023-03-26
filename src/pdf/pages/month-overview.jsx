@@ -168,11 +168,11 @@ class MonthOverviewPage extends React.Component {
 		);
 	}
 
-	renderHabit = ( habit ) => {
+	renderHabit = ( { id, value } ) => {
 		return (
-			<View key={ habit } style={ this.styles.habitRow }>
+			<View key={ id } style={ this.styles.habitRow }>
 				<View style={ this.styles.habitContainer }>
-					<Text>{habit}</Text>
+					<Text>{value}</Text>
 				</View>
 				{this.renderHabitSquares()}
 			</View>

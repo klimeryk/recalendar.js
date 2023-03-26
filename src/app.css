@@ -25,3 +25,8 @@ body,
 	margin-bottom: 0;
 	margin-top: 0.5rem;
 }
+
+button:not(:disabled).grab-handle {
+	cursor: move;
+	padding-left: 0;
+}

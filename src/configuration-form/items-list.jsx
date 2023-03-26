@@ -1,59 +1,82 @@
+import {
+	DndContext,
+	closestCenter,
+	KeyboardSensor,
+	PointerSensor,
+	useSensor,
+	useSensors,
+} from '@dnd-kit/core';
+import {
+	SortableContext,
+	sortableKeyboardCoordinates,
+	verticalListSortingStrategy,
+} from '@dnd-kit/sortable';
 import PropTypes from 'prop-types';
 import React from 'react';
 import Accordion from 'react-bootstrap/Accordion';
 import Alert from 'react-bootstrap/Alert';
 import Button from 'react-bootstrap/Button';
-import FormControl from 'react-bootstrap/FormControl';
-import InputGroup from 'react-bootstrap/InputGroup';
 import Stack from 'react-bootstrap/Stack';
 import { useTranslation } from 'react-i18next';
+
+import SortableItem from './sortable-item';
 
 function ItemsList( props ) {
 	const { t } = useTranslation( 'app' );
 
-	function renderRemoveButton( index ) {
-		const { field, onRemove } = props;
+	const sensors = useSensors(
+		useSensor( PointerSensor ),
+		useSensor( KeyboardSensor, {
+			coordinateGetter: sortableKeyboardCoordinates,
+		} ),
+	);
+
+	function handleDragEnd( event ) {
+		const oldId = event.active.id;
+		const newId = event.over.id;
+
+		if ( oldId !== newId ) {
+			onDragEnd( { oldId, newId, field } );
+		}
+	}
+
+	function renderItem( { id, value } ) {
+		const { field, onChange, onRemove } = props;
 		return (
-			<Button
-				variant="outline-danger"
-				onClick={ onRemove }
-				data-index={ index }
-				data-field={ field }
-			>
-				{t( 'configuration.items-list.button.remove' )}
-			</Button>
+			<SortableItem
+				key={ id }
+				id={ id }
+				value={ value }
+				onChange={ onChange }
+				onRemove={ onRemove }
+				field={ field }
+			/>
 		);
 	}
 
-	function renderItem( item, index ) {
-		const { field, onChange } = props;
-		return (
-			<InputGroup key={ index }>
-				<FormControl
-					placeholder={ t( 'configuration.items-list.placeholder' ) }
-					value={ item }
-					onChange={ onChange }
-					data-index={ index }
-					data-field={ field }
-					required
-				/>
-				{renderRemoveButton( index )}
-			</InputGroup>
-		);
-	}
-
-	const { items, field, onAdd, title } = props;
+	const { items, field, onAdd, onDragEnd, title } = props;
 	return (
 		<Accordion.Item eventKey={ field }>
 			<Accordion.Header>{title}</Accordion.Header>
 			<Accordion.Body>
 				<Stack gap={ 2 }>
-					{items.map( renderItem )}
-					{items.length === 0 && (
-						<Alert variant="secondary" className="mb-0">
-							{t( 'configuration.items-list.empty' )}
-						</Alert>
-					)}
+					<DndContext
+						sensors={ sensors }
+						collisionDetection={ closestCenter }
+						onDragEnd={ handleDragEnd }
+					>
+						<SortableContext
+							items={ items }
+							strategy={ verticalListSortingStrategy }
+						>
+							{items.map( renderItem )}
+							{items.length === 0 && (
+								<Alert variant="secondary" className="mb-0">
+									{t( 'configuration.items-list.empty' )}
+								</Alert>
+							)}
+						</SortableContext>
+					</DndContext>
 				</Stack>
 				<Stack direction="horizontal" className="mt-3">
 					<Button
@@ -74,6 +97,7 @@ ItemsList.propTypes = {
 	items: PropTypes.array.isRequired,
 	onAdd: PropTypes.func.isRequired,
 	onChange: PropTypes.func.isRequired,
+	onDragEnd: PropTypes.func.isRequired,
 	onRemove: PropTypes.func.isRequired,
 	title: PropTypes.string.isRequired,
 };

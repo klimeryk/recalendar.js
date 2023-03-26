@@ -1,3 +1,4 @@
+import { arrayMove } from '@dnd-kit/sortable';
 import dayjs from 'dayjs';
 import { saveAs } from 'file-saver';
 import i18n from 'i18next';
@@ -23,6 +24,7 @@ import Itinerary from 'configuration-form/itinerary';
 import SpecialDates from 'configuration-form/special-dates';
 import ToggleAccordionItem from 'configuration-form/toggle-accordion-item';
 import { getWeekdays } from 'lib/date';
+import { byId, wrapWithId } from 'lib/id-utils';
 import PdfConfig, { hydrateFromObject } from 'pdf/config';
 import { AVAILABLE_FONTS } from 'pdf/lib/fonts';
 
@@ -131,31 +133,51 @@ class Configuration extends React.PureComponent {
 	handleItemAdd = ( event ) => {
 		const field = event.target.dataset.field;
 		const newItems = [ ...this.state[ field ] ];
-		newItems.push( '' );
+		newItems.push( wrapWithId( '' ) );
 		this.setState( { [ field ]: newItems } );
 	};
 
 	handleItemChange = ( event ) => {
 		const field = event.target.dataset.field;
 		const newItems = [ ...this.state[ field ] ];
-		newItems[ event.target.dataset.index ] = event.target.value;
+		const index = this.state[ field ].findIndex( byId( event.target.dataset.id ) );
+		if ( index === -1 ) {
+			return;
+		}
+		newItems[ index ].value = event.target.value;
+		this.setState( { [ field ]: newItems } );
+	};
+
+	handleItemDragEnd = ( { oldId, newId, field } ) => {
+		const oldIndex = this.state[ field ].findIndex( byId( oldId ) );
+		const newIndex = this.state[ field ].findIndex( byId( newId ) );
+		if ( oldIndex === -1 || newIndex === -1 ) {
+			return;
+		}
+		const newItems = arrayMove( this.state[ field ], oldIndex, newIndex );
 		this.setState( { [ field ]: newItems } );
 	};
 
 	handleItemRemove = ( event ) => {
 		const field = event.target.dataset.field;
 		const newItems = [ ...this.state[ field ] ];
-		newItems.splice( event.target.dataset.index, 1 );
+		const index = this.state[ field ].findIndex( byId( event.target.dataset.id ) );
+		if ( index === -1 ) {
+			return;
+		}
+		newItems.splice( index, 1 );
 		this.setState( { [ field ]: newItems } );
 	};
 
 	handleItineraryAdd = ( event ) => {
 		const field = event.target.dataset.field;
 		const newItinerary = [ ...this.state[ field ] ];
-		newItinerary.push( {
-			type: event.target.dataset.type,
-			value: '',
-		} );
+		newItinerary.push(
+			wrapWithId( {
+				type: event.target.dataset.type,
+				value: '',
+			} ),
+		);
 		this.setState( { [ field ]: newItinerary } );
 	};
 
@@ -244,10 +266,12 @@ class Configuration extends React.PureComponent {
 	handleDayItineraryAdd = ( event ) => {
 		const newItineraries = [ ...this.state.dayItineraries ];
 		const { field, type } = event.target.dataset;
-		newItineraries[ field ].items.push( {
-			type,
-			value: '',
-		} );
+		newItineraries[ field ].items.push(
+			wrapWithId( {
+				type,
+				value: '',
+			} ),
+		);
 		this.setState( { dayItineraries: newItineraries } );
 	};
 
@@ -257,7 +281,7 @@ class Configuration extends React.PureComponent {
 			newSpecialDates[ key ] = [];
 		}
 
-		newSpecialDates[ key ].push( value );
+		newSpecialDates[ key ].push( wrapWithId( value ) );
 		this.setState( { specialDates: newSpecialDates } );
 	};
 
@@ -454,6 +478,7 @@ class Configuration extends React.PureComponent {
 								items={ this.state.habits }
 								onAdd={ this.handleItemAdd }
 								onChange={ this.handleItemChange }
+								onDragEnd={ this.handleItemDragEnd }
 								onRemove={ this.handleItemRemove }
 							/>
 							<Accordion.Item eventKey="monthItinerary">
@@ -486,6 +511,7 @@ class Configuration extends React.PureComponent {
 								items={ this.state.todos }
 								onAdd={ this.handleItemAdd }
 								onChange={ this.handleItemChange }
+								onDragEnd={ this.handleItemDragEnd }
 								onRemove={ this.handleItemRemove }
 							/>
 						</Accordion>

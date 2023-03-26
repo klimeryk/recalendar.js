@@ -119,6 +119,8 @@ class ConfigurationSelector extends React.Component {
 				return;
 		}
 
+		config.ensureUniqueIds();
+
 		this.props.onConfigChange( config );
 	};
 

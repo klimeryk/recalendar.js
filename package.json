@@ -3,6 +3,8 @@
 	"version": "0.1.0",
 	"private": true,
 	"dependencies": {
+		"@dnd-kit/core": "^6.0.8",
+		"@dnd-kit/sortable": "^7.0.2",
 		"@react-pdf/pdfkit": "^3.0.1",
 		"@react-pdf/renderer": "^2.3.0",
 		"assert": "^2.0.0",

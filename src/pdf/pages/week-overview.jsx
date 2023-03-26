@@ -113,9 +113,9 @@ class WeekOverviewPage extends React.Component {
 	renderTodos() {
 		return (
 			<View key={ 'todos' } style={ this.styles.todos }>
-				{this.props.config.todos.map( ( text, index ) => (
-					<Text key={ index } style={ this.styles.todo }>
-						{text}
+				{this.props.config.todos.map( ( { id, value } ) => (
+					<Text key={ id } style={ this.styles.todo }>
+						{value}
 					</Text>
 				) )}
 			</View>
