@@ -148,7 +148,7 @@ class Configuration extends React.PureComponent {
 		this.setState( { [ field ]: newItems } );
 	};
 
-	handleItemDragEnd = ( { oldId, newId, field } ) => {
+	handleDragEnd = ( { oldId, newId, field } ) => {
 		const oldIndex = this.state[ field ].findIndex( byId( oldId ) );
 		const newIndex = this.state[ field ].findIndex( byId( newId ) );
 		if ( oldIndex === -1 || newIndex === -1 ) {
@@ -156,6 +156,25 @@ class Configuration extends React.PureComponent {
 		}
 		const newItems = arrayMove( this.state[ field ], oldIndex, newIndex );
 		this.setState( { [ field ]: newItems } );
+	};
+
+	handleDayItineraryDragEnd = ( { oldId, newId, field } ) => {
+		const oldIndex = this.state.dayItineraries[ field ].items.findIndex(
+			byId( oldId ),
+		);
+		const newIndex = this.state.dayItineraries[ field ].items.findIndex(
+			byId( newId ),
+		);
+		if ( oldIndex === -1 || newIndex === -1 ) {
+			return;
+		}
+		const newItineraries = [ ...this.state.dayItineraries ];
+		newItineraries[ field ].items = arrayMove(
+			newItineraries[ field ].items,
+			oldIndex,
+			newIndex,
+		);
+		this.setState( { dayItineraries: newItineraries } );
 	};
 
 	handleItemRemove = ( event ) => {
@@ -184,7 +203,12 @@ class Configuration extends React.PureComponent {
 	handleItineraryChange = ( event ) => {
 		const field = event.target.dataset.field;
 		const newItinerary = [ ...this.state[ field ] ];
-		newItinerary[ event.target.dataset.index ] = {
+		const index = this.state[ field ].findIndex( byId( event.target.dataset.id ) );
+		if ( index === -1 ) {
+			return;
+		}
+		newItinerary[ index ] = {
+			id: event.target.dataset.id,
 			type: event.target.dataset.type,
 			value: event.target.value,
 		};
@@ -194,7 +218,11 @@ class Configuration extends React.PureComponent {
 	handleItineraryRemove = ( event ) => {
 		const field = event.target.dataset.field;
 		const newItineraries = [ ...this.state[ field ] ];
-		newItineraries.splice( event.target.dataset.index, 1 );
+		const index = this.state[ field ].findIndex( byId( event.target.dataset.id ) );
+		if ( index === -1 ) {
+			return;
+		}
+		newItineraries.splice( index, 1 );
 		this.setState( { [ field ]: newItineraries } );
 	};
 
@@ -237,8 +265,12 @@ class Configuration extends React.PureComponent {
 
 	handleDayItineraryChange = ( event ) => {
 		const newItineraries = [ ...this.state.dayItineraries ];
-		const { field, index, type } = event.target.dataset;
+		const { field, type } = event.target.dataset;
+		const index = this.state.dayItineraries[ field ].items.findIndex(
+			byId( event.target.dataset.id ),
+		);
 		newItineraries[ field ].items[ index ] = {
+			id: event.target.dataset.id,
 			type,
 			value: event.target.value,
 		};
@@ -246,8 +278,14 @@ class Configuration extends React.PureComponent {
 	};
 
 	handleDayItineraryRemove = ( event ) => {
+		const field = event.target.dataset.field;
 		const newItineraries = [ ...this.state.dayItineraries ];
-		const { field, index } = event.target.dataset;
+		const index = this.state.dayItineraries[ field ].items.findIndex(
+			byId( event.target.dataset.id ),
+		);
+		if ( index === -1 ) {
+			return;
+		}
 		newItineraries[ field ].items.splice( index, 1 );
 		this.setState( { dayItineraries: newItineraries } );
 	};
@@ -348,6 +386,7 @@ class Configuration extends React.PureComponent {
 					itinerary={ this.state.dayItineraries[ index ].items }
 					onAdd={ this.handleDayItineraryAdd }
 					onChange={ this.handleDayItineraryChange }
+					onDragEnd={ this.handleDayItineraryDragEnd }
 					onRemove={ this.handleDayItineraryRemove }
 					onCopy={ this.handleDayItineraryCopy }
 				/>
@@ -478,7 +517,7 @@ class Configuration extends React.PureComponent {
 								items={ this.state.habits }
 								onAdd={ this.handleItemAdd }
 								onChange={ this.handleItemChange }
-								onDragEnd={ this.handleItemDragEnd }
+								onDragEnd={ this.handleDragEnd }
 								onRemove={ this.handleItemRemove }
 							/>
 							<Accordion.Item eventKey="monthItinerary">
@@ -491,6 +530,7 @@ class Configuration extends React.PureComponent {
 										itinerary={ this.state.monthItinerary }
 										onAdd={ this.handleItineraryAdd }
 										onChange={ this.handleItineraryChange }
+										onDragEnd={ this.handleDragEnd }
 										onRemove={ this.handleItineraryRemove }
 									/>
 								</Accordion.Body>
@@ -511,7 +551,7 @@ class Configuration extends React.PureComponent {
 								items={ this.state.todos }
 								onAdd={ this.handleItemAdd }
 								onChange={ this.handleItemChange }
-								onDragEnd={ this.handleItemDragEnd }
+								onDragEnd={ this.handleDragEnd }
 								onRemove={ this.handleItemRemove }
 							/>
 						</Accordion>
@@ -547,6 +587,7 @@ class Configuration extends React.PureComponent {
 										itinerary={ this.state.weekRetrospectiveItinerary }
 										onAdd={ this.handleItineraryAdd }
 										onChange={ this.handleItineraryChange }
+										onDragEnd={ this.handleDragEnd }
 										onRemove={ this.handleItineraryRemove }
 									/>
 								</Accordion.Body>

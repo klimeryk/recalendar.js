@@ -36,7 +36,7 @@ function ItemsList( props ) {
 		const newId = event.over.id;
 
 		if ( oldId !== newId ) {
-			onDragEnd( { oldId, newId, field } );
+			props.onDragEnd( { oldId, newId, field } );
 		}
 	}
 
@@ -54,7 +54,7 @@ function ItemsList( props ) {
 		);
 	}
 
-	const { items, field, onAdd, onDragEnd, title } = props;
+	const { items, field, onAdd, title } = props;
 	return (
 		<Accordion.Item eventKey={ field }>
 			<Accordion.Header>{title}</Accordion.Header>

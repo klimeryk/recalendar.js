@@ -1,13 +1,25 @@
+import {
+	DndContext,
+	closestCenter,
+	KeyboardSensor,
+	PointerSensor,
+	useSensor,
+	useSensors,
+} from '@dnd-kit/core';
+import {
+	SortableContext,
+	sortableKeyboardCoordinates,
+	verticalListSortingStrategy,
+} from '@dnd-kit/sortable';
 import PropTypes from 'prop-types';
 import React from 'react';
 import Alert from 'react-bootstrap/Alert';
 import Button from 'react-bootstrap/Button';
 import ButtonGroup from 'react-bootstrap/ButtonGroup';
-import FloatingLabel from 'react-bootstrap/FloatingLabel';
-import FormControl from 'react-bootstrap/FormControl';
-import InputGroup from 'react-bootstrap/InputGroup';
 import Stack from 'react-bootstrap/Stack';
 import { useTranslation } from 'react-i18next';
+
+import SortableItineraryRow from './sortable-itinerary-row';
 
 export const ITINERARY_ITEM = 'item';
 export const ITINERARY_LINES = 'lines';
@@ -16,125 +28,84 @@ export const ITINERARY_NEW_PAGE = 'new_page';
 function Itinerary( props ) {
 	const { t } = useTranslation( 'app' );
 
-	function renderRow( { type, value }, index ) {
-		switch ( type ) {
-			case ITINERARY_ITEM:
-				return renderItem( value, index );
+	function handleDragEnd( event ) {
+		const oldId = event.active.id;
+		const newId = event.over.id;
 
-			case ITINERARY_NEW_PAGE:
-				return renderNewPage( value, index );
-
-			case ITINERARY_LINES:
-			default:
-				return renderLines( value, index );
+		if ( oldId !== newId ) {
+			props.onDragEnd( { oldId, newId, field } );
 		}
 	}
 
-	function renderItem( item, index ) {
+	function renderRow( { id, value, type } ) {
 		return (
-			<InputGroup key={ index }>
-				<FormControl
-					placeholder="Itinerary item"
-					value={ item }
-					onChange={ props.onChange }
-					data-index={ index }
-					data-type={ ITINERARY_ITEM }
-					data-field={ props.field }
-					required
-				/>
-				{renderRemoveButton( index )}
-			</InputGroup>
-		);
-	}
-
-	function renderNewPage( item, index ) {
-		return (
-			<InputGroup key={ index }>
-				<InputGroup.Text className="flex-grow-1">
-					{t( 'configuration.itinerary.placeholder.page' )}
-				</InputGroup.Text>
-				{renderRemoveButton( index )}
-			</InputGroup>
-		);
-	}
-
-	function renderLines( numberOfLines, index ) {
-		return (
-			<InputGroup key={ index }>
-				<FloatingLabel
-					className="flex-grow-1"
-					controlId={ 'lines-' + index }
-					label={ t( 'configuration.itinerary.placeholder.lines' ) }
-				>
-					<FormControl
-						placeholder={ t( 'configuration.itinerary.placeholder.lines' ) }
-						type="number"
-						min={ 1 }
-						max={ 50 }
-						value={ numberOfLines }
-						onChange={ props.onChange }
-						data-index={ index }
-						data-type={ ITINERARY_LINES }
-						data-field={ props.field }
-						required
-					/>
-				</FloatingLabel>
-				{renderRemoveButton( index )}
-			</InputGroup>
-		);
-	}
-
-	function renderRemoveButton( index ) {
-		return (
-			<Button
-				variant="outline-danger"
-				onClick={ props.onRemove }
-				data-index={ index }
-				data-field={ props.field }
-			>
-				{t( 'configuration.itinerary.button.remove' )}
-			</Button>
+			<SortableItineraryRow
+				key={ id }
+				field={ props.field }
+				id={ id }
+				type={ type }
+				value={ value }
+				onChange={ props.onChange }
+				onRemove={ props.onRemove }
+			/>
 		);
 	}
 
 	const { field, itinerary, onAdd, onCopy } = props;
+	const sensors = useSensors(
+		useSensor( PointerSensor ),
+		useSensor( KeyboardSensor, {
+			coordinateGetter: sortableKeyboardCoordinates,
+		} ),
+	);
 	return (
 		<>
 			<Stack gap={ 2 }>
-				{itinerary.map( renderRow )}
-				{itinerary.length === 0 && (
-					<Alert variant="secondary" className="mb-0">
-						{t( 'configuration.itinerary.empty' )}
-					</Alert>
-				)}
-				<Stack direction="horizontal" gap={ 3 }>
-					<ButtonGroup>
-						<Button
-							variant="outline-secondary"
-							onClick={ onAdd }
-							data-type={ ITINERARY_ITEM }
-							data-field={ field }
-						>
-							{t( 'configuration.itinerary.button.item' )}
-						</Button>
-						<Button
-							variant="outline-secondary"
-							onClick={ onAdd }
-							data-type={ ITINERARY_LINES }
-							data-field={ field }
-						>
-							{t( 'configuration.itinerary.button.lines' )}
-						</Button>
-						<Button
-							variant="outline-secondary"
-							onClick={ onAdd }
-							data-type={ ITINERARY_NEW_PAGE }
-							data-field={ field }
-						>
-							{t( 'configuration.itinerary.button.page' )}
-						</Button>
-					</ButtonGroup>
-				</Stack>
+				<DndContext
+					sensors={ sensors }
+					collisionDetection={ closestCenter }
+					onDragEnd={ handleDragEnd }
+				>
+					<SortableContext
+						items={ itinerary }
+						strategy={ verticalListSortingStrategy }
+					>
+						{itinerary.map( renderRow )}
+						{itinerary.length === 0 && (
+							<Alert variant="secondary" className="mb-0">
+								{t( 'configuration.itinerary.empty' )}
+							</Alert>
+						)}
+					</SortableContext>
+				</DndContext>
+			</Stack>
+			<Stack direction="horizontal" className="mt-3" gap={ 3 }>
+				<ButtonGroup>
+					<Button
+						variant="outline-secondary"
+						onClick={ onAdd }
+						data-type={ ITINERARY_ITEM }
+						data-field={ field }
+					>
+						{t( 'configuration.itinerary.button.item' )}
+					</Button>
+					<Button
+						variant="outline-secondary"
+						onClick={ onAdd }
+						data-type={ ITINERARY_LINES }
+						data-field={ field }
+					>
+						{t( 'configuration.itinerary.button.lines' )}
+					</Button>
+					<Button
+						variant="outline-secondary"
+						onClick={ onAdd }
+						data-type={ ITINERARY_NEW_PAGE }
+						data-field={ field }
+					>
+						{t( 'configuration.itinerary.button.page' )}
+					</Button>
+				</ButtonGroup>
 			</Stack>
 			{onCopy && (
 				<Button
@@ -156,6 +127,7 @@ Itinerary.propTypes = {
 	onAdd: PropTypes.func.isRequired,
 	onChange: PropTypes.func.isRequired,
 	onCopy: PropTypes.func,
+	onDragEnd: PropTypes.func.isRequired,
 	onRemove: PropTypes.func.isRequired,
 };
 
