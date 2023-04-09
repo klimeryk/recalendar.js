@@ -131,7 +131,10 @@ SortableItineraryRow.propTypes = {
 	onChange: PropTypes.func.isRequired,
 	onRemove: PropTypes.func.isRequired,
 	type: PropTypes.string.isRequired,
-	value: PropTypes.string.isRequired,
+	value: PropTypes.oneOfType(	[
+		PropTypes.string,
+		PropTypes.number,
+	] ).isRequired,
 };
 
 export default SortableItineraryRow;
