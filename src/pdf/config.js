@@ -41,7 +41,7 @@ export function hydrateFromObject( object ) {
 }
 
 class PdfConfig {
-	constructor() {
+	constructor( configOverrides = {} ) {
 		this.year = dayjs().year();
 		this.month = 0;
 		this.firstDayOfWeek = dayjs.localeData().firstDayOfWeek();
@@ -112,6 +112,10 @@ class PdfConfig {
 			],
 			'14-01': [ t( 'special-dates.example6', { ns: 'config' } ) ],
 		};
+
+		if ( Object.keys( configOverrides ).length !== 0 ) {
+			Object.assign( this, configOverrides );
+		}
 
 		this.ensureUniqueIds();
 	}

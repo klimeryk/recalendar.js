@@ -33,10 +33,15 @@ class ConfigurationSelector extends React.Component {
 		status: STATUS_EMPTY,
 	};
 
+	getDefaultFirstDayOfWeek() {
+		const config = new PdfConfig();
+		return config.firstDayOfWeek;
+	}
+
 	handleTemplateSelect = ( event ) => {
 		const { t } = this.props;
-		const config = new PdfConfig();
-		let dayOfWeek = config.firstDayOfWeek;
+		const configOverrides = {};
+		let dayOfWeek = this.getDefaultFirstDayOfWeek();
 
 		switch ( event.target.dataset.template ) {
 			case TEMPLATE_BASIC:
@@ -44,7 +49,7 @@ class ConfigurationSelector extends React.Component {
 				break;
 
 			case TEMPLATE_ADVANCED:
-				config.dayItineraries = [ ...Array( 7 ).keys() ].map( () => {
+				configOverrides.dayItineraries = [ ...Array( 7 ).keys() ].map( () => {
 					const itinerary = {
 						dayOfWeek,
 						items: this.generateAdvancedDayItems( dayOfWeek ),
@@ -53,7 +58,7 @@ class ConfigurationSelector extends React.Component {
 					dayOfWeek = ++dayOfWeek % 7;
 					return itinerary;
 				} );
-				config.weekRetrospectiveItinerary = [
+				configOverrides.weekRetrospectiveItinerary = [
 					{
 						type: ITINERARY_ITEM,
 						value: t( 'templates.advanced.retrospective.wins', {
@@ -79,11 +84,11 @@ class ConfigurationSelector extends React.Component {
 				break;
 
 			case TEMPLATE_BLANK:
-				config.specialDates = {};
-				config.habits = [];
-				config.monthItinerary = [];
-				config.todos = [];
-				config.dayItineraries = [ ...Array( 7 ).keys() ].map( () => {
+				configOverrides.specialDates = {};
+				configOverrides.habits = [];
+				configOverrides.monthItinerary = [];
+				configOverrides.todos = [];
+				configOverrides.dayItineraries = [ ...Array( 7 ).keys() ].map( () => {
 					const itinerary = {
 						dayOfWeek,
 						items: [],
@@ -92,17 +97,17 @@ class ConfigurationSelector extends React.Component {
 					dayOfWeek = ++dayOfWeek % 7;
 					return itinerary;
 				} );
-				config.weekRetrospectiveItinerary = [];
+				configOverrides.weekRetrospectiveItinerary = [];
 				break;
 
 			case TEMPLATE_MINIMALISTIC:
-				config.specialDates = {};
-				config.habits = [];
-				config.isMonthOverviewEnabled = false;
-				config.monthItinerary = [];
-				config.isWeekOverviewEnabled = true;
-				config.todos = [];
-				config.dayItineraries = [ ...Array( 7 ).keys() ].map( () => {
+				configOverrides.specialDates = {};
+				configOverrides.habits = [];
+				configOverrides.isMonthOverviewEnabled = false;
+				configOverrides.monthItinerary = [];
+				configOverrides.isWeekOverviewEnabled = true;
+				configOverrides.todos = [];
+				configOverrides.dayItineraries = [ ...Array( 7 ).keys() ].map( () => {
 					const itinerary = {
 						dayOfWeek,
 						items: [],
@@ -111,15 +116,15 @@ class ConfigurationSelector extends React.Component {
 					dayOfWeek = ++dayOfWeek % 7;
 					return itinerary;
 				} );
-				config.isWeekRetrospectiveEnabled = false;
-				config.weekRetrospectiveItinerary = [];
+				configOverrides.isWeekRetrospectiveEnabled = false;
+				configOverrides.weekRetrospectiveItinerary = [];
 				break;
 
 			default:
 				return;
 		}
 
-		config.ensureUniqueIds();
+		const config = new PdfConfig( configOverrides );
 
 		this.props.onConfigChange( config );
 	};
@@ -140,7 +145,9 @@ class ConfigurationSelector extends React.Component {
 			items.push( { type: ITINERARY_NEW_PAGE, value: '' } );
 			items.push( {
 				type: ITINERARY_ITEM,
-				value: this.props.t( 'templates.advanced.day.monday', { ns: 'config' } ),
+				value: this.props.t( 'templates.advanced.day.monday', {
+					ns: 'config',
+				} ),
 			} );
 			items.push( { type: ITINERARY_LINES, value: 50 } );
 		}

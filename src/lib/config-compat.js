@@ -4,7 +4,7 @@ import PdfConfig, {
 } from 'pdf/config';
 
 export function convertConfigToCurrentVersion( config ) {
-	const configWithDefaults = Object.assign( new PdfConfig(), config );
+	const configWithDefaults = new PdfConfig( config );
 
 	switch ( configWithDefaults.version ) {
 		case CONFIG_VERSION_1:

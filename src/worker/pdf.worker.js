@@ -50,8 +50,7 @@ function hyphenationCallback( word ) {
 }
 
 self.onmessage = ( { data } ) => {
-	const config = new PdfConfig();
-	Object.assign( config, hydrateFromObject( data ) );
+	const config = new PdfConfig( hydrateFromObject( data ) );
 
 	const { firstDayOfWeek, language, isPreview } = data;
 
