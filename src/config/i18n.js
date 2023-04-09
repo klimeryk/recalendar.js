@@ -29,8 +29,10 @@ export function getSupportedLocales() {
 		.keys()
 		.map( ( file ) => file.match( /\/(.+)\/app\.json$/ )[ 1 ] );
 
+	const uniqueLocales = [ ...new Set( locales ) ];
+
 	// Make sure that English is first on the list
-	locales.splice( locales.indexOf( 'en' ), 1 );
-	locales.unshift( 'en' );
-	return locales;
+	uniqueLocales.splice( uniqueLocales.indexOf( 'en' ), 1 );
+	uniqueLocales.unshift( 'en' );
+	return uniqueLocales;
 }
