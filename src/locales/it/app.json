@@ -1,0 +1,148 @@
+{
+	"loading": "Caricamento in corso...",
+	"download-ready": "Scarica ora!",
+	"navigation": {
+		"home": "Home",
+		"configuration": "Crea il tuo calendario",
+		"features": "Caratteristiche",
+		"faq": "FAQ"
+	},
+	"language": {
+		"label": "Lingua"
+	},
+	"configuration": {
+		"selector": {
+			"label": "Inizia",
+			"template": {
+				"label": "Seleziona un modello:",
+				"basic": {
+					"label": "Semplice",
+					"description": "Impostazioni predefinite - un buon punto da cui iniziare."
+				},
+				"advanced": {
+					"label": "Avanzato",
+					"description": "Espande il modello Semplice aggiungendo la Programmazione Giornaliera."
+				},
+				"blank": {
+					"label": "Vuoto",
+					"description": "Basato sul modello Semplice, ma con le sezioni Abitudini, Da Fare, Ricorrenze, ecc. vuote"
+				},
+				"minimalistic": {
+					"label": "Minimalista",
+					"description": "Disabilita tutto tranne le Panoramiche Settimanali."
+				}
+			},
+			"upload": {
+				"label": "Importare un PDF ReCalendar già generato per utilizzare la sua configurazione:",
+				"loading": "Configurazione in corso, attendere prego...",
+				"error": "Impossibile importare la configurazione del PDF ReCalendar. Sicuri che il file selezionato è stato generato su questo sito?",
+				"success": "Configurazione importata - bentornato!"
+			}
+		},
+		"general": {
+			"label": "Opzioni generali",
+			"font": "Tipo Carattere",
+			"year": "Anno",
+			"left-handed": {
+				"label": "Versione per mancini",
+				"description": "Ottimizza il layout per l'uso con la mano sinistra."
+			},
+			"sidebar": {
+				"label": "Lascia uno spazio permanente per la barra degli strumenti laterale",
+				"description": "Se si preferisce lasciare sempre aperta la barra degli strumenti laterale, selezionare questa opzione per assicurarsi che il contenuto del calendario non ne sia mai coperto."
+			},
+			"starting-month": {
+				"label": "Mese di partenza",
+				"description": "Il primo mese del calendario generato. Ad esempio, scegliendo luglio si può creare un calendario che copra un semestre piuttosto che un anno."
+			},
+			"month-count": {
+				"label": "Numero di mesi",
+				"description": "Quanti mesi volete generare nel vostro calendario?"
+			},
+			"first-day-of-week": "Primo giorno della settimana",
+			"weekend": "Fine-settimana"
+		},
+		"button": {
+			"refresh": "Aggiornare l'anteprima",
+			"download": "Generare il calendario completo e scaricare",
+			"generating": "Generazione del file PDF in corso, attendere prego..."
+		},
+		"itinerary": {
+			"empty": "Programmazione vuota",
+			"placeholder": {
+				"lines": "Numero di linee",
+				"page": "Nuova interruzione di pagina"
+			},
+			"button": {
+				"copy": "Copiare questa programmazione a tutti gli altri giorni",
+				"remove": "Rimuovere",
+				"item": "Aggiungere un elemento",
+				"page": "Aprire una nuova pagina",
+				"lines": "Aggiungere una linea"
+			}
+		},
+		"items-list": {
+			"button": {
+				"item": "Aggiungere un elemento",
+				"remove": "Rimuovere"
+			},
+			"empty": "Lista vuota",
+			"placeholder": "Elemento"
+		},
+		"toggle-form": {
+			"enabled": "Abilitato",
+			"disabled": "Disabilitato"
+		},
+		"month": {
+			"title": "Panoramica Mensile",
+			"description": "La panoramica Mensile è un luogo in cui fissare obiettivi per il prossimo mese, tenere traccia delle abitudini e pianificare le attività.",
+			"habits": {
+				"title": "Abitudini"
+			},
+			"itinerary": {
+				"title": "Pianificazione"
+			}
+		},
+		"week": {
+			"title": "Panoramica Settimanale",
+			"description": "La Panoramica Settimanale consente di semplificare la pianificazione delle attività settimanali.",
+			"todos": {
+				"title": "Liste di cose da fare"
+			},
+			"retrospective": {
+				"title": "Retrospettiva della Settimana",
+				"description": "La Retrospettiva della Settimana è un luogo in cui fare un passo indietro rispetto alla settimana appena trascorsa: com'è andata, cosa si è imparato, cosa si può fare per migliorare la prossima settimana?",
+				"itinerary": {
+					"title": "Pianificazione"
+				}
+			}
+		},
+		"day": {
+			"title": "Programma Giornaliero"
+		},
+		"special-dates": {
+			"title": "Ricorrenze",
+			"description": "Aggiungendo compleanni, celebrazioni, eventi, ecc. è possibile ricevere il promemoria di queste date nella panoramica settimanale e nelle pagine giornaliere.",
+			"empty": "Nessuna data",
+			"placeholder": "Per quale ricorrenza?",
+			"button": {
+				"item": "Aggiungere una data",
+				"remove": "Rimuovere"
+			}
+		},
+		"generation-description": "La generazione del PDF è fatta interamente nel browser locale: nessun dato è inviato a server esterni!"
+	},
+	"preview": {
+		"title": "Anteprima del Calendario",
+		"subtitle": "(solo il primo mese è mostrato nell'anteprima)",
+		"viewer-title": "Anteprima del PDF",
+		"generating": {
+			"full": "Generazione del calendario completo in corso - l'operazione potrebbe richiedere più di un minuto...",
+			"preview": "Generazione dell'anteprima in corso, attendi: l'operazione potrebbe richiedere circa un minuto."
+		},
+		"empty": {
+			"title": "Utilizzare il form di configurazione per personalizzare il calendario.",
+			"subtitle": "L'anteprima apparirà qui."
+		}
+	}
+}
