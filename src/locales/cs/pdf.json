@@ -1,0 +1,28 @@
+{
+	"calendar": {
+		"header": {
+			"week-number": "T#",
+			"retrospective": "Re"
+		},
+		"body": {
+			"retrospective": "R"
+		}
+	},
+	"page": {
+		"month": {
+			"habits": {
+				"title": "Zvyky"
+			}
+		},
+		"week": {
+			"title": "Týden"
+		},
+		"retrospective": {
+			"title": "Týdenní retrospektiva"
+		},
+		"last": {
+			"title": "Generováno <recalendar>https://recalendar.me/</recalendar>",
+			"subtitle": "Tento soubor lze použít pro rychlé nastavení dalšího kalendáře."
+		}
+	}
+}

@@ -1,0 +1,155 @@
+{
+	"loading": "Načítání...",
+	"download-ready": "Stáhnout!",
+	"navigation": {
+		"home": "Domů",
+		"configuration": "Vytvořit vlastní kalendář",
+		"features": "Funkce",
+		"faq": "FAQ"
+	},
+	"language": {
+		"label": "Jazyky",
+		"en": "English",
+		"pl": "Polski",
+		"fr": "Français",
+		"es": "Español",
+		"nb": "Norsk",
+		"da": "Dansk",
+                "cz": "Česky"
+	},
+	"configuration": {
+		"selector": {
+			"label": "Start",
+			"template": {
+				"label": "Začni výběrem předlohy:",
+				"basic": {
+					"label": "Základní",
+					"description": "Základní nastavení - dobrá na začátek."
+				},
+				"advanced": {
+					"label": "Pokročilá",
+					"description": "Rozšiřuje základní předlohu o individuální itineráře."
+				},
+				"blank": {
+					"label": "Jednoduchý",
+					"description": "Založena na základní předloze, ale je prázdnější."
+				},
+				"minimalistic": {
+					"label": "Minimalistická",
+					"description": "Nejjednodušší verze."
+				}
+			},
+			"upload": {
+				"label": "Nebo nahrajte předešlý kalendář pro načtení nastavení:",
+				"loading": "Načítání ze souboru PDF, prosím počkejte...",
+				"error": "Ze souboru nebylo možné načíst nastavení!",
+				"success": "Nastavení načteno z PDF - vítejte zpět!"
+			}
+		},
+		"general": {
+			"label": "Hlavní nastavení",
+			"font": "Font",
+			"year": "Rok",
+			"left-handed": {
+				"label": "Verze pro levou ruku",
+				"description": "Optimalizováno pro psaní levou rukou."
+			},
+			"sidebar": {
+				"label": "Nastavit permanentní odsazení pro lištu s nástroji",
+				"description": "Pokud preferujete vysunutou lištu s nástroji, tato možnost odsadí celý obsah kalendáře."
+			},
+			"starting-month": {
+				"label": "Počáteční měsíc",
+				"description": "První měsíc v generovaném kalendáři. Pro školní rok vyberte září."
+			},
+			"month-count": {
+				"label": "Počet měsíců",
+				"description": "Pro kolik měsíců se vygeneruje kalendář."
+			},
+			"first-day-of-week": "První den víkendu",
+			"weekend": "Víkend"
+		},
+		"button": {
+			"refresh": "Načíst náhled",
+			"download": "Generovat celý kalendář pro stažení",
+			"generating": "Generování, prosím čekejte..."
+		},
+		"itinerary": {
+			"empty": "Prázdný itinerář",
+			"placeholder": {
+				"lines": "Počet řádků",
+				"page": "Nová stránka"
+			},
+			"button": {
+				"copy": "Zkopírovat na ostatní dny",
+				"remove": "Odebrat",
+				"item": "Přidat položku",
+				"page": "Nová strana",
+				"lines": "Přidat prázdné řádky"
+			}
+		},
+		"items-list": {
+			"button": {
+				"item": "Přidat položku",
+				"remove": "Odebrat"
+			},
+			"empty": "Prázdný seznam",
+			"placeholder": "Položka"
+		},
+		"toggle-form": {
+			"enabled": "Povoleno",
+			"disabled": "Nepovoleno"
+		},
+		"month": {
+			"title": "Přehled měsíce",
+			"description": "Přehled měsíce je místo pro nastavení cílů pro následující měsíc a vytváření jiných plánů.",
+			"habits": {
+				"title": "Zvyky"
+			},
+			"itinerary": {
+				"title": "Itinerář"
+			}
+		},
+		"week": {
+			"title": "Přehled týdne",
+			"description": "Přehled týdne nabízí naplánování celého týdne.",
+			"todos": {
+				"title": "Úkoly"
+			},
+			"retrospective": {
+				"title": "Týdenní retrospektiva",
+				"description": "Týdenní retrospektiva je místo pro shrnutí minulého týdne.",
+				"itinerary": {
+					"title": "Itinerář"
+				}
+			}
+		},
+		"day": {
+			"title": "Dení itinerář"
+		},
+		"special-dates": {
+			"title": "Speciální dny",
+			"description": "Přidej své narozeniny, svátky a události.",
+			"empty": "Žádná data",
+			"placeholder": "Jaká je příležitost?",
+			"button": {
+				"item": "Přidat datum",
+				"remove": "Odebrat"
+			}
+		},
+		"generation-description": "Generování PDF probíhá ve vašem prohlížeči - data nejsou posílána na server!"
+	},
+	"preview": {
+		"title": "Náhled kalendáře",
+		"subtitle": "(pro náhled se generuje jen první měsíc)",
+		"viewer-title": "Náhled PDF",
+		"generating": {
+			"full": "Generování celého kalendáře - tato akce může trvat déle...",
+			"preview": "Generování náhledu, prosím čekejte - tato akce může trvat déle."
+		},
+		"empty": {
+			"title": "Vyplň nastavení pro vlasní kalendář",
+			"subtitle": "Zde se zoprazí náhled"
+		}
+	}
+}

@@ -1,0 +1,36 @@
+{
+	"habits": {
+		"example1": "Cvičení",
+		"example2": "Kniha",
+		"example3": "Koníček",
+		"example4": "Rande"
+	},
+	"templates": {
+		"advanced": {
+			"day": {
+				"monday": "Stránka navíc pro poznámky na pondělí"
+			},
+			"retrospective": {
+				"wins": "Úspěchy týdne",
+				"discoveries": "Nové objevy",
+				"fails": "Něco se nepovedlo?"
+			}
+		}
+	},
+	"month": {
+		"goal": "Hlavní cíl",
+		"notes": "Poznámky"
+	},
+	"todos": {
+		"example1": "Plány a výlety",
+		"example2": "Jiné úkoly"
+	},
+	"special-dates": {
+		"example1": "Speciální den 1",
+		"example2": "Speciální datum #2",
+		"example3": "Oslava",
+		"example4": "Jiná speciální událost delší než na jeden řádek",
+		"example5": "Pojďme přidat ještě jednu událost",
+		"example6": "Další významný den"
+	}
+}
