@@ -11,12 +11,13 @@
 		"label": "Language",
 		"en": "English",
 		"cs": "Čeština",
-		"pl": "Polski",
-		"fr": "Français",
-		"es": "Español",
-		"nb": "Norsk",
 		"da": "Dansk",
-		"pt-BR": "Português (Brasil)"
+		"es": "Español",
+		"fr": "Français",
+		"nb": "Norsk",
+		"pl": "Polski",
+		"pt-BR": "Português (Brasil)",
+		"sl": "Slovenski"
 	},
 	"configuration": {
 		"selector": {

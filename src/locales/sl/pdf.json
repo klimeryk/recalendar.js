@@ -1,0 +1,28 @@
+{
+	"calendar": {
+		"header": {
+			"week-number": "#",
+			"retrospective": "TP"
+		},
+		"body": {
+			"retrospective": "P"
+		}
+	},
+	"page": {
+		"month": {
+			"habits": {
+				"title": "Navade"
+			}
+		},
+		"week": {
+			"title": "Teden"
+		},
+		"retrospective": {
+			"title": "Tedenski povzetek"
+		},
+		"last": {
+			"title": "Pripravljeno z <recalendar>https://recalendar.me/</recalendar>",
+			"subtitle": "Ta PDF dokument lahko z enakimi nastavitvami ponovno uporabite!"
+		}
+	}
+}

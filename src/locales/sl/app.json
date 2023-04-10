@@ -1,0 +1,155 @@
+{
+	"loading": "Pripravljam...",
+	"download-ready": "Prenesi!",
+	"navigation": {
+		"home": "Domov",
+		"configuration": "Pripravi svoj koledar",
+		"features": "Lastnosti",
+		"faq": "Vprašanja"
+	},
+	"language": {
+		"label": "Jezik",
+		"en": "Angleški",
+		"pl": "Poljski",
+		"fr": "Francoski",
+		"es": "Španski",
+		"nb": "Norveški",
+		"da": "Danski",
+		"sl": "Slovenski"
+	},
+	"configuration": {
+		"selector": {
+			"label": "Začetek",
+			"template": {
+				"label": "Izberi predlogo:",
+				"basic": {
+					"label": "Osnovna",
+					"description": "Privzete nastavitve."
+				},
+				"advanced": {
+					"label": "Napredna",
+					"description": "Razširjena osnovna predloga z dnevnimi vsebinami."
+				},
+				"blank": {
+					"label": "Prazna",
+					"description": "Osnovna predloga brez posebnih datumov, seznamov opravil in podobno."
+				},
+				"minimalistic": {
+					"label": "Enostavna",
+					"description": "Brez dodatkov in s samo tedenskimi pregledi."
+				}
+			},
+			"upload": {
+				"label": "Preberi obstoječe nastavitve iz reCalendar PDF datoteke:",
+				"loading": "Branje nastavitev iz PDF datoteke, prosimo počakajte...",
+				"error": "Uvoz nastavitev ni uspel, ali je bila datoteka narejena s tem orodjem?",
+				"success": "Nastavitve uspešno prebrane - dobrodošli nazaj!"
+			}
+		},
+		"general": {
+			"label": "Glavne nastavitve",
+			"font": "Pisava",
+			"year": "Leto",
+			"left-handed": {
+				"label": "Nastavitve za levičarje",
+				"description": "Prilagojen pogled za levičarje."
+			},
+			"sidebar": {
+				"label": "Pusti prazen prostor za stransko orodno vrstico",
+				"description": "Če imate stransko orodno vrstico vedno odprto, potem uporabite to možnost, da se koledar ne bo prekrival z orodno vrstico."
+			},
+			"starting-month": {
+				"label": "Začetni mesec",
+				"description": "Prvi mesec v pripravljenem koledarju. Izberite na primer oktober, če želite pripraviti študijski koledar, namesto letnega."
+			},
+			"month-count": {
+				"label": "Število mesecev",
+				"description": "Za koliko mesecev naj se pripravi koledar."
+			},
+			"first-day-of-week": "Prvi dan tedna",
+			"weekend": "Konec tedna"
+		},
+		"button": {
+			"refresh": "Osveži pregled",
+			"download": "Pripravi koledar in prenesi",
+			"generating": "Poteka priprava, prosimo počakajte..."
+		},
+		"itinerary": {
+			"empty": "Prazna vsebina",
+			"placeholder": {
+				"lines": "Število vrstic",
+				"page": "Nov prelom strani"
+			},
+			"button": {
+				"copy": "Kopiraj vsebino v ostale dni",
+				"remove": "Odstrani",
+				"item": "Dodaj del vsebine",
+				"page": "Dodaj novo stran",
+				"lines": "Dodaj prazne vrstice"
+			}
+		},
+		"items-list": {
+			"button": {
+				"item": "Dodaj",
+				"remove": "Odstrani"
+			},
+			"empty": "Prazen seznam",
+			"placeholder": "Zapis"
+		},
+		"toggle-form": {
+			"enabled": "Omogočeno",
+			"disabled": "Onemogočeno"
+		},
+		"month": {
+			"title": "Mesečni pregled",
+			"description": "V mesečnem pregledu postavimo cilje za prihajajoči mesec, spremljamo navade in pripravimo druge načrte.",
+			"habits": {
+				"title": "Navade"
+			},
+			"itinerary": {
+				"title": "Vsebina"
+			}
+		},
+		"week": {
+			"title": "Tedenski pregled",
+			"description": "Tedenski pregled omogoča osredotočen pogled na teden, z namenom lažjega načrtovanja opravil.",
+			"todos": {
+				"title": "Opravila"
+			},
+			"retrospective": {
+				"title": "Tedenski povzetek",
+				"description": "Tedenski povzetek povzema pretekli teden - kaj je bilo opravljeno, kaj smo se naučili, kaj lahko izboljšamo?",
+				"itinerary": {
+					"title": "Vsebina"
+				}
+			}
+		},
+		"day": {
+			"title": "Dnevna vsebina"
+		},
+		"special-dates": {
+			"title": "Posebni datumi",
+			"description": "Dodajte rojstne dni, praznovanja, dogodke in podobno, prikazani bodo kot opomniki v tedenskih pregledih in pripadajočih dneh.",
+			"empty": "Ni zapisov",
+			"placeholder": "Naziv",
+			"button": {
+				"item": "Dodaj datum",
+				"remove": "Odstrani"
+			}
+		},
+		"generation-description": "Priprava PDF dokumenta se izvaja v vašem brskalniku - podatki se ne prenašajo na naše strežnike!"
+	},
+	"preview": {
+		"title": "Pregled koledarja",
+		"subtitle": "(za pregled se pripravi le prvi mesec)",
+		"viewer-title": "Pregled PDF dokumenta",
+		"generating": {
+			"full": "Poteka priprava celotnega koledarja - prosimo počakajte...",
+			"preview": "Poteka priprava pregleda koledarja - prosimo počakajte...."
+		},
+		"empty": {
+			"title": "Za prilagoditev koledarja uporabi formo na levi strani.",
+			"subtitle": "Pregled se bo prikazal tu."
+		}
+	}
+}

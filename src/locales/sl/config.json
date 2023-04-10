@@ -1,0 +1,36 @@
+{
+	"habits": {
+		"example1": "Vaja",
+		"example2": "Knjiga",
+		"example3": "Opravilo",
+		"example4": "Zmenek"
+	},
+	"templates": {
+		"advanced": {
+			"day": {
+				"monday": "Dodatna stran za dodatne ponedeljkove zapise"
+			},
+			"retrospective": {
+				"wins": "Tedenski uspehi",
+				"discoveries": "Nova spoznanja",
+				"fails": "Kaj ni uspelo?"
+			}
+		}
+	},
+	"month": {
+		"goal": "Glavni cilj",
+		"notes": "Zapiski"
+	},
+	"todos": {
+		"example1": "Pripravi potovanje",
+		"example2": "Ostala opravila"
+	},
+	"special-dates": {
+		"example1": "Rojstni dan mame",
+		"example2": "Datum obnove registracije",
+		"example3": "Praznovanje nečesa",
+		"example4": "Drugo daljše praznovanje",
+		"example5": "Praznikov ni nikoli premalo",
+		"example6": "Preberi knjigo"
+	}
+}
