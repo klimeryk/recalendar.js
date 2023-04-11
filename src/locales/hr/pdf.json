@@ -1,0 +1,28 @@
+{
+	"calendar": {
+		"header": {
+			"week-number": "W#",
+			"retrospective": "Re"
+		},
+		"body": {
+			"retrospective": "R"
+		}
+	},
+	"page": {
+		"month": {
+			"habits": {
+				"title": "Navike"
+			}
+		},
+		"week": {
+			"title": "Tjedan"
+		},
+		"retrospective": {
+			"title": "Tjedna retrospektiva"
+		},
+		"last": {
+			"title": "Izrađeno korištenjem <recalendar>https://recalendar.me/</recalendar>",
+			"subtitle": "Nožete ponovno učitati ovaj PDF dokument na navedenoj WEB stranici za učitavanje postojeće konfiguracije u svrhu bržeg i jednostavnijeg stvaranje novog kalendara za sljedeću godinu!"
+		}
+	}
+}

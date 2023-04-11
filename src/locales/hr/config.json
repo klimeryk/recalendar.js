@@ -1,0 +1,36 @@
+{
+	"habits": {
+		"example1": "Tjelovježba",
+		"example2": "Čitanje",
+		"example3": "Meditacija",
+		"example4": "Hobi"
+	},
+	"templates": {
+		"advanced": {
+			"day": {
+				"monday": "Dodatna stranica za bilješke ponedjeljkom"
+			},
+			"retrospective": {
+				"wins": "Pobjede ovog tjedna",
+				"discoveries": "Nova otkrića",
+				"fails": "Što bi moglo biti bolje?"
+			}
+		}
+	},
+	"month": {
+		"goal": "Glavni cilj",
+		"notes": "Bilješke"
+	},
+	"todos": {
+		"example1": "Isplaniraj putovanje",
+		"example2": "Neki drugi zadatak"
+	},
+	"special-dates": {
+		"example1": "Poseban datum",
+		"example2": "Još jedan poseban datumčić",
+		"example3": "Nekakva proslava",
+		"example4": "Još jedna proslava s jako dugačkim tekstom koji ide kroz više redova",
+		"example5": "Dodajmo još i rođendan moje mačke Lale",
+		"example6": "Možda imate ideju za još neki bitan blagdan? Božić!"
+	}
+}
