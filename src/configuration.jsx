@@ -319,7 +319,7 @@ class Configuration extends React.PureComponent {
 			newSpecialDates[ key ] = [];
 		}
 
-		newSpecialDates[ key ].push( wrapWithId( value ) );
+		newSpecialDates[ key ].push( value );
 		this.setState( { specialDates: newSpecialDates } );
 	};
 
