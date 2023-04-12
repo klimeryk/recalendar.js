@@ -19,6 +19,12 @@ class SpecialDates extends React.Component {
 		value: '',
 	};
 
+	compareSpecialDates = ( a, b ) => {
+		const dateA = dayjs( a, DATE_FORMAT );
+		const dateB = dayjs( b, DATE_FORMAT );
+		return dateA.isAfter( dateB );
+	};
+
 	onChange = ( event ) => {
 		const { field } = event.target.dataset;
 		this.setState( { [ field ]: event.target.value } );
@@ -70,7 +76,7 @@ class SpecialDates extends React.Component {
 	render() {
 		const { date, value } = this.state;
 		const { items, t } = this.props;
-		const keys = Object.keys( items );
+		const keys = Object.keys( items ).sort( this.compareSpecialDates );
 		return (
 			<Accordion.Item eventKey="specialDates">
 				<Accordion.Header>
