@@ -22,7 +22,7 @@ class SpecialDates extends React.Component {
 	compareSpecialDates = ( a, b ) => {
 		const dateA = dayjs( a, DATE_FORMAT );
 		const dateB = dayjs( b, DATE_FORMAT );
-		return dateA.isAfter( dateB );
+		return dateA.isAfter( dateB ) ? 1 : -1;
 	};
 
 	onChange = ( event ) => {
