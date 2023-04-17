@@ -3,7 +3,7 @@ import i18n from 'i18next';
 import LanguageDetector from 'i18next-browser-languagedetector';
 import React, { Suspense } from 'react';
 import Spinner from 'react-bootstrap/Spinner';
-import ReactDOM from 'react-dom';
+import { createRoot } from 'react-dom/client';
 import { initReactI18next } from 'react-i18next';
 
 import './index.css';
@@ -43,11 +43,12 @@ const loadingComponent = (
 	</Spinner>
 );
 
-ReactDOM.render(
+const container = document.getElementById( 'root' );
+const root = createRoot( container );
+root.render(
 	<React.StrictMode>
 		<Suspense fallback={ loadingComponent }>
 			<Loader />
 		</Suspense>
 	</React.StrictMode>,
-	document.getElementById( 'root' ),
 );
