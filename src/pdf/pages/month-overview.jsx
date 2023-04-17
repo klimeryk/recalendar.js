@@ -22,6 +22,7 @@ class MonthOverviewPage extends React.Component {
 		const stylesObject = Object.assign(
 			{
 				content: {
+					flex: 1,
 					flexGrow: 1,
 				},
 				header: {
