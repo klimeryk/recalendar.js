@@ -75,7 +75,7 @@ class Navigation extends React.Component {
 						<Stack direction="horizontal">
 							<Form.Label
 								column
-								className="text-light me-3"
+								className="text-light me-3 mt-0"
 								htmlFor="languagePicker"
 							>
 								{t( 'language.label' )}
