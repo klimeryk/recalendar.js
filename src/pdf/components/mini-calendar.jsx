@@ -110,23 +110,23 @@ class MiniCalendar extends React.Component {
 
 	renderMonthName() {
 		const { monthArrow, monthName, pushLeft, pushRight, header } = this.styles;
-		const { date } = this.props;
+		const { config, date } = this.props;
 		return (
 			<View style={ header }>
 				<Link
-					src={ '#' + monthOverviewLink( date.subtract( 1, 'month' ) ) }
+					src={ '#' + monthOverviewLink( date.subtract( 1, 'month' ), config ) }
 					style={ [ monthArrow, pushLeft ] }
 				>
 					{'<'}
 				</Link>
-				<Link src={ '#' + monthOverviewLink( date ) } style={ monthName }>
+				<Link src={ '#' + monthOverviewLink( date, config ) } style={ monthName }>
 					{date.format( 'MMM' )}
 				</Link>
 				<Link src={ '#' + yearOverviewLink() } style={ monthName }>
 					{date.format( 'YYYY' )}
 				</Link>
 				<Link
-					src={ '#' + monthOverviewLink( date.add( 1, 'month' ) ) }
+					src={ '#' + monthOverviewLink( date.add( 1, 'month' ), config ) }
 					style={ [ monthArrow, pushRight ] }
 				>
 					{'>'}
@@ -225,7 +225,11 @@ class MiniCalendar extends React.Component {
 			}
 
 			days.push(
-				<Link key={ i } src={ '#' + dayPageLink( currentDay ) } style={ dayStyles }>
+				<Link
+					key={ i }
+					src={ '#' + dayPageLink( currentDay, config ) }
+					style={ dayStyles }
+				>
 					{currentDay.date()}
 				</Link>,
 			);
@@ -241,7 +245,7 @@ class MiniCalendar extends React.Component {
 		return (
 			<View key={ weekNumber } style={ weekStyles }>
 				<Link
-					src={ '#' + weekOverviewLink( week ) }
+					src={ '#' + weekOverviewLink( week, config ) }
 					style={ [ day, this.styles.weekNumber ] }
 				>
 					{weekNumber}

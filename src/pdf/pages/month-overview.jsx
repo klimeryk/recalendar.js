@@ -160,7 +160,7 @@ class MonthOverviewPage extends React.Component {
 		return (
 			<Link
 				key={ day.unix() }
-				src={ '#' + dayPageLink( day ) }
+				src={ '#' + dayPageLink( day, this.props.config ) }
 				style={ this.styles.habitDay }
 			>
 				<Text style={ this.styles.habitDayDate }>{day.format( 'D' )}</Text>
@@ -194,7 +194,7 @@ class MonthOverviewPage extends React.Component {
 				<Link
 					key={ currentDate.date() }
 					style={ styles }
-					src={ '#' + dayPageLink( currentDate ) }
+					src={ '#' + dayPageLink( currentDate, this.props.config ) }
 				/>,
 			);
 			currentDate = currentDate.add( 1, 'day' );
@@ -207,7 +207,7 @@ class MonthOverviewPage extends React.Component {
 		const { date, config } = this.props;
 		return (
 			<>
-				<Page id={ monthOverviewLink( date ) } size={ config.pageSize }>
+				<Page id={ monthOverviewLink( date, config ) } size={ config.pageSize }>
 					<View style={ this.styles.page }>
 						<View style={ this.styles.header }>
 							<View style={ this.styles.meta }>

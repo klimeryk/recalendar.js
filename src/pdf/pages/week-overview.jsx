@@ -87,13 +87,14 @@ class WeekOverviewPage extends React.Component {
 	}
 
 	renderDay( day ) {
+		const { config } = this.props;
 		const specialDateKey = day.format( 'DD-MM' );
-		const specialItems = this.props.config.specialDates[ specialDateKey ] || [];
+		const specialItems = config.specialDates[ specialDateKey ] || [];
 		return (
 			<Link
 				key={ day.unix() }
 				style={ this.styles.day }
-				src={ '#' + dayPageLink( day ) }
+				src={ '#' + dayPageLink( day, config ) }
 			>
 				<View style={ { flexDirection: 'column' } }>
 					<View style={ this.styles.dayDate }>
@@ -125,15 +126,17 @@ class WeekOverviewPage extends React.Component {
 	render() {
 		const { t, date, config } = this.props;
 		return (
-			<Page id={ weekOverviewLink( date ) } size={ config.pageSize }>
+			<Page id={ weekOverviewLink( date, config ) } size={ config.pageSize }>
 				<View style={ this.styles.page }>
 					<Header
 						isLeftHanded={ config.isLeftHanded }
 						title={ t( 'page.week.title' ) }
 						subtitle={ this.getNameOfWeek() }
 						number={ getWeekNumber( date ).toString() }
-						previousLink={ '#' + weekOverviewLink( date.subtract( 1, 'week' ) ) }
-						nextLink={ '#' + weekOverviewLink( date.add( 1, 'week' ) ) }
+						previousLink={
+							'#' + weekOverviewLink( date.subtract( 1, 'week' ), config )
+						}
+						nextLink={ '#' + weekOverviewLink( date.add( 1, 'week' ), config ) }
 						calendar={
 							<MiniCalendar
 								date={ date }
