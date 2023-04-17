@@ -7,7 +7,7 @@ export function dayPageLink( date, config ) {
 	if ( config.isWeekOverviewEnabled ) {
 		// This ensures that we use the correct year for things like week 52
 		// that has days from this and next year
-		return weekOverviewLink( date.startOf( 'week' ) );
+		return weekOverviewLink( date.startOf( 'week' ), config );
 	}
 
 	if ( config.isMonthOverviewEnabled ) {
@@ -60,7 +60,7 @@ export function monthOverviewLink( date, config ) {
 	if ( config.isWeekOverviewEnabled ) {
 		// This ensures that we use the correct year for things like week 52
 		// that has days from this and next year
-		return weekOverviewLink( date.date( 1 ).startOf( 'week' ) );
+		return weekOverviewLink( date.date( 1 ).startOf( 'week' ), config );
 	}
 
 	return '';
