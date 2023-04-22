@@ -101,9 +101,9 @@ class WeekOverviewPage extends React.Component {
 						<Text style={ this.styles.dayOfWeek }>{day.format( 'dddd' )}</Text>
 						<Text style={ this.styles.shortDate }>{day.format( 'DD MMM' )}</Text>
 					</View>
-					{specialItems.map( ( item, index ) => (
+					{specialItems.map( ( { value }, index ) => (
 						<Text key={ index } style={ this.styles.specialItem }>
-							» {item}
+							» {value}
 						</Text>
 					) )}
 				</View>

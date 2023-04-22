@@ -125,6 +125,10 @@
 			"description": "Tutaj możesz dodać urodziny, imieniny, uroczystości, święta i tym podobne. Zostaną one automatycznie umieszczone w kalendarzu tak żeby o nich nie zapomnieć.",
 			"empty": "Brak dat",
 			"placeholder": "Jaka okazja?",
+			"type": {
+				"event": "Wydarzenie",
+				"holiday": "Święto"
+			},
 			"button": {
 				"item": "Dodaj datę",
 				"remove": "Usuń"

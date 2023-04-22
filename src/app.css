@@ -30,3 +30,7 @@ button:not(:disabled).grab-handle {
 	cursor: move;
 	padding-left: 0;
 }
+
+.flex-basis-fit-content {
+	flex-basis: fit-content !important;
+}

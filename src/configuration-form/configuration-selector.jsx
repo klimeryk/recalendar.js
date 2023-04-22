@@ -184,7 +184,8 @@ class ConfigurationSelector extends React.Component {
 			status: STATUS_SUCCESS,
 		} );
 
-		this.props.onConfigChange( convertConfigToCurrentVersion( attachment ) );
+		const newConfig = new PdfConfig( convertConfigToCurrentVersion( attachment ) );
+		this.props.onConfigChange( newConfig );
 	};
 
 	renderStatusMessage() {

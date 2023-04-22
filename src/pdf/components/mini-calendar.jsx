@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import { withTranslation } from 'react-i18next';
 
+import { isHoliday, isEvent } from 'configuration-form/special-dates';
 import { getWeekdays, getWeekendDays, getWeekNumber } from 'lib/date';
 import PdfConfig from 'pdf/config';
 import {
@@ -77,9 +78,9 @@ class MiniCalendar extends React.Component {
 			border: '1 solid #CCC',
 		},
 		weekendDay: {
-			fontWeight: 'bold',
+			fontWeight: 1000,
 		},
-		specialDay: {
+		eventDay: {
 			border: '1px solid #555',
 		},
 		otherMonthDay: {
@@ -221,7 +222,13 @@ class MiniCalendar extends React.Component {
 
 			const specialDateKey = currentDay.format( 'DD-MM' );
 			if ( config.specialDates[ specialDateKey ] ) {
-				dayStyles.push( this.styles.specialDay );
+				if ( config.specialDates[ specialDateKey ].some( isEvent ) ) {
+					dayStyles.push( this.styles.eventDay );
+				}
+
+				if ( config.specialDates[ specialDateKey ].some( isHoliday ) ) {
+					dayStyles.push( this.styles.weekendDay );
+				}
 			}
 
 			days.push(

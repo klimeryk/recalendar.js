@@ -136,6 +136,10 @@
 			"description": "Add your birthdays, celebrations, events, etc. here to get reminders about them in weekly overviews and day pages as they approach.",
 			"empty": "No dates",
 			"placeholder": "What's the occasion?",
+			"type": {
+				"event": "Event",
+				"holiday": "Holiday"
+			},
 			"button": {
 				"item": "Add date",
 				"remove": "Remove"

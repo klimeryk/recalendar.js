@@ -313,20 +313,9 @@ class Configuration extends React.PureComponent {
 		this.setState( { dayItineraries: newItineraries } );
 	};
 
-	handleSpecialDateAdd = ( key, value ) => {
-		const newSpecialDates = Object.assign( {}, this.state.specialDates );
-		if ( ! newSpecialDates[ key ] ) {
-			newSpecialDates[ key ] = [];
-		}
-
-		newSpecialDates[ key ].push( value );
-		this.setState( { specialDates: newSpecialDates } );
-	};
-
-	handleSpecialDateRemove = ( event ) => {
-		const key = event.target.dataset.key;
-		const newSpecialDates = Object.assign( {}, this.state.specialDates );
-		delete newSpecialDates[ key ];
+	handleSpecialDateAdd = ( newSpecialDate ) => {
+		const newSpecialDates = [ ...this.state.specialDates ];
+		newSpecialDates.push( wrapWithId( newSpecialDate ) );
 		this.setState( { specialDates: newSpecialDates } );
 	};
 
@@ -501,7 +490,7 @@ class Configuration extends React.PureComponent {
 					<SpecialDates
 						items={ this.state.specialDates }
 						onAdd={ this.handleSpecialDateAdd }
-						onRemove={ this.handleSpecialDateRemove }
+						onRemove={ this.handleItemRemove }
 					/>
 					<ToggleAccordionItem
 						id="isMonthOverviewEnabled"
