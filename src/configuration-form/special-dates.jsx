@@ -22,6 +22,10 @@ export function isEvent( { type } ) {
 	return type === EVENT_DAY_TYPE;
 }
 
+export function findByDate( dateToSearchFor ) {
+	return ( { date } ) => date === dateToSearchFor;
+}
+
 export const DATE_FORMAT = 'MM-DD';
 
 class SpecialDates extends React.Component {

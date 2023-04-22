@@ -3,6 +3,10 @@ import dayjs from 'dayjs';
 import PropTypes from 'prop-types';
 import React from 'react';
 
+import {
+	findByDate,
+	DATE_FORMAT as SPECIAL_DATES_DATE_FORMAT,
+} from 'configuration-form/special-dates';
 import Header from 'pdf/components/header';
 import Itinerary from 'pdf/components/itinerary';
 import MiniCalendar from 'pdf/components/mini-calendar';
@@ -36,8 +40,10 @@ class DayPage extends React.Component {
 			return null;
 		}
 
-		const specialDateKey = this.props.date.format( 'DD-MM' );
-		const specialItems = this.props.config.specialDates[ specialDateKey ];
+		const specialDateKey = this.props.date.format( SPECIAL_DATES_DATE_FORMAT );
+		const specialItems = this.props.config.specialDates.filter(
+			findByDate( specialDateKey ),
+		);
 		return (
 			<>
 				<Page id={ dayPageLink( date, config ) } size={ config.pageSize }>
