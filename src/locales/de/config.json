@@ -1,0 +1,36 @@
+{
+	"habits": {
+		"example1": "Sport",
+		"example2": "Lesen",
+		"example3": "Hobby",
+		"example4": "Zeit für Zwei"
+	},
+	"templates": {
+		"advanced": {
+			"day": {
+				"monday": "Extraseite für zusätzliche Notizen am Montag"
+			},
+			"retrospective": {
+				"wins": "Erfolge der Woche",
+				"discoveries": "Neue Erkenntnisse",
+				"fails": "Was hat nicht geklappt?"
+			}
+		}
+	},
+	"month": {
+		"goal": "Wochenziel",
+		"notes": "Notizen"
+	},
+	"todos": {
+		"example1": "Plane eine Reise",
+		"example2": "noch eine Aufgabe"
+	},
+	"special-dates": {
+		"example1": "Besonderes Datum 1",
+		"example2": "Besonderes Datum aus Grund #2",
+		"example3": "Ein andrer Feiertag",
+		"example4": "Noch ein ziemlich langer Feiertag",
+		"example5": "Und noch ein Feiertag",
+		"example6": "Feiertag ohne bekannten Grund"
+	}
+}
