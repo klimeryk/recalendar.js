@@ -1,0 +1,155 @@
+{
+	"loading": "Lädt ...",
+	"download-ready": "Fertig zum Download!",
+	"navigation": {
+		"home": "Home",
+		"configuration": "Gestalte Deinen Kalender",
+		"features": "Features",
+		"faq": "FAQ"
+	},
+	"language": {
+		"label": "Sprache",
+		"en": "Englisch",
+		"pl": "Polnisch",
+		"fr": "Französisch",
+		"es": "Spanisch",
+		"nb": "Norwegisch",
+	    "da": "Dänisch",
+	    "de": "Deutsch"
+	},
+	"configuration": {
+		"selector": {
+			"label": "Start",
+			"template": {
+				"label": "Wähle eine Vorlage aus:",
+				"basic": {
+					"label": "Basis",
+				    "description": "Gut für den Anfang, einfache Voreinstellungen."
+				},
+				"advanced": {
+					"label": "Fortgeschritten",
+					"description": "Erweitert die Basis-Vorlage um Tagespläne."
+				},
+				"blank": {
+					"label": "Blank",
+				    "description": "Wie Basis, aber ohne die Beispiele für Gewohnheiten, Aufgaben, besondere Tage usw."
+				},
+				"minimalistic": {
+					"label": "Minimal",
+					"description": "Enthält lediglich die Wochenpläne."
+				}
+			},
+			"upload": {
+			    "label": "Lade ein bereits erzeugtes ReCalendar-PDF hoch, um dessen Konfiguration zu verwenden:",
+			    "loading": "Konfiguration aus PDF-Datei wird eingelesen, bitte warten...",
+				"error": "Ich kann in diesem PDF keine Konfigurationsdaten finden - stammt es wirklich von dieser Webseite?",
+				"success": "Konfiguration aus PDF geladen - Willkommen zurück!"
+			}
+		},
+		"general": {
+			"label": "Allgemeine Einstellungen",
+			"font": "Font",
+			"year": "Jahr",
+			"left-handed": {
+				"label": "Version für die Linke Hand",
+				"description": "Optimiert das Layout für die Benutzung mit der linken Hand."
+			},
+			"sidebar": {
+				"label": "Lasse die Seitenleiste frei",
+			    "description": "Diese Option verhindert, dass der Kalenderinhalt von der Seitenleiste verdeckt wird, so dass die Seitenleiste immer offen bleiben kann."
+			},
+			"starting-month": {
+				"label": "Beginne mit dem Monat",
+				"description": "Der erste Monat des erzeugten Kalenders. Für einen Semesterkalender z.B. wähle den Oktober."
+			},
+			"month-count": {
+				"label": "Wieviele Monate",
+				"description": "Für wieviele Monate soll das Kalendarium erzeugt werden?"
+			},
+			"first-day-of-week": "Die Woche beginnt am",
+			"weekend": "Wochenende"
+		},
+		"button": {
+			"refresh": "Vorschau aktualisieren",
+			"download": "Vollständigen Kalender erzeugen und Download",
+		    "generating": "Das Kalendarium wird erzeugt, bitte warten..."
+		},
+		"itinerary": {
+			"empty": "Leerer Plan",
+			"placeholder": {
+				"lines": "Anzahl der Zeilen",
+				"page": "Seitenumbruch"
+			},
+			"button": {
+				"copy": "Diesen Plan für alle Wochentage übernehmen.",
+				"remove": "Entfernen",
+				"item": "Neuer Planeintrag ",
+				"page": "Neue Seite anfangen",
+				"lines": "Leerzeilen hinzufügen"
+			}
+		},
+		"items-list": {
+			"button": {
+				"item": "Neuer Eintrag",
+				"remove": "Entfernen"
+			},
+			"empty": "Leere Liste",
+			"placeholder": "Eintrag"
+		},
+		"toggle-form": {
+			"enabled": "Ein",
+			"disabled": "Ausgeschaltet"
+		},
+		"month": {
+			"title": "Monatsübersicht",
+		    "description": "Die Monatsübersicht ist der Ort für Monatsziele, Verfolgen von Gewohnheiten und andere Planungen.",
+			"habits": {
+				"title": "Gewohnheiten"
+			},
+			"itinerary": {
+				"title": "Plan"
+			}
+		},
+		"week": {
+			"title": "Wochenübersicht",
+			"description": "Die Wochenübersicht fasst zur übersichtlicheren Planung eine Woche zusammen.",
+			"todos": {
+				"title": "Aufgaben"
+			},
+			"retrospective": {
+				"title": "Wochenrückschau",
+			    "description": "Die Wochenrückschau ist der Ort, um über die letzte Woche nachzudenken - wie es gelaufen ist, was du gelernt hast und was nächste Woche besser gemacht werden kann?",
+				"itinerary": {
+					"title": "Plan"
+				}
+			}
+		},
+		"day": {
+			"title": "Tagespläne"
+		},
+		"special-dates": {
+			"title": "Besondere Tage",
+		    "description": "Trage hier Geburtstage, Feiertage, Events etc. ein. Sie werden in die Wochenübersichten und Tagespläne übernommen.",
+			"empty": "Keine Daten",
+			"placeholder": "Was gibt's besonderes?",
+			"button": {
+				"item": "Datum hinzufügen",
+				"remove": "Entfernen"
+			}
+		},
+	    "generation-description": "Das PDF wird ausschließlich im Browser erzeugt, keine Daten landen auf unseren Servern!"
+	},
+	"preview": {
+		"title": "Vorschau des Kalendariums",
+		"subtitle": "(nur der erste Monat wird angezeigt)",
+		"viewer-title": "PDF Vorschau",
+		"generating": {
+			"full": "Das vollständige Kalendarium wird erzeugt - das könnte länger als eine Minute dauern...",
+		    "preview": "Die Vorschau wird berechnet, bitte warten, das kann eine Minute dauern."
+		},
+		"empty": {
+			"title": "Mit den Optionen zur Konfiguration können Sie Ihren eigenen personalisierten Kalender erzeugen.",
+			"subtitle": "Hier wird die Vorschau angezeigt werden.."
+		}
+	}
+}

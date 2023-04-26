@@ -1,0 +1,28 @@
+{
+	"calendar": {
+		"header": {
+			"week-number": "W#",
+			"retrospective": "Re"
+		},
+		"body": {
+			"retrospective": "R"
+		}
+	},
+	"page": {
+		"month": {
+			"habits": {
+				"title": "Gewohnheiten"
+			}
+		},
+		"week": {
+			"title": "Woche"
+		},
+		"retrospective": {
+			"title": "Rückschau auf die Woche"
+		},
+		"last": {
+			"title": "Erzeugt mit <recalendar>https://recalendar.me/</recalendar>",
+		    "subtitle": "Sie können dieses PDF dort wieder hochladen, um mit denselben Konfiguratoinseinstellungen einen neuen Kalender für das nächste Jahr zu generieren!"
+		}
+	}
+}
