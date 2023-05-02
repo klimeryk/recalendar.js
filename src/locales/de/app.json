@@ -1,10 +1,10 @@
 {
 	"loading": "Lädt ...",
-	"download-ready": "Fertig zum Download!",
+	"download-ready": "Bereit zum Download!",
 	"navigation": {
-		"home": "Home",
+		"home": "Start",
 		"configuration": "Gestalte Deinen Kalender",
-		"features": "Features",
+		"features": "Funktionen",
 		"faq": "FAQ"
 	},
 	"language": {
@@ -31,7 +31,7 @@
 					"description": "Erweitert die Basis-Vorlage um Tagespläne."
 				},
 				"blank": {
-					"label": "Blank",
+					"label": "Blanko",
 					"description": "Wie Basis, aber ohne die Beispiele für Gewohnheiten, Aufgaben, besondere Tage usw."
 				},
 				"minimalistic": {
@@ -104,7 +104,7 @@
 			"title": "Monatsübersicht",
 			"description": "Die Monatsübersicht ist der Ort für Monatsziele, Verfolgen von Gewohnheiten und andere Planungen.",
 			"habits": {
-				"title": "Gewohnheiten"
+				"title": "Routinen"
 			},
 			"itinerary": {
 				"title": "Plan"
