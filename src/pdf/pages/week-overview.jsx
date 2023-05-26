@@ -4,6 +4,11 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import { withTranslation } from 'react-i18next';
 
+import {
+	DATE_FORMAT as SPECIAL_DATES_DATE_FORMAT,
+	findByDate,
+	HOLIDAY_DAY_TYPE,
+} from 'configuration-form/special-dates';
 import { getWeekNumber } from 'lib/date';
 import Header from 'pdf/components/header';
 import MiniCalendar, { HIGHLIGHT_WEEK } from 'pdf/components/mini-calendar';
@@ -88,8 +93,8 @@ class WeekOverviewPage extends React.Component {
 
 	renderDay( day ) {
 		const { config } = this.props;
-		const specialDateKey = day.format( 'DD-MM' );
-		const specialItems = config.specialDates[ specialDateKey ] || [];
+		const specialDateKey = day.format( SPECIAL_DATES_DATE_FORMAT );
+		const specialItems = config.specialDates.filter( findByDate( specialDateKey ) );
 		return (
 			<Link
 				key={ day.unix() }
@@ -101,8 +106,14 @@ class WeekOverviewPage extends React.Component {
 						<Text style={ this.styles.dayOfWeek }>{day.format( 'dddd' )}</Text>
 						<Text style={ this.styles.shortDate }>{day.format( 'DD MMM' )}</Text>
 					</View>
-					{specialItems.map( ( { value }, index ) => (
-						<Text key={ index } style={ this.styles.specialItem }>
+					{specialItems.map( ( { id, type, value } ) => (
+						<Text
+							key={ id }
+							style={ [
+								this.styles.specialItem,
+								{ fontWeight: type === HOLIDAY_DAY_TYPE ? 'bold' : 'normal' },
+							] }
+						>
 							» {value}
 						</Text>
 					) )}
