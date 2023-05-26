@@ -20,7 +20,8 @@
 		"nb": "Norsk",
 		"pl": "Polski",
 		"pt-BR": "Português (Brasil)",
-		"sl": "Slovenščina"
+		"sl": "Slovenščina",
+		"tr": "Türkçe"
 	},
 	"configuration": {
 		"selector": {

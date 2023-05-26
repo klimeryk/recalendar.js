@@ -1,0 +1,149 @@
+{
+	"loading": "Yükleniyor...",
+	"download-ready": "Þimdi indir!",
+	"navigation": {
+		"home": "Ana Sayfa",
+		"configuration": "Takviminizi Oluþturun",
+		"features": "Özellikler",
+		"faq": "SSS"
+	},
+	"configuration": {
+		"selector": {
+			"label": "Baþla",
+			"template": {
+				"label": "Bir þablon seçerek baþlayýn:",
+				"basic": {
+					"label": "Temel",
+					"description": "Varsayýlan ayarlar - iyi bir baþlangýç noktasý."
+				},
+				"advanced": {
+					"label": "Geliþmiþ",
+					"description": "Temel þablonu bireysel günlük planlar ekleyerek geniþletir."
+				},
+				"blank": {
+					"label": "Boþ",
+					"description": "Temel þablona dayanýr, ancak alýþkanlýklar, yapýlacaklar, özel tarihler vb. boþtur."
+				},
+				"minimalistic": {
+					"label": "Minimalist",
+					"description": "Haftalýk genel bakýþlar haricinde her þeyi devre dýþý býrakýr."
+				}
+			},
+			"upload": {
+				"label": "Daha önceden oluþturulmuþ ReCalendar PDF'sini yükleyin:",
+				"loading": "PDF dosyasýndan yapýlandýrmayý okuma, lütfen bekleyin...",
+				"error": "Bu PDF'den ReCalendar yapýlandýrmasýný yükleyemedi - emin misiniz ki bu web sitesi kullanýlarak mý oluþturulduðuna?",
+				"success": "PDF'den yapýlandýrma yüklendi - hoþ geldiniz!"
+			}
+		},
+		"general": {
+			"label": "Genel seçenekler",
+			"font": "Yazý tipi",
+			"year": "Yýl",
+			"left-handed": {
+				"label": "Solak versiyon",
+				"description": "Düzeni solak kullaným için optimize eder."
+			},
+			"sidebar": {
+				"label": "Yan kenar çubuðu için kalýcý yer býrak",
+				"description": "Yan kenar çubuðunu her zaman açýk tutmayý tercih ederseniz, takvimin içeriði tarafýndan asla kapatýlmayacaðýndan emin olmak için bu seçeneði iþaretleyin."
+			},
+			"starting-month": {
+				"label": "Baþlangýç ayý",
+				"description": "Oluþturulan takvimdeki ilk ay. Bir dönemi (yýl dönemi yerine) kapsamasýný isterseniz Ekim gibi bir ay seçin."
+			},
+			"month-count": {
+				"label": "Ay sayýsý",
+				"description": "Takvimin kaç ay için oluþturulmasý gerektiði."
+			},
+			"first-day-of-week": "Haftanýn ilk günü",
+			"weekend": "Hafta sonu"
+		},
+		"button": {
+			"refresh": "Önizlemeyi Yenile",
+			"download": "Tam takvimi oluþtur ve indir",
+			"generating": "Oluþturuluyor, lütfen bekleyin..."
+		},
+		"itinerary": {
+			"empty": "Boþ gezi planý",
+			"placeholder": {
+				"lines": "Satýr sayýsý",
+				"page": "Yeni sayfa ekle"
+			},
+			"button": {
+				"copy": "Bu gezi planýný diðer tüm günlere kopyala",
+				"remove": "Kaldýr",
+				"item": "Gezi planý öðesi ekle",
+				"page": "Yeni bir sayfa baþlat",
+				"lines": "Boþ satýrlar ekle"
+			}
+		},
+		"items-list": {
+			"button": {
+				"item": "Öðe ekle",
+				"remove": "Kaldýr"
+			},
+			"empty": "Boþ liste",
+			"placeholder": "Öðe"
+		},
+		"toggle-form": {
+			"enabled": "Etkin",
+			"disabled": "Devre dýþý"
+		},
+		"month": {
+			"title": "Aya genel bakýþ",
+			"description": "Aylýk genel bakýþ, önümüzdeki ay için hedefler belirlemek, alýþkanlýklarý takip etmek ve diðer planlar yapmak için bir yerdir",
+			"habits": {
+				"title": "Alýþkanlýklar"
+			},
+			"itinerary": {
+				"title": "Gezi planý"
+			}
+		},
+		"week": {
+			"title": "Haftaya genel bakýþ",
+			"description": "Haftaya genel bakýþ, plan yapmayý kolaylaþtýrmak için haftayý daha geniþ bir perspektiften görmenizi saðlar.",
+			"todos": {
+				"title": "Yapýlacaklar"
+			},
+			"retrospective": {
+				"title": "Hafta deðerlendirmesi",
+				"description": "Hafta deðerlendirmesi, geçen hafta hakkýnda düþünmek, nasýl geçtiðini, neler öðrendiðinizi, gelecek hafta için neleri iyileþtirebileceðinizi düþünmek için bir yerdir.",
+				"itinerary": {
+					"title": "Gezi planý"
+				}
+			}
+		},
+		"day": {
+			"title": "Günlük programlar"
+		},
+		"special-dates": {
+			"title": "Özel günler",
+			"description": "Doðum günleri, kutlamalar, etkinlikler vb. gibi þeyleri buraya ekleyerek haftalýk genel bakýþlarda ve yaklaþtýklarýnda günlük sayfalarda hatýrlatmalar alabilirsiniz.",
+			"empty": "Tarih yok",
+			"placeholder": "Ne için?",
+			"type": {
+				"event": "Etkinlik",
+				"holiday": "Tatil"
+			},
+			"button": {
+				"item": "Tarih ekle",
+				"remove": "Kaldýr"
+			}
+		},
+		"generation-description": "PDF oluþturma iþlemi tamamen tarayýcýnýzda gerçekleþtirilir - veriler sunucularýmýza gönderilmez!"
+	},
+	"preview": {
+		"title": "Takvim Önizlemesi",
+		"subtitle": "(sadece ilk ay önizlenmiþtir)",
+		"viewer-title": "PDF Önizlemesi",
+		"generating": {
+			"full": "Tam takvim oluþturuluyor - bu bir dakikadan daha fazla sürebilir...",
+			"preview": "Önizleme oluþturuluyor, lütfen bekleyin - bir dakika sürebilir."
+		},
+		"empty": {
+			"title": "Kiþiselleþtirilmiþ takviminizi oluþturmak için yapýlandýrma formunu kullanýn.",
+			"subtitle": "Önizleme burada görüntülenecektir."
+		}
+	}
+}

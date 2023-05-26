@@ -1,0 +1,36 @@
+{
+	"habits": {
+		"example1": "Egzersiz",
+		"example2": "Kitap",
+		"example3": "Hobi",
+		"example4": "Eþ zamanlý gece"
+	},
+	"templates": {
+		"advanced": {
+			"day": {
+				"monday": "Ek Pazartesi notlarý için ek sayfa"
+			},
+			"retrospective": {
+				"wins": "Haftanýn Kazanýmlarý",
+				"discoveries": "Yeni Keþifler",
+				"fails": "Neler Yanlýþ Gitti?"
+			}
+		}
+	},
+	"month": {
+		"goal": "Ana hedef",
+		"notes": "Notlar"
+	},
+	"todos": {
+		"example1": "Bir seyahat planlayýn",
+		"example2": "Baþka bir TODO"
+	},
+	"special-dates": {
+		"example1": "Özel tarih 1",
+		"example2": "Özel tarih neden #2 ",
+		"example3": "Baþka bir kutlama",
+		"example4": "Çok uzun bir baþka kutlama",
+		"example5": "Bir tane daha ekleyelim",
+		"example6": "Neden kalmadý kutlama"
+	}
+}

@@ -1,0 +1,28 @@
+{
+	"calendar": {
+		"header": {
+			"week-number": "H#",
+			"retrospective": "G"
+		},
+		"body": {
+			"retrospective": "G"
+		}
+	},
+	"page": {
+		"month": {
+			"habits": {
+				"title": "Alýþkanlýklar"
+			}
+		},
+		"week": {
+			"title": "Hafta"
+		},
+		"retrospective": {
+			"title": "Hafta için Geriye Dönük"
+		},
+		"last": {
+			"title": "Þu adresten oluþturuldu: <recalendar>https://recalendar.me/</recalendar>",
+			"subtitle": "PDF'yi tekrar yükleyerek, yeni yýl için benzer bir takvimi hýzlýca oluþturabilirsiniz!"
+		}
+	}
+}
