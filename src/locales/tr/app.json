@@ -1,116 +1,116 @@
 {
 	"loading": "Yükleniyor...",
-	"download-ready": "Þimdi indir!",
+	"download-ready": "Şimdi indir!",
 	"navigation": {
 		"home": "Ana Sayfa",
-		"configuration": "Takviminizi Oluþturun",
+		"configuration": "Takviminizi Oluşturun",
 		"features": "Özellikler",
 		"faq": "SSS"
 	},
 	"configuration": {
 		"selector": {
-			"label": "Baþla",
+			"label": "Başla",
 			"template": {
-				"label": "Bir þablon seçerek baþlayýn:",
+				"label": "Bir şablon seçerek başlayın:",
 				"basic": {
 					"label": "Temel",
-					"description": "Varsayýlan ayarlar - iyi bir baþlangýç noktasý."
+					"description": "Varsayılan ayarlar - iyi bir başlangıç noktası."
 				},
 				"advanced": {
-					"label": "Geliþmiþ",
-					"description": "Temel þablonu bireysel günlük planlar ekleyerek geniþletir."
+					"label": "Gelişmiş",
+					"description": "Temel şablonu bireysel günlük planlar ekleyerek genişletir."
 				},
 				"blank": {
-					"label": "Boþ",
-					"description": "Temel þablona dayanýr, ancak alýþkanlýklar, yapýlacaklar, özel tarihler vb. boþtur."
+					"label": "Boş",
+					"description": "Temel şablona dayanır, ancak alışkanlıklar, yapılacaklar, özel tarihler vb. boştur."
 				},
 				"minimalistic": {
 					"label": "Minimalist",
-					"description": "Haftalýk genel bakýþlar haricinde her þeyi devre dýþý býrakýr."
+					"description": "Haftalık genel bakışlar haricinde her şeyi devre dışı bırakır."
 				}
 			},
 			"upload": {
-				"label": "Daha önceden oluþturulmuþ ReCalendar PDF'sini yükleyin:",
-				"loading": "PDF dosyasýndan yapýlandýrmayý okuma, lütfen bekleyin...",
-				"error": "Bu PDF'den ReCalendar yapýlandýrmasýný yükleyemedi - emin misiniz ki bu web sitesi kullanýlarak mý oluþturulduðuna?",
-				"success": "PDF'den yapýlandýrma yüklendi - hoþ geldiniz!"
+				"label": "Daha önceden oluşturulmuş ReCalendar PDF'sini yükleyin:",
+				"loading": "PDF dosyasından yapılandırmayı okuma, lütfen bekleyin...",
+				"error": "Bu PDF'den ReCalendar yapılandırmasını yükleyemedi - emin misiniz ki bu web sitesi kullanılarak mı oluşturulduğuna?",
+				"success": "PDF'den yapılandırma yüklendi - hoş geldiniz!"
 			}
 		},
 		"general": {
 			"label": "Genel seçenekler",
-			"font": "Yazý tipi",
-			"year": "Yýl",
+			"font": "Yazı tipi",
+			"year": "Yıl",
 			"left-handed": {
 				"label": "Solak versiyon",
-				"description": "Düzeni solak kullaným için optimize eder."
+				"description": "Düzeni solak kullanım için optimize eder."
 			},
 			"sidebar": {
-				"label": "Yan kenar çubuðu için kalýcý yer býrak",
-				"description": "Yan kenar çubuðunu her zaman açýk tutmayý tercih ederseniz, takvimin içeriði tarafýndan asla kapatýlmayacaðýndan emin olmak için bu seçeneði iþaretleyin."
+				"label": "Yan kenar çubuğu için kalıcı yer bırak",
+				"description": "Yan kenar çubuğunu her zaman açık tutmayı tercih ederseniz, takvimin içeriği tarafından asla kapatılmayacağından emin olmak için bu seçeneği işaretleyin."
 			},
 			"starting-month": {
-				"label": "Baþlangýç ayý",
-				"description": "Oluþturulan takvimdeki ilk ay. Bir dönemi (yýl dönemi yerine) kapsamasýný isterseniz Ekim gibi bir ay seçin."
+				"label": "Başlangıç ayı",
+				"description": "Oluşturulan takvimdeki ilk ay. Bir dönemi (yıl dönemi yerine) kapsamasını isterseniz Ekim gibi bir ay seçin."
 			},
 			"month-count": {
-				"label": "Ay sayýsý",
-				"description": "Takvimin kaç ay için oluþturulmasý gerektiði."
+				"label": "Ay sayısı",
+				"description": "Takvimin kaç ay için oluşturulması gerektiği."
 			},
-			"first-day-of-week": "Haftanýn ilk günü",
+			"first-day-of-week": "Haftanın ilk günü",
 			"weekend": "Hafta sonu"
 		},
 		"button": {
 			"refresh": "Önizlemeyi Yenile",
-			"download": "Tam takvimi oluþtur ve indir",
-			"generating": "Oluþturuluyor, lütfen bekleyin..."
+			"download": "Tam takvimi oluştur ve indir",
+			"generating": "Oluşturuluyor, lütfen bekleyin..."
 		},
 		"itinerary": {
-			"empty": "Boþ gezi planý",
+			"empty": "Boş gezi planı",
 			"placeholder": {
-				"lines": "Satýr sayýsý",
+				"lines": "Satır sayısı",
 				"page": "Yeni sayfa ekle"
 			},
 			"button": {
-				"copy": "Bu gezi planýný diðer tüm günlere kopyala",
-				"remove": "Kaldýr",
-				"item": "Gezi planý öðesi ekle",
-				"page": "Yeni bir sayfa baþlat",
-				"lines": "Boþ satýrlar ekle"
+				"copy": "Bu gezi planını diğer tüm günlere kopyala",
+				"remove": "Kaldır",
+				"item": "Gezi planı öğesi ekle",
+				"page": "Yeni bir sayfa başlat",
+				"lines": "Boş satırlar ekle"
 			}
 		},
 		"items-list": {
 			"button": {
-				"item": "Öðe ekle",
-				"remove": "Kaldýr"
+				"item": "Öğe ekle",
+				"remove": "Kaldır"
 			},
-			"empty": "Boþ liste",
-			"placeholder": "Öðe"
+			"empty": "Boş liste",
+			"placeholder": "Öğe"
 		},
 		"toggle-form": {
 			"enabled": "Etkin",
-			"disabled": "Devre dýþý"
+			"disabled": "Devre dışı"
 		},
 		"month": {
-			"title": "Aya genel bakýþ",
-			"description": "Aylýk genel bakýþ, önümüzdeki ay için hedefler belirlemek, alýþkanlýklarý takip etmek ve diðer planlar yapmak için bir yerdir",
+			"title": "Aya genel bakış",
+			"description": "Aylık genel bakış, önümüzdeki ay için hedefler belirlemek, alışkanlıkları takip etmek ve diğer planlar yapmak için bir yerdir",
 			"habits": {
-				"title": "Alýþkanlýklar"
+				"title": "Alışkanlıklar"
 			},
 			"itinerary": {
-				"title": "Gezi planý"
+				"title": "Gezi planı"
 			}
 		},
 		"week": {
-			"title": "Haftaya genel bakýþ",
-			"description": "Haftaya genel bakýþ, plan yapmayý kolaylaþtýrmak için haftayý daha geniþ bir perspektiften görmenizi saðlar.",
+			"title": "Haftaya genel bakış",
+			"description": "Haftaya genel bakış, plan yapmayı kolaylaştırmak için haftayı daha geniş bir perspektiften görmenizi sağlar.",
 			"todos": {
-				"title": "Yapýlacaklar"
+				"title": "Yapılacaklar"
 			},
 			"retrospective": {
-				"title": "Hafta deðerlendirmesi",
-				"description": "Hafta deðerlendirmesi, geçen hafta hakkýnda düþünmek, nasýl geçtiðini, neler öðrendiðinizi, gelecek hafta için neleri iyileþtirebileceðinizi düþünmek için bir yerdir.",
+				"title": "Hafta değerlendirmesi",
+				"description": "Hafta değerlendirmesi, geçen hafta hakkında düşünmek, nasıl geçtiğini, neler öğrendiğinizi, gelecek hafta için neleri iyileştirebileceğinizi düşünmek için bir yerdir.",
 				"itinerary": {
-					"title": "Gezi planý"
+					"title": "Gezi planı"
 				}
 			}
 		},
@@ -119,7 +119,7 @@
 		},
 		"special-dates": {
 			"title": "Özel günler",
-			"description": "Doðum günleri, kutlamalar, etkinlikler vb. gibi þeyleri buraya ekleyerek haftalýk genel bakýþlarda ve yaklaþtýklarýnda günlük sayfalarda hatýrlatmalar alabilirsiniz.",
+			"description": "Doğum günleri, kutlamalar, etkinlikler vb. gibi şeyleri buraya ekleyerek haftalık genel bakışlarda ve yaklaştıklarında günlük sayfalarda hatırlatmalar alabilirsiniz.",
 			"empty": "Tarih yok",
 			"placeholder": "Ne için?",
 			"type": {
@@ -128,21 +128,21 @@
 			},
 			"button": {
 				"item": "Tarih ekle",
-				"remove": "Kaldýr"
+				"remove": "Kaldır"
 			}
 		},
-		"generation-description": "PDF oluþturma iþlemi tamamen tarayýcýnýzda gerçekleþtirilir - veriler sunucularýmýza gönderilmez!"
+		"generation-description": "PDF oluşturma işlemi tamamen tarayıcınızda gerçekleştirilir - veriler sunucularımıza gönderilmez!"
 	},
 	"preview": {
 		"title": "Takvim Önizlemesi",
-		"subtitle": "(sadece ilk ay önizlenmiþtir)",
+		"subtitle": "(sadece ilk ay önizlenmiştir)",
 		"viewer-title": "PDF Önizlemesi",
 		"generating": {
-			"full": "Tam takvim oluþturuluyor - bu bir dakikadan daha fazla sürebilir...",
-			"preview": "Önizleme oluþturuluyor, lütfen bekleyin - bir dakika sürebilir."
+			"full": "Tam takvim oluşturuluyor - bu bir dakikadan daha fazla sürebilir...",
+			"preview": "Önizleme oluşturuluyor, lütfen bekleyin - bir dakika sürebilir."
 		},
 		"empty": {
-			"title": "Kiþiselleþtirilmiþ takviminizi oluþturmak için yapýlandýrma formunu kullanýn.",
+			"title": "Kişiselleştirilmiş takviminizi oluşturmak için yapılandırma formunu kullanın.",
 			"subtitle": "Önizleme burada görüntülenecektir."
 		}
 	}

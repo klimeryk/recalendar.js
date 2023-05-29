@@ -11,7 +11,7 @@
 	"page": {
 		"month": {
 			"habits": {
-				"title": "Alýþkanlýklar"
+				"title": "Alışkanlıklar"
 			}
 		},
 		"week": {
@@ -21,8 +21,8 @@
 			"title": "Hafta için Geriye Dönük"
 		},
 		"last": {
-			"title": "Þu adresten oluþturuldu: <recalendar>https://recalendar.me/</recalendar>",
-			"subtitle": "PDF'yi tekrar yükleyerek, yeni yýl için benzer bir takvimi hýzlýca oluþturabilirsiniz!"
+			"title": "Şu adresten oluşturuldu: <recalendar>https://recalendar.me/</recalendar>",
+			"subtitle": "PDF'yi tekrar yükleyerek, yeni yıl için benzer bir takvimi hızlıca oluşturabilirsiniz!"
 		}
 	}
 }
