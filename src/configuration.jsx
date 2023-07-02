@@ -551,6 +551,19 @@ class Configuration extends React.PureComponent {
 							<Accordion defaultActiveKey="0">
 								{getWeekdays().map( this.renderDayItinerary )}
 							</Accordion>
+
+							<Form.Group controlId="itineraryCheckbox" className="mt-2">
+								<Form.Check
+									label={ t( 'configuration.day.checkbox.label' ) }
+									type="checkbox"
+									checked={ this.state.itineraryCheckbox }
+									value={ this.state.itineraryCheckbox }
+									onChange={ this.handleFieldChange }
+								/>
+								<Form.Text className="text-muted">
+									{t( 'configuration.day.checkbox.description' )}
+								</Form.Text>
+							</Form.Group>
 						</Accordion.Body>
 					</Accordion.Item>
 					<ToggleAccordionItem

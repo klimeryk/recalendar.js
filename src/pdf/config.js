@@ -24,6 +24,7 @@ const CONFIG_FIELDS = [
 	'isWeekOverviewEnabled',
 	'todos',
 	'dayItineraries',
+	'itineraryCheckbox',
 	'isWeekRetrospectiveEnabled',
 	'weekRetrospectiveItinerary',
 	'specialDates',
@@ -96,6 +97,9 @@ class PdfConfig {
 			dayOfWeek = ++dayOfWeek % 7;
 			return itinerary;
 		} );
+
+		this.itineraryCheckbox = false;
+
 		this.isWeekRetrospectiveEnabled = true;
 		this.weekRetrospectiveItinerary = [
 			{

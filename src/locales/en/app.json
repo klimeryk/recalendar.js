@@ -131,7 +131,11 @@
 			}
 		},
 		"day": {
-			"title": "Day itineraries"
+			"title": "Day itineraries",
+			"checkbox": {
+				"label": "Add a Checkbox to itineraries",
+				"description": "Check this option if you want to visually prepend a checkbox to every line."
+			}
 		},
 		"special-dates": {
 			"title": "Special dates",
