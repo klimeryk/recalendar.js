@@ -1,0 +1,28 @@
+{
+	"calendar": {
+		"header": {
+			"week-number": "W#",
+			"retrospective": "Tb"
+		},
+		"body": {
+			"retrospective": "T"
+		}
+	},
+	"page": {
+		"month": {
+			"habits": {
+				"title": "Gewoontes"
+			}
+		},
+		"week": {
+			"title": "Week"
+		},
+		"retrospective": {
+			"title": "Terugblik op week"
+		},
+		"last": {
+			"title": "Gemaakt met <recalendar>https://recalendar.me/</recalendar>",
+			"subtitle": "Je kunt deze PDF hier opnieuw uploaden om de instellingen van dit bestand in te laden en snel een vergelijkbare agenda voor volgend jaar te maken!"
+		}
+	}
+}

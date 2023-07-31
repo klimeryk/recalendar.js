@@ -1,0 +1,36 @@
+{
+	"habits": {
+		"example1": "Sporten",
+		"example2": "Lezen",
+		"example3": "Hobbyen",
+		"example4": "Avond uit"
+	},
+	"templates": {
+		"advanced": {
+			"day": {
+				"monday": "Extra bladzijde voor nog meer aantekeningen van maandag"
+			},
+			"retrospective": {
+				"wins": "Overwinningen",
+				"discoveries": "Nieuwe ontdekkingen",
+				"fails": "Tegenslagen"
+			}
+		}
+	},
+	"month": {
+		"goal": "Hoofddoel",
+		"notes": "Aantekeningen"
+	},
+	"todos": {
+		"example1": "Plan een reis",
+		"example2": "Een ander taakje"
+	},
+	"special-dates": {
+		"example1": "Speciale dag 1",
+		"example2": "Speciale dag om reden #2",
+		"example3": "Een andere viering",
+		"example4": "Nog een andere viering die heel erg lang is",
+		"example5": "Waarom voegen er niet nog eentje toe?",
+		"example6": "Ik heb niets meer te vieren"
+	}
+}
