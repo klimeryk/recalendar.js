@@ -1,0 +1,152 @@
+{
+	"loading": "Laden...",
+	"download-ready": "Nu downloaden!",
+	"navigation": {
+		"home": "Start",
+		"configuration": "Maak je eigen agenda",
+		"features": "Functies",
+		"faq": "Vraag en antwoord"
+	},
+	"language": {
+		"label": "Taal"
+	},
+	"configuration": {
+		"selector": {
+			"label": "Begin",
+			"template": {
+				"label": "Kies eerst een sjabloon om te beginnen:",
+				"basic": {
+					"label": "Eenvoudig",
+					"description": "Standaardsjabloon — een goed beginpunt."
+				},
+				"advanced": {
+					"label": "Uitgebreid",
+					"description": "Breidt het eenvoudige sjabloon uit met dagplanningen."
+				},
+				"blank": {
+					"label": "Eenvoudig (leeg)",
+					"description": "Gebaseerd op het eenvoudige sjabloon, maar met lege gewoontes, taken en speciala dagen."
+				},
+				"minimalistic": {
+					"label": "Minimalistisch",
+					"description": "Schakelt allles uit, op weekoverzichten na"
+				}
+			},
+			"upload": {
+				"label": "Of laad een eerder gemaakte ReCalendar PDF in om de instellingen opnieuw te gebruiken:",
+				"loading": "Insellingen van het PDF-bestand aan het lezen, een ogenblikje...",
+				"error": "Het lukte niet om de ReCalendar-instellingen te lezen van dit PDF-bestand — weet je zeker dat het bestand met deze website gemaakt is?",
+				"success": "Instellingen gelezen van het PDF-bestand — welkom terug!"
+			}
+		},
+		"general": {
+			"label": "Algemene instellingen",
+			"font": "Lettertype",
+			"year": "Jaar",
+			"left-handed": {
+				"label": "Linkshandige versie",
+				"description": "Maakt de indeling beter geschikt voor linkshandig gebruik."
+			},
+			"sidebar": {
+				"label": "Laat plek vrij voor de werkbalk aan de zijkant",
+				"description": "Als je de werkbalk aan de zijkant altijd open laat, vink dan deze optie aan om er voor te zorgen dat de werkbalk aan de zijkant nooit de inhoud van de agenda bedekt."
+			},
+			"starting-month": {
+				"label": "Beginmaand",
+				"description": "De eerste maand van de agenda. Als je een agenda wilt maken voor een collegejaar in plaats van een kalenderjaar, kun je bijvoorbeeld september kiezen."
+			},
+			"month-count": {
+				"label": "Aantal maanden",
+				"description": "Hoeveel maanden moet de agenda bevatten?"
+			},
+			"first-day-of-week": "Begin van de week",
+			"weekend": "Weekeinde"
+		},
+		"button": {
+			"refresh": "Maak voorbeeld opnieuw aan",
+			"download": "Maak volledige agenda aan en download",
+			"generating": "Aanmaken, een ogenblikje..."
+		},
+		"itinerary": {
+			"empty": "Lege dagplanning",
+			"placeholder": {
+				"lines": "Aantal regels",
+				"page": "Einde van bladzijde"
+			},
+			"button": {
+				"copy": "Kopiëer deze dagplanning naar andere dagen",
+				"remove": "Verwijderen",
+				"item": "Voeg zaak toe aan dagplanning",
+				"page": "Voeg nieuw bladzijde toe",
+				"lines": "Voeg lege regels toe"
+			}
+		},
+		"items-list": {
+			"button": {
+				"item": "Voeg zaak toe",
+				"remove": "Verwijderen"
+			},
+			"empty": "Lege lijst",
+			"placeholder": "Zaak"
+		},
+		"toggle-form": {
+			"enabled": "Aan",
+			"disabled": "Uit"
+		},
+		"month": {
+			"title": "Maandoverzicht",
+			"description": "Het maandoverzicht is de plek om maanddoelen te stellen, gewoontes bij te houden en andere plannen te maken.",
+			"habits": {
+				"title": "Gewoontes"
+			},
+			"itinerary": {
+				"title": "Maandplanning"
+			}
+		},
+		"week": {
+			"title": "Weekoverzicht",
+			"description": "Het weekoverzicht geeft je een wijde blik op de week om gemakkelijker plannen te maken",
+			"todos": {
+				"title": "Taken"
+			},
+			"retrospective": {
+				"title": "Weekterugblik",
+				"description": "Het weekterugblik is een plek om terug te kijken op de afgelopen week — hoe het gelopen is, wat je geleerd hebt en wat je de volgende week beter kunt doen.",
+				"itinerary": {
+					"title": "Weekplanning"
+				}
+			}
+		},
+		"day": {
+			"title": "Dagplanning"
+		},
+		"special-dates": {
+			"title": "Speciale dagen",
+			"description": "Voeg verjaardagen, vieringen, gebeurtenissen en dergelijke toe om herinneringen te krijgen in het weekoverzicht en dagplanningen.",
+			"empty": "No dates",
+			"placeholder": "Wat is de gebeurtenis?",
+			"type": {
+				"event": "Gebeurtenis",
+				"holiday": "Feestdag"
+			},
+			"button": {
+				"item": "Voeg dag toe",
+				"remove": "Verwijderen"
+			}
+		},
+		"generation-description": "Het aanmaken van het PDF-bestand wordt geheel in uw webbrowser gedaan. Er worden geen gegevens gestuurd naar onze servers!"
+	},
+	"preview": {
+		"title": "Agendavoorbeeld",
+		"subtitle": "(enkel de eerste maand wordt aangemaakt voor het voorbeeld)",
+		"viewer-title": "PDF-voorbeeld",
+		"generating": {
+			"full": "Gehele agenda aanmaken… — dit kan een tijdje duren...",
+			"preview": "Voorbeeld aanmaken… - dit kan eventjes duren."
+		},
+		"empty": {
+			"title": "Gebruik het instellingenpaneel om je gepersonaliseerde agenda te maken.",
+			"subtitle": "Het voorbeeld verschijnt hier."
+		}
+	}
+}
