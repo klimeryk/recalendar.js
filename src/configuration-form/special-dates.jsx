@@ -60,19 +60,29 @@ class SpecialDates extends React.Component {
 	};
 
 	onFileLoad = ( event ) => {
-		const jcalData = ICAL.parse( event.target.result );
-		const vcalendar = new ICAL.Component( jcalData );
-		const vevents = vcalendar.getAllSubcomponents( 'vevent' );
-		vevents.forEach( ( vevent ) => {
-			const dtstart = vevent.getFirstPropertyValue( 'dtstart' );
-			const date = dayjs( dtstart.toJSDate() );
-			if ( date.year() !== Number( this.props.year ) ) {
-				return;
-			}
-			const key = date.format( DATE_FORMAT );
-			const value = vevent.getFirstPropertyValue( 'summary' );
-			this.props.onAdd( { date: key, value, type: this.state.icalType } );
-		} );
+		try {
+			const jcalData = ICAL.parse( event.target.result );
+			const vcalendar = new ICAL.Component( jcalData );
+			const vevents = vcalendar.getAllSubcomponents( 'vevent' );
+			vevents.forEach( ( vevent ) => {
+				const dtstart = vevent.getFirstPropertyValue( 'dtstart' );
+				const date = dayjs( dtstart.toJSDate() );
+				if ( date.year() !== Number( this.props.year ) ) {
+					return;
+				}
+				const key = date.format( DATE_FORMAT );
+				const value = vevent.getFirstPropertyValue( 'summary' );
+				this.props.onAdd( { date: key, value, type: this.state.icalType } );
+			} );
+
+			this.setState( {
+				status: STATUS_SUCCESS,
+			} );
+		} catch ( error ) {
+			this.setState( {
+				status: STATUS_ERROR,
+			} );
+		}
 	};
 
 	onFileChange = ( event ) => {
@@ -80,21 +90,11 @@ class SpecialDates extends React.Component {
 			status: STATUS_LOADING,
 		} );
 
-		try {
-			const file = event.target.files[ 0 ];
-			const reader = new FileReader();
-			reader.onload = this.onFileLoad;
-			reader.readAsText( file );
-		} catch ( error ) {
-			this.setState( {
-				status: STATUS_ERROR,
-			} );
-			return;
-		}
+		const file = event.target.files[ 0 ];
+		const reader = new FileReader();
+		reader.onload = this.onFileLoad;
 
-		this.setState( {
-			status: STATUS_SUCCESS,
-		} );
+		reader.readAsText( file );
 	};
 
 	getGroupedItems() {
