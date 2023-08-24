@@ -138,6 +138,12 @@
 			"description": "Add your birthdays, celebrations, events, etc. here to get reminders about them in weekly overviews and day pages as they approach.",
 			"empty": "No dates",
 			"placeholder": "What's the occasion?",
+			"upload": {
+				"label": "Import from .ics file:",
+				"loading": "Reading special dates from ICalendar file, please wait...",
+				"error": "Was not able to load some ICalendar events - try re-exporting the .ics file from your calendar app.",
+				"success": "Special dates loaded from ICalendar file."
+			},
 			"type": {
 				"event": "Event",
 				"holiday": "Holiday"

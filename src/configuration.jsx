@@ -314,9 +314,14 @@ class Configuration extends React.PureComponent {
 	};
 
 	handleSpecialDateAdd = ( newSpecialDate ) => {
-		const newSpecialDates = [ ...this.state.specialDates ];
-		newSpecialDates.push( wrapWithId( newSpecialDate ) );
-		this.setState( { specialDates: newSpecialDates } );
+		this.setState(
+			( prev ) => ( {
+				specialDates: [
+					...prev.specialDates,
+					wrapWithId( newSpecialDate ),
+				],
+			} ),
+		);
 	};
 
 	renderFonts() {
@@ -488,6 +493,7 @@ class Configuration extends React.PureComponent {
 						</Accordion.Body>
 					</Accordion.Item>
 					<SpecialDates
+						year={ this.state.year }
 						items={ this.state.specialDates }
 						onAdd={ this.handleSpecialDateAdd }
 						onRemove={ this.handleItemRemove }

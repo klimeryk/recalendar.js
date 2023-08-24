@@ -1,4 +1,5 @@
 import dayjs from 'dayjs';
+import ICAL from 'ical.js';
 import PropTypes from 'prop-types';
 import React from 'react';
 import Accordion from 'react-bootstrap/Accordion';
@@ -28,11 +29,21 @@ export function findByDate( dateToSearchFor ) {
 
 export const DATE_FORMAT = 'MM-DD';
 
+const STATUS_EMPTY = 'EMPTY';
+const STATUS_LOADING = 'LOADING';
+const STATUS_ERROR = 'ERROR';
+const STATUS_SUCCESS = 'SUCCESS';
+
+// Disable strict mode for ical.js to allow slightly invalid ics files.
+ICAL.design.strict = false;
+
 class SpecialDates extends React.Component {
 	state = {
 		date: '',
 		value: '',
 		type: EVENT_DAY_TYPE,
+		icalType: EVENT_DAY_TYPE,
+		status: STATUS_EMPTY,
 	};
 
 	onChange = ( event ) => {
@@ -46,6 +57,44 @@ class SpecialDates extends React.Component {
 		const { value, type } = this.state;
 		this.props.onAdd( { date: key, value, type } );
 		this.setState( { date: '', value: '' } );
+	};
+
+	onFileLoad = ( event ) => {
+		const jcalData = ICAL.parse( event.target.result );
+		const vcalendar = new ICAL.Component( jcalData );
+		const vevents = vcalendar.getAllSubcomponents( 'vevent' );
+		vevents.forEach( ( vevent ) => {
+			const dtstart = vevent.getFirstPropertyValue( 'dtstart' );
+			const date = dayjs( dtstart.toJSDate() );
+			if ( date.year() !== Number( this.props.year ) ) {
+				return;
+			}
+			const key = date.format( DATE_FORMAT );
+			const value = vevent.getFirstPropertyValue( 'summary' );
+			this.props.onAdd( { date: key, value, type: this.state.icalType } );
+		} );
+	};
+
+	onFileChange = ( event ) => {
+		this.setState( {
+			status: STATUS_LOADING,
+		} );
+
+		try {
+			const file = event.target.files[ 0 ];
+			const reader = new FileReader();
+			reader.onload = this.onFileLoad;
+			reader.readAsText( file );
+		} catch ( error ) {
+			this.setState( {
+				status: STATUS_ERROR,
+			} );
+			return;
+		}
+
+		this.setState( {
+			status: STATUS_SUCCESS,
+		} );
 	};
 
 	getGroupedItems() {
@@ -109,8 +158,60 @@ class SpecialDates extends React.Component {
 		);
 	}
 
+	renderStatusMessage() {
+		const { t } = this.props;
+
+		switch ( this.state.status ) {
+			case STATUS_LOADING:
+				return (
+					<Alert variant="info" className="mt-2 mb-0">
+						{t( 'configuration.special-dates.upload.loading' )}
+					</Alert>
+				);
+
+			case STATUS_ERROR:
+				return (
+					<Alert variant="danger" className="mt-2 mb-0">
+						{t( 'configuration.special-dates.upload.error' )}
+					</Alert>
+				);
+
+			case STATUS_SUCCESS:
+				return (
+					<Alert variant="success" className="mt-2 mb-0">
+						{t( 'configuration.special-dates.upload.success' )}
+					</Alert>
+				);
+
+			case STATUS_EMPTY:
+			default:
+				return null;
+		}
+	}
+
+	renderTypeSelect = ( field ) => {
+		const { t, [ field ]: value } = this.props;
+
+		return (
+			<Form.Select
+				className="flex-grow-0 flex-basis-fit-content"
+				value={ value }
+				data-field={ field }
+				onChange={ this.onChange }
+				aria-label="Default select example"
+			>
+				<option value={ EVENT_DAY_TYPE }>
+					{t( 'configuration.special-dates.type.' + EVENT_DAY_TYPE )}
+				</option>
+				<option value={ HOLIDAY_DAY_TYPE }>
+					{t( 'configuration.special-dates.type.' + HOLIDAY_DAY_TYPE )}
+				</option>
+			</Form.Select>
+		);
+	};
+
 	render() {
-		const { date, value, type } = this.state;
+		const { date, value } = this.state;
 		const { t } = this.props;
 		const groupedItems = this.getGroupedItems();
 		const numberOfItems = Object.keys( groupedItems ).length;
@@ -137,20 +238,7 @@ class SpecialDates extends React.Component {
 					</Stack>
 					<Stack direction="horizontal" className="mt-3">
 						<InputGroup>
-							<Form.Select
-								className="flex-grow-0 flex-basis-fit-content"
-								value={ type }
-								data-field="type"
-								onChange={ this.onChange }
-								aria-label="Default select example"
-							>
-								<option value={ EVENT_DAY_TYPE }>
-									{t( 'configuration.special-dates.type.' + EVENT_DAY_TYPE )}
-								</option>
-								<option value={ HOLIDAY_DAY_TYPE }>
-									{t( 'configuration.special-dates.type.' + HOLIDAY_DAY_TYPE )}
-								</option>
-							</Form.Select>
+							{this.renderTypeSelect( 'type' )}
 							<FormControl
 								className="flex-grow-0 date-field"
 								value={ date }
@@ -173,6 +261,21 @@ class SpecialDates extends React.Component {
 							</Button>
 						</InputGroup>
 					</Stack>
+					<Stack className="mt-3">
+						<Form.Label htmlFor="icsFile">
+							{t( 'configuration.special-dates.upload.label' )}
+						</Form.Label>
+						<Stack direction="horizontal" gap={ 2 }>
+							{this.renderTypeSelect( 'icalType' )}
+							<Form.Control
+								id="icsFile"
+								type="file"
+								accept=".ics"
+								onChange={ this.onFileChange }
+							/>
+						</Stack>
+						{this.renderStatusMessage()}
+					</Stack>
 				</Accordion.Body>
 			</Accordion.Item>
 		);
@@ -180,6 +283,7 @@ class SpecialDates extends React.Component {
 }
 
 SpecialDates.propTypes = {
+	year: PropTypes.number.isRequired,
 	items: PropTypes.array.isRequired,
 	onAdd: PropTypes.func.isRequired,
 	onRemove: PropTypes.func.isRequired,
