@@ -15,6 +15,7 @@ class Header extends React.PureComponent {
 				flexGrow: 1,
 				flexDirection: 'column',
 				borderRight: '1 solid black',
+				backgroundColor: '#cccccc',
 			},
 			dateMain: {
 				flexDirection: 'row',

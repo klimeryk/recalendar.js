@@ -8,8 +8,10 @@ class Itinerary extends React.PureComponent {
 	styles = StyleSheet.create( {
 		line: {
 			borderBottom: '1 solid #AAA',
-			fontSize: 12,
-			fontWeight: 'bold',
+			fontSize: 11,
+			fontColor: '#eeeeee',
+			width: 120,
+			backgroundColor: '#cccccc',
 			height: 20,
 			minHeight: 20,
 			padding: '2 0 0 5',
