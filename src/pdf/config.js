@@ -2,10 +2,6 @@ import dayjs from 'dayjs';
 import { t } from 'i18next';
 
 import { ITINERARY_ITEM, ITINERARY_LINES } from 'configuration-form/itinerary';
-import {
-	HOLIDAY_DAY_TYPE,
-	EVENT_DAY_TYPE,
-} from 'configuration-form/special-dates';
 import { wrapWithId } from 'lib/id-utils';
 import { LATO } from 'pdf/lib/fonts';
 
@@ -105,38 +101,7 @@ class PdfConfig {
 		];
 		// See https://github.com/diegomura/react-pdf/issues/2006
 		this.pageSize = [ 445, 592 ]; // [ '157mm', '209mm' ];
-		this.specialDates = [
-			{
-				date: '01-01',
-				value: t( 'special-dates.example1', { ns: 'config' } ),
-				type: HOLIDAY_DAY_TYPE,
-			},
-			{
-				date: '01-01',
-				value: t( 'special-dates.example2', { ns: 'config' } ),
-				type: HOLIDAY_DAY_TYPE,
-			},
-			{
-				date: '01-03',
-				value: t( 'special-dates.example3', { ns: 'config' } ),
-				type: HOLIDAY_DAY_TYPE,
-			},
-			{
-				date: '01-13',
-				value: t( 'special-dates.example4', { ns: 'config' } ),
-				type: EVENT_DAY_TYPE,
-			},
-			{
-				date: '01-13',
-				value: t( 'special-dates.example5', { ns: 'config' } ),
-				type: HOLIDAY_DAY_TYPE,
-			},
-			{
-				date: '01-14',
-				value: t( 'special-dates.example6', { ns: 'config' } ),
-				type: EVENT_DAY_TYPE,
-			},
-		];
+		this.specialDates = [];
 
 		if ( Object.keys( configOverrides ).length !== 0 ) {
 			Object.assign( this, configOverrides );

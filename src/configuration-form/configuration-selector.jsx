@@ -12,7 +12,6 @@ import { withTranslation } from 'react-i18next';
 import {
 	ITINERARY_ITEM,
 	ITINERARY_LINES,
-	ITINERARY_NEW_PAGE,
 } from 'configuration-form/itinerary';
 import { getJsonAttachment } from 'lib/attachments';
 import { convertConfigToCurrentVersion } from 'lib/config-compat';
@@ -84,7 +83,6 @@ class ConfigurationSelector extends React.Component {
 				break;
 
 			case TEMPLATE_BLANK:
-				configOverrides.specialDates = {};
 				configOverrides.habits = [];
 				configOverrides.monthItinerary = [];
 				configOverrides.todos = [];
@@ -101,7 +99,6 @@ class ConfigurationSelector extends React.Component {
 				break;
 
 			case TEMPLATE_MINIMALISTIC:
-				configOverrides.specialDates = {};
 				configOverrides.habits = [];
 				configOverrides.isMonthOverviewEnabled = false;
 				configOverrides.monthItinerary = [];
@@ -131,26 +128,15 @@ class ConfigurationSelector extends React.Component {
 
 	generateAdvancedDayItems( dayOfWeek ) {
 		const items = [];
-		for ( let i = 8; i <= 20; i += 2 ) {
+		for ( let i = 8; i <= 18; i += 1 ) {
 			items.push( {
 				type: ITINERARY_ITEM,
-				value: i.toString().padStart( 2, 0 ) + ':00',
+				value: i.toString().padStart( 2, 0 ),
 			} );
-			items.push( { type: ITINERARY_LINES, value: 2 } );
+			items.push( { type: ITINERARY_LINES, value: 1 } );
 		}
 
-		items.push( { type: ITINERARY_LINES, value: 20 } );
-
-		if ( dayOfWeek === 1 ) {
-			items.push( { type: ITINERARY_NEW_PAGE, value: '' } );
-			items.push( {
-				type: ITINERARY_ITEM,
-				value: this.props.t( 'templates.advanced.day.monday', {
-					ns: 'config',
-				} ),
-			} );
-			items.push( { type: ITINERARY_LINES, value: 50 } );
-		}
+		items.push( { type: ITINERARY_LINES, value: 10 } );
 
 		return items;
 	}
