@@ -28,7 +28,7 @@ function SortableItineraryRow( props ) {
 	function renderItem() {
 		return (
 			<FormControl
-				placeholder="Itinerary item"
+				placeholder={ t( 'configuration.itinerary.placeholder.item' ) }
 				value={ value }
 				onChange={ onChange }
 				data-id={ id }

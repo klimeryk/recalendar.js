@@ -68,7 +68,8 @@
 			"empty": "Boş gezi planı",
 			"placeholder": {
 				"lines": "Satır sayısı",
-				"page": "Yeni sayfa ekle"
+				"page": "Yeni sayfa ekle",
+				"item": "Itinerary item"
 			},
 			"button": {
 				"copy": "Bu gezi planını diğer tüm günlere kopyala",

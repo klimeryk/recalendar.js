@@ -10,12 +10,19 @@
 	"language": {
 		"label": "Jazyky",
 		"en": "English",
-		"pl": "Polski",
-		"fr": "Français",
-		"es": "Español",
-		"nb": "Norsk",
+		"cs": "Čeština",
 		"da": "Dansk",
-                "cz": "Česky"
+		"de": "Deutsch",
+		"es": "Español",
+		"fr": "Français",
+		"hr": "Hrvatski",
+		"hu": "Magyar",
+		"it": "Italiano",
+		"nb": "Norsk",
+		"pl": "Polski",
+		"pt-BR": "Português (Brasil)",
+		"sl": "Slovenščina",
+		"tr": "Türkçe"
 	},
 	"configuration": {
 		"selector": {
@@ -78,7 +85,8 @@
 			"empty": "Prázdný itinerář",
 			"placeholder": {
 				"lines": "Počet řádků",
-				"page": "Nová stránka"
+				"page": "Nová stránka",
+				"item": "Itinerary item"
 			},
 			"button": {
 				"copy": "Zkopírovat na ostatní dny",

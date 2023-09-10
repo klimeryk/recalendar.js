@@ -8,7 +8,21 @@
 		"faq": "FAQ"
 	},
 	"language": {
-		"label": "Lingua"
+		"label": "Lingua",
+		"en": "English",
+		"cs": "Čeština",
+		"da": "Dansk",
+		"de": "Deutsch",
+		"es": "Español",
+		"fr": "Français",
+		"hr": "Hrvatski",
+		"hu": "Magyar",
+		"it": "Italiano",
+		"nb": "Norsk",
+		"pl": "Polski",
+		"pt-BR": "Português (Brasil)",
+		"sl": "Slovenščina",
+		"tr": "Türkçe"
 	},
 	"configuration": {
 		"selector": {
@@ -71,7 +85,8 @@
 			"empty": "Programmazione vuota",
 			"placeholder": {
 				"lines": "Numero di linee",
-				"page": "Nuova interruzione di pagina"
+				"page": "Nuova interruzione di pagina",
+				"item": "Itinerary item"
 			},
 			"button": {
 				"copy": "Copiare questa programmazione a tutti gli altri giorni",

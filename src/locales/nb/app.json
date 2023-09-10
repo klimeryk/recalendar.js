@@ -8,7 +8,21 @@
 		"faq": "FAQ"
 	},
 	"language": {
-		"label": "Språk"
+		"label": "Språk",
+		"en": "English",
+		"cs": "Čeština",
+		"da": "Dansk",
+		"de": "Deutsch",
+		"es": "Español",
+		"fr": "Français",
+		"hr": "Hrvatski",
+		"hu": "Magyar",
+		"it": "Italiano",
+		"nb": "Norsk",
+		"pl": "Polski",
+		"pt-BR": "Português (Brasil)",
+		"sl": "Slovenščina",
+		"tr": "Türkçe"
 	},
 	"configuration": {
 		"selector": {
@@ -50,7 +64,8 @@
 			"empty": "Ingen avtaler",
 			"placeholder": {
 				"lines": "Antall linjer",
-				"page": "Nytt sideskift"
+				"page": "Nytt sideskift",
+				"item": "Itinerary item"
 			},
 			"button": {
 				"copy": "Kopier disse avtalene til alle andre dager",

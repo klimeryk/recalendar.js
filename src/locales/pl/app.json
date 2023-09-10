@@ -8,7 +8,21 @@
 		"faq": "Pytania i odpowiedzi"
 	},
 	"language": {
-		"label": "Język"
+		"label": "Język",
+		"en": "English",
+		"cs": "Čeština",
+		"da": "Dansk",
+		"de": "Deutsch",
+		"es": "Español",
+		"fr": "Français",
+		"hr": "Hrvatski",
+		"hu": "Magyar",
+		"it": "Italiano",
+		"nb": "Norsk",
+		"pl": "Polski",
+		"pt-BR": "Português (Brasil)",
+		"sl": "Slovenščina",
+		"tr": "Türkçe"
 	},
 	"configuration": {
 		"selector": {
@@ -71,7 +85,8 @@
 			"empty": "Pust plan",
 			"placeholder": {
 				"lines": "Liczba linii",
-				"page": "Rozpocznij nową stronę"
+				"page": "Rozpocznij nową stronę",
+				"item": "Itinerary item"
 			},
 			"button": {
 				"copy": "Powiel ten plan na wszystkie inne dni",

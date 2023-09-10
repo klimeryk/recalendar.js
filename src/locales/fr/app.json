@@ -8,7 +8,21 @@
 		"faq": "FAQ"
 	},
 	"language": {
-		"label": "Langue"
+		"label": "Langue",
+		"en": "English",
+		"cs": "Čeština",
+		"da": "Dansk",
+		"de": "Deutsch",
+		"es": "Español",
+		"fr": "Français",
+		"hr": "Hrvatski",
+		"hu": "Magyar",
+		"it": "Italiano",
+		"nb": "Norsk",
+		"pl": "Polski",
+		"pt-BR": "Português (Brasil)",
+		"sl": "Slovenščina",
+		"tr": "Türkçe"
 	},
 	"configuration": {
 		"selector": {
@@ -58,7 +72,8 @@
 			"empty": "Planning vide",
 			"placeholder": {
 				"lines": "Nombre de lignes",
-				"page": "Nouveau saut de page"
+				"page": "Nouveau saut de page",
+				"item": "Itinerary item"
 			},
 			"button": {
 				"remove": "Supprimer",

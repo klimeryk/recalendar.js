@@ -1,0 +1,36 @@
+{
+	"habits": {
+		"example1": "Edzés",
+		"example2": "Könyv",
+		"example3": "Hobbi",
+		"example4": "Randevú"
+	},
+	"templates": {
+		"advanced": {
+			"day": {
+				"monday": "Extra hétfői jegyzetek hozzáadása"
+			},
+			"retrospective": {
+				"wins": "Heti sikerek",
+				"discoveries": "Új felfedezések",
+				"fails": "Mi nem sikerült jól?"
+			}
+		}
+	},
+	"month": {
+		"goal": "Fő cél",
+		"notes": "Jegyzetek"
+	},
+	"todos": {
+		"example1": "Utazás tervezése",
+		"example2": "Valamilyen más teendő"
+	},
+	"special-dates": {
+		"example1": "Különleges dátum 1",
+		"example2": "Különleges dátum 2",
+		"example3": "Valamilyen más ünnepség",
+		"example4": "Valami más egyéb ünnepség, ami nagyon hosszú",
+		"example5": "Adjunk hozzá még egyet",
+		"example6": "Elfogytak az okok ünnepség"
+	}
+}

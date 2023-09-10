@@ -8,7 +8,21 @@
 		"faq": "FAQ"
 	},
 	"language": {
-		"label": "Português (Brasil)"
+		"label": "Português (Brasil)",
+		"en": "English",
+		"cs": "Čeština",
+		"da": "Dansk",
+		"de": "Deutsch",
+		"es": "Español",
+		"fr": "Français",
+		"hr": "Hrvatski",
+		"hu": "Magyar",
+		"it": "Italiano",
+		"nb": "Norsk",
+		"pl": "Polski",
+		"pt-BR": "Português (Brasil)",
+		"sl": "Slovenščina",
+		"tr": "Türkçe"
 	},
 	"configuration": {
 		"selector": {
@@ -71,7 +85,8 @@
 			"empty": "Itinerário vazio",
 			"placeholder": {
 				"lines": "Número de linhas",
-				"page": "Nova quebra de página"
+				"page": "Nova quebra de página",
+				"item": "Itinerary item"
 			},
 			"button": {
 				"copy": "Copia esse itinerário para todos os outros dias",

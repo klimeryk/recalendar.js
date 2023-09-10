@@ -1,0 +1,28 @@
+{
+	"calendar": {
+		"header": {
+			"week-number": "#",
+			"retrospective": "Vi"
+		},
+		"body": {
+			"retrospective": "V"
+		}
+	},
+	"page": {
+		"month": {
+			"habits": {
+				"title": "Szokások"
+			}
+		},
+		"week": {
+			"title": "Hét"
+		},
+		"retrospective": {
+			"title": "Heti visszatekintés"
+		},
+		"last": {
+			"title": "Generálva a következő weboldalon: <recalendar>https://recalendar.me/</recalendar>",
+			"subtitle": "Ez a PDF fájlt ismételten feltölthető az említett weboldalra, hogy betöltse a létrehozáskor használt konfigurációt, amivel létrehozható egy hasonló dokumentum a következő évre!"
+		}
+	}
+}
