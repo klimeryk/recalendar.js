@@ -11,9 +11,9 @@
 				"monday": "Additional page for extra Monday notes"
 			},
 			"retrospective": {
-				"wins": "Wins of the week",
-				"discoveries": "New discoveries",
-				"fails": "What did not go well?"
+				"wins": "achieved",
+				"discoveries": "handover",
+				"fails": "coming up"
 			}
 		}
 	},
