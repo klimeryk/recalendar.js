@@ -1,0 +1,28 @@
+{
+	"calendar": {
+		"header": {
+			"week-number": "V#",
+			"retrospective": "Re"
+		},
+		"body": {
+			"retrospective": "R"
+		}
+	},
+	"page": {
+		"month": {
+			"habits": {
+				"title": "Rutiner"
+			}
+		},
+		"week": {
+			"title": "Vecka"
+		},
+		"retrospective": {
+			"title": "Reflektioner för vecka"
+		},
+		"last": {
+			"title": "Skapad genom <recalendar>https://recalendar.me/</recalendar>",
+			"subtitle": "Du kan ladda upp denna PDF där igen för att ladda samma konfiguration som var använd för att skapa den och snabbt skapa en liknande för ett nytt år!"
+		}
+	}
+}

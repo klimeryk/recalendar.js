@@ -1,0 +1,36 @@
+{
+	"habits": {
+		"example1": "Träning",
+		"example2": "Böcker",
+		"example3": "Träning",
+		"example4": "Sömn"
+	},
+	"templates": {
+		"advanced": {
+			"day": {
+				"monday": "Extra sida för extra måndagsanteckningar"
+			},
+			"retrospective": {
+				"wins": "Veckans vinster",
+				"discoveries": "Nya upptäckter",
+				"fails": "Vad gick inte så bra?"
+			}
+		}
+	},
+	"month": {
+		"goal": "Huvudmål",
+		"notes": "Anteckningar"
+	},
+	"todos": {
+		"example1": "Planera resa",
+		"example2": "Några andra att göra"
+	},
+	"special-dates": {
+		"example1": "Specielltdatum 1",
+		"example2": "Speciellt datum för annan anledning #2",
+		"example3": "Andra firanden",
+		"example4": "Långweekend",
+		"example5": "Lov",
+		"example6": "Ran out of reasons celebration"
+	}
+}

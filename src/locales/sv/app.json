@@ -1,0 +1,152 @@
+{
+	"loading": "Laddar...",
+	"download-ready": "Ladda ner nu!",
+	"navigation": {
+		"home": "Hem",
+		"configuration": "Skapa din kalender",
+		"features": "Funktioner",
+		"faq": "FAQ"
+	},
+	"language": {
+		"label": "Språk"
+	},
+	"configuration": {
+		"selector": {
+			"label": "Start",
+			"template": {
+				"label": "Börja genom att välja mall:",
+				"basic": {
+					"label": "Grundmall",
+					"description": "Grundinställning - bra utgångspunkt."
+				},
+				"advanced": {
+					"label": "Avancerad",
+					"description": "Utökar grundmallen genom addera individuella punkter per dag."
+				},
+				"blank": {
+					"label": "Tom",
+					"description": "Baserad på grundmallen, med tomma rutiner, att göra, speciella datum, etc."
+				},
+				"minimalistic": {
+					"label": "Minimalistisk",
+					"description": "Inaktiverar allting förutom veckoöversikter."
+				}
+			},
+			"upload": {
+				"label": "Ladda upp tidigare genererad ReCalenar PDF för att använda dess konfiguration:",
+				"loading": "Läser konfiguration från PDF filen, vänligen vänta...",
+				"error": "Var inte möjligt att läsa ReCalendar konfiguration från denna PDF - är du säker den var skapad genom denna websida?",
+				"success": "Konfigurationen laddad från PDF - välkommen tillbaka!"
+			}
+		},
+		"general": {
+			"label": "Generella konfigureringar",
+			"font": "Teckensnitt",
+			"year": "År",
+			"left-handed": {
+				"label": "Vänsterhands version",
+				"description": "Optimera layouten för vänsterhands användande."
+			},
+			"sidebar": {
+				"label": "Lämna permanent utrymme för sidomenyn",
+				"description": "Om du föredrar att låta sidomenyn alltid vara synlig, klicka detta val för att säkerställa att kalenderns innehåll aldrig täcker menyn."
+			},
+			"starting-month": {
+				"label": "Startmånad",
+				"description": "Den första månaden i den genererade kalendern. Välj typ September ifall du vill att din kalender skall täcka en termin istället för ett kalenderår."
+			},
+			"month-count": {
+				"label": "Antal månader",
+				"description": "För hur många månader skall kalendern skapas."
+			},
+			"first-day-of-week": "Första veckodagen",
+			"weekend": "Veckoslut"
+		},
+		"button": {
+			"refresh": "Uppdatera förhandsgranskningen",
+			"download": "Genererar hela kalendern och ladda ner",
+			"generating": "Genererar, vänligen vänta..."
+		},
+		"itinerary": {
+			"empty": "Tom plan",
+			"placeholder": {
+				"lines": "Antal rader",
+				"page": "Sidbrytning"
+			},
+			"button": {
+				"copy": "Kopiera denna plan till alla andra dagar",
+				"remove": "Ta bort",
+				"item": "Ny planering",
+				"page": "Starta en ny sida",
+				"lines": "Lägg till tomrader"
+			}
+		},
+		"items-list": {
+			"button": {
+				"item": "Lägg till post",
+				"remove": "Ta bort"
+			},
+			"empty": "Tom lista",
+			"placeholder": "post"
+		},
+		"toggle-form": {
+			"enabled": "Aktiverad",
+			"disabled": "Inaktiverad"
+		},
+		"month": {
+			"title": "Månadsöversikt",
+			"description": "Månadsöversikten är plats för att sätta mål för kommande månad, följa rutiner och göra andra planer.",
+			"habits": {
+				"title": "Rutiner"
+			},
+			"itinerary": {
+				"title": "Plan"
+			}
+		},
+		"week": {
+			"title": "Veckoöversikt",
+			"description": "Veckoöversikten ger dig en översiktsbild över veckan för att göra planeringen enklare.",
+			"todos": {
+				"title": "Attgöra"
+			},
+			"retrospective": {
+				"title": "Veckoreflektioner",
+				"description": "Veckoreflektioner är en plats för att reflektera över gångna veckan - hur den gick, vad lärde du dig, vad kan du förbättra inför nästa vecka?",
+				"itinerary": {
+					"title": "Plan"
+				}
+			}
+		},
+		"day": {
+			"title": "Dagsplanering"
+		},
+		"special-dates": {
+			"title": "Speciella datum",
+			"description": "Addera dina födelsedagar, firanden, evenemang, etc. här för att få en påminnelse om den i din veckoöversikt och dagsplaner när de infaller.",
+			"empty": "Inga datum",
+			"placeholder": "Vad för tillfälle?",
+			"type": {
+				"event": "Aktivitet",
+				"holiday": "Semester"
+			},
+			"button": {
+				"item": "Lägg till datum",
+				"remove": "Tabort"
+			}
+		},
+		"generation-description": "PDF genereringen sker helt i din webbläsare - ingen data skickas till vår server!"
+	},
+	"preview": {
+		"title": "Kalender förhandsgranskning",
+		"subtitle": "(enbart första månaden är genererad för förhandsgranskning)",
+		"viewer-title": "PDF förhandsgranskning",
+		"generating": {
+			"full": "Genererar hela kalendern - detta kan ta mer än en minut...",
+			"preview": "Skapar förhandsgranskning, vänligen vänta - det kan ta en minut."
+		},
+		"empty": {
+			"title": "Använd konfigurationsformuläret för att skapa din personliga kalender.",
+			"subtitle": "Förhandsvisningen visas här."
+		}
+	}
+}
