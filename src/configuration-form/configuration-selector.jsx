@@ -84,7 +84,7 @@ class ConfigurationSelector extends React.Component {
 				break;
 
 			case TEMPLATE_BLANK:
-				configOverrides.specialDates = {};
+				configOverrides.specialDates = [];
 				configOverrides.habits = [];
 				configOverrides.monthItinerary = [];
 				configOverrides.todos = [];
@@ -101,7 +101,7 @@ class ConfigurationSelector extends React.Component {
 				break;
 
 			case TEMPLATE_MINIMALISTIC:
-				configOverrides.specialDates = {};
+				configOverrides.specialDates = [];
 				configOverrides.habits = [];
 				configOverrides.isMonthOverviewEnabled = false;
 				configOverrides.monthItinerary = [];
