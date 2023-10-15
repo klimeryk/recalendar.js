@@ -52,6 +52,14 @@ class Configuration extends React.PureComponent {
 		this.pdfWorker.onmessage = this.handlePdfWorkerMessage;
 	}
 
+	componentDidMount() {
+		i18n.on( 'languageChanged', this.handleLanguageChange );
+	}
+
+	componentWillUnmount() {
+		i18n.off( 'languageChanged', this.handleLanguageChange );
+	}
+
 	componentDidUpdate( prevProps, prevState ) {
 		if ( prevState.blobUrl && prevState.blobUrl !== this.state.blobUrl ) {
 			// Each refresh generates a new blob - and it will be kept in the memory
@@ -64,6 +72,12 @@ class Configuration extends React.PureComponent {
 
 	handleConfigChange = ( newConfig ) => {
 		this.setState( { ...hydrateFromObject( newConfig ) } );
+	};
+
+	handleLanguageChange = () => {
+		dayjs.updateLocale( i18n.language, {
+			weekStart: this.state.firstDayOfWeek,
+		} );
 	};
 
 	handleFieldChange = ( event ) => {

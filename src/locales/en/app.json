@@ -9,6 +9,8 @@
 	},
 	"language": {
 		"label": "Language",
+		"full": "Fully translated languages",
+		"partial": "Only days of the week and months",
 		"en": "English",
 		"cs": "Čeština",
 		"da": "Dansk",

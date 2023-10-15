@@ -8,7 +8,7 @@ import Navbar from 'react-bootstrap/Navbar';
 import Stack from 'react-bootstrap/Stack';
 import { withTranslation } from 'react-i18next';
 
-import { getSupportedLocales } from 'config/i18n';
+import { getFullySupportedLocales, getPartiallySupportedLocales } from 'config/i18n';
 import {
 	HOME_PATH,
 	CONFIGURATOR_PATH,
@@ -42,6 +42,14 @@ class Navigation extends React.Component {
 		return (
 			<option key={ language } value={ language }>
 				{this.props.t( 'language.' + language )}
+			</option>
+		);
+	};
+
+	renderPartialLanguageOption = ( { key, name } ) => {
+		return (
+			<option key={ key } value={ key }>
+				{name}
 			</option>
 		);
 	};
@@ -86,7 +94,13 @@ class Navigation extends React.Component {
 								value={ this.state.language }
 								onChange={ this.handleLanguageSelection }
 							>
-								{getSupportedLocales().map( this.renderLanguageOption )}
+								<optgroup label={ t( 'language.full' ) }>
+									{getFullySupportedLocales().map( this.renderLanguageOption )}
+								</optgroup>
+								<optgroup label={ t( 'language.partial' ) }>
+									{getPartiallySupportedLocales().map(
+										this.renderPartialLanguageOption )}
+								</optgroup>
 							</Form.Select>
 						</Stack>
 					</Navbar.Collapse>

@@ -1,14 +1,14 @@
 /* eslint-disable no-restricted-globals */
-import dayjs from 'dayjs';
 import i18n, { changeLanguage } from 'i18next';
 import LanguageDetector from 'i18next-browser-languagedetector';
 import React from 'react';
 import { initReactI18next } from 'react-i18next';
 
 import {
+	getFullySupportedLocales,
+	handleLanguageChange,
 	i18nConfiguration,
 	webpackBackend,
-	getSupportedLocales,
 } from 'config/i18n';
 import { utf8ToBase64 } from 'lib/base64';
 import { Font, pdf } from 'lib/pdf';
@@ -28,7 +28,7 @@ i18n
 	.use( initReactI18next )
 	.init( {
 		...i18nConfiguration( [ 'pdf', 'config' ] ),
-		preload: getSupportedLocales(),
+		preload: getFullySupportedLocales(),
 		react: {
 			useSuspense: false,
 		},
@@ -55,15 +55,7 @@ self.onmessage = ( { data } ) => {
 	const { firstDayOfWeek, language, isPreview } = data;
 
 	changeLanguage( language );
-
-	// This is needed for locales like pt-BR. i18next expects pt-BR,
-	// while dayjs expects pt-br.
-	const dayjsLanguage = language.toLowerCase();
-	require( `dayjs/locale/${dayjsLanguage}.js` );
-	dayjs.locale( dayjsLanguage );
-	dayjs.updateLocale( dayjsLanguage, {
-		weekStart: firstDayOfWeek,
-	} );
+	handleLanguageChange( language, firstDayOfWeek );
 
 	Font.registerHyphenationCallback( hyphenationCallback );
 	Font.register( getFontDefinition( config.fontFamily ) );
