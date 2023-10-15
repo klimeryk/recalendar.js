@@ -1,7 +1,7 @@
 import { arrayMove } from '@dnd-kit/sortable';
 import dayjs from 'dayjs';
 import { saveAs } from 'file-saver';
-import i18n from 'i18next';
+import i18n, { changeLanguage } from 'i18next';
 import PropTypes from 'prop-types';
 import React from 'react';
 import Accordion from 'react-bootstrap/Accordion';
@@ -72,6 +72,7 @@ class Configuration extends React.PureComponent {
 
 	handleConfigChange = ( newConfig ) => {
 		this.setState( { ...hydrateFromObject( newConfig ) } );
+		changeLanguage( newConfig.language );
 	};
 
 	handleLanguageChange = () => {
