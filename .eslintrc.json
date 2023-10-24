@@ -3,7 +3,6 @@
 		"react-app",
 		"eslint:recommended",
 		"plugin:react/recommended",
-		"plugin:import/recommended",
 		"prettier"
 	],
 	"plugins": ["react"],
