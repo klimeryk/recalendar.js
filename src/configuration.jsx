@@ -82,11 +82,16 @@ class Configuration extends React.PureComponent {
 	};
 
 	handleFieldChange = ( event ) => {
-		const value =
+		let value =
 			event.target.type !== 'checkbox'
 				? event.target.value
 				: event.target.checked;
+		if ( event.target.type === 'number' || event.target.dataset.type === 'number' ) {
+			value = Number( value );
+		}
+
 		this.setState( { [ event.target.id ]: value } );
+
 		if ( event.target.id === 'firstDayOfWeek' ) {
 			const newFirstDayOfWeek = Number( event.target.value );
 			dayjs.updateLocale( i18n.language, {
@@ -216,16 +221,16 @@ class Configuration extends React.PureComponent {
 	};
 
 	handleItineraryChange = ( event ) => {
-		const field = event.target.dataset.field;
+		const { field, id, type } = event.target.dataset;
 		const newItinerary = [ ...this.state[ field ] ];
-		const index = this.state[ field ].findIndex( byId( event.target.dataset.id ) );
+		const index = this.state[ field ].findIndex( byId( id ) );
 		if ( index === -1 ) {
 			return;
 		}
 		newItinerary[ index ] = {
-			id: event.target.dataset.id,
-			type: event.target.dataset.type,
-			value: event.target.value,
+			id,
+			type,
+			value: type === 'lines' ? Number( event.target.value ) : event.target.value,
 		};
 		this.setState( { [ field ]: newItinerary } );
 	};
@@ -287,7 +292,7 @@ class Configuration extends React.PureComponent {
 		newItineraries[ field ].items[ index ] = {
 			id: event.target.dataset.id,
 			type,
-			value: event.target.value,
+			value: type === 'lines' ? Number( event.target.value ) : event.target.value,
 		};
 		this.setState( { dayItineraries: newItineraries } );
 	};
@@ -470,6 +475,7 @@ class Configuration extends React.PureComponent {
 								<Form.Select
 									value={ this.state.month }
 									onChange={ this.handleFieldChange }
+									data-type="number"
 								>
 									{this.renderMonths()}
 								</Form.Select>
@@ -484,6 +490,7 @@ class Configuration extends React.PureComponent {
 								<Form.Select
 									value={ this.state.firstDayOfWeek }
 									onChange={ this.handleFieldChange }
+									data-type="number"
 								>
 									{this.renderDaysOfWeek()}
 								</Form.Select>

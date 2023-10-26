@@ -67,7 +67,7 @@ class SpecialDates extends React.Component {
 			vevents.forEach( ( vevent ) => {
 				const dtstart = vevent.getFirstPropertyValue( 'dtstart' );
 				const date = dayjs( dtstart.toJSDate() );
-				if ( date.year() !== Number( this.props.year ) ) {
+				if ( date.year() !== this.props.year ) {
 					return;
 				}
 				const key = date.format( DATE_FORMAT );
