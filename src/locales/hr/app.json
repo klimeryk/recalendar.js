@@ -10,19 +10,12 @@
 	"language": {
 		"label": "Jezik",
 		"en": "English",
-		"cs": "Čeština",
-		"da": "Dansk",
-		"de": "Deutsch",
-		"es": "Español",
-		"fr": "Français",
-		"hr": "Hrvatski",
-		"hu": "Magyar",
-		"it": "Italiano",
-		"nb": "Norsk",
 		"pl": "Polski",
-		"pt-BR": "Português (Brasil)",
-		"sl": "Slovenščina",
-		"tr": "Türkçe"
+		"fr": "Français",
+		"es": "Español",
+		"nb": "Norsk",
+		"da": "Dansk",
+		"hr": "Hrvatski"
 	},
 	"configuration": {
 		"selector": {
@@ -85,8 +78,7 @@
 			"empty": "Prazan dnevni raspored",
 			"placeholder": {
 				"lines": "Broj linija",
-				"page": "Novi prekid stranice",
-				"item": "Itinerary item"
+				"page": "Novi prekid stranice"
 			},
 			"button": {
 				"copy": "Kopirajte ovaj dnevni raspored na sve ostale dane",

@@ -8,21 +8,7 @@
 		"faq": "FAQ"
 	},
 	"language": {
-		"label": "Sprog",
-		"en": "English",
-		"cs": "Čeština",
-		"da": "Dansk",
-		"de": "Deutsch",
-		"es": "Español",
-		"fr": "Français",
-		"hr": "Hrvatski",
-		"hu": "Magyar",
-		"it": "Italiano",
-		"nb": "Norsk",
-		"pl": "Polski",
-		"pt-BR": "Português (Brasil)",
-		"sl": "Slovenščina",
-		"tr": "Türkçe"
+		"label": "Sprog"
 	},
 	"configuration": {
 		"selector": {
@@ -80,8 +66,7 @@
 			"empty": "Tom plan",
 			"placeholder": {
 				"lines": "Antal linjer",
-				"page": "Skift til ny side",
-				"item": "Itinerary item"
+				"page": "Skift til ny side"
 			},
 			"button": {
 				"copy": "Kopier dette punkt fra planen til alle andre dage også",

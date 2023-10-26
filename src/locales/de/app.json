@@ -9,20 +9,13 @@
 	},
 	"language": {
 		"label": "Sprache",
-		"en": "English",
-		"cs": "Čeština",
-		"da": "Dansk",
-		"de": "Deutsch",
-		"es": "Español",
-		"fr": "Français",
-		"hr": "Hrvatski",
-		"hu": "Magyar",
-		"it": "Italiano",
-		"nb": "Norsk",
-		"pl": "Polski",
-		"pt-BR": "Português (Brasil)",
-		"sl": "Slovenščina",
-		"tr": "Türkçe"
+		"en": "Englisch",
+		"pl": "Polnisch",
+		"fr": "Französisch",
+		"es": "Spanisch",
+		"nb": "Norwegisch",
+		"da": "Dänisch",
+		"de": "Deutsch"
 	},
 	"configuration": {
 		"selector": {
@@ -85,8 +78,7 @@
 			"empty": "Leerer Plan",
 			"placeholder": {
 				"lines": "Anzahl der Zeilen",
-				"page": "Seitenumbruch",
-				"item": "Itinerary item"
+				"page": "Seitenumbruch"
 			},
 			"button": {
 				"copy": "Diesen Plan für alle Wochentage übernehmen.",

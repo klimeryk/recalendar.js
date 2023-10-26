@@ -9,20 +9,13 @@
 	},
 	"language": {
 		"label": "Jezik",
-		"en": "English",
-		"cs": "Čeština",
-		"da": "Dansk",
-		"de": "Deutsch",
-		"es": "Español",
-		"fr": "Français",
-		"hr": "Hrvatski",
-		"hu": "Magyar",
-		"it": "Italiano",
-		"nb": "Norsk",
-		"pl": "Polski",
-		"pt-BR": "Português (Brasil)",
-		"sl": "Slovenščina",
-		"tr": "Türkçe"
+		"en": "Angleški",
+		"pl": "Poljski",
+		"fr": "Francoski",
+		"es": "Španski",
+		"nb": "Norveški",
+		"da": "Danski",
+		"sl": "Slovenski"
 	},
 	"configuration": {
 		"selector": {
@@ -85,8 +78,7 @@
 			"empty": "Prazna vsebina",
 			"placeholder": {
 				"lines": "Število vrstic",
-				"page": "Nov prelom strani",
-				"item": "Itinerary item"
+				"page": "Nov prelom strani"
 			},
 			"button": {
 				"copy": "Kopiraj vsebino v ostale dni",
