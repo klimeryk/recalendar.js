@@ -1,0 +1,167 @@
+{
+	"loading": "Betöltés...",
+	"download-ready": "Letöltés most!",
+	"navigation": {
+		"home": "Kezdőlap",
+		"configuration": "Hozd létre naptáradat",
+		"features": "Funkciók",
+		"faq": "GYIK"
+	},
+	"language": {
+		"label": "Nyelv",
+		"en": "English",
+		"cs": "Čeština",
+		"da": "Dansk",
+		"de": "Deutsch",
+		"es": "Español",
+		"fr": "Français",
+		"hr": "Hrvatski",
+		"hu": "Magyar",
+		"it": "Italiano",
+		"nb": "Norsk",
+		"pl": "Polski",
+		"pt-BR": "Português (Brasil)",
+		"sl": "Slovenščina",
+		"tr": "Türkçe"
+	},
+	"configuration": {
+		"selector": {
+			"label": "Kezdés",
+			"template": {
+				"label": "Sablon kiválasztása:",
+				"basic": {
+					"label": "Alap",
+					"description": "Alap beállítások - jó kiindulópont."
+				},
+				"advanced": {
+					"label": "Haladó",
+					"description": "A Haladó sablon kibővíti az Alap sablont egyedi tervekkel."
+				},
+				"blank": {
+					"label": "Üres",
+					"description": "Alap sablon, üres szokásokkal, teendőkkel, speciális dátumokkal, stb."
+				},
+				"minimalistic": {
+					"label": "Minimalista",
+					"description": "Minden kikapcsolva, csak heti áttekintéseket tartalmazza."
+				}
+			},
+			"upload": {
+				"label": "Vagy korábban generált ReCalendar PDF feltöltése, a benne lévő konfiguráció használatához:",
+				"loading": "PDF fájl konfiguráció olvasása, kérlek várj...",
+				"error": "Nem sikerült a ReCalendar konfigurációt beolvasni a PDF-ből - biztos, hogy ezen az oldalon generálódott?",
+				"success": "Beállítások beolvasva a PDF-ből - üdvözöljük újra!"
+			}
+		},
+		"general": {
+			"label": "Általános beállítások",
+			"font": "Betűtípus",
+			"year": "Év",
+			"left-handed": {
+				"label": "Balkezes verzió",
+				"description": "Az elrendezést balkezes használatra optimalizálja."
+			},
+			"sidebar": {
+				"label": "Hagyj helyet az oldalsáv számára",
+				"description": "Ha szereted az oldalsávot mindig nyitva tartani, jelöld be ezt az opciót, hogy biztosítsd, hogy a naptár tartalma soha ne legyen letakarva."
+			},
+			"starting-month": {
+				"label": "Kezdő hónap",
+				"description": "Az előállított naptár első hónapja. Válassz például szeptembert, ha tanítási évet szeretnél generálni, nem  naptári évet."
+			},
+			"month-count": {
+				"label": "Hónapok száma",
+				"description": "Hány hónapra kell elkészíteni a naptárat."
+			},
+			"first-day-of-week": "Hét első napja",
+			"weekend": "Hétvége"
+		},
+		"button": {
+			"refresh": "Előnézet frissítése",
+			"download": "Teljes naptár generálása és letöltése",
+			"generating": "Generálás, kérlek várj..."
+		},
+		"itinerary": {
+			"empty": "Üres terv",
+			"placeholder": {
+				"lines": "Sorok száma",
+				"page": "Új oldaltörés",
+				"item": "Új terv"
+			},
+			"button": {
+				"copy": "Másold ezt a tervet az összes többi napra",
+				"remove": "Eltávolítás",
+				"item": "Új terv hozzáadása",
+				"page": "Új oldal indítása",
+				"lines": "Üres sorok hozzáadása"
+			}
+		},
+		"items-list": {
+			"button": {
+				"item": "Elem hozzáadása",
+				"remove": "Eltávolítás"
+			},
+			"empty": "Üres lista",
+			"placeholder": "Elem"
+		},
+		"toggle-form": {
+			"enabled": "Engedélyezve",
+			"disabled": "Letiltva"
+		},
+		"month": {
+			"title": "Hónap áttekintés",
+			"description": "A hónap áttekintés helyet ad a következő hónapok céljainak megadásához, szokások nyomon követéséhez és más tervek készítéséhez.",
+			"habits": {
+				"title": "Szokások"
+			},
+			"itinerary": {
+				"title": "Terv"
+			}
+		},
+		"week": {
+			"title": "Hét áttekintés",
+			"description": "A hét áttekintése lehetővé teszi a hét előretekintését, hogy megkönnyítse a tervek elkészítését.",
+			"todos": {
+				"title": "Teendők"
+			},
+			"retrospective": {
+				"title": "Heti visszatekintés",
+				"description": "A heti visszatekintés helyet ad a hét eseményeinek feldolgozásához - hogyan ment, mit tanultál, miben lehetnél jobb a következő héten?",
+				"itinerary": {
+					"title": "Terv"
+				}
+			}
+		},
+		"day": {
+			"title": "Napi Terv"
+		},
+		"special-dates": {
+			"title": "Különleges dátumok",
+			"description": "Add hozzá a születésnapjaidat, ünnepeidet, eseményeidet stb. ide, hogy emlékeztetőket kapj róluk a heti áttekintőkben és a napi oldalakon, ahogy közelednek.",
+			"empty": "Nincsenek dátumok",
+			"placeholder": "Mi az alkalom?",
+			"type": {
+				"event": "Esemény",
+				"holiday": "Ünnep"
+			},
+			"button": {
+				"item": "Dátum hozzáadása",
+				"remove": "Eltávolítás"
+			}
+		},
+		"generation-description": "A PDF generálása teljes egészében a böngésződben történik - nincs adat küldve a szervereinkre!"
+	},
+	"preview": {
+		"title": "Naptár előnézet",
+		"subtitle": "(csak az első hónap kerül megjelenítésre az előnézetben)",
+		"viewer-title": "PDF Előnézet",
+		"generating": {
+			"full": "Teljes naptár generálása - ez több mint egy percet is igénybe vehet...",
+			"preview": "Előnézet generálása, kérlek várj - ez eltarthat egy percig."
+		},
+		"empty": {
+			"title": "Használd a konfigurációs űrlapot, hogy létrehozd a saját testreszabott naptáradat.",
+			"subtitle": "Az előnézet itt fog megjelenni."
+		}
+	}
+}

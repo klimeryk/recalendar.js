@@ -18,6 +18,7 @@
 		"es": "Español",
 		"fr": "Français",
 		"hr": "Hrvatski",
+		"hu": "Magyar",
 		"it": "Italiano",
 		"nb": "Norsk",
 		"nl": "Nederlands",
@@ -88,7 +89,8 @@
 			"empty": "Empty itinerary",
 			"placeholder": {
 				"lines": "Number of lines",
-				"page": "New page break"
+				"page": "New page break",
+				"item": "Itinerary item"
 			},
 			"button": {
 				"copy": "Copy this itinerary to all other days",
