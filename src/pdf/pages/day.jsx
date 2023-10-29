@@ -60,7 +60,10 @@ class DayPage extends React.Component {
 							specialItems={ specialItems }
 						/>
 						<View style={ this.styles.content }>
-							<Itinerary items={ items } />
+							<Itinerary
+								items={ items }
+								checkbox={ config.itineraryCheckbox }
+							/>
 						</View>
 					</View>
 				</Page>
