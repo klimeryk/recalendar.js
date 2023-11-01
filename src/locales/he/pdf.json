@@ -1,0 +1,28 @@
+{
+	"calendar": {
+		"header": {
+			"week-number": "S#",
+			"retrospective": "Re"
+		},
+		"body": {
+			"retrospective": "R"
+		}
+	},
+	"page": {
+		"month": {
+			"habits": {
+				"title": "הרגלים"
+			}
+		},
+		"week": {
+			"title": "שבוע"
+		},
+		"retrospective": {
+			"title": "רטרוספקטיבה לשבוע"
+		},
+		"last": {
+			"title": "נוצר באמצעות <recalendar>https://recalendar.me/</recalendar>",
+			"subtitle": "אתה יכול להעלות את ה-PDF הזה לשם שוב כדי לטעון את אותה תצורה ששימשה ליצירתו וליצור במהירות קובץ דומה לשנה החדשה!"
+		}
+	}
+}
