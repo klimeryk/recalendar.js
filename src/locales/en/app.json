@@ -69,6 +69,10 @@
 				"label": "Leave permanent space for side toolbar",
 				"description": "If you prefer to keep the side toolbar always open, check this option to make sure the calendar's content will never be covered by it."
 			},
+			"dot-grid": {
+				"label": "Use dot grid for itinerary elements",
+				"description": "Itinerary lines will be displayed using a dotted grid pattern instead of solid lines"
+			},
 			"starting-month": {
 				"label": "Starting month",
 				"description": "The first month in the generated calendar. Choose something like October if you want your calendar to cover a semester, instead of a calendar year."
