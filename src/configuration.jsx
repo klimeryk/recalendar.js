@@ -460,6 +460,18 @@ class Configuration extends React.PureComponent {
 									{t( 'configuration.general.sidebar.description' )}
 								</Form.Text>
 							</Form.Group>
+							<Form.Group controlId="useDotGrid" className="mt-2">
+								<Form.Check
+									label={ t( 'configuration.general.dot-grid.label' ) }
+									type="checkbox"
+									checked={ this.state.useDotGrid }
+									value={ this.state.useDotGrid }
+									onChange={ this.handleFieldChange }
+								/>
+								<Form.Text className="text-muted">
+									{t( 'configuration.general.dot-grid.description' )}
+								</Form.Text>
+							</Form.Group>
 							<Form.Group controlId="year">
 								<Form.Label>{t( 'configuration.general.year' )}</Form.Label>
 								<Form.Control

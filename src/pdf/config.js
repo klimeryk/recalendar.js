@@ -18,6 +18,7 @@ const CONFIG_FIELDS = [
 	'weekendDays',
 	'isLeftHanded',
 	'alwaysOnSidebar',
+	'useDotGrid',
 	'isMonthOverviewEnabled',
 	'habits',
 	'monthItinerary',
@@ -53,6 +54,7 @@ class PdfConfig {
 		this.weekendDays = [ 0, 6 ];
 		this.isLeftHanded = false;
 		this.alwaysOnSidebar = false;
+		this.useDotGrid = false;
 		this.monthCount = 12;
 		this.fontFamily = LATO;
 		this.isMonthOverviewEnabled = true;
