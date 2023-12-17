@@ -65,14 +65,26 @@ class SpecialDates extends React.Component {
 			const vcalendar = new ICAL.Component( jcalData );
 			const vevents = vcalendar.getAllSubcomponents( 'vevent' );
 			vevents.forEach( ( vevent ) => {
-				const dtstart = vevent.getFirstPropertyValue( 'dtstart' );
-				const date = dayjs( dtstart.toJSDate() );
-				if ( date.year() !== this.props.year ) {
-					return;
+				const ev = new ICAL.Event( vevent );
+				const startDate = dayjs( ev.startDate.toJSDate() );
+				const value = ev.summary;
+				if ( ev.isRecurring() ) {
+					const iter = ev.iterator();
+					let next;
+					while ( ( next = iter.next() ) ) {
+						if ( next.year < this.props.year ) {
+							continue;
+						} else if ( next.year > this.props.year ) {
+							break;
+						}
+						const date = dayjs( next.toJSDate() );
+						const key = date.format( DATE_FORMAT );
+						this.props.onAdd( { date: key, value, type: this.state.icalType } );
+					}
+				} else if ( startDate.year() === this.props.year ) {
+					const key = startDate.format( DATE_FORMAT );
+					this.props.onAdd( { date: key, value, type: this.state.icalType } );
 				}
-				const key = date.format( DATE_FORMAT );
-				const value = vevent.getFirstPropertyValue( 'summary' );
-				this.props.onAdd( { date: key, value, type: this.state.icalType } );
 			} );
 
 			this.setState( {
