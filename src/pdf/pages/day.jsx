@@ -18,7 +18,7 @@ import {
 	monthOverviewLink,
 } from 'pdf/lib/links';
 import { content, pageStyle } from 'pdf/styles';
-import { getItemsOnExtraPages } from 'pdf/utils';
+import { splitItemsByPages } from 'pdf/utils';
 
 class DayPage extends React.Component {
 	styles = StyleSheet.create(
@@ -39,6 +39,7 @@ class DayPage extends React.Component {
 		if ( ! isEnabled ) {
 			return null;
 		}
+		const itemsByPage = splitItemsByPages( items );
 
 		const specialDateKey = this.props.date.format( SPECIAL_DATES_DATE_FORMAT );
 		const specialItems = this.props.config.specialDates.filter(
@@ -60,11 +61,11 @@ class DayPage extends React.Component {
 							specialItems={ specialItems }
 						/>
 						<View style={ this.styles.content }>
-							<Itinerary items={ items } />
+							<Itinerary items={ itemsByPage[ 0 ] } />
 						</View>
 					</View>
 				</Page>
-				{getItemsOnExtraPages( items ).map( this.renderExtraItems )}
+				{itemsByPage.slice( 1 ).map( this.renderExtraItems )}
 			</>
 		);
 	}

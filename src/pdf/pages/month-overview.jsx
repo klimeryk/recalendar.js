@@ -10,7 +10,7 @@ import MiniCalendar, { HIGHLIGHT_NONE } from 'pdf/components/mini-calendar';
 import PdfConfig from 'pdf/config';
 import { dayPageLink, monthOverviewLink } from 'pdf/lib/links';
 import { pageStyle } from 'pdf/styles';
-import { getItemsOnExtraPages } from 'pdf/utils';
+import { splitItemsByPages } from 'pdf/utils';
 
 class MonthOverviewPage extends React.Component {
 	constructor( props ) {
@@ -205,6 +205,7 @@ class MonthOverviewPage extends React.Component {
 
 	render() {
 		const { date, config } = this.props;
+		const itemsByPage = splitItemsByPages( config.monthItinerary );
 		return (
 			<>
 				<Page id={ monthOverviewLink( date, config ) } size={ config.pageSize }>
@@ -221,11 +222,11 @@ class MonthOverviewPage extends React.Component {
 						</View>
 						{this.renderHabitsTable()}
 						<View style={ this.styles.content }>
-							<Itinerary items={ config.monthItinerary } />
+							<Itinerary items={ itemsByPage[ 0 ] } />
 						</View>
 					</View>
 				</Page>
-				{getItemsOnExtraPages( config.monthItinerary ).map( ( items, index ) => (
+				{itemsByPage.slice( 1 ).map( ( items, index ) => (
 					<Page key={ index } size={ config.pageSize }>
 						<View style={ this.styles.page }>
 							<Itinerary items={ items } />

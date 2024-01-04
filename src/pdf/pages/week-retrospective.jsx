@@ -11,7 +11,7 @@ import MiniCalendar, { HIGHLIGHT_WEEK } from 'pdf/components/mini-calendar';
 import PdfConfig from 'pdf/config';
 import { weekRetrospectiveLink } from 'pdf/lib/links';
 import { content, pageStyle } from 'pdf/styles';
-import { getItemsOnExtraPages } from 'pdf/utils';
+import { splitItemsByPages } from 'pdf/utils';
 
 class WeekRetrospectivePage extends React.Component {
 	styles = StyleSheet.create(
@@ -27,6 +27,7 @@ class WeekRetrospectivePage extends React.Component {
 
 	render() {
 		const { t, date, config } = this.props;
+		const itemsByPage = splitItemsByPages( config.weekRetrospectiveItinerary );
 		return (
 			<>
 				<Page id={ weekRetrospectiveLink( date ) } size={ config.pageSize }>
@@ -51,11 +52,11 @@ class WeekRetrospectivePage extends React.Component {
 							}
 						/>
 						<View style={ this.styles.content }>
-							<Itinerary items={ config.weekRetrospectiveItinerary } />
+							<Itinerary items={ itemsByPage[ 0 ] } />
 						</View>
 					</View>
 				</Page>
-				{getItemsOnExtraPages( config.weekRetrospectiveItinerary ).map(
+				{itemsByPage.slice( 1 ).map(
 					( items, index ) => (
 						<Page key={ index } size={ config.pageSize }>
 							<View style={ this.styles.page }>
