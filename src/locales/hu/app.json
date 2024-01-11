@@ -57,7 +57,14 @@
 				"description": "Hány hónapra kell elkészíteni a naptárat."
 			},
 			"first-day-of-week": "Hét első napja",
-			"weekend": "Hétvége"
+			"weekend": "Hétvége",
+			"line-style": {
+				"label": "Vonalstílus a tervekben",
+				"description": "A tervekben lévő vonalak rajzolásához használt stílus.",
+				"solid": "Folytonos",
+				"dotted": "Pontozott",
+				"dashed": "Szaggatott"
+			}
 		},
 		"button": {
 			"refresh": "Előnézet frissítése",

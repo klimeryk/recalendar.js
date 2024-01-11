@@ -60,7 +60,14 @@
 				"description": "För hur många månader skall kalendern skapas."
 			},
 			"first-day-of-week": "Första veckodagen",
-			"weekend": "Veckoslut"
+			"weekend": "Veckoslut",
+			"line-style": {
+				"label": "Linjestil för planer",
+				"description": "Stil som används för att rita linjer i planer.",
+				"solid": "Heldragen",
+				"dotted": "Punktad",
+				"dashed": "Streckad"
+			}
 		},
 		"button": {
 			"refresh": "Uppdatera förhandsgranskningen",

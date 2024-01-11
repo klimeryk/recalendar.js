@@ -65,7 +65,14 @@
 				"description": "カレンダーでの書いてある月間の数です。十二月間まで選べます。"
 			},
 			"first-day-of-week": "一週間の最初の日",
-			"weekend": "週末の日"
+			"weekend": "週末の日",
+			"line-style": {
+				"label": "行程の線のスタイル",
+				"description": "行程で線を描画する際に使用するスタイル。",
+				"solid": "実線",
+				"dotted": "点線",
+				"dashed": "破線"
+			}
 		},
 		"button": {
 			"refresh": "改めて作る",

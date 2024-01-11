@@ -57,7 +57,14 @@
 				"description": "Takvimin kaç ay için oluşturulması gerektiği."
 			},
 			"first-day-of-week": "Haftanın ilk günü",
-			"weekend": "Hafta sonu"
+			"weekend": "Hafta sonu",
+			"line-style": {
+				"label": "Gezi planı çizgi stili",
+				"description": "Gezi planlarında çizgileri çizerken kullanılacak stil.",
+				"solid": "Düz",
+				"dotted": "Noktalı",
+				"dashed": "Kesikli"
+			}
 		},
 		"button": {
 			"refresh": "Önizlemeyi Yenile",

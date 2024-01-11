@@ -60,7 +60,14 @@
 				"description": "Para quantos meses o calendário deve ser gerado."
 			},
 			"first-day-of-week": "Primeiro dia da semana",
-			"weekend": "Fim de semana"
+			"weekend": "Fim de semana",
+			"line-style": {
+				"label": "Estilo de linha do itinerário",
+				"description": "Estilo usado ao desenhar linhas nos itinerários.",
+				"solid": "Sólida",
+				"dotted": "Pontilhada",
+				"dashed": "Tracejada"
+			}
 		},
 		"button": {
 			"refresh": "Recarrega prévia",

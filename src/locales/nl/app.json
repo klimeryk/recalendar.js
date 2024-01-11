@@ -60,7 +60,14 @@
 				"description": "Hoeveel maanden moet de agenda bevatten?"
 			},
 			"first-day-of-week": "Begin van de week",
-			"weekend": "Weekeinde"
+			"weekend": "Weekeinde",
+			"line-style": {
+				"label": "Lijnstijl van dagplanning",
+				"description": "Stijl voor het tekenen van lijnen in dagplanningen.",
+				"solid": "Doorlopend",
+				"dotted": "Gestippeld",
+				"dashed": "Gestreept"
+			}
 		},
 		"button": {
 			"refresh": "Maak voorbeeld opnieuw aan",

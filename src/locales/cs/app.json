@@ -67,7 +67,14 @@
 				"description": "Pro kolik měsíců se vygeneruje kalendář."
 			},
 			"first-day-of-week": "První den víkendu",
-			"weekend": "Víkend"
+			"weekend": "Víkend",
+			"line-style": {
+				"label": "Styl čar v itinerářích",
+				"description": "Styl použitý pro vykreslování čar v itinerářích.",
+				"solid": "Plná",
+				"dotted": "Tečkovaná",
+				"dashed": "Čárkovaná"
+			}
 		},
 		"button": {
 			"refresh": "Načíst náhled",

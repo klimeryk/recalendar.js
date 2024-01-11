@@ -67,7 +67,14 @@
 				"description": "Für wieviele Monate soll das Kalendarium erzeugt werden?"
 			},
 			"first-day-of-week": "Die Woche beginnt am",
-			"weekend": "Wochenende"
+			"weekend": "Wochenende",
+			"line-style": {
+				"label": "Linienstil der Pläne",
+				"description": "Stil zum Zeichnen der Linien in den Plänen.",
+				"solid": "Durchgezogen",
+				"dotted": "Gepunktet",
+				"dashed": "Gestrichelt"
+			}
 		},
 		"button": {
 			"refresh": "Vorschau aktualisieren",

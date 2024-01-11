@@ -67,7 +67,14 @@
 				"description": "Broj mjeseci za bi ovaj kalendar trebao biti izrađen."
 			},
 			"first-day-of-week": "Početni dan u tjednu",
-			"weekend": "Vikend"
+			"weekend": "Vikend",
+			"line-style": {
+				"label": "Stil linija u rasporedima",
+				"description": "Stil koji se koristi za crtanje linija u dnevnim rasporedima.",
+				"solid": "Puna",
+				"dotted": "Točkasta",
+				"dashed": "Crtkana"
+			}
 		},
 		"button": {
 			"refresh": "Osvježi pregled",

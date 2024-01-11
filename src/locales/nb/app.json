@@ -39,7 +39,14 @@
 				"description": "For hvor mange måneder skal kalenderen genereres for."
 			},
 			"first-day-of-week": "Første dag i uka",
-			"weekend": "Helg"
+			"weekend": "Helg",
+			"line-style": {
+				"label": "Linjestil for avtaler",
+				"description": "Stil som brukes for å tegne linjer i avtaler.",
+				"solid": "Heltrukket",
+				"dotted": "Punktert",
+				"dashed": "Stiplet"
+			}
 		},
 		"button": {
 			"refresh": "Oppdater forhåndsvisning",

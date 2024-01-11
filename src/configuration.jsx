@@ -35,6 +35,12 @@ import '~/theme.css';
 import './app.css';
 
 const DAY_ITINERARY_ID_PREFIX = 'day-itinerary-';
+const LINE_STYLES = [ 'solid', 'dotted', 'dashed' ];
+const LINE_STYLE_PREVIEWS = {
+	solid: '───────',
+	dotted: '·············',
+	dashed: '╌ ╌ ╌ ╌ ╌',
+};
 
 class Configuration extends React.PureComponent {
 	state = {
@@ -424,6 +430,17 @@ class Configuration extends React.PureComponent {
 		) );
 	}
 
+	renderLineStyle() {
+		const { t } = this.props;
+		return LINE_STYLES.map( ( style ) => (
+			<option key={ style } value={ style }>
+				{`${ LINE_STYLE_PREVIEWS[ style ] } ${ t(
+					`configuration.general.line-style.${ style }`,
+				) }`}
+			</option>
+		) );
+	}
+
 	renderDayItinerary = ( { full: dayOfWeek }, index ) => {
 		return (
 			<ToggleAccordionItem
@@ -588,6 +605,20 @@ class Configuration extends React.PureComponent {
 							</Form.Group>
 							<Form.Label>{t( 'configuration.general.weekend' )}</Form.Label>
 							<ListGroup>{this.renderWeekendSelection()}</ListGroup>
+							<Form.Group controlId="lineStyle">
+								<Form.Label>
+									{t( 'configuration.general.line-style.label' )}
+								</Form.Label>
+								<Form.Select
+									value={ this.state.lineStyle }
+									onChange={ this.handleFieldChange }
+								>
+									{this.renderLineStyle()}
+								</Form.Select>
+								<Form.Text className="text-muted">
+									{t( 'configuration.general.line-style.description' )}
+								</Form.Text>
+							</Form.Group>
 						</Accordion.Body>
 					</Accordion.Item>
 					<SpecialDates

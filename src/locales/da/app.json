@@ -55,7 +55,14 @@
 				"description": "Hvor mange måneder skal der være i den færdige kalender."
 			},
 			"first-day-of-week": "Første dag på ugen",
-			"weekend": "Weekend"
+			"weekend": "Weekend",
+			"line-style": {
+				"label": "Linjestil for planer",
+				"description": "Stil, der bruges til at tegne linjer i planer.",
+				"solid": "Massiv",
+				"dotted": "Punkteret",
+				"dashed": "Stiplet"
+			}
 		},
 		"button": {
 			"refresh": "Opdatér forhåndsvisning",

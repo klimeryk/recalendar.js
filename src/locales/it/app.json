@@ -60,7 +60,14 @@
 				"description": "Quanti mesi volete generare nel vostro calendario?"
 			},
 			"first-day-of-week": "Primo giorno della settimana",
-			"weekend": "Fine-settimana"
+			"weekend": "Fine-settimana",
+			"line-style": {
+				"label": "Stile linea della programmazione",
+				"description": "Stile usato per disegnare le linee nelle programmazioni.",
+				"solid": "Continua",
+				"dotted": "Punteggiata",
+				"dashed": "Tratteggiata"
+			}
 		},
 		"button": {
 			"refresh": "Aggiornare l'anteprima",

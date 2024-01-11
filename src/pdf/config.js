@@ -31,6 +31,7 @@ const CONFIG_FIELDS = [
 	'isWeekRetrospectiveEnabled',
 	'weekRetrospectiveItinerary',
 	'specialDates',
+	'lineStyle',
 ];
 
 export const CONFIG_FILE = 'config.json';
@@ -143,6 +144,7 @@ class PdfConfig {
 				type: EVENT_DAY_TYPE,
 			},
 		];
+		this.lineStyle = 'solid';
 
 		if ( Object.keys( configOverrides ).length !== 0 ) {
 			Object.assign( this, configOverrides );

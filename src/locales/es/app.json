@@ -47,7 +47,14 @@
 				"description": "¿Cuántos meses quiere generar en su calendario?"
 			},
 			"first-day-of-week": "Primer día de la semana",
-			"weekend": "Weekend"
+			"weekend": "Weekend",
+			"line-style": {
+				"label": "Estilo de línea de la planificación",
+				"description": "Estilo usado para dibujar las líneas en las planificaciones.",
+				"solid": "Sólida",
+				"dotted": "Punteada",
+				"dashed": "Discontinua"
+			}
 		},
 		"button": {
 			"refresh": "Actualizar avance",
