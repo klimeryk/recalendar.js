@@ -29,6 +29,7 @@ class DayPage extends React.Component {
 		<Page key={ index } size={ this.props.config.pageSize } dpi={ this.props.config.dpi }>
 			<View style={ this.styles.page }>
 				<Itinerary
+					date={ this.props.date }
 					items={ items }
 					lineStyle={ this.props.config.lineStyle }
 					lineHeightPixels={ this.props.config.lineHeightPixels }
@@ -66,6 +67,7 @@ class DayPage extends React.Component {
 						/>
 						<View style={ this.styles.content }>
 							<Itinerary
+								date={ date }
 								items={ itemsByPage[ 0 ] }
 								lineStyle={ config.lineStyle }
 								lineHeightPixels={ config.lineHeightPixels }

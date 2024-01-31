@@ -53,6 +53,7 @@ class WeekRetrospectivePage extends React.Component {
 						/>
 						<View style={ this.styles.content }>
 							<Itinerary
+								date={ date }
 								items={ itemsByPage[ 0 ] }
 								lineStyle={ config.lineStyle }
 								lineHeightPixels={ config.lineHeightPixels }
@@ -65,6 +66,7 @@ class WeekRetrospectivePage extends React.Component {
 						<Page key={ index } size={ config.pageSize } dpi={ config.dpi }>
 							<View style={ this.styles.page }>
 								<Itinerary
+									date={ date }
 									items={ items }
 									lineStyle={ config.lineStyle }
 									lineHeightPixels={ config.lineHeightPixels }

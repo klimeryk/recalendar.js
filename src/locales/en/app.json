@@ -103,6 +103,11 @@
 		},
 		"itinerary": {
 			"empty": "Empty itinerary",
+			"dateTemplate": {
+				"label": "Date formatting help",
+				"title": "Date templates",
+				"description": "Include formatted dates using <0/> or <1/>. See <2>available formats</2>."
+			},
 			"placeholder": {
 				"lines": "Number of lines",
 				"page": "New page break",

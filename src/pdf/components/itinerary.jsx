@@ -1,4 +1,5 @@
 import { StyleSheet, Text, View } from '@react-pdf/renderer';
+import dayjs from 'dayjs/esm';
 import PropTypes from 'prop-types';
 import React from 'react';
 
@@ -8,6 +9,16 @@ import PrefixIcon from '~/pdf/components/prefix-icon';
 import { DEFAULT_LINE_HEIGHT_PIXELS } from '~/pdf/config';
 
 const PREFIX_COLOR = '#333';
+
+// See: https://regex101.com/r/FZ5T35/1
+const DATE_TEMPLATE_REGEX = /{{date(?::([^}]*?))?}}/g;
+const DEFAULT_DATE_FORMAT = 'L';
+
+function applyDateTemplates( text, date ) {
+	return text.replaceAll( DATE_TEMPLATE_REGEX, ( match, format ) =>
+		date.format( format || DEFAULT_DATE_FORMAT ),
+	);
+}
 
 class Itinerary extends React.PureComponent {
 	scale = this.props.lineHeightPixels / DEFAULT_LINE_HEIGHT_PIXELS;
@@ -55,7 +66,9 @@ class Itinerary extends React.PureComponent {
 					color={ PREFIX_COLOR }
 					style={ this.styles.prefix }
 				/>
-				<Text style={ this.styles.text }>{text}</Text>
+				<Text style={ this.styles.text }>
+					{applyDateTemplates( text, this.props.date )}
+				</Text>
 			</View>
 		);
 	}
@@ -75,6 +88,7 @@ class Itinerary extends React.PureComponent {
 }
 
 Itinerary.propTypes = {
+	date: PropTypes.instanceOf( dayjs ).isRequired,
 	items: PropTypes.array.isRequired,
 	lineHeightPixels: PropTypes.number.isRequired,
 	lineStyle: PropTypes.string.isRequired,
