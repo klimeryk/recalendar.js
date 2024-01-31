@@ -11,6 +11,7 @@ import Header from 'pdf/components/header';
 import Itinerary from 'pdf/components/itinerary';
 import MiniCalendar from 'pdf/components/mini-calendar';
 import PdfConfig from 'pdf/config';
+import { DateContext } from 'pdf/lib/DateContext';
 import {
 	dayPageLink,
 	nextDayPageLink,
@@ -46,7 +47,7 @@ class DayPage extends React.Component {
 			findByDate( specialDateKey ),
 		);
 		return (
-			<>
+			<DateContext.Provider value={ date }>
 				<Page id={ dayPageLink( date, config ) } size={ config.pageSize }>
 					<View style={ this.styles.page }>
 						<Header
@@ -66,7 +67,7 @@ class DayPage extends React.Component {
 					</View>
 				</Page>
 				{itemsByPage.slice( 1 ).map( this.renderExtraItems )}
-			</>
+			</DateContext.Provider>
 		);
 	}
 }

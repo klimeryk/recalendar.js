@@ -3,6 +3,11 @@ import PropTypes from 'prop-types';
 import React from 'react';
 
 import { ITINERARY_ITEM, ITINERARY_LINES } from 'configuration-form/itinerary';
+import { DateContext } from 'pdf/lib/DateContext';
+
+// See: https://regex101.com/r/FZ5T35/1
+const DATE_TEMPLATE_REGEX = /{{date(?::([^}]*?))?}}/g;
+const DEFAULT_DATE_FORMAT = 'YYYY-MM-DD';
 
 class Itinerary extends React.PureComponent {
 	styles = StyleSheet.create( {
@@ -28,6 +33,19 @@ class Itinerary extends React.PureComponent {
 	};
 
 	renderItem( text, index ) {
+		const dateTemplateMatches = text.match( DATE_TEMPLATE_REGEX );
+		if ( dateTemplateMatches && dateTemplateMatches.length > 0 ) {
+			return (
+				<DateContext.Consumer>{date => (
+					<Text key={ index } style={ this.styles.line }>
+						{text.replaceAll( DATE_TEMPLATE_REGEX, ( match, format ) => {
+							return date.format( format || DEFAULT_DATE_FORMAT );
+						} )}
+					</Text>
+				)}</DateContext.Consumer>
+			);
+		}
+
 		return (
 			<Text key={ index } style={ this.styles.line }>
 				{text}
