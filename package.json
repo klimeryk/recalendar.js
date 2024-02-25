@@ -35,7 +35,7 @@
 	},
 	"scripts": {
 		"start": "react-app-rewired start",
-		"build": "react-app-rewired build",
+		"build": "react-app-rewired build && mv build/index.html build/create.html && cp html/* build/",
 		"test": "react-app-rewired test",
 		"eject": "react-scripts eject"
 	},
