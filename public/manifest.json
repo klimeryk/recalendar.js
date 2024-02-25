@@ -1,6 +1,6 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "ReCalendar",
+  "name": "ReCalendar - create your personalized calendar PDF for ReMarkable tablets",
   "icons": [
     {
       "src": "favicon.ico",
