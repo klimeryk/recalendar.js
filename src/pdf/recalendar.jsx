@@ -9,6 +9,7 @@ import LastPage from 'pdf/pages/last';
 import MonthOverviewPage from 'pdf/pages/month-overview';
 import WeekOverviewPage from 'pdf/pages/week-overview';
 import WeekRetrospectivePage from 'pdf/pages/week-retrospective';
+import YearNotesPage from 'pdf/pages/year-notes';
 import YearOverviewPage from 'pdf/pages/year-overview';
 
 class RecalendarPdf extends React.Component {
@@ -70,6 +71,11 @@ class RecalendarPdf extends React.Component {
 				key={ 'year-overview-' + year }
 				startDate={ currentDate }
 				endDate={ endDate }
+				config={ this.props.config }
+			/>,
+			<YearNotesPage
+				key={ 'year-notes-' + year }
+				startDate={ currentDate }
 				config={ this.props.config }
 			/>,
 		);
