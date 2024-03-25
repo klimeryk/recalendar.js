@@ -7,9 +7,7 @@
 	],
 	"plugins": ["react"],
 	"rules": {
-		"indent": ["error", "tab"],
 		"linebreak-style": ["error", "unix"],
-		"quotes": ["error", "single"],
 		"semi": ["error", "always"],
 		"array-bracket-spacing": ["error", "always"],
 		"brace-style": ["error", "1tbs"],
@@ -78,7 +76,6 @@
 		"prefer-const": "error",
 		"quote-props": ["error", "as-needed"],
 		"quotes": ["error", "single", "avoid-escape"],
-		"semi": "error",
 		"semi-spacing": "error",
 		"space-before-blocks": ["error", "always"],
 		"space-before-function-paren": [
