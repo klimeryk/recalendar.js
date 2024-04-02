@@ -35,4 +35,4 @@ See the [FAQ](https://recalendar.me/faq) and [the open issues on GitHub](https:/
 
 ## License
 
-[GPL-3.0 License](https://github.com/klimeryk/recalendar.js/blob/main/LICENSE). In particular, this means that you can do what you want with this code, but *you have to publish your changes with the same license*. Please consider submitting a PR, if you have an idea for a great improvement! 🙏 My main motivation was to scratch my own itch, but as a result I might have missed your use case so I'm happy to hear how this project can be improved 🙇
+[GNU AGPLv3 License](https://github.com/klimeryk/recalendar.js/blob/main/LICENSE). In particular, this means that you can do what you want with this code, but *you have to publish your changes with the same license*. Please consider submitting a PR, if you have an idea for a great improvement! 🙏 My main motivation was to scratch my own itch, but as a result I might have missed your use case so I'm happy to hear how this project can be improved 🙇
