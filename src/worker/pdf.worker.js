@@ -61,7 +61,7 @@ self.onmessage = ( { data } ) => {
 	Font.register( getFontDefinition( config.fontFamily ) );
 	Font.registerEmojiSource( {
 		format: 'png',
-		url: 'https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/72x72/',
+		url: 'https://cdn.jsdelivr.net/gh/jdecked/twemoji@latest/assets/72x72/',
 	} );
 
 	const document = React.createElement(
