@@ -88,6 +88,7 @@
 		},
 		"itinerary": {
 			"empty": "Empty itinerary",
+			"dateTemplate": "Include formatted dates using <1>{{date}}</1> or <3>{{date:YYYY-MM-DD}}</3>. See <5>available formats</5>.",
 			"placeholder": {
 				"lines": "Number of lines",
 				"page": "New page break",

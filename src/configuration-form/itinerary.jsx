@@ -17,13 +17,15 @@ import Alert from 'react-bootstrap/Alert';
 import Button from 'react-bootstrap/Button';
 import ButtonGroup from 'react-bootstrap/ButtonGroup';
 import Stack from 'react-bootstrap/Stack';
-import { useTranslation } from 'react-i18next';
+import { Trans, useTranslation } from 'react-i18next';
 
 import SortableItineraryRow from './sortable-itinerary-row';
 
 export const ITINERARY_ITEM = 'item';
 export const ITINERARY_LINES = 'lines';
 export const ITINERARY_NEW_PAGE = 'new_page';
+
+const DATE_FORMATS_URL = 'https://day.js.org/docs/en/display/format#list-of-all-available-formats';
 
 function Itinerary( props ) {
 	const { t } = useTranslation( 'app' );
@@ -60,6 +62,13 @@ function Itinerary( props ) {
 	);
 	return (
 		<>
+			<p><small className="text-muted">
+				<Trans i18nKey="configuration.itinerary.dateTemplate">
+					Include formatted dates using <code>{ '{{date}}' }</code>
+					or <code>{ '{{date:YYYY-MM-DD}}' }</code>.
+					See <a href={ DATE_FORMATS_URL }>available formats</a>.
+				</Trans>
+			</small></p>
 			<Stack gap={ 2 }>
 				<DndContext
 					sensors={ sensors }
