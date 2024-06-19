@@ -16,17 +16,17 @@ import Spinner from 'react-bootstrap/Spinner';
 import Stack from 'react-bootstrap/Stack';
 import { withTranslation } from 'react-i18next';
 
-import PdfPreviewCard from 'components/pdf-preview-card';
-import PdfProgress from 'components/pdf-progress';
-import ConfigurationSelector from 'configuration-form/configuration-selector';
-import ItemsList from 'configuration-form/items-list';
-import Itinerary from 'configuration-form/itinerary';
-import SpecialDates from 'configuration-form/special-dates';
-import ToggleAccordionItem from 'configuration-form/toggle-accordion-item';
-import { getWeekdays } from 'lib/date';
-import { byId, wrapWithId } from 'lib/id-utils';
-import PdfConfig, { hydrateFromObject } from 'pdf/config';
-import { AVAILABLE_FONTS } from 'pdf/lib/fonts';
+import PdfPreviewCard from '@/components/pdf-preview-card';
+import PdfProgress from '@/components/pdf-progress';
+import ConfigurationSelector from '@/configuration-form/configuration-selector';
+import ItemsList from '@/configuration-form/items-list';
+import Itinerary from '@/configuration-form/itinerary';
+import SpecialDates from '@/configuration-form/special-dates';
+import ToggleAccordionItem from '@/configuration-form/toggle-accordion-item';
+import { getWeekdays } from '@/lib/date';
+import { byId, wrapWithId } from '@/lib/id-utils';
+import PdfConfig, { hydrateFromObject } from '@/pdf/config';
+import { AVAILABLE_FONTS } from '@/pdf/lib/fonts';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './app.css';

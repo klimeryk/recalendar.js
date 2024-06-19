@@ -1,4 +1,4 @@
-import { ITINERARY_NEW_PAGE } from 'configuration-form/itinerary';
+import { ITINERARY_NEW_PAGE } from '@/configuration-form/itinerary';
 
 export function splitItemsByPages( items ) {
 	const pages = [ [] ];

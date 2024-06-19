@@ -15,22 +15,22 @@ export function i18nConfiguration( namespaces ) {
 	};
 }
 
-export const webpackBackend = {
-	type: 'backend',
-	read: ( language, namespace, callback ) => {
-		const languageToLoad =
-			getFullySupportedLocales().includes( language )
-				? language
-				: 'en';
-		import( '../locales/' + languageToLoad + '/' + namespace + '.json' )
-			.then( ( resources ) => {
-				callback( null, resources );
-			} )
-			.catch( ( error ) => {
-				callback( error, null );
-			} );
-	},
-};
+// export const webpackBackend = {
+// 	type: 'backend',
+// 	read: ( language, namespace, callback ) => {
+// 		const languageToLoad =
+// 			getFullySupportedLocales().includes( language )
+// 				? language
+// 				: 'en';
+// 		import( '../locales/' + languageToLoad + '/' + namespace + '.json' )
+// 			.then( ( resources ) => {
+// 				callback( null, resources );
+// 			} )
+// 			.catch( ( error ) => {
+// 				callback( error, null );
+// 			} );
+// 	},
+// };
 
 export function getFullySupportedLocales() {
 	const locales = require
@@ -54,7 +54,7 @@ export function getPartiallySupportedLocales() {
 }
 
 export function handleLanguageChange( newLanguage, firstDayOfWeek = 1 ) {
-	require( `dayjs/locale/${newLanguage}.js` );
+	require( 'dayjs/locale/' + newLanguage + '.js' );
 	dayjs.locale( newLanguage );
 	dayjs.updateLocale( newLanguage, {
 		weekStart: firstDayOfWeek,
