@@ -33,10 +33,8 @@ export function i18nConfiguration( namespaces ) {
 // };
 
 export function getFullySupportedLocales() {
-	const locales = require
-		.context( '../locales', true, /app\.json$/ )
-		.keys()
-		.map( ( file ) => file.match( /\/(.+)\/app\.json$/ )[ 1 ] );
+	const locales = Object.keys( import.meta.glob( '../locales/**/app.json', { eager: true } ) )
+		.map( ( file ) => file.match( /locales\/(.+)\/app\.json$/ )[ 1 ] );
 
 	const uniqueLocales = [ ...new Set( locales ) ];
 
@@ -54,7 +52,7 @@ export function getPartiallySupportedLocales() {
 }
 
 export function handleLanguageChange( newLanguage, firstDayOfWeek = 1 ) {
-	require( 'dayjs/locale/' + newLanguage + '.js' );
+	require( 'dayjs/esm/locale/' + newLanguage + '.js' );
 	dayjs.locale( newLanguage );
 	dayjs.updateLocale( newLanguage, {
 		weekStart: firstDayOfWeek,
