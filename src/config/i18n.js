@@ -3,7 +3,7 @@ import dayjsLocales from 'dayjs/locale.json';
 
 export function i18nConfiguration( namespaces ) {
 	return {
-		debug: process.env.NODE_ENV === 'development',
+		debug: import.meta.env.DEV,
 		fallbackLng: 'en',
 		load: 'currentOnly',
 		supportedLngs: dayjsLocales.map( ( ( { key } ) => key ) ),
@@ -14,23 +14,6 @@ export function i18nConfiguration( namespaces ) {
 		},
 	};
 }
-
-// export const webpackBackend = {
-// 	type: 'backend',
-// 	read: ( language, namespace, callback ) => {
-// 		const languageToLoad =
-// 			getFullySupportedLocales().includes( language )
-// 				? language
-// 				: 'en';
-// 		import( '../locales/' + languageToLoad + '/' + namespace + '.json' )
-// 			.then( ( resources ) => {
-// 				callback( null, resources );
-// 			} )
-// 			.catch( ( error ) => {
-// 				callback( error, null );
-// 			} );
-// 	},
-// };
 
 export function getFullySupportedLocales() {
 	const locales = Object.keys( import.meta.glob( '../locales/**/app.json', { eager: true } ) )

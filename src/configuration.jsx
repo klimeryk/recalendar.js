@@ -48,7 +48,7 @@ class Configuration extends React.PureComponent {
 
 		this.pdfWorker = new Worker(
 			new URL( './worker/pdf.worker.js', import.meta.url ),
-			{ type: 'module' }
+			{ type: 'module' },
 		);
 		this.pdfWorker.onmessage = this.handlePdfWorkerMessage;
 	}

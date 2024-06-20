@@ -6,11 +6,19 @@ module.exports = {
     'plugin:@typescript-eslint/recommended',
     'plugin:react-hooks/recommended',
     'plugin:react/recommended',
+    'plugin:import/recommended',
     'prettier',
   ],
   ignorePatterns: ['dist', '.eslintrc.cjs'],
   parser: '@typescript-eslint/parser',
   plugins: ['react-refresh', 'react'],
+  settings: {
+    'import/resolver': {
+      typescript: {
+        project: __dirname,
+      },
+    },
+  },
   rules: {
     'react-refresh/only-export-components': [
       'warn',
