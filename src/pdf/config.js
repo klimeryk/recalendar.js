@@ -1,11 +1,11 @@
 import dayjs from 'dayjs';
 import { t } from 'i18next';
 
-import { ITINERARY_ITEM, ITINERARY_LINES } from '@/configuration-form/itinerary';
+import { ITINERARY_ITEM, ITINERARY_LINES } from '@/lib/itinerary-utils';
 import {
 	HOLIDAY_DAY_TYPE,
 	EVENT_DAY_TYPE,
-} from '@/configuration-form/special-dates';
+} from '@/lib/special-dates-utils';
 import { wrapWithId } from '@/lib/id-utils';
 import { LATO } from '@/pdf/lib/fonts';
 

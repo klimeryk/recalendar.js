@@ -6,7 +6,7 @@ import React from 'react';
 import {
 	findByDate,
 	DATE_FORMAT as SPECIAL_DATES_DATE_FORMAT,
-} from '@/configuration-form/special-dates';
+} from '@/lib/special-dates-utils';
 import Header from '@/pdf/components/header';
 import Itinerary from '@/pdf/components/itinerary';
 import MiniCalendar from '@/pdf/components/mini-calendar';

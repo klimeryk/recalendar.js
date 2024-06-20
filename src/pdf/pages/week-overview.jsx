@@ -8,7 +8,7 @@ import {
 	DATE_FORMAT as SPECIAL_DATES_DATE_FORMAT,
 	findByDate,
 	HOLIDAY_DAY_TYPE,
-} from '@/configuration-form/special-dates';
+} from '@/lib/special-dates-utils';
 import { getWeekNumber } from '@/lib/date';
 import Header from '@/pdf/components/header';
 import MiniCalendar, { HIGHLIGHT_WEEK } from '@/pdf/components/mini-calendar';

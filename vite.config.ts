@@ -11,5 +11,8 @@ export default defineConfig({
     alias: {
       '@': path.resolve(__dirname, 'src')
     }
-  }
+  },
+  worker: {
+    plugins: () => [commonjs(), i18nextLoader({ paths: ['./src/locales'], namespaceResolution: 'basename' }), react()],
+  },
 })

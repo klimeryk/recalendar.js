@@ -13,7 +13,7 @@ import {
 	ITINERARY_ITEM,
 	ITINERARY_LINES,
 	ITINERARY_NEW_PAGE,
-} from '@/configuration-form/itinerary';
+} from '@/lib/itinerary-utils';
 import { getJsonAttachment } from '@/lib/attachments';
 import { convertConfigToCurrentVersion } from '@/lib/config-compat';
 import PdfConfig, { CONFIG_FILE } from '@/pdf/config';

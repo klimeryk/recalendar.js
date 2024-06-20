@@ -9,7 +9,7 @@ import {
 	isHoliday,
 	isEvent,
 	DATE_FORMAT as SPECIAL_DATES_DATE_FORMAT,
-} from '@/configuration-form/special-dates';
+} from '@/lib/special-dates-utils';
 import { getWeekdays, getWeekendDays, getWeekNumber } from '@/lib/date';
 import PdfConfig from '@/pdf/config';
 import {

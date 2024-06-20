@@ -3,7 +3,7 @@ import dayjs from 'dayjs';
 import {
 	DATE_FORMAT as SPECIAL_DATES_DATE_FORMAT,
 	EVENT_DAY_TYPE,
-} from '@/configuration-form/special-dates';
+} from '@/lib/special-dates-utils';
 import {
 	CONFIG_VERSION_1,
 	CONFIG_VERSION_2,
