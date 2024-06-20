@@ -6,11 +6,11 @@ import { createRoot } from 'react-dom/client';
 import { initReactI18next } from 'react-i18next';
 import resources from 'virtual:i18next-loader'
 
-import '@/index.css';
+import '~/index.css';
 
-import '@/config/dayjs';
-import { handleLanguageChange, i18nConfiguration } from '@/config/i18n';
-import Loader from '@/loader';
+import '~/config/dayjs';
+import { handleLanguageChange, i18nConfiguration } from '~/config/i18n';
+import Loader from '~/loader';
 
 // eslint-disable-next-line import/no-named-as-default-member
 i18n

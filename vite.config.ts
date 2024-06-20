@@ -9,7 +9,7 @@ export default defineConfig({
   plugins: [commonjs(), i18nextLoader({ paths: ['./src/locales'], namespaceResolution: 'basename' }), react()],
   resolve: {
     alias: {
-      '@': path.resolve(__dirname, 'src')
+      '~': path.resolve(__dirname, 'src')
     }
   },
   worker: {

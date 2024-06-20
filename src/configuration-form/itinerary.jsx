@@ -20,7 +20,7 @@ import Stack from 'react-bootstrap/Stack';
 import { useTranslation } from 'react-i18next';
 
 import SortableItineraryRow from './sortable-itinerary-row';
-import { ITINERARY_ITEM, ITINERARY_LINES, ITINERARY_NEW_PAGE } from '@/lib/itinerary-utils';
+import { ITINERARY_ITEM, ITINERARY_LINES, ITINERARY_NEW_PAGE } from '~/lib/itinerary-utils';
 
 function Itinerary( props ) {
 	const { t } = useTranslation( 'app' );

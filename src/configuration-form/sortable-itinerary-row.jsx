@@ -12,7 +12,7 @@ import {
 	ITINERARY_ITEM,
 	ITINERARY_LINES,
 	ITINERARY_NEW_PAGE,
-} from '@/lib/itinerary-utils';
+} from '~/lib/itinerary-utils';
 
 function SortableItineraryRow( props ) {
 	const { t } = useTranslation( 'app' );

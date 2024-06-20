@@ -13,7 +13,7 @@ import ListGroup from 'react-bootstrap/ListGroup';
 import Stack from 'react-bootstrap/Stack';
 import { withTranslation } from 'react-i18next';
 
-import { DATE_FORMAT, HOLIDAY_DAY_TYPE, EVENT_DAY_TYPE } from '@/lib/special-dates-utils';
+import { DATE_FORMAT, HOLIDAY_DAY_TYPE, EVENT_DAY_TYPE } from '~/lib/special-dates-utils';
 
 const STATUS_EMPTY = 'EMPTY';
 const STATUS_LOADING = 'LOADING';

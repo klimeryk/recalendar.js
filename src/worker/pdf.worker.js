@@ -10,17 +10,17 @@ import {
 	handleLanguageChange,
 	i18nConfiguration,
 	// webpackBackend,
-} from '@/config/i18n';
-import { utf8ToBase64 } from '@/lib/base64';
-import { Font, pdf } from '@/lib/pdf';
+} from '~/config/i18n';
+import { utf8ToBase64 } from '~/lib/base64';
+import { Font, pdf } from '~/lib/pdf';
 import PdfConfig, {
 	hydrateFromObject,
 	CONFIG_CURRENT_VERSION,
 	CONFIG_FILE,
-} from '@/pdf/config';
-import { getFontDefinition } from '@/pdf/lib/fonts';
-import RecalendarPdf from '@/pdf/recalendar';
-import '@/config/dayjs';
+} from '~/pdf/config';
+import { getFontDefinition } from '~/pdf/lib/fonts';
+import RecalendarPdf from '~/pdf/recalendar';
+import '~/config/dayjs';
 
 // eslint-disable-next-line import/no-named-as-default-member
 i18n
