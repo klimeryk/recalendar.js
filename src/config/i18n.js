@@ -35,7 +35,9 @@ export function getPartiallySupportedLocales() {
 }
 
 export function handleLanguageChange( newLanguage, firstDayOfWeek = 1 ) {
-	require( 'dayjs/esm/locale/' + newLanguage + '.js' );
+	// Silence the warning until https://github.com/vitejs/vite/issues/14102 is fixed
+	// Until then, we copy these files to /dist during build
+	import( /* @vite-ignore */ '../../node_modules/dayjs/esm/locale/' + newLanguage + '.js' );
 	dayjs.locale( newLanguage );
 	dayjs.updateLocale( newLanguage, {
 		weekStart: firstDayOfWeek,
