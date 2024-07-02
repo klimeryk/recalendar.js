@@ -4,7 +4,6 @@ import react from '@vitejs/plugin-react';
 import { defineConfig } from 'vite';
 import i18nextLoader from 'vite-plugin-i18next-loader';
 
-// https://vitejs.dev/config/
 export default defineConfig( {
 	build: {
 		rollupOptions: {
@@ -28,8 +27,5 @@ export default defineConfig( {
 			i18nextLoader( { paths: [ './src/locales' ], namespaceResolution: 'basename' } ),
 			react(),
 		],
-	},
-	server: {
-		open: '/create.html',
 	},
 } );
