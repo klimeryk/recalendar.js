@@ -1,12 +1,12 @@
-import dayjs from 'dayjs';
-import advancedFormat from 'dayjs/plugin/advancedFormat';
-import customParseFormat from 'dayjs/plugin/customParseFormat';
-import isoWeek from 'dayjs/plugin/isoWeek';
-import localeData from 'dayjs/plugin/localeData';
-import objectSupport from 'dayjs/plugin/objectSupport';
-import updateLocale from 'dayjs/plugin/updateLocale';
-import utc from 'dayjs/plugin/utc';
-import weekday from 'dayjs/plugin/weekday';
+import dayjs from 'dayjs/esm';
+import advancedFormat from 'dayjs/esm/plugin/advancedFormat';
+import customParseFormat from 'dayjs/esm/plugin/customParseFormat';
+import isoWeek from 'dayjs/esm/plugin/isoWeek';
+import localeData from 'dayjs/esm/plugin/localeData';
+import objectSupport from 'dayjs/esm/plugin/objectSupport';
+import updateLocale from 'dayjs/esm/plugin/updateLocale';
+import utc from 'dayjs/esm/plugin/utc';
+import weekday from 'dayjs/esm/plugin/weekday';
 
 dayjs.extend( advancedFormat );
 dayjs.extend( customParseFormat );

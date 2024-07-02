@@ -1,4 +1,4 @@
-import dayjs from 'dayjs';
+import dayjs from 'dayjs/esm';
 import dayjsLocales from 'dayjs/locale.json';
 
 export function i18nConfiguration( namespaces ) {
@@ -34,10 +34,12 @@ export function getPartiallySupportedLocales() {
 		.sort( ( languageA, languageB ) => languageA.name.localeCompare( languageB.name ) );
 }
 
+const DAYJS_LOCALES = import.meta.glob( '../../node_modules/dayjs/esm/locale/*.js', { eager: true } );
+
 export function handleLanguageChange( newLanguage, firstDayOfWeek = 1 ) {
-	// Silence the warning until https://github.com/vitejs/vite/issues/14102 is fixed
-	// Until then, we copy these files to /dist during build
-	import( /* @vite-ignore */ '../../dayjs-locale/' + newLanguage + '.js' );
+	// Hacky workaround until https://github.com/vitejs/vite/issues/14102 is fixed
+	const localeData = DAYJS_LOCALES[ `../../node_modules/dayjs/esm/locale/${newLanguage}.js` ];
+	dayjs.locale( newLanguage, localeData.default, false );
 	dayjs.locale( newLanguage );
 	dayjs.updateLocale( newLanguage, {
 		weekStart: firstDayOfWeek,

@@ -1,12 +1,12 @@
-import dayjs from 'dayjs';
+import dayjs from 'dayjs/esm';
 import { t } from 'i18next';
 
+import { wrapWithId } from '~/lib/id-utils';
 import { ITINERARY_ITEM, ITINERARY_LINES } from '~/lib/itinerary-utils';
 import {
 	HOLIDAY_DAY_TYPE,
 	EVENT_DAY_TYPE,
 } from '~/lib/special-dates-utils';
-import { wrapWithId } from '~/lib/id-utils';
 import { LATO } from '~/pdf/lib/fonts';
 
 const CONFIG_FIELDS = [

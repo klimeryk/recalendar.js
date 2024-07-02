@@ -23,6 +23,7 @@ export default defineConfig( {
 		},
 	},
 	worker: {
+		format: 'es',
 		plugins: () => [
 			i18nextLoader( { paths: [ './src/locales' ], namespaceResolution: 'basename' } ),
 			react(),

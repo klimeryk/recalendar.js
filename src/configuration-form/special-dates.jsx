@@ -1,4 +1,4 @@
-import dayjs from 'dayjs';
+import dayjs from 'dayjs/esm';
 import ICAL from 'ical.js';
 import PropTypes from 'prop-types';
 import React from 'react';

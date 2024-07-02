@@ -1,5 +1,5 @@
 import { Page, View, StyleSheet } from '@react-pdf/renderer';
-import dayjs from 'dayjs';
+import dayjs from 'dayjs/esm';
 import PropTypes from 'prop-types';
 import React from 'react';
 

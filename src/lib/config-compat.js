@@ -1,4 +1,4 @@
-import dayjs from 'dayjs';
+import dayjs from 'dayjs/esm';
 
 import {
 	DATE_FORMAT as SPECIAL_DATES_DATE_FORMAT,
