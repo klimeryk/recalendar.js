@@ -1,4 +1,4 @@
-import dayjs from 'dayjs';
+import dayjs from 'dayjs/esm';
 
 export function getWeekdays() {
 	const weekdaysFull = dayjs.weekdays();

@@ -1,5 +1,5 @@
 import { arrayMove } from '@dnd-kit/sortable';
-import dayjs from 'dayjs';
+import dayjs from 'dayjs/esm';
 import { saveAs } from 'file-saver';
 import i18n, { changeLanguage } from 'i18next';
 import PropTypes from 'prop-types';

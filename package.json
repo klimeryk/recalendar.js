@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "tsc && vite build && cp -r node_modules/dayjs/esm/locale dist/dayjs-locale",
+    "build": "tsc && vite build",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview"
   },
@@ -45,7 +45,6 @@
     "prettier": "^3.3.2",
     "typescript": "^5.2.2",
     "vite": "^5.2.0",
-    "vite-plugin-dynamic-import": "^1.5.0",
     "vite-plugin-i18next-loader": "^2.0.12"
   }
 }
