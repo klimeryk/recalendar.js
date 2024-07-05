@@ -1,9 +1,9 @@
 import React from 'react';
 import { withTranslation } from 'react-i18next';
 
-import Configuration from 'configuration';
-import Navigation from 'navigation';
-import PdfConfig from 'pdf/config';
+import Configuration from '~/configuration';
+import Navigation from '~/navigation';
+import PdfConfig from '~/pdf/config';
 
 class Loader extends React.Component {
 	componentDidMount() {

@@ -1,0 +1,145 @@
+module.exports = {
+  root: true,
+  env: { browser: true, es2020: true },
+  extends: [
+    'eslint:recommended',
+    'plugin:@typescript-eslint/recommended',
+    'plugin:react-hooks/recommended',
+    'plugin:react/recommended',
+    'plugin:import/recommended',
+    'prettier',
+  ],
+  ignorePatterns: ['dist', '.eslintrc.cjs'],
+  parser: '@typescript-eslint/parser',
+  plugins: ['react-refresh', 'react'],
+  settings: {
+    'import/resolver': {
+      typescript: {
+        project: __dirname,
+      },
+    },
+  },
+  rules: {
+    'react-refresh/only-export-components': [
+      'warn',
+      { allowConstantExport: true },
+    ],
+    'linebreak-style': ['error', 'unix'],
+    'semi': ['error', 'always'],
+    'array-bracket-spacing': ['error', 'always'],
+    'brace-style': ['error', '1tbs'],
+    'camelcase': 'error',
+    'comma-dangle': ['error', 'always-multiline'],
+    'comma-spacing': 'error',
+    'comma-style': 'error',
+    'computed-property-spacing': ['error', 'always'],
+    'constructor-super': 'error',
+    'consistent-return': 'off',
+    'curly': 'error',
+    'dot-notation': 'error',
+    'eqeqeq': ['error', 'allow-null'],
+    'eol-last': 'error',
+    'func-call-spacing': 'error',
+    'indent': ['error', 'tab', { 'SwitchCase': 1 }],
+    'jsx-quotes': ['error', 'prefer-double'],
+    'key-spacing': 'error',
+    'keyword-spacing': 'error',
+    'max-len': ['error', { 'code': 105 }],
+    'new-cap': ['error', { 'capIsNew': false, 'newIsCap': true }],
+    'no-cond-assign': 'error',
+    'no-const-assign': 'error',
+    'no-console': 'warn',
+    'no-debugger': 'error',
+    'no-dupe-args': 'error',
+    'no-dupe-keys': 'error',
+    'no-duplicate-case': 'error',
+    'no-duplicate-imports': 'error',
+    'no-else-return': 'error',
+    'no-empty': ['error', { 'allowEmptyCatch': true }],
+    'no-extra-semi': 'error',
+    'no-fallthrough': 'off',
+    'no-lonely-if': 'error',
+    'no-mixed-requires': 'off',
+    'no-mixed-spaces-and-tabs': 'error',
+    'no-multiple-empty-lines': ['error', { 'max': 1 }],
+    'no-multi-spaces': 'error',
+    'no-negated-in-lhs': 'error',
+    'no-nested-ternary': 'error',
+    'no-new': 'error',
+    'no-process-exit': 'error',
+    'no-prototype-builtins': 'off',
+    'no-redeclare': 'error',
+    'no-shadow': 'error',
+    'no-spaced-func': 'error',
+    'no-trailing-spaces': 'error',
+    'no-undef': 'error',
+    'no-underscore-dangle': 'off',
+    'no-unreachable': 'error',
+    'no-unused-vars': 'error',
+    'no-var': 'error',
+    'object-curly-spacing': ['error', 'always'],
+    'one-var': 'off',
+    'operator-linebreak': [
+      'error',
+      'after',
+      {
+        'overrides': {
+          '?': 'before',
+          ':': 'before'
+        }
+      }
+    ],
+    'padded-blocks': ['error', 'never'],
+    'prefer-const': 'error',
+    'quote-props': ['error', 'as-needed'],
+    'quotes': ['error', 'single', 'avoid-escape'],
+    'semi-spacing': 'error',
+    'space-before-blocks': ['error', 'always'],
+    'space-before-function-paren': [
+      'error',
+      {
+        'anonymous': 'never',
+        'asyncArrow': 'always',
+        'named': 'never'
+      }
+    ],
+    'space-in-parens': ['error', 'always'],
+    'space-infix-ops': ['error', { 'int32Hint': false }],
+    'space-unary-ops': [
+      'error',
+      {
+        'overrides': {
+          '!': true
+        }
+      }
+    ],
+    'react/jsx-curly-spacing': [2, 'always'],
+    'react/jsx-no-duplicate-props': 2,
+    'react/jsx-no-target-blank': 2,
+    'react/jsx-no-undef': 2,
+    'react/jsx-tag-spacing': 2,
+    'react/jsx-uses-react': 2,
+    'react/jsx-uses-vars': 2,
+    'react/no-danger': 2,
+    'react/no-deprecated': 2,
+    'react/no-did-mount-set-state': 2,
+    'react/no-did-update-set-state': 2,
+    'react/no-is-mounted': 2,
+    'react/no-string-refs': 2,
+    'react/prefer-es6-class': 2,
+    'react/react-in-jsx-scope': 2,
+    'react-hooks/rules-of-hooks': 2,
+    'react-hooks/exhaustive-deps': 1,
+    'import/order': [
+      'error',
+      {
+        'groups': ['builtin', 'external', 'parent', 'sibling', 'index'],
+        'newlines-between': 'always',
+        'alphabetize': {
+          'order': 'asc',
+          'caseInsensitive': true
+        }
+      }
+    ]
+  },
+}

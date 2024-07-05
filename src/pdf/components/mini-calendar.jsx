@@ -9,16 +9,16 @@ import {
 	isHoliday,
 	isEvent,
 	DATE_FORMAT as SPECIAL_DATES_DATE_FORMAT,
-} from 'configuration-form/special-dates';
-import { getWeekdays, getWeekendDays, getWeekNumber } from 'lib/date';
-import PdfConfig from 'pdf/config';
+} from '~/lib/special-dates-utils';
+import { getWeekdays, getWeekendDays, getWeekNumber } from '~/lib/date';
+import PdfConfig from '~/pdf/config';
 import {
 	dayPageLink,
 	monthOverviewLink,
 	weekOverviewLink,
 	weekRetrospectiveLink,
 	yearOverviewLink,
-} from 'pdf/lib/links';
+} from '~/pdf/lib/links';
 
 export const HIGHLIGHT_WEEK = 'HIGHLIGHT_WEEK';
 export const HIGHLIGHT_DAY = 'HIGHLIGHT_DAY';

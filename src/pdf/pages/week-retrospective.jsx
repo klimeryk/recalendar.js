@@ -4,14 +4,14 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import { withTranslation } from 'react-i18next';
 
-import { getWeekNumber } from 'lib/date';
-import Header from 'pdf/components/header';
-import Itinerary from 'pdf/components/itinerary';
-import MiniCalendar, { HIGHLIGHT_WEEK } from 'pdf/components/mini-calendar';
-import PdfConfig from 'pdf/config';
-import { weekRetrospectiveLink } from 'pdf/lib/links';
-import { content, pageStyle } from 'pdf/styles';
-import { splitItemsByPages } from 'pdf/utils';
+import { getWeekNumber } from '~/lib/date';
+import Header from '~/pdf/components/header';
+import Itinerary from '~/pdf/components/itinerary';
+import MiniCalendar, { HIGHLIGHT_WEEK } from '~/pdf/components/mini-calendar';
+import PdfConfig from '~/pdf/config';
+import { weekRetrospectiveLink } from '~/pdf/lib/links';
+import { content, pageStyle } from '~/pdf/styles';
+import { splitItemsByPages } from '~/pdf/utils';
 
 class WeekRetrospectivePage extends React.Component {
 	styles = StyleSheet.create(

@@ -21,13 +21,13 @@ See https://recalendar.me/features for a full list with screenshots.
 
 ## Quickstart for developers/contributors
 
-The usual dance, using `yarn`:
-```
-yarn install
-yarn start
-```
+[Vite](https://vitejs.dev/) is used for development. Make sure you use `nvm` or a compatible solution to use the correct Node version.
 
-This should automatically open http://localhost:3000/ in your default browser.
+```
+nvm use
+npm install
+npm run dev
+```
 
 ## Known issues
 

@@ -3,7 +3,7 @@ import dayjsLocales from 'dayjs/locale.json';
 
 export function i18nConfiguration( namespaces ) {
 	return {
-		debug: process.env.NODE_ENV === 'development',
+		debug: import.meta.env.DEV,
 		fallbackLng: 'en',
 		load: 'currentOnly',
 		supportedLngs: dayjsLocales.map( ( ( { key } ) => key ) ),
@@ -15,28 +15,9 @@ export function i18nConfiguration( namespaces ) {
 	};
 }
 
-export const webpackBackend = {
-	type: 'backend',
-	read: ( language, namespace, callback ) => {
-		const languageToLoad =
-			getFullySupportedLocales().includes( language )
-				? language
-				: 'en';
-		import( '../locales/' + languageToLoad + '/' + namespace + '.json' )
-			.then( ( resources ) => {
-				callback( null, resources );
-			} )
-			.catch( ( error ) => {
-				callback( error, null );
-			} );
-	},
-};
-
 export function getFullySupportedLocales() {
-	const locales = require
-		.context( '../locales', true, /app\.json$/ )
-		.keys()
-		.map( ( file ) => file.match( /\/(.+)\/app\.json$/ )[ 1 ] );
+	const locales = Object.keys( import.meta.glob( '../locales/**/app.json', { eager: true } ) )
+		.map( ( file ) => file.match( /locales\/(.+)\/app\.json$/ )[ 1 ] );
 
 	const uniqueLocales = [ ...new Set( locales ) ];
 
@@ -54,7 +35,9 @@ export function getPartiallySupportedLocales() {
 }
 
 export function handleLanguageChange( newLanguage, firstDayOfWeek = 1 ) {
-	require( `dayjs/locale/${newLanguage}.js` );
+	// Silence the warning until https://github.com/vitejs/vite/issues/14102 is fixed
+	// Until then, we copy these files to /dist during build
+	import( /* @vite-ignore */ '../../dayjs-locale/' + newLanguage + '.js' );
 	dayjs.locale( newLanguage );
 	dayjs.updateLocale( newLanguage, {
 		weekStart: firstDayOfWeek,

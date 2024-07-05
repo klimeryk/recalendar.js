@@ -5,8 +5,8 @@ import Spinner from 'react-bootstrap/Spinner';
 import Stack from 'react-bootstrap/Stack';
 import { withTranslation } from 'react-i18next';
 
-import PdfPreview from 'components/pdf-preview';
-import PdfProgress from 'components/pdf-progress';
+import PdfPreview from '~/components/pdf-preview';
+import PdfProgress from '~/components/pdf-progress';
 
 class PdfPreviewCard extends React.PureComponent {
 	renderPdfPreview() {

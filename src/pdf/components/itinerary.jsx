@@ -2,7 +2,7 @@ import { StyleSheet, Text } from '@react-pdf/renderer';
 import PropTypes from 'prop-types';
 import React from 'react';
 
-import { ITINERARY_ITEM, ITINERARY_LINES } from 'configuration-form/itinerary';
+import { ITINERARY_ITEM, ITINERARY_LINES } from '~/lib/itinerary-utils';
 
 class Itinerary extends React.PureComponent {
 	styles = StyleSheet.create( {

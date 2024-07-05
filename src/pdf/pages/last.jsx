@@ -3,8 +3,8 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import { withTranslation, Trans } from 'react-i18next';
 
-import PdfConfig from 'pdf/config';
-import { pageStyle } from 'pdf/styles';
+import PdfConfig from '~/pdf/config';
+import { pageStyle } from '~/pdf/styles';
 
 class LastPage extends React.Component {
 	styles = StyleSheet.create(

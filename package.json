@@ -1,58 +1,51 @@
 {
-	"name": "recalendar.js",
-	"version": "0.1.0",
-	"private": true,
-	"dependencies": {
-		"@dnd-kit/core": "^6.0.8",
-		"@dnd-kit/sortable": "^7.0.2",
-		"@react-pdf/renderer": "^3.3.8",
-		"assert": "^2.0.0",
-		"bootstrap": "5.3.2",
-		"browserify-zlib": "^0.2.0",
-		"buffer": "^6.0.3",
-		"dayjs": "^1.11.7",
-		"eslint-config-prettier": "^9.0.0",
-		"eslint-plugin-import": "^2.27.5",
-		"eslint-plugin-prettier": "^5.0.1",
-		"file-saver": "^2.0.5",
-		"i18next": "^23.6.0",
-		"i18next-browser-languagedetector": "^7.0.1",
-		"nanoid": "^5.0.2",
-		"ical.js": "^1.5.0",
-		"pdf-lib": "^1.17.1",
-		"prettier": "^3.0.3",
-		"process": "^0.11.10",
-		"prop-types": "^15.8.1",
-		"react": "^18.2.0",
-		"react-app-rewired": "^2.2.1",
-		"react-bootstrap": "^2.7.4",
-		"react-dom": "^18.2.0",
-		"react-i18next": "^13.3.1",
-		"react-scripts": "5.0.1",
-		"stream-browserify": "^3.0.0",
-		"util": "^0.12.5"
-	},
-	"scripts": {
-		"start": "react-app-rewired start",
-		"build": "react-app-rewired build && mv build/index.html build/create.html && cp html/* build/",
-		"test": "react-app-rewired test",
-		"eject": "react-scripts eject"
-	},
-	"eslintConfig": {
-		"extends": [
-			"react-app"
-		]
-	},
-	"browserslist": {
-		"production": [
-			">0.2%",
-			"not dead",
-			"not op_mini all"
-		],
-		"development": [
-			"last 1 chrome version",
-			"last 1 firefox version",
-			"last 1 safari version"
-		]
-	}
+  "name": "recalendar.js",
+  "private": true,
+  "version": "2.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build && cp -r node_modules/dayjs/esm/locale dist/dayjs-locale",
+    "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@dnd-kit/core": "^6.1.0",
+    "@dnd-kit/sortable": "^8.0.0",
+    "@react-pdf/renderer": "^3.4.4",
+    "bootstrap": "^5.3.3",
+    "dayjs": "^1.11.11",
+    "file-saver": "^2.0.5",
+    "i18next": "^23.11.5",
+    "i18next-browser-languagedetector": "^8.0.0",
+    "ical.js": "^2.0.1",
+    "nanoid": "^5.0.7",
+    "pdf-lib": "^1.17.1",
+    "prop-types": "^15.8.1",
+    "react": "^18.2.0",
+    "react-bootstrap": "^2.10.2",
+    "react-dom": "^18.2.0",
+    "react-i18next": "^14.1.2"
+  },
+  "devDependencies": {
+    "@types/node": "^20.14.5",
+    "@types/react": "^18.2.66",
+    "@types/react-dom": "^18.2.22",
+    "@typescript-eslint/eslint-plugin": "^7.2.0",
+    "@typescript-eslint/parser": "^7.2.0",
+    "@vitejs/plugin-react": "^4.2.1",
+    "eslint": "^8.57.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-import-resolver-typescript": "^3.6.1",
+    "eslint-plugin-import": "^2.29.1",
+    "eslint-plugin-prettier": "^5.1.3",
+    "eslint-plugin-react": "^7.34.3",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "eslint-plugin-react-refresh": "^0.4.6",
+    "prettier": "^3.3.2",
+    "typescript": "^5.2.2",
+    "vite": "^5.2.0",
+    "vite-plugin-dynamic-import": "^1.5.0",
+    "vite-plugin-i18next-loader": "^2.0.12"
+  }
 }

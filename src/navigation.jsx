@@ -8,13 +8,13 @@ import Navbar from 'react-bootstrap/Navbar';
 import Stack from 'react-bootstrap/Stack';
 import { withTranslation } from 'react-i18next';
 
-import { getFullySupportedLocales, getPartiallySupportedLocales } from 'config/i18n';
+import { getFullySupportedLocales, getPartiallySupportedLocales } from '~/config/i18n';
 import {
 	HOME_PATH,
 	CONFIGURATOR_PATH,
 	FEATURES_PATH,
 	FAQ_PATH,
-} from 'lib/paths';
+} from '~/lib/paths';
 
 class Navigation extends React.Component {
 	state = {

@@ -3,13 +3,13 @@ import dayjs from 'dayjs';
 import PropTypes from 'prop-types';
 import React from 'react';
 
-import PdfConfig from 'pdf/config';
-import DayPage from 'pdf/pages/day';
-import LastPage from 'pdf/pages/last';
-import MonthOverviewPage from 'pdf/pages/month-overview';
-import WeekOverviewPage from 'pdf/pages/week-overview';
-import WeekRetrospectivePage from 'pdf/pages/week-retrospective';
-import YearOverviewPage from 'pdf/pages/year-overview';
+import PdfConfig from '~/pdf/config';
+import DayPage from '~/pdf/pages/day';
+import LastPage from '~/pdf/pages/last';
+import MonthOverviewPage from '~/pdf/pages/month-overview';
+import WeekOverviewPage from '~/pdf/pages/week-overview';
+import WeekRetrospectivePage from '~/pdf/pages/week-retrospective';
+import YearOverviewPage from '~/pdf/pages/year-overview';
 
 class RecalendarPdf extends React.Component {
 	styles = StyleSheet.create( {

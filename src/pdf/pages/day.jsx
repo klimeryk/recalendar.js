@@ -6,19 +6,19 @@ import React from 'react';
 import {
 	findByDate,
 	DATE_FORMAT as SPECIAL_DATES_DATE_FORMAT,
-} from 'configuration-form/special-dates';
-import Header from 'pdf/components/header';
-import Itinerary from 'pdf/components/itinerary';
-import MiniCalendar from 'pdf/components/mini-calendar';
-import PdfConfig from 'pdf/config';
+} from '~/lib/special-dates-utils';
+import Header from '~/pdf/components/header';
+import Itinerary from '~/pdf/components/itinerary';
+import MiniCalendar from '~/pdf/components/mini-calendar';
+import PdfConfig from '~/pdf/config';
 import {
 	dayPageLink,
 	nextDayPageLink,
 	previousDayPageLink,
 	monthOverviewLink,
-} from 'pdf/lib/links';
-import { content, pageStyle } from 'pdf/styles';
-import { splitItemsByPages } from 'pdf/utils';
+} from '~/pdf/lib/links';
+import { content, pageStyle } from '~/pdf/styles';
+import { splitItemsByPages } from '~/pdf/utils';
 
 class DayPage extends React.Component {
 	styles = StyleSheet.create(
