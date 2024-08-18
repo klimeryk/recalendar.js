@@ -4,13 +4,13 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import { withTranslation } from 'react-i18next';
 
+import { getWeekdays, getWeekendDays, getWeekNumber } from '~/lib/date';
 import {
 	findByDate,
 	isHoliday,
 	isEvent,
 	DATE_FORMAT as SPECIAL_DATES_DATE_FORMAT,
 } from '~/lib/special-dates-utils';
-import { getWeekdays, getWeekendDays, getWeekNumber } from '~/lib/date';
 import PdfConfig from '~/pdf/config';
 import {
 	dayPageLink,
@@ -144,7 +144,7 @@ class MiniCalendar extends React.Component {
 	renderWeekdayNames() {
 		const { t } = this.props;
 		const { day, week } = this.styles;
-		const weekdays = getWeekdays();
+		const weekdays = getWeekdays( this.props.config.firstDayOfWeek );
 		const daysOfTheWeek = weekdays.map( ( dayOfTheWeek, index ) => (
 			<Text key={ index } style={ [ day, this.styles.weekdayName ] }>
 				{dayOfTheWeek.min}
@@ -196,7 +196,7 @@ class MiniCalendar extends React.Component {
 		const { config, t } = this.props;
 		const { day } = this.styles;
 		const days = [];
-		const weekendDays = getWeekendDays( config.weekendDays );
+		const weekendDays = getWeekendDays( config.weekendDays, config.firstDayOfWeek );
 		const weekNumber = getWeekNumber( week );
 
 		for ( let i = 0; i < 7; i++ ) {

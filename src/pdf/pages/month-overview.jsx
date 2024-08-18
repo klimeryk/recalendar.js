@@ -181,7 +181,8 @@ class MonthOverviewPage extends React.Component {
 	};
 
 	renderHabitSquares() {
-		const weekendDays = getWeekendDays( this.props.config.weekendDays );
+		const { config } = this.props;
+		const weekendDays = getWeekendDays( config.weekendDays, config.firstDayOfWeek );
 		let currentDate = this.props.date.startOf( 'month' );
 		const endOfMonth = this.props.date.endOf( 'month' );
 		const squares = [];
@@ -194,7 +195,7 @@ class MonthOverviewPage extends React.Component {
 				<Link
 					key={ currentDate.date() }
 					style={ styles }
-					src={ '#' + dayPageLink( currentDate, this.props.config ) }
+					src={ '#' + dayPageLink( currentDate, config ) }
 				/>,
 			);
 			currentDate = currentDate.add( 1, 'day' );

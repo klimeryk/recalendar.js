@@ -9,13 +9,13 @@ import Stack from 'react-bootstrap/Stack';
 import Tooltip from 'react-bootstrap/Tooltip';
 import { withTranslation } from 'react-i18next';
 
+import { getJsonAttachment } from '~/lib/attachments';
+import { convertConfigToCurrentVersion } from '~/lib/config-compat';
 import {
 	ITINERARY_ITEM,
 	ITINERARY_LINES,
 	ITINERARY_NEW_PAGE,
 } from '~/lib/itinerary-utils';
-import { getJsonAttachment } from '~/lib/attachments';
-import { convertConfigToCurrentVersion } from '~/lib/config-compat';
 import PdfConfig, { CONFIG_FILE } from '~/pdf/config';
 
 const STATUS_EMPTY = 'EMPTY';

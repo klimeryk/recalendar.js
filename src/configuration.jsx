@@ -94,25 +94,28 @@ class Configuration extends React.PureComponent {
 		this.setState( { [ event.target.id ]: value } );
 
 		if ( event.target.id === 'firstDayOfWeek' ) {
-			const newFirstDayOfWeek = Number( event.target.value );
-			dayjs.updateLocale( i18n.language, {
-				weekStart: newFirstDayOfWeek,
-			} );
-
-			const newFirstDayOfWeekIndex = this.state.dayItineraries.findIndex(
-				this.isDayOfWeek( newFirstDayOfWeek ),
-			);
-			if ( newFirstDayOfWeekIndex === -1 ) {
-				return;
-			}
-
-			const dayItinerariesReordered = [
-				...this.state.dayItineraries.slice( newFirstDayOfWeekIndex ),
-				...this.state.dayItineraries.slice( 0, newFirstDayOfWeekIndex ),
-			];
-
-			this.setState( { dayItineraries: dayItinerariesReordered } );
+			this.handleFirstDayOfWeekChange( Number( event.target.value ) );
 		}
+	};
+
+	handleFirstDayOfWeekChange = ( newFirstDayOfWeek ) => {
+		dayjs.updateLocale( i18n.language, {
+			weekStart: newFirstDayOfWeek,
+		} );
+
+		const newFirstDayOfWeekIndex = this.state.dayItineraries.findIndex(
+			this.isDayOfWeek( newFirstDayOfWeek ),
+		);
+		if ( newFirstDayOfWeekIndex === -1 ) {
+			return;
+		}
+
+		const dayItinerariesReordered = [
+			...this.state.dayItineraries.slice( newFirstDayOfWeekIndex ),
+			...this.state.dayItineraries.slice( 0, newFirstDayOfWeekIndex ),
+		];
+
+		this.setState( { dayItineraries: dayItinerariesReordered } );
 	};
 
 	isDayOfWeek = ( dayOfWeek ) => {
@@ -365,7 +368,7 @@ class Configuration extends React.PureComponent {
 	}
 
 	renderDaysOfWeek() {
-		return getWeekdays().map( ( { full, index } ) => (
+		return getWeekdays( this.state.firstDayOfWeek ).map( ( { full, index } ) => (
 			<option key={ full } value={ index }>
 				{full}
 			</option>
@@ -373,7 +376,7 @@ class Configuration extends React.PureComponent {
 	}
 
 	renderWeekendSelection() {
-		return getWeekdays().map( ( { full, index } ) => (
+		return getWeekdays( this.state.firstDayOfWeek ).map( ( { full, index } ) => (
 			<ListGroup.Item key={ full } value={ index }>
 				<Form.Check
 					id={ 'weekend-' + index }
@@ -578,7 +581,7 @@ class Configuration extends React.PureComponent {
 						<Accordion.Header>{t( 'configuration.day.title' )}</Accordion.Header>
 						<Accordion.Body>
 							<Accordion defaultActiveKey="0">
-								{getWeekdays().map( this.renderDayItinerary )}
+								{getWeekdays( this.state.firstDayOfWeek ).map( this.renderDayItinerary )}
 							</Accordion>
 						</Accordion.Body>
 					</Accordion.Item>
