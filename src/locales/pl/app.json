@@ -68,7 +68,7 @@
 			"generating": "Generowanie, proszę czekać..."
 		},
 		"itinerary": {
-			"empty": "Pust plan",
+			"empty": "Pusty plan",
 			"placeholder": {
 				"lines": "Liczba linii",
 				"page": "Rozpocznij nową stronę"
@@ -86,7 +86,7 @@
 				"item": "Dodaj pozycję",
 				"remove": "Usuń"
 			},
-			"empty": "Pust lista",
+			"empty": "Pusta lista",
 			"placeholder": "Pozycja"
 		},
 		"toggle-form": {
