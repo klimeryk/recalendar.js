@@ -10,7 +10,7 @@ import { yearOverviewLink } from '~/pdf/lib/links';
 class YearOverviewPage extends React.Component {
 	styles = StyleSheet.create( {
 		year: {
-			fontSize: 55,
+			fontSize: 48,
 			fontWeight: 'bold',
 			textAlign: 'center',
 		},
