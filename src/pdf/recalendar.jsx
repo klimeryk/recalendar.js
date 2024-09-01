@@ -79,7 +79,7 @@ class RecalendarPdf extends React.Component {
 			pageList.push( this.renderWeek( currentDate ) );
 
 			currentDate = currentDate.add( 1, 'weeks' );
-			if ( this.props.isPreview && currentDate.month() === 1 ) {
+			if ( this.props.isPreview && currentDate.month() === month + 1 ) {
 				break;
 			}
 		}
