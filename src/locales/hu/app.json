@@ -7,23 +7,6 @@
 		"features": "Funkciók",
 		"faq": "GYIK"
 	},
-	"language": {
-		"label": "Nyelv",
-		"en": "English",
-		"cs": "Čeština",
-		"da": "Dansk",
-		"de": "Deutsch",
-		"es": "Español",
-		"fr": "Français",
-		"hr": "Hrvatski",
-		"hu": "Magyar",
-		"it": "Italiano",
-		"nb": "Norsk",
-		"pl": "Polski",
-		"pt-BR": "Português (Brasil)",
-		"sl": "Slovenščina",
-		"tr": "Türkçe"
-	},
 	"configuration": {
 		"selector": {
 			"label": "Kezdés",
