@@ -4,12 +4,12 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import { withTranslation } from 'react-i18next';
 
+import { getWeekNumber } from '~/lib/date';
 import {
 	DATE_FORMAT as SPECIAL_DATES_DATE_FORMAT,
 	findByDate,
 	HOLIDAY_DAY_TYPE,
 } from '~/lib/special-dates-utils';
-import { getWeekNumber } from '~/lib/date';
 import Header from '~/pdf/components/header';
 import MiniCalendar, { HIGHLIGHT_WEEK } from '~/pdf/components/mini-calendar';
 import PdfConfig from '~/pdf/config';
@@ -137,7 +137,7 @@ class WeekOverviewPage extends React.Component {
 	render() {
 		const { t, date, config } = this.props;
 		return (
-			<Page id={ weekOverviewLink( date, config ) } size={ config.pageSize }>
+			<Page id={ weekOverviewLink( date, config ) } size={ config.pageSize } dpi={ config.dpi }>
 				<View style={ this.styles.page }>
 					<Header
 						isLeftHanded={ config.isLeftHanded }

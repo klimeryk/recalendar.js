@@ -41,6 +41,9 @@
 		},
 		"general": {
 			"label": "Ogólne opcje",
+			"device": "Urządzenie",
+			"dpi": "DPI",
+			"resolution": "Rozdzielczość",
 			"font": "Czcionka",
 			"year": "Rok",
 			"left-handed": {

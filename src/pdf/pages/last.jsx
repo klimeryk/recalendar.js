@@ -33,7 +33,7 @@ class LastPage extends React.Component {
 	render() {
 		const { config, t } = this.props;
 		return (
-			<Page size={ config.pageSize }>
+			<Page size={ config.pageSize } dpi={ config.dpi }>
 				<View style={ this.styles.page }>
 					<View style={ this.styles.center }>
 						<Text style={ this.styles.title }>

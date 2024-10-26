@@ -26,7 +26,7 @@ class DayPage extends React.Component {
 	);
 
 	renderExtraItems = ( items, index ) => (
-		<Page key={ index } size={ this.props.config.pageSize }>
+		<Page key={ index } size={ this.props.config.pageSize } dpi={ this.props.config.dpi }>
 			<View style={ this.styles.page }>
 				<Itinerary items={ items } />
 			</View>
@@ -47,7 +47,7 @@ class DayPage extends React.Component {
 		);
 		return (
 			<>
-				<Page id={ dayPageLink( date, config ) } size={ config.pageSize }>
+				<Page id={ dayPageLink( date, config ) } size={ config.pageSize } dpi={ config.dpi }>
 					<View style={ this.styles.page }>
 						<Header
 							isLeftHanded={ config.isLeftHanded }

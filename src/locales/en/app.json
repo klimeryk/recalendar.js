@@ -60,6 +60,9 @@
 		},
 		"general": {
 			"label": "General options",
+			"device": "Device",
+			"dpi": "DPI",
+			"resolution": "Resolution",
 			"font": "Font",
 			"year": "Year",
 			"left-handed": {

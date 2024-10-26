@@ -1,6 +1,7 @@
 import dayjs from 'dayjs/esm';
 import { t } from 'i18next';
 
+import { REMARKABLE, getPageProperties } from '~/lib/device-utils';
 import { wrapWithId } from '~/lib/id-utils';
 import { ITINERARY_ITEM, ITINERARY_LINES } from '~/lib/itinerary-utils';
 import {
@@ -10,6 +11,9 @@ import {
 import { LATO } from '~/pdf/lib/fonts';
 
 const CONFIG_FIELDS = [
+	'device',
+	'dpi',
+	'pageSize',
 	'fontFamily',
 	'year',
 	'month',
@@ -103,8 +107,10 @@ class PdfConfig {
 				value: 50,
 			},
 		];
-		// See https://github.com/diegomura/react-pdf/issues/2006
-		this.pageSize = [ 445, 592 ]; // [ '157mm', '209mm' ];
+		this.device = REMARKABLE;
+		const { dpi, pageSize } = getPageProperties( this.device );
+		this.dpi = dpi;
+		this.pageSize = pageSize;
 		this.specialDates = [
 			{
 				date: '01-01',

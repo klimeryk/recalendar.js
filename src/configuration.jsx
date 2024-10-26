@@ -10,6 +10,7 @@ import Card from 'react-bootstrap/Card';
 import Col from 'react-bootstrap/Col';
 import Container from 'react-bootstrap/Container';
 import Form from 'react-bootstrap/Form';
+import InputGroup from 'react-bootstrap/InputGroup';
 import ListGroup from 'react-bootstrap/ListGroup';
 import Row from 'react-bootstrap/Row';
 import Spinner from 'react-bootstrap/Spinner';
@@ -24,6 +25,7 @@ import Itinerary from '~/configuration-form/itinerary';
 import SpecialDates from '~/configuration-form/special-dates';
 import ToggleAccordionItem from '~/configuration-form/toggle-accordion-item';
 import { getWeekdays } from '~/lib/date';
+import { AVAILABLE_DEVICES, CUSTOM, getPageProperties } from '~/lib/device-utils';
 import { byId, wrapWithId } from '~/lib/id-utils';
 import PdfConfig, { hydrateFromObject } from '~/pdf/config';
 import { AVAILABLE_FONTS } from '~/pdf/lib/fonts';
@@ -83,6 +85,8 @@ class Configuration extends React.PureComponent {
 	};
 
 	handleFieldChange = ( event ) => {
+		let targetId = event.target.id;
+
 		let value =
 			event.target.type !== 'checkbox'
 				? event.target.value
@@ -91,10 +95,31 @@ class Configuration extends React.PureComponent {
 			value = Number( value );
 		}
 
-		this.setState( { [ event.target.id ]: value } );
+		if ( targetId === 'resolutionX' || targetId === 'resolutionY' ) {
+			value = targetId === 'resolutionX'
+				? [ value, this.state.pageSize[ 1 ] ]
+				: [ this.state.pageSize[ 0 ], value ];
+			targetId = 'pageSize';
+		}
 
-		if ( event.target.id === 'firstDayOfWeek' ) {
-			this.handleFirstDayOfWeekChange( Number( event.target.value ) );
+		this.setState( { [ targetId ]: value } );
+
+		switch ( event.target.id ) {
+			case 'firstDayOfWeek':
+				this.handleFirstDayOfWeekChange( value );
+				break;
+
+			case 'device':
+				this.handleDeviceChange( value );
+				break;
+		}
+	};
+
+	handleDeviceChange = ( device ) => {
+		if ( device !== CUSTOM ) {
+			const { dpi, pageSize } = getPageProperties( device );
+			this.setState( { dpi, pageSize } );
+			return;
 		}
 	};
 
@@ -348,6 +373,14 @@ class Configuration extends React.PureComponent {
 		);
 	};
 
+	renderDevices() {
+		return AVAILABLE_DEVICES.map( ( device ) => (
+			<option key={ device } value={ device }>
+				{device}
+			</option>
+		) );
+	}
+
 	renderFonts() {
 		return AVAILABLE_FONTS.map( ( font ) => (
 			<option key={ font } value={ font }>
@@ -414,7 +447,8 @@ class Configuration extends React.PureComponent {
 
 	renderConfigurationForm() {
 		const { t } = this.props;
-		const { isGeneratingPdf, isGeneratingPreview } = this.state;
+		const { device, isGeneratingPdf, isGeneratingPreview } = this.state;
+		const isCustomDevice = device === CUSTOM;
 		return (
 			<Form onSubmit={ this.handlePreview }>
 				<Accordion defaultActiveKey="start" className="my-3">
@@ -431,6 +465,43 @@ class Configuration extends React.PureComponent {
 							{t( 'configuration.general.label' )}
 						</Accordion.Header>
 						<Accordion.Body>
+							<Form.Group controlId="device">
+								<Form.Label>{t( 'configuration.general.device' )}</Form.Label>
+								<Form.Select
+									value={ this.state.device }
+									onChange={ this.handleFieldChange }
+								>
+									{this.renderDevices()}
+								</Form.Select>
+							</Form.Group>
+							{isCustomDevice && <Form.Group controlId="dpi">
+								<Form.Label>{t( 'configuration.general.dpi' )}</Form.Label>
+								<Form.Control
+									type="number"
+									value={ this.state.dpi }
+									onChange={ this.handleFieldChange }
+								/>
+							</Form.Group>}
+							{isCustomDevice && <Form.Group>
+								<Form.Label htmlFor="resolutionX">
+									{t( 'configuration.general.resolution' )}
+								</Form.Label>
+								<InputGroup>
+									<Form.Control
+										id="resolutionX"
+										type="number"
+										value={ this.state.pageSize[ 0 ] }
+										onChange={ this.handleFieldChange }
+									/>
+									<InputGroup.Text>x</InputGroup.Text>
+									<Form.Control
+										id="resolutionY"
+										type="number"
+										value={ this.state.pageSize[ 1 ] }
+										onChange={ this.handleFieldChange }
+									/>
+								</InputGroup>
+							</Form.Group>}
 							<Form.Group controlId="fontFamily">
 								<Form.Label>{t( 'configuration.general.font' )}</Form.Label>
 								<Form.Select
