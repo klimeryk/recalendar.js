@@ -82,7 +82,11 @@
 				"description": "For how many months should the calendar be generated for."
 			},
 			"first-day-of-week": "First day of week",
-			"weekend": "Weekend"
+			"weekend": "Weekend",
+			"line-style": {
+				"label": "Itinerary line style",
+				"description": "Style to use when rendering lines in itineraries."
+			}
 		},
 		"button": {
 			"refresh": "Refresh preview",

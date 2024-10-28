@@ -52,7 +52,7 @@ class WeekRetrospectivePage extends React.Component {
 							}
 						/>
 						<View style={ this.styles.content }>
-							<Itinerary items={ itemsByPage[ 0 ] } />
+							<Itinerary items={ itemsByPage[ 0 ] } lineStyle={ config.lineStyle } />
 						</View>
 					</View>
 				</Page>
@@ -60,7 +60,7 @@ class WeekRetrospectivePage extends React.Component {
 					( items, index ) => (
 						<Page key={ index } size={ config.pageSize } dpi={ config.dpi }>
 							<View style={ this.styles.page }>
-								<Itinerary items={ items } />
+								<Itinerary items={ items } lineStyle={ config.lineStyle } />
 							</View>
 						</Page>
 					),
