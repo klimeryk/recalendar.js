@@ -25,7 +25,7 @@
 				},
 				"blank": {
 					"label": "Blank",
-					"description": "Som den Simple Template men unden nogen former for specielle datoer, TODOs osv"
+					"description": "Som den simple template men uden nogen former for specielle datoer, TODOs osv"
 				},
 				"minimalistic": {
 					"label": "Minimalistisk",
@@ -33,9 +33,9 @@
 				}
 			},
 			"upload": {
-				"label": "Eller overfør en tidligere genereret ReCalendar PDF for at bruge dens konfiguration",
+				"label": "Eller overfør en tidligere genereret reCalendar PDF for at bruge dens konfiguration",
 				"loading": "Indlæser konfiguration fra PDF filen, Vent venligst...",
-				"error": "Kunne desværre ikke indlæse konfigurationen fra denne ReCalendar PDF - Er du sikker på at den er genereret på denne hjemmeside?",
+				"error": "Kunne desværre ikke indlæse konfigurationen fra denne reCalendar PDF - Er du sikker på at den er genereret på denne hjemmeside?",
 				"success": "Konfiguration indlæst fra PDF - velkommen tilbage!"
 			}
 		},
@@ -47,7 +47,7 @@
 				"description": "Optimerer layout til brug af en venstrehåndet"
 			},
 			"starting-month": {
-				"label": "Start måned",
+				"label": "Startmåned",
 				"description": "Den første måned i den genererede kalender. Vælg f.eks. september hvis du ønsker at den skal dække et skoleår i stedet for et kalenderår."
 			},
 			"month-count": {
@@ -59,7 +59,7 @@
 		},
 		"button": {
 			"refresh": "Opdatér forhåndsvisning",
-			"download": "Generer den fulde kalendar og download",
+			"download": "Generer den fulde kalender og download",
 			"generating": "Genererer, vent venligst..."
 		},
 		"itinerary": {
@@ -133,7 +133,7 @@
 		"viewer-title": "PDF forhåndsvisning",
 		"generating": {
 			"full": "Genererer fuld kalender - dette kan godt tage over et minut...",
-			"preview": "Genererer forhåndsvisning, vent venligst - detta kan tage et øjeblik."
+			"preview": "Genererer forhåndsvisning, vent venligst - dette kan tage et øjeblik."
 		},
 		"empty": {
 			"title": "Brug tilpasningsformen for at lave din egen personlige kalender",
