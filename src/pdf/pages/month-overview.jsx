@@ -13,10 +13,10 @@ import { pageStyle } from '~/pdf/styles';
 import { splitItemsByPages } from '~/pdf/utils';
 
 class MonthOverviewPage extends React.Component {
-	constructor( props ) {
-		super( props );
+	constructor(props) {
+		super(props);
 
-		const habitColumnWidth = 40;
+		const habitColumnWidth = 80;
 		const habitSquareWidth = props.config.alwaysOnSidebar ? 12 : 13;
 
 		const stylesObject = Object.assign(
@@ -105,10 +105,10 @@ class MonthOverviewPage extends React.Component {
 					backgroundColor: '#EEE',
 				},
 			},
-			{ page: pageStyle( props.config ) },
+			{ page: pageStyle(props.config) },
 		);
 
-		if ( this.props.config.isLeftHanded ) {
+		if (this.props.config.isLeftHanded) {
 			stylesObject.header.flexDirection = 'row-reverse';
 
 			stylesObject.meta.borderLeft = '1 solid black';
@@ -117,38 +117,38 @@ class MonthOverviewPage extends React.Component {
 			delete stylesObject.title.marginLeft;
 		}
 
-		this.styles = StyleSheet.create( stylesObject );
+		this.styles = StyleSheet.create(stylesObject);
 	}
 
 	renderHabitsTable() {
 		const habits = this.props.config.habits;
-		if ( habits.length === 0 ) {
+		if (habits.length === 0) {
 			return null;
 		}
 
 		return (
-			<View style={ this.styles.habitsTable }>
+			<View style={this.styles.habitsTable}>
 				{this.renderHabitsHeader()}
-				{habits.map( this.renderHabit )}
+				{habits.map(this.renderHabit)}
 			</View>
 		);
 	}
 
 	renderHabitsHeader() {
 		const { date, t } = this.props;
-		let currentDate = date.startOf( 'month' );
-		const endOfMonth = date.endOf( 'month' );
+		let currentDate = date.startOf('month');
+		const endOfMonth = date.endOf('month');
 		const days = [];
-		while ( currentDate.isBefore( endOfMonth ) ) {
-			days.push( this.renderDay( currentDate ) );
-			currentDate = currentDate.add( 1, 'day' );
+		while (currentDate.isBefore(endOfMonth)) {
+			days.push(this.renderDay(currentDate));
+			currentDate = currentDate.add(1, 'day');
 		}
 
 		return (
-			<View style={ this.styles.habitsHeader }>
-				<View style={ this.styles.habitContainer }>
-					<Text style={ this.styles.habitsTitle }>
-						{t( 'page.month.habits.title' )}
+			<View style={this.styles.habitsHeader}>
+				<View style={this.styles.habitContainer}>
+					<Text style={this.styles.habitsTitle}>
+						{t('page.month.habits.title')}
 					</Text>
 				</View>
 				{days}
@@ -156,23 +156,23 @@ class MonthOverviewPage extends React.Component {
 		);
 	}
 
-	renderDay( day ) {
+	renderDay(day) {
 		return (
 			<Link
-				key={ day.unix() }
-				src={ '#' + dayPageLink( day, this.props.config ) }
-				style={ this.styles.habitDay }
+				key={day.unix()}
+				src={'#' + dayPageLink(day, this.props.config)}
+				style={this.styles.habitDay}
 			>
-				<Text style={ this.styles.habitDayDate }>{day.format( 'D' )}</Text>
-				<Text style={ this.styles.habitDayOfWeek }>{day.format( 'dd' )}</Text>
+				<Text style={this.styles.habitDayDate}>{day.format('D')}</Text>
+				<Text style={this.styles.habitDayOfWeek}>{day.format('dd')}</Text>
 			</Link>
 		);
 	}
 
-	renderHabit = ( { id, value } ) => {
+	renderHabit = ({ id, value }) => {
 		return (
-			<View key={ id } style={ this.styles.habitRow }>
-				<View style={ this.styles.habitContainer }>
+			<View key={id} style={this.styles.habitRow}>
+				<View style={this.styles.habitContainer}>
 					<Text>{value}</Text>
 				</View>
 				{this.renderHabitSquares()}
@@ -182,23 +182,26 @@ class MonthOverviewPage extends React.Component {
 
 	renderHabitSquares() {
 		const { config } = this.props;
-		const weekendDays = getWeekendDays( config.weekendDays, config.firstDayOfWeek );
-		let currentDate = this.props.date.startOf( 'month' );
-		const endOfMonth = this.props.date.endOf( 'month' );
+		const weekendDays = getWeekendDays(
+			config.weekendDays,
+			config.firstDayOfWeek,
+		);
+		let currentDate = this.props.date.startOf('month');
+		const endOfMonth = this.props.date.endOf('month');
 		const squares = [];
-		while ( currentDate.isBefore( endOfMonth ) ) {
-			const styles = [ this.styles.habitSquare ];
-			if ( weekendDays.includes( currentDate.day() ) ) {
-				styles.push( this.styles.weekendDay );
+		while (currentDate.isBefore(endOfMonth)) {
+			const styles = [this.styles.habitSquare];
+			if (weekendDays.includes(currentDate.day())) {
+				styles.push(this.styles.weekendDay);
 			}
 			squares.push(
 				<Link
-					key={ currentDate.date() }
-					style={ styles }
-					src={ '#' + dayPageLink( currentDate, config ) }
+					key={currentDate.date()}
+					style={styles}
+					src={'#' + dayPageLink(currentDate, config)}
 				/>,
 			);
-			currentDate = currentDate.add( 1, 'day' );
+			currentDate = currentDate.add(1, 'day');
 		}
 
 		return squares;
@@ -207,43 +210,43 @@ class MonthOverviewPage extends React.Component {
 	render() {
 		const { date, config } = this.props;
 		const { dpi, pageSize } = config;
-		const itemsByPage = splitItemsByPages( config.monthItinerary );
+		const itemsByPage = splitItemsByPages(config.monthItinerary);
 		return (
 			<>
-				<Page id={ monthOverviewLink( date, config ) } size={ pageSize } dpi={ dpi }>
-					<View style={ this.styles.page }>
-						<View style={ this.styles.header }>
-							<View style={ this.styles.meta }>
-								<Text style={ this.styles.title }>{date.format( 'MMMM' )}</Text>
+				<Page id={monthOverviewLink(date, config)} size={pageSize} dpi={dpi}>
+					<View style={this.styles.page}>
+						<View style={this.styles.header}>
+							<View style={this.styles.meta}>
+								<Text style={this.styles.title}>{date.format('MMMM')}</Text>
 							</View>
 							<MiniCalendar
-								date={ date }
-								highlightMode={ HIGHLIGHT_NONE }
-								config={ config }
+								date={date}
+								highlightMode={HIGHLIGHT_NONE}
+								config={config}
 							/>
 						</View>
 						{this.renderHabitsTable()}
-						<View style={ this.styles.content }>
-							<Itinerary items={ itemsByPage[ 0 ] } config={ config } />
+						<View style={this.styles.content}>
+							<Itinerary items={itemsByPage[0]} config={config} />
 						</View>
 					</View>
 				</Page>
-				{itemsByPage.slice( 1 ).map( ( items, index ) => (
-					<Page key={ index } size={ pageSize } dpi={ dpi }>
-						<View style={ this.styles.page }>
-							<Itinerary items={ items } config={ config } />
+				{itemsByPage.slice(1).map((items, index) => (
+					<Page key={index} size={pageSize} dpi={dpi}>
+						<View style={this.styles.page}>
+							<Itinerary items={items} config={config} />
 						</View>
 					</Page>
-				) )}
+				))}
 			</>
 		);
 	}
 }
 
 MonthOverviewPage.propTypes = {
-	config: PropTypes.instanceOf( PdfConfig ).isRequired,
-	date: PropTypes.instanceOf( dayjs ).isRequired,
+	config: PropTypes.instanceOf(PdfConfig).isRequired,
+	date: PropTypes.instanceOf(dayjs).isRequired,
 	t: PropTypes.func.isRequired,
 };
 
-export default withTranslation( 'pdf' )( MonthOverviewPage );
+export default withTranslation('pdf')(MonthOverviewPage);
