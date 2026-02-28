@@ -16,7 +16,7 @@ import {
 
 function SortableItineraryRow( props ) {
 	const { t } = useTranslation( 'app' );
-	const { id, type, value, field, onChange, globalDotGrid } = props;
+	const { id, type, value, field, onChange, globalDotGrid, dotGridRows } = props;
 	const { attributes, listeners, setNodeRef, transform, transition } =
 		useSortable( { id } );
 
@@ -49,25 +49,45 @@ function SortableItineraryRow( props ) {
 
 	function renderLines() {
 		return (
-			<FloatingLabel
-				className="flex-grow-1"
-				controlId={ id }
-				label={ t( 'configuration.itinerary.placeholder.lines' ) }
-			>
-				<FormControl
-					placeholder={ t( 'configuration.itinerary.placeholder.lines' ) }
-					type="number"
-					min={ 1 }
-					max={ 50 }
-					value={ value }
-					onChange={ onChange }
-					data-id={ id }
-					data-type={ ITINERARY_LINES }
-					data-field={ field }
-					disabled={ !!globalDotGrid }
-					required
-				/>
-			</FloatingLabel>
+			<>
+				<FloatingLabel
+					className="flex-grow-1"
+					controlId={ `${id}-rows` }
+					label={ t( 'configuration.itinerary.placeholder.rows' ) }
+				>
+					<FormControl
+						placeholder={ t( 'configuration.itinerary.placeholder.rows' ) }
+						type="number"
+						min={ 1 }
+						max={ 100 }
+						value={ dotGridRows ?? 10 }
+						onChange={ onChange }
+						data-id={ id }
+						data-type="dotGridRows"
+						data-field={ field }
+						disabled={ !globalDotGrid }
+					/>
+				</FloatingLabel>
+				<FloatingLabel
+					className="flex-grow-1"
+					controlId={ id }
+					label={ t( 'configuration.itinerary.placeholder.lines' ) }
+				>
+					<FormControl
+						placeholder={ t( 'configuration.itinerary.placeholder.lines' ) }
+						type="number"
+						min={ 1 }
+						max={ 50 }
+						value={ value }
+						onChange={ onChange }
+						data-id={ id }
+						data-type={ ITINERARY_LINES }
+						data-field={ field }
+						disabled={ !!globalDotGrid }
+						required
+					/>
+				</FloatingLabel>
+			</>
 		);
 	}
 
@@ -127,6 +147,7 @@ function SortableItineraryRow( props ) {
 }
 
 SortableItineraryRow.propTypes = {
+	dotGridRows: PropTypes.number,
 	field: PropTypes.string.isRequired,
 	globalDotGrid: PropTypes.bool,
 	id: PropTypes.string.isRequired,

@@ -105,6 +105,7 @@
 		"itinerary": {
 			"empty": "Empty itinerary",
 			"placeholder": {
+				"rows": "Number of rows",
 				"lines": "Number of lines",
 				"page": "New page break",
 				"item": "Itinerary item"

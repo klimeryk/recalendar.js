@@ -265,7 +265,11 @@ class Configuration extends React.PureComponent {
 		}
 		newItinerary[ index ] = {
 			...newItinerary[ index ],
-			value: type === 'lines' ? Number( event.target.value ) : event.target.value,
+			...(
+				type === 'dotGridRows'
+					? { dotGridRows: Number( event.target.value ) }
+					: { value: type === 'lines' ? Number( event.target.value ) : event.target.value }
+			),
 		};
 		this.setState( { [ field ]: newItinerary } );
 	};
@@ -339,7 +343,11 @@ class Configuration extends React.PureComponent {
 		);
 		newItineraries[ field ].items[ index ] = {
 			...newItineraries[ field ].items[ index ],
-			value: type === 'lines' ? Number( event.target.value ) : event.target.value,
+			...(
+				type === 'dotGridRows'
+					? { dotGridRows: Number( event.target.value ) }
+					: { value: type === 'lines' ? Number( event.target.value ) : event.target.value }
+			),
 		};
 		this.setState( { dayItineraries: newItineraries } );
 	};

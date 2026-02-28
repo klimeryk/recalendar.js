@@ -17,7 +17,7 @@ class Itinerary extends React.PureComponent {
 		},
 	} );
 
-	renderItineraryItem = ( { type, value }, index ) => {
+	renderItineraryItem = ( { type, value, dotGridRows }, index ) => {
 		switch ( type ) {
 			case ITINERARY_ITEM:
 				return this.renderItem( value, index );
@@ -25,7 +25,7 @@ class Itinerary extends React.PureComponent {
 			case ITINERARY_LINES:
 			default:
 				if ( this.props.config && this.props.config.dotGrid ) {
-					return this.renderDotGrid( index );
+					return this.renderDotGrid( dotGridRows ?? 10, index );
 				}
 				return this.renderLines( value );
 		}
@@ -48,24 +48,31 @@ class Itinerary extends React.PureComponent {
 		return lines;
 	}
 
-	renderDotGrid( index ) {
+	renderDotGrid( dotGridRows, index ) {
 		const { config } = this.props;
 		const pitchPt = config.dotGridSize * 72 / 25.4;
 		const DOT_SIZE = 2;
+		const sidebarWidth = config.alwaysOnSidebar ? 31 : 0;
+		const contentWidth = config.pageSizePt[ 0 ] - sidebarWidth;
+		const dotsPerRow = Math.round( ( contentWidth - DOT_SIZE ) / pitchPt ) + 1;
 		const containerStyle = {
-			flex: 1,
-			flexDirection: 'row',
-			flexWrap: 'wrap',
-			alignContent: 'flex-start',
 			opacity: config.dotGridOpacity / 100,
+		};
+		const rowStyle = {
+			flexDirection: 'row',
 		};
 		const cellStyle = { width: pitchPt, height: pitchPt, alignItems: 'center', justifyContent: 'center' };
 		const dotStyle = { width: DOT_SIZE, height: DOT_SIZE, borderRadius: DOT_SIZE / 2, backgroundColor: '#000' };
+		const dotCells = Array.from( { length: dotsPerRow }, ( _, i ) => (
+			<View key={ i } style={ cellStyle }>
+				<View style={ dotStyle } />
+			</View>
+		) );
 		return (
 			<View key={ index } style={ containerStyle }>
-				{Array.from( { length: 2000 }, ( _, i ) => (
-					<View key={ i } style={ cellStyle }>
-						<View style={ dotStyle } />
+				{Array.from( { length: dotGridRows }, ( _, rowIndex ) => (
+					<View key={ rowIndex } style={ rowStyle }>
+						{dotCells}
 					</View>
 				) )}
 			</View>
