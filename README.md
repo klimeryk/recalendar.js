@@ -1,7 +1,9 @@
 # ReCalendar
 ### Highly customizable calendar for ReMarkable tablets
 
-ReCalendar allows you to generate your own, personalized calendar right in your browser. You can view the live, production version at https://recalendar.me/.
+> **This is a fork of [klimeryk/recalendar.js](https://github.com/klimeryk/recalendar.js).** For the upstream project and live production version, see https://recalendar.me/.
+
+ReCalendar allows you to generate your own, personalized calendar right in your browser.
 
 It is the continuation of my previous efforts: https://github.com/klimeryk/recalendar. Although, basically all of the code had to be rewritten as I'm using a different PDF library, CSS engine, language, etc.
 
