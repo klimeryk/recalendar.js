@@ -82,7 +82,20 @@
 				"description": "For how many months should the calendar be generated for."
 			},
 			"first-day-of-week": "First day of week",
-			"weekend": "Weekend"
+			"weekend": "Weekend",
+			"line-style": {
+				"label": "Line style",
+				"lines": "Lines",
+				"dot-grid": "Dot grid",
+				"description": "Replace all line sections with an equidistant dot grid."
+			},
+			"dot-grid-size": {
+				"label": "Grid size",
+				"description": "Spacing between dots in millimetres."
+			},
+			"dot-grid-opacity": {
+				"label": "Dot opacity"
+			}
 		},
 		"button": {
 			"refresh": "Refresh preview",
@@ -91,7 +104,6 @@
 		},
 		"itinerary": {
 			"empty": "Empty itinerary",
-			"dot-grid": "Dot grid",
 			"placeholder": {
 				"lines": "Number of lines",
 				"page": "New page break",

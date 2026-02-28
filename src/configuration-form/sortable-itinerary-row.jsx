@@ -4,7 +4,6 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import Button from 'react-bootstrap/Button';
 import FloatingLabel from 'react-bootstrap/FloatingLabel';
-import Form from 'react-bootstrap/Form';
 import FormControl from 'react-bootstrap/FormControl';
 import InputGroup from 'react-bootstrap/InputGroup';
 import { useTranslation } from 'react-i18next';
@@ -17,7 +16,7 @@ import {
 
 function SortableItineraryRow( props ) {
 	const { t } = useTranslation( 'app' );
-	const { id, type, value, field, onChange, dotGrid, onDotGridChange } = props;
+	const { id, type, value, field, onChange, globalDotGrid } = props;
 	const { attributes, listeners, setNodeRef, transform, transition } =
 		useSortable( { id } );
 
@@ -50,37 +49,25 @@ function SortableItineraryRow( props ) {
 
 	function renderLines() {
 		return (
-			<>
-				<FloatingLabel
-					className="flex-grow-1"
-					controlId={ id }
-					label={ t( 'configuration.itinerary.placeholder.lines' ) }
-				>
-					<FormControl
-						placeholder={ t( 'configuration.itinerary.placeholder.lines' ) }
-						type="number"
-						min={ 1 }
-						max={ 50 }
-						value={ value }
-						onChange={ onChange }
-						data-id={ id }
-						data-type={ ITINERARY_LINES }
-						data-field={ field }
-						required
-					/>
-				</FloatingLabel>
-				<InputGroup.Text>
-					<Form.Check
-						type="switch"
-						id={ `${id}-dotgrid` }
-						label={ t( 'configuration.itinerary.dot-grid' ) }
-						checked={ !!dotGrid }
-						onChange={ onDotGridChange }
-						data-id={ id }
-						data-field={ field }
-					/>
-				</InputGroup.Text>
-			</>
+			<FloatingLabel
+				className="flex-grow-1"
+				controlId={ id }
+				label={ t( 'configuration.itinerary.placeholder.lines' ) }
+			>
+				<FormControl
+					placeholder={ t( 'configuration.itinerary.placeholder.lines' ) }
+					type="number"
+					min={ 1 }
+					max={ 50 }
+					value={ value }
+					onChange={ onChange }
+					data-id={ id }
+					data-type={ ITINERARY_LINES }
+					data-field={ field }
+					disabled={ !!globalDotGrid }
+					required
+				/>
+			</FloatingLabel>
 		);
 	}
 
@@ -140,14 +127,13 @@ function SortableItineraryRow( props ) {
 }
 
 SortableItineraryRow.propTypes = {
-	dotGrid: PropTypes.bool,
 	field: PropTypes.string.isRequired,
+	globalDotGrid: PropTypes.bool,
 	id: PropTypes.string.isRequired,
 	onChange: PropTypes.func.isRequired,
-	onDotGridChange: PropTypes.func,
 	onRemove: PropTypes.func.isRequired,
 	type: PropTypes.string.isRequired,
-	value: PropTypes.oneOfType(	[
+	value: PropTypes.oneOfType( [
 		PropTypes.string,
 		PropTypes.number,
 	] ).isRequired,

@@ -31,6 +31,9 @@ const CONFIG_FIELDS = [
 	'isWeekRetrospectiveEnabled',
 	'weekRetrospectiveItinerary',
 	'specialDates',
+	'dotGrid',
+	'dotGridSize',
+	'dotGridOpacity',
 ];
 
 export const CONFIG_FILE = 'config.json';
@@ -111,6 +114,9 @@ class PdfConfig {
 		const { dpi, pageSize } = getPageProperties( this.device );
 		this.dpi = dpi;
 		this.pageSize = pageSize;
+		this.dotGrid = false;
+		this.dotGridSize = 5;
+		this.dotGridOpacity = 30;
 		this.specialDates = [
 			{
 				date: '01-01',

@@ -34,7 +34,7 @@ function Itinerary( props ) {
 		}
 	}
 
-	function renderRow( { id, value, type, dotGrid } ) {
+	function renderRow( { id, value, type } ) {
 		return (
 			<SortableItineraryRow
 				key={ id }
@@ -42,9 +42,8 @@ function Itinerary( props ) {
 				id={ id }
 				type={ type }
 				value={ value }
-				dotGrid={ dotGrid }
+				globalDotGrid={ props.globalDotGrid }
 				onChange={ props.onChange }
-				onDotGridChange={ props.onDotGridChange }
 				onRemove={ props.onRemove }
 			/>
 		);
@@ -122,11 +121,11 @@ function Itinerary( props ) {
 
 Itinerary.propTypes = {
 	field: PropTypes.string.isRequired,
+	globalDotGrid: PropTypes.bool,
 	itinerary: PropTypes.array.isRequired,
 	onAdd: PropTypes.func.isRequired,
 	onChange: PropTypes.func.isRequired,
 	onCopy: PropTypes.func,
-	onDotGridChange: PropTypes.func,
 	onDragEnd: PropTypes.func.isRequired,
 	onRemove: PropTypes.func.isRequired,
 };

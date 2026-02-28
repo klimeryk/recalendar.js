@@ -6,6 +6,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import Accordion from 'react-bootstrap/Accordion';
 import Button from 'react-bootstrap/Button';
+import ButtonGroup from 'react-bootstrap/ButtonGroup';
 import Card from 'react-bootstrap/Card';
 import Col from 'react-bootstrap/Col';
 import Container from 'react-bootstrap/Container';
@@ -15,6 +16,7 @@ import ListGroup from 'react-bootstrap/ListGroup';
 import Row from 'react-bootstrap/Row';
 import Spinner from 'react-bootstrap/Spinner';
 import Stack from 'react-bootstrap/Stack';
+import ToggleButton from 'react-bootstrap/ToggleButton';
 import { withTranslation } from 'react-i18next';
 
 import PdfPreviewCard from '~/components/pdf-preview-card';
@@ -152,6 +154,10 @@ class Configuration extends React.PureComponent {
 		this.setState( { [ event.target.id ]: event.target.checked } );
 	};
 
+	handleDotGridChange = ( event ) => {
+		this.setState( { dotGrid: event.target.value === 'true' } );
+	};
+
 	handleDayItineraryToggle = ( event ) => {
 		const id = Number( event.target.id.replace( DAY_ITINERARY_ID_PREFIX, '' ) );
 		const newItineraries = [ ...this.state.dayItineraries ];
@@ -264,17 +270,6 @@ class Configuration extends React.PureComponent {
 		this.setState( { [ field ]: newItinerary } );
 	};
 
-	handleItineraryDotGridChange = ( event ) => {
-		const { field, id } = event.target.dataset;
-		const newItinerary = [ ...this.state[ field ] ];
-		const index = this.state[ field ].findIndex( byId( id ) );
-		if ( index === -1 ) {
-			return;
-		}
-		newItinerary[ index ] = { ...newItinerary[ index ], dotGrid: event.target.checked };
-		this.setState( { [ field ]: newItinerary } );
-	};
-
 	handleItineraryRemove = ( event ) => {
 		const field = event.target.dataset.field;
 		const newItineraries = [ ...this.state[ field ] ];
@@ -345,20 +340,6 @@ class Configuration extends React.PureComponent {
 		newItineraries[ field ].items[ index ] = {
 			...newItineraries[ field ].items[ index ],
 			value: type === 'lines' ? Number( event.target.value ) : event.target.value,
-		};
-		this.setState( { dayItineraries: newItineraries } );
-	};
-
-	handleDayItineraryDotGridChange = ( event ) => {
-		const newItineraries = [ ...this.state.dayItineraries ];
-		const { field, id } = event.target.dataset;
-		const index = this.state.dayItineraries[ field ].items.findIndex( byId( id ) );
-		if ( index === -1 ) {
-			return;
-		}
-		newItineraries[ field ].items[ index ] = {
-			...newItineraries[ field ].items[ index ],
-			dotGrid: event.target.checked,
 		};
 		this.setState( { dayItineraries: newItineraries } );
 	};
@@ -472,9 +453,9 @@ class Configuration extends React.PureComponent {
 				<Itinerary
 					field={ index.toString() }
 					itinerary={ this.state.dayItineraries[ index ].items }
+					globalDotGrid={ this.state.dotGrid }
 					onAdd={ this.handleDayItineraryAdd }
 					onChange={ this.handleDayItineraryChange }
-					onDotGridChange={ this.handleDayItineraryDotGridChange }
 					onDragEnd={ this.handleDayItineraryDragEnd }
 					onRemove={ this.handleDayItineraryRemove }
 					onCopy={ this.handleDayItineraryCopy }
@@ -573,6 +554,70 @@ class Configuration extends React.PureComponent {
 									{t( 'configuration.general.sidebar.description' )}
 								</Form.Text>
 							</Form.Group>
+							<Form.Group className="mt-2">
+								<Form.Label>{ t( 'configuration.general.line-style.label' ) }</Form.Label>
+								<div>
+									<ButtonGroup>
+										<ToggleButton
+											id="lineStyle-lines"
+											type="radio"
+											variant="outline-secondary"
+											value="false"
+											checked={ !this.state.dotGrid }
+											onChange={ this.handleDotGridChange }
+										>
+											{ t( 'configuration.general.line-style.lines' ) }
+										</ToggleButton>
+										<ToggleButton
+											id="lineStyle-dotGrid"
+											type="radio"
+											variant="outline-secondary"
+											value="true"
+											checked={ this.state.dotGrid }
+											onChange={ this.handleDotGridChange }
+										>
+											{ t( 'configuration.general.line-style.dot-grid' ) }
+										</ToggleButton>
+									</ButtonGroup>
+								</div>
+								<Form.Text className="text-muted">
+									{ t( 'configuration.general.line-style.description' ) }
+								</Form.Text>
+							</Form.Group>
+							{this.state.dotGrid && (
+								<>
+									<Form.Group controlId="dotGridSize">
+										<Form.Label>{ t( 'configuration.general.dot-grid-size.label' ) }</Form.Label>
+										<InputGroup>
+											<Form.Control
+												type="number"
+												min={ 2 }
+												max={ 10 }
+												step={ 0.5 }
+												value={ this.state.dotGridSize }
+												onChange={ this.handleFieldChange }
+											/>
+											<InputGroup.Text>mm</InputGroup.Text>
+										</InputGroup>
+										<Form.Text className="text-muted">
+											{ t( 'configuration.general.dot-grid-size.description' ) }
+										</Form.Text>
+									</Form.Group>
+									<Form.Group controlId="dotGridOpacity" className="mt-2">
+										<Form.Label>
+											{ t( 'configuration.general.dot-grid-opacity.label' ) }: { this.state.dotGridOpacity }%
+										</Form.Label>
+										<Form.Control
+											type="range"
+											min={ 5 }
+											max={ 100 }
+											value={ this.state.dotGridOpacity }
+											onChange={ this.handleFieldChange }
+											data-type="number"
+										/>
+									</Form.Group>
+								</>
+							)}
 							<Form.Group controlId="year">
 								<Form.Label>{t( 'configuration.general.year' )}</Form.Label>
 								<Form.Control
@@ -658,9 +703,9 @@ class Configuration extends React.PureComponent {
 									<Itinerary
 										field="monthItinerary"
 										itinerary={ this.state.monthItinerary }
+										globalDotGrid={ this.state.dotGrid }
 										onAdd={ this.handleItineraryAdd }
 										onChange={ this.handleItineraryChange }
-										onDotGridChange={ this.handleItineraryDotGridChange }
 										onDragEnd={ this.handleDragEnd }
 										onRemove={ this.handleItineraryRemove }
 									/>
@@ -716,9 +761,9 @@ class Configuration extends React.PureComponent {
 									<Itinerary
 										field="weekRetrospectiveItinerary"
 										itinerary={ this.state.weekRetrospectiveItinerary }
+										globalDotGrid={ this.state.dotGrid }
 										onAdd={ this.handleItineraryAdd }
 										onChange={ this.handleItineraryChange }
-										onDotGridChange={ this.handleItineraryDotGridChange }
 										onDragEnd={ this.handleDragEnd }
 										onRemove={ this.handleItineraryRemove }
 									/>

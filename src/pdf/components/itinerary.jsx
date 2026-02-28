@@ -17,14 +17,17 @@ class Itinerary extends React.PureComponent {
 		},
 	} );
 
-	renderItineraryItem = ( { type, value, dotGrid }, index ) => {
+	renderItineraryItem = ( { type, value }, index ) => {
 		switch ( type ) {
 			case ITINERARY_ITEM:
 				return this.renderItem( value, index );
 
 			case ITINERARY_LINES:
 			default:
-				return this.renderLines( value, dotGrid );
+				if ( this.props.config && this.props.config.dotGrid ) {
+					return this.renderDotGrid( index );
+				}
+				return this.renderLines( value );
 		}
 	};
 
@@ -36,10 +39,7 @@ class Itinerary extends React.PureComponent {
 		);
 	}
 
-	renderLines( count, dotGrid ) {
-		if ( dotGrid ) {
-			return this.renderDotGrid( count, this.props.config );
-		}
+	renderLines( count ) {
 		const lines = [];
 		for ( let i = 0; i < count; i++ ) {
 			lines.push( <Text key={ i } style={ this.styles.line }></Text> );
@@ -48,24 +48,28 @@ class Itinerary extends React.PureComponent {
 		return lines;
 	}
 
-	renderDotGrid( count, config ) {
-		const DOT_SIZE = 1.5;
-		const TARGET_PITCH = 14;
-		const sidebarWidth = config && config.alwaysOnSidebar ? 31 : 0;
-		const contentWidth = config ? config.pageSizePt[ 0 ] - sidebarWidth : 400;
-		const dotCount = Math.round( ( contentWidth - DOT_SIZE ) / TARGET_PITCH ) + 1;
-		const rowHeight = ( contentWidth - DOT_SIZE ) / ( dotCount - 1 );
-		const dotStyle = { width: DOT_SIZE, height: DOT_SIZE, borderRadius: DOT_SIZE / 2, backgroundColor: '#AAA' };
-		const rowStyle = { flexDirection: 'row', justifyContent: 'space-between', height: rowHeight, alignItems: 'center' };
-		const rows = [];
-		for ( let i = 0; i < count; i++ ) {
-			rows.push(
-				<View key={ i } style={ rowStyle }>
-					{Array.from( { length: dotCount }, ( _, j ) => <View key={ j } style={ dotStyle } />)}
-				</View>,
-			);
-		}
-		return rows;
+	renderDotGrid( index ) {
+		const { config } = this.props;
+		const pitchPt = config.dotGridSize * 72 / 25.4;
+		const DOT_SIZE = 2;
+		const containerStyle = {
+			flex: 1,
+			flexDirection: 'row',
+			flexWrap: 'wrap',
+			alignContent: 'flex-start',
+			opacity: config.dotGridOpacity / 100,
+		};
+		const cellStyle = { width: pitchPt, height: pitchPt, alignItems: 'center', justifyContent: 'center' };
+		const dotStyle = { width: DOT_SIZE, height: DOT_SIZE, borderRadius: DOT_SIZE / 2, backgroundColor: '#000' };
+		return (
+			<View key={ index } style={ containerStyle }>
+				{Array.from( { length: 2000 }, ( _, i ) => (
+					<View key={ i } style={ cellStyle }>
+						<View style={ dotStyle } />
+					</View>
+				) )}
+			</View>
+		);
 	}
 
 	render() {
