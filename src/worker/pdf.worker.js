@@ -1,4 +1,5 @@
 /* eslint-disable no-restricted-globals */
+import './window-polyfill.js';
 import i18n, { changeLanguage } from 'i18next';
 import LanguageDetector from 'i18next-browser-languagedetector';
 import React from 'react';
@@ -49,25 +50,24 @@ function hyphenationCallback( word ) {
 }
 
 self.onmessage = ( { data } ) => {
-	const config = new PdfConfig( hydrateFromObject( data ) );
+	let config, document;
+	try {
+		config = new PdfConfig( hydrateFromObject( data ) );
+		const { firstDayOfWeek, language, isPreview } = data;
+		changeLanguage( language );
+		handleLanguageChange( language, firstDayOfWeek );
+		Font.registerHyphenationCallback( hyphenationCallback );
+		Font.register( getFontDefinition( config.fontFamily ) );
+		Font.registerEmojiSource( {
+			format: 'png',
+			url: 'https://cdn.jsdelivr.net/gh/jdecked/twemoji@latest/assets/72x72/',
+		} );
+		document = React.createElement( RecalendarPdf, { isPreview, config }, null );
+	} catch ( error ) {
+		self.postMessage( { error: error.message } );
+		return;
+	}
 
-	const { firstDayOfWeek, language, isPreview } = data;
-
-	changeLanguage( language );
-	handleLanguageChange( language, firstDayOfWeek );
-
-	Font.registerHyphenationCallback( hyphenationCallback );
-	Font.register( getFontDefinition( config.fontFamily ) );
-	Font.registerEmojiSource( {
-		format: 'png',
-		url: 'https://cdn.jsdelivr.net/gh/jdecked/twemoji@latest/assets/72x72/',
-	} );
-
-	const document = React.createElement(
-		RecalendarPdf,
-		{ isPreview, config },
-		null,
-	);
 	pdf( document, {
 		attachments: [
 			{
@@ -83,5 +83,8 @@ self.onmessage = ( { data } ) => {
 		.toBlob()
 		.then( ( blob ) => {
 			self.postMessage( { blob } );
+		} )
+		.catch( ( error ) => {
+			self.postMessage( { error: error.message } );
 		} );
 };

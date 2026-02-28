@@ -62,3 +62,16 @@ Three item types defined in `src/lib/itinerary-utils.js`: `ITINERARY_ITEM` (text
 - **Path alias** `~` resolves to `src/` (configured in `vite.config.ts`)
 - **ESLint** enforces tabs, single quotes, LF line endings, and strict import ordering — run lint before committing
 - **No `__dirname`** — project is ESM (`"type": "module"`); use `fileURLToPath(new URL(..., import.meta.url))` instead
+
+## Known react-pdf quirks (v4.3.x)
+
+### Page size must be in points, not pixels
+`@react-pdf/renderer` v4.3.x treats plain numbers in the `<Page size={...}>` prop as **points** directly. The `dpi` prop on `<Page>` only converts values that carry an explicit `'px'` string unit (e.g. `'1404px'`). Passing `size={[1404, 1872]}` with `dpi={226}` produces a 1404×1872 pt page — roughly 5× too large.
+
+**Pattern used in this project**: `PdfConfig` computes `this.pageSizePt = this.pageSize.map(px => px * 72 / this.dpi)` after loading config. All `<Page>` components use `size={config.pageSizePt}` with no `dpi` prop. `pageSize` (pixels) is kept for UI display and serialisation only.
+
+### Border shorthand restrictions
+`border: 'none'` and `borderWidth: 0` both throw "Invalid border width" errors. Use individual side properties instead (`borderTopWidth: 0`, `borderRightWidth: 1`, `borderRightStyle: 'solid'`, etc.). To conditionally remove a border set in a base style, use `delete stylesObject.prop` rather than assigning `'none'`.
+
+### Web Worker: `window is not defined`
+Vite's React Fast Refresh preamble references `window`, which doesn't exist in Web Workers. Fix: `src/worker/window-polyfill.js` sets `globalThis.window = globalThis` and must be the **first** import in `pdf.worker.js`.

@@ -148,6 +148,10 @@ class PdfConfig {
 			Object.assign( this, configOverrides );
 		}
 
+		// react-pdf treats plain numbers in the size prop as points, not pixels.
+		// Convert pixel dimensions to 72dpi points so pages render at the correct size.
+		this.pageSizePt = this.pageSize.map( ( px ) => px * 72 / this.dpi );
+
 		this.ensureUniqueIds();
 	}
 

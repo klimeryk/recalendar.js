@@ -137,7 +137,7 @@ class WeekOverviewPage extends React.Component {
 	render() {
 		const { t, date, config } = this.props;
 		return (
-			<Page id={ weekOverviewLink( date, config ) } size={ config.pageSize } dpi={ config.dpi }>
+			<Page id={ weekOverviewLink( date, config ) } size={ config.pageSizePt }>
 				<View style={ this.styles.page }>
 					<Header
 						isLeftHanded={ config.isLeftHanded }

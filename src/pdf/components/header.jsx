@@ -70,7 +70,7 @@ class Header extends React.PureComponent {
 			stylesObject.header.flexDirection = 'row-reverse';
 
 			stylesObject.meta.borderLeft = stylesObject.meta.borderRight;
-			stylesObject.meta.borderRight = 'none';
+			delete stylesObject.meta.borderRight;
 
 			delete stylesObject.dateMain.marginLeft;
 			delete stylesObject.subtitle.marginLeft;

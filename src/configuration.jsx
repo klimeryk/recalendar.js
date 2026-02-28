@@ -53,6 +53,7 @@ class Configuration extends React.PureComponent {
 			{ type: 'module' },
 		);
 		this.pdfWorker.onmessage = this.handlePdfWorkerMessage;
+		this.pdfWorker.onerror = this.handlePdfWorkerError;
 	}
 
 	componentDidMount() {
@@ -290,7 +291,20 @@ class Configuration extends React.PureComponent {
 		} );
 	}
 
-	handlePdfWorkerMessage = ( { data: { blob } } ) => {
+	handlePdfWorkerError = ( event ) => {
+		// eslint-disable-next-line no-console
+		console.error( 'PDF worker error:', event );
+		this.setState( { isGeneratingPdf: false, isGeneratingPreview: false } );
+	};
+
+	handlePdfWorkerMessage = ( { data } ) => {
+		if ( data.error ) {
+			// eslint-disable-next-line no-console
+			console.error( 'PDF generation failed:', data.error );
+			this.setState( { isGeneratingPdf: false, isGeneratingPreview: false } );
+			return;
+		}
+		const { blob } = data;
 		const shouldTriggerDownload = this.state.isGeneratingPdf;
 		if ( this.state.isGeneratingPreview ) {
 			const previewTime = new Date().getTime() - this.startTime.getTime();
