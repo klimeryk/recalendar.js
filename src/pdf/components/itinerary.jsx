@@ -1,4 +1,4 @@
-import { StyleSheet, Text } from '@react-pdf/renderer';
+import { StyleSheet, Text, View } from '@react-pdf/renderer';
 import PropTypes from 'prop-types';
 import React from 'react';
 
@@ -16,14 +16,14 @@ class Itinerary extends React.PureComponent {
 		},
 	} );
 
-	renderItineraryItem = ( { type, value }, index ) => {
+	renderItineraryItem = ( { type, value, dotGrid }, index ) => {
 		switch ( type ) {
 			case ITINERARY_ITEM:
 				return this.renderItem( value, index );
 
 			case ITINERARY_LINES:
 			default:
-				return this.renderLines( value );
+				return this.renderLines( value, dotGrid );
 		}
 	};
 
@@ -35,13 +35,32 @@ class Itinerary extends React.PureComponent {
 		);
 	}
 
-	renderLines( count ) {
+	renderLines( count, dotGrid ) {
+		if ( dotGrid ) {
+			return this.renderDotGrid( count );
+		}
 		const lines = [];
 		for ( let i = 0; i < count; i++ ) {
 			lines.push( <Text key={ i } style={ this.styles.line }></Text> );
 		}
 
 		return lines;
+	}
+
+	renderDotGrid( count ) {
+		const DOT_SIZE = 1.5;
+		const DOT_COUNT = 30;
+		const dotStyle = { width: DOT_SIZE, height: DOT_SIZE, borderRadius: DOT_SIZE / 2, backgroundColor: '#AAA' };
+		const rowStyle = { flexDirection: 'row', justifyContent: 'space-between', height: 20, alignItems: 'center' };
+		const rows = [];
+		for ( let i = 0; i < count; i++ ) {
+			rows.push(
+				<View key={ i } style={ rowStyle }>
+					{Array.from( { length: DOT_COUNT }, ( _, j ) => <View key={ j } style={ dotStyle } />)}
+				</View>,
+			);
+		}
+		return rows;
 	}
 
 	render() {

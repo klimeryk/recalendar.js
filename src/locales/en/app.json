@@ -91,6 +91,7 @@
 		},
 		"itinerary": {
 			"empty": "Empty itinerary",
+			"dot-grid": "Dot grid",
 			"placeholder": {
 				"lines": "Number of lines",
 				"page": "New page break",

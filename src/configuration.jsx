@@ -258,10 +258,20 @@ class Configuration extends React.PureComponent {
 			return;
 		}
 		newItinerary[ index ] = {
-			id,
-			type,
+			...newItinerary[ index ],
 			value: type === 'lines' ? Number( event.target.value ) : event.target.value,
 		};
+		this.setState( { [ field ]: newItinerary } );
+	};
+
+	handleItineraryDotGridChange = ( event ) => {
+		const { field, id } = event.target.dataset;
+		const newItinerary = [ ...this.state[ field ] ];
+		const index = this.state[ field ].findIndex( byId( id ) );
+		if ( index === -1 ) {
+			return;
+		}
+		newItinerary[ index ] = { ...newItinerary[ index ], dotGrid: event.target.checked };
 		this.setState( { [ field ]: newItinerary } );
 	};
 
@@ -333,9 +343,22 @@ class Configuration extends React.PureComponent {
 			byId( event.target.dataset.id ),
 		);
 		newItineraries[ field ].items[ index ] = {
-			id: event.target.dataset.id,
-			type,
+			...newItineraries[ field ].items[ index ],
 			value: type === 'lines' ? Number( event.target.value ) : event.target.value,
+		};
+		this.setState( { dayItineraries: newItineraries } );
+	};
+
+	handleDayItineraryDotGridChange = ( event ) => {
+		const newItineraries = [ ...this.state.dayItineraries ];
+		const { field, id } = event.target.dataset;
+		const index = this.state.dayItineraries[ field ].items.findIndex( byId( id ) );
+		if ( index === -1 ) {
+			return;
+		}
+		newItineraries[ field ].items[ index ] = {
+			...newItineraries[ field ].items[ index ],
+			dotGrid: event.target.checked,
 		};
 		this.setState( { dayItineraries: newItineraries } );
 	};
@@ -451,6 +474,7 @@ class Configuration extends React.PureComponent {
 					itinerary={ this.state.dayItineraries[ index ].items }
 					onAdd={ this.handleDayItineraryAdd }
 					onChange={ this.handleDayItineraryChange }
+					onDotGridChange={ this.handleDayItineraryDotGridChange }
 					onDragEnd={ this.handleDayItineraryDragEnd }
 					onRemove={ this.handleDayItineraryRemove }
 					onCopy={ this.handleDayItineraryCopy }
@@ -636,6 +660,7 @@ class Configuration extends React.PureComponent {
 										itinerary={ this.state.monthItinerary }
 										onAdd={ this.handleItineraryAdd }
 										onChange={ this.handleItineraryChange }
+										onDotGridChange={ this.handleItineraryDotGridChange }
 										onDragEnd={ this.handleDragEnd }
 										onRemove={ this.handleItineraryRemove }
 									/>
@@ -693,6 +718,7 @@ class Configuration extends React.PureComponent {
 										itinerary={ this.state.weekRetrospectiveItinerary }
 										onAdd={ this.handleItineraryAdd }
 										onChange={ this.handleItineraryChange }
+										onDotGridChange={ this.handleItineraryDotGridChange }
 										onDragEnd={ this.handleDragEnd }
 										onRemove={ this.handleItineraryRemove }
 									/>
