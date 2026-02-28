@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 
 import { ITINERARY_ITEM, ITINERARY_LINES } from '~/lib/itinerary-utils';
+import PdfConfig from '~/pdf/config';
 
 class Itinerary extends React.PureComponent {
 	styles = StyleSheet.create( {
@@ -37,7 +38,7 @@ class Itinerary extends React.PureComponent {
 
 	renderLines( count, dotGrid ) {
 		if ( dotGrid ) {
-			return this.renderDotGrid( count );
+			return this.renderDotGrid( count, this.props.config );
 		}
 		const lines = [];
 		for ( let i = 0; i < count; i++ ) {
@@ -47,16 +48,20 @@ class Itinerary extends React.PureComponent {
 		return lines;
 	}
 
-	renderDotGrid( count ) {
+	renderDotGrid( count, config ) {
 		const DOT_SIZE = 1.5;
-		const DOT_COUNT = 30;
+		const TARGET_PITCH = 14;
+		const sidebarWidth = config && config.alwaysOnSidebar ? 31 : 0;
+		const contentWidth = config ? config.pageSizePt[ 0 ] - sidebarWidth : 400;
+		const dotCount = Math.round( ( contentWidth - DOT_SIZE ) / TARGET_PITCH ) + 1;
+		const rowHeight = ( contentWidth - DOT_SIZE ) / ( dotCount - 1 );
 		const dotStyle = { width: DOT_SIZE, height: DOT_SIZE, borderRadius: DOT_SIZE / 2, backgroundColor: '#AAA' };
-		const rowStyle = { flexDirection: 'row', justifyContent: 'space-between', height: 20, alignItems: 'center' };
+		const rowStyle = { flexDirection: 'row', justifyContent: 'space-between', height: rowHeight, alignItems: 'center' };
 		const rows = [];
 		for ( let i = 0; i < count; i++ ) {
 			rows.push(
 				<View key={ i } style={ rowStyle }>
-					{Array.from( { length: DOT_COUNT }, ( _, j ) => <View key={ j } style={ dotStyle } />)}
+					{Array.from( { length: dotCount }, ( _, j ) => <View key={ j } style={ dotStyle } />)}
 				</View>,
 			);
 		}
@@ -69,6 +74,7 @@ class Itinerary extends React.PureComponent {
 }
 
 Itinerary.propTypes = {
+	config: PropTypes.instanceOf( PdfConfig ),
 	items: PropTypes.array.isRequired,
 };
 

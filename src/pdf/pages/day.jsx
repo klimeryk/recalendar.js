@@ -28,7 +28,7 @@ class DayPage extends React.Component {
 	renderExtraItems = ( items, index ) => (
 		<Page key={ index } size={ this.props.config.pageSizePt }>
 			<View style={ this.styles.page }>
-				<Itinerary items={ items } />
+				<Itinerary config={ config } items={ items } />
 			</View>
 		</Page>
 	);
@@ -61,7 +61,7 @@ class DayPage extends React.Component {
 							specialItems={ specialItems }
 						/>
 						<View style={ this.styles.content }>
-							<Itinerary items={ itemsByPage[ 0 ] } />
+							<Itinerary config={ config } items={ itemsByPage[ 0 ] } />
 						</View>
 					</View>
 				</Page>
