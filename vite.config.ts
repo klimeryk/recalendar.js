@@ -5,6 +5,7 @@ import { defineConfig } from 'vite';
 import i18nextLoader from 'vite-plugin-i18next-loader';
 
 export default defineConfig( {
+	base: process.env.NODE_ENV === 'production' ? '/recalendar/' : '/',
 	build: {
 		rollupOptions: {
 			input: {
