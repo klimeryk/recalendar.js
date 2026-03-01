@@ -9,7 +9,7 @@ Always run with Node 18 (`nvm use` first — `.nvmrc` specifies `18.*`).
 ```bash
 nvm use
 npm install       # install dependencies
-npm run dev       # dev server → http://localhost:5173/create.html
+npm run dev       # dev server → http://localhost:5173/
 npm run build     # tsc + vite build
 npm run lint      # ESLint (ts/tsx only, zero warnings allowed)
 ```
