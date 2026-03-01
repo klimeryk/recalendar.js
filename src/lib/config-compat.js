@@ -7,16 +7,20 @@ import {
 import {
 	CONFIG_VERSION_1,
 	CONFIG_VERSION_2,
+	CONFIG_VERSION_3,
 	CONFIG_CURRENT_VERSION,
 } from '~/pdf/config';
 
 export function convertConfigToCurrentVersion( config ) {
 	switch ( config.version ) {
 		case CONFIG_VERSION_1:
-			return convertFromVersion2( convertFromVersion1( config ) );
+			return convertFromVersion3( convertFromVersion2( convertFromVersion1( config ) ) );
 
 		case CONFIG_VERSION_2:
-			return convertFromVersion2( config );
+			return convertFromVersion3( convertFromVersion2( config ) );
+
+		case CONFIG_VERSION_3:
+			return convertFromVersion3( config );
 
 		case CONFIG_CURRENT_VERSION:
 		default:
@@ -28,6 +32,16 @@ function convertFromVersion1( config ) {
 	config.dayItineraries = config.dayItineraries.map( ( dayItinerary ) =>
 		Object.assign( { isEnabled: true }, dayItinerary ),
 	);
+	return config;
+}
+
+function convertFromVersion3( config ) {
+	if ( config.alwaysOnSidebar === true ) {
+		config.sidebarPosition = config.isLeftHanded ? 'right' : 'left';
+	} else {
+		config.sidebarPosition = 'none';
+	}
+	delete config.alwaysOnSidebar;
 	return config;
 }
 

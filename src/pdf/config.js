@@ -21,7 +21,7 @@ const CONFIG_FIELDS = [
 	'monthCount',
 	'weekendDays',
 	'isLeftHanded',
-	'alwaysOnSidebar',
+	'sidebarPosition',
 	'isMonthOverviewEnabled',
 	'habits',
 	'monthItinerary',
@@ -34,13 +34,17 @@ const CONFIG_FIELDS = [
 	'dotGrid',
 	'dotGridSize',
 	'dotGridOpacity',
+	'lineDashed',
+	'lineOpacity',
+	'lineHeight',
 ];
 
 export const CONFIG_FILE = 'config.json';
 export const CONFIG_VERSION_1 = 'v1';
 export const CONFIG_VERSION_2 = 'v2';
 export const CONFIG_VERSION_3 = 'v3';
-export const CONFIG_CURRENT_VERSION = CONFIG_VERSION_3;
+export const CONFIG_VERSION_4 = 'v4';
+export const CONFIG_CURRENT_VERSION = CONFIG_VERSION_4;
 
 export function hydrateFromObject( object ) {
 	return CONFIG_FIELDS.reduce(
@@ -59,7 +63,7 @@ class PdfConfig {
 		this.firstDayOfWeek = dayjs.localeData().firstDayOfWeek();
 		this.weekendDays = [ 0, 6 ];
 		this.isLeftHanded = false;
-		this.alwaysOnSidebar = false;
+		this.sidebarPosition = 'none';
 		this.monthCount = 12;
 		this.fontFamily = LATO;
 		this.isMonthOverviewEnabled = true;
@@ -117,6 +121,9 @@ class PdfConfig {
 		this.dotGrid = false;
 		this.dotGridSize = 5;
 		this.dotGridOpacity = 30;
+		this.lineDashed = false;
+		this.lineOpacity = 100;
+		this.lineHeight = 7;
 		this.specialDates = [
 			{
 				date: '01-01',

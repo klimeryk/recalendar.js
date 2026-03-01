@@ -70,8 +70,13 @@
 				"description": "Optimizes the layout for left-handed use."
 			},
 			"sidebar": {
-				"label": "Leave permanent space for side toolbar",
-				"description": "If you prefer to keep the side toolbar always open, check this option to make sure the calendar's content will never be covered by it."
+				"label": "Permanent space for toolbar",
+				"none": "None",
+				"top": "Top",
+				"bottom": "Bottom",
+				"left": "Left",
+				"right": "Right",
+				"description": "Reserve space for the device toolbar so the calendar's content will never be covered by it."
 			},
 			"starting-month": {
 				"label": "Starting month",
@@ -95,6 +100,16 @@
 			},
 			"dot-grid-opacity": {
 				"label": "Dot opacity"
+			},
+			"line-dashed": {
+				"label": "Dashed lines"
+			},
+			"line-opacity": {
+				"label": "Line opacity"
+			},
+			"line-height": {
+				"label": "Line spacing",
+				"description": "Height of each ruled line in millimetres."
 			}
 		},
 		"button": {

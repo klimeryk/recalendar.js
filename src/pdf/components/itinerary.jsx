@@ -8,7 +8,9 @@ import PdfConfig from '~/pdf/config';
 class Itinerary extends React.PureComponent {
 	styles = StyleSheet.create( {
 		line: {
-			borderBottom: '1 solid #AAA',
+			borderBottomWidth: 1,
+			borderBottomStyle: 'solid',
+			borderBottomColor: '#AAA',
 			fontSize: 12,
 			fontWeight: 'bold',
 			height: 20,
@@ -40,9 +42,17 @@ class Itinerary extends React.PureComponent {
 	}
 
 	renderLines( count ) {
+		const { config } = this.props;
+		const lineHeightPt = ( config.lineHeight ?? 7 ) * 72 / 25.4;
+		const dynamicStyle = {
+			borderBottomStyle: config.lineDashed ? 'dashed' : 'solid',
+			opacity: ( config.lineOpacity ?? 100 ) / 100,
+			height: lineHeightPt,
+			minHeight: lineHeightPt,
+		};
 		const lines = [];
 		for ( let i = 0; i < count; i++ ) {
-			lines.push( <Text key={ i } style={ this.styles.line }></Text> );
+			lines.push( <Text key={ i } style={ [ this.styles.line, dynamicStyle ] }></Text> );
 		}
 
 		return lines;
@@ -52,7 +62,7 @@ class Itinerary extends React.PureComponent {
 		const { config } = this.props;
 		const pitchPt = config.dotGridSize * 72 / 25.4;
 		const DOT_SIZE = 2;
-		const sidebarWidth = config.alwaysOnSidebar ? 31 : 0;
+		const sidebarWidth = ( config.sidebarPosition === 'left' || config.sidebarPosition === 'right' ) ? 31 : 0;
 		const contentWidth = config.pageSizePt[ 0 ] - sidebarWidth;
 		const dotsPerRow = Math.round( ( contentWidth - DOT_SIZE ) / pitchPt ) + 1;
 		const containerStyle = {

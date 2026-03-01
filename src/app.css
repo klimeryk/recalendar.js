@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@700&display=swap');
+
 html,
 body,
 #root {
@@ -15,6 +17,13 @@ body,
 .refresh-button {
 	bottom: 0;
 	z-index: 1050;
+}
+
+.brand-reloaded {
+	font-family: 'Caveat', cursive;
+	font-size: 1.3em;
+	font-weight: 700;
+	vertical-align: baseline;
 }
 
 .language-select {

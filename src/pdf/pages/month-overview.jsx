@@ -17,7 +17,7 @@ class MonthOverviewPage extends React.Component {
 		super( props );
 
 		const habitColumnWidth = 40;
-		const habitSquareWidth = props.config.alwaysOnSidebar ? 12 : 13;
+		const habitSquareWidth = ( props.config.sidebarPosition === 'left' || props.config.sidebarPosition === 'right' ) ? 12 : 13;
 
 		const stylesObject = Object.assign(
 			{

@@ -158,6 +158,10 @@ class Configuration extends React.PureComponent {
 		this.setState( { dotGrid: event.target.value === 'true' } );
 	};
 
+	handleSidebarPositionChange = ( event ) => {
+		this.setState( { sidebarPosition: event.target.value } );
+	};
+
 	handleDayItineraryToggle = ( event ) => {
 		const id = Number( event.target.id.replace( DAY_ITINERARY_ID_PREFIX, '' ) );
 		const newItineraries = [ ...this.state.dayItineraries ];
@@ -550,16 +554,27 @@ class Configuration extends React.PureComponent {
 									{t( 'configuration.general.left-handed.description' )}
 								</Form.Text>
 							</Form.Group>
-							<Form.Group controlId="alwaysOnSidebar" className="mt-2">
-								<Form.Check
-									label={ t( 'configuration.general.sidebar.label' ) }
-									type="checkbox"
-									checked={ this.state.alwaysOnSidebar }
-									value={ this.state.alwaysOnSidebar }
-									onChange={ this.handleFieldChange }
-								/>
+							<Form.Group className="mt-2">
+								<Form.Label>{ t( 'configuration.general.sidebar.label' ) }</Form.Label>
+								<div>
+									<ButtonGroup>
+										{ [ 'none', 'top', 'bottom', 'left', 'right' ].map( ( pos ) => (
+											<ToggleButton
+												key={ pos }
+												id={ `sidebarPosition-${ pos }` }
+												type="radio"
+												variant="outline-secondary"
+												value={ pos }
+												checked={ this.state.sidebarPosition === pos }
+												onChange={ this.handleSidebarPositionChange }
+											>
+												{ t( `configuration.general.sidebar.${ pos }` ) }
+											</ToggleButton>
+										) ) }
+									</ButtonGroup>
+								</div>
 								<Form.Text className="text-muted">
-									{t( 'configuration.general.sidebar.description' )}
+									{ t( 'configuration.general.sidebar.description' ) }
 								</Form.Text>
 							</Form.Group>
 							<Form.Group className="mt-2">
@@ -592,6 +607,49 @@ class Configuration extends React.PureComponent {
 									{ t( 'configuration.general.line-style.description' ) }
 								</Form.Text>
 							</Form.Group>
+							{!this.state.dotGrid && (
+								<>
+									<Form.Group controlId="lineDashed" className="mt-2">
+										<Form.Check
+											id="lineDashed"
+											type="checkbox"
+											label={ t( 'configuration.general.line-dashed.label' ) }
+											checked={ this.state.lineDashed }
+											onChange={ this.handleFieldChange }
+										/>
+									</Form.Group>
+									<Form.Group controlId="lineOpacity" className="mt-2">
+										<Form.Label>
+											{ t( 'configuration.general.line-opacity.label' ) }: { this.state.lineOpacity }%
+										</Form.Label>
+										<Form.Control
+											type="range"
+											min={ 5 }
+											max={ 100 }
+											value={ this.state.lineOpacity }
+											onChange={ this.handleFieldChange }
+											data-type="number"
+										/>
+									</Form.Group>
+									<Form.Group controlId="lineHeight" className="mt-2">
+										<Form.Label>{ t( 'configuration.general.line-height.label' ) }</Form.Label>
+										<InputGroup>
+											<Form.Control
+												type="number"
+												min={ 4 }
+												max={ 20 }
+												step={ 0.5 }
+												value={ this.state.lineHeight }
+												onChange={ this.handleFieldChange }
+											/>
+											<InputGroup.Text>mm</InputGroup.Text>
+										</InputGroup>
+										<Form.Text className="text-muted">
+											{ t( 'configuration.general.line-height.description' ) }
+										</Form.Text>
+									</Form.Group>
+								</>
+							)}
 							{this.state.dotGrid && (
 								<>
 									<Form.Group controlId="dotGridSize">
