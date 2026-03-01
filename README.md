@@ -31,6 +31,27 @@ npm run dev
 
 Then navigate to [http://localhost:5173/create.html](http://localhost:5173/create.html) to start testing
 
+### Running with Docker
+
+If you prefer to use Docker, you can build and run the development environment in a container:
+
+**Build the Docker image:**
+```
+docker build -t recalendar.js .
+```
+
+**Run the container:**
+```
+docker run -p 5173:5173 recalendar.js
+```
+
+The dev server will be accessible at [http://localhost:5173/create.html](http://localhost:5173/create.html)
+
+To rebuild without cache during development:
+```
+docker build --no-cache -t recalendar.js .
+```
+
 ## Known issues
 
 See the [FAQ](https://recalendar.me/faq) and [the open issues on GitHub](https://github.com/klimeryk/recalendar.js/issues).
