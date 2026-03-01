@@ -30,7 +30,17 @@ class SpecialDates extends React.Component {
 		type: EVENT_DAY_TYPE,
 		icalType: EVENT_DAY_TYPE,
 		status: STATUS_EMPTY,
+		holidayCountry: '',
+		holidayCountries: [],
+		holidayStatus: STATUS_EMPTY,
 	};
+
+	componentDidMount() {
+		fetch( 'https://date.nager.at/api/v3/AvailableCountries' )
+			.then( ( res ) => res.json() )
+			.then( ( data ) => this.setState( { holidayCountries: data } ) )
+			.catch( () => {} );
+	}
 
 	onChange = ( event ) => {
 		const { field } = event.target.dataset;
@@ -80,6 +90,33 @@ class SpecialDates extends React.Component {
 			this.setState( {
 				status: STATUS_ERROR,
 			} );
+		}
+	};
+
+	onHolidayCountryChange = ( event ) => {
+		this.setState( { holidayCountry: event.target.value, holidayStatus: STATUS_EMPTY } );
+	};
+
+	onAddHolidays = async () => {
+		const { holidayCountry } = this.state;
+		const { year, onAdd } = this.props;
+		this.setState( { holidayStatus: STATUS_LOADING } );
+		try {
+			const res = await fetch(
+				`https://date.nager.at/api/v3/PublicHolidays/${ year }/${ holidayCountry }`,
+			);
+			if ( ! res.ok ) {
+				throw new Error();
+			}
+			const holidays = await res.json();
+			holidays.forEach( ( h ) => {
+				const key = dayjs( h.date, 'YYYY-MM-DD' ).format( DATE_FORMAT );
+				const type = h.types.includes( 'Public' ) ? HOLIDAY_DAY_TYPE : EVENT_DAY_TYPE;
+				onAdd( { date: key, value: h.name, type } );
+			} );
+			this.setState( { holidayStatus: STATUS_SUCCESS } );
+		} catch {
+			this.setState( { holidayStatus: STATUS_ERROR } );
 		}
 	};
 
@@ -187,6 +224,37 @@ class SpecialDates extends React.Component {
 		}
 	}
 
+	renderHolidayStatusMessage() {
+		const { t } = this.props;
+
+		switch ( this.state.holidayStatus ) {
+			case STATUS_LOADING:
+				return (
+					<Alert variant="info" className="mt-2 mb-0">
+						{t( 'configuration.special-dates.public-holidays.loading' )}
+					</Alert>
+				);
+
+			case STATUS_ERROR:
+				return (
+					<Alert variant="danger" className="mt-2 mb-0">
+						{t( 'configuration.special-dates.public-holidays.error' )}
+					</Alert>
+				);
+
+			case STATUS_SUCCESS:
+				return (
+					<Alert variant="success" className="mt-2 mb-0">
+						{t( 'configuration.special-dates.public-holidays.success' )}
+					</Alert>
+				);
+
+			case STATUS_EMPTY:
+			default:
+				return null;
+		}
+	}
+
 	renderTypeSelect = ( field ) => {
 		const { t, [ field ]: value } = this.props;
 
@@ -258,6 +326,33 @@ class SpecialDates extends React.Component {
 								{t( 'configuration.special-dates.button.item' )}
 							</Button>
 						</InputGroup>
+					</Stack>
+					<Stack className="mt-3">
+						<Form.Label>
+							{t( 'configuration.special-dates.public-holidays.label' )}
+						</Form.Label>
+						<Stack direction="horizontal" gap={ 2 }>
+							<Form.Select
+								value={ this.state.holidayCountry }
+								onChange={ this.onHolidayCountryChange }
+							>
+								<option value="">
+									{t( 'configuration.special-dates.public-holidays.country-placeholder' )}
+								</option>
+								{this.state.holidayCountries.map( ( { countryCode, name } ) => (
+									<option key={ countryCode } value={ countryCode }>{name}</option>
+								) )}
+							</Form.Select>
+							<Button
+								className="flex-shrink-0"
+								variant="outline-secondary"
+								disabled={ ! this.state.holidayCountry || this.state.holidayStatus === STATUS_LOADING }
+								onClick={ this.onAddHolidays }
+							>
+								{t( 'configuration.special-dates.public-holidays.button' )}
+							</Button>
+						</Stack>
+						{this.renderHolidayStatusMessage()}
 					</Stack>
 					<Stack className="mt-3">
 						<Form.Label htmlFor="icsFile">

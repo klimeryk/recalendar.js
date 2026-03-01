@@ -190,6 +190,14 @@
 			"button": {
 				"item": "Add date",
 				"remove": "Remove"
+			},
+			"public-holidays": {
+				"label": "Import public holidays:",
+				"country-placeholder": "Select a country...",
+				"button": "Add holidays",
+				"loading": "Fetching public holidays, please wait...",
+				"error": "Could not fetch public holidays. Please try again.",
+				"success": "Public holidays added successfully."
 			}
 		},
 		"generation-description": "PDF generation is done entirely in your browser - no data is sent to our servers!"
