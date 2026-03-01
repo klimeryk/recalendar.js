@@ -14,4 +14,5 @@ export const content = {
 	flex: 1,
 	flexGrow: 1,
 	borderTop: '1 solid black',
+	overflow: 'hidden',
 };

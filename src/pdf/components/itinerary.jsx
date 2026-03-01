@@ -57,9 +57,8 @@ class Itinerary extends React.PureComponent {
 		const dotsPerRow = Math.round( ( contentWidth - DOT_SIZE ) / pitchPt ) + 1;
 		const containerStyle = {
 			opacity: config.dotGridOpacity / 100,
-		};
-		const rowStyle = {
-			flexDirection: 'row',
+			height: dotGridRows * pitchPt,
+			flexShrink: 0,
 		};
 		const cellStyle = { width: pitchPt, height: pitchPt, alignItems: 'center', justifyContent: 'center' };
 		const dotStyle = { width: DOT_SIZE, height: DOT_SIZE, borderRadius: DOT_SIZE / 2, backgroundColor: '#000' };
@@ -71,7 +70,16 @@ class Itinerary extends React.PureComponent {
 		return (
 			<View key={ index } style={ containerStyle }>
 				{Array.from( { length: dotGridRows }, ( _, rowIndex ) => (
-					<View key={ rowIndex } style={ rowStyle }>
+					<View
+						key={ rowIndex }
+						style={ {
+							position: 'absolute',
+							top: rowIndex * pitchPt,
+							left: 0,
+							height: pitchPt,
+							flexDirection: 'row',
+						} }
+					>
 						{dotCells}
 					</View>
 				) )}
