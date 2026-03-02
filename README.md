@@ -1,25 +1,45 @@
 # ReCalendar
-### Highly customizable calendar for ReMarkable tablets
+### Highly customizable calendar for e-ink tablets (ReMarkable, Supernote)
 
 > **This is a fork of [klimeryk/recalendar.js](https://github.com/klimeryk/recalendar.js).** For the upstream project and live production version, see https://recalendar.me/.
+>
+> **Live version of this fork:** https://hiltonbrown.github.io/recalendar/
 
-ReCalendar allows you to generate your own, personalized calendar right in your browser.
-
-It is the continuation of my previous efforts: https://github.com/klimeryk/recalendar. Although, basically all of the code had to be rewritten as I'm using a different PDF library, CSS engine, language, etc.
+ReCalendar allows you to generate your own, personalized calendar right in your browser. Everything runs locally — nothing is uploaded to any server.
 
 ## Features
 
-See https://recalendar.me/features for a full list with screenshots.
+### Device support
 
- - Optimized for the [ReMarkable 2 tablet](https://remarkable.com/store/remarkable-2) (should work with version 1 as well) to use the full space available and minimize screen refreshes.
- - No hacks needed - the generated PDF is a normal file, with links, etc. that you can simply upload normally to your tablet.
- - Heavy use of links to allow quick and easy navigation.
- - Lots of easy configuration options to tailor the calendar to your needs - plus access to the source code for even more advanced customization.
- - Easily switch to any locale supported by PHP.
- - Add extra pages to all or selected days of the week to suit your needs.
- - Provide a list of special dates (anniversaries, birthdays, etc.) and let ReCalendar embed them into your personalized calendar - on monthly views, weekly overviews and finally, day entries.
- - Track your habits monthly.
- - Start the "year" on arbitrary month (can be useful for tracking academic years, etc.).
+ - **ReMarkable 1 & 2**, **ReMarkable Paper Pro**, **ReMarkable Paper Pro Move**
+ - **Supernote A5 X**, **Supernote Nomad**, **Supernote Manta** — each pre-configured with the correct DPI and resolution
+ - **Custom** device with user-defined page size and DPI
+
+### Calendar structure
+
+ - Year overview → month overview → weekly overview → daily pages, all interlinked for quick tap navigation with minimal screen refreshes
+ - Habits tracker on monthly pages
+ - Week retrospective pages
+ - Start the "year" on any arbitrary month (useful for academic or fiscal years)
+ - Enable or disable weekdays individually; add extra pages to selected days
+
+### Layout & line style
+
+ - **Sidebar position** — left, right, or none
+ - **Line style** — solid or dashed, with adjustable opacity and height
+ - **Dot grid** — toggle any ruled-line block to a dot grid, with configurable pitch, opacity, and per-block row count
+
+### Special dates
+
+ - Manually add events and holidays; they appear on month, week, and day pages
+ - **Import by country** — select a country and import all public holidays for the year in one click (via the [Nager.at](https://date.nager.at) public API)
+ - **ICS file import** — upload a `.ics` from Google Calendar, Outlook, or any calendar app; recurring events are fully supported
+
+### Other
+
+ - 15+ language/locale options
+ - Configuration saved as an attachment inside the generated PDF — reload a previous PDF to restore all settings
+ - Open source (GNU AGPLv3)
 
 ## Quickstart for developers/contributors
 
@@ -33,7 +53,7 @@ npm run dev
 
 ## Known issues
 
-See the [FAQ](https://recalendar.me/faq) and [the open issues on GitHub](https://github.com/klimeryk/recalendar.js/issues).
+See the [FAQ](https://recalendar.me/faq) and [the open issues on the upstream project](https://github.com/klimeryk/recalendar.js/issues). For issues specific to this fork, open an issue on [this repository](https://github.com/hiltonbrown/recalendar/issues).
 
 ## License
 

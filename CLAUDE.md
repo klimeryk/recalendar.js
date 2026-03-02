@@ -2,6 +2,8 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
+> For guidance targeting other AI agents (Copilot, Cursor, Windsurf, etc.), see [AGENTS.md](./AGENTS.md).
+
 ## Commands
 
 Always run with Node 18 (`nvm use` first — `.nvmrc` specifies `18.*`).
@@ -34,7 +36,9 @@ Configuration form (src/configuration.jsx)
 
 - **`src/loader.jsx`** — Instantiates `PdfConfig`, passes to `Configuration`
 - **`src/configuration.jsx`** — Central state owner; manages form state, spawns worker, handles preview/download
-- **`src/pdf/config.js`** — `PdfConfig` class: all 33 config fields with defaults, `hydrateFromObject()`, device presets (ReMarkable, Supernote, etc.), version migration
+- **`src/pdf/config.js`** — `PdfConfig` class: all config fields with defaults, `hydrateFromObject()`; computes `pageSizePt` from `pageSize`/`dpi`; version constants (`CONFIG_VERSION_1`–`4`)
+- **`src/lib/device-utils.js`** — Device presets: ReMarkable 1&2, ReMarkable Paper Pro, ReMarkable Paper Pro Move, Supernote A5 X, Supernote Nomad, Supernote Manta, Custom
+- **`src/lib/config-compat.js`** — Version migration: converts v1→v4 configs on load
 - **`src/pdf/recalendar.jsx`** — Root react-pdf `<Document>` that assembles all pages from the config
 - **`src/worker/pdf.worker.js`** — Runs in a Web Worker; initialises i18n + dayjs, registers fonts, calls `pdf().toBlob()`, encodes config as a Base64 attachment, posts blob back
 - **`src/lib/pdf.js`** — Custom wrapper around the react-pdf renderer instance (manages lifecycle, blob generation, attachments)
@@ -42,6 +46,8 @@ Configuration form (src/configuration.jsx)
 ### PDF page components (`src/pdf/pages/`)
 
 `recalendar.jsx` generates pages in this order: `YearOverview` → then for each week: `MonthOverview` (on month start) + `DayPage` per enabled weekday + optional `WeekRetrospective`. Each page receives the full config and the relevant dayjs date objects.
+
+Page files: `year-overview.jsx`, `month-overview.jsx`, `week-overview.jsx`, `week-retrospective.jsx`, `day.jsx`, `last.jsx` (final page).
 
 ### Configuration round-tripping
 
