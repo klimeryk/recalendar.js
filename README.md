@@ -1,4 +1,4 @@
-# ReCalendar
+# ReCalendar Reloaded
 ### Highly customizable calendar for e-ink tablets (ReMarkable, Supernote)
 
 > **This is a fork of [klimeryk/recalendar.js](https://github.com/klimeryk/recalendar.js).** For the upstream project and live production version, see https://recalendar.me/.
