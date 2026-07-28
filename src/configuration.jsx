@@ -31,6 +31,7 @@ import PdfConfig, { hydrateFromObject } from '~/pdf/config';
 import { AVAILABLE_FONTS } from '~/pdf/lib/fonts';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
+import '~/theme.css';
 import './app.css';
 
 const DAY_ITINERARY_ID_PREFIX = 'day-itinerary-';

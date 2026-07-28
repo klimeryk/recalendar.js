@@ -8,7 +8,10 @@ export default defineConfig( {
 	build: {
 		rollupOptions: {
 			input: {
+				main: './index.html',
 				app: './create.html',
+				features: './features.html',
+				faq: './faq.html',
 			},
 		},
 	},

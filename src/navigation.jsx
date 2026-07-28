@@ -57,7 +57,7 @@ class Navigation extends React.Component {
 	render() {
 		const { t } = this.props;
 		return (
-			<Navbar bg="dark" variant="dark" expand="md">
+			<Navbar bg="body-tertiary" expand="md">
 				<Container fluid>
 					<Navbar.Brand href={ HOME_PATH }>ReCalendar</Navbar.Brand>
 					<Navbar.Toggle aria-controls="basic-navbar-nav" />
@@ -83,7 +83,7 @@ class Navigation extends React.Component {
 						<Stack direction="horizontal">
 							<Form.Label
 								column
-								className="text-light me-3 mt-0"
+								className="me-3 mt-0"
 								htmlFor="languagePicker"
 							>
 								{t( 'language.label' )}

@@ -251,7 +251,7 @@ class ConfigurationSelector extends React.Component {
 					{[
 						{ template: TEMPLATE_BASIC, style: 'info' },
 						{ template: TEMPLATE_ADVANCED, style: 'primary' },
-						{ template: TEMPLATE_BLANK, style: 'blank' },
+						{ template: TEMPLATE_BLANK, style: 'secondary' },
 						{ template: TEMPLATE_MINIMALISTIC, style: 'dark' },
 					].map( this.renderButton )}
 				</ButtonGroup>

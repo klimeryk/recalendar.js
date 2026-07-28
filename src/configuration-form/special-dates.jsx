@@ -218,7 +218,7 @@ class SpecialDates extends React.Component {
 				<Accordion.Header>
 					<Stack direction="horizontal" className="w-100">
 						{t( 'configuration.special-dates.title' )}
-						<Badge bg="info" className="ms-auto me-3">
+						<Badge bg="secondary" className="ms-auto me-3">
 							{numberOfItems}
 						</Badge>
 					</Stack>
