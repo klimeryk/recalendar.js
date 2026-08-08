@@ -34,3 +34,21 @@ button:not(:disabled).grab-handle {
 .flex-basis-fit-content {
 	flex-basis: fit-content !important;
 }
+
+.prefix-menu.show {
+	--bs-dropdown-min-width: auto;
+	display: grid;
+	gap: 0.25rem;
+	grid-template-columns: repeat(3, auto);
+	padding: 0.25rem;
+}
+
+.prefix-menu > .dropdown-item {
+	align-items: center;
+	border-radius: 0.25rem;
+	display: flex;
+	height: 2.25rem;
+	justify-content: center;
+	padding: 0;
+	width: 2.25rem;
+}

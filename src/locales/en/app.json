@@ -104,6 +104,20 @@
 				"page": "New page break",
 				"item": "Itinerary item"
 			},
+			"prefix": {
+				"selected": "Line prefix: {{name}}",
+				"none": "No prefix",
+				"icon": {
+					"square": "Checkbox",
+					"square-check-big": "Checked box",
+					"circle": "Circle",
+					"circle-dot": "Dot",
+					"arrow-right": "Arrow",
+					"chevron-right": "Chevron",
+					"star": "Star",
+					"heart": "Heart"
+				}
+			},
 			"button": {
 				"copy": "Copy this itinerary to all other days",
 				"remove": "Remove",

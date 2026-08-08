@@ -27,6 +27,8 @@ import ToggleAccordionItem from '~/configuration-form/toggle-accordion-item';
 import { getWeekdays } from '~/lib/date';
 import { AVAILABLE_DEVICES, CUSTOM, getPageProperties } from '~/lib/device-utils';
 import { byId, wrapWithId } from '~/lib/id-utils';
+import { ITINERARY_NO_PREFIX } from '~/lib/itinerary-prefixes';
+import { parseItineraryProperty } from '~/lib/itinerary-utils';
 import PdfConfig, { hydrateFromObject } from '~/pdf/config';
 import { AVAILABLE_FONTS } from '~/pdf/lib/fonts';
 
@@ -251,22 +253,26 @@ class Configuration extends React.PureComponent {
 			wrapWithId( {
 				type: event.target.dataset.type,
 				value: '',
+				prefix: ITINERARY_NO_PREFIX,
 			} ),
 		);
 		this.setState( { [ field ]: newItinerary } );
 	};
 
 	handleItineraryChange = ( event ) => {
-		const { field, id, type } = event.target.dataset;
+		const { field, id, type, property = 'value' } = event.currentTarget.dataset;
 		const newItinerary = [ ...this.state[ field ] ];
 		const index = this.state[ field ].findIndex( byId( id ) );
 		if ( index === -1 ) {
 			return;
 		}
 		newItinerary[ index ] = {
-			id,
-			type,
-			value: type === 'lines' ? Number( event.target.value ) : event.target.value,
+			...newItinerary[ index ],
+			[ property ]: parseItineraryProperty(
+				type,
+				property,
+				event.currentTarget.value,
+			),
 		};
 		this.setState( { [ field ]: newItinerary } );
 	};
@@ -320,16 +326,24 @@ class Configuration extends React.PureComponent {
 	};
 
 	handleDayItineraryChange = ( event ) => {
-		const newItineraries = [ ...this.state.dayItineraries ];
-		const { field, type } = event.target.dataset;
+		const { field, type, property = 'value' } = event.currentTarget.dataset;
 		const index = this.state.dayItineraries[ field ].items.findIndex(
-			byId( event.target.dataset.id ),
+			byId( event.currentTarget.dataset.id ),
 		);
-		newItineraries[ field ].items[ index ] = {
-			id: event.target.dataset.id,
-			type,
-			value: type === 'lines' ? Number( event.target.value ) : event.target.value,
+		if ( index === -1 ) {
+			return;
+		}
+		const newItineraries = [ ...this.state.dayItineraries ];
+		const newItems = [ ...newItineraries[ field ].items ];
+		newItems[ index ] = {
+			...newItems[ index ],
+			[ property ]: parseItineraryProperty(
+				type,
+				property,
+				event.currentTarget.value,
+			),
 		};
+		newItineraries[ field ] = { ...newItineraries[ field ], items: newItems };
 		this.setState( { dayItineraries: newItineraries } );
 	};
 
@@ -364,6 +378,7 @@ class Configuration extends React.PureComponent {
 			wrapWithId( {
 				type,
 				value: '',
+				prefix: ITINERARY_NO_PREFIX,
 			} ),
 		);
 		this.setState( { dayItineraries: newItineraries } );
