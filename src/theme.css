@@ -284,8 +284,7 @@ h6,
 	--bs-accordion-active-bg: rgba(var(--rc-accent-rgb), 0.06);
 	--bs-accordion-btn-focus-box-shadow: 0 0 0 0.2rem rgba(var(--rc-accent-rgb), 0.15);
 	box-shadow: var(--rc-shadow);
-	border-radius: var(--bs-border-radiusg);
-	overflow: hidden;
+	border-radius: var(--bs-border-radius);
 }
 
 .accordion-button {
