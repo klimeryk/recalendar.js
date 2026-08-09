@@ -90,6 +90,10 @@
 				"solid": "Solid",
 				"dotted": "Dotted",
 				"dashed": "Dashed"
+			},
+			"line-height": {
+				"label": "Itinerary line height",
+				"description": "Height of each line in itineraries. Text and icons scale with it."
 			}
 		},
 		"button": {

@@ -74,6 +74,10 @@
 				"solid": "Plná",
 				"dotted": "Tečkovaná",
 				"dashed": "Čárkovaná"
+			},
+			"line-height": {
+				"label": "Výška řádků v itinerářích",
+				"description": "Výška každého řádku v itinerářích. Text a ikony se úměrně přizpůsobí."
 			}
 		},
 		"button": {

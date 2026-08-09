@@ -62,6 +62,10 @@
 				"solid": "Massiv",
 				"dotted": "Punkteret",
 				"dashed": "Stiplet"
+			},
+			"line-height": {
+				"label": "Linjehøjde for planer",
+				"description": "Højden af hver linje i planer. Tekst og ikoner skaleres tilsvarende."
 			}
 		},
 		"button": {

@@ -54,6 +54,10 @@
 				"solid": "Continu",
 				"dotted": "Pointillé",
 				"dashed": "Tirets"
+			},
+			"line-height": {
+				"label": "Hauteur de ligne des plannings",
+				"description": "Hauteur de chaque ligne dans les plannings. Le texte et les icônes sont mis à l'échelle en conséquence."
 			}
 		},
 		"button": {

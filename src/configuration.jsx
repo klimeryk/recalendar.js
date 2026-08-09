@@ -634,6 +634,24 @@ class Configuration extends React.PureComponent {
 									{t( 'configuration.general.line-style.description' )}
 								</Form.Text>
 							</Form.Group>
+							<Form.Group controlId="lineHeightPixels">
+								<Form.Label>
+									{t( 'configuration.general.line-height.label' )}
+								</Form.Label>
+								<InputGroup>
+									<Form.Control
+										type="number"
+										value={ this.state.lineHeightPixels }
+										onChange={ this.handleFieldChange }
+										min={ 8 }
+										max={ 60 }
+									/>
+									<InputGroup.Text>px</InputGroup.Text>
+								</InputGroup>
+								<Form.Text className="text-muted">
+									{t( 'configuration.general.line-height.description' )}
+								</Form.Text>
+							</Form.Group>
 						</Accordion.Body>
 					</Accordion.Item>
 					<SpecialDates

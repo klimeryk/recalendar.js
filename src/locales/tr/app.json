@@ -64,6 +64,10 @@
 				"solid": "Düz",
 				"dotted": "Noktalı",
 				"dashed": "Kesikli"
+			},
+			"line-height": {
+				"label": "Gezi planı satır yüksekliği",
+				"description": "Gezi planlarındaki her satırın yüksekliği. Metin ve simgeler buna göre ölçeklenir."
 			}
 		},
 		"button": {

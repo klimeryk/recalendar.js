@@ -54,6 +54,10 @@
 				"solid": "Sólida",
 				"dotted": "Punteada",
 				"dashed": "Discontinua"
+			},
+			"line-height": {
+				"label": "Altura de línea de la planificación",
+				"description": "Altura de cada línea en las planificaciones. El texto y los iconos se escalan proporcionalmente."
 			}
 		},
 		"button": {

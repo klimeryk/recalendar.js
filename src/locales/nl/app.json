@@ -67,6 +67,10 @@
 				"solid": "Doorlopend",
 				"dotted": "Gestippeld",
 				"dashed": "Gestreept"
+			},
+			"line-height": {
+				"label": "Lijnhoogte van dagplanning",
+				"description": "Hoogte van elke lijn in dagplanningen. Tekst en pictogrammen schalen mee."
 			}
 		},
 		"button": {

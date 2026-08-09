@@ -70,6 +70,10 @@
 				"solid": "Ciągła",
 				"dotted": "Kropkowana",
 				"dashed": "Przerywana"
+			},
+			"line-height": {
+				"label": "Wysokość linii w planach",
+				"description": "Wysokość każdej linii w planach. Tekst i ikony są odpowiednio skalowane."
 			}
 		},
 		"button": {

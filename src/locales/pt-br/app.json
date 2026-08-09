@@ -67,6 +67,10 @@
 				"solid": "Sólida",
 				"dotted": "Pontilhada",
 				"dashed": "Tracejada"
+			},
+			"line-height": {
+				"label": "Altura de linha do itinerário",
+				"description": "Altura de cada linha nos itinerários. O texto e os ícones são dimensionados proporcionalmente."
 			}
 		},
 		"button": {

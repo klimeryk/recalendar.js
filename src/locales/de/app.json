@@ -74,6 +74,10 @@
 				"solid": "Durchgezogen",
 				"dotted": "Gepunktet",
 				"dashed": "Gestrichelt"
+			},
+			"line-height": {
+				"label": "Zeilenhöhe der Pläne",
+				"description": "Höhe jeder Zeile in den Plänen. Text und Symbole werden entsprechend skaliert."
 			}
 		},
 		"button": {

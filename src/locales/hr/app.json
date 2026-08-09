@@ -74,6 +74,10 @@
 				"solid": "Puna",
 				"dotted": "Točkasta",
 				"dashed": "Crtkana"
+			},
+			"line-height": {
+				"label": "Visina linija u rasporedima",
+				"description": "Visina svake linije u rasporedima. Tekst i ikone se proporcionalno prilagođavaju."
 			}
 		},
 		"button": {

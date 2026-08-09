@@ -67,6 +67,10 @@
 				"solid": "Heldragen",
 				"dotted": "Punktad",
 				"dashed": "Streckad"
+			},
+			"line-height": {
+				"label": "Linjehöjd för planer",
+				"description": "Höjden på varje linje i planer. Text och ikoner skalas i motsvarande grad."
 			}
 		},
 		"button": {

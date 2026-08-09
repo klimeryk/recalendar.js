@@ -28,7 +28,11 @@ class DayPage extends React.Component {
 	renderExtraItems = ( items, index ) => (
 		<Page key={ index } size={ this.props.config.pageSize } dpi={ this.props.config.dpi }>
 			<View style={ this.styles.page }>
-				<Itinerary items={ items } lineStyle={ this.props.config.lineStyle } />
+				<Itinerary
+					items={ items }
+					lineStyle={ this.props.config.lineStyle }
+					lineHeightPixels={ this.props.config.lineHeightPixels }
+				/>
 			</View>
 		</Page>
 	);
@@ -61,7 +65,11 @@ class DayPage extends React.Component {
 							specialItems={ specialItems }
 						/>
 						<View style={ this.styles.content }>
-							<Itinerary items={ itemsByPage[ 0 ] } lineStyle={ config.lineStyle } />
+							<Itinerary
+								items={ itemsByPage[ 0 ] }
+								lineStyle={ config.lineStyle }
+								lineHeightPixels={ config.lineHeightPixels }
+							/>
 						</View>
 					</View>
 				</Page>

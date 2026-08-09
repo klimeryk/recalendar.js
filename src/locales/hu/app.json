@@ -64,6 +64,10 @@
 				"solid": "Folytonos",
 				"dotted": "Pontozott",
 				"dashed": "Szaggatott"
+			},
+			"line-height": {
+				"label": "Sormagasság a tervekben",
+				"description": "A tervekben lévő sorok magassága. A szöveg és az ikonok ehhez igazodnak."
 			}
 		},
 		"button": {

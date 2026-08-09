@@ -224,14 +224,22 @@ class MonthOverviewPage extends React.Component {
 						</View>
 						{this.renderHabitsTable()}
 						<View style={ this.styles.content }>
-							<Itinerary items={ itemsByPage[ 0 ] } lineStyle={ config.lineStyle } />
+							<Itinerary
+								items={ itemsByPage[ 0 ] }
+								lineStyle={ config.lineStyle }
+								lineHeightPixels={ config.lineHeightPixels }
+							/>
 						</View>
 					</View>
 				</Page>
 				{itemsByPage.slice( 1 ).map( ( items, index ) => (
 					<Page key={ index } size={ pageSize } dpi={ dpi }>
 						<View style={ this.styles.page }>
-							<Itinerary items={ items } lineStyle={ config.lineStyle } />
+							<Itinerary
+								items={ items }
+								lineStyle={ config.lineStyle }
+								lineHeightPixels={ config.lineHeightPixels }
+							/>
 						</View>
 					</Page>
 				) )}

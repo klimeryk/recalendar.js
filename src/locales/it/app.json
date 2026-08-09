@@ -67,6 +67,10 @@
 				"solid": "Continua",
 				"dotted": "Punteggiata",
 				"dashed": "Tratteggiata"
+			},
+			"line-height": {
+				"label": "Altezza linea della programmazione",
+				"description": "Altezza di ogni linea nelle programmazioni. Il testo e le icone vengono ridimensionati di conseguenza."
 			}
 		},
 		"button": {

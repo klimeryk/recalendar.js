@@ -74,6 +74,10 @@
 				"solid": "Polna",
 				"dotted": "Pikčasta",
 				"dashed": "Črtkana"
+			},
+			"line-height": {
+				"label": "Višina črt v vsebini",
+				"description": "Višina vsake črte v vsebini. Besedilo in ikone se ustrezno prilagodijo."
 			}
 		},
 		"button": {

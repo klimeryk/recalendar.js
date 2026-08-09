@@ -32,7 +32,10 @@ const CONFIG_FIELDS = [
 	'weekRetrospectiveItinerary',
 	'specialDates',
 	'lineStyle',
+	'lineHeightPixels',
 ];
+
+export const DEFAULT_LINE_HEIGHT_PIXELS = 20;
 
 export const CONFIG_FILE = 'config.json';
 export const CONFIG_VERSION_1 = 'v1';
@@ -145,6 +148,7 @@ class PdfConfig {
 			},
 		];
 		this.lineStyle = 'solid';
+		this.lineHeightPixels = DEFAULT_LINE_HEIGHT_PIXELS;
 
 		if ( Object.keys( configOverrides ).length !== 0 ) {
 			Object.assign( this, configOverrides );

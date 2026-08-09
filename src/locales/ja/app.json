@@ -72,6 +72,10 @@
 				"solid": "実線",
 				"dotted": "点線",
 				"dashed": "破線"
+			},
+			"line-height": {
+				"label": "行程の行の高さ",
+				"description": "行程の各行の高さ。テキストとアイコンも合わせて拡大縮小されます。"
 			}
 		},
 		"button": {

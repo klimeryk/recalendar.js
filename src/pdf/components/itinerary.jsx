@@ -5,26 +5,29 @@ import React from 'react';
 import { getPrefix } from '~/lib/itinerary-prefixes';
 import { ITINERARY_ITEM, ITINERARY_LINES } from '~/lib/itinerary-utils';
 import PrefixIcon from '~/pdf/components/prefix-icon';
+import { DEFAULT_LINE_HEIGHT_PIXELS } from '~/pdf/config';
 
 const PREFIX_COLOR = '#333';
-const PREFIX_SIZE = 10;
 
 class Itinerary extends React.PureComponent {
+	scale = this.props.lineHeightPixels / DEFAULT_LINE_HEIGHT_PIXELS;
+	prefixSize = 10 * this.scale;
+
 	styles = StyleSheet.create( {
 		line: {
 			borderBottom: `1 ${this.props.lineStyle} #AAA`,
 			flexDirection: 'row',
-			height: 20,
-			minHeight: 20,
-			padding: '2 0 0 5',
+			height: this.props.lineHeightPixels,
+			minHeight: this.props.lineHeightPixels,
+			padding: `${2 * this.scale} 0 0 5`,
 		},
 		prefix: {
 			marginRight: 4,
-			marginTop: 3,
+			marginTop: 3 * this.scale,
 		},
 		text: {
 			flex: 1,
-			fontSize: 12,
+			fontSize: 12 * this.scale,
 			fontWeight: 'bold',
 		},
 	} );
@@ -48,7 +51,7 @@ class Itinerary extends React.PureComponent {
 			<View key={ key } style={ this.styles.line } wrap={ false }>
 				<PrefixIcon
 					prefix={ prefix }
-					size={ PREFIX_SIZE }
+					size={ this.prefixSize }
 					color={ PREFIX_COLOR }
 					style={ this.styles.prefix }
 				/>
@@ -73,6 +76,7 @@ class Itinerary extends React.PureComponent {
 
 Itinerary.propTypes = {
 	items: PropTypes.array.isRequired,
+	lineHeightPixels: PropTypes.number.isRequired,
 	lineStyle: PropTypes.string.isRequired,
 };
 

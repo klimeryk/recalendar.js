@@ -46,6 +46,10 @@
 				"solid": "Heltrukket",
 				"dotted": "Punktert",
 				"dashed": "Stiplet"
+			},
+			"line-height": {
+				"label": "Linjehøyde for avtaler",
+				"description": "Høyden på hver linje i avtaler. Tekst og ikoner skaleres tilsvarende."
 			}
 		},
 		"button": {
