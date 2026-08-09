@@ -173,11 +173,6 @@ h6,
 	transition: transform 0.18s ease, box-shadow 0.18s ease;
 }
 
-.card:hover {
-	transform: translateY(-3px);
-	box-shadow: var(--rc-shadow-hover);
-}
-
 .btn {
 	font-weight: 500;
 	--bs-btn-disabled-color: var(--bs-btn-color);
