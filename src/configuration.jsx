@@ -656,6 +656,8 @@ class Configuration extends React.PureComponent {
 					</Accordion.Item>
 					<SpecialDates
 						year={ this.state.year }
+						month={ this.state.month }
+						monthCount={ this.state.monthCount }
 						items={ this.state.specialDates }
 						onAdd={ this.handleSpecialDateAdd }
 						onRemove={ this.handleItemRemove }

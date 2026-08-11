@@ -10,15 +10,29 @@ import Form from 'react-bootstrap/Form';
 import FormControl from 'react-bootstrap/FormControl';
 import InputGroup from 'react-bootstrap/InputGroup';
 import ListGroup from 'react-bootstrap/ListGroup';
+import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
 import Stack from 'react-bootstrap/Stack';
-import { withTranslation } from 'react-i18next';
+import Tooltip from 'react-bootstrap/Tooltip';
+import { Trans, withTranslation } from 'react-i18next';
 
-import { DATE_FORMAT, HOLIDAY_DAY_TYPE, EVENT_DAY_TYPE } from '~/lib/special-dates-utils';
+import { fetchCountries, fetchHolidays } from '~/lib/holidays-api';
+import {
+	DATE_FORMAT,
+	EVENT_DAY_TYPE,
+	HOLIDAY_DAY_TYPE,
+	formatYearRange,
+	getDedupeKey,
+	getSpannedYears,
+} from '~/lib/special-dates-utils';
 
 const STATUS_EMPTY = 'EMPTY';
 const STATUS_LOADING = 'LOADING';
 const STATUS_ERROR = 'ERROR';
 const STATUS_SUCCESS = 'SUCCESS';
+const STATUS_YEAR_UNAVAILABLE = 'YEAR_UNAVAILABLE';
+
+const ENGLISH_NAME = 'name';
+const LOCAL_NAME = 'local_name';
 
 // Disable strict mode for ical.js to allow slightly invalid ics files.
 ICAL.design.strict = false;
@@ -30,14 +44,104 @@ class SpecialDates extends React.Component {
 		type: EVENT_DAY_TYPE,
 		icalType: EVENT_DAY_TYPE,
 		status: STATUS_EMPTY,
+		countries: [],
+		yearsCovered: [],
+		countriesStatus: STATUS_EMPTY,
+		selectedCountry: '',
+		nameLanguage: ENGLISH_NAME,
+		deduplicate: true,
+		holidaysStatus: STATUS_EMPTY,
+		holidaysResult: { added: 0, skipped: 0, country: '' },
 	};
+
+	componentDidMount() {
+		this.loadCountries();
+	}
 
 	onChange = ( event ) => {
 		const { field } = event.target.dataset;
 		this.setState( { [ field ]: event.target.value } );
 	};
 
-	onAddClick = ( event ) => {
+	onDeduplicateChange = ( event ) => {
+		this.setState( { deduplicate: event.target.checked } );
+	};
+
+	loadCountries = () => {
+		const { countriesStatus } = this.state;
+		if ( countriesStatus === STATUS_LOADING || countriesStatus === STATUS_SUCCESS ) {
+			return;
+		}
+
+		this.setState( { countriesStatus: STATUS_LOADING } );
+		fetchCountries()
+			.then( ( { countries, yearsCovered } ) => {
+				this.setState( {
+					countries,
+					yearsCovered,
+					countriesStatus: STATUS_SUCCESS,
+				} );
+			} )
+			.catch( () => {
+				this.setState( { countriesStatus: STATUS_ERROR } );
+			} );
+	};
+
+	onImportHolidays = async () => {
+		const { year, month, monthCount } = this.props;
+		const { selectedCountry, nameLanguage, deduplicate, yearsCovered, countries } = this.state;
+
+		const spannedYears = getSpannedYears( {
+			year: Number( year ),
+			month: Number( month ),
+			monthCount: Number( monthCount ),
+		} );
+		const targetYears = spannedYears.filter( ( y ) => yearsCovered.includes( y ) );
+		if ( targetYears.length === 0 ) {
+			this.setState( { holidaysStatus: STATUS_YEAR_UNAVAILABLE } );
+			return;
+		}
+
+		this.setState( { holidaysStatus: STATUS_LOADING } );
+		try {
+			const holidayLists = await Promise.all(
+				targetYears.map( ( y ) => fetchHolidays( selectedCountry, y ) ),
+			);
+			const seen = new Set( this.props.items.map( getDedupeKey ) );
+			let added = 0;
+			let skipped = 0;
+			holidayLists.flat().forEach( ( holiday ) => {
+				const date = holiday.date.slice( 5 );
+				const holidayName = holiday.name;
+				const value = nameLanguage === LOCAL_NAME
+					? holiday.local_name || holiday.name
+					: holiday.name;
+				const key = getDedupeKey( { date, holidayName } );
+				if ( deduplicate && seen.has( key ) ) {
+					skipped++;
+					return;
+				}
+
+				seen.add( key );
+				this.props.onAdd( { date, value, type: HOLIDAY_DAY_TYPE, holidayName } );
+				added++;
+			} );
+
+			const country = countries.find( ( c ) => c.code === selectedCountry );
+			this.setState( {
+				holidaysStatus: STATUS_SUCCESS,
+				holidaysResult: {
+					added,
+					skipped,
+					country: country ? country.name : selectedCountry,
+				},
+			} );
+		} catch ( error ) {
+			this.setState( { holidaysStatus: STATUS_ERROR } );
+		}
+	};
+
+	onAddClick = () => {
 		const date = dayjs( this.state.date, 'YYYY-MM-DD' );
 		const key = date.format( DATE_FORMAT );
 		const { value, type } = this.state;
@@ -115,7 +219,7 @@ class SpecialDates extends React.Component {
 					<Stack direction="horizontal" gap={ 3 }>
 						<b className="special-date">{date.format( 'MMMM DD' )}</b>
 						<ListGroup variant="flush" className="w-100">
-							{items.map( ( { id, value, type }, index ) => (
+							{items.map( ( { id, value, type } ) => (
 								<ListGroup.Item key={ id } className="ps-0 pe-0">
 									<Stack direction="horizontal" gap={ 3 }>
 										<span>
@@ -208,6 +312,172 @@ class SpecialDates extends React.Component {
 		);
 	};
 
+	renderHolidaysStatus() {
+		const { t } = this.props;
+		const { holidaysStatus, holidaysResult, yearsCovered } = this.state;
+
+		switch ( holidaysStatus ) {
+			case STATUS_LOADING:
+				return (
+					<Alert variant="info" className="mt-2 mb-0">
+						{t( 'configuration.special-dates.holidays.loading' )}
+					</Alert>
+				);
+
+			case STATUS_ERROR:
+				return (
+					<Alert variant="danger" className="mt-2 mb-0">
+						{t( 'configuration.special-dates.holidays.error' )}
+					</Alert>
+				);
+
+			case STATUS_YEAR_UNAVAILABLE:
+				return (
+					<Alert variant="warning" className="mt-2 mb-0">
+						{t( 'configuration.special-dates.holidays.year-unavailable', {
+							years: yearsCovered.join( ', ' ),
+						} )}
+					</Alert>
+				);
+
+			case STATUS_SUCCESS: {
+				const { added, skipped, country } = holidaysResult;
+				const message = t( 'configuration.special-dates.holidays.success', {
+					count: added,
+					country,
+				} );
+				const skippedMessage = skipped > 0
+					? ' ' + t( 'configuration.special-dates.holidays.skipped', { count: skipped } )
+					: '';
+				return (
+					<Alert variant="success" className="mt-2 mb-0">
+						{message}{skippedMessage}
+					</Alert>
+				);
+			}
+
+			case STATUS_EMPTY:
+			default:
+				return null;
+		}
+	}
+
+	renderHolidaysSection() {
+		const { t, year, month, monthCount } = this.props;
+		const {
+			countries,
+			countriesStatus,
+			selectedCountry,
+			nameLanguage,
+			deduplicate,
+			holidaysStatus,
+		} = this.state;
+
+		const spannedYears = getSpannedYears( {
+			year: Number( year ),
+			month: Number( month ),
+			monthCount: Number( monthCount ),
+		} );
+		const isLoadingCountries = countriesStatus === STATUS_LOADING;
+
+		return (
+			<Stack className="mt-4">
+				<Form.Label className="fw-bold mb-1">
+					{t( 'configuration.special-dates.holidays.heading' )}
+				</Form.Label>
+				<p className="text-muted small mb-2">
+					{t( 'configuration.special-dates.holidays.description', {
+						count: spannedYears.length,
+						years: formatYearRange( spannedYears ),
+					} )}
+				</p>
+				<InputGroup className="justify-content-end">
+					<Form.Select
+						value={ selectedCountry }
+						data-field="selectedCountry"
+						onChange={ this.onChange }
+						onFocus={ this.loadCountries }
+						disabled={ isLoadingCountries }
+					>
+						<option value="">
+							{isLoadingCountries
+								? t( 'configuration.special-dates.holidays.countries-loading' )
+								: t( 'configuration.special-dates.holidays.country-placeholder' )}
+						</option>
+						{countries.map( ( country ) => (
+							<option key={ country.code } value={ country.code }>
+								{country.name}
+							</option>
+						) )}
+					</Form.Select>
+					<Form.Select
+						className="flex-grow-0 flex-basis-fit-content"
+						value={ nameLanguage }
+						data-field="nameLanguage"
+						onChange={ this.onChange }
+					>
+						<option value={ ENGLISH_NAME }>
+							{t( 'configuration.special-dates.holidays.names.english' )}
+						</option>
+						<option value={ LOCAL_NAME }>
+							{t( 'configuration.special-dates.holidays.names.local' )}
+						</option>
+					</Form.Select>
+					<InputGroup.Text className="gap-2">
+						<Form.Check
+							className="mb-0"
+							id="deduplicateHolidays"
+							type="checkbox"
+							label={ t( 'configuration.special-dates.holidays.deduplicate.label' ) }
+							checked={ deduplicate }
+							onChange={ this.onDeduplicateChange }
+						/>
+						<OverlayTrigger
+							placement="top"
+							overlay={
+								<Tooltip>
+									{t( 'configuration.special-dates.holidays.deduplicate.help' )}
+								</Tooltip>
+							}
+						>
+							<Badge bg="secondary" pill role="button">
+								?
+							</Badge>
+						</OverlayTrigger>
+					</InputGroup.Text>
+					<Button
+						variant="outline-secondary"
+						disabled={ ! selectedCountry || holidaysStatus === STATUS_LOADING }
+						onClick={ this.onImportHolidays }
+					>
+						{t( 'configuration.special-dates.holidays.button' )}
+					</Button>
+				</InputGroup>
+				{countriesStatus === STATUS_ERROR && (
+					<Alert variant="danger" className="mt-2 mb-0">
+						{t( 'configuration.special-dates.holidays.countries-error' )}
+					</Alert>
+				)}
+				{this.renderHolidaysStatus()}
+				<Form.Text className="text-muted mt-2">
+					<Trans
+						t={ t }
+						i18nKey="configuration.special-dates.holidays.attribution"
+						components={ {
+							tallyfy: (
+								<a
+									href="https://tallyfy.com/national-holidays/"
+									target="_blank"
+									rel="noreferrer"
+								/>
+							),
+						} }
+					/>
+				</Form.Text>
+			</Stack>
+		);
+	}
+
 	render() {
 		const { date, value } = this.state;
 		const { t } = this.props;
@@ -234,7 +504,10 @@ class SpecialDates extends React.Component {
 							</Alert>
 						)}
 					</Stack>
-					<Stack direction="horizontal" className="mt-3">
+					<Stack className="mt-4">
+						<Form.Label className="fw-bold mb-1">
+							{t( 'configuration.special-dates.manual.heading' )}
+						</Form.Label>
 						<InputGroup>
 							{this.renderTypeSelect( 'type' )}
 							<FormControl
@@ -259,8 +532,9 @@ class SpecialDates extends React.Component {
 							</Button>
 						</InputGroup>
 					</Stack>
-					<Stack className="mt-3">
-						<Form.Label htmlFor="icsFile">
+					{this.renderHolidaysSection()}
+					<Stack className="mt-4">
+						<Form.Label htmlFor="icsFile" className="fw-bold mb-1">
 							{t( 'configuration.special-dates.upload.label' )}
 						</Form.Label>
 						<Stack direction="horizontal" gap={ 2 }>
@@ -282,6 +556,8 @@ class SpecialDates extends React.Component {
 
 SpecialDates.propTypes = {
 	year: PropTypes.number.isRequired,
+	month: PropTypes.number.isRequired,
+	monthCount: PropTypes.number.isRequired,
 	items: PropTypes.array.isRequired,
 	onAdd: PropTypes.func.isRequired,
 	onRemove: PropTypes.func.isRequired,
