@@ -70,10 +70,7 @@
 			"weekend": "Konec tedna",
 			"line-style": {
 				"label": "Slog črt v vsebini",
-				"description": "Slog za risanje črt v vsebini.",
-				"solid": "Polna",
-				"dotted": "Pikčasta",
-				"dashed": "Črtkana"
+				"description": "Slog za risanje črt v vsebini."
 			},
 			"line-height": {
 				"label": "Višina črt v vsebini",

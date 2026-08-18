@@ -63,10 +63,7 @@
 			"weekend": "Fim de semana",
 			"line-style": {
 				"label": "Estilo de linha do itinerário",
-				"description": "Estilo usado ao desenhar linhas nos itinerários.",
-				"solid": "Sólida",
-				"dotted": "Pontilhada",
-				"dashed": "Tracejada"
+				"description": "Estilo usado ao desenhar linhas nos itinerários."
 			},
 			"line-height": {
 				"label": "Altura de linha do itinerário",

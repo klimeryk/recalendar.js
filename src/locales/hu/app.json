@@ -60,10 +60,7 @@
 			"weekend": "Hétvége",
 			"line-style": {
 				"label": "Vonalstílus a tervekben",
-				"description": "A tervekben lévő vonalak rajzolásához használt stílus.",
-				"solid": "Folytonos",
-				"dotted": "Pontozott",
-				"dashed": "Szaggatott"
+				"description": "A tervekben lévő vonalak rajzolásához használt stílus."
 			},
 			"line-height": {
 				"label": "Sormagasság a tervekben",

@@ -5,8 +5,10 @@ import React from 'react';
 
 import { getPrefix } from '~/lib/itinerary-prefixes';
 import { ITINERARY_ITEM, ITINERARY_LINES } from '~/lib/itinerary-utils';
+import { getLineStroke } from '~/lib/line-styles';
+import LineRule from '~/pdf/components/line-rule';
 import PrefixIcon from '~/pdf/components/prefix-icon';
-import { DEFAULT_LINE_HEIGHT_PIXELS } from '~/pdf/config';
+import PdfConfig, { DEFAULT_LINE_HEIGHT_PIXELS } from '~/pdf/config';
 
 const PREFIX_COLOR = '#333';
 
@@ -21,15 +23,15 @@ function applyDateTemplates( text, date ) {
 }
 
 class Itinerary extends React.PureComponent {
-	scale = this.props.lineHeightPixels / DEFAULT_LINE_HEIGHT_PIXELS;
+	scale = this.props.config.lineHeightPixels / DEFAULT_LINE_HEIGHT_PIXELS;
 	prefixSize = 10 * this.scale;
+	stroke = getLineStroke( this.props.config );
 
 	styles = StyleSheet.create( {
 		line: {
-			borderBottom: `1 ${this.props.lineStyle} #AAA`,
 			flexDirection: 'row',
-			height: this.props.lineHeightPixels,
-			minHeight: this.props.lineHeightPixels,
+			height: this.props.config.lineHeightPixels,
+			minHeight: this.props.config.lineHeightPixels,
 			padding: `${2 * this.scale} 0 0 5`,
 		},
 		prefix: {
@@ -60,6 +62,7 @@ class Itinerary extends React.PureComponent {
 	renderLine( text, prefix, key ) {
 		return (
 			<View key={ key } style={ this.styles.line } wrap={ false }>
+				<LineRule stroke={ this.stroke } />
 				<PrefixIcon
 					prefix={ prefix }
 					size={ this.prefixSize }
@@ -88,10 +91,9 @@ class Itinerary extends React.PureComponent {
 }
 
 Itinerary.propTypes = {
+	config: PropTypes.instanceOf( PdfConfig ).isRequired,
 	date: PropTypes.instanceOf( dayjs ).isRequired,
 	items: PropTypes.array.isRequired,
-	lineHeightPixels: PropTypes.number.isRequired,
-	lineStyle: PropTypes.string.isRequired,
 };
 
 export default Itinerary;

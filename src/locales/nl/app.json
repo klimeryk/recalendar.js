@@ -63,10 +63,7 @@
 			"weekend": "Weekeinde",
 			"line-style": {
 				"label": "Lijnstijl van dagplanning",
-				"description": "Stijl voor het tekenen van lijnen in dagplanningen.",
-				"solid": "Doorlopend",
-				"dotted": "Gestippeld",
-				"dashed": "Gestreept"
+				"description": "Stijl voor het tekenen van lijnen in dagplanningen."
 			},
 			"line-height": {
 				"label": "Lijnhoogte van dagplanning",

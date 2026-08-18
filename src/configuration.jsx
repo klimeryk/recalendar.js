@@ -22,6 +22,7 @@ import PdfProgress from '~/components/pdf-progress';
 import ConfigurationSelector from '~/configuration-form/configuration-selector';
 import ItemsList from '~/configuration-form/items-list';
 import Itinerary from '~/configuration-form/itinerary';
+import LineSettings from '~/configuration-form/line-settings';
 import SpecialDates from '~/configuration-form/special-dates';
 import ToggleAccordionItem from '~/configuration-form/toggle-accordion-item';
 import { getWeekdays } from '~/lib/date';
@@ -37,12 +38,6 @@ import '~/theme.css';
 import './app.css';
 
 const DAY_ITINERARY_ID_PREFIX = 'day-itinerary-';
-const LINE_STYLES = [ 'solid', 'dotted', 'dashed' ];
-const LINE_STYLE_PREVIEWS = {
-	solid: '───────',
-	dotted: '·············',
-	dashed: '╌ ╌ ╌ ╌ ╌',
-};
 
 class Configuration extends React.PureComponent {
 	state = {
@@ -445,17 +440,6 @@ class Configuration extends React.PureComponent {
 		) );
 	}
 
-	renderLineStyle() {
-		const { t } = this.props;
-		return LINE_STYLES.map( ( style ) => (
-			<option key={ style } value={ style }>
-				{`${ LINE_STYLE_PREVIEWS[ style ] } ${ t(
-					`configuration.general.line-style.${ style }`,
-				) }`}
-			</option>
-		) );
-	}
-
 	renderDayItinerary = ( { full: dayOfWeek }, index ) => {
 		return (
 			<ToggleAccordionItem
@@ -620,38 +604,13 @@ class Configuration extends React.PureComponent {
 							</Form.Group>
 							<Form.Label>{t( 'configuration.general.weekend' )}</Form.Label>
 							<ListGroup>{this.renderWeekendSelection()}</ListGroup>
-							<Form.Group controlId="lineStyle">
-								<Form.Label>
-									{t( 'configuration.general.line-style.label' )}
-								</Form.Label>
-								<Form.Select
-									value={ this.state.lineStyle }
-									onChange={ this.handleFieldChange }
-								>
-									{this.renderLineStyle()}
-								</Form.Select>
-								<Form.Text className="text-muted">
-									{t( 'configuration.general.line-style.description' )}
-								</Form.Text>
-							</Form.Group>
-							<Form.Group controlId="lineHeightPixels">
-								<Form.Label>
-									{t( 'configuration.general.line-height.label' )}
-								</Form.Label>
-								<InputGroup>
-									<Form.Control
-										type="number"
-										value={ this.state.lineHeightPixels }
-										onChange={ this.handleFieldChange }
-										min={ 8 }
-										max={ 60 }
-									/>
-									<InputGroup.Text>px</InputGroup.Text>
-								</InputGroup>
-								<Form.Text className="text-muted">
-									{t( 'configuration.general.line-height.description' )}
-								</Form.Text>
-							</Form.Group>
+							<LineSettings
+								lineStyle={ this.state.lineStyle }
+								lineHeightPixels={ this.state.lineHeightPixels }
+								lineSpacingPixels={ this.state.lineSpacingPixels }
+								lineOpacity={ this.state.lineOpacity }
+								onChange={ this.handleFieldChange }
+							/>
 						</Accordion.Body>
 					</Accordion.Item>
 					<SpecialDates

@@ -50,10 +50,7 @@
 			"weekend": "Weekend",
 			"line-style": {
 				"label": "Style de ligne des plannings",
-				"description": "Style utilisé pour dessiner les lignes dans les plannings.",
-				"solid": "Continu",
-				"dotted": "Pointillé",
-				"dashed": "Tirets"
+				"description": "Style utilisé pour dessiner les lignes dans les plannings."
 			},
 			"line-height": {
 				"label": "Hauteur de ligne des plannings",

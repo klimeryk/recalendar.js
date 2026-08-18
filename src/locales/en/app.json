@@ -84,16 +84,29 @@
 			},
 			"first-day-of-week": "First day of week",
 			"weekend": "Weekend",
+			"lines": {
+				"title": "Itinerary lines",
+				"description": "The ruling used in itineraries - on day pages, week retrospectives, month overviews and year notes."
+			},
 			"line-style": {
-				"label": "Itinerary line style",
-				"description": "Style to use when rendering lines in itineraries.",
-				"solid": "Solid",
-				"dotted": "Dotted",
-				"dashed": "Dashed"
+				"label": "Style",
+				"description": "Just like the ruling in a paper notebook.",
+				"lined": "Lined",
+				"grid": "Grid",
+				"dot_grid": "Dot grid",
+				"blank": "Blank"
 			},
 			"line-height": {
-				"label": "Itinerary line height",
-				"description": "Height of each line in itineraries. Text and icons scale with it."
+				"label": "Line height",
+				"description": "Height of each line in itineraries. Text and icons scale with it, and it sets the vertical spacing of the grid and dot grid."
+			},
+			"line-spacing": {
+				"label": "Grid spacing",
+				"description": "Horizontal distance between the grid lines or dots, in the same units as the line height. Leave at 0 to match the line height, giving you square cells. The grid always starts one spacing in from the edge, the way paper notebooks keep a margin."
+			},
+			"line-opacity": {
+				"label": "Opacity",
+				"description": "How visible the lines and dots are. 0% hides them completely, 100% makes them fully black."
 			}
 		},
 		"button": {

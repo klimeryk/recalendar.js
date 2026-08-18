@@ -70,10 +70,7 @@
 			"weekend": "Vikend",
 			"line-style": {
 				"label": "Stil linija u rasporedima",
-				"description": "Stil koji se koristi za crtanje linija u dnevnim rasporedima.",
-				"solid": "Puna",
-				"dotted": "Točkasta",
-				"dashed": "Crtkana"
+				"description": "Stil koji se koristi za crtanje linija u dnevnim rasporedima."
 			},
 			"line-height": {
 				"label": "Visina linija u rasporedima",

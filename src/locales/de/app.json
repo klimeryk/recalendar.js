@@ -70,10 +70,7 @@
 			"weekend": "Wochenende",
 			"line-style": {
 				"label": "Linienstil der Pläne",
-				"description": "Stil zum Zeichnen der Linien in den Plänen.",
-				"solid": "Durchgezogen",
-				"dotted": "Gepunktet",
-				"dashed": "Gestrichelt"
+				"description": "Stil zum Zeichnen der Linien in den Plänen."
 			},
 			"line-height": {
 				"label": "Zeilenhöhe der Pläne",

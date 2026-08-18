@@ -58,10 +58,7 @@
 			"weekend": "Weekend",
 			"line-style": {
 				"label": "Linjestil for planer",
-				"description": "Stil, der bruges til at tegne linjer i planer.",
-				"solid": "Massiv",
-				"dotted": "Punkteret",
-				"dashed": "Stiplet"
+				"description": "Stil, der bruges til at tegne linjer i planer."
 			},
 			"line-height": {
 				"label": "Linjehøjde for planer",

@@ -68,10 +68,7 @@
 			"weekend": "週末の日",
 			"line-style": {
 				"label": "行程の線のスタイル",
-				"description": "行程で線を描画する際に使用するスタイル。",
-				"solid": "実線",
-				"dotted": "点線",
-				"dashed": "破線"
+				"description": "行程で線を描画する際に使用するスタイル。"
 			},
 			"line-height": {
 				"label": "行程の行の高さ",

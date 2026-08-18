@@ -63,10 +63,7 @@
 			"weekend": "Fine-settimana",
 			"line-style": {
 				"label": "Stile linea della programmazione",
-				"description": "Stile usato per disegnare le linee nelle programmazioni.",
-				"solid": "Continua",
-				"dotted": "Punteggiata",
-				"dashed": "Tratteggiata"
+				"description": "Stile usato per disegnare le linee nelle programmazioni."
 			},
 			"line-height": {
 				"label": "Altezza linea della programmazione",

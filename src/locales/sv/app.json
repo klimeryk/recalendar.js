@@ -63,10 +63,7 @@
 			"weekend": "Veckoslut",
 			"line-style": {
 				"label": "Linjestil för planer",
-				"description": "Stil som används för att rita linjer i planer.",
-				"solid": "Heldragen",
-				"dotted": "Punktad",
-				"dashed": "Streckad"
+				"description": "Stil som används för att rita linjer i planer."
 			},
 			"line-height": {
 				"label": "Linjehöjd för planer",

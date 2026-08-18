@@ -5,6 +5,13 @@ import { REMARKABLE, getPageProperties } from '~/lib/device-utils';
 import { wrapWithId } from '~/lib/id-utils';
 import { ITINERARY_ITEM, ITINERARY_LINES } from '~/lib/itinerary-utils';
 import {
+	AUTOMATIC_SPACING,
+	DEFAULT_LINE_HEIGHT_PIXELS,
+	DEFAULT_LINE_OPACITY,
+	LINED,
+	normalizeLineStyle,
+} from '~/lib/line-styles';
+import {
 	HOLIDAY_DAY_TYPE,
 	EVENT_DAY_TYPE,
 } from '~/lib/special-dates-utils';
@@ -35,9 +42,11 @@ const CONFIG_FIELDS = [
 	'specialDates',
 	'lineStyle',
 	'lineHeightPixels',
+	'lineSpacingPixels',
+	'lineOpacity',
 ];
 
-export const DEFAULT_LINE_HEIGHT_PIXELS = 20;
+export { DEFAULT_LINE_HEIGHT_PIXELS };
 
 export const CONFIG_FILE = 'config.json';
 export const CONFIG_VERSION_1 = 'v1';
@@ -47,10 +56,10 @@ export const CONFIG_CURRENT_VERSION = CONFIG_VERSION_3;
 
 export function hydrateFromObject( object ) {
 	return CONFIG_FIELDS.reduce(
-		( fields, field ) => ( {
-			...fields,
-			[ field ]: object[ field ],
-		} ),
+		( fields, field ) =>
+			object[ field ] !== undefined
+				? { ...fields, [ field ]: object[ field ] }
+				: fields,
 		{},
 	);
 }
@@ -156,12 +165,16 @@ class PdfConfig {
 				type: EVENT_DAY_TYPE,
 			},
 		];
-		this.lineStyle = 'solid';
+		this.lineStyle = LINED;
 		this.lineHeightPixels = DEFAULT_LINE_HEIGHT_PIXELS;
+		this.lineSpacingPixels = AUTOMATIC_SPACING;
+		this.lineOpacity = DEFAULT_LINE_OPACITY;
 
 		if ( Object.keys( configOverrides ).length !== 0 ) {
 			Object.assign( this, configOverrides );
 		}
+
+		this.lineStyle = normalizeLineStyle( this.lineStyle );
 
 		this.ensureUniqueIds();
 	}

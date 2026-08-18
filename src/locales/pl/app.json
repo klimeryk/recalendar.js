@@ -66,10 +66,7 @@
 			"weekend": "Weekend",
 			"line-style": {
 				"label": "Styl linii w planach",
-				"description": "Styl używany do rysowania linii w planach.",
-				"solid": "Ciągła",
-				"dotted": "Kropkowana",
-				"dashed": "Przerywana"
+				"description": "Styl używany do rysowania linii w planach."
 			},
 			"line-height": {
 				"label": "Wysokość linii w planach",

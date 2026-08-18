@@ -70,10 +70,7 @@
 			"weekend": "Víkend",
 			"line-style": {
 				"label": "Styl čar v itinerářích",
-				"description": "Styl použitý pro vykreslování čar v itinerářích.",
-				"solid": "Plná",
-				"dotted": "Tečkovaná",
-				"dashed": "Čárkovaná"
+				"description": "Styl použitý pro vykreslování čar v itinerářích."
 			},
 			"line-height": {
 				"label": "Výška řádků v itinerářích",

@@ -60,10 +60,7 @@
 			"weekend": "Hafta sonu",
 			"line-style": {
 				"label": "Gezi planı çizgi stili",
-				"description": "Gezi planlarında çizgileri çizerken kullanılacak stil.",
-				"solid": "Düz",
-				"dotted": "Noktalı",
-				"dashed": "Kesikli"
+				"description": "Gezi planlarında çizgileri çizerken kullanılacak stil."
 			},
 			"line-height": {
 				"label": "Gezi planı satır yüksekliği",

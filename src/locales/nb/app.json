@@ -42,10 +42,7 @@
 			"weekend": "Helg",
 			"line-style": {
 				"label": "Linjestil for avtaler",
-				"description": "Stil som brukes for å tegne linjer i avtaler.",
-				"solid": "Heltrukket",
-				"dotted": "Punktert",
-				"dashed": "Stiplet"
+				"description": "Stil som brukes for å tegne linjer i avtaler."
 			},
 			"line-height": {
 				"label": "Linjehøyde for avtaler",
