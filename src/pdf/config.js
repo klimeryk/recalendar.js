@@ -11,6 +11,7 @@ import {
 	LINED,
 	normalizeLineStyle,
 } from '~/lib/line-styles';
+import { SIDEBAR_LEFT } from '~/lib/sidebar-utils';
 import {
 	HOLIDAY_DAY_TYPE,
 	EVENT_DAY_TYPE,
@@ -28,7 +29,8 @@ const CONFIG_FIELDS = [
 	'monthCount',
 	'weekendDays',
 	'isLeftHanded',
-	'alwaysOnSidebar',
+	'sidebarPosition',
+	'sidebarOffset',
 	'isYearNotesEnabled',
 	'yearNotesItinerary',
 	'isMonthOverviewEnabled',
@@ -52,7 +54,8 @@ export const CONFIG_FILE = 'config.json';
 export const CONFIG_VERSION_1 = 'v1';
 export const CONFIG_VERSION_2 = 'v2';
 export const CONFIG_VERSION_3 = 'v3';
-export const CONFIG_CURRENT_VERSION = CONFIG_VERSION_3;
+export const CONFIG_VERSION_4 = 'v4';
+export const CONFIG_CURRENT_VERSION = CONFIG_VERSION_4;
 
 export function hydrateFromObject( object ) {
 	return CONFIG_FIELDS.reduce(
@@ -71,7 +74,8 @@ class PdfConfig {
 		this.firstDayOfWeek = dayjs.localeData().firstDayOfWeek();
 		this.weekendDays = [ 0, 6 ];
 		this.isLeftHanded = false;
-		this.alwaysOnSidebar = false;
+		this.sidebarPosition = SIDEBAR_LEFT;
+		this.sidebarOffset = 0;
 		this.monthCount = 12;
 		this.fontFamily = LATO;
 		this.isYearNotesEnabled = true;

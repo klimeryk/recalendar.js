@@ -1,5 +1,6 @@
 import dayjs from 'dayjs/esm';
 
+import { SIDEBAR_LEFT, SIDEBAR_RIGHT } from '~/lib/sidebar-utils';
 import {
 	DATE_FORMAT as SPECIAL_DATES_DATE_FORMAT,
 	EVENT_DAY_TYPE,
@@ -7,16 +8,22 @@ import {
 import {
 	CONFIG_VERSION_1,
 	CONFIG_VERSION_2,
+	CONFIG_VERSION_3,
 	CONFIG_CURRENT_VERSION,
 } from '~/pdf/config';
+
+const LEGACY_SIDEBAR_OFFSET = 31;
 
 export function convertConfigToCurrentVersion( config ) {
 	switch ( config.version ) {
 		case CONFIG_VERSION_1:
-			return convertFromVersion2( convertFromVersion1( config ) );
+			return convertFromVersion3( convertFromVersion2( convertFromVersion1( config ) ) );
 
 		case CONFIG_VERSION_2:
-			return convertFromVersion2( config );
+			return convertFromVersion3( convertFromVersion2( config ) );
+
+		case CONFIG_VERSION_3:
+			return convertFromVersion3( config );
 
 		case CONFIG_CURRENT_VERSION:
 		default:
@@ -47,5 +54,14 @@ function convertFromVersion2( config ) {
 		);
 	} );
 	config.specialDates = newSpecialDates;
+	return config;
+}
+
+function convertFromVersion3( config ) {
+	if ( config.alwaysOnSidebar ) {
+		config.sidebarPosition = config.isLeftHanded ? SIDEBAR_RIGHT : SIDEBAR_LEFT;
+		config.sidebarOffset = LEGACY_SIDEBAR_OFFSET;
+	}
+
 	return config;
 }

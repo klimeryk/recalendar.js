@@ -1,10 +1,13 @@
 export const REMARKABLE = 'ReMarkable 1 & 2';
-const REMARKABLE_PAPER_PRO = 'ReMarkable Paper Pro';
-const REMARKABLE_PAPER_PRO_MOVE = 'ReMarkable Paper Pro Move';
+export const REMARKABLE_PAPER_PRO = 'ReMarkable Paper Pro';
+export const REMARKABLE_PAPER_PRO_MOVE = 'ReMarkable Paper Pro Move';
 const SUPERNOTE_A5_X = 'Supernote A5 X';
 const SUPERNOTE_NOMAD = 'Supernote Nomad';
 const SUPERNOTE_MANTA = 'Supernote Manta';
 export const CUSTOM = 'Custom';
+
+export const DEFAULT_SIDEBAR_OFFSET = 30;
+const REMARKABLE_SIDEBAR_OFFSET = 31;
 
 export const AVAILABLE_DEVICES = [
 	REMARKABLE,
@@ -49,5 +52,17 @@ export function getPageProperties( device ) {
 				dpi: 226,
 				pageSize: [ 1404, 1872 ],
 			};
+	}
+}
+
+export function getSidebarOffset( device ) {
+	switch ( device ) {
+		case REMARKABLE:
+		case REMARKABLE_PAPER_PRO:
+		case REMARKABLE_PAPER_PRO_MOVE:
+			return REMARKABLE_SIDEBAR_OFFSET;
+
+		default:
+			return DEFAULT_SIDEBAR_OFFSET;
 	}
 }

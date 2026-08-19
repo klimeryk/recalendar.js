@@ -26,10 +26,21 @@ import LineSettings from '~/configuration-form/line-settings';
 import SpecialDates from '~/configuration-form/special-dates';
 import ToggleAccordionItem from '~/configuration-form/toggle-accordion-item';
 import { getWeekdays } from '~/lib/date';
-import { AVAILABLE_DEVICES, CUSTOM, getPageProperties } from '~/lib/device-utils';
+import {
+	AVAILABLE_DEVICES,
+	CUSTOM,
+	getPageProperties,
+	getSidebarOffset,
+} from '~/lib/device-utils';
 import { byId, wrapWithId } from '~/lib/id-utils';
 import { ITINERARY_NO_PREFIX } from '~/lib/itinerary-prefixes';
 import { parseItineraryProperty } from '~/lib/itinerary-utils';
+import {
+	AVAILABLE_SIDEBAR_POSITIONS,
+	isHorizontalSidebar,
+	SIDEBAR_LEFT,
+	SIDEBAR_RIGHT,
+} from '~/lib/sidebar-utils';
 import PdfConfig, { hydrateFromObject } from '~/pdf/config';
 import { AVAILABLE_FONTS } from '~/pdf/lib/fonts';
 
@@ -116,16 +127,51 @@ class Configuration extends React.PureComponent {
 			case 'device':
 				this.handleDeviceChange( value );
 				break;
+
+			case 'isLeftHanded':
+				this.handleLeftHandedChange( value );
+				break;
 		}
 	};
 
 	handleDeviceChange = ( device ) => {
 		if ( device !== CUSTOM ) {
 			const { dpi, pageSize } = getPageProperties( device );
-			this.setState( { dpi, pageSize } );
+			const newState = { dpi, pageSize };
+			if ( this.isSidebarEnabled() ) {
+				newState.sidebarOffset = getSidebarOffset( device );
+			}
+
+			this.setState( newState );
 			return;
 		}
 	};
+
+	handleLeftHandedChange = ( isLeftHanded ) => {
+		if ( ! isHorizontalSidebar( this.state.sidebarPosition ) ) {
+			return;
+		}
+
+		this.setState( {
+			sidebarPosition: isLeftHanded ? SIDEBAR_RIGHT : SIDEBAR_LEFT,
+		} );
+	};
+
+	handleSidebarToggle = ( event ) => {
+		if ( ! event.target.checked ) {
+			this.setState( { sidebarOffset: 0 } );
+			return;
+		}
+
+		this.setState( ( prev ) => ( {
+			sidebarOffset: getSidebarOffset( prev.device ),
+			sidebarPosition: prev.isLeftHanded ? SIDEBAR_RIGHT : SIDEBAR_LEFT,
+		} ) );
+	};
+
+	isSidebarEnabled() {
+		return this.state.sidebarOffset > 0;
+	}
 
 	handleFirstDayOfWeekChange = ( newFirstDayOfWeek ) => {
 		dayjs.updateLocale( i18n.language, {
@@ -398,6 +444,15 @@ class Configuration extends React.PureComponent {
 		) );
 	}
 
+	renderSidebarPositions() {
+		const { t } = this.props;
+		return AVAILABLE_SIDEBAR_POSITIONS.map( ( position ) => (
+			<option key={ position } value={ position }>
+				{t( `configuration.general.sidebar.position.${position}` )}
+			</option>
+		) );
+	}
+
 	renderFonts() {
 		return AVAILABLE_FONTS.map( ( font ) => (
 			<option key={ font } value={ font }>
@@ -466,6 +521,7 @@ class Configuration extends React.PureComponent {
 		const { t } = this.props;
 		const { device, isGeneratingPdf, isGeneratingPreview } = this.state;
 		const isCustomDevice = device === CUSTOM;
+		const isSidebarEnabled = this.isSidebarEnabled();
 		return (
 			<Form onSubmit={ this.handlePreview }>
 				<Accordion defaultActiveKey="start" className="my-3">
@@ -540,18 +596,42 @@ class Configuration extends React.PureComponent {
 									{t( 'configuration.general.left-handed.description' )}
 								</Form.Text>
 							</Form.Group>
-							<Form.Group controlId="alwaysOnSidebar" className="mt-2">
+							<Form.Group controlId="isSidebarEnabled" className="mt-2">
 								<Form.Check
 									label={ t( 'configuration.general.sidebar.label' ) }
 									type="checkbox"
-									checked={ this.state.alwaysOnSidebar }
-									value={ this.state.alwaysOnSidebar }
-									onChange={ this.handleFieldChange }
+									checked={ isSidebarEnabled }
+									value={ isSidebarEnabled }
+									onChange={ this.handleSidebarToggle }
 								/>
 								<Form.Text className="text-muted">
 									{t( 'configuration.general.sidebar.description' )}
 								</Form.Text>
 							</Form.Group>
+							{isSidebarEnabled && <Form.Group controlId="sidebarPosition">
+								<Form.Label>
+									{t( 'configuration.general.sidebar.position.label' )}
+								</Form.Label>
+								<Form.Select
+									value={ this.state.sidebarPosition }
+									onChange={ this.handleFieldChange }
+								>
+									{this.renderSidebarPositions()}
+								</Form.Select>
+							</Form.Group>}
+							{isSidebarEnabled && <Form.Group controlId="sidebarOffset">
+								<Form.Label>
+									{t( 'configuration.general.sidebar.offset.label' )}
+								</Form.Label>
+								<Form.Control
+									type="number"
+									value={ this.state.sidebarOffset }
+									onChange={ this.handleFieldChange }
+								/>
+								<Form.Text className="text-muted">
+									{t( 'configuration.general.sidebar.offset.description' )}
+								</Form.Text>
+							</Form.Group>}
 							<Form.Group controlId="year">
 								<Form.Label>{t( 'configuration.general.year' )}</Form.Label>
 								<Form.Control

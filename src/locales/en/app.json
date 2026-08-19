@@ -71,8 +71,19 @@
 				"description": "Optimizes the layout for left-handed use."
 			},
 			"sidebar": {
-				"label": "Leave permanent space for side toolbar",
-				"description": "If you prefer to keep the side toolbar always open, check this option to make sure the calendar's content will never be covered by it."
+				"label": "Leave permanent space for the toolbar",
+				"description": "If you prefer to keep the toolbar always open, check this option to make sure the calendar's content will never be covered by it.",
+				"position": {
+					"label": "Toolbar position",
+					"left": "Left",
+					"right": "Right",
+					"top": "Top",
+					"bottom": "Bottom"
+				},
+				"offset": {
+					"label": "Toolbar size",
+					"description": "How much space to reserve for the toolbar, in points. Pre-filled with a value that works for the selected device - adjust it if the toolbar still covers the calendar's content."
+				}
 			},
 			"starting-month": {
 				"label": "Starting month",

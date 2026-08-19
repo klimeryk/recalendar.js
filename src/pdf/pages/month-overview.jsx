@@ -5,6 +5,7 @@ import React from 'react';
 import { withTranslation } from 'react-i18next';
 
 import { getWeekendDays } from '~/lib/date';
+import { getHorizontalSidebarOffset } from '~/lib/sidebar-utils';
 import Itinerary from '~/pdf/components/itinerary';
 import MiniCalendar, { HIGHLIGHT_NONE } from '~/pdf/components/mini-calendar';
 import PdfConfig from '~/pdf/config';
@@ -12,12 +13,22 @@ import { dayPageLink, monthOverviewLink } from '~/pdf/lib/links';
 import { pageStyle } from '~/pdf/styles';
 import { splitItemsByPages } from '~/pdf/utils';
 
+const MAX_HABIT_SQUARE_WIDTH = 13;
+const DAYS_IN_LONGEST_MONTH = 31;
+
 class MonthOverviewPage extends React.Component {
 	constructor( props ) {
 		super( props );
 
+		const { config } = props;
 		const habitColumnWidth = 40;
-		const habitSquareWidth = props.config.alwaysOnSidebar ? 12 : 13;
+		const pageWidth = ( config.pageSize[ 0 ] * 72 ) / config.dpi;
+		const availableWidth =
+			pageWidth - getHorizontalSidebarOffset( config ) - habitColumnWidth;
+		const habitSquareWidth = Math.min(
+			MAX_HABIT_SQUARE_WIDTH,
+			Math.floor( availableWidth / DAYS_IN_LONGEST_MONTH ),
+		);
 
 		const stylesObject = Object.assign(
 			{
