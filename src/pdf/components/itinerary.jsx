@@ -22,10 +22,22 @@ function applyDateTemplates( text, date ) {
 	);
 }
 
+const LEADING_SPACES_REGEX = /^ +/;
+
+function splitLeadingSpaces( text ) {
+	const [ indent ] = text.match( LEADING_SPACES_REGEX ) || [ '' ];
+	return [ indent, text.slice( indent.length ) ];
+}
+
 class Itinerary extends React.PureComponent {
 	scale = this.props.config.lineHeightPixels / DEFAULT_LINE_HEIGHT_PIXELS;
 	prefixSize = 10 * this.scale;
 	stroke = getLineStroke( this.props.config );
+
+	textStyle = {
+		fontSize: 12 * this.scale,
+		fontWeight: 'bold',
+	};
 
 	styles = StyleSheet.create( {
 		line: {
@@ -38,11 +50,8 @@ class Itinerary extends React.PureComponent {
 			marginRight: 4,
 			marginTop: 3 * this.scale,
 		},
-		text: {
-			flex: 1,
-			fontSize: 12 * this.scale,
-			fontWeight: 'bold',
-		},
+		indent: this.textStyle,
+		text: { ...this.textStyle, flex: 1 },
 	} );
 
 	renderItineraryItem = ( item, index ) => {
@@ -60,6 +69,9 @@ class Itinerary extends React.PureComponent {
 	};
 
 	renderLine( text, prefix, key ) {
+		const [ indent, content ] = splitLeadingSpaces(
+			applyDateTemplates( text, this.props.date ),
+		);
 		return (
 			<View key={ key } style={ this.styles.line } wrap={ false }>
 				<LineRule stroke={ this.stroke } />
@@ -69,9 +81,10 @@ class Itinerary extends React.PureComponent {
 					color={ PREFIX_COLOR }
 					style={ this.styles.prefix }
 				/>
-				<Text style={ this.styles.text }>
-					{applyDateTemplates( text, this.props.date )}
-				</Text>
+				{indent.length > 0 && (
+					<Text style={ this.styles.indent }>{indent}</Text>
+				)}
+				<Text style={ this.styles.text }>{content}</Text>
 			</View>
 		);
 	}
