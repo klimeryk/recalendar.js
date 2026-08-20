@@ -1,5 +1,4 @@
-export const RECALENDAR_JS_GITHUB =
-	'https://github.com/klimeryk/recalendar.js/';
+export const RECALENDAR_JS_GITHUB = 'https://github.com/klimeryk/recalendar.js/';
 export const RECALENDAR_PHP_GITHUB = 'https://github.com/klimeryk/recalendar/';
 
 export const HOME_PATH = '/';

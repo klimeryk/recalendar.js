@@ -1,8 +1,0 @@
-useTabs: true
-tabWidth: 2
-printWidth: 80
-singleQuote: true
-bracketSpacing: true
-parenSpacing: true
-jsxBracketSameLine: false
-semi: true

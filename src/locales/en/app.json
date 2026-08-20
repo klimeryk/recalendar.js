@@ -1,274 +1,275 @@
 {
-	"loading": "Loading...",
-	"download-ready": "Download now!",
-	"navigation": {
-		"home": "Home",
-		"configuration": "Create your calendar",
-		"features": "Features",
-		"faq": "FAQ"
-	},
-	"language": {
-		"label": "Language",
-		"full": "Fully translated languages",
-		"partial": "Only days of the week and months",
-		"en": "English",
-		"cs": "Čeština",
-		"da": "Dansk",
-		"de": "Deutsch",
-		"es": "Español",
-		"fr": "Français",
-		"he": "עברית",
-		"hr": "Hrvatski",
-		"hu": "Magyar",
-		"it": "Italiano",
-		"nb": "Norsk",
-		"nl": "Nederlands",
-		"pl": "Polski",
-		"pt-br": "Português (Brasil)",
-		"sl": "Slovenščina",
-		"sv": "Svenska",
-		"tr": "Türkçe",
-		"ja": "日本語"
-	},
-	"configuration": {
-		"selector": {
-			"label": "Start",
-			"template": {
-				"label": "Start by selecting a template:",
-				"basic": {
-					"label": "Basic",
-					"description": "Default settings - good starting point."
-				},
-				"advanced": {
-					"label": "Advanced",
-					"description": "Expands the Basic template by adding individual day itineraries."
-				},
-				"blank": {
-					"label": "Blank",
-					"description": "Based on Basic template, but with empty habits, TODOs, special dates, etc."
-				},
-				"minimalistic": {
-					"label": "Minimalistic",
-					"description": "Disables everything except weekly overviews."
-				}
-			},
-			"upload": {
-				"label": "Or upload previously generated ReCalendar PDF to use its config:",
-				"loading": "Reading config from PDF file, please wait...",
-				"error": "Was not able to load ReCalendar config from this PDF - are you sure it was generated using this website?",
-				"success": "Config loaded from PDF - welcome back!"
-			}
-		},
-		"general": {
-			"label": "General options",
-			"device": "Device",
-			"dpi": "DPI",
-			"resolution": "Resolution",
-			"font": "Font",
-			"year": "Year",
-			"left-handed": {
-				"label": "Left-handed version",
-				"description": "Optimizes the layout for left-handed use."
-			},
-			"sidebar": {
-				"label": "Leave permanent space for the toolbar",
-				"description": "If you prefer to keep the toolbar always open, check this option to make sure the calendar's content will never be covered by it.",
-				"position": {
-					"label": "Toolbar position",
-					"left": "Left",
-					"right": "Right",
-					"top": "Top",
-					"bottom": "Bottom"
-				},
-				"offset": {
-					"label": "Toolbar size",
-					"description": "How much space to reserve for the toolbar, in points. Pre-filled with a value that works for the selected device - adjust it if the toolbar still covers the calendar's content."
-				}
-			},
-			"starting-month": {
-				"label": "Starting month",
-				"description": "The first month in the generated calendar. Choose something like October if you want your calendar to cover a semester, instead of a calendar year."
-			},
-			"month-count": {
-				"label": "Number of months",
-				"description": "For how many months should the calendar be generated for."
-			},
-			"first-day-of-week": "First day of week",
-			"weekend": "Weekend",
-			"lines": {
-				"title": "Itinerary lines",
-				"description": "The ruling used in itineraries - on day pages, week retrospectives, month overviews and year notes."
-			},
-			"line-style": {
-				"label": "Style",
-				"description": "Just like the ruling in a paper notebook.",
-				"lined": "Lined",
-				"grid": "Grid",
-				"dot_grid": "Dot grid",
-				"blank": "Blank"
-			},
-			"line-height": {
-				"label": "Line height",
-				"description": "Height of each line in itineraries. Text and icons scale with it, and it sets the vertical spacing of the grid and dot grid."
-			},
-			"line-spacing": {
-				"label": "Grid spacing",
-				"description": "Horizontal distance between the grid lines or dots, in the same units as the line height. Leave at 0 to match the line height, giving you square cells. The grid always starts one spacing in from the edge, the way paper notebooks keep a margin."
-			},
-			"line-opacity": {
-				"label": "Opacity",
-				"description": "How visible the lines and dots are. 0% hides them completely, 100% makes them fully black."
-			}
-		},
-		"button": {
-			"refresh": "Refresh preview",
-			"download": "Generate full calendar and download",
-			"generating": "Generating, please wait..."
-		},
-		"itinerary": {
-			"empty": "Empty itinerary",
-			"dateTemplate": {
-				"label": "Date formatting help",
-				"title": "Date templates",
-				"description": "Include formatted dates using <0/> or <1/>. See <2>available formats</2>."
-			},
-			"placeholder": {
-				"lines": "Number of lines",
-				"page": "New page break",
-				"item": "Itinerary item"
-			},
-			"prefix": {
-				"selected": "Line prefix: {{name}}",
-				"none": "No prefix",
-				"icon": {
-					"square": "Checkbox",
-					"square-check-big": "Checked box",
-					"circle": "Circle",
-					"circle-dot": "Dot",
-					"arrow-right": "Arrow",
-					"chevron-right": "Chevron",
-					"star": "Star",
-					"heart": "Heart"
-				}
-			},
-			"button": {
-				"copy": "Copy this itinerary to all other days",
-				"remove": "Remove",
-				"item": "Add itinerary item",
-				"page": "Start a new page",
-				"lines": "Add empty lines"
-			}
-		},
-		"items-list": {
-			"button": {
-				"item": "Add item",
-				"remove": "Remove"
-			},
-			"empty": "Empty list",
-			"placeholder": "Item"
-		},
-		"toggle-form": {
-			"enabled": "Enabled",
-			"disabled": "Disabled"
-		},
-		"year": {
-			"notes": {
-				"title": "Year notes",
-				"description": "Year notes is a place to set the goals, plans and dreams for the upcoming year. One page is added at the start of the calendar, and another before each new year that it spans.",
-				"itinerary": {
-					"title": "Itinerary"
-				}
-			}
-		},
-		"month": {
-			"title": "Month overview",
-			"description": "The month overview is a place to set goals for the upcoming month, track habits and make other plans.",
-			"habits": {
-				"title": "Habits"
-			},
-			"itinerary": {
-				"title": "Itinerary"
-			}
-		},
-		"week": {
-			"title": "Week overview",
-			"description": "Week overview gives you a zoom out of the week to makes plans easier.",
-			"todos": {
-				"title": "TODOs"
-			},
-			"retrospective": {
-				"title": "Week retrospective",
-				"description": "Week retrospective is a place to reflect on the past week - how it went, what did you learn, what could you improve for next week?",
-				"itinerary": {
-					"title": "Itinerary"
-				}
-			}
-		},
-		"day": {
-			"title": "Day itineraries"
-		},
-		"special-dates": {
-			"title": "Special dates",
-			"description": "Add your birthdays, celebrations, events, etc. here to get reminders about them in weekly overviews and day pages as they approach.",
-			"empty": "No dates",
-			"placeholder": "What's the occasion?",
-			"manual": {
-				"heading": "Add a date manually"
-			},
-			"holidays": {
-				"heading": "Import national holidays",
-				"description_one": "Pick a country to import its public holidays for the year ({{years}}) your calendar covers.",
-				"description_other": "Pick a country to import its public holidays for the years ({{years}}) your calendar covers.",
-				"country-placeholder": "Select a country...",
-				"countries-loading": "Loading the list of countries...",
-				"countries-error": "Could not load the list of countries. Please check your connection and try again.",
-				"names": {
-					"english": "English names",
-					"local": "Local names"
-				},
-				"deduplicate": {
-					"label": "Skip duplicates",
-					"help": "When on, a holiday that already exists on the same day (matched by its English name) won't be added again. Turn it off if you want the same holiday in more than one language - handy if you're learning a language or are a dual citizen."
-				},
-				"button": "Import",
-				"loading": "Fetching holidays, please wait...",
-				"error": "Could not load holidays for this country. Please try again.",
-				"year-unavailable": "Sorry, holidays are only available for the years {{years}}.",
-				"success_zero": "No new holidays imported from {{country}}.",
-				"success_one": "Imported {{count}} holiday from {{country}}.",
-				"success_other": "Imported {{count}} holidays from {{country}}.",
-				"skipped_one": "Skipped {{count}} duplicate.",
-				"skipped_other": "Skipped {{count}} duplicates.",
-				"attribution": "Holiday data from <tallyfy>Tallyfy</tallyfy>."
-			},
-			"upload": {
-				"label": "Import from .ics file:",
-				"loading": "Reading special dates from ICalendar file, please wait...",
-				"error": "Was not able to load some ICalendar events - try re-exporting the .ics file from your calendar app.",
-				"success": "Special dates loaded from ICalendar file."
-			},
-			"type": {
-				"event": "Event",
-				"holiday": "Holiday"
-			},
-			"button": {
-				"item": "Add date",
-				"remove": "Remove"
-			}
-		},
-		"generation-description": "PDF generation is done entirely in your browser - no data is sent to our servers!"
-	},
-	"preview": {
-		"title": "Calendar preview",
-		"subtitle": "(only first month is rendered for preview)",
-		"viewer-title": "PDF Preview",
-		"generating": {
-			"full": "Generating full calendar - this could take more than a minute...",
-			"preview": "Generating preview, please wait - it can take a minute."
-		},
-		"empty": {
-			"title": "Use the configuration form to create your personalized calendar.",
-			"subtitle": "The preview will appear here."
-		}
-	}
+  "loading": "Loading...",
+  "download-ready": "Download now!",
+  "navigation": {
+    "home": "Home",
+    "configuration": "Create your calendar",
+    "features": "Features",
+    "faq": "FAQ"
+  },
+  "language": {
+    "label": "Language",
+    "full": "Fully translated languages",
+    "partial": "Only days of the week and months",
+    "en": "English",
+    "cs": "Čeština",
+    "da": "Dansk",
+    "de": "Deutsch",
+    "es": "Español",
+    "fr": "Français",
+    "he": "עברית",
+    "hr": "Hrvatski",
+    "hu": "Magyar",
+    "it": "Italiano",
+    "nb": "Norsk",
+    "nl": "Nederlands",
+    "pl": "Polski",
+    "pt-br": "Português (Brasil)",
+    "sl": "Slovenščina",
+    "sv": "Svenska",
+    "tr": "Türkçe",
+    "ja": "日本語"
+  },
+  "configuration": {
+    "selector": {
+      "label": "Start",
+      "template": {
+        "label": "Start by selecting a template:",
+        "basic": {
+          "label": "Basic",
+          "description": "Default settings - good starting point."
+        },
+        "advanced": {
+          "label": "Advanced",
+          "description": "Expands the Basic template by adding individual day itineraries."
+        },
+        "blank": {
+          "label": "Blank",
+          "description": "Based on Basic template, but with empty habits, TODOs, special dates, etc."
+        },
+        "minimalistic": {
+          "label": "Minimalistic",
+          "description": "Disables everything except weekly overviews."
+        }
+      },
+      "upload": {
+        "label": "Or upload previously generated ReCalendar PDF to use its config:",
+        "loading": "Reading config from PDF file, please wait...",
+        "error": "Was not able to load ReCalendar config from this PDF - are you sure it was generated using this website?",
+        "success": "Config loaded from PDF - welcome back!"
+      }
+    },
+    "general": {
+      "label": "General options",
+      "device": "Device",
+      "dpi": "DPI",
+      "resolution": "Resolution",
+      "font": "Font",
+      "year": "Year",
+      "left-handed": {
+        "label": "Left-handed version",
+        "description": "Optimizes the layout for left-handed use."
+      },
+      "sidebar": {
+        "label": "Leave permanent space for the toolbar",
+        "description": "If you prefer to keep the toolbar always open, check this option to make sure the calendar's content will never be covered by it.",
+        "position": {
+          "label": "Toolbar position",
+          "left": "Left",
+          "right": "Right",
+          "top": "Top",
+          "bottom": "Bottom"
+        },
+        "offset": {
+          "label": "Toolbar size",
+          "description": "How much space to reserve for the toolbar, in points. Pre-filled with a value that works for the selected device - adjust it if the toolbar still covers the calendar's content."
+        }
+      },
+      "starting-month": {
+        "label": "Starting month",
+        "description": "The first month in the generated calendar. Choose something like October if you want your calendar to cover a semester, instead of a calendar year."
+      },
+      "month-count": {
+        "label": "Number of months",
+        "description": "For how many months should the calendar be generated for."
+      },
+      "first-day-of-week": "First day of week",
+      "weekend": "Weekend",
+      "lines": {
+        "title": "Itinerary lines",
+        "description": "The ruling used in itineraries - on day pages, week retrospectives, month overviews and year notes."
+      },
+      "line-style": {
+        "label": "Style",
+        "description": "Just like the ruling in a paper notebook.",
+        "lined": "Lined",
+        "grid": "Grid",
+        "dot_grid": "Dot grid",
+        "blank": "Blank"
+      },
+      "line-height": {
+        "label": "Line height",
+        "description": "Height of each line in itineraries. Text and icons scale with it, and it sets the vertical spacing of the grid and dot grid."
+      },
+      "line-spacing": {
+        "label": "Grid spacing",
+        "description": "Horizontal distance between the grid lines or dots, in the same units as the line height. Leave at 0 to match the line height, giving you square cells. The grid always starts one spacing in from the edge, the way paper notebooks keep a margin."
+      },
+      "line-opacity": {
+        "label": "Opacity",
+        "description": "How visible the lines and dots are. 0% hides them completely, 100% makes them fully black."
+      }
+    },
+    "button": {
+      "refresh": "Refresh preview",
+      "download": "Generate full calendar and download",
+      "generating": "Generating, please wait..."
+    },
+    "itinerary": {
+      "empty": "Empty itinerary",
+      "dateTemplate": {
+        "label": "Date formatting help",
+        "title": "Date templates",
+        "description": "Include formatted dates using <0/> or <1/>. See <2>available formats</2>."
+      },
+      "placeholder": {
+        "lines": "Number of lines",
+        "page": "New page break",
+        "item": "Itinerary item"
+      },
+      "prefix": {
+        "selected": "Line prefix: {{name}}",
+        "none": "No prefix",
+        "icon": {
+          "square": "Checkbox",
+          "square-check-big": "Checked box",
+          "circle": "Circle",
+          "circle-dot": "Dot",
+          "arrow-right": "Arrow",
+          "chevron-right": "Chevron",
+          "star": "Star",
+          "heart": "Heart"
+        }
+      },
+      "button": {
+        "copy": "Copy this itinerary to all other days",
+        "remove": "Remove",
+        "item": "Add itinerary item",
+        "page": "Start a new page",
+        "lines": "Add empty lines"
+      }
+    },
+    "items-list": {
+      "button": {
+        "item": "Add item",
+        "remove": "Remove",
+        "reorder": "Reorder"
+      },
+      "empty": "Empty list",
+      "placeholder": "Item"
+    },
+    "toggle-form": {
+      "enabled": "Enabled",
+      "disabled": "Disabled"
+    },
+    "year": {
+      "notes": {
+        "title": "Year notes",
+        "description": "Year notes is a place to set the goals, plans and dreams for the upcoming year. One page is added at the start of the calendar, and another before each new year that it spans.",
+        "itinerary": {
+          "title": "Itinerary"
+        }
+      }
+    },
+    "month": {
+      "title": "Month overview",
+      "description": "The month overview is a place to set goals for the upcoming month, track habits and make other plans.",
+      "habits": {
+        "title": "Habits"
+      },
+      "itinerary": {
+        "title": "Itinerary"
+      }
+    },
+    "week": {
+      "title": "Week overview",
+      "description": "Week overview gives you a zoom out of the week to makes plans easier.",
+      "todos": {
+        "title": "TODOs"
+      },
+      "retrospective": {
+        "title": "Week retrospective",
+        "description": "Week retrospective is a place to reflect on the past week - how it went, what did you learn, what could you improve for next week?",
+        "itinerary": {
+          "title": "Itinerary"
+        }
+      }
+    },
+    "day": {
+      "title": "Day itineraries"
+    },
+    "special-dates": {
+      "title": "Special dates",
+      "description": "Add your birthdays, celebrations, events, etc. here to get reminders about them in weekly overviews and day pages as they approach.",
+      "empty": "No dates",
+      "placeholder": "What's the occasion?",
+      "manual": {
+        "heading": "Add a date manually"
+      },
+      "holidays": {
+        "heading": "Import national holidays",
+        "description_one": "Pick a country to import its public holidays for the year ({{years}}) your calendar covers.",
+        "description_other": "Pick a country to import its public holidays for the years ({{years}}) your calendar covers.",
+        "country-placeholder": "Select a country...",
+        "countries-loading": "Loading the list of countries...",
+        "countries-error": "Could not load the list of countries. Please check your connection and try again.",
+        "names": {
+          "english": "English names",
+          "local": "Local names"
+        },
+        "deduplicate": {
+          "label": "Skip duplicates",
+          "help": "When on, a holiday that already exists on the same day (matched by its English name) won't be added again. Turn it off if you want the same holiday in more than one language - handy if you're learning a language or are a dual citizen."
+        },
+        "button": "Import",
+        "loading": "Fetching holidays, please wait...",
+        "error": "Could not load holidays for this country. Please try again.",
+        "year-unavailable": "Sorry, holidays are only available for the years {{years}}.",
+        "success_zero": "No new holidays imported from {{country}}.",
+        "success_one": "Imported {{count}} holiday from {{country}}.",
+        "success_other": "Imported {{count}} holidays from {{country}}.",
+        "skipped_one": "Skipped {{count}} duplicate.",
+        "skipped_other": "Skipped {{count}} duplicates.",
+        "attribution": "Holiday data from <tallyfy>Tallyfy</tallyfy>."
+      },
+      "upload": {
+        "label": "Import from .ics file:",
+        "loading": "Reading special dates from ICalendar file, please wait...",
+        "error": "Was not able to load some ICalendar events - try re-exporting the .ics file from your calendar app.",
+        "success": "Special dates loaded from ICalendar file."
+      },
+      "type": {
+        "event": "Event",
+        "holiday": "Holiday"
+      },
+      "button": {
+        "item": "Add date",
+        "remove": "Remove"
+      }
+    },
+    "generation-description": "PDF generation is done entirely in your browser - no data is sent to our servers!"
+  },
+  "preview": {
+    "title": "Calendar preview",
+    "subtitle": "(only first month is rendered for preview)",
+    "viewer-title": "PDF Preview",
+    "generating": {
+      "full": "Generating full calendar - this could take more than a minute...",
+      "preview": "Generating preview, please wait - it can take a minute."
+    },
+    "empty": {
+      "title": "Use the configuration form to create your personalized calendar.",
+      "subtitle": "The preview will appear here."
+    }
+  }
 }

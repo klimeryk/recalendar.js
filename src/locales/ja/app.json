@@ -1,172 +1,172 @@
 {
-	"loading": "読み込み中",
-	"download-ready": "ダウンロードが準備です。",
-	"navigation": {
-		"home": "ホームページ",
-		"configuration": "自分のカレンダーを作る",
-		"features": "機能",
-		"faq": "FAQ"
-	},
-	"language": {
-		"label": "言語",
-		"full": "全ての翻訳した言語",
-		"partial": "曜日と月のみ翻訳した言語"
-	},
-	"configuration": {
-		"selector": {
-			"label": "スタート",
-			"template": {
-				"label": "先ず、テンプレートを選んでください:",
-				"basic": {
-					"label": "普通",
-					"description": "普通なコンフィグ - こちらから始めばいいです。"
-				},
-				"advanced": {
-					"label": "アドバンスド",
-					"description": "普通のモードのようですが、一日の空間を付けます。"
-				},
-				"blank": {
-					"label": "空白",
-					"description": "普通のモードのようですが、TODO、特別な日、習慣などの情報を書ける空間を付けます。"
-				},
-				"minimalistic": {
-					"label": "ミニマリスト",
-					"description": "週別概要のみモードです。"
-				}
-			},
-			"upload": {
-				"label": "それとか、前の作ったReCalendarのPDFを載せてコンフィグをまた使う：",
-				"loading": "PDFのコンフィグを読み込み中… お待ちください。",
-				"error": "PDFのコンフィグは見つかりませんでした！　このウエブサイトで作ったかどうか知りますか？",
-				"success": "コンフィグを読み込んでしまいました！お帰りなさい！"
-			}
-		},
-		"general": {
-			"label": "一般的のコンフィグ",
-			"device": "機器",
-			"dpi": "DPI",
-			"resolution": "解像度",
-			"font": "フォント",
-			"year": "年",
-			"left-handed": {
-				"label": "左の手モード",
-				"description": "左の手で使うため、レイアウトを変わります。"
-			},
-			"sidebar": {
-				"label": "サイドバーに置いてある空間を恒久的に開く。",
-				"description": "サイドバーがいつも開くのが好きなら、このオプションをチェックして、カレンダーのコンテンツがサイドバーに隠れません。"
-			},
-			"starting-month": {
-				"label": "最初の月間",
-				"description": "カレンダーでの最初の月間です。例えば、学期の事しか見せたいなら、10月を選ぶようにする方がいいです。"
-			},
-			"month-count": {
-				"label": "月間の数",
-				"description": "カレンダーでの書いてある月間の数です。十二月間まで選べます。"
-			},
-			"first-day-of-week": "一週間の最初の日",
-			"weekend": "週末の日",
-			"line-style": {
-				"label": "行程の線のスタイル",
-				"description": "行程で線を描画する際に使用するスタイル。"
-			},
-			"line-height": {
-				"label": "行程の行の高さ",
-				"description": "行程の各行の高さ。テキストとアイコンも合わせて拡大縮小されます。"
-			}
-		},
-		"button": {
-			"refresh": "改めて作る",
-			"download": "全てのカレンダーを作ってダウンロードする",
-			"generating": "書き込み中… お待ちください。"
-		},
-		"itinerary": {
-			"empty": "空いている行程",
-			"placeholder": {
-				"lines": "行の数",
-				"page": "新しいページのブレーキ",
-				"item": "行程のアイテム"
-			},
-			"button": {
-				"copy": "すべての日に、この行程をコーピする",
-				"remove": "外す",
-				"item": "行程に新しいアイテムを付く",
-				"page": "新しいページを始まる",
-				"lines": "空いている行を付く"
-			}
-		},
-		"items-list": {
-			"button": {
-				"item": "アイテムを付く",
-				"remove": "外す"
-			},
-			"empty": "空いているリスト",
-			"placeholder": "（アイテム）"
-		},
-		"toggle-form": {
-			"enabled": "イネーブル中",
-			"disabled": "ディセーブル中"
-		},
-		"month": {
-			"title": "月別概要",
-			"description": "週別概要で、ゴール、習慣の事を確認するの、他の計画などの事を書ける空間です。",
-			"habits": {
-				"title": "習慣"
-			},
-			"itinerary": {
-				"title": "行程"
-			}
-		},
-		"week": {
-			"title": "週別概要",
-			"description": "週別概要は、一週間の情報を一瞬間で読んだり、簡単に計画を立ったりさせる空間です。",
-			"todos": {
-				"title": "TODO"
-			},
-			"retrospective": {
-				"title": "週間のレトロスペクティブ",
-				"description": "週間のレトロスペクティブで、終わった週間の考え、習ったこと、来週での上達出来ることなど書ける空間です。",
-				"itinerary": {
-					"title": "行程"
-				}
-			}
-		},
-		"day": {
-			"title": "一日の行程"
-		},
-		"special-dates": {
-			"title": "特別な日付",
-			"description": "誕生日、祝い、祝日、特別な日付など書けば、日付けが迫りながら、週別概要ページと一日の行程で注意をくれます。",
-			"empty": "日付なし",
-			"placeholder": "イベントのタイトル",
-			"upload": {
-				"label": "ICSのファイルから読み込み：",
-				"loading": "ICSから特別な日付を読み込み中… お待ちください。",
-				"error": "イベントのいくつが読み込まれませんでした。改めてICSを元のプログラムからダウンロードして、ここに載せてみませんか。",
-				"success": "ICSから読み込んでしまいました。"
-			},
-			"type": {
-				"event": "イベント",
-				"holiday": "祝日"
-			},
-			"button": {
-				"item": "日を付く",
-				"remove": "外す"
-			}
-		},
-		"generation-description": "PDFの作り方は自分のパソコンだけでやります！我々のサーバーに情報が載せていません！"
-	},
-	"preview": {
-		"title": "カレンダーのサンプル",
-		"subtitle": "サンプルで、最初の月間しかが見られます。",
-		"viewer-title": "PDFのサンプル",
-		"generating": {
-			"full": "全てのカレンダーがジェネレート中… 一分間までお待ちください。",
-			"preview": "サンプルのカレンダーがジェネレート中… 一分間までお待ちください。"
-		},
-		"empty": {
-			"title": "自分のカレンダーを作るため、右のフォームをお使いなさい。",
-			"subtitle": "ジェネレートした後、サンプルがここに見えます。一般的のコンフィグのフォントを確認してください！変わらないで、日本語の字が消えます。"
-		}
-	}
+  "loading": "読み込み中",
+  "download-ready": "ダウンロードが準備です。",
+  "navigation": {
+    "home": "ホームページ",
+    "configuration": "自分のカレンダーを作る",
+    "features": "機能",
+    "faq": "FAQ"
+  },
+  "language": {
+    "label": "言語",
+    "full": "全ての翻訳した言語",
+    "partial": "曜日と月のみ翻訳した言語"
+  },
+  "configuration": {
+    "selector": {
+      "label": "スタート",
+      "template": {
+        "label": "先ず、テンプレートを選んでください:",
+        "basic": {
+          "label": "普通",
+          "description": "普通なコンフィグ - こちらから始めばいいです。"
+        },
+        "advanced": {
+          "label": "アドバンスド",
+          "description": "普通のモードのようですが、一日の空間を付けます。"
+        },
+        "blank": {
+          "label": "空白",
+          "description": "普通のモードのようですが、TODO、特別な日、習慣などの情報を書ける空間を付けます。"
+        },
+        "minimalistic": {
+          "label": "ミニマリスト",
+          "description": "週別概要のみモードです。"
+        }
+      },
+      "upload": {
+        "label": "それとか、前の作ったReCalendarのPDFを載せてコンフィグをまた使う：",
+        "loading": "PDFのコンフィグを読み込み中… お待ちください。",
+        "error": "PDFのコンフィグは見つかりませんでした！　このウエブサイトで作ったかどうか知りますか？",
+        "success": "コンフィグを読み込んでしまいました！お帰りなさい！"
+      }
+    },
+    "general": {
+      "label": "一般的のコンフィグ",
+      "device": "機器",
+      "dpi": "DPI",
+      "resolution": "解像度",
+      "font": "フォント",
+      "year": "年",
+      "left-handed": {
+        "label": "左の手モード",
+        "description": "左の手で使うため、レイアウトを変わります。"
+      },
+      "sidebar": {
+        "label": "サイドバーに置いてある空間を恒久的に開く。",
+        "description": "サイドバーがいつも開くのが好きなら、このオプションをチェックして、カレンダーのコンテンツがサイドバーに隠れません。"
+      },
+      "starting-month": {
+        "label": "最初の月間",
+        "description": "カレンダーでの最初の月間です。例えば、学期の事しか見せたいなら、10月を選ぶようにする方がいいです。"
+      },
+      "month-count": {
+        "label": "月間の数",
+        "description": "カレンダーでの書いてある月間の数です。十二月間まで選べます。"
+      },
+      "first-day-of-week": "一週間の最初の日",
+      "weekend": "週末の日",
+      "line-style": {
+        "label": "行程の線のスタイル",
+        "description": "行程で線を描画する際に使用するスタイル。"
+      },
+      "line-height": {
+        "label": "行程の行の高さ",
+        "description": "行程の各行の高さ。テキストとアイコンも合わせて拡大縮小されます。"
+      }
+    },
+    "button": {
+      "refresh": "改めて作る",
+      "download": "全てのカレンダーを作ってダウンロードする",
+      "generating": "書き込み中… お待ちください。"
+    },
+    "itinerary": {
+      "empty": "空いている行程",
+      "placeholder": {
+        "lines": "行の数",
+        "page": "新しいページのブレーキ",
+        "item": "行程のアイテム"
+      },
+      "button": {
+        "copy": "すべての日に、この行程をコーピする",
+        "remove": "外す",
+        "item": "行程に新しいアイテムを付く",
+        "page": "新しいページを始まる",
+        "lines": "空いている行を付く"
+      }
+    },
+    "items-list": {
+      "button": {
+        "item": "アイテムを付く",
+        "remove": "外す"
+      },
+      "empty": "空いているリスト",
+      "placeholder": "（アイテム）"
+    },
+    "toggle-form": {
+      "enabled": "イネーブル中",
+      "disabled": "ディセーブル中"
+    },
+    "month": {
+      "title": "月別概要",
+      "description": "週別概要で、ゴール、習慣の事を確認するの、他の計画などの事を書ける空間です。",
+      "habits": {
+        "title": "習慣"
+      },
+      "itinerary": {
+        "title": "行程"
+      }
+    },
+    "week": {
+      "title": "週別概要",
+      "description": "週別概要は、一週間の情報を一瞬間で読んだり、簡単に計画を立ったりさせる空間です。",
+      "todos": {
+        "title": "TODO"
+      },
+      "retrospective": {
+        "title": "週間のレトロスペクティブ",
+        "description": "週間のレトロスペクティブで、終わった週間の考え、習ったこと、来週での上達出来ることなど書ける空間です。",
+        "itinerary": {
+          "title": "行程"
+        }
+      }
+    },
+    "day": {
+      "title": "一日の行程"
+    },
+    "special-dates": {
+      "title": "特別な日付",
+      "description": "誕生日、祝い、祝日、特別な日付など書けば、日付けが迫りながら、週別概要ページと一日の行程で注意をくれます。",
+      "empty": "日付なし",
+      "placeholder": "イベントのタイトル",
+      "upload": {
+        "label": "ICSのファイルから読み込み：",
+        "loading": "ICSから特別な日付を読み込み中… お待ちください。",
+        "error": "イベントのいくつが読み込まれませんでした。改めてICSを元のプログラムからダウンロードして、ここに載せてみませんか。",
+        "success": "ICSから読み込んでしまいました。"
+      },
+      "type": {
+        "event": "イベント",
+        "holiday": "祝日"
+      },
+      "button": {
+        "item": "日を付く",
+        "remove": "外す"
+      }
+    },
+    "generation-description": "PDFの作り方は自分のパソコンだけでやります！我々のサーバーに情報が載せていません！"
+  },
+  "preview": {
+    "title": "カレンダーのサンプル",
+    "subtitle": "サンプルで、最初の月間しかが見られます。",
+    "viewer-title": "PDFのサンプル",
+    "generating": {
+      "full": "全てのカレンダーがジェネレート中… 一分間までお待ちください。",
+      "preview": "サンプルのカレンダーがジェネレート中… 一分間までお待ちください。"
+    },
+    "empty": {
+      "title": "自分のカレンダーを作るため、右のフォームをお使いなさい。",
+      "subtitle": "ジェネレートした後、サンプルがここに見えます。一般的のコンフィグのフォントを確認してください！変わらないで、日本語の字が消えます。"
+    }
+  }
 }

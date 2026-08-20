@@ -1,36 +1,36 @@
 {
-	"habits": {
-		"example1": "Egzersiz",
-		"example2": "Kitap",
-		"example3": "Hobi",
-		"example4": "Eş zamanlı gece"
-	},
-	"templates": {
-		"advanced": {
-			"day": {
-				"monday": "Ek Pazartesi notları için ek sayfa"
-			},
-			"retrospective": {
-				"wins": "Haftanın Kazanımları",
-				"discoveries": "Yeni Keşifler",
-				"fails": "Neler Yanlış Gitti?"
-			}
-		}
-	},
-	"month": {
-		"goal": "Ana hedef",
-		"notes": "Notlar"
-	},
-	"todos": {
-		"example1": "Bir seyahat planlayın",
-		"example2": "Başka bir TODO"
-	},
-	"special-dates": {
-		"example1": "Özel tarih 1",
-		"example2": "Özel tarih neden #2 ",
-		"example3": "Başka bir kutlama",
-		"example4": "Çok uzun bir başka kutlama",
-		"example5": "Bir tane daha ekleyelim",
-		"example6": "Neden kalmadı kutlama"
-	}
+  "habits": {
+    "example1": "Egzersiz",
+    "example2": "Kitap",
+    "example3": "Hobi",
+    "example4": "Eş zamanlı gece"
+  },
+  "templates": {
+    "advanced": {
+      "day": {
+        "monday": "Ek Pazartesi notları için ek sayfa"
+      },
+      "retrospective": {
+        "wins": "Haftanın Kazanımları",
+        "discoveries": "Yeni Keşifler",
+        "fails": "Neler Yanlış Gitti?"
+      }
+    }
+  },
+  "month": {
+    "goal": "Ana hedef",
+    "notes": "Notlar"
+  },
+  "todos": {
+    "example1": "Bir seyahat planlayın",
+    "example2": "Başka bir TODO"
+  },
+  "special-dates": {
+    "example1": "Özel tarih 1",
+    "example2": "Özel tarih neden #2 ",
+    "example3": "Başka bir kutlama",
+    "example4": "Çok uzun bir başka kutlama",
+    "example5": "Bir tane daha ekleyelim",
+    "example6": "Neden kalmadı kutlama"
+  }
 }

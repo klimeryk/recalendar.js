@@ -1,36 +1,36 @@
 {
-	"habits": {
-		"example1": "体育",
-		"example2": "読書",
-		"example3": "趣味",
-		"example4": "遊び"
-	},
-	"templates": {
-		"advanced": {
-			"day": {
-				"monday": "月曜日でのメーモのための余分の空間"
-			},
-			"retrospective": {
-				"wins": "今週の勝ち",
-				"discoveries": "新しい発見",
-				"fails": "今週の失策と失敗"
-			}
-		}
-	},
-	"month": {
-		"goal": "主なゴール",
-		"notes": "メーモ"
-	},
-	"todos": {
-		"example1": "旅程を考える",
-		"example2": "その他のTODO"
-	},
-	"special-dates": {
-		"example1": "特別な日付第一",
-		"example2": "第二理由の特別な日付",
-		"example3": "その他の祝い",
-		"example4": "その他の祝い（長い）",
-		"example5": "もう一つ付く",
-		"example6": "理由ない祝い"
-	}
+  "habits": {
+    "example1": "体育",
+    "example2": "読書",
+    "example3": "趣味",
+    "example4": "遊び"
+  },
+  "templates": {
+    "advanced": {
+      "day": {
+        "monday": "月曜日でのメーモのための余分の空間"
+      },
+      "retrospective": {
+        "wins": "今週の勝ち",
+        "discoveries": "新しい発見",
+        "fails": "今週の失策と失敗"
+      }
+    }
+  },
+  "month": {
+    "goal": "主なゴール",
+    "notes": "メーモ"
+  },
+  "todos": {
+    "example1": "旅程を考える",
+    "example2": "その他のTODO"
+  },
+  "special-dates": {
+    "example1": "特別な日付第一",
+    "example2": "第二理由の特別な日付",
+    "example3": "その他の祝い",
+    "example4": "その他の祝い（長い）",
+    "example5": "もう一つ付く",
+    "example6": "理由ない祝い"
+  }
 }

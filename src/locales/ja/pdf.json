@@ -1,28 +1,28 @@
 {
-	"calendar": {
-		"header": {
-			"week-number": "週#",
-			"retrospective": "Re"
-		},
-		"body": {
-			"retrospective": "R"
-		}
-	},
-	"page": {
-		"month": {
-			"habits": {
-				"title": "習慣"
-			}
-		},
-		"week": {
-			"title": "概"
-		},
-		"retrospective": {
-			"title": "今週の概要"
-		},
-		"last": {
-			"title": "<recalendar>https://recalendar.me/</recalendar>でジェネレートしました！",
-			"subtitle": "ReCalendarで、このPDFを載せたら、このカレンダーのコンフィグを読み込んで改めて新年の新しいカレンダーが作れます！"
-		}
-	}
+  "calendar": {
+    "header": {
+      "week-number": "週#",
+      "retrospective": "Re"
+    },
+    "body": {
+      "retrospective": "R"
+    }
+  },
+  "page": {
+    "month": {
+      "habits": {
+        "title": "習慣"
+      }
+    },
+    "week": {
+      "title": "概"
+    },
+    "retrospective": {
+      "title": "今週の概要"
+    },
+    "last": {
+      "title": "<recalendar>https://recalendar.me/</recalendar>でジェネレートしました！",
+      "subtitle": "ReCalendarで、このPDFを載せたら、このカレンダーのコンフィグを読み込んで改めて新年の新しいカレンダーが作れます！"
+    }
+  }
 }

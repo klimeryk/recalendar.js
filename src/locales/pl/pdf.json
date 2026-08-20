@@ -1,28 +1,28 @@
 {
-	"calendar": {
-		"header": {
-			"week-number": "T#",
-			"retrospective": "Re"
-		},
-		"body": {
-			"retrospective": "R"
-		}
-	},
-	"page": {
-		"month": {
-			"habits": {
-				"title": "Nawyki"
-			}
-		},
-		"week": {
-			"title": "Tydzień"
-		},
-		"retrospective": {
-			"title": "Podsumowanie tygodnia"
-		},
-		"last": {
-			"title": "Wygenerowano korzystając z <recalendar>https://recalendar.me/</recalendar>",
-			"subtitle": "Możesz wczytać ten plik PDF na powyższej stronie, aby załadować tę samą konfigurację, która została użyta do stworzenia go i szybko wygenerować kalendarz na następny rok!"
-		}
-	}
+  "calendar": {
+    "header": {
+      "week-number": "T#",
+      "retrospective": "Re"
+    },
+    "body": {
+      "retrospective": "R"
+    }
+  },
+  "page": {
+    "month": {
+      "habits": {
+        "title": "Nawyki"
+      }
+    },
+    "week": {
+      "title": "Tydzień"
+    },
+    "retrospective": {
+      "title": "Podsumowanie tygodnia"
+    },
+    "last": {
+      "title": "Wygenerowano korzystając z <recalendar>https://recalendar.me/</recalendar>",
+      "subtitle": "Możesz wczytać ten plik PDF na powyższej stronie, aby załadować tę samą konfigurację, która została użyta do stworzenia go i szybko wygenerować kalendarz na następny rok!"
+    }
+  }
 }

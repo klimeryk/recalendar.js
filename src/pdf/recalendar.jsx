@@ -14,118 +14,91 @@ import YearNotesPage from '~/pdf/pages/year-notes';
 import YearOverviewPage from '~/pdf/pages/year-overview';
 
 class RecalendarPdf extends React.Component {
-	styles = StyleSheet.create( {
-		document: {
-			fontFamily: [ this.props.config.fontFamily, NOTO_SANS_CJK ],
-		},
-		page: {
-			flexDirection: 'row',
-			backgroundColor: '#E4E4E4',
-		},
-	} );
+  styles = StyleSheet.create({
+    document: {
+      fontFamily: [this.props.config.fontFamily, NOTO_SANS_CJK],
+    },
+    page: {
+      flexDirection: 'row',
+      backgroundColor: '#E4E4E4',
+    },
+  });
 
-	renderWeek( startOfWeek, endDate ) {
-		const { config } = this.props;
+  renderWeek(startOfWeek, endDate) {
+    const { config } = this.props;
 
-		const weekPages = [];
-		let currentDate = startOfWeek.clone();
-		const endOfWeek = startOfWeek.add( 1, 'weeks' );
-		while ( currentDate.isBefore( endOfWeek ) ) {
-			if (
-				config.isYearNotesEnabled &&
-				currentDate.month() === 0 &&
-				currentDate.date() === 1 &&
-				currentDate.year() > config.year &&
-				currentDate.isBefore( endDate )
-			) {
-				weekPages.push(
-					<YearNotesPage
-						key={ 'year-notes-' + currentDate.year() }
-						date={ currentDate }
-						config={ config }
-					/>,
-				);
-			}
-			if ( config.isMonthOverviewEnabled && currentDate.date() === 1 ) {
-				weekPages.push(
-					<MonthOverviewPage
-						key={ 'month-overview-' + currentDate.unix() }
-						date={ currentDate }
-						config={ config }
-					/>,
-				);
-			}
-			const key = 'day-' + currentDate.unix();
-			weekPages.push( <DayPage key={ key } date={ currentDate } config={ config } /> );
-			currentDate = currentDate.add( 1, 'days' );
-		}
-		return (
-			<React.Fragment key={ 'week-' + startOfWeek.unix() }>
-				{config.isWeekOverviewEnabled && (
-					<WeekOverviewPage date={ startOfWeek } config={ config } />
-				)}
-				{weekPages}
-				{config.isWeekRetrospectiveEnabled && (
-					<WeekRetrospectivePage date={ startOfWeek } config={ config } />
-				)}
-			</React.Fragment>
-		);
-	}
+    const weekPages = [];
+    let currentDate = startOfWeek.clone();
+    const endOfWeek = startOfWeek.add(1, 'weeks');
+    while (currentDate.isBefore(endOfWeek)) {
+      if (
+        config.isYearNotesEnabled &&
+        currentDate.month() === 0 &&
+        currentDate.date() === 1 &&
+        currentDate.year() > config.year &&
+        currentDate.isBefore(endDate)
+      ) {
+        weekPages.push(<YearNotesPage key={'year-notes-' + currentDate.year()} date={currentDate} config={config} />);
+      }
+      if (config.isMonthOverviewEnabled && currentDate.date() === 1) {
+        weekPages.push(
+          <MonthOverviewPage key={'month-overview-' + currentDate.unix()} date={currentDate} config={config} />,
+        );
+      }
+      const key = 'day-' + currentDate.unix();
+      weekPages.push(<DayPage key={key} date={currentDate} config={config} />);
+      currentDate = currentDate.add(1, 'days');
+    }
+    return (
+      <React.Fragment key={'week-' + startOfWeek.unix()}>
+        {config.isWeekOverviewEnabled && <WeekOverviewPage date={startOfWeek} config={config} />}
+        {weekPages}
+        {config.isWeekRetrospectiveEnabled && <WeekRetrospectivePage date={startOfWeek} config={config} />}
+      </React.Fragment>
+    );
+  }
 
-	renderCalendar() {
-		const { config } = this.props;
-		const { year, month, monthCount } = config;
-		const pageList = [];
-		let currentDate = dayjs.utc( {
-			year,
-			month,
-			day: 1,
-		} );
-		const endDate = currentDate.add( monthCount, 'months' );
+  renderCalendar() {
+    const { config } = this.props;
+    const { year, month, monthCount } = config;
+    const pageList = [];
+    let currentDate = dayjs.utc({
+      year,
+      month,
+      day: 1,
+    });
+    const endDate = currentDate.add(monthCount, 'months');
 
-		pageList.push(
-			<YearOverviewPage
-				key={ 'year-overview-' + year }
-				startDate={ currentDate }
-				endDate={ endDate }
-				config={ config }
-			/>,
-		);
-		if ( config.isYearNotesEnabled ) {
-			pageList.push(
-				<YearNotesPage
-					key={ 'year-notes-' + year }
-					date={ currentDate }
-					config={ config }
-				/>,
-			);
-		}
+    pageList.push(
+      <YearOverviewPage key={'year-overview-' + year} startDate={currentDate} endDate={endDate} config={config} />,
+    );
+    if (config.isYearNotesEnabled) {
+      pageList.push(<YearNotesPage key={'year-notes-' + year} date={currentDate} config={config} />);
+    }
 
-		currentDate = currentDate.startOf( 'week' );
-		while ( currentDate.isBefore( endDate ) ) {
-			pageList.push( this.renderWeek( currentDate, endDate ) );
+    currentDate = currentDate.startOf('week');
+    while (currentDate.isBefore(endDate)) {
+      pageList.push(this.renderWeek(currentDate, endDate));
 
-			currentDate = currentDate.add( 1, 'weeks' );
-			if ( this.props.isPreview && currentDate.month() === month + 1 ) {
-				break;
-			}
-		}
+      currentDate = currentDate.add(1, 'weeks');
+      if (this.props.isPreview && currentDate.month() === month + 1) {
+        break;
+      }
+    }
 
-		pageList.push( <LastPage key="last" config={ config } /> );
+    pageList.push(<LastPage key="last" config={config} />);
 
-		return pageList;
-	}
+    return pageList;
+  }
 
-	render() {
-		return (
-			<Document style={ this.styles.document }>{this.renderCalendar()}</Document>
-		);
-	}
+  render() {
+    return <Document style={this.styles.document}>{this.renderCalendar()}</Document>;
+  }
 }
 
 RecalendarPdf.propTypes = {
-	config: PropTypes.instanceOf( PdfConfig ).isRequired,
-	isPreview: PropTypes.bool.isRequired,
+  config: PropTypes.instanceOf(PdfConfig).isRequired,
+  isPreview: PropTypes.bool.isRequired,
 };
 
 export default RecalendarPdf;

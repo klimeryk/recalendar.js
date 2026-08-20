@@ -1,163 +1,163 @@
 {
-	"loading": "Generowanie...",
-	"download-ready": "Pobierz teraz!",
-	"navigation": {
-		"home": "Strona główna",
-		"configuration": "Stwórz swój kalendarz",
-		"features": "Funkcje",
-		"faq": "Pytania i odpowiedzi"
-	},
-	"language": {
-		"label": "Język"
-	},
-	"configuration": {
-		"selector": {
-			"label": "Początek",
-			"template": {
-				"label": "Rozpocznij, wybierając jeden z przykładowych szablonów:",
-				"basic": {
-					"label": "Podstawowy",
-					"description": "Domyślne ustawienia - dobry punkt początkowy."
-				},
-				"advanced": {
-					"label": "Zaawansowany",
-					"description": "Bazuje na szablonie Podstawowym - dodaje rozbudowane plany dnia."
-				},
-				"blank": {
-					"label": "Pusty",
-					"description": "Bazuje na szablonie Podstawowym, ale ustawia puste dni specjalne, TODO, plany, itd."
-				},
-				"minimalistic": {
-					"label": "Minimalistyczny",
-					"description": "Wyłącza wszystko oprócz przeglądu tygodnia."
-				}
-			},
-			"upload": {
-				"label": "Albo załaduj wcześniej wygenerowany ReCalendar PDF i użyj jego konfiguracji:",
-				"loading": "Wczytywanie konfiguracji z pliku PDF, proszę czekać...",
-				"error": "Nie udało się wczytać konfiguracji z tego pliku PDF - czy na pewno został wygenerowany korzystając z tej strony?",
-				"success": "Konfiguracja wczytana z pliku PDF - witamy ponownie!"
-			}
-		},
-		"general": {
-			"label": "Ogólne opcje",
-			"device": "Urządzenie",
-			"dpi": "DPI",
-			"resolution": "Rozdzielczość",
-			"font": "Czcionka",
-			"year": "Rok",
-			"left-handed": {
-				"label": "Wersja leworęczna",
-				"description": "Optymalizuje układ strony dla osób leworęcznych."
-			},
-			"sidebar": {
-				"label": "Pozostaw odstęp dla panelu pobocznego",
-				"description": "Jeśli preferujesz mieć przybornik narzędzi zawsze widoczny, ta opcja pozostawi odstęp dla niego. Dzięki temu kalendarz nigdy nie będzie przez niego zakryty."
-			},
-			"starting-month": {
-				"label": "Miesiąc początkowy",
-				"description": "Pierwszy miesiąc w kalendarzu. Wybierz na przykład październik, jeśli kalendarz ma być na cały semestr, a nie rok kalendarzowy."
-			},
-			"month-count": {
-				"label": "Liczba miesięcy",
-				"description": "Ile miesięcy ma zawierać kalendarz."
-			},
-			"first-day-of-week": "Pierwszy dzień tygodnia",
-			"weekend": "Weekend",
-			"line-style": {
-				"label": "Styl linii w planach",
-				"description": "Styl używany do rysowania linii w planach."
-			},
-			"line-height": {
-				"label": "Wysokość linii w planach",
-				"description": "Wysokość każdej linii w planach. Tekst i ikony są odpowiednio skalowane."
-			}
-		},
-		"button": {
-			"refresh": "Odśwież podgląd",
-			"download": "Wygeneruj pełny kalendarz i pobierz",
-			"generating": "Generowanie, proszę czekać..."
-		},
-		"itinerary": {
-			"empty": "Pusty plan",
-			"placeholder": {
-				"lines": "Liczba linii",
-				"page": "Rozpocznij nową stronę"
-			},
-			"button": {
-				"copy": "Powiel ten plan na wszystkie inne dni",
-				"remove": "Usuń",
-				"item": "Dodaj nową pozycję",
-				"page": "Rozpocznij nową stronę",
-				"lines": "Dodaj puste linie"
-			}
-		},
-		"items-list": {
-			"button": {
-				"item": "Dodaj pozycję",
-				"remove": "Usuń"
-			},
-			"empty": "Pusta lista",
-			"placeholder": "Pozycja"
-		},
-		"toggle-form": {
-			"enabled": "Włączony",
-			"disabled": "Wyłączony"
-		},
-		"month": {
-			"title": "Przegląd miesiąca",
-			"description": "Przegląd miesiąca pozwala ustalić cele na nadchodzący miesiąc, śledzić nawyki i sporządzić inne plany.",
-			"habits": {
-				"title": "Nawyki"
-			},
-			"itinerary": {
-				"title": "Plan"
-			}
-		},
-		"week": {
-			"title": "Przegląd tygodnia",
-			"description": "Przegląd tygodnia pokazuje podgląd nadchodzących dni, aby ułatwić rozplanowanie tygodnia.",
-			"todos": {
-				"title": "Do zrobienia"
-			},
-			"retrospective": {
-				"title": "Podsumowanie tygodnia",
-				"description": "Podsumowanie tygodnia to miejsce na refleksję nad minionym tygodniem - co poszło dobrze, nad czym trzeba popracować.",
-				"itinerary": {
-					"title": "Plan"
-				}
-			}
-		},
-		"day": {
-			"title": "Plany dnia"
-		},
-		"special-dates": {
-			"title": "Specjalne daty",
-			"description": "Tutaj możesz dodać urodziny, imieniny, uroczystości, święta i tym podobne. Zostaną one automatycznie umieszczone w kalendarzu tak żeby o nich nie zapomnieć.",
-			"empty": "Brak dat",
-			"placeholder": "Jaka okazja?",
-			"type": {
-				"event": "Wydarzenie",
-				"holiday": "Święto"
-			},
-			"button": {
-				"item": "Dodaj datę",
-				"remove": "Usuń"
-			}
-		},
-		"generation-description": "Generacja pliku PDF jest wykonywana w pełni w Twojej przeglądarce - żadne dane nie są przesyłane do naszych serwerów!"
-	},
-	"preview": {
-		"title": "Podgląd kalendarza",
-		"subtitle": "(tylko pierwszy miesiąc jest widoczny na podglądzie)",
-		"viewer-title": "Podgląd PDF",
-		"generating": {
-			"full": "Generowanie pełnego kalendarza - może to zająć ponad minutę...",
-			"preview": "Generowanie podglądu, proszę czekać..."
-		},
-		"empty": {
-			"title": "Użyj konfiguratora, aby stworzyć swój spersonalizowany kalendarz.",
-			"subtitle": "Tutaj zostanie wyświetlony podgląd."
-		}
-	}
+  "loading": "Generowanie...",
+  "download-ready": "Pobierz teraz!",
+  "navigation": {
+    "home": "Strona główna",
+    "configuration": "Stwórz swój kalendarz",
+    "features": "Funkcje",
+    "faq": "Pytania i odpowiedzi"
+  },
+  "language": {
+    "label": "Język"
+  },
+  "configuration": {
+    "selector": {
+      "label": "Początek",
+      "template": {
+        "label": "Rozpocznij, wybierając jeden z przykładowych szablonów:",
+        "basic": {
+          "label": "Podstawowy",
+          "description": "Domyślne ustawienia - dobry punkt początkowy."
+        },
+        "advanced": {
+          "label": "Zaawansowany",
+          "description": "Bazuje na szablonie Podstawowym - dodaje rozbudowane plany dnia."
+        },
+        "blank": {
+          "label": "Pusty",
+          "description": "Bazuje na szablonie Podstawowym, ale ustawia puste dni specjalne, TODO, plany, itd."
+        },
+        "minimalistic": {
+          "label": "Minimalistyczny",
+          "description": "Wyłącza wszystko oprócz przeglądu tygodnia."
+        }
+      },
+      "upload": {
+        "label": "Albo załaduj wcześniej wygenerowany ReCalendar PDF i użyj jego konfiguracji:",
+        "loading": "Wczytywanie konfiguracji z pliku PDF, proszę czekać...",
+        "error": "Nie udało się wczytać konfiguracji z tego pliku PDF - czy na pewno został wygenerowany korzystając z tej strony?",
+        "success": "Konfiguracja wczytana z pliku PDF - witamy ponownie!"
+      }
+    },
+    "general": {
+      "label": "Ogólne opcje",
+      "device": "Urządzenie",
+      "dpi": "DPI",
+      "resolution": "Rozdzielczość",
+      "font": "Czcionka",
+      "year": "Rok",
+      "left-handed": {
+        "label": "Wersja leworęczna",
+        "description": "Optymalizuje układ strony dla osób leworęcznych."
+      },
+      "sidebar": {
+        "label": "Pozostaw odstęp dla panelu pobocznego",
+        "description": "Jeśli preferujesz mieć przybornik narzędzi zawsze widoczny, ta opcja pozostawi odstęp dla niego. Dzięki temu kalendarz nigdy nie będzie przez niego zakryty."
+      },
+      "starting-month": {
+        "label": "Miesiąc początkowy",
+        "description": "Pierwszy miesiąc w kalendarzu. Wybierz na przykład październik, jeśli kalendarz ma być na cały semestr, a nie rok kalendarzowy."
+      },
+      "month-count": {
+        "label": "Liczba miesięcy",
+        "description": "Ile miesięcy ma zawierać kalendarz."
+      },
+      "first-day-of-week": "Pierwszy dzień tygodnia",
+      "weekend": "Weekend",
+      "line-style": {
+        "label": "Styl linii w planach",
+        "description": "Styl używany do rysowania linii w planach."
+      },
+      "line-height": {
+        "label": "Wysokość linii w planach",
+        "description": "Wysokość każdej linii w planach. Tekst i ikony są odpowiednio skalowane."
+      }
+    },
+    "button": {
+      "refresh": "Odśwież podgląd",
+      "download": "Wygeneruj pełny kalendarz i pobierz",
+      "generating": "Generowanie, proszę czekać..."
+    },
+    "itinerary": {
+      "empty": "Pusty plan",
+      "placeholder": {
+        "lines": "Liczba linii",
+        "page": "Rozpocznij nową stronę"
+      },
+      "button": {
+        "copy": "Powiel ten plan na wszystkie inne dni",
+        "remove": "Usuń",
+        "item": "Dodaj nową pozycję",
+        "page": "Rozpocznij nową stronę",
+        "lines": "Dodaj puste linie"
+      }
+    },
+    "items-list": {
+      "button": {
+        "item": "Dodaj pozycję",
+        "remove": "Usuń"
+      },
+      "empty": "Pusta lista",
+      "placeholder": "Pozycja"
+    },
+    "toggle-form": {
+      "enabled": "Włączony",
+      "disabled": "Wyłączony"
+    },
+    "month": {
+      "title": "Przegląd miesiąca",
+      "description": "Przegląd miesiąca pozwala ustalić cele na nadchodzący miesiąc, śledzić nawyki i sporządzić inne plany.",
+      "habits": {
+        "title": "Nawyki"
+      },
+      "itinerary": {
+        "title": "Plan"
+      }
+    },
+    "week": {
+      "title": "Przegląd tygodnia",
+      "description": "Przegląd tygodnia pokazuje podgląd nadchodzących dni, aby ułatwić rozplanowanie tygodnia.",
+      "todos": {
+        "title": "Do zrobienia"
+      },
+      "retrospective": {
+        "title": "Podsumowanie tygodnia",
+        "description": "Podsumowanie tygodnia to miejsce na refleksję nad minionym tygodniem - co poszło dobrze, nad czym trzeba popracować.",
+        "itinerary": {
+          "title": "Plan"
+        }
+      }
+    },
+    "day": {
+      "title": "Plany dnia"
+    },
+    "special-dates": {
+      "title": "Specjalne daty",
+      "description": "Tutaj możesz dodać urodziny, imieniny, uroczystości, święta i tym podobne. Zostaną one automatycznie umieszczone w kalendarzu tak żeby o nich nie zapomnieć.",
+      "empty": "Brak dat",
+      "placeholder": "Jaka okazja?",
+      "type": {
+        "event": "Wydarzenie",
+        "holiday": "Święto"
+      },
+      "button": {
+        "item": "Dodaj datę",
+        "remove": "Usuń"
+      }
+    },
+    "generation-description": "Generacja pliku PDF jest wykonywana w pełni w Twojej przeglądarce - żadne dane nie są przesyłane do naszych serwerów!"
+  },
+  "preview": {
+    "title": "Podgląd kalendarza",
+    "subtitle": "(tylko pierwszy miesiąc jest widoczny na podglądzie)",
+    "viewer-title": "Podgląd PDF",
+    "generating": {
+      "full": "Generowanie pełnego kalendarza - może to zająć ponad minutę...",
+      "preview": "Generowanie podglądu, proszę czekać..."
+    },
+    "empty": {
+      "title": "Użyj konfiguratora, aby stworzyć swój spersonalizowany kalendarz.",
+      "subtitle": "Tutaj zostanie wyświetlony podgląd."
+    }
+  }
 }

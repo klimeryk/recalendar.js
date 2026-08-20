@@ -1,28 +1,28 @@
 {
-	"calendar": {
-		"header": {
-			"week-number": "H#",
-			"retrospective": "G"
-		},
-		"body": {
-			"retrospective": "G"
-		}
-	},
-	"page": {
-		"month": {
-			"habits": {
-				"title": "Alışkanlıklar"
-			}
-		},
-		"week": {
-			"title": "Hafta"
-		},
-		"retrospective": {
-			"title": "Hafta için Geriye Dönük"
-		},
-		"last": {
-			"title": "Şu adresten oluşturuldu: <recalendar>https://recalendar.me/</recalendar>",
-			"subtitle": "PDF'yi tekrar yükleyerek, yeni yıl için benzer bir takvimi hızlıca oluşturabilirsiniz!"
-		}
-	}
+  "calendar": {
+    "header": {
+      "week-number": "H#",
+      "retrospective": "G"
+    },
+    "body": {
+      "retrospective": "G"
+    }
+  },
+  "page": {
+    "month": {
+      "habits": {
+        "title": "Alışkanlıklar"
+      }
+    },
+    "week": {
+      "title": "Hafta"
+    },
+    "retrospective": {
+      "title": "Hafta için Geriye Dönük"
+    },
+    "last": {
+      "title": "Şu adresten oluşturuldu: <recalendar>https://recalendar.me/</recalendar>",
+      "subtitle": "PDF'yi tekrar yükleyerek, yeni yıl için benzer bir takvimi hızlıca oluşturabilirsiniz!"
+    }
+  }
 }

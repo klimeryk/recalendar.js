@@ -1,157 +1,157 @@
 {
-	"loading": "Yükleniyor...",
-	"download-ready": "Şimdi indir!",
-	"navigation": {
-		"home": "Ana Sayfa",
-		"configuration": "Takviminizi Oluşturun",
-		"features": "Özellikler",
-		"faq": "SSS"
-	},
-	"configuration": {
-		"selector": {
-			"label": "Başla",
-			"template": {
-				"label": "Bir şablon seçerek başlayın:",
-				"basic": {
-					"label": "Temel",
-					"description": "Varsayılan ayarlar - iyi bir başlangıç noktası."
-				},
-				"advanced": {
-					"label": "Gelişmiş",
-					"description": "Temel şablonu bireysel günlük planlar ekleyerek genişletir."
-				},
-				"blank": {
-					"label": "Boş",
-					"description": "Temel şablona dayanır, ancak alışkanlıklar, yapılacaklar, özel tarihler vb. boştur."
-				},
-				"minimalistic": {
-					"label": "Minimalist",
-					"description": "Haftalık genel bakışlar haricinde her şeyi devre dışı bırakır."
-				}
-			},
-			"upload": {
-				"label": "Daha önceden oluşturulmuş ReCalendar PDF'sini yükleyin:",
-				"loading": "PDF dosyasından yapılandırmayı okuma, lütfen bekleyin...",
-				"error": "Bu PDF'den ReCalendar yapılandırmasını yükleyemedi - emin misiniz ki bu web sitesi kullanılarak mı oluşturulduğuna?",
-				"success": "PDF'den yapılandırma yüklendi - hoş geldiniz!"
-			}
-		},
-		"general": {
-			"label": "Genel seçenekler",
-			"font": "Yazı tipi",
-			"year": "Yıl",
-			"left-handed": {
-				"label": "Solak versiyon",
-				"description": "Düzeni solak kullanım için optimize eder."
-			},
-			"sidebar": {
-				"label": "Yan kenar çubuğu için kalıcı yer bırak",
-				"description": "Yan kenar çubuğunu her zaman açık tutmayı tercih ederseniz, takvimin içeriği tarafından asla kapatılmayacağından emin olmak için bu seçeneği işaretleyin."
-			},
-			"starting-month": {
-				"label": "Başlangıç ayı",
-				"description": "Oluşturulan takvimdeki ilk ay. Bir dönemi (yıl dönemi yerine) kapsamasını isterseniz Ekim gibi bir ay seçin."
-			},
-			"month-count": {
-				"label": "Ay sayısı",
-				"description": "Takvimin kaç ay için oluşturulması gerektiği."
-			},
-			"first-day-of-week": "Haftanın ilk günü",
-			"weekend": "Hafta sonu",
-			"line-style": {
-				"label": "Gezi planı çizgi stili",
-				"description": "Gezi planlarında çizgileri çizerken kullanılacak stil."
-			},
-			"line-height": {
-				"label": "Gezi planı satır yüksekliği",
-				"description": "Gezi planlarındaki her satırın yüksekliği. Metin ve simgeler buna göre ölçeklenir."
-			}
-		},
-		"button": {
-			"refresh": "Önizlemeyi Yenile",
-			"download": "Tam takvimi oluştur ve indir",
-			"generating": "Oluşturuluyor, lütfen bekleyin..."
-		},
-		"itinerary": {
-			"empty": "Boş gezi planı",
-			"placeholder": {
-				"lines": "Satır sayısı",
-				"page": "Yeni sayfa ekle"
-			},
-			"button": {
-				"copy": "Bu gezi planını diğer tüm günlere kopyala",
-				"remove": "Kaldır",
-				"item": "Gezi planı öğesi ekle",
-				"page": "Yeni bir sayfa başlat",
-				"lines": "Boş satırlar ekle"
-			}
-		},
-		"items-list": {
-			"button": {
-				"item": "Öğe ekle",
-				"remove": "Kaldır"
-			},
-			"empty": "Boş liste",
-			"placeholder": "Öğe"
-		},
-		"toggle-form": {
-			"enabled": "Etkin",
-			"disabled": "Devre dışı"
-		},
-		"month": {
-			"title": "Aya genel bakış",
-			"description": "Aylık genel bakış, önümüzdeki ay için hedefler belirlemek, alışkanlıkları takip etmek ve diğer planlar yapmak için bir yerdir",
-			"habits": {
-				"title": "Alışkanlıklar"
-			},
-			"itinerary": {
-				"title": "Gezi planı"
-			}
-		},
-		"week": {
-			"title": "Haftaya genel bakış",
-			"description": "Haftaya genel bakış, plan yapmayı kolaylaştırmak için haftayı daha geniş bir perspektiften görmenizi sağlar.",
-			"todos": {
-				"title": "Yapılacaklar"
-			},
-			"retrospective": {
-				"title": "Hafta değerlendirmesi",
-				"description": "Hafta değerlendirmesi, geçen hafta hakkında düşünmek, nasıl geçtiğini, neler öğrendiğinizi, gelecek hafta için neleri iyileştirebileceğinizi düşünmek için bir yerdir.",
-				"itinerary": {
-					"title": "Gezi planı"
-				}
-			}
-		},
-		"day": {
-			"title": "Günlük programlar"
-		},
-		"special-dates": {
-			"title": "Özel günler",
-			"description": "Doğum günleri, kutlamalar, etkinlikler vb. gibi şeyleri buraya ekleyerek haftalık genel bakışlarda ve yaklaştıklarında günlük sayfalarda hatırlatmalar alabilirsiniz.",
-			"empty": "Tarih yok",
-			"placeholder": "Ne için?",
-			"type": {
-				"event": "Etkinlik",
-				"holiday": "Tatil"
-			},
-			"button": {
-				"item": "Tarih ekle",
-				"remove": "Kaldır"
-			}
-		},
-		"generation-description": "PDF oluşturma işlemi tamamen tarayıcınızda gerçekleştirilir - veriler sunucularımıza gönderilmez!"
-	},
-	"preview": {
-		"title": "Takvim Önizlemesi",
-		"subtitle": "(sadece ilk ay önizlenmiştir)",
-		"viewer-title": "PDF Önizlemesi",
-		"generating": {
-			"full": "Tam takvim oluşturuluyor - bu bir dakikadan daha fazla sürebilir...",
-			"preview": "Önizleme oluşturuluyor, lütfen bekleyin - bir dakika sürebilir."
-		},
-		"empty": {
-			"title": "Kişiselleştirilmiş takviminizi oluşturmak için yapılandırma formunu kullanın.",
-			"subtitle": "Önizleme burada görüntülenecektir."
-		}
-	}
+  "loading": "Yükleniyor...",
+  "download-ready": "Şimdi indir!",
+  "navigation": {
+    "home": "Ana Sayfa",
+    "configuration": "Takviminizi Oluşturun",
+    "features": "Özellikler",
+    "faq": "SSS"
+  },
+  "configuration": {
+    "selector": {
+      "label": "Başla",
+      "template": {
+        "label": "Bir şablon seçerek başlayın:",
+        "basic": {
+          "label": "Temel",
+          "description": "Varsayılan ayarlar - iyi bir başlangıç noktası."
+        },
+        "advanced": {
+          "label": "Gelişmiş",
+          "description": "Temel şablonu bireysel günlük planlar ekleyerek genişletir."
+        },
+        "blank": {
+          "label": "Boş",
+          "description": "Temel şablona dayanır, ancak alışkanlıklar, yapılacaklar, özel tarihler vb. boştur."
+        },
+        "minimalistic": {
+          "label": "Minimalist",
+          "description": "Haftalık genel bakışlar haricinde her şeyi devre dışı bırakır."
+        }
+      },
+      "upload": {
+        "label": "Daha önceden oluşturulmuş ReCalendar PDF'sini yükleyin:",
+        "loading": "PDF dosyasından yapılandırmayı okuma, lütfen bekleyin...",
+        "error": "Bu PDF'den ReCalendar yapılandırmasını yükleyemedi - emin misiniz ki bu web sitesi kullanılarak mı oluşturulduğuna?",
+        "success": "PDF'den yapılandırma yüklendi - hoş geldiniz!"
+      }
+    },
+    "general": {
+      "label": "Genel seçenekler",
+      "font": "Yazı tipi",
+      "year": "Yıl",
+      "left-handed": {
+        "label": "Solak versiyon",
+        "description": "Düzeni solak kullanım için optimize eder."
+      },
+      "sidebar": {
+        "label": "Yan kenar çubuğu için kalıcı yer bırak",
+        "description": "Yan kenar çubuğunu her zaman açık tutmayı tercih ederseniz, takvimin içeriği tarafından asla kapatılmayacağından emin olmak için bu seçeneği işaretleyin."
+      },
+      "starting-month": {
+        "label": "Başlangıç ayı",
+        "description": "Oluşturulan takvimdeki ilk ay. Bir dönemi (yıl dönemi yerine) kapsamasını isterseniz Ekim gibi bir ay seçin."
+      },
+      "month-count": {
+        "label": "Ay sayısı",
+        "description": "Takvimin kaç ay için oluşturulması gerektiği."
+      },
+      "first-day-of-week": "Haftanın ilk günü",
+      "weekend": "Hafta sonu",
+      "line-style": {
+        "label": "Gezi planı çizgi stili",
+        "description": "Gezi planlarında çizgileri çizerken kullanılacak stil."
+      },
+      "line-height": {
+        "label": "Gezi planı satır yüksekliği",
+        "description": "Gezi planlarındaki her satırın yüksekliği. Metin ve simgeler buna göre ölçeklenir."
+      }
+    },
+    "button": {
+      "refresh": "Önizlemeyi Yenile",
+      "download": "Tam takvimi oluştur ve indir",
+      "generating": "Oluşturuluyor, lütfen bekleyin..."
+    },
+    "itinerary": {
+      "empty": "Boş gezi planı",
+      "placeholder": {
+        "lines": "Satır sayısı",
+        "page": "Yeni sayfa ekle"
+      },
+      "button": {
+        "copy": "Bu gezi planını diğer tüm günlere kopyala",
+        "remove": "Kaldır",
+        "item": "Gezi planı öğesi ekle",
+        "page": "Yeni bir sayfa başlat",
+        "lines": "Boş satırlar ekle"
+      }
+    },
+    "items-list": {
+      "button": {
+        "item": "Öğe ekle",
+        "remove": "Kaldır"
+      },
+      "empty": "Boş liste",
+      "placeholder": "Öğe"
+    },
+    "toggle-form": {
+      "enabled": "Etkin",
+      "disabled": "Devre dışı"
+    },
+    "month": {
+      "title": "Aya genel bakış",
+      "description": "Aylık genel bakış, önümüzdeki ay için hedefler belirlemek, alışkanlıkları takip etmek ve diğer planlar yapmak için bir yerdir",
+      "habits": {
+        "title": "Alışkanlıklar"
+      },
+      "itinerary": {
+        "title": "Gezi planı"
+      }
+    },
+    "week": {
+      "title": "Haftaya genel bakış",
+      "description": "Haftaya genel bakış, plan yapmayı kolaylaştırmak için haftayı daha geniş bir perspektiften görmenizi sağlar.",
+      "todos": {
+        "title": "Yapılacaklar"
+      },
+      "retrospective": {
+        "title": "Hafta değerlendirmesi",
+        "description": "Hafta değerlendirmesi, geçen hafta hakkında düşünmek, nasıl geçtiğini, neler öğrendiğinizi, gelecek hafta için neleri iyileştirebileceğinizi düşünmek için bir yerdir.",
+        "itinerary": {
+          "title": "Gezi planı"
+        }
+      }
+    },
+    "day": {
+      "title": "Günlük programlar"
+    },
+    "special-dates": {
+      "title": "Özel günler",
+      "description": "Doğum günleri, kutlamalar, etkinlikler vb. gibi şeyleri buraya ekleyerek haftalık genel bakışlarda ve yaklaştıklarında günlük sayfalarda hatırlatmalar alabilirsiniz.",
+      "empty": "Tarih yok",
+      "placeholder": "Ne için?",
+      "type": {
+        "event": "Etkinlik",
+        "holiday": "Tatil"
+      },
+      "button": {
+        "item": "Tarih ekle",
+        "remove": "Kaldır"
+      }
+    },
+    "generation-description": "PDF oluşturma işlemi tamamen tarayıcınızda gerçekleştirilir - veriler sunucularımıza gönderilmez!"
+  },
+  "preview": {
+    "title": "Takvim Önizlemesi",
+    "subtitle": "(sadece ilk ay önizlenmiştir)",
+    "viewer-title": "PDF Önizlemesi",
+    "generating": {
+      "full": "Tam takvim oluşturuluyor - bu bir dakikadan daha fazla sürebilir...",
+      "preview": "Önizleme oluşturuluyor, lütfen bekleyin - bir dakika sürebilir."
+    },
+    "empty": {
+      "title": "Kişiselleştirilmiş takviminizi oluşturmak için yapılandırma formunu kullanın.",
+      "subtitle": "Önizleme burada görüntülenecektir."
+    }
+  }
 }

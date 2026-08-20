@@ -6,23 +6,22 @@ import Navigation from '~/navigation';
 import PdfConfig from '~/pdf/config';
 
 class Loader extends React.Component {
-	componentDidMount() {
-		// eslint-disable-next-line react/no-did-mount-set-state
-		this.setState( { config: new PdfConfig() } );
-	}
+  componentDidMount() {
+    this.setState({ config: new PdfConfig() });
+  }
 
-	render() {
-		if ( ! this.state || ! this.state.config ) {
-			return null;
-		}
+  render() {
+    if (!this.state?.config) {
+      return null;
+    }
 
-		return (
-			<>
-				<Navigation />
-				<Configuration initialState={ this.state.config } />
-			</>
-		);
-	}
+    return (
+      <>
+        <Navigation />
+        <Configuration initialState={this.state.config} />
+      </>
+    );
+  }
 }
 
-export default withTranslation( [ 'app', 'config' ] )( Loader );
+export default withTranslation(['app', 'config'])(Loader);
