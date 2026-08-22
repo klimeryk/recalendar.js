@@ -5,6 +5,7 @@ import React from 'react';
 import { withTranslation } from 'react-i18next';
 
 import { getWeekendDays } from '~/lib/date';
+import { getPageSizeInPoints } from '~/lib/device-utils';
 import { getHorizontalSidebarOffset } from '~/lib/sidebar-utils';
 import Itinerary from '~/pdf/components/itinerary';
 import MiniCalendar, { HIGHLIGHT_NONE } from '~/pdf/components/mini-calendar';
@@ -22,7 +23,7 @@ class MonthOverviewPage extends React.Component {
 
     const { config } = props;
     const habitColumnWidth = 40;
-    const pageWidth = (config.pageSize[0] * 72) / config.dpi;
+    const [pageWidth] = getPageSizeInPoints(config);
     const availableWidth = pageWidth - getHorizontalSidebarOffset(config) - habitColumnWidth;
     const habitSquareWidth = Math.min(MAX_HABIT_SQUARE_WIDTH, Math.floor(availableWidth / DAYS_IN_LONGEST_MONTH));
 
@@ -201,11 +202,10 @@ class MonthOverviewPage extends React.Component {
 
   render() {
     const { date, config } = this.props;
-    const { dpi, pageSize } = config;
     const itemsByPage = splitItemsByPages(config.monthItinerary);
     return (
       <>
-        <Page id={monthOverviewLink(date, config)} size={pageSize} dpi={dpi}>
+        <Page id={monthOverviewLink(date, config)} size={getPageSizeInPoints(config)}>
           <View style={this.styles.page}>
             <View style={this.styles.header}>
               <View style={this.styles.meta}>
@@ -221,7 +221,7 @@ class MonthOverviewPage extends React.Component {
         </Page>
         {itemsByPage.slice(1).map((items, index) => (
           // biome-ignore lint/suspicious/noArrayIndexKey: static pagination, never reordered
-          <Page key={index} size={pageSize} dpi={dpi}>
+          <Page key={index} size={getPageSizeInPoints(config)}>
             <View style={this.styles.page}>
               <Itinerary date={date} items={items} config={config} />
             </View>

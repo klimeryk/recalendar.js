@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import { Trans, withTranslation } from 'react-i18next';
 
+import { getPageSizeInPoints } from '~/lib/device-utils';
 import PdfConfig from '~/pdf/config';
 import { pageStyle } from '~/pdf/styles';
 
@@ -33,7 +34,7 @@ class LastPage extends React.Component {
   render() {
     const { config, t } = this.props;
     return (
-      <Page size={config.pageSize} dpi={config.dpi}>
+      <Page size={getPageSizeInPoints(config)}>
         <View style={this.styles.page}>
           <View style={this.styles.center}>
             <Text style={this.styles.title}>

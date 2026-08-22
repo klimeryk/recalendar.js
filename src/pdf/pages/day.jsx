@@ -3,6 +3,7 @@ import dayjs from 'dayjs/esm';
 import PropTypes from 'prop-types';
 import React from 'react';
 
+import { getPageSizeInPoints } from '~/lib/device-utils';
 import { findByDate, DATE_FORMAT as SPECIAL_DATES_DATE_FORMAT } from '~/lib/special-dates-utils';
 import Header from '~/pdf/components/header';
 import Itinerary from '~/pdf/components/itinerary';
@@ -16,7 +17,7 @@ class DayPage extends React.Component {
   styles = StyleSheet.create(Object.assign({}, { content, page: pageStyle(this.props.config) }));
 
   renderExtraItems = (items, index) => (
-    <Page key={index} size={this.props.config.pageSize} dpi={this.props.config.dpi}>
+    <Page key={index} size={getPageSizeInPoints(this.props.config)}>
       <View style={this.styles.page}>
         <Itinerary date={this.props.date} items={items} config={this.props.config} />
       </View>
@@ -35,7 +36,7 @@ class DayPage extends React.Component {
     const specialItems = this.props.config.specialDates.filter(findByDate(specialDateKey));
     return (
       <>
-        <Page id={dayPageLink(date, config)} size={config.pageSize} dpi={config.dpi}>
+        <Page id={dayPageLink(date, config)} size={getPageSizeInPoints(config)}>
           <View style={this.styles.page}>
             <Header
               isLeftHanded={config.isLeftHanded}

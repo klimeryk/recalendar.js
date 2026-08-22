@@ -3,9 +3,11 @@ import react from '@vitejs/plugin-react';
 import { defineConfig } from 'vite';
 import i18nextLoader from 'vite-plugin-i18next-loader';
 
+const reactPlugin = () => react({ exclude: [/\/node_modules\//, /\/src\/pdf\//, /\/src\/worker\//] });
+
 export default defineConfig({
   build: {
-    rollupOptions: {
+    rolldownOptions: {
       input: {
         main: './index.html',
         app: './create.html',
@@ -14,14 +16,14 @@ export default defineConfig({
       },
     },
   },
-  plugins: [i18nextLoader({ paths: ['./src/locales'], namespaceResolution: 'basename' }), react()],
+  plugins: [i18nextLoader({ paths: ['./src/locales'], namespaceResolution: 'basename' }), reactPlugin()],
   resolve: {
     alias: {
-      '~': path.resolve(__dirname, 'src'),
+      '~': path.resolve(import.meta.dirname, 'src'),
     },
   },
   worker: {
     format: 'es',
-    plugins: () => [i18nextLoader({ paths: ['./src/locales'], namespaceResolution: 'basename' }), react()],
+    plugins: () => [i18nextLoader({ paths: ['./src/locales'], namespaceResolution: 'basename' }), reactPlugin()],
   },
 });

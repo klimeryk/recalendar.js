@@ -3,6 +3,7 @@ import dayjs from 'dayjs/esm';
 import PropTypes from 'prop-types';
 import React from 'react';
 
+import { getPageSizeInPoints } from '~/lib/device-utils';
 import Itinerary from '~/pdf/components/itinerary';
 import PdfConfig from '~/pdf/config';
 import { yearNotesLink, yearOverviewLink } from '~/pdf/lib/links';
@@ -34,7 +35,7 @@ class YearNotesPage extends React.Component {
     const itemsByPage = splitItemsByPages(config.yearNotesItinerary);
     return (
       <>
-        <Page id={yearNotesLink(date)} size={config.pageSize} dpi={config.dpi}>
+        <Page id={yearNotesLink(date)} size={getPageSizeInPoints(config)}>
           <View style={this.styles.page}>
             <Link src={'#' + yearOverviewLink()} style={this.styles.year}>
               {date.format('YYYY')}
@@ -46,7 +47,7 @@ class YearNotesPage extends React.Component {
         </Page>
         {itemsByPage.slice(1).map((items, index) => (
           // biome-ignore lint/suspicious/noArrayIndexKey: static pagination, never reordered
-          <Page key={index} size={config.pageSize} dpi={config.dpi}>
+          <Page key={index} size={getPageSizeInPoints(config)}>
             <View style={this.styles.page}>
               <Itinerary date={date} items={items} config={config} />
             </View>

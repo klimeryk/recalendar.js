@@ -3,6 +3,7 @@ import dayjs from 'dayjs/esm';
 import PropTypes from 'prop-types';
 import React from 'react';
 
+import { getPageSizeInPoints } from '~/lib/device-utils';
 import MiniCalendar, { HIGHLIGHT_NONE } from '~/pdf/components/mini-calendar';
 import PdfConfig from '~/pdf/config';
 import { yearNotesLink, yearOverviewLink } from '~/pdf/lib/links';
@@ -91,7 +92,7 @@ class YearOverviewPage extends React.Component {
   render() {
     const { config } = this.props;
     return (
-      <Page id={yearOverviewLink()} size={config.pageSize} dpi={config.dpi}>
+      <Page id={yearOverviewLink()} size={getPageSizeInPoints(config)}>
         {this.renderTitle()}
         <View style={this.styles.calendars}>{this.renderCalendars()}</View>
       </Page>

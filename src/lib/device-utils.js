@@ -6,6 +6,8 @@ const SUPERNOTE_NOMAD = 'Supernote Nomad';
 const SUPERNOTE_MANTA = 'Supernote Manta';
 export const CUSTOM = 'Custom';
 
+const POINTS_PER_INCH = 72;
+
 export const DEFAULT_SIDEBAR_OFFSET = 30;
 const REMARKABLE_SIDEBAR_OFFSET = 31;
 
@@ -65,4 +67,8 @@ export function getSidebarOffset(device) {
     default:
       return DEFAULT_SIDEBAR_OFFSET;
   }
+}
+
+export function getPageSizeInPoints({ pageSize, dpi }) {
+  return [(pageSize[0] * POINTS_PER_INCH) / dpi, (pageSize[1] * POINTS_PER_INCH) / dpi];
 }

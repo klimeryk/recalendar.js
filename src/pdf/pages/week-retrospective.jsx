@@ -5,6 +5,7 @@ import React from 'react';
 import { withTranslation } from 'react-i18next';
 
 import { getWeekNumber } from '~/lib/date';
+import { getPageSizeInPoints } from '~/lib/device-utils';
 import Header from '~/pdf/components/header';
 import Itinerary from '~/pdf/components/itinerary';
 import MiniCalendar, { HIGHLIGHT_WEEK } from '~/pdf/components/mini-calendar';
@@ -28,7 +29,7 @@ class WeekRetrospectivePage extends React.Component {
     const itemsByPage = splitItemsByPages(config.weekRetrospectiveItinerary);
     return (
       <>
-        <Page id={weekRetrospectiveLink(date)} size={config.pageSize} dpi={config.dpi}>
+        <Page id={weekRetrospectiveLink(date)} size={getPageSizeInPoints(config)}>
           <View style={this.styles.page}>
             <Header
               isLeftHanded={config.isLeftHanded}
@@ -48,7 +49,7 @@ class WeekRetrospectivePage extends React.Component {
         </Page>
         {itemsByPage.slice(1).map((items, index) => (
           // biome-ignore lint/suspicious/noArrayIndexKey: static pagination, never reordered
-          <Page key={index} size={config.pageSize} dpi={config.dpi}>
+          <Page key={index} size={getPageSizeInPoints(config)}>
             <View style={this.styles.page}>
               <Itinerary date={date} items={items} config={config} />
             </View>
