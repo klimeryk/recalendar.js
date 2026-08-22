@@ -6,6 +6,7 @@ import { initReactI18next } from 'react-i18next';
 
 import { getFullySupportedLocales, handleLanguageChange, i18nConfiguration } from '~/config/i18n';
 import { utf8ToBase64 } from '~/lib/base64';
+import { encryptPdf } from '~/lib/encryption';
 import { Font, pdf } from '~/lib/pdf';
 import PdfConfig, { CONFIG_CURRENT_VERSION, CONFIG_FILE, hydrateFromObject } from '~/pdf/config';
 import { getCJKFontDefinition, getFontDefinition } from '~/pdf/lib/fonts';
@@ -37,7 +38,8 @@ function hyphenationCallback(word) {
 self.onmessage = ({ data }) => {
   const config = new PdfConfig(hydrateFromObject(data));
 
-  const { firstDayOfWeek, language, isPreview } = data;
+  const { firstDayOfWeek, language, isPreview, password, isPasswordEnabledInPreview } = data;
+  const userPassword = password && (!isPreview || isPasswordEnabledInPreview) ? password : undefined;
 
   changeLanguage(language);
   handleLanguageChange(language, firstDayOfWeek);
@@ -54,7 +56,7 @@ self.onmessage = ({ data }) => {
   pdf(document, {
     attachments: [
       {
-        src: encodeConfig(data),
+        src: encodeConfig(hydrateFromObject(data)),
         options: {
           name: CONFIG_FILE,
           type: 'application/json',
@@ -64,7 +66,7 @@ self.onmessage = ({ data }) => {
     ],
   })
     .toBlob()
-    .then((blob) => {
-      self.postMessage({ blob });
+    .then(async (blob) => {
+      self.postMessage({ blob: userPassword ? await encryptPdf(blob, userPassword) : blob });
     });
 };

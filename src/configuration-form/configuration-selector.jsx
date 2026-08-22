@@ -4,12 +4,13 @@ import Alert from 'react-bootstrap/Alert';
 import Button from 'react-bootstrap/Button';
 import ButtonGroup from 'react-bootstrap/ButtonGroup';
 import Form from 'react-bootstrap/Form';
+import InputGroup from 'react-bootstrap/InputGroup';
 import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
 import Stack from 'react-bootstrap/Stack';
 import Tooltip from 'react-bootstrap/Tooltip';
 import { withTranslation } from 'react-i18next';
 
-import { getJsonAttachment } from '~/lib/attachments';
+import { ATTACHMENT_ENCRYPTED, ATTACHMENT_OK, ATTACHMENT_WRONG_PASSWORD, getJsonAttachment } from '~/lib/attachments';
 import { convertConfigToCurrentVersion } from '~/lib/config-compat';
 import { ITINERARY_ITEM, ITINERARY_LINES, ITINERARY_NEW_PAGE } from '~/lib/itinerary-utils';
 import PdfConfig, { CONFIG_FILE } from '~/pdf/config';
@@ -18,6 +19,8 @@ const STATUS_EMPTY = 'EMPTY';
 const STATUS_LOADING = 'LOADING';
 const STATUS_ERROR = 'ERROR';
 const STATUS_SUCCESS = 'SUCCESS';
+const STATUS_PASSWORD_REQUIRED = 'PASSWORD_REQUIRED';
+const STATUS_WRONG_PASSWORD = 'WRONG_PASSWORD';
 
 const TEMPLATE_BASIC = 'basic';
 const TEMPLATE_ADVANCED = 'advanced';
@@ -27,7 +30,10 @@ const TEMPLATE_MINIMALISTIC = 'minimalistic';
 class ConfigurationSelector extends React.Component {
   state = {
     status: STATUS_EMPTY,
+    password: '',
   };
+
+  pendingFileData = null;
 
   getDefaultFirstDayOfWeek() {
     const config = new PdfConfig();
@@ -157,6 +163,7 @@ class ConfigurationSelector extends React.Component {
   handleFileChange = (event) => {
     this.setState({
       status: STATUS_LOADING,
+      password: '',
     });
 
     const file = event.target.files[0];
@@ -166,23 +173,79 @@ class ConfigurationSelector extends React.Component {
     reader.readAsArrayBuffer(file);
   };
 
-  handleFileLoad = async (event) => {
-    const attachment = await getJsonAttachment(event.target.result, CONFIG_FILE);
+  handleFileLoad = (event) => {
+    this.pendingFileData = event.target.result;
+    this.loadConfig();
+  };
 
-    if (!attachment) {
-      this.setState({
-        status: STATUS_ERROR,
-      });
+  handlePasswordChange = (event) => {
+    this.setState({ password: event.target.value });
+  };
+
+  handleUnlock = () => {
+    this.setState({ status: STATUS_LOADING });
+    this.loadConfig(this.state.password);
+  };
+
+  handlePasswordKeyDown = (event) => {
+    if (event.key !== 'Enter') {
       return;
+    }
+
+    event.preventDefault();
+    this.handleUnlock();
+  };
+
+  async loadConfig(password) {
+    const { status, data } = await getJsonAttachment(this.pendingFileData, CONFIG_FILE, password);
+
+    switch (status) {
+      case ATTACHMENT_ENCRYPTED:
+        this.setState({ status: STATUS_PASSWORD_REQUIRED });
+        return;
+
+      case ATTACHMENT_WRONG_PASSWORD:
+        this.setState({ status: STATUS_WRONG_PASSWORD });
+        return;
+
+      case ATTACHMENT_OK:
+        break;
+
+      default:
+        this.setState({ status: STATUS_ERROR });
+        return;
     }
 
     this.setState({
       status: STATUS_SUCCESS,
+      password: '',
     });
 
-    const newConfig = new PdfConfig(convertConfigToCurrentVersion(attachment));
+    const newConfig = new PdfConfig(convertConfigToCurrentVersion(data));
     this.props.onConfigChange(newConfig);
-  };
+  }
+
+  renderPasswordPrompt(variant, message) {
+    const { t } = this.props;
+    return (
+      <Alert variant={variant} className="mt-2 mb-0">
+        {message}
+        <InputGroup className="mt-2">
+          <Form.Control
+            type="password"
+            aria-label={t('configuration.selector.upload.password.label')}
+            placeholder={t('configuration.selector.upload.password.label')}
+            value={this.state.password}
+            onChange={this.handlePasswordChange}
+            onKeyDown={this.handlePasswordKeyDown}
+          />
+          <Button variant="outline-secondary" onClick={this.handleUnlock}>
+            {t('configuration.selector.upload.password.unlock')}
+          </Button>
+        </InputGroup>
+      </Alert>
+    );
+  }
 
   renderStatusMessage() {
     const { t } = this.props;
@@ -208,6 +271,12 @@ class ConfigurationSelector extends React.Component {
             {t('configuration.selector.upload.success')}
           </Alert>
         );
+
+      case STATUS_PASSWORD_REQUIRED:
+        return this.renderPasswordPrompt('warning', t('configuration.selector.upload.password.required'));
+
+      case STATUS_WRONG_PASSWORD:
+        return this.renderPasswordPrompt('danger', t('configuration.selector.upload.password.wrong'));
 
       case STATUS_EMPTY:
       default:

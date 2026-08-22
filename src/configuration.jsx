@@ -23,6 +23,7 @@ import ConfigurationSelector from '~/configuration-form/configuration-selector';
 import ItemsList from '~/configuration-form/items-list';
 import Itinerary from '~/configuration-form/itinerary';
 import LineSettings from '~/configuration-form/line-settings';
+import PasswordSettings from '~/configuration-form/password-settings';
 import SpecialDates from '~/configuration-form/special-dates';
 import ToggleAccordionItem from '~/configuration-form/toggle-accordion-item';
 import { getWeekdays } from '~/lib/date';
@@ -47,6 +48,8 @@ class Configuration extends React.PureComponent {
     blobUrl: null,
     lastPreviewTime: 10000,
     lastFullTime: null,
+    password: '',
+    isPasswordEnabledInPreview: true,
     ...hydrateFromObject(this.props.initialState),
   };
 
@@ -308,6 +311,8 @@ class Configuration extends React.PureComponent {
     this.pdfWorker.postMessage({
       isPreview,
       language: i18n.language,
+      password: this.state.password,
+      isPasswordEnabledInPreview: this.state.isPasswordEnabledInPreview,
       ...hydrateFromObject(this.state),
     });
   }
@@ -592,6 +597,11 @@ class Configuration extends React.PureComponent {
                 lineHeightPixels={this.state.lineHeightPixels}
                 lineSpacingPixels={this.state.lineSpacingPixels}
                 lineOpacity={this.state.lineOpacity}
+                onChange={this.handleFieldChange}
+              />
+              <PasswordSettings
+                password={this.state.password}
+                isPasswordEnabledInPreview={this.state.isPasswordEnabledInPreview}
                 onChange={this.handleFieldChange}
               />
             </Accordion.Body>

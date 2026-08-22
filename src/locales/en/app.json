@@ -56,7 +56,13 @@
         "label": "Or upload previously generated ReCalendar PDF to use its config:",
         "loading": "Reading config from PDF file, please wait...",
         "error": "Was not able to load ReCalendar config from this PDF - are you sure it was generated using this website?",
-        "success": "Config loaded from PDF - welcome back!"
+        "success": "Config loaded from PDF - welcome back!",
+        "password": {
+          "required": "This PDF is password protected. Enter its password to read the config from it.",
+          "wrong": "That password did not work - please try again.",
+          "label": "PDF password",
+          "unlock": "Unlock"
+        }
       }
     },
     "general": {
@@ -118,6 +124,18 @@
       "line-opacity": {
         "label": "Opacity",
         "description": "How visible the lines and dots are. 0% hides them completely, 100% makes them fully black."
+      },
+      "password": {
+        "title": "Password protection",
+        "description": "Requires a password to open the generated PDF, so the calendar stays private if the device it lives on is shared or lost.",
+        "label": "Password",
+        "show": "Show",
+        "hide": "Hide",
+        "warning": "Write this password down somewhere safe. ReCalendar runs entirely in your browser and stores no user data, so nobody - including us - can recover or reset it, and a protected calendar cannot be opened without it. The password is deliberately not saved inside the PDF, so you will need to type it again the next time you generate a calendar.",
+        "preview": {
+          "label": "Protect the preview too",
+          "description": "Keep this on to check that the password works before you put the calendar on your device. Turn it off if you are still tweaking things and do not want to retype the password into the PDF viewer on every preview."
+        }
       }
     },
     "button": {
