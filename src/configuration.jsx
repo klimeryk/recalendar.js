@@ -78,8 +78,8 @@ class Configuration extends React.PureComponent {
     }
   }
 
-  handleConfigChange = (newConfig) => {
-    this.setState({ ...hydrateFromObject(newConfig) });
+  handleConfigChange = (newConfig, password) => {
+    this.setState({ ...hydrateFromObject(newConfig), ...(password && { password }) });
     changeLanguage(newConfig.language);
   };
 

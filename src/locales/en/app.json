@@ -61,7 +61,8 @@
           "required": "This PDF is password protected. Enter its password to read the config from it.",
           "wrong": "That password did not work - please try again.",
           "label": "PDF password",
-          "unlock": "Unlock"
+          "unlock": "Unlock",
+          "reused": "The PDF's password has been filled in for you, so the next calendar you generate will be protected with the same one."
         }
       }
     },

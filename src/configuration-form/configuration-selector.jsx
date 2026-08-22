@@ -31,6 +31,7 @@ class ConfigurationSelector extends React.Component {
   state = {
     status: STATUS_EMPTY,
     password: '',
+    hasReusedPassword: false,
   };
 
   pendingFileData = null;
@@ -164,6 +165,7 @@ class ConfigurationSelector extends React.Component {
     this.setState({
       status: STATUS_LOADING,
       password: '',
+      hasReusedPassword: false,
     });
 
     const file = event.target.files[0];
@@ -219,10 +221,11 @@ class ConfigurationSelector extends React.Component {
     this.setState({
       status: STATUS_SUCCESS,
       password: '',
+      hasReusedPassword: !!password,
     });
 
     const newConfig = new PdfConfig(convertConfigToCurrentVersion(data));
-    this.props.onConfigChange(newConfig);
+    this.props.onConfigChange(newConfig, password);
   }
 
   renderPasswordPrompt(variant, message) {
@@ -269,6 +272,7 @@ class ConfigurationSelector extends React.Component {
         return (
           <Alert variant="success" className="mt-2 mb-0">
             {t('configuration.selector.upload.success')}
+            {this.state.hasReusedPassword && ` ${t('configuration.selector.upload.password.reused')}`}
           </Alert>
         );
 
