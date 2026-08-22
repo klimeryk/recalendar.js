@@ -14,18 +14,23 @@ import { dayPageLink, monthOverviewLink } from '~/pdf/lib/links';
 import { pageStyle } from '~/pdf/styles';
 import { splitItemsByPages } from '~/pdf/utils';
 
-const MAX_HABIT_SQUARE_WIDTH = 13;
 const DAYS_IN_LONGEST_MONTH = 31;
+const MAX_HABIT_SQUARE_WIDTH = 13;
+const MIN_HABIT_SQUARE_WIDTH = 4;
+const MIN_HABIT_COLUMN_WIDTH = 40;
+const MAX_HABIT_COLUMN_WIDTH = 150;
 
 class MonthOverviewPage extends React.Component {
   constructor(props) {
     super(props);
 
     const { config } = props;
-    const habitColumnWidth = 40;
     const [pageWidth] = getPageSizeInPoints(config);
-    const availableWidth = pageWidth - getHorizontalSidebarOffset(config) - habitColumnWidth;
-    const habitSquareWidth = Math.min(MAX_HABIT_SQUARE_WIDTH, Math.floor(availableWidth / DAYS_IN_LONGEST_MONTH));
+    const availableWidth = pageWidth - getHorizontalSidebarOffset(config);
+    const habitSquareWidth = Math.max(
+      MIN_HABIT_SQUARE_WIDTH,
+      Math.min(MAX_HABIT_SQUARE_WIDTH, Math.floor((availableWidth - MIN_HABIT_COLUMN_WIDTH) / DAYS_IN_LONGEST_MONTH)),
+    );
 
     const stylesObject = Object.assign(
       {
@@ -64,6 +69,12 @@ class MonthOverviewPage extends React.Component {
         habitsTitle: {
           fontWeight: 'normal',
         },
+        habitLabel: {
+          textAlign: 'center',
+          maxLines: 1,
+          textOverflow: 'ellipsis',
+          paddingHorizontal: 1,
+        },
         habitDay: {
           fontSize: 8,
           flexDirection: 'column',
@@ -75,8 +86,9 @@ class MonthOverviewPage extends React.Component {
           textDecoration: 'none',
           color: 'black',
           width: habitSquareWidth,
-          minWidth: habitSquareWidth,
           height: habitSquareWidth,
+          flexGrow: 0,
+          flexShrink: 0,
         },
         habitDayDate: {
           fontWeight: 'bold',
@@ -94,17 +106,20 @@ class MonthOverviewPage extends React.Component {
         },
         habitContainer: {
           justifyContent: 'center',
-          alignItems: 'center',
           height: habitSquareWidth,
           borderRight: '1 solid #AAA',
           borderBottom: '1 solid #AAA',
-          width: habitColumnWidth,
+          flexGrow: 1,
+          flexShrink: 1,
+          flexBasis: MIN_HABIT_COLUMN_WIDTH,
+          maxWidth: MAX_HABIT_COLUMN_WIDTH,
           fontWeight: 'bold',
         },
         habitSquare: {
           height: habitSquareWidth,
           width: habitSquareWidth,
-          minWidth: habitSquareWidth,
+          flexGrow: 0,
+          flexShrink: 0,
           borderRight: '1 solid #AAA',
           borderBottom: '1 solid #AAA',
           textDecoration: 'none',
@@ -155,7 +170,7 @@ class MonthOverviewPage extends React.Component {
     return (
       <View style={this.styles.habitsHeader}>
         <View style={this.styles.habitContainer}>
-          <Text style={this.styles.habitsTitle}>{t('page.month.habits.title')}</Text>
+          <Text style={[this.styles.habitLabel, this.styles.habitsTitle]}>{t('page.month.habits.title')}</Text>
         </View>
         {days}
       </View>
@@ -175,7 +190,7 @@ class MonthOverviewPage extends React.Component {
     return (
       <View key={id} style={this.styles.habitRow}>
         <View style={this.styles.habitContainer}>
-          <Text>{value}</Text>
+          <Text style={this.styles.habitLabel}>{value}</Text>
         </View>
         {this.renderHabitSquares()}
       </View>
