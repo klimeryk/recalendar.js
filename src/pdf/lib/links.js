@@ -1,3 +1,5 @@
+import { getWeekId } from '~/lib/date';
+
 export function dayPageLink(date, config) {
   const dayLink = findEnabledDayPageLink(date, config, 1);
   if (dayLink) {
@@ -66,7 +68,7 @@ export function monthOverviewLink(date, config) {
 
 export function weekOverviewLink(date, config) {
   if (config.isWeekOverviewEnabled) {
-    return 'week-overview-' + date.format('WWYYYY');
+    return 'week-overview-' + getWeekId(date);
   }
 
   const dayLink = findEnabledDayPageLink(date.weekday(0), config, 1);
@@ -82,7 +84,7 @@ export function weekOverviewLink(date, config) {
 }
 
 export function weekRetrospectiveLink(date) {
-  return 'week-retrospective-' + date.format('WWYYYY');
+  return 'week-retrospective-' + getWeekId(date);
 }
 
 export function yearOverviewLink() {

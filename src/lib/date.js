@@ -46,3 +46,7 @@ export function getWeekNumber(day) {
   // https://en.wikipedia.org/wiki/ISO_week_date
   return day.day(4).isoWeek();
 }
+
+export function getWeekId(day) {
+  return day.startOf('week').day(4).format('WWGGGG');
+}
