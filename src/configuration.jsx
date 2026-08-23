@@ -479,7 +479,7 @@ class Configuration extends React.PureComponent {
           <Col>
             <PreviewColumn
               blobUrl={this.state.blobUrl}
-              expectedTime={this.state.lastFullTime || 12 * this.state.lastPreviewTime}
+              expectedTime={this.state.lastFullTime || this.state.monthCount * this.state.lastPreviewTime}
               isGeneratingPdf={this.state.isGeneratingPdf}
               isGeneratingPreview={this.state.isGeneratingPreview}
               onDownload={this.handleDownload}
