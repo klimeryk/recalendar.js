@@ -15,6 +15,8 @@ import {
   yearOverviewLink,
 } from '~/pdf/lib/links';
 
+export const MINI_CALENDAR_WIDTH = 145;
+
 export const HIGHLIGHT_WEEK = 'HIGHLIGHT_WEEK';
 export const HIGHLIGHT_DAY = 'HIGHLIGHT_DAY';
 export const HIGHLIGHT_NONE = 'HIGHLIGHT_NONE';
@@ -23,7 +25,7 @@ class MiniCalendar extends React.Component {
   styles = StyleSheet.create({
     body: {
       fontSize: 10,
-      width: 145,
+      width: MINI_CALENDAR_WIDTH,
     },
     week: {
       display: 'flex',

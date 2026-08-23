@@ -66,7 +66,7 @@ class CalendarSettings extends React.PureComponent {
         </Form.Group>
         <Form.Group controlId="monthCount">
           <Form.Label>{t('configuration.general.month-count.label')}</Form.Label>
-          <Form.Control type="number" value={monthCount} onChange={onChange} min={1} max={12} />
+          <Form.Control type="number" value={monthCount} onChange={onChange} min={1} />
           <Form.Text className="text-muted">{t('configuration.general.month-count.description')}</Form.Text>
         </Form.Group>
         <Form.Label>{t('configuration.general.weekend')}</Form.Label>
