@@ -1,11 +1,11 @@
 {
   "calendar": {
     "header": {
-      "week-number": "S#",
-      "retrospective": "Re"
+      "week-number": "ש#",
+      "retrospective": "רט"
     },
     "body": {
-      "retrospective": "R"
+      "retrospective": "ר"
     }
   },
   "page": {
@@ -22,7 +22,7 @@
     },
     "last": {
       "title": "נוצר באמצעות <recalendar>https://recalendar.me/</recalendar>",
-      "subtitle": "אתה יכול להעלות את ה-PDF הזה לשם שוב כדי לטעון את אותה תצורה ששימשה ליצירתו וליצור במהירות קובץ דומה לשנה החדשה!"
+      "subtitle": "אתה יכול להעלות את ה-PDF הזה לשם שוב כדי לטעון את אותה תצורה ששימשה ליצירתו וליצור במהירות יומן דומה לשנה החדשה!"
     }
   }
 }

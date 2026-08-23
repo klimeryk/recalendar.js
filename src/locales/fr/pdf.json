@@ -18,11 +18,11 @@
       "title": "Semaine"
     },
     "retrospective": {
-      "title": "Retrospective de la semaine"
+      "title": "Rétrospective de la semaine"
     },
     "last": {
-      "title": "Généré par <recalendar>https://recalendar.me/</recalendar>",
-      "subtitle": "Vous pouvez importer ce PDF à nouveau pour obtenir la même configuration et créer rapidement un calendrier similaire pour la nouvelle année!"
+      "title": "Généré avec <recalendar>https://recalendar.me/</recalendar>",
+      "subtitle": "Vous pouvez y réimporter ce PDF pour retrouver la configuration qui a servi à le créer et générer rapidement un calendrier similaire pour la nouvelle année!"
     }
   }
 }

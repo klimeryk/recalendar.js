@@ -13,7 +13,7 @@
       "retrospective": {
         "wins": "Overwinningen",
         "discoveries": "Nieuwe ontdekkingen",
-        "fails": "Tegenslagen"
+        "fails": "Wat ging er niet goed?"
       }
     }
   },
@@ -23,14 +23,14 @@
   },
   "todos": {
     "example1": "Plan een reis",
-    "example2": "Een ander taakje"
+    "example2": "Een andere taak"
   },
   "special-dates": {
     "example1": "Speciale dag 1",
     "example2": "Speciale dag om reden #2",
     "example3": "Een andere viering",
     "example4": "Nog een andere viering die heel erg lang is",
-    "example5": "Waarom voegen er niet nog eentje toe?",
-    "example6": "Ik heb niets meer te vieren"
+    "example5": "Laten we er nog eentje toevoegen",
+    "example6": "Vieren omdat de redenen op zijn"
   }
 }

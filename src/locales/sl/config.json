@@ -1,19 +1,19 @@
 {
   "habits": {
-    "example1": "Vaja",
+    "example1": "Vadba",
     "example2": "Knjiga",
-    "example3": "Opravilo",
+    "example3": "Konjiček",
     "example4": "Zmenek"
   },
   "templates": {
     "advanced": {
       "day": {
-        "monday": "Dodatna stran za dodatne ponedeljkove zapise"
+        "monday": "Dodatna stran za ponedeljkove zapiske"
       },
       "retrospective": {
         "wins": "Tedenski uspehi",
         "discoveries": "Nova spoznanja",
-        "fails": "Kaj ni uspelo?"
+        "fails": "Kaj ni šlo dobro?"
       }
     }
   },
@@ -22,15 +22,15 @@
     "notes": "Zapiski"
   },
   "todos": {
-    "example1": "Pripravi potovanje",
-    "example2": "Ostala opravila"
+    "example1": "Načrtuj potovanje",
+    "example2": "Kakšno drugo opravilo"
   },
   "special-dates": {
-    "example1": "Rojstni dan mame",
-    "example2": "Datum obnove registracije",
-    "example3": "Praznovanje nečesa",
-    "example4": "Drugo daljše praznovanje",
-    "example5": "Praznikov ni nikoli premalo",
-    "example6": "Preberi knjigo"
+    "example1": "Posebni datum 1",
+    "example2": "Posebni datum iz razloga #2",
+    "example3": "Kakšno drugo praznovanje",
+    "example4": "Kakšno drugo praznovanje, ki je zelo dolgo",
+    "example5": "Dodajmo še enega",
+    "example6": "Praznovanje, ker so zmanjkali razlogi"
   }
 }

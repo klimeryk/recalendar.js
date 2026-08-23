@@ -3,116 +3,190 @@
   "download-ready": "Bereit zum Download!",
   "navigation": {
     "home": "Start",
-    "configuration": "Gestalte Deinen Kalender",
+    "configuration": "Gestalte deinen Kalender",
     "features": "Funktionen",
     "faq": "FAQ"
   },
   "language": {
     "label": "Sprache",
-    "en": "Englisch",
-    "pl": "Polnisch",
-    "fr": "Französisch",
-    "es": "Spanisch",
-    "nb": "Norwegisch",
-    "da": "Dänisch",
-    "de": "Deutsch"
+    "full": "Vollständig übersetzte Sprachen",
+    "partial": "Nur Wochentage und Monate"
   },
   "configuration": {
     "selector": {
       "label": "Start",
       "template": {
-        "label": "Wähle eine Vorlage aus:",
+        "label": "Wähle zum Einstieg eine Vorlage aus:",
         "basic": {
           "label": "Basis",
-          "description": "Gut für den Anfang, einfache Voreinstellungen."
+          "description": "Voreinstellungen - ein guter Ausgangspunkt."
         },
         "advanced": {
           "label": "Fortgeschritten",
-          "description": "Erweitert die Basis-Vorlage um Tagespläne."
+          "description": "Erweitert die Basis-Vorlage um eigene Tagespläne."
         },
         "blank": {
           "label": "Blanko",
-          "description": "Wie Basis, aber ohne die Beispiele für Gewohnheiten, Aufgaben, besondere Tage usw."
+          "description": "Basiert auf der Basis-Vorlage, aber ohne Gewohnheiten, Aufgaben, besondere Tage usw."
         },
         "minimalistic": {
           "label": "Minimal",
-          "description": "Enthält lediglich die Wochenpläne."
+          "description": "Schaltet alles außer den Wochenübersichten ab."
         }
       },
       "upload": {
-        "label": "Lade ein bereits erzeugtes ReCalendar-PDF hoch, um dessen Konfiguration zu verwenden:",
-        "loading": "Konfiguration aus PDF-Datei wird eingelesen, bitte warten...",
-        "error": "Ich kann in diesem PDF keine Konfigurationsdaten finden - stammt es wirklich von dieser Webseite?",
-        "success": "Konfiguration aus PDF geladen - Willkommen zurück!"
+        "label": "Oder lade ein bereits erzeugtes ReCalendar-PDF hoch, um dessen Konfiguration zu verwenden:",
+        "loading": "Konfiguration wird aus der PDF-Datei eingelesen, bitte warten...",
+        "error": "Aus diesem PDF konnte keine ReCalendar-Konfiguration gelesen werden - stammt es wirklich von dieser Webseite?",
+        "success": "Konfiguration aus PDF geladen - willkommen zurück!",
+        "password": {
+          "required": "Dieses PDF ist passwortgeschützt. Gib sein Passwort ein, um die Konfiguration daraus zu lesen.",
+          "wrong": "Dieses Passwort hat nicht funktioniert - bitte versuche es erneut.",
+          "label": "PDF-Passwort",
+          "unlock": "Entsperren",
+          "reused": "Das Passwort des PDFs wurde für dich eingetragen, dein nächster Kalender wird also mit demselben Passwort geschützt."
+        }
       }
     },
     "general": {
       "label": "Allgemeine Einstellungen",
-      "font": "Font",
+      "device": "Gerät",
+      "dpi": "DPI",
+      "resolution": "Auflösung",
+      "font": "Schriftart",
       "year": "Jahr",
       "left-handed": {
-        "label": "Version für die Linke Hand",
+        "label": "Version für Linkshänder",
         "description": "Optimiert das Layout für die Benutzung mit der linken Hand."
       },
       "sidebar": {
-        "label": "Lasse die Seitenleiste frei",
-        "description": "Diese Option verhindert, dass der Kalenderinhalt von der Seitenleiste verdeckt wird, so dass die Seitenleiste immer offen bleiben kann."
+        "label": "Dauerhaft Platz für die Werkzeugleiste freilassen",
+        "description": "Wenn du die Werkzeugleiste lieber immer geöffnet lässt, sorgt diese Option dafür, dass sie den Kalenderinhalt nie verdeckt.",
+        "position": {
+          "label": "Position der Werkzeugleiste",
+          "left": "Links",
+          "right": "Rechts",
+          "top": "Oben",
+          "bottom": "Unten"
+        },
+        "offset": {
+          "label": "Größe der Werkzeugleiste",
+          "description": "Wie viel Platz für die Werkzeugleiste freigehalten wird, in Punkt. Vorbelegt mit einem Wert, der für das gewählte Gerät passt - passe ihn an, falls die Werkzeugleiste den Kalenderinhalt weiterhin verdeckt."
+        }
       },
       "starting-month": {
-        "label": "Beginne mit dem Monat",
-        "description": "Der erste Monat des erzeugten Kalenders. Für einen Semesterkalender z.B. wähle den Oktober."
+        "label": "Startmonat",
+        "description": "Der erste Monat im erzeugten Kalender. Wähle zum Beispiel Oktober, wenn dein Kalender ein Semester statt eines Kalenderjahres abdecken soll."
       },
       "month-count": {
-        "label": "Wieviele Monate",
-        "description": "Für wieviele Monate soll das Kalendarium erzeugt werden?"
+        "label": "Anzahl der Monate",
+        "description": "Für wie viele Monate der Kalender erzeugt werden soll."
       },
-      "first-day-of-week": "Die Woche beginnt am",
+      "first-day-of-week": "Erster Tag der Woche",
       "weekend": "Wochenende",
+      "lines": {
+        "title": "Linien der Pläne",
+        "description": "Die Lineatur in den Plänen - auf Tagesseiten, in Wochenrückschauen, Monatsübersichten und Jahresnotizen."
+      },
       "line-style": {
-        "label": "Linienstil der Pläne",
-        "description": "Stil zum Zeichnen der Linien in den Plänen."
+        "label": "Stil",
+        "description": "Genau wie die Lineatur in einem Papierheft.",
+        "lined": "Liniert",
+        "grid": "Kariert",
+        "dot_grid": "Punktraster",
+        "blank": "Blanko"
       },
       "line-height": {
-        "label": "Zeilenhöhe der Pläne",
-        "description": "Höhe jeder Zeile in den Plänen. Text und Symbole werden entsprechend skaliert."
+        "label": "Zeilenhöhe",
+        "description": "Höhe jeder Zeile in den Plänen. Text und Symbole skalieren mit ihr, und sie legt den vertikalen Abstand von Karo- und Punktraster fest."
+      },
+      "line-spacing": {
+        "label": "Rasterabstand",
+        "description": "Horizontaler Abstand zwischen den Rasterlinien oder -punkten, in denselben Einheiten wie die Zeilenhöhe. Belasse ihn bei 0, damit er der Zeilenhöhe entspricht und quadratische Kästchen entstehen. Das Raster beginnt immer einen Abstand vom Rand entfernt, so wie Papierhefte einen Rand freilassen."
+      },
+      "line-opacity": {
+        "label": "Deckkraft",
+        "description": "Wie sichtbar Linien und Punkte sind. 0 % blendet sie vollständig aus, 100 % macht sie ganz schwarz."
+      },
+      "password": {
+        "title": "Passwortschutz",
+        "description": "Verlangt ein Passwort zum Öffnen des erzeugten PDFs, damit der Kalender privat bleibt, falls das Gerät, auf dem er liegt, geteilt wird oder verloren geht.",
+        "label": "Passwort",
+        "show": "Anzeigen",
+        "hide": "Verbergen",
+        "warning": "Notiere dir dieses Passwort an einem sicheren Ort. ReCalendar läuft vollständig in deinem Browser und speichert keine Nutzerdaten, deshalb kann niemand - auch wir nicht - es wiederherstellen oder zurücksetzen, und ein geschützter Kalender lässt sich ohne es nicht öffnen. Das Passwort wird bewusst nicht im PDF gespeichert, du musst es also beim nächsten Erzeugen eines Kalenders erneut eingeben.",
+        "preview": {
+          "label": "Auch die Vorschau schützen",
+          "description": "Lass das eingeschaltet, um zu prüfen, ob das Passwort funktioniert, bevor du den Kalender auf dein Gerät überträgst. Schalte es aus, wenn du noch an den Einstellungen feilst und das Passwort nicht bei jeder Vorschau erneut in den PDF-Betrachter tippen willst."
+        }
       }
     },
     "button": {
       "refresh": "Vorschau aktualisieren",
-      "download": "Vollständigen Kalender erzeugen und Download",
-      "generating": "Das Kalendarium wird erzeugt, bitte warten..."
+      "download": "Vollständigen Kalender erzeugen und herunterladen",
+      "generating": "Wird erzeugt, bitte warten..."
     },
     "itinerary": {
       "empty": "Leerer Plan",
+      "dateTemplate": {
+        "label": "Hilfe zur Datumsformatierung",
+        "title": "Datumsvorlagen",
+        "description": "Füge formatierte Daten mit <0/> oder <1/> ein. Siehe <2>verfügbare Formate</2>."
+      },
       "placeholder": {
         "lines": "Anzahl der Zeilen",
-        "page": "Seitenumbruch"
+        "page": "Seitenumbruch",
+        "item": "Planeintrag"
+      },
+      "prefix": {
+        "selected": "Zeilenpräfix: {{name}}",
+        "none": "Kein Präfix",
+        "icon": {
+          "square": "Kontrollkästchen",
+          "square-check-big": "Angekreuztes Kästchen",
+          "circle": "Kreis",
+          "circle-dot": "Punkt",
+          "arrow-right": "Pfeil",
+          "chevron-right": "Winkel",
+          "star": "Stern",
+          "heart": "Herz"
+        }
       },
       "button": {
-        "copy": "Diesen Plan für alle Wochentage übernehmen.",
+        "copy": "Diesen Plan auf alle anderen Tage übertragen",
         "remove": "Entfernen",
-        "item": "Neuer Planeintrag ",
+        "item": "Planeintrag hinzufügen",
         "page": "Neue Seite anfangen",
         "lines": "Leerzeilen hinzufügen"
       }
     },
     "items-list": {
       "button": {
-        "item": "Neuer Eintrag",
-        "remove": "Entfernen"
+        "item": "Eintrag hinzufügen",
+        "remove": "Entfernen",
+        "reorder": "Reihenfolge ändern"
       },
       "empty": "Leere Liste",
       "placeholder": "Eintrag"
     },
     "toggle-form": {
-      "enabled": "Ein",
-      "disabled": "Ausgeschaltet"
+      "enabled": "Aktiviert",
+      "disabled": "Deaktiviert"
+    },
+    "year": {
+      "notes": {
+        "title": "Jahresnotizen",
+        "description": "Die Jahresnotizen sind der Ort für Ziele, Pläne und Träume für das kommende Jahr. Eine Seite wird am Anfang des Kalenders eingefügt, eine weitere vor jedem neuen Jahr, das er umfasst.",
+        "itinerary": {
+          "title": "Plan"
+        }
+      }
     },
     "month": {
       "title": "Monatsübersicht",
-      "description": "Die Monatsübersicht ist der Ort für Monatsziele, Verfolgen von Gewohnheiten und andere Planungen.",
+      "description": "Die Monatsübersicht ist der Ort für Ziele des kommenden Monats, das Verfolgen von Gewohnheiten und andere Planungen.",
       "habits": {
-        "title": "Routinen"
+        "title": "Gewohnheiten"
       },
       "itinerary": {
         "title": "Plan"
@@ -120,13 +194,13 @@
     },
     "week": {
       "title": "Wochenübersicht",
-      "description": "Die Wochenübersicht fasst zur übersichtlicheren Planung eine Woche zusammen.",
+      "description": "Die Wochenübersicht zeigt die Woche aus der Distanz und macht das Planen leichter.",
       "todos": {
         "title": "Aufgaben"
       },
       "retrospective": {
         "title": "Wochenrückschau",
-        "description": "Die Wochenrückschau ist der Ort, um über die letzte Woche nachzudenken - wie es gelaufen ist, was du gelernt hast und was nächste Woche besser gemacht werden kann?",
+        "description": "Die Wochenrückschau ist der Ort, um über die vergangene Woche nachzudenken - wie sie gelaufen ist, was du gelernt hast, was du nächste Woche besser machen könntest.",
         "itinerary": {
           "title": "Plan"
         }
@@ -137,27 +211,66 @@
     },
     "special-dates": {
       "title": "Besondere Tage",
-      "description": "Trage hier Geburtstage, Feiertage, Events etc. ein. Sie werden in die Wochenübersichten und Tagespläne übernommen.",
+      "description": "Trage hier Geburtstage, Feiern, Termine usw. ein, um in den Wochenübersichten und auf den Tagesseiten daran erinnert zu werden, sobald sie näher rücken.",
       "empty": "Keine Daten",
-      "placeholder": "Was gibt's besonderes?",
+      "placeholder": "Was gibt es zu feiern?",
+      "manual": {
+        "heading": "Datum manuell hinzufügen"
+      },
+      "holidays": {
+        "heading": "Gesetzliche Feiertage importieren",
+        "description_one": "Wähle ein Land, um dessen gesetzliche Feiertage für das Jahr ({{years}}) zu importieren, das dein Kalender abdeckt.",
+        "description_other": "Wähle ein Land, um dessen gesetzliche Feiertage für die Jahre ({{years}}) zu importieren, die dein Kalender abdeckt.",
+        "country-placeholder": "Land auswählen...",
+        "countries-loading": "Länderliste wird geladen...",
+        "countries-error": "Die Länderliste konnte nicht geladen werden. Bitte prüfe deine Verbindung und versuche es erneut.",
+        "names": {
+          "english": "Englische Namen",
+          "local": "Lokale Namen"
+        },
+        "deduplicate": {
+          "label": "Duplikate überspringen",
+          "help": "Wenn aktiviert, wird ein Feiertag, den es am selben Tag bereits gibt (abgeglichen über seinen englischen Namen), nicht erneut hinzugefügt. Schalte es aus, wenn du denselben Feiertag in mehreren Sprachen möchtest - praktisch, wenn du eine Sprache lernst oder doppelte Staatsbürgerschaft hast."
+        },
+        "button": "Importieren",
+        "loading": "Feiertage werden abgerufen, bitte warten...",
+        "error": "Die Feiertage für dieses Land konnten nicht geladen werden. Bitte versuche es erneut.",
+        "year-unavailable": "Feiertage sind leider nur für die Jahre {{years}} verfügbar.",
+        "success_zero": "Keine neuen Feiertage aus {{country}} importiert.",
+        "success_one": "{{count}} Feiertag aus {{country}} importiert.",
+        "success_other": "{{count}} Feiertage aus {{country}} importiert.",
+        "skipped_one": "{{count}} Duplikat übersprungen.",
+        "skipped_other": "{{count}} Duplikate übersprungen.",
+        "attribution": "Feiertagsdaten von <tallyfy>Tallyfy</tallyfy>."
+      },
+      "upload": {
+        "label": "Aus .ics-Datei importieren:",
+        "loading": "Besondere Tage werden aus der ICalendar-Datei gelesen, bitte warten...",
+        "error": "Einige ICalendar-Termine konnten nicht geladen werden - exportiere die .ics-Datei am besten noch einmal aus deiner Kalender-App.",
+        "success": "Besondere Tage aus der ICalendar-Datei geladen."
+      },
+      "type": {
+        "event": "Termin",
+        "holiday": "Feiertag"
+      },
       "button": {
         "item": "Datum hinzufügen",
         "remove": "Entfernen"
       }
     },
-    "generation-description": "Das PDF wird ausschließlich im Browser erzeugt, keine Daten landen auf unseren Servern!"
+    "generation-description": "Das PDF wird ausschließlich in deinem Browser erzeugt - es werden keine Daten an unsere Server gesendet!"
   },
   "preview": {
-    "title": "Vorschau des Kalendariums",
-    "subtitle": "(nur der erste Monat wird angezeigt)",
-    "viewer-title": "PDF Vorschau",
+    "title": "Kalendervorschau",
+    "subtitle": "(für die Vorschau wird nur der erste Monat erzeugt)",
+    "viewer-title": "PDF-Vorschau",
     "generating": {
-      "full": "Das vollständige Kalendarium wird erzeugt - das könnte länger als eine Minute dauern...",
-      "preview": "Die Vorschau wird berechnet, bitte warten, das kann eine Minute dauern."
+      "full": "Der vollständige Kalender wird erzeugt - das kann länger als eine Minute dauern...",
+      "preview": "Die Vorschau wird erzeugt, bitte warten - das kann eine Minute dauern."
     },
     "empty": {
-      "title": "Mit den Optionen zur Konfiguration können Sie Ihren eigenen personalisierten Kalender erzeugen.",
-      "subtitle": "Hier wird die Vorschau angezeigt werden.."
+      "title": "Erstelle mit dem Konfigurationsformular deinen persönlichen Kalender.",
+      "subtitle": "Hier erscheint dann die Vorschau."
     }
   }
 }

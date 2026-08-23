@@ -2,10 +2,10 @@
   "calendar": {
     "header": {
       "week-number": "H#",
-      "retrospective": "G"
+      "retrospective": "De"
     },
     "body": {
-      "retrospective": "G"
+      "retrospective": "D"
     }
   },
   "page": {
@@ -18,11 +18,11 @@
       "title": "Hafta"
     },
     "retrospective": {
-      "title": "Hafta için Geriye Dönük"
+      "title": "Hafta değerlendirmesi"
     },
     "last": {
       "title": "Şu adresten oluşturuldu: <recalendar>https://recalendar.me/</recalendar>",
-      "subtitle": "PDF'yi tekrar yükleyerek, yeni yıl için benzer bir takvimi hızlıca oluşturabilirsiniz!"
+      "subtitle": "Bu PDF'yi oraya yeniden yükleyerek onu oluştururken kullanılan yapılandırmayı geri getirebilir ve yeni yıl için benzer bir takvimi hızlıca oluşturabilirsiniz!"
     }
   }
 }

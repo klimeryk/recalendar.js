@@ -1,5 +1,5 @@
 {
-  "loading": "Generowanie...",
+  "loading": "Wczytywanie...",
   "download-ready": "Pobierz teraz!",
   "navigation": {
     "home": "Strona główna",
@@ -8,69 +8,117 @@
     "faq": "Pytania i odpowiedzi"
   },
   "language": {
-    "label": "Język"
+    "label": "Język",
+    "full": "Języki w pełni przetłumaczone",
+    "partial": "Tylko dni tygodnia i miesiące"
   },
   "configuration": {
     "selector": {
       "label": "Początek",
       "template": {
-        "label": "Rozpocznij, wybierając jeden z przykładowych szablonów:",
+        "label": "Rozpocznij, wybierając szablon:",
         "basic": {
           "label": "Podstawowy",
-          "description": "Domyślne ustawienia - dobry punkt początkowy."
+          "description": "Domyślne ustawienia - dobry punkt wyjścia."
         },
         "advanced": {
           "label": "Zaawansowany",
-          "description": "Bazuje na szablonie Podstawowym - dodaje rozbudowane plany dnia."
+          "description": "Rozszerza szablon Podstawowy o osobne plany dla poszczególnych dni."
         },
         "blank": {
           "label": "Pusty",
-          "description": "Bazuje na szablonie Podstawowym, ale ustawia puste dni specjalne, TODO, plany, itd."
+          "description": "Bazuje na szablonie Podstawowym, ale z pustymi nawykami, listami Do zrobienia, datami specjalnymi itd."
         },
         "minimalistic": {
           "label": "Minimalistyczny",
-          "description": "Wyłącza wszystko oprócz przeglądu tygodnia."
+          "description": "Wyłącza wszystko oprócz przeglądów tygodnia."
         }
       },
       "upload": {
-        "label": "Albo załaduj wcześniej wygenerowany ReCalendar PDF i użyj jego konfiguracji:",
+        "label": "Albo wgraj wcześniej wygenerowany plik PDF ReCalendar, aby użyć jego konfiguracji:",
         "loading": "Wczytywanie konfiguracji z pliku PDF, proszę czekać...",
-        "error": "Nie udało się wczytać konfiguracji z tego pliku PDF - czy na pewno został wygenerowany korzystając z tej strony?",
-        "success": "Konfiguracja wczytana z pliku PDF - witamy ponownie!"
+        "error": "Nie udało się wczytać konfiguracji ReCalendar z tego pliku PDF - czy na pewno został wygenerowany na tej stronie?",
+        "success": "Konfiguracja wczytana z pliku PDF - witamy ponownie!",
+        "password": {
+          "required": "Ten plik PDF jest zabezpieczony hasłem. Podaj hasło, aby wczytać z niego konfigurację.",
+          "wrong": "To hasło nie zadziałało - spróbuj ponownie.",
+          "label": "Hasło do pliku PDF",
+          "unlock": "Odblokuj",
+          "reused": "Hasło z tego pliku PDF zostało wypełnione automatycznie, więc następny wygenerowany kalendarz będzie zabezpieczony tym samym hasłem."
+        }
       }
     },
     "general": {
-      "label": "Ogólne opcje",
+      "label": "Opcje ogólne",
       "device": "Urządzenie",
       "dpi": "DPI",
       "resolution": "Rozdzielczość",
       "font": "Czcionka",
       "year": "Rok",
       "left-handed": {
-        "label": "Wersja leworęczna",
-        "description": "Optymalizuje układ strony dla osób leworęcznych."
+        "label": "Wersja dla osób leworęcznych",
+        "description": "Dostosowuje układ strony do pisania lewą ręką."
       },
       "sidebar": {
-        "label": "Pozostaw odstęp dla panelu pobocznego",
-        "description": "Jeśli preferujesz mieć przybornik narzędzi zawsze widoczny, ta opcja pozostawi odstęp dla niego. Dzięki temu kalendarz nigdy nie będzie przez niego zakryty."
+        "label": "Zostaw stałe miejsce na pasek narzędzi",
+        "description": "Jeśli wolisz mieć pasek narzędzi zawsze otwarty, zaznacz tę opcję, aby mieć pewność, że nigdy nie zasłoni treści kalendarza.",
+        "position": {
+          "label": "Pozycja paska narzędzi",
+          "left": "Po lewej",
+          "right": "Po prawej",
+          "top": "U góry",
+          "bottom": "Na dole"
+        },
+        "offset": {
+          "label": "Rozmiar paska narzędzi",
+          "description": "Ile miejsca zarezerwować na pasek narzędzi, w punktach. Pole jest wstępnie wypełnione wartością, która sprawdza się na wybranym urządzeniu - zmień ją, jeśli pasek nadal zasłania treść kalendarza."
+        }
       },
       "starting-month": {
         "label": "Miesiąc początkowy",
-        "description": "Pierwszy miesiąc w kalendarzu. Wybierz na przykład październik, jeśli kalendarz ma być na cały semestr, a nie rok kalendarzowy."
+        "description": "Pierwszy miesiąc w generowanym kalendarzu. Wybierz na przykład październik, jeśli kalendarz ma obejmować semestr, a nie rok kalendarzowy."
       },
       "month-count": {
         "label": "Liczba miesięcy",
-        "description": "Ile miesięcy ma zawierać kalendarz."
+        "description": "Na ile miesięcy ma zostać wygenerowany kalendarz."
       },
       "first-day-of-week": "Pierwszy dzień tygodnia",
       "weekend": "Weekend",
+      "lines": {
+        "title": "Liniatura planów",
+        "description": "Liniatura używana w planach - na stronach dni, w podsumowaniach tygodnia, przeglądach miesiąca i notatkach rocznych."
+      },
       "line-style": {
-        "label": "Styl linii w planach",
-        "description": "Styl używany do rysowania linii w planach."
+        "label": "Styl",
+        "description": "Tak jak liniatura w papierowym zeszycie.",
+        "lined": "W linie",
+        "grid": "W kratkę",
+        "dot_grid": "W kropki",
+        "blank": "Gładki"
       },
       "line-height": {
-        "label": "Wysokość linii w planach",
-        "description": "Wysokość każdej linii w planach. Tekst i ikony są odpowiednio skalowane."
+        "label": "Wysokość linii",
+        "description": "Wysokość każdej linii w planach. Tekst i ikony skalują się razem z nią, a ona sama wyznacza pionowy odstęp kratki i kropek."
+      },
+      "line-spacing": {
+        "label": "Odstęp siatki",
+        "description": "Poziomy odstęp między liniami lub kropkami siatki, w tych samych jednostkach co wysokość linii. Zostaw 0, aby dopasować go do wysokości linii i uzyskać kwadratowe pola. Siatka zawsze zaczyna się w odległości jednego odstępu od krawędzi - tak jak margines w papierowym zeszycie."
+      },
+      "line-opacity": {
+        "label": "Krycie",
+        "description": "Jak bardzo widoczne są linie i kropki. 0% ukrywa je całkowicie, 100% sprawia, że są całkiem czarne."
+      },
+      "password": {
+        "title": "Ochrona hasłem",
+        "description": "Wymaga podania hasła przy otwieraniu wygenerowanego pliku PDF, dzięki czemu kalendarz pozostanie prywatny, jeśli urządzenie, na którym się znajduje, jest współdzielone albo zostanie zgubione.",
+        "label": "Hasło",
+        "show": "Pokaż",
+        "hide": "Ukryj",
+        "warning": "Zapisz to hasło w bezpiecznym miejscu. ReCalendar działa w całości w Twojej przeglądarce i nie przechowuje żadnych danych użytkownika, więc nikt - łącznie z nami - nie może go odzyskać ani zresetować, a zabezpieczonego kalendarza nie da się bez niego otworzyć. Hasło celowo nie jest zapisywane w pliku PDF, więc przy następnym generowaniu kalendarza trzeba będzie wpisać je ponownie.",
+        "preview": {
+          "label": "Zabezpiecz również podgląd",
+          "description": "Zostaw włączone, aby sprawdzić, czy hasło działa, zanim wgrasz kalendarz na urządzenie. Wyłącz, jeśli wciąż dopracowujesz ustawienia i nie chcesz wpisywać hasła w przeglądarce PDF przy każdym podglądzie."
+        }
       }
     },
     "button": {
@@ -80,14 +128,34 @@
     },
     "itinerary": {
       "empty": "Pusty plan",
+      "dateTemplate": {
+        "label": "Pomoc w formatowaniu dat",
+        "title": "Szablony dat",
+        "description": "Wstawiaj sformatowane daty za pomocą <0/> lub <1/>. Zobacz <2>dostępne formaty</2>."
+      },
       "placeholder": {
         "lines": "Liczba linii",
-        "page": "Rozpocznij nową stronę"
+        "page": "Podział na nową stronę",
+        "item": "Pozycja planu"
+      },
+      "prefix": {
+        "selected": "Prefiks linii: {{name}}",
+        "none": "Bez prefiksu",
+        "icon": {
+          "square": "Pole wyboru",
+          "square-check-big": "Zaznaczone pole",
+          "circle": "Kółko",
+          "circle-dot": "Kropka",
+          "arrow-right": "Strzałka",
+          "chevron-right": "Szewron",
+          "star": "Gwiazdka",
+          "heart": "Serce"
+        }
       },
       "button": {
-        "copy": "Powiel ten plan na wszystkie inne dni",
+        "copy": "Skopiuj ten plan na wszystkie pozostałe dni",
         "remove": "Usuń",
-        "item": "Dodaj nową pozycję",
+        "item": "Dodaj pozycję planu",
         "page": "Rozpocznij nową stronę",
         "lines": "Dodaj puste linie"
       }
@@ -95,18 +163,28 @@
     "items-list": {
       "button": {
         "item": "Dodaj pozycję",
-        "remove": "Usuń"
+        "remove": "Usuń",
+        "reorder": "Zmień kolejność"
       },
       "empty": "Pusta lista",
       "placeholder": "Pozycja"
     },
     "toggle-form": {
-      "enabled": "Włączony",
-      "disabled": "Wyłączony"
+      "enabled": "Włączone",
+      "disabled": "Wyłączone"
+    },
+    "year": {
+      "notes": {
+        "title": "Notatki roczne",
+        "description": "Notatki roczne to miejsce na cele, plany i marzenia na nadchodzący rok. Jedna strona jest dodawana na początku kalendarza, a kolejna przed każdym nowym rokiem, który kalendarz obejmuje.",
+        "itinerary": {
+          "title": "Plan"
+        }
+      }
     },
     "month": {
       "title": "Przegląd miesiąca",
-      "description": "Przegląd miesiąca pozwala ustalić cele na nadchodzący miesiąc, śledzić nawyki i sporządzić inne plany.",
+      "description": "Przegląd miesiąca to miejsce na cele na nadchodzący miesiąc, śledzenie nawyków i inne plany.",
       "habits": {
         "title": "Nawyki"
       },
@@ -116,13 +194,13 @@
     },
     "week": {
       "title": "Przegląd tygodnia",
-      "description": "Przegląd tygodnia pokazuje podgląd nadchodzących dni, aby ułatwić rozplanowanie tygodnia.",
+      "description": "Przegląd tygodnia pokazuje cały tydzień z lotu ptaka, dzięki czemu łatwiej go rozplanować.",
       "todos": {
         "title": "Do zrobienia"
       },
       "retrospective": {
         "title": "Podsumowanie tygodnia",
-        "description": "Podsumowanie tygodnia to miejsce na refleksję nad minionym tygodniem - co poszło dobrze, nad czym trzeba popracować.",
+        "description": "Podsumowanie tygodnia to miejsce na refleksję nad minionym tygodniem - jak poszło, czego się nauczyłeś, co można poprawić w następnym tygodniu?",
         "itinerary": {
           "title": "Plan"
         }
@@ -132,10 +210,51 @@
       "title": "Plany dnia"
     },
     "special-dates": {
-      "title": "Specjalne daty",
-      "description": "Tutaj możesz dodać urodziny, imieniny, uroczystości, święta i tym podobne. Zostaną one automatycznie umieszczone w kalendarzu tak żeby o nich nie zapomnieć.",
+      "title": "Daty specjalne",
+      "description": "Dodaj tutaj urodziny, uroczystości, wydarzenia itd., aby w przeglądach tygodnia i na stronach dni dostawać przypomnienia, gdy się zbliżają.",
       "empty": "Brak dat",
-      "placeholder": "Jaka okazja?",
+      "placeholder": "Jaka to okazja?",
+      "manual": {
+        "heading": "Dodaj datę ręcznie"
+      },
+      "holidays": {
+        "heading": "Zaimportuj święta państwowe",
+        "description_one": "Wybierz kraj, aby zaimportować jego święta państwowe dla roku ({{years}}), który obejmuje Twój kalendarz.",
+        "description_few": "Wybierz kraj, aby zaimportować jego święta państwowe dla lat ({{years}}), które obejmuje Twój kalendarz.",
+        "description_many": "Wybierz kraj, aby zaimportować jego święta państwowe dla lat ({{years}}), które obejmuje Twój kalendarz.",
+        "description_other": "Wybierz kraj, aby zaimportować jego święta państwowe dla lat ({{years}}), które obejmuje Twój kalendarz.",
+        "country-placeholder": "Wybierz kraj...",
+        "countries-loading": "Wczytywanie listy krajów...",
+        "countries-error": "Nie udało się wczytać listy krajów. Sprawdź połączenie i spróbuj ponownie.",
+        "names": {
+          "english": "Nazwy angielskie",
+          "local": "Nazwy lokalne"
+        },
+        "deduplicate": {
+          "label": "Pomiń duplikaty",
+          "help": "Gdy włączone, święto, które już istnieje tego samego dnia (dopasowane po angielskiej nazwie), nie zostanie dodane ponownie. Wyłącz tę opcję, jeśli chcesz mieć to samo święto w kilku językach - przydatne, gdy uczysz się języka albo masz podwójne obywatelstwo."
+        },
+        "button": "Importuj",
+        "loading": "Pobieranie świąt, proszę czekać...",
+        "error": "Nie udało się wczytać świąt dla tego kraju. Spróbuj ponownie.",
+        "year-unavailable": "Niestety, święta są dostępne tylko dla lat {{years}}.",
+        "success_zero": "Nie zaimportowano nowych świąt z kraju {{country}}.",
+        "success_one": "Zaimportowano {{count}} święto z kraju {{country}}.",
+        "success_few": "Zaimportowano {{count}} święta z kraju {{country}}.",
+        "success_many": "Zaimportowano {{count}} świąt z kraju {{country}}.",
+        "success_other": "Zaimportowano {{count}} święta z kraju {{country}}.",
+        "skipped_one": "Pominięto {{count}} duplikat.",
+        "skipped_few": "Pominięto {{count}} duplikaty.",
+        "skipped_many": "Pominięto {{count}} duplikatów.",
+        "skipped_other": "Pominięto {{count}} duplikatu.",
+        "attribution": "Dane o świętach pochodzą z <tallyfy>Tallyfy</tallyfy>."
+      },
+      "upload": {
+        "label": "Zaimportuj z pliku .ics:",
+        "loading": "Wczytywanie dat specjalnych z pliku ICalendar, proszę czekać...",
+        "error": "Nie udało się wczytać niektórych wydarzeń ICalendar - spróbuj ponownie wyeksportować plik .ics z aplikacji kalendarza.",
+        "success": "Daty specjalne wczytane z pliku ICalendar."
+      },
       "type": {
         "event": "Wydarzenie",
         "holiday": "Święto"
@@ -145,19 +264,19 @@
         "remove": "Usuń"
       }
     },
-    "generation-description": "Generacja pliku PDF jest wykonywana w pełni w Twojej przeglądarce - żadne dane nie są przesyłane do naszych serwerów!"
+    "generation-description": "Generowanie pliku PDF odbywa się w całości w Twojej przeglądarce - żadne dane nie są wysyłane na nasze serwery!"
   },
   "preview": {
     "title": "Podgląd kalendarza",
-    "subtitle": "(tylko pierwszy miesiąc jest widoczny na podglądzie)",
+    "subtitle": "(w podglądzie renderowany jest tylko pierwszy miesiąc)",
     "viewer-title": "Podgląd PDF",
     "generating": {
       "full": "Generowanie pełnego kalendarza - może to zająć ponad minutę...",
-      "preview": "Generowanie podglądu, proszę czekać..."
+      "preview": "Generowanie podglądu, proszę czekać - może to zająć minutę."
     },
     "empty": {
-      "title": "Użyj konfiguratora, aby stworzyć swój spersonalizowany kalendarz.",
-      "subtitle": "Tutaj zostanie wyświetlony podgląd."
+      "title": "Użyj formularza konfiguracji, aby stworzyć swój spersonalizowany kalendarz.",
+      "subtitle": "Podgląd pojawi się tutaj."
     }
   }
 }

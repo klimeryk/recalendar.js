@@ -4,5 +4,33 @@
     "example2": "Bok",
     "example3": "Hobby",
     "example4": "Stevnemøte"
+  },
+  "templates": {
+    "advanced": {
+      "day": {
+        "monday": "Ekstra side for flere mandagsnotater"
+      },
+      "retrospective": {
+        "wins": "Ukas seiere",
+        "discoveries": "Nye oppdagelser",
+        "fails": "Hva gikk ikke bra?"
+      }
+    }
+  },
+  "month": {
+    "goal": "Hovedmål",
+    "notes": "Notater"
+  },
+  "todos": {
+    "example1": "Planlegg en tur",
+    "example2": "Et annet gjøremål"
+  },
+  "special-dates": {
+    "example1": "Spesiell dato 1",
+    "example2": "Spesiell dato av grunn #2",
+    "example3": "En annen feiring",
+    "example4": "En annen feiring som er veldig lang",
+    "example5": "La oss legge til en til",
+    "example6": "Feiring fordi grunnene tok slutt"
   }
 }

@@ -7,37 +7,52 @@
     "features": "Funkciók",
     "faq": "GYIK"
   },
+  "language": {
+    "label": "Nyelv",
+    "full": "Teljesen lefordított nyelvek",
+    "partial": "Csak a hét napjai és a hónapok"
+  },
   "configuration": {
     "selector": {
       "label": "Kezdés",
       "template": {
-        "label": "Sablon kiválasztása:",
+        "label": "Kezdd egy sablon kiválasztásával:",
         "basic": {
           "label": "Alap",
-          "description": "Alap beállítások - jó kiindulópont."
+          "description": "Alapértelmezett beállítások - jó kiindulópont."
         },
         "advanced": {
           "label": "Haladó",
-          "description": "A Haladó sablon kibővíti az Alap sablont egyedi tervekkel."
+          "description": "Kibővíti az Alap sablont külön napi tervekkel."
         },
         "blank": {
           "label": "Üres",
-          "description": "Alap sablon, üres szokásokkal, teendőkkel, speciális dátumokkal, stb."
+          "description": "Az Alap sablonra épül, de üres szokásokkal, teendőkkel, különleges dátumokkal stb."
         },
         "minimalistic": {
           "label": "Minimalista",
-          "description": "Minden kikapcsolva, csak heti áttekintéseket tartalmazza."
+          "description": "Mindent kikapcsol a heti áttekintéseken kívül."
         }
       },
       "upload": {
-        "label": "Vagy korábban generált ReCalendar PDF feltöltése, a benne lévő konfiguráció használatához:",
-        "loading": "PDF fájl konfiguráció olvasása, kérlek várj...",
-        "error": "Nem sikerült a ReCalendar konfigurációt beolvasni a PDF-ből - biztos, hogy ezen az oldalon generálódott?",
-        "success": "Beállítások beolvasva a PDF-ből - üdvözöljük újra!"
+        "label": "Vagy tölts fel egy korábban generált ReCalendar PDF-et, hogy a benne lévő beállításokat használd:",
+        "loading": "Beállítások olvasása a PDF fájlból, kérlek várj...",
+        "error": "Nem sikerült ReCalendar beállításokat beolvasni ebből a PDF-ből - biztos, hogy ezen az oldalon készült?",
+        "success": "Beállítások beolvasva a PDF-ből - üdv újra itt!",
+        "password": {
+          "required": "Ez a PDF jelszóval védett. Add meg a jelszavát, hogy beolvashassuk belőle a beállításokat.",
+          "wrong": "Ez a jelszó nem működött - próbáld újra.",
+          "label": "PDF jelszó",
+          "unlock": "Feloldás",
+          "reused": "A PDF jelszavát kitöltöttük helyetted, így a következő naptárad ugyanazzal a jelszóval lesz védve."
+        }
       }
     },
     "general": {
       "label": "Általános beállítások",
+      "device": "Eszköz",
+      "dpi": "DPI",
+      "resolution": "Felbontás",
       "font": "Betűtípus",
       "year": "Év",
       "left-handed": {
@@ -45,26 +60,65 @@
         "description": "Az elrendezést balkezes használatra optimalizálja."
       },
       "sidebar": {
-        "label": "Hagyj helyet az oldalsáv számára",
-        "description": "Ha szereted az oldalsávot mindig nyitva tartani, jelöld be ezt az opciót, hogy biztosítsd, hogy a naptár tartalma soha ne legyen letakarva."
+        "label": "Hagyj állandó helyet az eszköztárnak",
+        "description": "Ha szeretnéd az eszköztárat mindig nyitva tartani, jelöld be ezt az opciót, hogy a naptár tartalmát sose takarja el.",
+        "position": {
+          "label": "Az eszköztár helye",
+          "left": "Bal oldalt",
+          "right": "Jobb oldalt",
+          "top": "Fent",
+          "bottom": "Lent"
+        },
+        "offset": {
+          "label": "Az eszköztár mérete",
+          "description": "Mennyi helyet tartsunk fenn az eszköztárnak, pontban. Előre ki van töltve a kiválasztott eszközhöz illő értékkel - módosítsd, ha az eszköztár még mindig eltakarja a naptár tartalmát."
+        }
       },
       "starting-month": {
         "label": "Kezdő hónap",
-        "description": "Az előállított naptár első hónapja. Válassz például szeptembert, ha tanítási évet szeretnél generálni, nem  naptári évet."
+        "description": "A generált naptár első hónapja. Válaszd például az októbert, ha azt szeretnéd, hogy a naptárad egy félévet fedjen le naptári év helyett."
       },
       "month-count": {
         "label": "Hónapok száma",
-        "description": "Hány hónapra kell elkészíteni a naptárat."
+        "description": "Hány hónapra készüljön el a naptár."
       },
-      "first-day-of-week": "Hét első napja",
+      "first-day-of-week": "A hét első napja",
       "weekend": "Hétvége",
+      "lines": {
+        "title": "Vonalazás a tervekben",
+        "description": "A tervekben használt vonalazás - a napi oldalakon, a heti visszatekintésekben, a havi áttekintésekben és az éves jegyzetekben."
+      },
       "line-style": {
-        "label": "Vonalstílus a tervekben",
-        "description": "A tervekben lévő vonalak rajzolásához használt stílus."
+        "label": "Stílus",
+        "description": "Pontosan úgy, mint a vonalazás egy papírfüzetben.",
+        "lined": "Vonalas",
+        "grid": "Négyzetrácsos",
+        "dot_grid": "Pontrácsos",
+        "blank": "Sima"
       },
       "line-height": {
-        "label": "Sormagasság a tervekben",
-        "description": "A tervekben lévő sorok magassága. A szöveg és az ikonok ehhez igazodnak."
+        "label": "Sormagasság",
+        "description": "A tervek soronkénti magassága. A szöveg és az ikonok ezzel együtt méreteződnek, és ez határozza meg a négyzetrács és a pontrács függőleges távolságát is."
+      },
+      "line-spacing": {
+        "label": "Rácstávolság",
+        "description": "A rács vonalai vagy pontjai közötti vízszintes távolság, ugyanabban a mértékegységben, mint a sormagasság. Hagyd 0-n, hogy megegyezzen a sormagassággal, így négyzet alakú cellákat kapsz. A rács mindig egy rácstávolságnyira kezdődik a széltől, ahogy a papírfüzetek is margót hagynak."
+      },
+      "line-opacity": {
+        "label": "Átlátszatlanság",
+        "description": "Mennyire látszanak a vonalak és a pontok. A 0 % teljesen elrejti őket, a 100 % teljesen feketévé teszi őket."
+      },
+      "password": {
+        "title": "Jelszavas védelem",
+        "description": "Jelszót kér a generált PDF megnyitásához, így a naptár akkor is privát marad, ha az eszköz, amin van, közös használatú vagy elveszik.",
+        "label": "Jelszó",
+        "show": "Mutasd",
+        "hide": "Elrejtés",
+        "warning": "Írd fel ezt a jelszót egy biztonságos helyre. A ReCalendar teljes egészében a böngésződben fut, és nem tárol felhasználói adatokat, ezért senki - beleértve minket is - nem tudja visszaállítani vagy alaphelyzetbe hozni, egy védett naptárt pedig nélküle nem lehet megnyitni. A jelszó szándékosan nem kerül bele a PDF-be, így legközelebb újra be kell írnod, amikor naptárt generálsz.",
+        "preview": {
+          "label": "Az előnézetet is védd",
+          "description": "Hagyd bekapcsolva, hogy ellenőrizd, működik-e a jelszó, mielőtt a naptárt az eszközödre teszed. Kapcsold ki, ha még finomhangolsz, és nem szeretnéd minden előnézetnél újra beírni a jelszót a PDF-olvasóba."
+        }
       }
     },
     "button": {
@@ -74,15 +128,34 @@
     },
     "itinerary": {
       "empty": "Üres terv",
+      "dateTemplate": {
+        "label": "Súgó a dátumformázáshoz",
+        "title": "Dátumsablonok",
+        "description": "Illessz be formázott dátumokat a <0/> vagy a <1/> segítségével. Lásd az <2>elérhető formátumokat</2>."
+      },
       "placeholder": {
         "lines": "Sorok száma",
         "page": "Új oldaltörés",
-        "item": "Új terv"
+        "item": "Tervelem"
+      },
+      "prefix": {
+        "selected": "Sor előtagja: {{name}}",
+        "none": "Nincs előtag",
+        "icon": {
+          "square": "Jelölőnégyzet",
+          "square-check-big": "Bejelölt négyzet",
+          "circle": "Kör",
+          "circle-dot": "Pont",
+          "arrow-right": "Nyíl",
+          "chevron-right": "Csúcs",
+          "star": "Csillag",
+          "heart": "Szív"
+        }
       },
       "button": {
         "copy": "Másold ezt a tervet az összes többi napra",
         "remove": "Eltávolítás",
-        "item": "Új terv hozzáadása",
+        "item": "Tervelem hozzáadása",
         "page": "Új oldal indítása",
         "lines": "Üres sorok hozzáadása"
       }
@@ -90,7 +163,8 @@
     "items-list": {
       "button": {
         "item": "Elem hozzáadása",
-        "remove": "Eltávolítás"
+        "remove": "Eltávolítás",
+        "reorder": "Sorrend módosítása"
       },
       "empty": "Üres lista",
       "placeholder": "Elem"
@@ -99,9 +173,18 @@
       "enabled": "Engedélyezve",
       "disabled": "Letiltva"
     },
+    "year": {
+      "notes": {
+        "title": "Éves jegyzetek",
+        "description": "Az éves jegyzetek helyet adnak a következő év céljainak, terveinek és álmainak. Egy oldal kerül a naptár elejére, egy másik pedig minden új év elé, amelyet a naptár átfog.",
+        "itinerary": {
+          "title": "Terv"
+        }
+      }
+    },
     "month": {
-      "title": "Hónap áttekintés",
-      "description": "A hónap áttekintés helyet ad a következő hónapok céljainak megadásához, szokások nyomon követéséhez és más tervek készítéséhez.",
+      "title": "Havi áttekintés",
+      "description": "A havi áttekintés helyet ad a következő hónap céljainak kitűzéséhez, a szokások nyomon követéséhez és további tervek készítéséhez.",
       "habits": {
         "title": "Szokások"
       },
@@ -110,48 +193,83 @@
       }
     },
     "week": {
-      "title": "Hét áttekintés",
-      "description": "A hét áttekintése lehetővé teszi a hét előretekintését, hogy megkönnyítse a tervek elkészítését.",
+      "title": "Heti áttekintés",
+      "description": "A heti áttekintés rálátást ad az egész hétre, hogy könnyebb legyen tervezni.",
       "todos": {
         "title": "Teendők"
       },
       "retrospective": {
         "title": "Heti visszatekintés",
-        "description": "A heti visszatekintés helyet ad a hét eseményeinek feldolgozásához - hogyan ment, mit tanultál, miben lehetnél jobb a következő héten?",
+        "description": "A heti visszatekintés helyet ad az elmúlt hét átgondolásához - hogyan ment, mit tanultál, miben lehetnél jobb a következő héten?",
         "itinerary": {
           "title": "Terv"
         }
       }
     },
     "day": {
-      "title": "Napi Terv"
+      "title": "Napi tervek"
     },
     "special-dates": {
       "title": "Különleges dátumok",
-      "description": "Add hozzá a születésnapjaidat, ünnepeidet, eseményeidet stb. ide, hogy emlékeztetőket kapj róluk a heti áttekintőkben és a napi oldalakon, ahogy közelednek.",
+      "description": "Add hozzá ide a születésnapokat, ünnepléseket, eseményeket stb., hogy emlékeztetőt kapj róluk a heti áttekintésekben és a napi oldalakon, ahogy közelednek.",
       "empty": "Nincsenek dátumok",
       "placeholder": "Mi az alkalom?",
+      "manual": {
+        "heading": "Dátum hozzáadása kézzel"
+      },
+      "holidays": {
+        "heading": "Nemzeti ünnepnapok importálása",
+        "description_one": "Válassz egy országot, hogy importáld a hivatalos ünnepnapjait arra az évre ({{years}}), amelyet a naptárad lefed.",
+        "description_other": "Válassz egy országot, hogy importáld a hivatalos ünnepnapjait azokra az évekre ({{years}}), amelyeket a naptárad lefed.",
+        "country-placeholder": "Válassz egy országot...",
+        "countries-loading": "Az országok listájának betöltése...",
+        "countries-error": "Nem sikerült betölteni az országok listáját. Ellenőrizd a kapcsolatot, és próbáld újra.",
+        "names": {
+          "english": "Angol nevek",
+          "local": "Helyi nevek"
+        },
+        "deduplicate": {
+          "label": "Duplikátumok kihagyása",
+          "help": "Ha be van kapcsolva, az ugyanazon a napon már meglévő ünnepnap (az angol neve alapján egyeztetve) nem kerül be újra. Kapcsold ki, ha ugyanazt az ünnepnapot több nyelven is szeretnéd - hasznos, ha nyelvet tanulsz vagy kettős állampolgár vagy."
+        },
+        "button": "Importálás",
+        "loading": "Ünnepnapok lekérése, kérlek várj...",
+        "error": "Nem sikerült betölteni az ünnepnapokat ehhez az országhoz. Próbáld újra.",
+        "year-unavailable": "Sajnáljuk, az ünnepnapok csak a következő évekre érhetők el: {{years}}.",
+        "success_zero": "Nem lett új ünnepnap importálva innen: {{country}}.",
+        "success_one": "{{count}} ünnepnap importálva innen: {{country}}.",
+        "success_other": "{{count}} ünnepnap importálva innen: {{country}}.",
+        "skipped_one": "{{count}} duplikátum kihagyva.",
+        "skipped_other": "{{count}} duplikátum kihagyva.",
+        "attribution": "Az ünnepnapok adatai innen származnak: <tallyfy>Tallyfy</tallyfy>."
+      },
+      "upload": {
+        "label": "Importálás .ics fájlból:",
+        "loading": "Különleges dátumok olvasása az ICalendar fájlból, kérlek várj...",
+        "error": "Néhány ICalendar eseményt nem sikerült betölteni - próbáld meg újra exportálni az .ics fájlt a naptáralkalmazásodból.",
+        "success": "Különleges dátumok betöltve az ICalendar fájlból."
+      },
       "type": {
         "event": "Esemény",
-        "holiday": "Ünnep"
+        "holiday": "Ünnepnap"
       },
       "button": {
         "item": "Dátum hozzáadása",
         "remove": "Eltávolítás"
       }
     },
-    "generation-description": "A PDF generálása teljes egészében a böngésződben történik - nincs adat küldve a szervereinkre!"
+    "generation-description": "A PDF generálása teljes egészében a böngésződben történik - semmilyen adat nem kerül a szervereinkre!"
   },
   "preview": {
     "title": "Naptár előnézet",
-    "subtitle": "(csak az első hónap kerül megjelenítésre az előnézetben)",
-    "viewer-title": "PDF Előnézet",
+    "subtitle": "(az előnézetben csak az első hónap jelenik meg)",
+    "viewer-title": "PDF előnézet",
     "generating": {
       "full": "Teljes naptár generálása - ez több mint egy percet is igénybe vehet...",
       "preview": "Előnézet generálása, kérlek várj - ez eltarthat egy percig."
     },
     "empty": {
-      "title": "Használd a konfigurációs űrlapot, hogy létrehozd a saját testreszabott naptáradat.",
+      "title": "Használd a beállítási űrlapot, hogy létrehozd a saját testreszabott naptáradat.",
       "subtitle": "Az előnézet itt fog megjelenni."
     }
   }

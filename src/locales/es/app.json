@@ -1,6 +1,6 @@
 {
   "loading": "Cargando...",
-  "download-ready": "Descargar ahora!",
+  "download-ready": "¡Descargar ahora!",
   "navigation": {
     "home": "Inicio",
     "configuration": "Crear el calendario",
@@ -8,77 +8,163 @@
     "faq": "FAQ"
   },
   "language": {
-    "label": "Idioma"
+    "label": "Idioma",
+    "full": "Idiomas totalmente traducidos",
+    "partial": "Solo días de la semana y meses"
   },
   "configuration": {
     "selector": {
       "label": "Empezar",
       "template": {
-        "label": "Empiece con una plantilla:",
+        "label": "Empiece eligiendo una plantilla:",
         "basic": {
-          "label": "Simple"
+          "label": "Simple",
+          "description": "Ajustes predeterminados - un buen punto de partida."
         },
         "advanced": {
-          "label": "Avanzada"
+          "label": "Avanzada",
+          "description": "Amplía la plantilla Simple añadiendo planificaciones diarias individuales."
         },
         "blank": {
-          "label": "Vacía"
+          "label": "Vacía",
+          "description": "Se basa en la plantilla Simple, pero con hábitos, tareas pendientes, fechas importantes, etc. vacíos."
         },
         "minimalistic": {
-          "label": "Minimalista"
+          "label": "Minimalista",
+          "description": "Desactiva todo excepto los resúmenes de la semana."
         }
       },
       "upload": {
-        "label": "O cargue el PDF de ReCalendar generado previamente para usar su configuración:",
-        "loading": "Leyendo la configuración desde un archivo PDF... por favor, espere...",
+        "label": "O cargue un PDF de ReCalendar generado previamente para usar su configuración:",
+        "loading": "Leyendo la configuración desde el archivo PDF, por favor espere...",
         "error": "No se pudo cargar la configuración de ReCalendar desde este PDF. ¿Está seguro de que se generó con este sitio?",
-        "success": "Configuración cargada desde el PDF - bienvenido de nuevo!"
+        "success": "Configuración cargada desde el PDF: ¡bienvenido de nuevo!",
+        "password": {
+          "required": "Este PDF está protegido con contraseña. Introduzca su contraseña para leer la configuración.",
+          "wrong": "Esa contraseña no funcionó. Inténtelo de nuevo.",
+          "label": "Contraseña del PDF",
+          "unlock": "Desbloquear",
+          "reused": "La contraseña del PDF se ha rellenado por usted, así que el próximo calendario que genere quedará protegido con la misma."
+        }
       }
     },
     "general": {
       "label": "Opciones generales",
+      "device": "Dispositivo",
+      "dpi": "PPP",
+      "resolution": "Resolución",
+      "font": "Fuente",
       "year": "Año",
+      "left-handed": {
+        "label": "Versión para zurdos",
+        "description": "Optimiza el diseño para el uso con la mano izquierda."
+      },
+      "sidebar": {
+        "label": "Dejar espacio permanente para la barra de herramientas",
+        "description": "Si prefiere mantener la barra de herramientas siempre abierta, marque esta opción para asegurarse de que nunca tape el contenido del calendario.",
+        "position": {
+          "label": "Posición de la barra de herramientas",
+          "left": "Izquierda",
+          "right": "Derecha",
+          "top": "Arriba",
+          "bottom": "Abajo"
+        },
+        "offset": {
+          "label": "Tamaño de la barra de herramientas",
+          "description": "Cuánto espacio reservar para la barra de herramientas, en puntos. Viene rellenado con un valor que funciona para el dispositivo seleccionado: ajústelo si la barra sigue tapando el contenido del calendario."
+        }
+      },
       "starting-month": {
         "label": "Mes de inicio",
-        "description": "El primer mes del calendario generado. Elija algo como octubre si desea que su calendario cubra un semestre, en lugar de un año."
+        "description": "El primer mes del calendario generado. Elija algo como octubre si desea que su calendario cubra un semestre en lugar de un año natural."
       },
       "month-count": {
         "label": "Cantidad de meses",
-        "description": "¿Cuántos meses quiere generar en su calendario?"
+        "description": "Para cuántos meses se debe generar el calendario."
       },
       "first-day-of-week": "Primer día de la semana",
-      "weekend": "Weekend",
+      "weekend": "Fin de semana",
+      "lines": {
+        "title": "Líneas de las planificaciones",
+        "description": "El rayado que se usa en las planificaciones: en las páginas de los días, las retrospectivas de la semana, los resúmenes del mes y las notas del año."
+      },
       "line-style": {
-        "label": "Estilo de línea de la planificación",
-        "description": "Estilo usado para dibujar las líneas en las planificaciones."
+        "label": "Estilo",
+        "description": "Igual que el rayado de un cuaderno de papel.",
+        "lined": "Rayado",
+        "grid": "Cuadriculado",
+        "dot_grid": "Punteado",
+        "blank": "Liso"
       },
       "line-height": {
-        "label": "Altura de línea de la planificación",
-        "description": "Altura de cada línea en las planificaciones. El texto y los iconos se escalan proporcionalmente."
+        "label": "Altura de línea",
+        "description": "Altura de cada línea en las planificaciones. El texto y los iconos se escalan con ella, y también define el espaciado vertical de la cuadrícula y los puntos."
+      },
+      "line-spacing": {
+        "label": "Espaciado de la cuadrícula",
+        "description": "Distancia horizontal entre las líneas o los puntos de la cuadrícula, en las mismas unidades que la altura de línea. Déjelo en 0 para que coincida con la altura de línea y obtener celdas cuadradas. La cuadrícula siempre empieza a un espaciado del borde, igual que los cuadernos de papel dejan un margen."
+      },
+      "line-opacity": {
+        "label": "Opacidad",
+        "description": "Lo visibles que son las líneas y los puntos. El 0 % los oculta por completo, el 100 % los deja totalmente negros."
+      },
+      "password": {
+        "title": "Protección con contraseña",
+        "description": "Exige una contraseña para abrir el PDF generado, de modo que el calendario siga siendo privado si el dispositivo en el que está se comparte o se pierde.",
+        "label": "Contraseña",
+        "show": "Mostrar",
+        "hide": "Ocultar",
+        "warning": "Anote esta contraseña en un lugar seguro. ReCalendar funciona por completo en su navegador y no almacena datos de usuario, así que nadie -tampoco nosotros- puede recuperarla ni restablecerla, y un calendario protegido no se puede abrir sin ella. La contraseña no se guarda deliberadamente dentro del PDF, por lo que tendrá que escribirla de nuevo la próxima vez que genere un calendario.",
+        "preview": {
+          "label": "Proteger también la vista previa",
+          "description": "Déjelo activado para comprobar que la contraseña funciona antes de pasar el calendario a su dispositivo. Desactívelo si todavía está haciendo ajustes y no quiere volver a escribir la contraseña en el visor de PDF en cada vista previa."
+        }
       }
     },
     "button": {
-      "refresh": "Actualizar avance",
-      "download": "Genera el calendario completo y descarga",
+      "refresh": "Actualizar la vista previa",
+      "download": "Generar el calendario completo y descargar",
       "generating": "Generando, por favor espere..."
     },
     "itinerary": {
       "empty": "Planificación vacía",
+      "dateTemplate": {
+        "label": "Ayuda sobre el formato de fechas",
+        "title": "Plantillas de fecha",
+        "description": "Inserte fechas con formato usando <0/> o <1/>. Consulte los <2>formatos disponibles</2>."
+      },
       "placeholder": {
-        "lines": "Candida de líneas",
-        "page": "Nuevo salto de página"
+        "lines": "Cantidad de líneas",
+        "page": "Nuevo salto de página",
+        "item": "Elemento de la planificación"
+      },
+      "prefix": {
+        "selected": "Prefijo de línea: {{name}}",
+        "none": "Sin prefijo",
+        "icon": {
+          "square": "Casilla",
+          "square-check-big": "Casilla marcada",
+          "circle": "Círculo",
+          "circle-dot": "Punto",
+          "arrow-right": "Flecha",
+          "chevron-right": "Ángulo",
+          "star": "Estrella",
+          "heart": "Corazón"
+        }
       },
       "button": {
+        "copy": "Copiar esta planificación al resto de los días",
         "remove": "Quitar",
         "item": "Agregar un elemento de planificación",
         "page": "Iniciar una nueva página",
-        "lines": "Agregar líneas"
+        "lines": "Agregar líneas vacías"
       }
     },
     "items-list": {
       "button": {
         "item": "Añadir un elemento",
-        "remove": "Quitar"
+        "remove": "Quitar",
+        "reorder": "Reordenar"
       },
       "empty": "Lista vacía",
       "placeholder": "Elemento"
@@ -87,9 +173,18 @@
       "enabled": "Activado",
       "disabled": "Desactivado"
     },
+    "year": {
+      "notes": {
+        "title": "Notas del año",
+        "description": "Las notas del año son el lugar para fijar los objetivos, planes y sueños del año que viene. Se añade una página al principio del calendario y otra antes de cada nuevo año que abarque.",
+        "itinerary": {
+          "title": "Planificación"
+        }
+      }
+    },
     "month": {
       "title": "Resumen del mes",
-      "description": "El resumen del mes es un lugar para establecer objetivos para el próximo mes, realizar un seguimiento de los hábitos y hacer otros planes.",
+      "description": "El resumen del mes es un lugar para establecer objetivos para el próximo mes, hacer seguimiento de los hábitos y hacer otros planes.",
       "habits": {
         "title": "Hábitos"
       },
@@ -99,40 +194,82 @@
     },
     "week": {
       "title": "Resumen de la semana",
-      "description": "El resumen de la semana le muestra una vista general de la semana para facilitar los planes.",
+      "description": "El resumen de la semana le da una vista general de la semana para facilitar la planificación.",
       "todos": {
-        "title": "To-do list"
+        "title": "Tareas pendientes"
       },
       "retrospective": {
         "title": "Retrospectiva de la semana",
-        "description": "La retrospectiva de la semana es un lugar para reflexionar sobre la semana pasada: ¿cómo fue, qué aprendio, que podría mejorar para la próxima semana?",
+        "description": "La retrospectiva de la semana es un lugar para reflexionar sobre la semana pasada: ¿cómo fue, qué aprendió, qué podría mejorar para la próxima semana?",
         "itinerary": {
           "title": "Planificación"
         }
       }
     },
     "day": {
-      "title": "Planificación diaria"
+      "title": "Planificaciones diarias"
     },
     "special-dates": {
       "title": "Fechas importantes",
-      "description": "Agregue sus cumpleaños, celebraciones, eventos, etc. Aquí puede recibir recordatorios sobre ellas en resúmenes semanales y páginas de días a medida que se acercan.",
+      "description": "Agregue aquí sus cumpleaños, celebraciones, eventos, etc. para recibir recordatorios en los resúmenes de la semana y en las páginas de los días a medida que se acerquen.",
       "empty": "Sin fechas",
       "placeholder": "¿Cuál es la ocasión?",
+      "manual": {
+        "heading": "Agregar una fecha manualmente"
+      },
+      "holidays": {
+        "heading": "Importar festivos nacionales",
+        "description_one": "Elija un país para importar sus días festivos del año ({{years}}) que abarca su calendario.",
+        "description_many": "Elija un país para importar sus días festivos de los años ({{years}}) que abarca su calendario.",
+        "description_other": "Elija un país para importar sus días festivos de los años ({{years}}) que abarca su calendario.",
+        "country-placeholder": "Seleccione un país...",
+        "countries-loading": "Cargando la lista de países...",
+        "countries-error": "No se pudo cargar la lista de países. Compruebe su conexión e inténtelo de nuevo.",
+        "names": {
+          "english": "Nombres en inglés",
+          "local": "Nombres locales"
+        },
+        "deduplicate": {
+          "label": "Omitir duplicados",
+          "help": "Cuando está activado, un festivo que ya exista en el mismo día (comparado por su nombre en inglés) no se añadirá otra vez. Desactívelo si quiere el mismo festivo en más de un idioma: resulta útil si está aprendiendo un idioma o tiene doble nacionalidad."
+        },
+        "button": "Importar",
+        "loading": "Obteniendo los festivos, por favor espere...",
+        "error": "No se pudieron cargar los festivos de este país. Inténtelo de nuevo.",
+        "year-unavailable": "Lo sentimos, los festivos solo están disponibles para los años {{years}}.",
+        "success_zero": "No se importó ningún festivo nuevo de {{country}}.",
+        "success_one": "Se importó {{count}} festivo de {{country}}.",
+        "success_many": "Se importaron {{count}} festivos de {{country}}.",
+        "success_other": "Se importaron {{count}} festivos de {{country}}.",
+        "skipped_one": "Se omitió {{count}} duplicado.",
+        "skipped_many": "Se omitieron {{count}} duplicados.",
+        "skipped_other": "Se omitieron {{count}} duplicados.",
+        "attribution": "Datos de festivos de <tallyfy>Tallyfy</tallyfy>."
+      },
+      "upload": {
+        "label": "Importar desde un archivo .ics:",
+        "loading": "Leyendo las fechas importantes del archivo ICalendar, por favor espere...",
+        "error": "No se pudieron cargar algunos eventos de ICalendar: pruebe a exportar de nuevo el archivo .ics desde su aplicación de calendario.",
+        "success": "Fechas importantes cargadas desde el archivo ICalendar."
+      },
+      "type": {
+        "event": "Evento",
+        "holiday": "Festivo"
+      },
       "button": {
         "item": "Agregar fecha",
         "remove": "Quitar"
       }
     },
-    "generation-description": "La generación de PDF se realiza completamente en su navegador, ¡no se envían datos a nuestros servidores!"
+    "generation-description": "La generación del PDF se realiza completamente en su navegador: ¡no se envían datos a nuestros servidores!"
   },
   "preview": {
     "title": "Vista previa del calendario",
     "subtitle": "(solo se procesa el primer mes para la vista previa)",
-    "viewer-title": "Vista previa PDF",
+    "viewer-title": "Vista previa del PDF",
     "generating": {
-      "full": "Generando del calendario completo: esto podría llevar más de un minuto...",
-      "preview": "Generando la vista previa; espere, puede demorar un minuto."
+      "full": "Generando el calendario completo: esto podría llevar más de un minuto...",
+      "preview": "Generando la vista previa, por favor espere: puede tardar un minuto."
     },
     "empty": {
       "title": "Utilice el formulario de configuración para crear su calendario personalizado.",

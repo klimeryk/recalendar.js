@@ -3,114 +3,188 @@
   "download-ready": "Stáhnout!",
   "navigation": {
     "home": "Domů",
-    "configuration": "Vytvořit vlastní kalendář",
+    "configuration": "Vytvořte si kalendář",
     "features": "Funkce",
     "faq": "FAQ"
   },
   "language": {
-    "label": "Jazyky",
-    "en": "English",
-    "pl": "Polski",
-    "fr": "Français",
-    "es": "Español",
-    "nb": "Norsk",
-    "da": "Dansk",
-    "cz": "Česky"
+    "label": "Jazyk",
+    "full": "Plně přeložené jazyky",
+    "partial": "Pouze dny v týdnu a měsíce"
   },
   "configuration": {
     "selector": {
-      "label": "Start",
+      "label": "Začátek",
       "template": {
-        "label": "Začni výběrem předlohy:",
+        "label": "Začněte výběrem šablony:",
         "basic": {
           "label": "Základní",
-          "description": "Základní nastavení - dobrá na začátek."
+          "description": "Výchozí nastavení - dobrý výchozí bod."
         },
         "advanced": {
           "label": "Pokročilá",
-          "description": "Rozšiřuje základní předlohu o individuální itineráře."
+          "description": "Rozšiřuje šablonu Základní o samostatné denní itineráře."
         },
         "blank": {
-          "label": "Jednoduchý",
-          "description": "Založena na základní předloze, ale je prázdnější."
+          "label": "Prázdná",
+          "description": "Vychází ze šablony Základní, ale s prázdnými zvyky, úkoly, speciálními dny atd."
         },
         "minimalistic": {
           "label": "Minimalistická",
-          "description": "Nejjednodušší verze."
+          "description": "Vypne vše kromě přehledů týdne."
         }
       },
       "upload": {
-        "label": "Nebo nahrajte předešlý kalendář pro načtení nastavení:",
-        "loading": "Načítání ze souboru PDF, prosím počkejte...",
-        "error": "Ze souboru nebylo možné načíst nastavení!",
-        "success": "Nastavení načteno z PDF - vítejte zpět!"
+        "label": "Nebo nahrajte dříve vygenerovaný soubor PDF ReCalendar a použijte jeho nastavení:",
+        "loading": "Načítání nastavení ze souboru PDF, prosím čekejte...",
+        "error": "Ze souboru PDF se nepodařilo načíst nastavení ReCalendar - opravdu byl vygenerován na této stránce?",
+        "success": "Nastavení načteno z PDF - vítejte zpět!",
+        "password": {
+          "required": "Tento soubor PDF je chráněn heslem. Zadejte jeho heslo, aby z něj šlo načíst nastavení.",
+          "wrong": "Toto heslo nefunguje - zkuste to prosím znovu.",
+          "label": "Heslo k PDF",
+          "unlock": "Odemknout",
+          "reused": "Heslo z tohoto PDF bylo vyplněno automaticky, takže další vygenerovaný kalendář bude chráněn stejným heslem."
+        }
       }
     },
     "general": {
-      "label": "Hlavní nastavení",
-      "font": "Font",
+      "label": "Obecná nastavení",
+      "device": "Zařízení",
+      "dpi": "DPI",
+      "resolution": "Rozlišení",
+      "font": "Písmo",
       "year": "Rok",
       "left-handed": {
-        "label": "Verze pro levou ruku",
-        "description": "Optimalizováno pro psaní levou rukou."
+        "label": "Verze pro leváky",
+        "description": "Optimalizuje rozvržení pro psaní levou rukou."
       },
       "sidebar": {
-        "label": "Nastavit permanentní odsazení pro lištu s nástroji",
-        "description": "Pokud preferujete vysunutou lištu s nástroji, tato možnost odsadí celý obsah kalendáře."
+        "label": "Ponechat trvalé místo pro lištu nástrojů",
+        "description": "Pokud chcete mít lištu nástrojů stále otevřenou, zaškrtněte tuto možnost, aby nikdy nezakrývala obsah kalendáře.",
+        "position": {
+          "label": "Umístění lišty nástrojů",
+          "left": "Vlevo",
+          "right": "Vpravo",
+          "top": "Nahoře",
+          "bottom": "Dole"
+        },
+        "offset": {
+          "label": "Velikost lišty nástrojů",
+          "description": "Kolik místa vyhradit pro lištu nástrojů, v bodech. Předvyplněno hodnotou, která funguje pro vybrané zařízení - upravte ji, pokud lišta stále zakrývá obsah kalendáře."
+        }
       },
       "starting-month": {
         "label": "Počáteční měsíc",
-        "description": "První měsíc v generovaném kalendáři. Pro školní rok vyberte září."
+        "description": "První měsíc ve vygenerovaném kalendáři. Zvolte například říjen, pokud má kalendář pokrývat semestr místo kalendářního roku."
       },
       "month-count": {
         "label": "Počet měsíců",
-        "description": "Pro kolik měsíců se vygeneruje kalendář."
+        "description": "Na kolik měsíců se má kalendář vygenerovat."
       },
-      "first-day-of-week": "První den víkendu",
+      "first-day-of-week": "První den týdne",
       "weekend": "Víkend",
+      "lines": {
+        "title": "Linkování itinerářů",
+        "description": "Linkování použité v itinerářích - na stránkách dnů, v týdenních retrospektivách, přehledech měsíce a poznámkách k roku."
+      },
       "line-style": {
-        "label": "Styl čar v itinerářích",
-        "description": "Styl použitý pro vykreslování čar v itinerářích."
+        "label": "Styl",
+        "description": "Stejně jako linkování v papírovém sešitě.",
+        "lined": "Linkovaný",
+        "grid": "Čtverečkovaný",
+        "dot_grid": "Tečkovaný",
+        "blank": "Čistý"
       },
       "line-height": {
-        "label": "Výška řádků v itinerářích",
-        "description": "Výška každého řádku v itinerářích. Text a ikony se úměrně přizpůsobí."
+        "label": "Výška řádku",
+        "description": "Výška každého řádku v itinerářích. Text a ikony se s ní úměrně zvětšují a určuje také svislé rozestupy čtverečků a teček."
+      },
+      "line-spacing": {
+        "label": "Rozestupy mřížky",
+        "description": "Vodorovná vzdálenost mezi čarami nebo tečkami mřížky, ve stejných jednotkách jako výška řádku. Ponechte 0, aby odpovídala výšce řádku a vznikly čtvercové buňky. Mřížka vždy začíná jeden rozestup od okraje, stejně jako okraj v papírovém sešitě."
+      },
+      "line-opacity": {
+        "label": "Krytí",
+        "description": "Jak výrazné jsou čáry a tečky. 0 % je zcela skryje, 100 % je zobrazí zcela černé."
+      },
+      "password": {
+        "title": "Ochrana heslem",
+        "description": "Vyžaduje heslo pro otevření vygenerovaného PDF, takže kalendář zůstane soukromý, i když je zařízení, na kterém je uložen, sdílené nebo se ztratí.",
+        "label": "Heslo",
+        "show": "Zobrazit",
+        "hide": "Skrýt",
+        "warning": "Zapište si toto heslo na bezpečné místo. ReCalendar běží výhradně ve vašem prohlížeči a neukládá žádná uživatelská data, takže ho nikdo - včetně nás - nedokáže obnovit ani resetovat a chráněný kalendář bez něj nelze otevřít. Heslo se záměrně neukládá do PDF, takže ho budete muset při příštím generování kalendáře zadat znovu.",
+        "preview": {
+          "label": "Chránit i náhled",
+          "description": "Nechte zapnuté, abyste si ověřili, že heslo funguje, ještě než kalendář nahrajete do zařízení. Vypněte, pokud stále ladíte nastavení a nechcete heslo zadávat do prohlížeče PDF při každém náhledu."
+        }
       }
     },
     "button": {
-      "refresh": "Načíst náhled",
-      "download": "Generovat celý kalendář pro stažení",
+      "refresh": "Obnovit náhled",
+      "download": "Vygenerovat celý kalendář a stáhnout",
       "generating": "Generování, prosím čekejte..."
     },
     "itinerary": {
       "empty": "Prázdný itinerář",
+      "dateTemplate": {
+        "label": "Nápověda k formátování data",
+        "title": "Šablony data",
+        "description": "Vkládejte formátovaná data pomocí <0/> nebo <1/>. Viz <2>dostupné formáty</2>."
+      },
       "placeholder": {
         "lines": "Počet řádků",
-        "page": "Nová stránka"
+        "page": "Zalomení na novou stránku",
+        "item": "Položka itineráře"
+      },
+      "prefix": {
+        "selected": "Prefix řádku: {{name}}",
+        "none": "Bez prefixu",
+        "icon": {
+          "square": "Zaškrtávací políčko",
+          "square-check-big": "Zaškrtnuté políčko",
+          "circle": "Kroužek",
+          "circle-dot": "Tečka",
+          "arrow-right": "Šipka",
+          "chevron-right": "Špička",
+          "star": "Hvězdička",
+          "heart": "Srdce"
+        }
       },
       "button": {
-        "copy": "Zkopírovat na ostatní dny",
+        "copy": "Zkopírovat tento itinerář do všech ostatních dnů",
         "remove": "Odebrat",
-        "item": "Přidat položku",
-        "page": "Nová strana",
+        "item": "Přidat položku itineráře",
+        "page": "Začít novou stránku",
         "lines": "Přidat prázdné řádky"
       }
     },
     "items-list": {
       "button": {
         "item": "Přidat položku",
-        "remove": "Odebrat"
+        "remove": "Odebrat",
+        "reorder": "Změnit pořadí"
       },
       "empty": "Prázdný seznam",
       "placeholder": "Položka"
     },
     "toggle-form": {
-      "enabled": "Povoleno",
-      "disabled": "Nepovoleno"
+      "enabled": "Zapnuto",
+      "disabled": "Vypnuto"
+    },
+    "year": {
+      "notes": {
+        "title": "Poznámky k roku",
+        "description": "Poznámky k roku jsou místem pro cíle, plány a sny na nadcházející rok. Jedna stránka se přidá na začátek kalendáře a další před každý nový rok, který kalendář zahrnuje.",
+        "itinerary": {
+          "title": "Itinerář"
+        }
+      }
     },
     "month": {
       "title": "Přehled měsíce",
-      "description": "Přehled měsíce je místo pro nastavení cílů pro následující měsíc a vytváření jiných plánů.",
+      "description": "Přehled měsíce je místem pro stanovení cílů na nadcházející měsíc, sledování zvyků a další plánování.",
       "habits": {
         "title": "Zvyky"
       },
@@ -120,44 +194,89 @@
     },
     "week": {
       "title": "Přehled týdne",
-      "description": "Přehled týdne nabízí naplánování celého týdne.",
+      "description": "Přehled týdne nabízí pohled na celý týden z nadhledu, aby se plánovalo snáz.",
       "todos": {
         "title": "Úkoly"
       },
       "retrospective": {
         "title": "Týdenní retrospektiva",
-        "description": "Týdenní retrospektiva je místo pro shrnutí minulého týdne.",
+        "description": "Týdenní retrospektiva je místem pro ohlédnutí za uplynulým týdnem - jak proběhl, co jste se naučili, co byste mohli příští týden zlepšit?",
         "itinerary": {
           "title": "Itinerář"
         }
       }
     },
     "day": {
-      "title": "Dení itinerář"
+      "title": "Denní itineráře"
     },
     "special-dates": {
       "title": "Speciální dny",
-      "description": "Přidej své narozeniny, svátky a události.",
+      "description": "Přidejte sem narozeniny, oslavy, události atd., abyste na ně dostávali připomenutí v přehledech týdne a na stránkách dnů, jakmile se budou blížit.",
       "empty": "Žádná data",
       "placeholder": "Jaká je příležitost?",
+      "manual": {
+        "heading": "Přidat datum ručně"
+      },
+      "holidays": {
+        "heading": "Importovat státní svátky",
+        "description_one": "Vyberte zemi a naimportujte její státní svátky pro rok ({{years}}), který váš kalendář pokrývá.",
+        "description_few": "Vyberte zemi a naimportujte její státní svátky pro roky ({{years}}), které váš kalendář pokrývá.",
+        "description_many": "Vyberte zemi a naimportujte její státní svátky pro roky ({{years}}), které váš kalendář pokrývá.",
+        "description_other": "Vyberte zemi a naimportujte její státní svátky pro roky ({{years}}), které váš kalendář pokrývá.",
+        "country-placeholder": "Vyberte zemi...",
+        "countries-loading": "Načítání seznamu zemí...",
+        "countries-error": "Seznam zemí se nepodařilo načíst. Zkontrolujte prosím připojení a zkuste to znovu.",
+        "names": {
+          "english": "Anglické názvy",
+          "local": "Místní názvy"
+        },
+        "deduplicate": {
+          "label": "Přeskočit duplikáty",
+          "help": "Když je zapnuto, svátek, který už ve stejný den existuje (porovnává se anglický název), se nepřidá znovu. Vypněte, pokud chcete mít stejný svátek ve více jazycích - hodí se, když se učíte jazyk nebo máte dvojí občanství."
+        },
+        "button": "Importovat",
+        "loading": "Načítání svátků, prosím čekejte...",
+        "error": "Svátky pro tuto zemi se nepodařilo načíst. Zkuste to prosím znovu.",
+        "year-unavailable": "Bohužel, svátky jsou dostupné pouze pro roky {{years}}.",
+        "success_zero": "Ze země {{country}} nebyly naimportovány žádné nové svátky.",
+        "success_one": "Naimportován {{count}} svátek ze země {{country}}.",
+        "success_few": "Naimportovány {{count}} svátky ze země {{country}}.",
+        "success_many": "Naimportováno {{count}} svátku ze země {{country}}.",
+        "success_other": "Naimportováno {{count}} svátků ze země {{country}}.",
+        "skipped_one": "Přeskočen {{count}} duplikát.",
+        "skipped_few": "Přeskočeny {{count}} duplikáty.",
+        "skipped_many": "Přeskočeno {{count}} duplikátu.",
+        "skipped_other": "Přeskočeno {{count}} duplikátů.",
+        "attribution": "Data o svátcích poskytuje <tallyfy>Tallyfy</tallyfy>."
+      },
+      "upload": {
+        "label": "Importovat ze souboru .ics:",
+        "loading": "Načítání speciálních dnů ze souboru ICalendar, prosím čekejte...",
+        "error": "Některé události ICalendar se nepodařilo načíst - zkuste soubor .ics znovu vyexportovat z vaší kalendářové aplikace.",
+        "success": "Speciální dny načteny ze souboru ICalendar."
+      },
+      "type": {
+        "event": "Událost",
+        "holiday": "Svátek"
+      },
       "button": {
         "item": "Přidat datum",
         "remove": "Odebrat"
       }
     },
-    "generation-description": "Generování PDF probíhá ve vašem prohlížeči - data nejsou posílána na server!"
+    "generation-description": "Generování PDF probíhá výhradně ve vašem prohlížeči - na naše servery se neposílají žádná data!"
   },
   "preview": {
     "title": "Náhled kalendáře",
-    "subtitle": "(pro náhled se generuje jen první měsíc)",
+    "subtitle": "(v náhledu se vykresluje pouze první měsíc)",
     "viewer-title": "Náhled PDF",
     "generating": {
-      "full": "Generování celého kalendáře - tato akce může trvat déle...",
-      "preview": "Generování náhledu, prosím čekejte - tato akce může trvat déle."
+      "full": "Generování celého kalendáře - může to trvat déle než minutu...",
+      "preview": "Generování náhledu, prosím čekejte - může to trvat minutu."
     },
     "empty": {
-      "title": "Vyplň nastavení pro vlasní kalendář",
-      "subtitle": "Zde se zoprazí náhled"
+      "title": "Pomocí formuláře nastavení si vytvořte vlastní kalendář.",
+      "subtitle": "Zde se zobrazí náhled."
     }
   }
 }

@@ -1,11 +1,11 @@
 {
   "calendar": {
     "header": {
-      "week-number": "Uke#",
-      "retrospective": "FU"
+      "week-number": "U#",
+      "retrospective": "Tb"
     },
     "body": {
-      "retrospective": "F"
+      "retrospective": "T"
     }
   },
   "page": {
@@ -18,11 +18,11 @@
       "title": "Uke"
     },
     "retrospective": {
-      "title": "Forrige uke for uke"
+      "title": "Tilbakeblikk på uke"
     },
     "last": {
-      "title": "Generert av <recalendar>https://recalendar.me/</recalendar>",
-      "subtitle": "Du kan laste opp denne PDFen der for å bruke samme konfigurasjon som ble brukt for å generere denne og raskt lage en lignenede en for det nye året!"
+      "title": "Generert med <recalendar>https://recalendar.me/</recalendar>",
+      "subtitle": "Du kan laste opp denne PDF-en der igjen for å hente inn den samme konfigurasjonen den ble laget med, og raskt generere en lignende kalender for det nye året!"
     }
   }
 }

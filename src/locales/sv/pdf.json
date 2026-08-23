@@ -11,18 +11,18 @@
   "page": {
     "month": {
       "habits": {
-        "title": "Rutiner"
+        "title": "Vanor"
       }
     },
     "week": {
       "title": "Vecka"
     },
     "retrospective": {
-      "title": "Reflektioner för vecka"
+      "title": "Reflektion för vecka"
     },
     "last": {
-      "title": "Skapad genom <recalendar>https://recalendar.me/</recalendar>",
-      "subtitle": "Du kan ladda upp denna PDF där igen för att ladda samma konfiguration som var använd för att skapa den och snabbt skapa en liknande för ett nytt år!"
+      "title": "Skapad med <recalendar>https://recalendar.me/</recalendar>",
+      "subtitle": "Du kan ladda upp den här PDF-filen där igen för att läsa in samma konfiguration som användes när den skapades och snabbt generera en liknande kalender för det nya året!"
     }
   }
 }

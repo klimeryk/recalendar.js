@@ -3,17 +3,17 @@
     "example1": "Egzersiz",
     "example2": "Kitap",
     "example3": "Hobi",
-    "example4": "Eş zamanlı gece"
+    "example4": "Romantik akşam"
   },
   "templates": {
     "advanced": {
       "day": {
-        "monday": "Ek Pazartesi notları için ek sayfa"
+        "monday": "Fazladan pazartesi notları için ek sayfa"
       },
       "retrospective": {
-        "wins": "Haftanın Kazanımları",
-        "discoveries": "Yeni Keşifler",
-        "fails": "Neler Yanlış Gitti?"
+        "wins": "Haftanın kazanımları",
+        "discoveries": "Yeni keşifler",
+        "fails": "Neler iyi gitmedi?"
       }
     }
   },
@@ -22,15 +22,15 @@
     "notes": "Notlar"
   },
   "todos": {
-    "example1": "Bir seyahat planlayın",
-    "example2": "Başka bir TODO"
+    "example1": "Bir seyahat planla",
+    "example2": "Başka bir yapılacak"
   },
   "special-dates": {
-    "example1": "Özel tarih 1",
-    "example2": "Özel tarih neden #2 ",
+    "example1": "Özel gün 1",
+    "example2": "#2 numaralı neden için özel gün",
     "example3": "Başka bir kutlama",
-    "example4": "Çok uzun bir başka kutlama",
+    "example4": "Çok uzun olan başka bir kutlama",
     "example5": "Bir tane daha ekleyelim",
-    "example6": "Neden kalmadı kutlama"
+    "example6": "Neden kalmadığı için kutlama"
   }
 }

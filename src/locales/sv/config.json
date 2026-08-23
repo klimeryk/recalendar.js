@@ -1,9 +1,9 @@
 {
   "habits": {
     "example1": "Träning",
-    "example2": "Böcker",
-    "example3": "Träning",
-    "example4": "Sömn"
+    "example2": "Bok",
+    "example3": "Fritidsintresse",
+    "example4": "Dejtkväll"
   },
   "templates": {
     "advanced": {
@@ -22,15 +22,15 @@
     "notes": "Anteckningar"
   },
   "todos": {
-    "example1": "Planera resa",
-    "example2": "Några andra att göra"
+    "example1": "Planera en resa",
+    "example2": "Någon annan att göra-punkt"
   },
   "special-dates": {
-    "example1": "Specielltdatum 1",
-    "example2": "Speciellt datum för annan anledning #2",
-    "example3": "Andra firanden",
-    "example4": "Långweekend",
-    "example5": "Lov",
-    "example6": "Ran out of reasons celebration"
+    "example1": "Speciellt datum 1",
+    "example2": "Speciellt datum av anledning #2",
+    "example3": "Något annat firande",
+    "example4": "Något annat firande som är väldigt långt",
+    "example5": "Vi lägger till ett till",
+    "example6": "Firande för att anledningarna tog slut"
   }
 }

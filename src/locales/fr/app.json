@@ -8,39 +8,75 @@
     "faq": "FAQ"
   },
   "language": {
-    "label": "Langue"
+    "label": "Langue",
+    "full": "Langues entièrement traduites",
+    "partial": "Uniquement les jours de la semaine et les mois"
   },
   "configuration": {
     "selector": {
       "label": "Commencer",
       "template": {
-        "label": "Commencez par sélectioner un modèle:",
+        "label": "Commencez par sélectionner un modèle:",
         "basic": {
-          "label": "Simple"
+          "label": "Simple",
+          "description": "Réglages par défaut - un bon point de départ."
         },
         "advanced": {
-          "label": "Avancé"
+          "label": "Avancé",
+          "description": "Étend le modèle Simple en ajoutant des plannings journaliers individuels."
         },
         "blank": {
-          "label": "Vide"
+          "label": "Vide",
+          "description": "Basé sur le modèle Simple, mais sans habitudes, tâches à faire, dates importantes, etc."
         },
         "minimalistic": {
-          "label": "Minimaliste"
+          "label": "Minimaliste",
+          "description": "Désactive tout sauf les aperçus de la semaine."
         }
       },
       "upload": {
         "label": "Ou importez un PDF ReCalendar déjà généré pour utiliser sa configuration:",
-        "loading": "Configuration en cours, veuillez patienter...",
-        "error": "Échec de l'importation de la configuration du PDF ReCalendar. Êtes-vous sûr que le ficher a été généré sur ce site?",
-        "success": "Configuration importée - content de vous revoir!"
+        "loading": "Lecture de la configuration depuis le fichier PDF, veuillez patienter...",
+        "error": "Impossible de lire une configuration ReCalendar depuis ce PDF - êtes-vous sûr qu'il a été généré sur ce site?",
+        "success": "Configuration importée depuis le PDF - content de vous revoir!",
+        "password": {
+          "required": "Ce PDF est protégé par un mot de passe. Saisissez-le pour en lire la configuration.",
+          "wrong": "Ce mot de passe n'a pas fonctionné - veuillez réessayer.",
+          "label": "Mot de passe du PDF",
+          "unlock": "Déverrouiller",
+          "reused": "Le mot de passe du PDF a été renseigné pour vous, le prochain calendrier que vous générerez sera donc protégé par le même."
+        }
       }
     },
     "general": {
       "label": "Options générales",
+      "device": "Appareil",
+      "dpi": "DPI",
+      "resolution": "Résolution",
+      "font": "Police",
       "year": "Année",
+      "left-handed": {
+        "label": "Version pour gaucher",
+        "description": "Optimise la mise en page pour une utilisation de la main gauche."
+      },
+      "sidebar": {
+        "label": "Laisser un espace permanent pour la barre d'outils",
+        "description": "Si vous préférez garder la barre d'outils toujours ouverte, cochez cette option pour être sûr que le contenu du calendrier ne soit jamais masqué par celle-ci.",
+        "position": {
+          "label": "Position de la barre d'outils",
+          "left": "Gauche",
+          "right": "Droite",
+          "top": "Haut",
+          "bottom": "Bas"
+        },
+        "offset": {
+          "label": "Taille de la barre d'outils",
+          "description": "Quel espace réserver à la barre d'outils, en points. Pré-rempli avec une valeur adaptée à l'appareil sélectionné - ajustez-la si la barre d'outils masque encore le contenu du calendrier."
+        }
+      },
       "starting-month": {
         "label": "Mois de départ",
-        "description": "Le premier mois dans le calendrier généré. Choisissez par example Octobre si vous désirez un calendrier pour un semestre plutôt qu'une année."
+        "description": "Le premier mois dans le calendrier généré. Choisissez par exemple octobre si vous désirez un calendrier pour un semestre plutôt qu'une année civile."
       },
       "month-count": {
         "label": "Nombre de mois",
@@ -48,37 +84,87 @@
       },
       "first-day-of-week": "Premier jour de la semaine",
       "weekend": "Weekend",
+      "lines": {
+        "title": "Lignes des plannings",
+        "description": "Le réglage utilisé dans les plannings - sur les pages journalières, les rétrospectives de la semaine, les aperçus du mois et les notes de l'année."
+      },
       "line-style": {
-        "label": "Style de ligne des plannings",
-        "description": "Style utilisé pour dessiner les lignes dans les plannings."
+        "label": "Style",
+        "description": "Comme la réglure d'un carnet papier.",
+        "lined": "Ligné",
+        "grid": "Quadrillé",
+        "dot_grid": "Pointillé",
+        "blank": "Uni"
       },
       "line-height": {
-        "label": "Hauteur de ligne des plannings",
-        "description": "Hauteur de chaque ligne dans les plannings. Le texte et les icônes sont mis à l'échelle en conséquence."
+        "label": "Hauteur de ligne",
+        "description": "Hauteur de chaque ligne dans les plannings. Le texte et les icônes sont mis à l'échelle en conséquence, et elle définit l'espacement vertical du quadrillage et des points."
+      },
+      "line-spacing": {
+        "label": "Espacement du quadrillage",
+        "description": "Distance horizontale entre les lignes ou les points du quadrillage, dans la même unité que la hauteur de ligne. Laissez à 0 pour qu'elle corresponde à la hauteur de ligne et obtenir des cases carrées. Le quadrillage commence toujours à un espacement du bord, comme la marge d'un carnet papier."
+      },
+      "line-opacity": {
+        "label": "Opacité",
+        "description": "À quel point les lignes et les points sont visibles. 0 % les masque complètement, 100 % les rend entièrement noirs."
+      },
+      "password": {
+        "title": "Protection par mot de passe",
+        "description": "Exige un mot de passe pour ouvrir le PDF généré, afin que le calendrier reste privé si l'appareil sur lequel il se trouve est partagé ou perdu.",
+        "label": "Mot de passe",
+        "show": "Afficher",
+        "hide": "Masquer",
+        "warning": "Notez ce mot de passe en lieu sûr. ReCalendar fonctionne entièrement dans votre navigateur et ne stocke aucune donnée utilisateur, personne - nous compris - ne peut donc le récupérer ni le réinitialiser, et un calendrier protégé ne peut pas être ouvert sans lui. Le mot de passe n'est délibérément pas enregistré dans le PDF, vous devrez donc le saisir à nouveau la prochaine fois que vous générerez un calendrier.",
+        "preview": {
+          "label": "Protéger aussi l'aperçu",
+          "description": "Laissez cette option activée pour vérifier que le mot de passe fonctionne avant de mettre le calendrier sur votre appareil. Désactivez-la si vous peaufinez encore les réglages et ne voulez pas ressaisir le mot de passe dans la visionneuse PDF à chaque aperçu."
+        }
       }
     },
     "button": {
       "refresh": "Actualiser l'aperçu",
       "download": "Générer le calendrier complet et télécharger",
-      "generating": "Génération PDF en cours, veuillez patienter..."
+      "generating": "Génération en cours, veuillez patienter..."
     },
     "itinerary": {
       "empty": "Planning vide",
+      "dateTemplate": {
+        "label": "Aide au formatage des dates",
+        "title": "Modèles de date",
+        "description": "Insérez des dates formatées avec <0/> ou <1/>. Voir les <2>formats disponibles</2>."
+      },
       "placeholder": {
         "lines": "Nombre de lignes",
-        "page": "Nouveau saut de page"
+        "page": "Nouveau saut de page",
+        "item": "Élément du planning"
+      },
+      "prefix": {
+        "selected": "Préfixe de ligne: {{name}}",
+        "none": "Aucun préfixe",
+        "icon": {
+          "square": "Case à cocher",
+          "square-check-big": "Case cochée",
+          "circle": "Cercle",
+          "circle-dot": "Point",
+          "arrow-right": "Flèche",
+          "chevron-right": "Chevron",
+          "star": "Étoile",
+          "heart": "Cœur"
+        }
       },
       "button": {
+        "copy": "Copier ce planning vers tous les autres jours",
         "remove": "Supprimer",
         "item": "Ajouter un élément au planning",
         "page": "Ouvrir une nouvelle page",
-        "lines": "Ajouter une ligne"
+        "lines": "Ajouter des lignes vides"
       }
     },
     "items-list": {
       "button": {
         "item": "Ajouter un élément",
-        "remove": "Supprimer"
+        "remove": "Supprimer",
+        "reorder": "Réordonner"
       },
       "empty": "Liste vide",
       "placeholder": "Élément"
@@ -87,9 +173,18 @@
       "enabled": "Activé",
       "disabled": "Désactivé"
     },
+    "year": {
+      "notes": {
+        "title": "Notes de l'année",
+        "description": "Les notes de l'année sont l'endroit où poser ses objectifs, ses projets et ses rêves pour l'année à venir. Une page est ajoutée au début du calendrier, et une autre avant chaque nouvelle année qu'il couvre.",
+        "itinerary": {
+          "title": "Planning"
+        }
+      }
+    },
     "month": {
       "title": "Aperçu du mois",
-      "description": "L'aperçu du mois est un endroit pour définir ses objectifs pour le mois à venir, suivre ses habitudes et planifier.",
+      "description": "L'aperçu du mois est un endroit pour définir ses objectifs pour le mois à venir, suivre ses habitudes et faire d'autres projets.",
       "habits": {
         "title": "Habitudes"
       },
@@ -99,26 +194,68 @@
     },
     "week": {
       "title": "Aperçu de la semaine",
-      "description": "L'Aperçu de la semaine donne une vue générale de la semaine pour rendre la planification plus facile.",
+      "description": "L'aperçu de la semaine donne une vue d'ensemble de la semaine pour faciliter la planification.",
       "todos": {
-        "title": "To-do lists"
+        "title": "À faire"
       },
       "retrospective": {
         "title": "Rétrospective de la semaine",
-        "description": "La rétrospective de la semaine est un endroit pour prendre du recul sur la semaine passée - Comment s'est-t-elle passée, qu'avez-vous appris, que faire pour améliorer la semaine prochaine?",
+        "description": "La rétrospective de la semaine est un endroit pour prendre du recul sur la semaine passée - comment s'est-elle passée, qu'avez-vous appris, que pourriez-vous améliorer la semaine prochaine?",
         "itinerary": {
           "title": "Planning"
         }
       }
     },
     "day": {
-      "title": "Planning journalier"
+      "title": "Plannings journaliers"
     },
     "special-dates": {
       "title": "Dates importantes",
-      "description": "Ajoutez des anniversaires, célébrations, évènements, etc. Ici, vous pouvez recevoir des rappels de ces dates dans l'aperçu de la semaine et les pages journalières.",
+      "description": "Ajoutez ici vos anniversaires, célébrations, évènements, etc. pour recevoir des rappels dans les aperçus de la semaine et les pages journalières à mesure qu'ils approchent.",
       "empty": "Aucune date",
       "placeholder": "Pour quelle occasion?",
+      "manual": {
+        "heading": "Ajouter une date manuellement"
+      },
+      "holidays": {
+        "heading": "Importer les jours fériés nationaux",
+        "description_one": "Choisissez un pays pour importer ses jours fériés pour l'année ({{years}}) couverte par votre calendrier.",
+        "description_many": "Choisissez un pays pour importer ses jours fériés pour les années ({{years}}) couvertes par votre calendrier.",
+        "description_other": "Choisissez un pays pour importer ses jours fériés pour les années ({{years}}) couvertes par votre calendrier.",
+        "country-placeholder": "Sélectionnez un pays...",
+        "countries-loading": "Chargement de la liste des pays...",
+        "countries-error": "Impossible de charger la liste des pays. Vérifiez votre connexion et réessayez.",
+        "names": {
+          "english": "Noms anglais",
+          "local": "Noms locaux"
+        },
+        "deduplicate": {
+          "label": "Ignorer les doublons",
+          "help": "Lorsque cette option est activée, un jour férié qui existe déjà le même jour (comparé sur son nom anglais) n'est pas ajouté une seconde fois. Désactivez-la si vous voulez le même jour férié dans plusieurs langues - pratique si vous apprenez une langue ou avez une double nationalité."
+        },
+        "button": "Importer",
+        "loading": "Récupération des jours fériés, veuillez patienter...",
+        "error": "Impossible de charger les jours fériés pour ce pays. Veuillez réessayer.",
+        "year-unavailable": "Désolé, les jours fériés ne sont disponibles que pour les années {{years}}.",
+        "success_zero": "Aucun nouveau jour férié importé depuis {{country}}.",
+        "success_one": "{{count}} jour férié importé depuis {{country}}.",
+        "success_many": "{{count}} jours fériés importés depuis {{country}}.",
+        "success_other": "{{count}} jours fériés importés depuis {{country}}.",
+        "skipped_one": "{{count}} doublon ignoré.",
+        "skipped_many": "{{count}} doublons ignorés.",
+        "skipped_other": "{{count}} doublons ignorés.",
+        "attribution": "Données des jours fériés fournies par <tallyfy>Tallyfy</tallyfy>."
+      },
+      "upload": {
+        "label": "Importer depuis un fichier .ics:",
+        "loading": "Lecture des dates importantes depuis le fichier ICalendar, veuillez patienter...",
+        "error": "Impossible de charger certains évènements ICalendar - essayez de réexporter le fichier .ics depuis votre application de calendrier.",
+        "success": "Dates importantes chargées depuis le fichier ICalendar."
+      },
+      "type": {
+        "event": "Évènement",
+        "holiday": "Jour férié"
+      },
       "button": {
         "item": "Ajouter une date",
         "remove": "Supprimer"
@@ -135,7 +272,7 @@
       "preview": "Génération de l'aperçu, veuillez patienter - cela peut prendre une minute."
     },
     "empty": {
-      "title": "Utilisez le formulaire de configuration pour créer votre calendrier personalisé.",
+      "title": "Utilisez le formulaire de configuration pour créer votre calendrier personnalisé.",
       "subtitle": "L'aperçu s'affichera ici."
     }
   }

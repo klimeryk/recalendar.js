@@ -8,7 +8,7 @@
   "templates": {
     "advanced": {
       "day": {
-        "monday": "Extra hétfői jegyzetek hozzáadása"
+        "monday": "Extra oldal a hétfői jegyzeteknek"
       },
       "retrospective": {
         "wins": "Heti sikerek",
@@ -27,10 +27,10 @@
   },
   "special-dates": {
     "example1": "Különleges dátum 1",
-    "example2": "Különleges dátum 2",
+    "example2": "Különleges dátum a #2 ok miatt",
     "example3": "Valamilyen más ünnepség",
-    "example4": "Valami más egyéb ünnepség, ami nagyon hosszú",
+    "example4": "Valami más ünnepség, ami nagyon hosszú",
     "example5": "Adjunk hozzá még egyet",
-    "example6": "Elfogytak az okok ünnepség"
+    "example6": "Ünneplés, mert elfogytak az okok"
   }
 }

@@ -2,10 +2,10 @@
   "calendar": {
     "header": {
       "week-number": "T#",
-      "retrospective": "Re"
+      "retrospective": "Pd"
     },
     "body": {
-      "retrospective": "R"
+      "retrospective": "P"
     }
   },
   "page": {

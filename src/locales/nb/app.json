@@ -8,45 +8,117 @@
     "faq": "FAQ"
   },
   "language": {
-    "label": "Språk"
+    "label": "Språk",
+    "full": "Fullstendig oversatte språk",
+    "partial": "Kun ukedager og måneder"
   },
   "configuration": {
     "selector": {
       "label": "Start",
       "template": {
         "label": "Start ved å velge en mal:",
-        "basic": "Grunnleggende",
-        "advanced": "Avansert",
-        "blank": "Tom",
-        "minimalistic": "Minimalistisk"
+        "basic": {
+          "label": "Grunnleggende",
+          "description": "Standardinnstillinger - et godt utgangspunkt."
+        },
+        "advanced": {
+          "label": "Avansert",
+          "description": "Utvider den grunnleggende malen med egne dagsplaner."
+        },
+        "blank": {
+          "label": "Tom",
+          "description": "Bygger på den grunnleggende malen, men uten vaner, gjøremål, spesielle datoer osv."
+        },
+        "minimalistic": {
+          "label": "Minimalistisk",
+          "description": "Slår av alt bortsett fra ukeoversiktene."
+        }
       },
       "upload": {
-        "label": "Eller last opp en tidligere generert ReCalendar PDF for å bruke lik konfigurasjon:",
+        "label": "Eller last opp en tidligere generert ReCalendar-PDF for å bruke konfigurasjonen dens:",
         "loading": "Leser konfigurasjon fra PDF-fil, vennligst vent...",
-        "error": "Klarte ikke laste ReCalendar konfigurasjon fra denne PDFen - er du sikker på om den ble generert med denne nettsiden?",
-        "success": "Konfigurasjon lastet fra PDF - velkommen tilbake!"
+        "error": "Klarte ikke å laste ReCalendar-konfigurasjon fra denne PDF-en - er du sikker på at den ble generert med denne nettsiden?",
+        "success": "Konfigurasjon lastet fra PDF - velkommen tilbake!",
+        "password": {
+          "required": "Denne PDF-en er passordbeskyttet. Skriv inn passordet for å lese konfigurasjonen fra den.",
+          "wrong": "Det passordet fungerte ikke - prøv igjen.",
+          "label": "PDF-passord",
+          "unlock": "Lås opp",
+          "reused": "Passordet til PDF-en er fylt ut for deg, så den neste kalenderen du genererer blir beskyttet med det samme passordet."
+        }
       }
     },
     "general": {
       "label": "Generelle innstillinger",
+      "device": "Enhet",
+      "dpi": "DPI",
+      "resolution": "Oppløsning",
+      "font": "Skrifttype",
       "year": "År",
+      "left-handed": {
+        "label": "Versjon for venstrehendte",
+        "description": "Optimaliserer oppsettet for venstrehendt bruk."
+      },
+      "sidebar": {
+        "label": "La det stå permanent plass til verktøylinjen",
+        "description": "Hvis du foretrekker å ha verktøylinjen åpen hele tiden, kryss av her for å sikre at kalenderinnholdet aldri blir dekket av den.",
+        "position": {
+          "label": "Verktøylinjens plassering",
+          "left": "Venstre",
+          "right": "Høyre",
+          "top": "Topp",
+          "bottom": "Bunn"
+        },
+        "offset": {
+          "label": "Verktøylinjens størrelse",
+          "description": "Hvor mye plass som skal settes av til verktøylinjen, i punkter. Forhåndsutfylt med en verdi som fungerer for den valgte enheten - juster den hvis verktøylinjen fortsatt dekker kalenderinnholdet."
+        }
+      },
       "starting-month": {
         "label": "Startmåned",
-        "description": "Den første måneden i den genererte kalenderen. Velg for eksempel August om du vil dekke et semester, istedet for et kalenderår."
+        "description": "Den første måneden i den genererte kalenderen. Velg for eksempel oktober om du vil at kalenderen skal dekke et semester istedenfor et kalenderår."
       },
       "month-count": {
         "label": "Antall måneder",
-        "description": "For hvor mange måneder skal kalenderen genereres for."
+        "description": "Hvor mange måneder kalenderen skal genereres for."
       },
       "first-day-of-week": "Første dag i uka",
       "weekend": "Helg",
+      "lines": {
+        "title": "Linjer i planer",
+        "description": "Linjeringen som brukes i planer - på dagssider, i ukestilbakeblikk, månedsoversikter og årsnotater."
+      },
       "line-style": {
-        "label": "Linjestil for avtaler",
-        "description": "Stil som brukes for å tegne linjer i avtaler."
+        "label": "Stil",
+        "description": "Akkurat som linjeringen i en papirbok.",
+        "lined": "Linjert",
+        "grid": "Rutet",
+        "dot_grid": "Prikket",
+        "blank": "Blank"
       },
       "line-height": {
-        "label": "Linjehøyde for avtaler",
-        "description": "Høyden på hver linje i avtaler. Tekst og ikoner skaleres tilsvarende."
+        "label": "Linjehøyde",
+        "description": "Høyden på hver linje i planer. Tekst og ikoner skaleres med den, og den bestemmer også den loddrette avstanden mellom ruter og prikker."
+      },
+      "line-spacing": {
+        "label": "Rutenettavstand",
+        "description": "Vannrett avstand mellom linjene eller prikkene i rutenettet, i samme enheter som linjehøyden. La den stå på 0 for å følge linjehøyden, slik at du får kvadratiske ruter. Rutenettet starter alltid én avstand inn fra kanten, slik papirbøker holder en marg."
+      },
+      "line-opacity": {
+        "label": "Dekkevne",
+        "description": "Hvor synlige linjene og prikkene er. 0 % skjuler dem helt, 100 % gjør dem helt svarte."
+      },
+      "password": {
+        "title": "Passordbeskyttelse",
+        "description": "Krever et passord for å åpne den genererte PDF-en, slik at kalenderen forblir privat hvis enheten den ligger på deles eller mistes.",
+        "label": "Passord",
+        "show": "Vis",
+        "hide": "Skjul",
+        "warning": "Skriv ned dette passordet på et trygt sted. ReCalendar kjører i sin helhet i nettleseren din og lagrer ingen brukerdata, så ingen - heller ikke vi - kan gjenopprette eller tilbakestille det, og en beskyttet kalender kan ikke åpnes uten det. Passordet lagres bevisst ikke inne i PDF-en, så du må skrive det inn på nytt neste gang du genererer en kalender.",
+        "preview": {
+          "label": "Beskytt forhåndsvisningen også",
+          "description": "La denne stå på for å sjekke at passordet fungerer før du legger kalenderen over på enheten din. Slå den av hvis du fortsatt finpusser og ikke vil skrive passordet inn i PDF-leseren ved hver forhåndsvisning."
+        }
       }
     },
     "button": {
@@ -55,15 +127,35 @@
       "generating": "Genererer, vennligst vent..."
     },
     "itinerary": {
-      "empty": "Ingen avtaler",
+      "empty": "Tom plan",
+      "dateTemplate": {
+        "label": "Hjelp til datoformatering",
+        "title": "Datomaler",
+        "description": "Sett inn formaterte datoer med <0/> eller <1/>. Se <2>tilgjengelige formater</2>."
+      },
       "placeholder": {
         "lines": "Antall linjer",
-        "page": "Nytt sideskift"
+        "page": "Nytt sideskift",
+        "item": "Punkt i planen"
+      },
+      "prefix": {
+        "selected": "Linjeprefiks: {{name}}",
+        "none": "Uten prefiks",
+        "icon": {
+          "square": "Avkrysningsboks",
+          "square-check-big": "Avkrysset boks",
+          "circle": "Sirkel",
+          "circle-dot": "Prikk",
+          "arrow-right": "Pil",
+          "chevron-right": "Vinkel",
+          "star": "Stjerne",
+          "heart": "Hjerte"
+        }
       },
       "button": {
-        "copy": "Kopier disse avtalene til alle andre dager",
+        "copy": "Kopier denne planen til alle andre dager",
         "remove": "Fjern",
-        "item": "Legg til avtale",
+        "item": "Legg til punkt i planen",
         "page": "Start en ny side",
         "lines": "Legg til tomme linjer"
       }
@@ -71,65 +163,114 @@
     "items-list": {
       "button": {
         "item": "Legg til element",
-        "remove": "Fjern"
+        "remove": "Fjern",
+        "reorder": "Endre rekkefølge"
       },
       "empty": "Tom liste",
       "placeholder": "Element"
     },
     "toggle-form": {
       "enabled": "Aktivert",
-      "disabled": "Ikke aktivert"
+      "disabled": "Deaktivert"
+    },
+    "year": {
+      "notes": {
+        "title": "Årsnotater",
+        "description": "Årsnotatene er stedet for mål, planer og drømmer for det kommende året. Én side legges til i starten av kalenderen, og enda en før hvert nye år den strekker seg over.",
+        "itinerary": {
+          "title": "Plan"
+        }
+      }
     },
     "month": {
       "title": "Månedsoversikt",
-      "description": "Månedsoversikten er et sted for å sette mål for den kommende måneden, spore vaner og lage andre planer.",
+      "description": "Månedsoversikten er et sted for å sette mål for den kommende måneden, følge med på vaner og legge andre planer.",
       "habits": {
         "title": "Vaner"
       },
       "itinerary": {
-        "title": "Avtaler"
+        "title": "Plan"
       }
     },
     "week": {
       "title": "Ukeoversikt",
-      "description": "Ukeoverisktengir deg en overiskt over uka for å lettere lage planer.",
+      "description": "Ukeoversikten gir deg et overblikk over uka, slik at det blir enklere å legge planer.",
       "todos": {
-        "title": "TODOs"
+        "title": "Gjøremål"
       },
       "retrospective": {
-        "title": "Forrige uke",
-        "description": "Forrige uke er et sted for å reflektere over den foregående uka - hvordan det gikk, hva du lærte, hva kan gjøres bedre neste uke?",
+        "title": "Tilbakeblikk på uka",
+        "description": "Tilbakeblikk på uka er et sted for å reflektere over den forrige uka - hvordan det gikk, hva du lærte, hva du kan gjøre bedre neste uke?",
         "itinerary": {
-          "title": "Avtaler"
+          "title": "Plan"
         }
       }
     },
     "day": {
-      "title": "Daglige avtaler"
+      "title": "Dagsplaner"
     },
     "special-dates": {
       "title": "Spesielle datoer",
-      "description": "Legg til bursdager, feiringer, arrangementer, m.m. her for å få påminnelser om dem i ukesoversikter og dagsoversikter når de nærmer seg.",
+      "description": "Legg til bursdager, feiringer, arrangementer m.m. her for å få påminnelser om dem i ukeoversiktene og på dagssidene når de nærmer seg.",
       "empty": "Ingen datoer",
       "placeholder": "Hva er anledningen?",
+      "manual": {
+        "heading": "Legg til en dato manuelt"
+      },
+      "holidays": {
+        "heading": "Importer offentlige helligdager",
+        "description_one": "Velg et land for å importere helligdagene for året ({{years}}) kalenderen din dekker.",
+        "description_other": "Velg et land for å importere helligdagene for årene ({{years}}) kalenderen din dekker.",
+        "country-placeholder": "Velg et land...",
+        "countries-loading": "Laster listen over land...",
+        "countries-error": "Klarte ikke å laste listen over land. Sjekk tilkoblingen og prøv igjen.",
+        "names": {
+          "english": "Engelske navn",
+          "local": "Lokale navn"
+        },
+        "deduplicate": {
+          "label": "Hopp over duplikater",
+          "help": "Når denne er på, blir en helligdag som allerede finnes på samme dag (sammenlignet på det engelske navnet) ikke lagt til på nytt. Slå den av hvis du vil ha den samme helligdagen på flere språk - nyttig om du lærer et språk eller har dobbelt statsborgerskap."
+        },
+        "button": "Importer",
+        "loading": "Henter helligdager, vennligst vent...",
+        "error": "Klarte ikke å laste helligdager for dette landet. Prøv igjen.",
+        "year-unavailable": "Beklager, helligdager er kun tilgjengelige for årene {{years}}.",
+        "success_zero": "Ingen nye helligdager importert fra {{country}}.",
+        "success_one": "Importerte {{count}} helligdag fra {{country}}.",
+        "success_other": "Importerte {{count}} helligdager fra {{country}}.",
+        "skipped_one": "Hoppet over {{count}} duplikat.",
+        "skipped_other": "Hoppet over {{count}} duplikater.",
+        "attribution": "Helligdagsdata fra <tallyfy>Tallyfy</tallyfy>."
+      },
+      "upload": {
+        "label": "Importer fra .ics-fil:",
+        "loading": "Leser spesielle datoer fra ICalendar-fil, vennligst vent...",
+        "error": "Klarte ikke å laste enkelte ICalendar-hendelser - prøv å eksportere .ics-filen på nytt fra kalenderappen din.",
+        "success": "Spesielle datoer lastet fra ICalendar-fil."
+      },
+      "type": {
+        "event": "Hendelse",
+        "holiday": "Helligdag"
+      },
       "button": {
         "item": "Legg til dato",
         "remove": "Fjern"
       }
     },
-    "generation-description": "PDF generering er gjort i sin helhet gjort i netteleseren - ingen data sendes til våre servere!"
+    "generation-description": "PDF-genereringen skjer i sin helhet i nettleseren din - ingen data sendes til våre servere!"
   },
   "preview": {
     "title": "Kalenderforhåndsvisning",
     "subtitle": "(kun den første måneden genereres i forhåndsvisningen)",
-    "viewer-title": "PDF Forhåndsvisning",
+    "viewer-title": "PDF-forhåndsvisning",
     "generating": {
       "full": "Genererer full kalender - dette kan ta mer enn et minutt...",
-      "preview": "Geneerer forhåndsvisning, vennlist vent - det kan ta litt tid."
+      "preview": "Genererer forhåndsvisning, vennligst vent - det kan ta et minutt."
     },
     "empty": {
-      "title": "Bruk konfigureringsskjema for å lage din personlige kalender.",
-      "subtitle": "Forhåndsvisningen vil vises her."
+      "title": "Bruk konfigurasjonsskjemaet for å lage din personlige kalender.",
+      "subtitle": "Forhåndsvisningen vises her."
     }
   }
 }

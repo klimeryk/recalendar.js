@@ -8,91 +8,163 @@
     "faq": "FAQ"
   },
   "language": {
-    "label": "Lingua"
+    "label": "Lingua",
+    "full": "Lingue tradotte completamente",
+    "partial": "Solo giorni della settimana e mesi"
   },
   "configuration": {
     "selector": {
       "label": "Inizia",
       "template": {
-        "label": "Seleziona un modello:",
+        "label": "Inizia scegliendo un modello:",
         "basic": {
           "label": "Semplice",
           "description": "Impostazioni predefinite - un buon punto da cui iniziare."
         },
         "advanced": {
           "label": "Avanzato",
-          "description": "Espande il modello Semplice aggiungendo la Programmazione Giornaliera."
+          "description": "Espande il modello Semplice aggiungendo pianificazioni giornaliere separate."
         },
         "blank": {
           "label": "Vuoto",
-          "description": "Basato sul modello Semplice, ma con le sezioni Abitudini, Da Fare, Ricorrenze, ecc. vuote"
+          "description": "Basato sul modello Semplice, ma con abitudini, cose da fare, ricorrenze ecc. vuote."
         },
         "minimalistic": {
           "label": "Minimalista",
-          "description": "Disabilita tutto tranne le Panoramiche Settimanali."
+          "description": "Disabilita tutto tranne le panoramiche settimanali."
         }
       },
       "upload": {
-        "label": "Importare un PDF ReCalendar già generato per utilizzare la sua configurazione:",
-        "loading": "Configurazione in corso, attendere prego...",
-        "error": "Impossibile importare la configurazione del PDF ReCalendar. Sicuri che il file selezionato è stato generato su questo sito?",
-        "success": "Configurazione importata - bentornato!"
+        "label": "Oppure carica un PDF ReCalendar già generato per usarne la configurazione:",
+        "loading": "Lettura della configurazione dal file PDF, attendi...",
+        "error": "Non è stato possibile leggere una configurazione ReCalendar da questo PDF - sei sicuro che sia stato generato su questo sito?",
+        "success": "Configurazione caricata dal PDF - bentornato!",
+        "password": {
+          "required": "Questo PDF è protetto da password. Inserisci la password per leggerne la configurazione.",
+          "wrong": "Questa password non ha funzionato - riprova.",
+          "label": "Password del PDF",
+          "unlock": "Sblocca",
+          "reused": "La password del PDF è stata compilata automaticamente, quindi il prossimo calendario che genererai sarà protetto con la stessa."
+        }
       }
     },
     "general": {
       "label": "Opzioni generali",
-      "font": "Tipo Carattere",
+      "device": "Dispositivo",
+      "dpi": "DPI",
+      "resolution": "Risoluzione",
+      "font": "Carattere",
       "year": "Anno",
       "left-handed": {
         "label": "Versione per mancini",
         "description": "Ottimizza il layout per l'uso con la mano sinistra."
       },
       "sidebar": {
-        "label": "Lascia uno spazio permanente per la barra degli strumenti laterale",
-        "description": "Se si preferisce lasciare sempre aperta la barra degli strumenti laterale, selezionare questa opzione per assicurarsi che il contenuto del calendario non ne sia mai coperto."
+        "label": "Lascia uno spazio permanente per la barra degli strumenti",
+        "description": "Se preferisci tenere la barra degli strumenti sempre aperta, seleziona questa opzione per essere sicuro che il contenuto del calendario non ne venga mai coperto.",
+        "position": {
+          "label": "Posizione della barra degli strumenti",
+          "left": "Sinistra",
+          "right": "Destra",
+          "top": "In alto",
+          "bottom": "In basso"
+        },
+        "offset": {
+          "label": "Dimensione della barra degli strumenti",
+          "description": "Quanto spazio riservare alla barra degli strumenti, in punti. È precompilato con un valore adatto al dispositivo selezionato - modificalo se la barra copre ancora il contenuto del calendario."
+        }
       },
       "starting-month": {
         "label": "Mese di partenza",
-        "description": "Il primo mese del calendario generato. Ad esempio, scegliendo luglio si può creare un calendario che copra un semestre piuttosto che un anno."
+        "description": "Il primo mese del calendario generato. Scegli ad esempio ottobre se vuoi che il calendario copra un semestre anziché un anno solare."
       },
       "month-count": {
         "label": "Numero di mesi",
-        "description": "Quanti mesi volete generare nel vostro calendario?"
+        "description": "Per quanti mesi deve essere generato il calendario."
       },
       "first-day-of-week": "Primo giorno della settimana",
-      "weekend": "Fine-settimana",
+      "weekend": "Fine settimana",
+      "lines": {
+        "title": "Linee delle pianificazioni",
+        "description": "La rigatura usata nelle pianificazioni - nelle pagine dei giorni, nelle retrospettive settimanali, nelle panoramiche mensili e nelle note dell'anno."
+      },
       "line-style": {
-        "label": "Stile linea della programmazione",
-        "description": "Stile usato per disegnare le linee nelle programmazioni."
+        "label": "Stile",
+        "description": "Proprio come la rigatura di un quaderno di carta.",
+        "lined": "A righe",
+        "grid": "A quadretti",
+        "dot_grid": "A puntini",
+        "blank": "Bianco"
       },
       "line-height": {
-        "label": "Altezza linea della programmazione",
-        "description": "Altezza di ogni linea nelle programmazioni. Il testo e le icone vengono ridimensionati di conseguenza."
+        "label": "Altezza della riga",
+        "description": "Altezza di ogni riga nelle pianificazioni. Il testo e le icone si ridimensionano di conseguenza, e l'altezza definisce anche la spaziatura verticale dei quadretti e dei puntini."
+      },
+      "line-spacing": {
+        "label": "Spaziatura della griglia",
+        "description": "Distanza orizzontale tra le linee o i puntini della griglia, nelle stesse unità dell'altezza della riga. Lascia 0 per farla coincidere con l'altezza della riga e ottenere celle quadrate. La griglia parte sempre a una spaziatura dal bordo, proprio come i quaderni di carta lasciano un margine."
+      },
+      "line-opacity": {
+        "label": "Opacità",
+        "description": "Quanto sono visibili le linee e i puntini. Lo 0 % li nasconde del tutto, il 100 % li rende completamente neri."
+      },
+      "password": {
+        "title": "Protezione con password",
+        "description": "Richiede una password per aprire il PDF generato, così il calendario resta privato se il dispositivo su cui si trova viene condiviso o perso.",
+        "label": "Password",
+        "show": "Mostra",
+        "hide": "Nascondi",
+        "warning": "Annota questa password in un posto sicuro. ReCalendar funziona interamente nel tuo browser e non memorizza alcun dato utente, quindi nessuno - noi compresi - può recuperarla o reimpostarla, e un calendario protetto non può essere aperto senza di essa. La password non viene deliberatamente salvata nel PDF, quindi dovrai digitarla di nuovo la prossima volta che genererai un calendario.",
+        "preview": {
+          "label": "Proteggi anche l'anteprima",
+          "description": "Lascia attiva questa opzione per verificare che la password funzioni prima di trasferire il calendario sul dispositivo. Disattivala se stai ancora mettendo a punto le impostazioni e non vuoi ridigitare la password nel lettore PDF a ogni anteprima."
+        }
       }
     },
     "button": {
-      "refresh": "Aggiornare l'anteprima",
-      "download": "Generare il calendario completo e scaricare",
-      "generating": "Generazione del file PDF in corso, attendere prego..."
+      "refresh": "Aggiorna l'anteprima",
+      "download": "Genera il calendario completo e scarica",
+      "generating": "Generazione in corso, attendi..."
     },
     "itinerary": {
-      "empty": "Programmazione vuota",
+      "empty": "Pianificazione vuota",
+      "dateTemplate": {
+        "label": "Aiuto sulla formattazione delle date",
+        "title": "Modelli di data",
+        "description": "Inserisci date formattate con <0/> o <1/>. Vedi i <2>formati disponibili</2>."
+      },
       "placeholder": {
-        "lines": "Numero di linee",
-        "page": "Nuova interruzione di pagina"
+        "lines": "Numero di righe",
+        "page": "Nuova interruzione di pagina",
+        "item": "Voce della pianificazione"
+      },
+      "prefix": {
+        "selected": "Prefisso di riga: {{name}}",
+        "none": "Nessun prefisso",
+        "icon": {
+          "square": "Casella di controllo",
+          "square-check-big": "Casella spuntata",
+          "circle": "Cerchio",
+          "circle-dot": "Punto",
+          "arrow-right": "Freccia",
+          "chevron-right": "Angolo",
+          "star": "Stella",
+          "heart": "Cuore"
+        }
       },
       "button": {
-        "copy": "Copiare questa programmazione a tutti gli altri giorni",
-        "remove": "Rimuovere",
-        "item": "Aggiungere un elemento",
-        "page": "Aprire una nuova pagina",
-        "lines": "Aggiungere una linea"
+        "copy": "Copia questa pianificazione in tutti gli altri giorni",
+        "remove": "Rimuovi",
+        "item": "Aggiungi una voce alla pianificazione",
+        "page": "Inizia una nuova pagina",
+        "lines": "Aggiungi righe vuote"
       }
     },
     "items-list": {
       "button": {
-        "item": "Aggiungere un elemento",
-        "remove": "Rimuovere"
+        "item": "Aggiungi un elemento",
+        "remove": "Rimuovi",
+        "reorder": "Riordina"
       },
       "empty": "Lista vuota",
       "placeholder": "Elemento"
@@ -101,9 +173,18 @@
       "enabled": "Abilitato",
       "disabled": "Disabilitato"
     },
+    "year": {
+      "notes": {
+        "title": "Note dell'anno",
+        "description": "Le note dell'anno sono il posto in cui fissare obiettivi, progetti e sogni per l'anno che arriva. Una pagina viene aggiunta all'inizio del calendario e un'altra prima di ogni nuovo anno che il calendario copre.",
+        "itinerary": {
+          "title": "Pianificazione"
+        }
+      }
+    },
     "month": {
-      "title": "Panoramica Mensile",
-      "description": "La panoramica Mensile è un luogo in cui fissare obiettivi per il prossimo mese, tenere traccia delle abitudini e pianificare le attività.",
+      "title": "Panoramica mensile",
+      "description": "La panoramica mensile è il posto in cui fissare gli obiettivi per il mese che arriva, tenere traccia delle abitudini e fare altri programmi.",
       "habits": {
         "title": "Abitudini"
       },
@@ -112,44 +193,86 @@
       }
     },
     "week": {
-      "title": "Panoramica Settimanale",
-      "description": "La Panoramica Settimanale consente di semplificare la pianificazione delle attività settimanali.",
+      "title": "Panoramica settimanale",
+      "description": "La panoramica settimanale offre una visione d'insieme della settimana, per pianificare più facilmente.",
       "todos": {
-        "title": "Liste di cose da fare"
+        "title": "Cose da fare"
       },
       "retrospective": {
-        "title": "Retrospettiva della Settimana",
-        "description": "La Retrospettiva della Settimana è un luogo in cui fare un passo indietro rispetto alla settimana appena trascorsa: com'è andata, cosa si è imparato, cosa si può fare per migliorare la prossima settimana?",
+        "title": "Retrospettiva settimanale",
+        "description": "La retrospettiva settimanale è il posto in cui riflettere sulla settimana appena trascorsa - com'è andata, cosa hai imparato, cosa potresti migliorare per la settimana prossima?",
         "itinerary": {
           "title": "Pianificazione"
         }
       }
     },
     "day": {
-      "title": "Programma Giornaliero"
+      "title": "Pianificazioni giornaliere"
     },
     "special-dates": {
       "title": "Ricorrenze",
-      "description": "Aggiungendo compleanni, celebrazioni, eventi, ecc. è possibile ricevere il promemoria di queste date nella panoramica settimanale e nelle pagine giornaliere.",
+      "description": "Aggiungi qui compleanni, celebrazioni, eventi ecc. per ricevere un promemoria nelle panoramiche settimanali e nelle pagine dei giorni man mano che si avvicinano.",
       "empty": "Nessuna data",
       "placeholder": "Per quale ricorrenza?",
+      "manual": {
+        "heading": "Aggiungi una data manualmente"
+      },
+      "holidays": {
+        "heading": "Importa le festività nazionali",
+        "description_one": "Scegli un paese per importarne le festività per l'anno ({{years}}) coperto dal tuo calendario.",
+        "description_many": "Scegli un paese per importarne le festività per gli anni ({{years}}) coperti dal tuo calendario.",
+        "description_other": "Scegli un paese per importarne le festività per gli anni ({{years}}) coperti dal tuo calendario.",
+        "country-placeholder": "Seleziona un paese...",
+        "countries-loading": "Caricamento dell'elenco dei paesi...",
+        "countries-error": "Non è stato possibile caricare l'elenco dei paesi. Controlla la connessione e riprova.",
+        "names": {
+          "english": "Nomi in inglese",
+          "local": "Nomi locali"
+        },
+        "deduplicate": {
+          "label": "Salta i duplicati",
+          "help": "Quando è attivo, una festività già presente nello stesso giorno (confrontata sul nome inglese) non viene aggiunta di nuovo. Disattivalo se vuoi la stessa festività in più lingue - comodo se stai imparando una lingua o hai la doppia cittadinanza."
+        },
+        "button": "Importa",
+        "loading": "Recupero delle festività, attendi...",
+        "error": "Non è stato possibile caricare le festività per questo paese. Riprova.",
+        "year-unavailable": "Spiacenti, le festività sono disponibili solo per gli anni {{years}}.",
+        "success_zero": "Nessuna nuova festività importata da {{country}}.",
+        "success_one": "Importata {{count}} festività da {{country}}.",
+        "success_many": "Importate {{count}} festività da {{country}}.",
+        "success_other": "Importate {{count}} festività da {{country}}.",
+        "skipped_one": "Saltato {{count}} duplicato.",
+        "skipped_many": "Saltati {{count}} duplicati.",
+        "skipped_other": "Saltati {{count}} duplicati.",
+        "attribution": "Dati sulle festività forniti da <tallyfy>Tallyfy</tallyfy>."
+      },
+      "upload": {
+        "label": "Importa da file .ics:",
+        "loading": "Lettura delle ricorrenze dal file ICalendar, attendi...",
+        "error": "Non è stato possibile caricare alcuni eventi ICalendar - prova a riesportare il file .ics dalla tua app di calendario.",
+        "success": "Ricorrenze caricate dal file ICalendar."
+      },
+      "type": {
+        "event": "Evento",
+        "holiday": "Festività"
+      },
       "button": {
-        "item": "Aggiungere una data",
-        "remove": "Rimuovere"
+        "item": "Aggiungi una data",
+        "remove": "Rimuovi"
       }
     },
-    "generation-description": "La generazione del PDF è fatta interamente nel browser locale: nessun dato è inviato a server esterni!"
+    "generation-description": "La generazione del PDF avviene interamente nel tuo browser - nessun dato viene inviato ai nostri server!"
   },
   "preview": {
-    "title": "Anteprima del Calendario",
-    "subtitle": "(solo il primo mese è mostrato nell'anteprima)",
+    "title": "Anteprima del calendario",
+    "subtitle": "(nell'anteprima viene generato solo il primo mese)",
     "viewer-title": "Anteprima del PDF",
     "generating": {
-      "full": "Generazione del calendario completo in corso - l'operazione potrebbe richiedere più di un minuto...",
-      "preview": "Generazione dell'anteprima in corso, attendi: l'operazione potrebbe richiedere circa un minuto."
+      "full": "Generazione del calendario completo - potrebbe richiedere più di un minuto...",
+      "preview": "Generazione dell'anteprima, attendi - potrebbe richiedere un minuto."
     },
     "empty": {
-      "title": "Utilizzare il form di configurazione per personalizzare il calendario.",
+      "title": "Usa il modulo di configurazione per creare il tuo calendario personalizzato.",
       "subtitle": "L'anteprima apparirà qui."
     }
   }

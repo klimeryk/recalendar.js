@@ -3,7 +3,7 @@
     "example1": "Træning",
     "example2": "Bog",
     "example3": "Hobby",
-    "example4": "Date Night"
+    "example4": "Kæresteaften"
   },
   "templates": {
     "advanced": {
@@ -11,23 +11,23 @@
         "monday": "Ekstra side til yderligere mandagsnoter"
       },
       "retrospective": {
-        "wins": "Ugens opture",
-        "discoveries": "Nye ting jeg har lært",
-        "fails": "Hvad gik godt?"
+        "wins": "Ugens sejre",
+        "discoveries": "Nye opdagelser",
+        "fails": "Hvad gik ikke godt?"
       }
     }
   },
   "month": {
-    "goal": "Primære mål",
+    "goal": "Primært mål",
     "notes": "Noter"
   },
   "todos": {
     "example1": "Planlæg en tur",
-    "example2": "En anden TODO"
+    "example2": "Et andet gøremål"
   },
   "special-dates": {
     "example1": "Speciel dato 1",
-    "example2": "Speciel dato af en anden årsag",
+    "example2": "Speciel dato af årsag #2",
     "example3": "En anden fejring",
     "example4": "En anden fejring hvor teksten er meget lang og fylder mere",
     "example5": "Lad os tilføje et punkt mere",

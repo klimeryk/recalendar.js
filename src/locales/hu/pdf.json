@@ -1,7 +1,7 @@
 {
   "calendar": {
     "header": {
-      "week-number": "#",
+      "week-number": "H#",
       "retrospective": "Vi"
     },
     "body": {
@@ -22,7 +22,7 @@
     },
     "last": {
       "title": "Generálva a következő weboldalon: <recalendar>https://recalendar.me/</recalendar>",
-      "subtitle": "Ez a PDF fájlt ismételten feltölthető az említett weboldalra, hogy betöltse a létrehozáskor használt konfigurációt, amivel létrehozható egy hasonló dokumentum a következő évre!"
+      "subtitle": "Ezt a PDF fájlt újra feltöltheted oda, hogy betöltsd ugyanazt a konfigurációt, amivel készült, és gyorsan generálj egy hasonló naptárt az új évre!"
     }
   }
 }

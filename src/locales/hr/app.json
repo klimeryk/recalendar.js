@@ -9,13 +9,8 @@
   },
   "language": {
     "label": "Jezik",
-    "en": "English",
-    "pl": "Polski",
-    "fr": "Français",
-    "es": "Español",
-    "nb": "Norsk",
-    "da": "Dansk",
-    "hr": "Hrvatski"
+    "full": "Potpuno prevedeni jezici",
+    "partial": "Samo dani u tjednu i mjeseci"
   },
   "configuration": {
     "selector": {
@@ -23,83 +18,153 @@
       "template": {
         "label": "Započni odabirom predloška:",
         "basic": {
-          "label": "Osnovni predložak",
-          "description": "Uobičajene postavke - dobra početna točka."
+          "label": "Osnovni",
+          "description": "Zadane postavke - dobra početna točka."
         },
         "advanced": {
-          "label": "Napredni predložak",
-          "description": "Proširuje Osnovi predložak dodavanjem rasporeda za svaki dan."
+          "label": "Napredni",
+          "description": "Proširuje Osnovni predložak dodavanjem zasebnih dnevnih rasporeda."
         },
         "blank": {
-          "label": "Prazno",
-          "description": "Temeljeno na Osnovnom predlošku, ali s praznim poljima za navike, listu s popisom obaveza, posebnim datumima itd."
+          "label": "Prazni",
+          "description": "Temelji se na Osnovnom predlošku, ali s praznim navikama, obvezama, posebnim datumima itd."
         },
         "minimalistic": {
-          "label": "Minimalistično",
+          "label": "Minimalistički",
           "description": "Onemogućuje sve osim tjednih pregleda."
         }
       },
       "upload": {
-        "label": "Ili učitaj prethodno stvoreni ReCalendar PDF datoteku s već postojećom konfiguracijom:",
-        "loading": "Učitavanje konfiguracije iz PDF datoteke, molim pričekajte...",
-        "error": "Nije moguće učitati konfiguraciju iz ove PDF datoteke - jeste li sigurni da je PDF dokument izrađen putem ove stranice?",
-        "success": "Konfiguracija učitana iz PDF datoteke - dobrodošli natrag!"
+        "label": "Ili učitaj prethodno izrađenu ReCalendar PDF datoteku i koristi njezinu konfiguraciju:",
+        "loading": "Učitavanje konfiguracije iz PDF datoteke, molimo pričekajte...",
+        "error": "Nije bilo moguće učitati ReCalendar konfiguraciju iz ove PDF datoteke - jeste li sigurni da je izrađena putem ove stranice?",
+        "success": "Konfiguracija učitana iz PDF datoteke - dobro došli natrag!",
+        "password": {
+          "required": "Ova PDF datoteka zaštićena je lozinkom. Unesite njezinu lozinku kako biste iz nje učitali konfiguraciju.",
+          "wrong": "Ta lozinka nije ispravna - pokušajte ponovno.",
+          "label": "Lozinka PDF datoteke",
+          "unlock": "Otključaj",
+          "reused": "Lozinka ove PDF datoteke unesena je umjesto vas, pa će sljedeći kalendar koji izradite biti zaštićen istom lozinkom."
+        }
       }
     },
     "general": {
-      "label": "Uobičajene mogućnosti",
+      "label": "Opće mogućnosti",
+      "device": "Uređaj",
+      "dpi": "DPI",
+      "resolution": "Razlučivost",
       "font": "Font",
       "year": "Godina",
       "left-handed": {
         "label": "Verzija za ljevake",
-        "description": "Optimizira izgled za osobe koje pišu lijevom rukom."
+        "description": "Optimizira izgled za pisanje lijevom rukom."
       },
       "sidebar": {
-        "label": "Ostavi trajni prostor za bočnu traku s alatima",
-        "description": "Ako želite da bočna traka s alatima bude uvijek otvorena, označite ovu opciju kako biste bili sigurni da sadržaj kalendara nikada neće biti prekriven njome."
+        "label": "Ostavi trajni prostor za alatnu traku",
+        "description": "Ako želite da alatna traka bude uvijek otvorena, označite ovu opciju kako sadržaj kalendara nikada ne bi bio prekriven njome.",
+        "position": {
+          "label": "Položaj alatne trake",
+          "left": "Lijevo",
+          "right": "Desno",
+          "top": "Gore",
+          "bottom": "Dolje"
+        },
+        "offset": {
+          "label": "Veličina alatne trake",
+          "description": "Koliko prostora rezervirati za alatnu traku, u točkama. Unaprijed je ispunjeno vrijednošću koja odgovara odabranom uređaju - prilagodite je ako alatna traka i dalje prekriva sadržaj kalendara."
+        }
       },
       "starting-month": {
         "label": "Početni mjesec",
-        "description": "Prvi mjesec koji će se prikazati u izrađenom kalendaru. Odaberi nešto poput Listopada, ako želiš da kalendar pokrije npr. semestar, umjesto cijele godine."
+        "description": "Prvi mjesec u izrađenom kalendaru. Odaberite primjerice listopad ako želite da kalendar pokrije semestar, a ne kalendarsku godinu."
       },
       "month-count": {
         "label": "Broj mjeseci",
-        "description": "Broj mjeseci za bi ovaj kalendar trebao biti izrađen."
+        "description": "Za koliko mjeseci treba izraditi kalendar."
       },
-      "first-day-of-week": "Početni dan u tjednu",
+      "first-day-of-week": "Prvi dan u tjednu",
       "weekend": "Vikend",
+      "lines": {
+        "title": "Crte u rasporedima",
+        "description": "Crtovlje koje se koristi u rasporedima - na stranicama dana, u tjednim retrospektivama, mjesečnim pregledima i godišnjim bilješkama."
+      },
       "line-style": {
-        "label": "Stil linija u rasporedima",
-        "description": "Stil koji se koristi za crtanje linija u dnevnim rasporedima."
+        "label": "Stil",
+        "description": "Baš kao crtovlje u papirnatoj bilježnici.",
+        "lined": "Crte",
+        "grid": "Kockice",
+        "dot_grid": "Točkice",
+        "blank": "Bez crta"
       },
       "line-height": {
-        "label": "Visina linija u rasporedima",
-        "description": "Visina svake linije u rasporedima. Tekst i ikone se proporcionalno prilagođavaju."
+        "label": "Visina retka",
+        "description": "Visina svakog retka u rasporedima. Tekst i ikone skaliraju se zajedno s njom, a ona određuje i okomiti razmak kockica i točkica."
+      },
+      "line-spacing": {
+        "label": "Razmak mreže",
+        "description": "Vodoravna udaljenost između crta ili točkica mreže, u istim jedinicama kao i visina retka. Ostavite na 0 kako bi odgovarala visini retka i dobili kvadratna polja. Mreža uvijek počinje jedan razmak od ruba, kao što papirnate bilježnice ostavljaju marginu."
+      },
+      "line-opacity": {
+        "label": "Neprozirnost",
+        "description": "Koliko su crte i točkice vidljive. 0 % ih potpuno skriva, 100 % ih čini posve crnima."
+      },
+      "password": {
+        "title": "Zaštita lozinkom",
+        "description": "Za otvaranje izrađenog PDF-a traži lozinku, pa kalendar ostaje privatan i ako je uređaj na kojem se nalazi dijeljen ili izgubljen.",
+        "label": "Lozinka",
+        "show": "Prikaži",
+        "hide": "Sakrij",
+        "warning": "Zapišite ovu lozinku na sigurno mjesto. ReCalendar radi u cijelosti u vašem pregledniku i ne pohranjuje nikakve korisničke podatke, pa je nitko - uključujući nas - ne može vratiti ni poništiti, a zaštićeni kalendar bez nje nije moguće otvoriti. Lozinka se namjerno ne sprema u PDF, pa ćete je pri sljedećoj izradi kalendara morati ponovno upisati.",
+        "preview": {
+          "label": "Zaštiti i pregled",
+          "description": "Ostavite uključeno kako biste provjerili da lozinka radi prije nego što kalendar prenesete na uređaj. Isključite ako još podešavate postavke i ne želite upisivati lozinku u PDF preglednik pri svakom pregledu."
+        }
       }
     },
     "button": {
       "refresh": "Osvježi pregled",
       "download": "Izradi cijeli kalendar i preuzmi",
-      "generating": "Izrada kalendara, molim pričekajte..."
+      "generating": "Izrada u tijeku, molimo pričekajte..."
     },
     "itinerary": {
-      "empty": "Prazan dnevni raspored",
+      "empty": "Prazan raspored",
+      "dateTemplate": {
+        "label": "Pomoć za oblikovanje datuma",
+        "title": "Predlošci datuma",
+        "description": "Umetnite oblikovane datume pomoću <0/> ili <1/>. Pogledajte <2>dostupne oblike</2>."
+      },
       "placeholder": {
-        "lines": "Broj linija",
-        "page": "Novi prekid stranice"
+        "lines": "Broj redaka",
+        "page": "Prijelom na novu stranicu",
+        "item": "Stavka rasporeda"
+      },
+      "prefix": {
+        "selected": "Prefiks retka: {{name}}",
+        "none": "Bez prefiksa",
+        "icon": {
+          "square": "Potvrdni okvir",
+          "square-check-big": "Označeni okvir",
+          "circle": "Kružić",
+          "circle-dot": "Točka",
+          "arrow-right": "Strelica",
+          "chevron-right": "Šiljak",
+          "star": "Zvjezdica",
+          "heart": "Srce"
+        }
       },
       "button": {
-        "copy": "Kopirajte ovaj dnevni raspored na sve ostale dane",
+        "copy": "Kopiraj ovaj raspored na sve ostale dane",
         "remove": "Ukloni",
-        "item": "Dodajte novu stavku dnevnom rasporedu",
+        "item": "Dodaj stavku rasporeda",
         "page": "Započni novu stranicu",
         "lines": "Dodaj prazne retke"
       }
     },
     "items-list": {
       "button": {
-        "item": "Dodaj novu stavku",
-        "remove": "Ukloni"
+        "item": "Dodaj stavku",
+        "remove": "Ukloni",
+        "reorder": "Promijeni redoslijed"
       },
       "empty": "Prazan popis",
       "placeholder": "Stavka"
@@ -108,56 +173,107 @@
       "enabled": "Omogućeno",
       "disabled": "Onemogućeno"
     },
+    "year": {
+      "notes": {
+        "title": "Godišnje bilješke",
+        "description": "Godišnje bilješke mjesto su za ciljeve, planove i snove za nadolazeću godinu. Jedna stranica dodaje se na početku kalendara, a druga prije svake nove godine koju kalendar obuhvaća.",
+        "itinerary": {
+          "title": "Raspored"
+        }
+      }
+    },
     "month": {
       "title": "Mjesečni pregled",
-      "description": "Mjesečni pregled je mjesto na kojem se mogu definirati ciljevi za nadolazeći mjesec, postaviti navike i stvoriti ostali planovi.",
+      "description": "Mjesečni pregled mjesto je za postavljanje ciljeva za nadolazeći mjesec, praćenje navika i druge planove.",
       "habits": {
         "title": "Navike"
       },
       "itinerary": {
-        "title": "Dnevni raspored"
+        "title": "Raspored"
       }
     },
     "week": {
       "title": "Tjedni pregled",
-      "description": "Tjedni pregled daje širi pregled tjedna za lakše planiranje.",
+      "description": "Tjedni pregled daje širi pogled na tjedan kako bi planiranje bilo lakše.",
       "todos": {
-        "title": "Popis obaveza"
+        "title": "Obveze"
       },
       "retrospective": {
         "title": "Tjedna retrospektiva",
-        "description": "Tjedna retrospektiva je mjesto za razmišljanje o proteklom tjednu - kako je bilo, što ste naučili, što biste mogli poboljšati za sljedeći tjedan?",
+        "description": "Tjedna retrospektiva mjesto je za osvrt na protekli tjedan - kako je prošao, što ste naučili, što biste mogli poboljšati sljedeći tjedan?",
         "itinerary": {
-          "title": "Dnevni raspored"
+          "title": "Raspored"
         }
       }
     },
     "day": {
-      "title": "Zadaci dnevnog rasporeda"
+      "title": "Dnevni rasporedi"
     },
     "special-dates": {
       "title": "Posebni datumi",
-      "description": "Ovdje dodajte Vaše posebne datume kao što su rođendani, obljetnice, proslave i druga događanja, kako bi dobili pravovremeni podsjetnik u tjednom pregledu i dnevnom rasporedu.",
+      "description": "Ovdje dodajte rođendane, proslave, događanja i slično kako biste na njih dobili podsjetnik u tjednim pregledima i na stranicama dana kako se približavaju.",
       "empty": "Bez datuma",
       "placeholder": "Koja je prigoda?",
+      "manual": {
+        "heading": "Ručno dodaj datum"
+      },
+      "holidays": {
+        "heading": "Uvezi državne blagdane",
+        "description_one": "Odaberite državu kako biste uvezli njezine državne blagdane za godinu ({{years}}) koju vaš kalendar pokriva.",
+        "description_few": "Odaberite državu kako biste uvezli njezine državne blagdane za godine ({{years}}) koje vaš kalendar pokriva.",
+        "description_other": "Odaberite državu kako biste uvezli njezine državne blagdane za godine ({{years}}) koje vaš kalendar pokriva.",
+        "country-placeholder": "Odaberite državu...",
+        "countries-loading": "Učitavanje popisa država...",
+        "countries-error": "Nije bilo moguće učitati popis država. Provjerite vezu i pokušajte ponovno.",
+        "names": {
+          "english": "Engleski nazivi",
+          "local": "Lokalni nazivi"
+        },
+        "deduplicate": {
+          "label": "Preskoči duplikate",
+          "help": "Kada je uključeno, blagdan koji na isti dan već postoji (uspoređuje se engleski naziv) neće se ponovno dodati. Isključite ako želite isti blagdan na više jezika - korisno ako učite jezik ili imate dvojno državljanstvo."
+        },
+        "button": "Uvezi",
+        "loading": "Dohvaćanje blagdana, molimo pričekajte...",
+        "error": "Nije bilo moguće učitati blagdane za ovu državu. Pokušajte ponovno.",
+        "year-unavailable": "Nažalost, blagdani su dostupni samo za godine {{years}}.",
+        "success_zero": "Nijedan novi blagdan nije uvezen iz države {{country}}.",
+        "success_one": "Uvezen {{count}} blagdan iz države {{country}}.",
+        "success_few": "Uvezena {{count}} blagdana iz države {{country}}.",
+        "success_other": "Uvezeno {{count}} blagdana iz države {{country}}.",
+        "skipped_one": "Preskočen {{count}} duplikat.",
+        "skipped_few": "Preskočena {{count}} duplikata.",
+        "skipped_other": "Preskočeno {{count}} duplikata.",
+        "attribution": "Podaci o blagdanima dolaze od <tallyfy>Tallyfy</tallyfy>."
+      },
+      "upload": {
+        "label": "Uvezi iz .ics datoteke:",
+        "loading": "Učitavanje posebnih datuma iz ICalendar datoteke, molimo pričekajte...",
+        "error": "Nije bilo moguće učitati neke ICalendar događaje - pokušajte ponovno izvesti .ics datoteku iz svoje kalendarske aplikacije.",
+        "success": "Posebni datumi učitani iz ICalendar datoteke."
+      },
+      "type": {
+        "event": "Događaj",
+        "holiday": "Blagdan"
+      },
       "button": {
-        "item": "Dodaj datume",
+        "item": "Dodaj datum",
         "remove": "Ukloni"
       }
     },
-    "generation-description": "Stvaranje PDF dokumenta odvija se isključivo u Vašem pregledniku - nikakvi podaci ne šalju se prema našim serverima!"
+    "generation-description": "Izrada PDF dokumenta odvija se isključivo u vašem pregledniku - nikakvi se podaci ne šalju na naše poslužitelje!"
   },
   "preview": {
     "title": "Pregled kalendara",
-    "subtitle": "(prikazuje se samo prvi mjesec kalendara)",
-    "viewer-title": "Pregled PDF dokumenta",
+    "subtitle": "(za pregled se prikazuje samo prvi mjesec)",
+    "viewer-title": "Pregled PDF-a",
     "generating": {
-      "full": "Stvaranje cijelog kalendara - ovo bi moglo potrajati duže od jedne minute...",
-      "preview": "Stvaranje pregleda kalendara, molim pričekajte - može potrajati nekoliko minuta."
+      "full": "Izrada cijelog kalendara - može potrajati dulje od jedne minute...",
+      "preview": "Izrada pregleda, molimo pričekajte - može potrajati minutu."
     },
     "empty": {
-      "title": "Koristite konfiguraciju kako bi stvorili vlastiti personalizirani kalendar.",
-      "subtitle": "Pregled kalendara će se prikazati ovdje."
+      "title": "Koristite obrazac za konfiguraciju kako biste izradili svoj personalizirani kalendar.",
+      "subtitle": "Pregled će se prikazati ovdje."
     }
   }
 }

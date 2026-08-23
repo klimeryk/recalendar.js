@@ -21,8 +21,8 @@
       "title": "Týdenní retrospektiva"
     },
     "last": {
-      "title": "Generováno <recalendar>https://recalendar.me/</recalendar>",
-      "subtitle": "Tento soubor lze použít pro rychlé nastavení dalšího kalendáře."
+      "title": "Vygenerováno pomocí <recalendar>https://recalendar.me/</recalendar>",
+      "subtitle": "Tento soubor PDF tam můžete znovu nahrát a načíst stejné nastavení, se kterým byl vytvořen, a rychle si tak vygenerovat podobný kalendář na nový rok!"
     }
   }
 }

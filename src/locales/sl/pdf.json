@@ -1,7 +1,7 @@
 {
   "calendar": {
     "header": {
-      "week-number": "#",
+      "week-number": "T#",
       "retrospective": "TP"
     },
     "body": {
@@ -21,8 +21,8 @@
       "title": "Tedenski povzetek"
     },
     "last": {
-      "title": "Pripravljeno z <recalendar>https://recalendar.me/</recalendar>",
-      "subtitle": "Ta PDF dokument lahko z enakimi nastavitvami ponovno uporabite!"
+      "title": "Ustvarjeno z <recalendar>https://recalendar.me/</recalendar>",
+      "subtitle": "Ta dokument PDF lahko tam znova naložite in prevzamete iste nastavitve, s katerimi je bil ustvarjen, ter tako hitro pripravite podoben koledar za novo leto!"
     }
   }
 }

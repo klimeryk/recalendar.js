@@ -1,59 +1,82 @@
 {
   "loading": "Carregando...",
-  "download-ready": "Download pronto!",
+  "download-ready": "Baixe agora!",
   "navigation": {
     "home": "Início",
     "configuration": "Crie seu calendário",
-    "features": "Features",
+    "features": "Recursos",
     "faq": "FAQ"
   },
   "language": {
-    "label": "Idioma"
+    "label": "Idioma",
+    "full": "Idiomas totalmente traduzidos",
+    "partial": "Apenas dias da semana e meses"
   },
   "configuration": {
     "selector": {
       "label": "Início",
       "template": {
-        "label": "Comece selecionando um template:",
+        "label": "Comece selecionando um modelo:",
         "basic": {
           "label": "Básico",
           "description": "Configurações padrão - bom ponto de partida."
         },
         "advanced": {
           "label": "Avançado",
-          "description": "Expande o template Básico adicionando itinerários individuais aos dias."
+          "description": "Expande o modelo Básico adicionando itinerários individuais aos dias."
         },
         "blank": {
           "label": "Vazio",
-          "description": "Baseado no template Básico, mas com hábitos, TODOs, datas especiais, etc vazios"
+          "description": "Baseado no modelo Básico, mas com hábitos, tarefas, datas especiais etc. vazios."
         },
         "minimalistic": {
           "label": "Minimalista",
-          "description": "Desabilita tudo menos visões gerais semanais."
+          "description": "Desabilita tudo, menos as visões gerais da semana."
         }
       },
       "upload": {
-        "label": "Ou faça o upload de um PDF do ReCalendar gerado anteriormente para usar sua configuração:",
-        "loading": "Lendo configuração de arquivo PDF, por favor aguarde...",
-        "error": "Não foi possível carregar uma configuração de ReCalendar desse arquivo de PDF - você tem certeza que ele foi gerado usando esse website?",
-        "success": "Configuração carregada do PDF - bem vindo(a) de volta!"
+        "label": "Ou envie um PDF do ReCalendar gerado anteriormente para usar a configuração dele:",
+        "loading": "Lendo a configuração do arquivo PDF, por favor aguarde...",
+        "error": "Não foi possível carregar uma configuração do ReCalendar desse arquivo PDF - você tem certeza de que ele foi gerado neste site?",
+        "success": "Configuração carregada do PDF - bem-vindo(a) de volta!",
+        "password": {
+          "required": "Este PDF está protegido por senha. Digite a senha dele para ler a configuração.",
+          "wrong": "Essa senha não funcionou - tente novamente.",
+          "label": "Senha do PDF",
+          "unlock": "Desbloquear",
+          "reused": "A senha do PDF foi preenchida para você, então o próximo calendário que você gerar será protegido com a mesma senha."
+        }
       }
     },
     "general": {
       "label": "Opções gerais",
+      "device": "Dispositivo",
+      "dpi": "DPI",
+      "resolution": "Resolução",
       "font": "Fonte",
       "year": "Ano",
       "left-handed": {
-        "label": "Versão de canhoto",
-        "description": "Otimiza o layout para canhotos."
+        "label": "Versão para canhotos",
+        "description": "Otimiza o layout para o uso com a mão esquerda."
       },
       "sidebar": {
-        "label": "Deixar espaço permanente para a barra lateral",
-        "description": "Se você prefere manter a barra lateral sempre aberta, seleciona essa opção para ter certeza que o conteúdo do calendário nunca será coberto por ela."
+        "label": "Deixar espaço permanente para a barra de ferramentas",
+        "description": "Se você prefere manter a barra de ferramentas sempre aberta, marque esta opção para garantir que o conteúdo do calendário nunca seja coberto por ela.",
+        "position": {
+          "label": "Posição da barra de ferramentas",
+          "left": "Esquerda",
+          "right": "Direita",
+          "top": "Superior",
+          "bottom": "Inferior"
+        },
+        "offset": {
+          "label": "Tamanho da barra de ferramentas",
+          "description": "Quanto espaço reservar para a barra de ferramentas, em pontos. Já vem preenchido com um valor que funciona para o dispositivo selecionado - ajuste-o se a barra ainda cobrir o conteúdo do calendário."
+        }
       },
       "starting-month": {
         "label": "Mês inicial",
-        "description": "O primeiro mês gerado no calendário. Escolha algo como Outubro se deseja que o calendário cubra um semestre em vez de um calendário de um ano."
+        "description": "O primeiro mês do calendário gerado. Escolha algo como outubro se você quer que o calendário cubra um semestre em vez de um ano civil."
       },
       "month-count": {
         "label": "Número de meses",
@@ -61,38 +84,87 @@
       },
       "first-day-of-week": "Primeiro dia da semana",
       "weekend": "Fim de semana",
+      "lines": {
+        "title": "Linhas dos itinerários",
+        "description": "O pautado usado nos itinerários - nas páginas dos dias, nas retrospectivas da semana, nas visões gerais do mês e nas notas do ano."
+      },
       "line-style": {
-        "label": "Estilo de linha do itinerário",
-        "description": "Estilo usado ao desenhar linhas nos itinerários."
+        "label": "Estilo",
+        "description": "Igual ao pautado de um caderno de papel.",
+        "lined": "Pautado",
+        "grid": "Quadriculado",
+        "dot_grid": "Pontilhado",
+        "blank": "Sem pauta"
       },
       "line-height": {
-        "label": "Altura de linha do itinerário",
-        "description": "Altura de cada linha nos itinerários. O texto e os ícones são dimensionados proporcionalmente."
+        "label": "Altura da linha",
+        "description": "Altura de cada linha nos itinerários. O texto e os ícones são dimensionados junto com ela, que também define o espaçamento vertical da grade e dos pontos."
+      },
+      "line-spacing": {
+        "label": "Espaçamento da grade",
+        "description": "Distância horizontal entre as linhas ou os pontos da grade, nas mesmas unidades da altura da linha. Deixe em 0 para acompanhar a altura da linha e obter células quadradas. A grade sempre começa a um espaçamento da borda, do mesmo jeito que cadernos de papel mantêm uma margem."
+      },
+      "line-opacity": {
+        "label": "Opacidade",
+        "description": "O quanto as linhas e os pontos ficam visíveis. 0 % os esconde por completo, 100 % os deixa totalmente pretos."
+      },
+      "password": {
+        "title": "Proteção por senha",
+        "description": "Exige uma senha para abrir o PDF gerado, de modo que o calendário continue privado caso o dispositivo em que ele está seja compartilhado ou perdido.",
+        "label": "Senha",
+        "show": "Mostrar",
+        "hide": "Ocultar",
+        "warning": "Anote esta senha em um lugar seguro. O ReCalendar roda inteiramente no seu navegador e não armazena dados de usuário, então ninguém - nem nós - consegue recuperá-la ou redefini-la, e um calendário protegido não pode ser aberto sem ela. A senha propositalmente não é salva dentro do PDF, então você vai precisar digitá-la de novo na próxima vez que gerar um calendário.",
+        "preview": {
+          "label": "Proteger a prévia também",
+          "description": "Deixe ligado para conferir se a senha funciona antes de colocar o calendário no seu dispositivo. Desligue se você ainda está ajustando as coisas e não quer digitar a senha no leitor de PDF a cada prévia."
+        }
       }
     },
     "button": {
-      "refresh": "Recarrega prévia",
-      "download": "Gera o calendário completo e faz o download",
+      "refresh": "Atualizar prévia",
+      "download": "Gerar o calendário completo e baixar",
       "generating": "Gerando, por favor aguarde..."
     },
     "itinerary": {
       "empty": "Itinerário vazio",
+      "dateTemplate": {
+        "label": "Ajuda sobre formatação de datas",
+        "title": "Modelos de data",
+        "description": "Insira datas formatadas usando <0/> ou <1/>. Veja os <2>formatos disponíveis</2>."
+      },
       "placeholder": {
         "lines": "Número de linhas",
-        "page": "Nova quebra de página"
+        "page": "Nova quebra de página",
+        "item": "Item do itinerário"
+      },
+      "prefix": {
+        "selected": "Prefixo de linha: {{name}}",
+        "none": "Sem prefixo",
+        "icon": {
+          "square": "Caixa de seleção",
+          "square-check-big": "Caixa marcada",
+          "circle": "Círculo",
+          "circle-dot": "Ponto",
+          "arrow-right": "Seta",
+          "chevron-right": "Ângulo",
+          "star": "Estrela",
+          "heart": "Coração"
+        }
       },
       "button": {
-        "copy": "Copia esse itinerário para todos os outros dias",
-        "remove": "Remove",
-        "item": "Adiciona item de itinerário",
-        "page": "Inicia uma nova página",
-        "lines": "Adiciona linhas vazias"
+        "copy": "Copiar este itinerário para todos os outros dias",
+        "remove": "Remover",
+        "item": "Adicionar item de itinerário",
+        "page": "Iniciar uma nova página",
+        "lines": "Adicionar linhas vazias"
       }
     },
     "items-list": {
       "button": {
-        "item": "Adiciona item",
-        "remove": "Remove"
+        "item": "Adicionar item",
+        "remove": "Remover",
+        "reorder": "Reordenar"
       },
       "empty": "Lista vazia",
       "placeholder": "Item"
@@ -100,6 +172,15 @@
     "toggle-form": {
       "enabled": "Habilitado",
       "disabled": "Desabilitado"
+    },
+    "year": {
+      "notes": {
+        "title": "Notas do ano",
+        "description": "As notas do ano são o espaço para definir metas, planos e sonhos para o ano que vem. Uma página é adicionada no começo do calendário e outra antes de cada novo ano que ele abrange.",
+        "itinerary": {
+          "title": "Itinerário"
+        }
+      }
     },
     "month": {
       "title": "Visão geral do mês",
@@ -115,27 +196,69 @@
       "title": "Visão geral da semana",
       "description": "A visão geral da semana dá uma visão mais ampla da semana para facilitar o planejamento.",
       "todos": {
-        "title": "TODOs"
+        "title": "Tarefas"
       },
       "retrospective": {
         "title": "Retrospectiva da semana",
-        "description": "A retrospectiva da semana é um espaço para refletir sobre a semana passada - como ela foi, o que você aprendeu e o que pode ser melhorado para a próxima?",
+        "description": "A retrospectiva da semana é um espaço para refletir sobre a semana passada - como ela foi, o que você aprendeu, o que dá para melhorar na próxima semana?",
         "itinerary": {
           "title": "Itinerário"
         }
       }
     },
     "day": {
-      "title": "Itinerário do dia"
+      "title": "Itinerários do dia"
     },
     "special-dates": {
       "title": "Datas especiais",
-      "description": "Adicione seus aniversários, celebrações, eventos e etc para receber lembretes deles nas visões gerais semanais e nas páginas diárias a medida que suas datas se aproximam.",
+      "description": "Adicione aqui seus aniversários, celebrações, eventos etc. para receber lembretes deles nas visões gerais da semana e nas páginas dos dias à medida que se aproximam.",
       "empty": "Sem datas",
       "placeholder": "Qual a ocasião?",
+      "manual": {
+        "heading": "Adicionar uma data manualmente"
+      },
+      "holidays": {
+        "heading": "Importar feriados nacionais",
+        "description_one": "Escolha um país para importar os feriados dele do ano ({{years}}) que seu calendário abrange.",
+        "description_many": "Escolha um país para importar os feriados dele dos anos ({{years}}) que seu calendário abrange.",
+        "description_other": "Escolha um país para importar os feriados dele dos anos ({{years}}) que seu calendário abrange.",
+        "country-placeholder": "Selecione um país...",
+        "countries-loading": "Carregando a lista de países...",
+        "countries-error": "Não foi possível carregar a lista de países. Verifique sua conexão e tente novamente.",
+        "names": {
+          "english": "Nomes em inglês",
+          "local": "Nomes locais"
+        },
+        "deduplicate": {
+          "label": "Pular duplicatas",
+          "help": "Quando ligado, um feriado que já exista no mesmo dia (comparado pelo nome em inglês) não será adicionado de novo. Desligue se você quiser o mesmo feriado em mais de um idioma - útil se você está aprendendo um idioma ou tem dupla cidadania."
+        },
+        "button": "Importar",
+        "loading": "Buscando os feriados, por favor aguarde...",
+        "error": "Não foi possível carregar os feriados deste país. Tente novamente.",
+        "year-unavailable": "Desculpe, os feriados só estão disponíveis para os anos {{years}}.",
+        "success_zero": "Nenhum feriado novo importado de {{country}}.",
+        "success_one": "{{count}} feriado importado de {{country}}.",
+        "success_many": "{{count}} feriados importados de {{country}}.",
+        "success_other": "{{count}} feriados importados de {{country}}.",
+        "skipped_one": "{{count}} duplicata ignorada.",
+        "skipped_many": "{{count}} duplicatas ignoradas.",
+        "skipped_other": "{{count}} duplicatas ignoradas.",
+        "attribution": "Dados de feriados fornecidos por <tallyfy>Tallyfy</tallyfy>."
+      },
+      "upload": {
+        "label": "Importar de um arquivo .ics:",
+        "loading": "Lendo as datas especiais do arquivo ICalendar, por favor aguarde...",
+        "error": "Não foi possível carregar alguns eventos do ICalendar - tente exportar o arquivo .ics novamente do seu aplicativo de calendário.",
+        "success": "Datas especiais carregadas do arquivo ICalendar."
+      },
+      "type": {
+        "event": "Evento",
+        "holiday": "Feriado"
+      },
       "button": {
-        "item": "Adiciona data",
-        "remove": "Remove"
+        "item": "Adicionar data",
+        "remove": "Remover"
       }
     },
     "generation-description": "A geração do PDF é feita inteiramente no seu navegador - nenhum dado é enviado aos nossos servidores!"
@@ -145,8 +268,8 @@
     "subtitle": "(apenas o primeiro mês é renderizado para a prévia)",
     "viewer-title": "Prévia do PDF",
     "generating": {
-      "full": "Gerando calendário completo - isso pode levar mais que um minut...",
-      "preview": "Gerando prévia, por favor aguarde - isso pode levar um minuto."
+      "full": "Gerando o calendário completo - isso pode levar mais de um minuto...",
+      "preview": "Gerando a prévia, por favor aguarde - isso pode levar um minuto."
     },
     "empty": {
       "title": "Use o formulário de configuração para criar seu calendário personalizado.",

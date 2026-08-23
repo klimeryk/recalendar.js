@@ -2,10 +2,10 @@
   "calendar": {
     "header": {
       "week-number": "週#",
-      "retrospective": "Re"
+      "retrospective": "振"
     },
     "body": {
-      "retrospective": "R"
+      "retrospective": "振"
     }
   },
   "page": {
@@ -15,14 +15,14 @@
       }
     },
     "week": {
-      "title": "概"
+      "title": "週"
     },
     "retrospective": {
-      "title": "今週の概要"
+      "title": "週の振り返り"
     },
     "last": {
-      "title": "<recalendar>https://recalendar.me/</recalendar>でジェネレートしました！",
-      "subtitle": "ReCalendarで、このPDFを載せたら、このカレンダーのコンフィグを読み込んで改めて新年の新しいカレンダーが作れます！"
+      "title": "<recalendar>https://recalendar.me/</recalendar> で生成しました",
+      "subtitle": "この PDF をもう一度そこにアップロードすると、作成時と同じ設定を読み込んで、新しい年のカレンダーをすばやく生成できます！"
     }
   }
 }

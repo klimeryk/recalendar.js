@@ -12,25 +12,25 @@
       },
       "retrospective": {
         "wins": "Risultati della settimana",
-        "discoveries": "Nuove Scoperte",
+        "discoveries": "Nuove scoperte",
         "fails": "Cosa non è andato bene?"
       }
     }
   },
   "month": {
-    "goal": "Obiettivi Principali",
+    "goal": "Obiettivo principale",
     "notes": "Note"
   },
   "todos": {
-    "example1": "Pianificare un viaggio",
-    "example2": "Altre cose da fare"
+    "example1": "Organizzare un viaggio",
+    "example2": "Qualche altra cosa da fare"
   },
   "special-dates": {
-    "example1": "Ricorrenza #1",
-    "example2": "Ricorrenza #2",
-    "example3": "Altra celebrazione",
-    "example4": "Altra celebrazione che è molto lunga",
-    "example5": "Varie",
-    "example6": "Esauriti i motivi per una celebrazione"
+    "example1": "Ricorrenza 1",
+    "example2": "Ricorrenza per il motivo #2",
+    "example3": "Qualche altra celebrazione",
+    "example4": "Qualche altra celebrazione che è molto lunga",
+    "example5": "Aggiungiamone un'altra",
+    "example6": "Celebrazione a corto di motivi"
   }
 }

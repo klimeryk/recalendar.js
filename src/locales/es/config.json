@@ -4,5 +4,33 @@
     "example2": "Libro",
     "example3": "Afición",
     "example4": "Noche de cita"
+  },
+  "templates": {
+    "advanced": {
+      "day": {
+        "monday": "Página extra para más notas del lunes"
+      },
+      "retrospective": {
+        "wins": "Logros de la semana",
+        "discoveries": "Nuevos descubrimientos",
+        "fails": "¿Qué no salió bien?"
+      }
+    }
+  },
+  "month": {
+    "goal": "Objetivo principal",
+    "notes": "Notas"
+  },
+  "todos": {
+    "example1": "Planear un viaje",
+    "example2": "Otra tarea pendiente"
+  },
+  "special-dates": {
+    "example1": "Fecha importante 1",
+    "example2": "Fecha importante por el motivo #2",
+    "example3": "Alguna otra celebración",
+    "example4": "Alguna otra celebración cuyo texto es muy largo",
+    "example5": "Añadamos una más",
+    "example6": "Celebración por falta de motivos"
   }
 }

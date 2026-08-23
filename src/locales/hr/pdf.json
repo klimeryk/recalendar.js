@@ -1,7 +1,7 @@
 {
   "calendar": {
     "header": {
-      "week-number": "W#",
+      "week-number": "T#",
       "retrospective": "Re"
     },
     "body": {
@@ -22,7 +22,7 @@
     },
     "last": {
       "title": "Izrađeno korištenjem <recalendar>https://recalendar.me/</recalendar>",
-      "subtitle": "Nožete ponovno učitati ovaj PDF dokument na navedenoj WEB stranici za učitavanje postojeće konfiguracije u svrhu bržeg i jednostavnijeg stvaranje novog kalendara za sljedeću godinu!"
+      "subtitle": "Ovaj PDF možete ondje ponovno učitati kako biste preuzeli istu konfiguraciju s kojom je izrađen i brzo napravili sličan kalendar za novu godinu!"
     }
   }
 }

@@ -1,36 +1,36 @@
 {
   "habits": {
-    "example1": "体育",
+    "example1": "運動",
     "example2": "読書",
     "example3": "趣味",
-    "example4": "遊び"
+    "example4": "デートの夜"
   },
   "templates": {
     "advanced": {
       "day": {
-        "monday": "月曜日でのメーモのための余分の空間"
+        "monday": "月曜日のメモ用の追加ページ"
       },
       "retrospective": {
-        "wins": "今週の勝ち",
+        "wins": "今週うまくいったこと",
         "discoveries": "新しい発見",
-        "fails": "今週の失策と失敗"
+        "fails": "うまくいかなかったことは？"
       }
     }
   },
   "month": {
-    "goal": "主なゴール",
-    "notes": "メーモ"
+    "goal": "主な目標",
+    "notes": "メモ"
   },
   "todos": {
-    "example1": "旅程を考える",
-    "example2": "その他のTODO"
+    "example1": "旅行の計画を立てる",
+    "example2": "その他の TODO"
   },
   "special-dates": {
-    "example1": "特別な日付第一",
-    "example2": "第二理由の特別な日付",
-    "example3": "その他の祝い",
-    "example4": "その他の祝い（長い）",
-    "example5": "もう一つ付く",
-    "example6": "理由ない祝い"
+    "example1": "特別な日 1",
+    "example2": "理由 #2 の特別な日",
+    "example3": "その他のお祝い",
+    "example4": "とても長い文章になっている、その他のお祝い",
+    "example5": "もう一つ追加しましょう",
+    "example6": "理由が尽きたのでとりあえずお祝い"
   }
 }

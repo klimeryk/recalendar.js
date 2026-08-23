@@ -11,18 +11,18 @@
   "page": {
     "month": {
       "habits": {
-        "title": "Routinen"
+        "title": "Gewohnheiten"
       }
     },
     "week": {
       "title": "Woche"
     },
     "retrospective": {
-      "title": "Rückschau auf die Woche"
+      "title": "Rückschau auf Woche"
     },
     "last": {
       "title": "Erzeugt mit <recalendar>https://recalendar.me/</recalendar>",
-      "subtitle": "Sie können dieses PDF dort wieder hochladen, um mit denselben Konfiguratoinseinstellungen einen neuen Kalender für das nächste Jahr zu generieren!"
+      "subtitle": "Du kannst dieses PDF dort wieder hochladen, um dieselbe Konfiguration zu laden, mit der es erstellt wurde, und schnell einen ähnlichen Kalender für das neue Jahr zu erzeugen!"
     }
   }
 }

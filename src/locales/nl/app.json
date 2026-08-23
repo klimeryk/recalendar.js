@@ -8,7 +8,9 @@
     "faq": "Vraag en antwoord"
   },
   "language": {
-    "label": "Taal"
+    "label": "Taal",
+    "full": "Volledig vertaalde talen",
+    "partial": "Alleen dagen van de week en maanden"
   },
   "configuration": {
     "selector": {
@@ -17,30 +19,40 @@
         "label": "Kies eerst een sjabloon om te beginnen:",
         "basic": {
           "label": "Eenvoudig",
-          "description": "Standaardsjabloon — een goed beginpunt."
+          "description": "Standaardinstellingen - een goed beginpunt."
         },
         "advanced": {
           "label": "Uitgebreid",
-          "description": "Breidt het eenvoudige sjabloon uit met dagplanningen."
+          "description": "Breidt het sjabloon Eenvoudig uit met afzonderlijke dagplanningen."
         },
         "blank": {
-          "label": "Eenvoudig (leeg)",
-          "description": "Gebaseerd op het eenvoudige sjabloon, maar met lege gewoontes, taken en speciala dagen."
+          "label": "Leeg",
+          "description": "Gebaseerd op het sjabloon Eenvoudig, maar met lege gewoontes, taken, speciale dagen enzovoort."
         },
         "minimalistic": {
           "label": "Minimalistisch",
-          "description": "Schakelt allles uit, op weekoverzichten na"
+          "description": "Schakelt alles uit, op de weekoverzichten na."
         }
       },
       "upload": {
-        "label": "Of laad een eerder gemaakte ReCalendar PDF in om de instellingen opnieuw te gebruiken:",
-        "loading": "Insellingen van het PDF-bestand aan het lezen, een ogenblikje...",
-        "error": "Het lukte niet om de ReCalendar-instellingen te lezen van dit PDF-bestand — weet je zeker dat het bestand met deze website gemaakt is?",
-        "success": "Instellingen gelezen van het PDF-bestand — welkom terug!"
+        "label": "Of laad een eerder gemaakte ReCalendar-PDF in om de instellingen ervan te gebruiken:",
+        "loading": "Instellingen van het PDF-bestand aan het lezen, een ogenblikje...",
+        "error": "Het lukte niet om de ReCalendar-instellingen uit dit PDF-bestand te lezen - weet je zeker dat het met deze website gemaakt is?",
+        "success": "Instellingen gelezen uit het PDF-bestand - welkom terug!",
+        "password": {
+          "required": "Dit PDF-bestand is beveiligd met een wachtwoord. Voer het wachtwoord in om de instellingen eruit te lezen.",
+          "wrong": "Dat wachtwoord werkte niet - probeer het opnieuw.",
+          "label": "PDF-wachtwoord",
+          "unlock": "Ontgrendelen",
+          "reused": "Het wachtwoord van de PDF is alvast voor je ingevuld, dus de volgende agenda die je maakt wordt met hetzelfde wachtwoord beveiligd."
+        }
       }
     },
     "general": {
       "label": "Algemene instellingen",
+      "device": "Apparaat",
+      "dpi": "DPI",
+      "resolution": "Resolutie",
       "font": "Lettertype",
       "year": "Jaar",
       "left-handed": {
@@ -48,112 +60,216 @@
         "description": "Maakt de indeling beter geschikt voor linkshandig gebruik."
       },
       "sidebar": {
-        "label": "Laat plek vrij voor de werkbalk aan de zijkant",
-        "description": "Als je de werkbalk aan de zijkant altijd open laat, vink dan deze optie aan om er voor te zorgen dat de werkbalk aan de zijkant nooit de inhoud van de agenda bedekt."
+        "label": "Laat blijvend ruimte vrij voor de werkbalk",
+        "description": "Als je de werkbalk liever altijd open laat staan, vink dan deze optie aan zodat de inhoud van de agenda er nooit door bedekt wordt.",
+        "position": {
+          "label": "Positie van de werkbalk",
+          "left": "Links",
+          "right": "Rechts",
+          "top": "Boven",
+          "bottom": "Onder"
+        },
+        "offset": {
+          "label": "Grootte van de werkbalk",
+          "description": "Hoeveel ruimte er voor de werkbalk gereserveerd wordt, in punten. Vooraf ingevuld met een waarde die past bij het gekozen apparaat - pas hem aan als de werkbalk de inhoud van de agenda nog steeds bedekt."
+        }
       },
       "starting-month": {
         "label": "Beginmaand",
-        "description": "De eerste maand van de agenda. Als je een agenda wilt maken voor een collegejaar in plaats van een kalenderjaar, kun je bijvoorbeeld september kiezen."
+        "description": "De eerste maand van de agenda. Kies bijvoorbeeld september als je agenda een collegejaar moet beslaan in plaats van een kalenderjaar."
       },
       "month-count": {
         "label": "Aantal maanden",
-        "description": "Hoeveel maanden moet de agenda bevatten?"
+        "description": "Hoeveel maanden de agenda moet beslaan."
       },
       "first-day-of-week": "Begin van de week",
       "weekend": "Weekeinde",
+      "lines": {
+        "title": "Lijnen in planningen",
+        "description": "De liniëring die in planningen gebruikt wordt - op dagbladzijden, in weekterugblikken, maandoverzichten en jaarnotities."
+      },
       "line-style": {
-        "label": "Lijnstijl van dagplanning",
-        "description": "Stijl voor het tekenen van lijnen in dagplanningen."
+        "label": "Stijl",
+        "description": "Net als de liniëring in een papieren schrift.",
+        "lined": "Gelinieerd",
+        "grid": "Ruitjes",
+        "dot_grid": "Stippen",
+        "blank": "Blanco"
       },
       "line-height": {
-        "label": "Lijnhoogte van dagplanning",
-        "description": "Hoogte van elke lijn in dagplanningen. Tekst en pictogrammen schalen mee."
+        "label": "Regelhoogte",
+        "description": "Hoogte van elke regel in planningen. Tekst en pictogrammen schalen mee, en de regelhoogte bepaalt ook de verticale afstand van de ruitjes en stippen."
+      },
+      "line-spacing": {
+        "label": "Rasterafstand",
+        "description": "Horizontale afstand tussen de rasterlijnen of stippen, in dezelfde eenheden als de regelhoogte. Laat op 0 staan om de regelhoogte aan te houden, zodat je vierkante vakjes krijgt. Het raster begint altijd één afstand vanaf de rand, net zoals papieren schriften een marge aanhouden."
+      },
+      "line-opacity": {
+        "label": "Dekking",
+        "description": "Hoe zichtbaar de lijnen en stippen zijn. 0 % verbergt ze volledig, 100 % maakt ze helemaal zwart."
+      },
+      "password": {
+        "title": "Wachtwoordbeveiliging",
+        "description": "Vraagt om een wachtwoord om de gemaakte PDF te openen, zodat de agenda privé blijft als het apparaat waarop hij staat gedeeld wordt of kwijtraakt.",
+        "label": "Wachtwoord",
+        "show": "Tonen",
+        "hide": "Verbergen",
+        "warning": "Schrijf dit wachtwoord ergens veilig op. ReCalendar draait volledig in je webbrowser en slaat geen gebruikersgegevens op, dus niemand - wij ook niet - kan het herstellen of opnieuw instellen, en een beveiligde agenda is er zonder niet te openen. Het wachtwoord wordt bewust niet in de PDF bewaard, dus je moet het opnieuw invoeren als je de volgende keer een agenda maakt.",
+        "preview": {
+          "label": "Beveilig ook het voorbeeld",
+          "description": "Laat dit aan staan om te controleren of het wachtwoord werkt voordat je de agenda op je apparaat zet. Zet het uit als je nog aan het bijschaven bent en het wachtwoord niet bij elk voorbeeld opnieuw in je PDF-lezer wilt typen."
+        }
       }
     },
     "button": {
-      "refresh": "Maak voorbeeld opnieuw aan",
-      "download": "Maak volledige agenda aan en download",
-      "generating": "Aanmaken, een ogenblikje..."
+      "refresh": "Voorbeeld vernieuwen",
+      "download": "Volledige agenda maken en downloaden",
+      "generating": "Bezig met maken, een ogenblikje..."
     },
     "itinerary": {
-      "empty": "Lege dagplanning",
+      "empty": "Lege planning",
+      "dateTemplate": {
+        "label": "Hulp bij datumopmaak",
+        "title": "Datumsjablonen",
+        "description": "Voeg opgemaakte datums in met <0/> of <1/>. Zie <2>beschikbare formaten</2>."
+      },
       "placeholder": {
         "lines": "Aantal regels",
-        "page": "Einde van bladzijde"
+        "page": "Nieuwe bladzijde",
+        "item": "Onderdeel van de planning"
+      },
+      "prefix": {
+        "selected": "Regelvoorvoegsel: {{name}}",
+        "none": "Geen voorvoegsel",
+        "icon": {
+          "square": "Selectievakje",
+          "square-check-big": "Aangevinkt vakje",
+          "circle": "Cirkel",
+          "circle-dot": "Stip",
+          "arrow-right": "Pijl",
+          "chevron-right": "Punthaak",
+          "star": "Ster",
+          "heart": "Hart"
+        }
       },
       "button": {
-        "copy": "Kopiëer deze dagplanning naar andere dagen",
+        "copy": "Kopieer deze planning naar alle andere dagen",
         "remove": "Verwijderen",
-        "item": "Voeg zaak toe aan dagplanning",
-        "page": "Voeg nieuw bladzijde toe",
-        "lines": "Voeg lege regels toe"
+        "item": "Onderdeel aan de planning toevoegen",
+        "page": "Nieuwe bladzijde beginnen",
+        "lines": "Lege regels toevoegen"
       }
     },
     "items-list": {
       "button": {
-        "item": "Voeg zaak toe",
-        "remove": "Verwijderen"
+        "item": "Onderdeel toevoegen",
+        "remove": "Verwijderen",
+        "reorder": "Volgorde wijzigen"
       },
       "empty": "Lege lijst",
-      "placeholder": "Zaak"
+      "placeholder": "Onderdeel"
     },
     "toggle-form": {
       "enabled": "Aan",
       "disabled": "Uit"
     },
+    "year": {
+      "notes": {
+        "title": "Jaarnotities",
+        "description": "De jaarnotities zijn de plek voor doelen, plannen en dromen voor het komende jaar. Er komt één bladzijde vooraan in de agenda, en nog een voor elk nieuw jaar dat de agenda beslaat.",
+        "itinerary": {
+          "title": "Planning"
+        }
+      }
+    },
     "month": {
       "title": "Maandoverzicht",
-      "description": "Het maandoverzicht is de plek om maanddoelen te stellen, gewoontes bij te houden en andere plannen te maken.",
+      "description": "Het maandoverzicht is de plek om doelen voor de komende maand te stellen, gewoontes bij te houden en andere plannen te maken.",
       "habits": {
         "title": "Gewoontes"
       },
       "itinerary": {
-        "title": "Maandplanning"
+        "title": "Planning"
       }
     },
     "week": {
       "title": "Weekoverzicht",
-      "description": "Het weekoverzicht geeft je een wijde blik op de week om gemakkelijker plannen te maken",
+      "description": "Het weekoverzicht geeft je een blik op de week van een afstandje, zodat plannen makkelijker wordt.",
       "todos": {
         "title": "Taken"
       },
       "retrospective": {
         "title": "Weekterugblik",
-        "description": "Het weekterugblik is een plek om terug te kijken op de afgelopen week — hoe het gelopen is, wat je geleerd hebt en wat je de volgende week beter kunt doen.",
+        "description": "De weekterugblik is een plek om terug te kijken op de afgelopen week - hoe het gelopen is, wat je geleerd hebt, wat je volgende week beter kunt doen.",
         "itinerary": {
-          "title": "Weekplanning"
+          "title": "Planning"
         }
       }
     },
     "day": {
-      "title": "Dagplanning"
+      "title": "Dagplanningen"
     },
     "special-dates": {
       "title": "Speciale dagen",
-      "description": "Voeg verjaardagen, vieringen, gebeurtenissen en dergelijke toe om herinneringen te krijgen in het weekoverzicht en dagplanningen.",
-      "empty": "No dates",
-      "placeholder": "Wat is de gebeurtenis?",
+      "description": "Voeg hier verjaardagen, vieringen, gebeurtenissen en dergelijke toe, zodat je er in de weekoverzichten en op de dagbladzijden aan herinnerd wordt zodra ze dichterbij komen.",
+      "empty": "Geen dagen",
+      "placeholder": "Wat valt er te vieren?",
+      "manual": {
+        "heading": "Handmatig een dag toevoegen"
+      },
+      "holidays": {
+        "heading": "Nationale feestdagen importeren",
+        "description_one": "Kies een land om de officiële feestdagen te importeren voor het jaar ({{years}}) dat je agenda beslaat.",
+        "description_other": "Kies een land om de officiële feestdagen te importeren voor de jaren ({{years}}) die je agenda beslaat.",
+        "country-placeholder": "Kies een land...",
+        "countries-loading": "Lijst met landen aan het laden...",
+        "countries-error": "De lijst met landen kon niet geladen worden. Controleer je verbinding en probeer het opnieuw.",
+        "names": {
+          "english": "Engelse namen",
+          "local": "Lokale namen"
+        },
+        "deduplicate": {
+          "label": "Duplicaten overslaan",
+          "help": "Als dit aan staat, wordt een feestdag die op dezelfde dag al bestaat (vergeleken op de Engelse naam) niet nog een keer toegevoegd. Zet het uit als je dezelfde feestdag in meerdere talen wilt - handig als je een taal leert of een dubbele nationaliteit hebt."
+        },
+        "button": "Importeren",
+        "loading": "Feestdagen ophalen, een ogenblikje...",
+        "error": "De feestdagen voor dit land konden niet geladen worden. Probeer het opnieuw.",
+        "year-unavailable": "Sorry, feestdagen zijn alleen beschikbaar voor de jaren {{years}}.",
+        "success_zero": "Geen nieuwe feestdagen geïmporteerd uit {{country}}.",
+        "success_one": "{{count}} feestdag geïmporteerd uit {{country}}.",
+        "success_other": "{{count}} feestdagen geïmporteerd uit {{country}}.",
+        "skipped_one": "{{count}} duplicaat overgeslagen.",
+        "skipped_other": "{{count}} duplicaten overgeslagen.",
+        "attribution": "Feestdaggegevens van <tallyfy>Tallyfy</tallyfy>."
+      },
+      "upload": {
+        "label": "Importeren uit .ics-bestand:",
+        "loading": "Speciale dagen uit het ICalendar-bestand aan het lezen, een ogenblikje...",
+        "error": "Een aantal ICalendar-gebeurtenissen kon niet geladen worden - probeer het .ics-bestand opnieuw te exporteren uit je agenda-app.",
+        "success": "Speciale dagen geladen uit het ICalendar-bestand."
+      },
       "type": {
         "event": "Gebeurtenis",
         "holiday": "Feestdag"
       },
       "button": {
-        "item": "Voeg dag toe",
+        "item": "Dag toevoegen",
         "remove": "Verwijderen"
       }
     },
-    "generation-description": "Het aanmaken van het PDF-bestand wordt geheel in uw webbrowser gedaan. Er worden geen gegevens gestuurd naar onze servers!"
+    "generation-description": "Het aanmaken van het PDF-bestand gebeurt volledig in je webbrowser - er worden geen gegevens naar onze servers gestuurd!"
   },
   "preview": {
     "title": "Agendavoorbeeld",
-    "subtitle": "(enkel de eerste maand wordt aangemaakt voor het voorbeeld)",
+    "subtitle": "(voor het voorbeeld wordt alleen de eerste maand gemaakt)",
     "viewer-title": "PDF-voorbeeld",
     "generating": {
-      "full": "Gehele agenda aanmaken… — dit kan een tijdje duren...",
-      "preview": "Voorbeeld aanmaken… - dit kan eventjes duren."
+      "full": "Volledige agenda aan het maken - dit kan langer dan een minuut duren...",
+      "preview": "Voorbeeld aan het maken, een ogenblikje - dit kan een minuut duren."
     },
     "empty": {
-      "title": "Gebruik het instellingenpaneel om je gepersonaliseerde agenda te maken.",
+      "title": "Gebruik het instellingenformulier om je gepersonaliseerde agenda te maken.",
       "subtitle": "Het voorbeeld verschijnt hier."
     }
   }
