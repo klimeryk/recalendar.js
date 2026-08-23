@@ -90,24 +90,37 @@ class WeekOverviewPage extends React.Component {
 
   renderDay(day) {
     const { config } = this.props;
+    const { isEnabled } = config.dayItineraries[day.weekday()];
     const specialDateKey = day.format(SPECIAL_DATES_DATE_FORMAT);
     const specialItems = config.specialDates.filter(findByDate(specialDateKey));
+    const dayContent = (
+      <View style={{ flexDirection: 'column' }}>
+        <View style={this.styles.dayDate}>
+          <Text style={this.styles.dayOfWeek}>{day.format('dddd')}</Text>
+          <Text style={this.styles.shortDate}>{day.format('DD MMM')}</Text>
+        </View>
+        {specialItems.map(({ id, type, value }) => (
+          <Text
+            key={id}
+            style={[this.styles.specialItem, { fontWeight: type === HOLIDAY_DAY_TYPE ? 'bold' : 'normal' }]}
+          >
+            » {value}
+          </Text>
+        ))}
+      </View>
+    );
+
+    if (!isEnabled) {
+      return (
+        <View key={day.unix()} style={this.styles.day}>
+          {dayContent}
+        </View>
+      );
+    }
+
     return (
       <Link key={day.unix()} style={this.styles.day} src={'#' + dayPageLink(day, config)}>
-        <View style={{ flexDirection: 'column' }}>
-          <View style={this.styles.dayDate}>
-            <Text style={this.styles.dayOfWeek}>{day.format('dddd')}</Text>
-            <Text style={this.styles.shortDate}>{day.format('DD MMM')}</Text>
-          </View>
-          {specialItems.map(({ id, type, value }) => (
-            <Text
-              key={id}
-              style={[this.styles.specialItem, { fontWeight: type === HOLIDAY_DAY_TYPE ? 'bold' : 'normal' }]}
-            >
-              » {value}
-            </Text>
-          ))}
-        </View>
+        {dayContent}
       </Link>
     );
   }
