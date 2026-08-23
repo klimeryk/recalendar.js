@@ -1,6 +1,7 @@
 import { closestCenter, DndContext, KeyboardSensor, PointerSensor, useSensor, useSensors } from '@dnd-kit/core';
 import { SortableContext, sortableKeyboardCoordinates, verticalListSortingStrategy } from '@dnd-kit/sortable';
 import PropTypes from 'prop-types';
+import React from 'react';
 import Alert from 'react-bootstrap/Alert';
 import Button from 'react-bootstrap/Button';
 import ButtonGroup from 'react-bootstrap/ButtonGroup';
@@ -89,4 +90,4 @@ Itinerary.propTypes = {
   onRemove: PropTypes.func.isRequired,
 };
 
-export default Itinerary;
+export default React.memo(Itinerary);

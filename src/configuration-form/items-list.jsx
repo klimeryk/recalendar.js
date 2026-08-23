@@ -1,6 +1,7 @@
 import { closestCenter, DndContext, KeyboardSensor, PointerSensor, useSensor, useSensors } from '@dnd-kit/core';
 import { SortableContext, sortableKeyboardCoordinates, verticalListSortingStrategy } from '@dnd-kit/sortable';
 import PropTypes from 'prop-types';
+import React from 'react';
 import Accordion from 'react-bootstrap/Accordion';
 import Alert from 'react-bootstrap/Alert';
 import Button from 'react-bootstrap/Button';
@@ -70,4 +71,4 @@ ItemsList.propTypes = {
   title: PropTypes.string.isRequired,
 };
 
-export default ItemsList;
+export default React.memo(ItemsList);

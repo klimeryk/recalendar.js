@@ -1,6 +1,7 @@
 import { useSortable } from '@dnd-kit/sortable';
 import { CSS } from '@dnd-kit/utilities';
 import PropTypes from 'prop-types';
+import React from 'react';
 import Button from 'react-bootstrap/Button';
 import FormControl from 'react-bootstrap/FormControl';
 import InputGroup from 'react-bootstrap/InputGroup';
@@ -72,4 +73,4 @@ SortableItem.propTypes = {
   value: PropTypes.string.isRequired,
 };
 
-export default SortableItem;
+export default React.memo(SortableItem);

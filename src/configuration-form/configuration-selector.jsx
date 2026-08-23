@@ -27,7 +27,7 @@ const TEMPLATE_ADVANCED = 'advanced';
 const TEMPLATE_BLANK = 'blank';
 const TEMPLATE_MINIMALISTIC = 'minimalistic';
 
-class ConfigurationSelector extends React.Component {
+class ConfigurationSelector extends React.PureComponent {
   state = {
     status: STATUS_EMPTY,
     password: '',

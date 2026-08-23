@@ -1,6 +1,19 @@
 import dayjs from 'dayjs/esm';
 
+let weekdaysCache = null;
+
 export function getWeekdays(firstDayOfWeek) {
+  const locale = dayjs.locale();
+  if (weekdaysCache && weekdaysCache.locale === locale && weekdaysCache.firstDayOfWeek === firstDayOfWeek) {
+    return weekdaysCache.weekdays;
+  }
+
+  const weekdays = buildWeekdays(firstDayOfWeek);
+  weekdaysCache = { locale, firstDayOfWeek, weekdays };
+  return weekdays;
+}
+
+function buildWeekdays(firstDayOfWeek) {
   const weekdaysFull = dayjs.weekdays();
   const weekdaysMin = dayjs.weekdaysMin();
   const weekdaysShort = dayjs.weekdaysShort();

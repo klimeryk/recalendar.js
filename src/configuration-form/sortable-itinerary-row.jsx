@@ -1,6 +1,7 @@
 import { useSortable } from '@dnd-kit/sortable';
 import { CSS } from '@dnd-kit/utilities';
 import PropTypes from 'prop-types';
+import React from 'react';
 import Button from 'react-bootstrap/Button';
 import Dropdown from 'react-bootstrap/Dropdown';
 import FloatingLabel from 'react-bootstrap/FloatingLabel';
@@ -209,4 +210,4 @@ SortableItineraryRow.propTypes = {
   value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
 };
 
-export default SortableItineraryRow;
+export default React.memo(SortableItineraryRow);

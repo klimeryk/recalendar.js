@@ -37,7 +37,7 @@ const LOCAL_NAME = 'local_name';
 // Disable strict mode for ical.js to allow slightly invalid ics files.
 ICAL.design.strict = false;
 
-class SpecialDates extends React.Component {
+class SpecialDates extends React.PureComponent {
   state = {
     date: '',
     value: '',
@@ -279,7 +279,8 @@ class SpecialDates extends React.Component {
   }
 
   renderTypeSelect = (field) => {
-    const { t, [field]: value } = this.props;
+    const { t } = this.props;
+    const { [field]: value } = this.state;
 
     return (
       <Form.Select

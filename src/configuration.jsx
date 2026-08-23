@@ -1,4 +1,3 @@
-import { arrayMove } from '@dnd-kit/sortable';
 import dayjs from 'dayjs/esm';
 import { saveAs } from 'file-saver';
 import i18n, { changeLanguage } from 'i18next';
@@ -6,40 +5,37 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import Accordion from 'react-bootstrap/Accordion';
 import Button from 'react-bootstrap/Button';
-import Card from 'react-bootstrap/Card';
 import Col from 'react-bootstrap/Col';
 import Container from 'react-bootstrap/Container';
 import Form from 'react-bootstrap/Form';
-import InputGroup from 'react-bootstrap/InputGroup';
-import ListGroup from 'react-bootstrap/ListGroup';
 import Row from 'react-bootstrap/Row';
 import Spinner from 'react-bootstrap/Spinner';
 import Stack from 'react-bootstrap/Stack';
 import { withTranslation } from 'react-i18next';
 
-import PdfPreviewCard from '~/components/pdf-preview-card';
 import PdfProgress from '~/components/pdf-progress';
+import PreviewColumn from '~/components/preview-column';
+import CalendarSettings from '~/configuration-form/calendar-settings';
 import ConfigurationSelector from '~/configuration-form/configuration-selector';
+import DayItineraries, { DAY_ITINERARY_ID_PREFIX } from '~/configuration-form/day-itineraries';
+import DeviceSettings from '~/configuration-form/device-settings';
 import ItemsList from '~/configuration-form/items-list';
-import Itinerary from '~/configuration-form/itinerary';
+import ItineraryAccordionItem from '~/configuration-form/itinerary-accordion-item';
 import LineSettings from '~/configuration-form/line-settings';
 import PasswordSettings from '~/configuration-form/password-settings';
 import SpecialDates from '~/configuration-form/special-dates';
-import ToggleAccordionItem from '~/configuration-form/toggle-accordion-item';
-import { getWeekdays } from '~/lib/date';
-import { AVAILABLE_DEVICES, CUSTOM, getPageProperties, getSidebarOffset } from '~/lib/device-utils';
-import { byId, wrapWithId } from '~/lib/id-utils';
+import ToggleSection from '~/configuration-form/toggle-section';
+import { CUSTOM, getPageProperties, getSidebarOffset } from '~/lib/device-utils';
 import { ITINERARY_NO_PREFIX } from '~/lib/itinerary-prefixes';
 import { parseItineraryProperty } from '~/lib/itinerary-utils';
-import { AVAILABLE_SIDEBAR_POSITIONS, isHorizontalSidebar, SIDEBAR_LEFT, SIDEBAR_RIGHT } from '~/lib/sidebar-utils';
+import { addItem, cloneItems, moveItem, removeItem, updateItem } from '~/lib/list-utils';
+import { createPdfGenerator } from '~/lib/pdf-generator';
+import { isHorizontalSidebar, SIDEBAR_LEFT, SIDEBAR_RIGHT } from '~/lib/sidebar-utils';
 import PdfConfig, { hydrateFromObject } from '~/pdf/config';
-import { AVAILABLE_FONTS } from '~/pdf/lib/fonts';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '~/theme.css';
 import './app.css';
-
-const DAY_ITINERARY_ID_PREFIX = 'day-itinerary-';
 
 class Configuration extends React.PureComponent {
   state = {
@@ -56,8 +52,28 @@ class Configuration extends React.PureComponent {
   constructor(props) {
     super(props);
 
-    this.pdfWorker = new Worker(new URL('./worker/pdf.worker.js', import.meta.url), { type: 'module' });
-    this.pdfWorker.onmessage = this.handlePdfWorkerMessage;
+    this.pdfGenerator = createPdfGenerator();
+
+    this.itemHandlers = {
+      onAdd: this.handleItemAdd,
+      onChange: this.handleListChange,
+      onDragEnd: this.handleListDragEnd,
+      onRemove: this.handleListRemove,
+    };
+    this.itineraryHandlers = {
+      onAdd: this.handleItineraryAdd,
+      onChange: this.handleListChange,
+      onDragEnd: this.handleListDragEnd,
+      onRemove: this.handleListRemove,
+    };
+    this.dayItineraryHandlers = {
+      onAdd: this.handleDayItineraryAdd,
+      onChange: this.handleDayItineraryChange,
+      onCopy: this.handleDayItineraryCopy,
+      onDragEnd: this.handleDayItineraryDragEnd,
+      onRemove: this.handleDayItineraryRemove,
+      onToggle: this.handleDayItineraryToggle,
+    };
   }
 
   componentDidMount() {
@@ -76,6 +92,17 @@ class Configuration extends React.PureComponent {
       // See https://developer.mozilla.org/en-US/docs/Web/API/URL/revokeObjectURL
       URL.revokeObjectURL(prevState.blobUrl);
     }
+  }
+
+  updateList(field, updater) {
+    this.setState((prev) => ({ [field]: updater(prev[field]) }));
+  }
+
+  updateDayItinerary(field, updater) {
+    const index = Number(field);
+    this.setState((prev) => ({
+      dayItineraries: prev.dayItineraries.map((day, dayIndex) => (dayIndex === index ? updater(day) : day)),
+    }));
   }
 
   handleConfigChange = (newConfig, password) => {
@@ -184,14 +211,6 @@ class Configuration extends React.PureComponent {
     this.setState({ [event.target.id]: event.target.checked });
   };
 
-  handleDayItineraryToggle = (event) => {
-    const id = Number(event.target.id.replace(DAY_ITINERARY_ID_PREFIX, ''));
-    const newItineraries = [...this.state.dayItineraries];
-    newItineraries[id].isEnabled = event.target.checked;
-
-    this.setState({ dayItineraries: newItineraries });
-  };
-
   handleWeekendChange = (event) => {
     const dayOfWeek = Number(event.target.dataset.index);
     const newWeekendDays = [...this.state.weekendDays];
@@ -207,276 +226,107 @@ class Configuration extends React.PureComponent {
     this.setState({ weekendDays: newWeekendDays });
   };
 
-  handleDownload = () => {
-    this.setState({ isGeneratingPdf: true });
-    this.generatePdf(false);
+  handleItemAdd = ({ currentTarget: { dataset } }) => {
+    this.updateList(dataset.field, (items) => addItem(items, ''));
   };
 
-  handleItemAdd = (event) => {
-    const field = event.target.dataset.field;
-    const newItems = [...this.state[field]];
-    newItems.push(wrapWithId(''));
-    this.setState({ [field]: newItems });
-  };
-
-  handleItemChange = (event) => {
-    const field = event.target.dataset.field;
-    const newItems = [...this.state[field]];
-    const index = this.state[field].findIndex(byId(event.target.dataset.id));
-    if (index === -1) {
-      return;
-    }
-    newItems[index].value = event.target.value;
-    this.setState({ [field]: newItems });
-  };
-
-  handleDragEnd = ({ oldId, newId, field }) => {
-    const oldIndex = this.state[field].findIndex(byId(oldId));
-    const newIndex = this.state[field].findIndex(byId(newId));
-    if (oldIndex === -1 || newIndex === -1) {
-      return;
-    }
-    const newItems = arrayMove(this.state[field], oldIndex, newIndex);
-    this.setState({ [field]: newItems });
-  };
-
-  handleDayItineraryDragEnd = ({ oldId, newId, field }) => {
-    const oldIndex = this.state.dayItineraries[field].items.findIndex(byId(oldId));
-    const newIndex = this.state.dayItineraries[field].items.findIndex(byId(newId));
-    if (oldIndex === -1 || newIndex === -1) {
-      return;
-    }
-    const newItineraries = [...this.state.dayItineraries];
-    newItineraries[field].items = arrayMove(newItineraries[field].items, oldIndex, newIndex);
-    this.setState({ dayItineraries: newItineraries });
-  };
-
-  handleItemRemove = (event) => {
-    const field = event.target.dataset.field;
-    const newItems = [...this.state[field]];
-    const index = this.state[field].findIndex(byId(event.target.dataset.id));
-    if (index === -1) {
-      return;
-    }
-    newItems.splice(index, 1);
-    this.setState({ [field]: newItems });
-  };
-
-  handleItineraryAdd = (event) => {
-    const field = event.target.dataset.field;
-    const newItinerary = [...this.state[field]];
-    newItinerary.push(
-      wrapWithId({
-        type: event.target.dataset.type,
-        value: '',
-        prefix: ITINERARY_NO_PREFIX,
-      }),
+  handleItineraryAdd = ({ currentTarget: { dataset } }) => {
+    this.updateList(dataset.field, (items) =>
+      addItem(items, { type: dataset.type, value: '', prefix: ITINERARY_NO_PREFIX }),
     );
-    this.setState({ [field]: newItinerary });
   };
 
-  handleItineraryChange = (event) => {
-    const { field, id, type, property = 'value' } = event.currentTarget.dataset;
-    const newItinerary = [...this.state[field]];
-    const index = this.state[field].findIndex(byId(id));
-    if (index === -1) {
-      return;
-    }
-    newItinerary[index] = {
-      ...newItinerary[index],
-      [property]: parseItineraryProperty(type, property, event.currentTarget.value),
-    };
-    this.setState({ [field]: newItinerary });
+  handleListChange = ({ currentTarget: { dataset, value } }) => {
+    const { field, id, type, property = 'value' } = dataset;
+    this.updateList(field, (items) =>
+      updateItem(items, id, { [property]: parseItineraryProperty(type, property, value) }),
+    );
   };
 
-  handleItineraryRemove = (event) => {
-    const field = event.target.dataset.field;
-    const newItineraries = [...this.state[field]];
-    const index = this.state[field].findIndex(byId(event.target.dataset.id));
-    if (index === -1) {
-      return;
-    }
-    newItineraries.splice(index, 1);
-    this.setState({ [field]: newItineraries });
+  handleListRemove = ({ currentTarget: { dataset } }) => {
+    this.updateList(dataset.field, (items) => removeItem(items, dataset.id));
   };
 
-  handlePreview = (event) => {
-    event.preventDefault();
-    this.setState({ isGeneratingPreview: true });
-    this.generatePdf(true);
+  handleListDragEnd = ({ field, newId, oldId }) => {
+    this.updateList(field, (items) => moveItem(items, oldId, newId));
   };
 
-  generatePdf(isPreview) {
-    this.startTime = Date.now();
-    this.pdfWorker.postMessage({
+  handleDayItineraryAdd = ({ currentTarget: { dataset } }) => {
+    this.updateDayItinerary(dataset.field, (day) => ({
+      ...day,
+      items: addItem(day.items, { type: dataset.type, value: '', prefix: ITINERARY_NO_PREFIX }),
+    }));
+  };
+
+  handleDayItineraryChange = ({ currentTarget: { dataset, value } }) => {
+    const { field, id, type, property = 'value' } = dataset;
+    this.updateDayItinerary(field, (day) => ({
+      ...day,
+      items: updateItem(day.items, id, { [property]: parseItineraryProperty(type, property, value) }),
+    }));
+  };
+
+  handleDayItineraryRemove = ({ currentTarget: { dataset } }) => {
+    this.updateDayItinerary(dataset.field, (day) => ({ ...day, items: removeItem(day.items, dataset.id) }));
+  };
+
+  handleDayItineraryDragEnd = ({ field, newId, oldId }) => {
+    this.updateDayItinerary(field, (day) => ({ ...day, items: moveItem(day.items, oldId, newId) }));
+  };
+
+  handleDayItineraryToggle = ({ target: { checked, id } }) => {
+    this.updateDayItinerary(id.replace(DAY_ITINERARY_ID_PREFIX, ''), (day) => ({ ...day, isEnabled: checked }));
+  };
+
+  handleDayItineraryCopy = ({ currentTarget: { dataset } }) => {
+    const sourceIndex = Number(dataset.field);
+    this.setState((prev) => {
+      const source = prev.dayItineraries[sourceIndex];
+      return {
+        dayItineraries: prev.dayItineraries.map((day, index) =>
+          index === sourceIndex ? day : { ...day, isEnabled: source.isEnabled, items: cloneItems(source.items) },
+        ),
+      };
+    });
+  };
+
+  handleSpecialDateAdd = (newSpecialDate) => {
+    this.updateList('specialDates', (items) => addItem(items, newSpecialDate));
+  };
+
+  getWorkerMessage(isPreview) {
+    return {
       isPreview,
       language: i18n.language,
       password: this.state.password,
       isPasswordEnabledInPreview: this.state.isPasswordEnabledInPreview,
       ...hydrateFromObject(this.state),
-    });
-  }
-
-  handlePdfWorkerMessage = ({ data: { blob } }) => {
-    const shouldTriggerDownload = this.state.isGeneratingPdf;
-    if (this.state.isGeneratingPreview) {
-      const previewTime = Date.now() - this.startTime;
-      this.setState({
-        blobUrl: URL.createObjectURL(blob),
-        lastPreviewTime: previewTime,
-      });
-    }
-    this.setState({ isGeneratingPdf: false, isGeneratingPreview: false });
-    if (shouldTriggerDownload) {
-      const fullTime = Date.now() - this.startTime;
-      this.setState({ lastFullTime: fullTime });
-      saveAs(blob, 'recalendar.pdf');
-    }
-  };
-
-  handleDayItineraryChange = (event) => {
-    const { field, type, property = 'value' } = event.currentTarget.dataset;
-    const index = this.state.dayItineraries[field].items.findIndex(byId(event.currentTarget.dataset.id));
-    if (index === -1) {
-      return;
-    }
-    const newItineraries = [...this.state.dayItineraries];
-    const newItems = [...newItineraries[field].items];
-    newItems[index] = {
-      ...newItems[index],
-      [property]: parseItineraryProperty(type, property, event.currentTarget.value),
     };
-    newItineraries[field] = { ...newItineraries[field], items: newItems };
-    this.setState({ dayItineraries: newItineraries });
+  }
+
+  handlePreview = async (event) => {
+    event.preventDefault();
+    this.setState({ isGeneratingPreview: true });
+
+    const { blob, duration } = await this.pdfGenerator.generate(this.getWorkerMessage(true));
+    this.setState({
+      blobUrl: URL.createObjectURL(blob),
+      isGeneratingPreview: false,
+      lastPreviewTime: duration,
+    });
   };
 
-  handleDayItineraryRemove = (event) => {
-    const field = event.target.dataset.field;
-    const newItineraries = [...this.state.dayItineraries];
-    const index = this.state.dayItineraries[field].items.findIndex(byId(event.target.dataset.id));
-    if (index === -1) {
-      return;
-    }
-    newItineraries[field].items.splice(index, 1);
-    this.setState({ dayItineraries: newItineraries });
-  };
+  handleDownload = async () => {
+    this.setState({ isGeneratingPdf: true });
 
-  handleDayItineraryCopy = (event) => {
-    const { field } = event.target.dataset;
-    const itemsToCopy = [...this.state.dayItineraries[field].items];
-    const newItineraries = this.state.dayItineraries.map((itinerary) => ({
-      ...itinerary,
-      items: [...itemsToCopy],
-      isEnabled: this.state.dayItineraries[field].isEnabled,
-    }));
-    this.setState({ dayItineraries: newItineraries });
-  };
-
-  handleDayItineraryAdd = (event) => {
-    const newItineraries = [...this.state.dayItineraries];
-    const { field, type } = event.target.dataset;
-    newItineraries[field].items.push(
-      wrapWithId({
-        type,
-        value: '',
-        prefix: ITINERARY_NO_PREFIX,
-      }),
-    );
-    this.setState({ dayItineraries: newItineraries });
-  };
-
-  handleSpecialDateAdd = (newSpecialDate) => {
-    this.setState((prev) => ({
-      specialDates: [...prev.specialDates, wrapWithId(newSpecialDate)],
-    }));
-  };
-
-  renderDevices() {
-    return AVAILABLE_DEVICES.map((device) => (
-      <option key={device} value={device}>
-        {device}
-      </option>
-    ));
-  }
-
-  renderSidebarPositions() {
-    const { t } = this.props;
-    return AVAILABLE_SIDEBAR_POSITIONS.map((position) => (
-      <option key={position} value={position}>
-        {t(`configuration.general.sidebar.position.${position}`)}
-      </option>
-    ));
-  }
-
-  renderFonts() {
-    return AVAILABLE_FONTS.map((font) => (
-      <option key={font} value={font}>
-        {font}
-      </option>
-    ));
-  }
-
-  renderMonths() {
-    return dayjs
-      .localeData()
-      .months()
-      .map((month, index) => (
-        <option key={month} value={index}>
-          {month}
-        </option>
-      ));
-  }
-
-  renderDaysOfWeek() {
-    return getWeekdays(this.state.firstDayOfWeek).map(({ full, index }) => (
-      <option key={full} value={index}>
-        {full}
-      </option>
-    ));
-  }
-
-  renderWeekendSelection() {
-    return getWeekdays(this.state.firstDayOfWeek).map(({ full, index }) => (
-      <ListGroup.Item key={full} value={index}>
-        <Form.Check
-          id={'weekend-' + index}
-          type="checkbox"
-          label={full}
-          data-index={index}
-          checked={this.state.weekendDays.includes(index)}
-          onChange={this.handleWeekendChange}
-        />
-      </ListGroup.Item>
-    ));
-  }
-
-  renderDayItinerary = ({ full: dayOfWeek }, index) => {
-    return (
-      <ToggleAccordionItem
-        key={dayOfWeek}
-        id={DAY_ITINERARY_ID_PREFIX + index}
-        title={dayOfWeek}
-        onToggle={this.handleDayItineraryToggle}
-        toggledOn={this.state.dayItineraries[index].isEnabled}
-      >
-        <Itinerary
-          field={index.toString()}
-          itinerary={this.state.dayItineraries[index].items}
-          onAdd={this.handleDayItineraryAdd}
-          onChange={this.handleDayItineraryChange}
-          onDragEnd={this.handleDayItineraryDragEnd}
-          onRemove={this.handleDayItineraryRemove}
-          onCopy={this.handleDayItineraryCopy}
-        />
-      </ToggleAccordionItem>
-    );
+    const { blob, duration } = await this.pdfGenerator.generate(this.getWorkerMessage(false));
+    this.setState({ isGeneratingPdf: false, lastFullTime: duration });
+    saveAs(blob, 'recalendar.pdf');
   };
 
   renderConfigurationForm() {
     const { t } = this.props;
-    const { device, isGeneratingPdf, isGeneratingPreview } = this.state;
-    const isCustomDevice = device === CUSTOM;
-    const isSidebarEnabled = this.isSidebarEnabled();
+    const { isGeneratingPdf, isGeneratingPreview } = this.state;
     return (
       <Form onSubmit={this.handlePreview}>
         <Accordion defaultActiveKey="start" className="my-3">
@@ -489,109 +339,26 @@ class Configuration extends React.PureComponent {
           <Accordion.Item eventKey="general">
             <Accordion.Header>{t('configuration.general.label')}</Accordion.Header>
             <Accordion.Body>
-              <Form.Group controlId="device">
-                <Form.Label>{t('configuration.general.device')}</Form.Label>
-                <Form.Select value={this.state.device} onChange={this.handleFieldChange}>
-                  {this.renderDevices()}
-                </Form.Select>
-              </Form.Group>
-              {isCustomDevice && (
-                <Form.Group controlId="dpi">
-                  <Form.Label>{t('configuration.general.dpi')}</Form.Label>
-                  <Form.Control type="number" value={this.state.dpi} onChange={this.handleFieldChange} />
-                </Form.Group>
-              )}
-              {isCustomDevice && (
-                <Form.Group>
-                  <Form.Label htmlFor="resolutionX">{t('configuration.general.resolution')}</Form.Label>
-                  <InputGroup>
-                    <Form.Control
-                      id="resolutionX"
-                      type="number"
-                      value={this.state.pageSize[0]}
-                      onChange={this.handleFieldChange}
-                    />
-                    <InputGroup.Text>x</InputGroup.Text>
-                    <Form.Control
-                      id="resolutionY"
-                      type="number"
-                      value={this.state.pageSize[1]}
-                      onChange={this.handleFieldChange}
-                    />
-                  </InputGroup>
-                </Form.Group>
-              )}
-              <Form.Group controlId="fontFamily">
-                <Form.Label>{t('configuration.general.font')}</Form.Label>
-                <Form.Select value={this.state.fontFamily} onChange={this.handleFieldChange}>
-                  {this.renderFonts()}
-                </Form.Select>
-              </Form.Group>
-              <Form.Group controlId="isLeftHanded" className="mt-2">
-                <Form.Check
-                  label={t('configuration.general.left-handed.label')}
-                  type="checkbox"
-                  checked={this.state.isLeftHanded}
-                  value={this.state.isLeftHanded}
-                  onChange={this.handleFieldChange}
-                />
-                <Form.Text className="text-muted">{t('configuration.general.left-handed.description')}</Form.Text>
-              </Form.Group>
-              <Form.Group controlId="isSidebarEnabled" className="mt-2">
-                <Form.Check
-                  label={t('configuration.general.sidebar.label')}
-                  type="checkbox"
-                  checked={isSidebarEnabled}
-                  value={isSidebarEnabled}
-                  onChange={this.handleSidebarToggle}
-                />
-                <Form.Text className="text-muted">{t('configuration.general.sidebar.description')}</Form.Text>
-              </Form.Group>
-              {isSidebarEnabled && (
-                <Form.Group controlId="sidebarPosition">
-                  <Form.Label>{t('configuration.general.sidebar.position.label')}</Form.Label>
-                  <Form.Select value={this.state.sidebarPosition} onChange={this.handleFieldChange}>
-                    {this.renderSidebarPositions()}
-                  </Form.Select>
-                </Form.Group>
-              )}
-              {isSidebarEnabled && (
-                <Form.Group controlId="sidebarOffset">
-                  <Form.Label>{t('configuration.general.sidebar.offset.label')}</Form.Label>
-                  <Form.Control type="number" value={this.state.sidebarOffset} onChange={this.handleFieldChange} />
-                  <Form.Text className="text-muted">{t('configuration.general.sidebar.offset.description')}</Form.Text>
-                </Form.Group>
-              )}
-              <Form.Group controlId="year">
-                <Form.Label>{t('configuration.general.year')}</Form.Label>
-                <Form.Control type="number" value={this.state.year} onChange={this.handleFieldChange} />
-              </Form.Group>
-              <Form.Group controlId="month">
-                <Form.Label>{t('configuration.general.starting-month.label')}</Form.Label>
-                <Form.Select value={this.state.month} onChange={this.handleFieldChange} data-type="number">
-                  {this.renderMonths()}
-                </Form.Select>
-                <Form.Text className="text-muted">{t('configuration.general.starting-month.description')}</Form.Text>
-              </Form.Group>
-              <Form.Group controlId="firstDayOfWeek">
-                <Form.Label>{t('configuration.general.first-day-of-week')}</Form.Label>
-                <Form.Select value={this.state.firstDayOfWeek} onChange={this.handleFieldChange} data-type="number">
-                  {this.renderDaysOfWeek()}
-                </Form.Select>
-              </Form.Group>
-              <Form.Group controlId="monthCount">
-                <Form.Label>{t('configuration.general.month-count.label')}</Form.Label>
-                <Form.Control
-                  type="number"
-                  value={this.state.monthCount}
-                  onChange={this.handleFieldChange}
-                  min={1}
-                  max={12}
-                />
-                <Form.Text className="text-muted">{t('configuration.general.month-count.description')}</Form.Text>
-              </Form.Group>
-              <Form.Label>{t('configuration.general.weekend')}</Form.Label>
-              <ListGroup>{this.renderWeekendSelection()}</ListGroup>
+              <DeviceSettings
+                device={this.state.device}
+                dpi={this.state.dpi}
+                pageSize={this.state.pageSize}
+                fontFamily={this.state.fontFamily}
+                isLeftHanded={this.state.isLeftHanded}
+                sidebarPosition={this.state.sidebarPosition}
+                sidebarOffset={this.state.sidebarOffset}
+                onChange={this.handleFieldChange}
+                onSidebarToggle={this.handleSidebarToggle}
+              />
+              <CalendarSettings
+                year={this.state.year}
+                month={this.state.month}
+                firstDayOfWeek={this.state.firstDayOfWeek}
+                monthCount={this.state.monthCount}
+                weekendDays={this.state.weekendDays}
+                onChange={this.handleFieldChange}
+                onWeekendChange={this.handleWeekendChange}
+              />
               <LineSettings
                 lineStyle={this.state.lineStyle}
                 lineHeightPixels={this.state.lineHeightPixels}
@@ -612,113 +379,79 @@ class Configuration extends React.PureComponent {
             monthCount={this.state.monthCount}
             items={this.state.specialDates}
             onAdd={this.handleSpecialDateAdd}
-            onRemove={this.handleItemRemove}
+            onRemove={this.handleListRemove}
           />
-          <ToggleAccordionItem
+          <ToggleSection
             id="isYearNotesEnabled"
             title={t('configuration.year.notes.title')}
-            onToggle={this.handleToggle}
+            description={t('configuration.year.notes.description')}
             toggledOn={this.state.isYearNotesEnabled}
+            onToggle={this.handleToggle}
+            defaultActiveKey="yearNotesItinerary"
           >
-            <p className="mb-0">{t('configuration.year.notes.description')}</p>
-            <Accordion className="mt-3" defaultActiveKey="yearNotesItinerary">
-              <Accordion.Item eventKey="yearNotesItinerary">
-                <Accordion.Header>{t('configuration.year.notes.itinerary.title')}</Accordion.Header>
-                <Accordion.Body>
-                  <Itinerary
-                    field="yearNotesItinerary"
-                    itinerary={this.state.yearNotesItinerary}
-                    onAdd={this.handleItineraryAdd}
-                    onChange={this.handleItineraryChange}
-                    onDragEnd={this.handleDragEnd}
-                    onRemove={this.handleItineraryRemove}
-                  />
-                </Accordion.Body>
-              </Accordion.Item>
-            </Accordion>
-          </ToggleAccordionItem>
-          <ToggleAccordionItem
+            <ItineraryAccordionItem
+              field="yearNotesItinerary"
+              title={t('configuration.year.notes.itinerary.title')}
+              itinerary={this.state.yearNotesItinerary}
+              {...this.itineraryHandlers}
+            />
+          </ToggleSection>
+          <ToggleSection
             id="isMonthOverviewEnabled"
             title={t('configuration.month.title')}
-            onToggle={this.handleToggle}
+            description={t('configuration.month.description')}
             toggledOn={this.state.isMonthOverviewEnabled}
+            onToggle={this.handleToggle}
+            defaultActiveKey="habits"
           >
-            <p className="mb-0">{t('configuration.month.description')}</p>
-            <Accordion className="mt-3" defaultActiveKey="habits">
-              <ItemsList
-                field="habits"
-                title={t('configuration.month.habits.title')}
-                items={this.state.habits}
-                onAdd={this.handleItemAdd}
-                onChange={this.handleItemChange}
-                onDragEnd={this.handleDragEnd}
-                onRemove={this.handleItemRemove}
-              />
-              <Accordion.Item eventKey="monthItinerary">
-                <Accordion.Header>{t('configuration.month.itinerary.title')}</Accordion.Header>
-                <Accordion.Body>
-                  <Itinerary
-                    field="monthItinerary"
-                    itinerary={this.state.monthItinerary}
-                    onAdd={this.handleItineraryAdd}
-                    onChange={this.handleItineraryChange}
-                    onDragEnd={this.handleDragEnd}
-                    onRemove={this.handleItineraryRemove}
-                  />
-                </Accordion.Body>
-              </Accordion.Item>
-            </Accordion>
-          </ToggleAccordionItem>
-          <ToggleAccordionItem
+            <ItemsList
+              field="habits"
+              title={t('configuration.month.habits.title')}
+              items={this.state.habits}
+              {...this.itemHandlers}
+            />
+            <ItineraryAccordionItem
+              field="monthItinerary"
+              title={t('configuration.month.itinerary.title')}
+              itinerary={this.state.monthItinerary}
+              {...this.itineraryHandlers}
+            />
+          </ToggleSection>
+          <ToggleSection
             id="isWeekOverviewEnabled"
             title={t('configuration.week.title')}
-            onToggle={this.handleToggle}
+            description={t('configuration.week.description')}
             toggledOn={this.state.isWeekOverviewEnabled}
+            onToggle={this.handleToggle}
+            defaultActiveKey="todos"
           >
-            <p className="mb-0">{t('configuration.week.description')}</p>
-            <Accordion className="mt-3" defaultActiveKey="todos">
-              <ItemsList
-                field="todos"
-                title={t('configuration.week.todos.title')}
-                items={this.state.todos}
-                onAdd={this.handleItemAdd}
-                onChange={this.handleItemChange}
-                onDragEnd={this.handleDragEnd}
-                onRemove={this.handleItemRemove}
-              />
-            </Accordion>
-          </ToggleAccordionItem>
-          <Accordion.Item eventKey="dayItineraries">
-            <Accordion.Header>{t('configuration.day.title')}</Accordion.Header>
-            <Accordion.Body>
-              <Accordion defaultActiveKey="0">
-                {getWeekdays(this.state.firstDayOfWeek).map(this.renderDayItinerary)}
-              </Accordion>
-            </Accordion.Body>
-          </Accordion.Item>
-          <ToggleAccordionItem
+            <ItemsList
+              field="todos"
+              title={t('configuration.week.todos.title')}
+              items={this.state.todos}
+              {...this.itemHandlers}
+            />
+          </ToggleSection>
+          <DayItineraries
+            firstDayOfWeek={this.state.firstDayOfWeek}
+            dayItineraries={this.state.dayItineraries}
+            {...this.dayItineraryHandlers}
+          />
+          <ToggleSection
             id="isWeekRetrospectiveEnabled"
             title={t('configuration.week.retrospective.title')}
-            onToggle={this.handleToggle}
+            description={t('configuration.week.retrospective.description')}
             toggledOn={this.state.isWeekRetrospectiveEnabled}
+            onToggle={this.handleToggle}
+            defaultActiveKey="weekRetrospectiveItinerary"
           >
-            <p className="mb-0">{t('configuration.week.retrospective.description')}</p>
-            <Accordion className="mt-3" defaultActiveKey="weekRetrospectiveItinerary">
-              <Accordion.Item eventKey="weekRetrospectiveItinerary">
-                <Accordion.Header>{t('configuration.week.retrospective.itinerary.title')}</Accordion.Header>
-                <Accordion.Body>
-                  <Itinerary
-                    field="weekRetrospectiveItinerary"
-                    itinerary={this.state.weekRetrospectiveItinerary}
-                    onAdd={this.handleItineraryAdd}
-                    onChange={this.handleItineraryChange}
-                    onDragEnd={this.handleDragEnd}
-                    onRemove={this.handleItineraryRemove}
-                  />
-                </Accordion.Body>
-              </Accordion.Item>
-            </Accordion>
-          </ToggleAccordionItem>
+            <ItineraryAccordionItem
+              field="weekRetrospectiveItinerary"
+              title={t('configuration.week.retrospective.itinerary.title')}
+              itinerary={this.state.weekRetrospectiveItinerary}
+              {...this.itineraryHandlers}
+            />
+          </ToggleSection>
         </Accordion>
         <Stack direction="vertical" gap={2} className="pt-3 position-sticky bg-body refresh-button">
           <Button variant="primary" className="w-100" disabled={isGeneratingPreview || isGeneratingPdf} type="submit">
@@ -739,29 +472,18 @@ class Configuration extends React.PureComponent {
   }
 
   render() {
-    const { t } = this.props;
-
     return (
       <Container className="h-100" fluid>
         <Row className="h-100">
           <Col>{this.renderConfigurationForm()}</Col>
           <Col>
-            <div className="pt-3 pb-3 position-sticky top-0 vh-100">
-              <Card className="h-100">
-                <Card.Header>
-                  {t('preview.title')} <small className="text-muted">{t('preview.subtitle')}</small>
-                </Card.Header>
-                <Card.Body className="pb-0">
-                  <PdfPreviewCard
-                    blobUrl={this.state.blobUrl}
-                    expectedTime={this.state.lastFullTime || 12 * this.state.lastPreviewTime}
-                    isGeneratingPdf={this.state.isGeneratingPdf}
-                    isGeneratingPreview={this.state.isGeneratingPreview}
-                    onDownload={this.handleDownload}
-                  />
-                </Card.Body>
-              </Card>
-            </div>
+            <PreviewColumn
+              blobUrl={this.state.blobUrl}
+              expectedTime={this.state.lastFullTime || 12 * this.state.lastPreviewTime}
+              isGeneratingPdf={this.state.isGeneratingPdf}
+              isGeneratingPreview={this.state.isGeneratingPreview}
+              onDownload={this.handleDownload}
+            />
           </Col>
         </Row>
       </Container>
