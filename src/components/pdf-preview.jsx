@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 
 const PdfPreview = ({ blobUrl, title }) => {
-  return <iframe title={title} src={blobUrl} width="100%" height="100%" />;
+  return <iframe className="w-100 flex-grow-1" title={title} src={blobUrl} />;
 };
 
 PdfPreview.propTypes = {
