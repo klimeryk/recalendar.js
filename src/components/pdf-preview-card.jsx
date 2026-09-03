@@ -14,7 +14,7 @@ class PdfPreviewCard extends React.PureComponent {
     return (
       <Stack direction="vertical" className="h-100">
         <PdfPreview blobUrl={blobUrl} title={t('preview.viewer-title')} />
-        <Stack direction="vertical" gap={2} className="py-3 position-sticky bg-body refresh-button">
+        <Stack direction="vertical" gap={2} className="py-3 flex-grow-0">
           <Button variant="secondary" disabled={isGeneratingPreview || isGeneratingPdf} onClick={onDownload}>
             {isGeneratingPdf ? (
               <>
