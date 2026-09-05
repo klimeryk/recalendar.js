@@ -473,10 +473,12 @@ class Configuration extends React.PureComponent {
 
   render() {
     return (
-      <Container className="h-100" fluid>
-        <Row className="h-100">
-          <Col>{this.renderConfigurationForm()}</Col>
-          <Col>
+      <Container className="d-flex flex-column flex-grow-1 min-h-0" fluid>
+        <Row className="flex-lg-grow-1 flex-lg-nowrap min-h-0">
+          <Col xs={12} lg={6} className="settings-column">
+            {this.renderConfigurationForm()}
+          </Col>
+          <Col xs={12} lg={6} className="d-lg-flex flex-lg-column py-3">
             <PreviewColumn
               blobUrl={this.state.blobUrl}
               expectedTime={this.state.lastFullTime || this.state.monthCount * this.state.lastPreviewTime}

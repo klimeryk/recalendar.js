@@ -12,9 +12,9 @@ class PdfPreviewCard extends React.PureComponent {
   renderPdfPreview() {
     const { blobUrl, isGeneratingPdf, isGeneratingPreview, onDownload, t } = this.props;
     return (
-      <Stack direction="vertical" className="h-100">
+      <Stack direction="vertical" className="min-h-0">
         <PdfPreview blobUrl={blobUrl} title={t('preview.viewer-title')} />
-        <Stack direction="vertical" gap={2} className="py-3 flex-grow-0">
+        <Stack direction="vertical" gap={2} className="py-3 flex-grow-0 flex-shrink-0">
           <Button variant="secondary" disabled={isGeneratingPreview || isGeneratingPdf} onClick={onDownload}>
             {isGeneratingPdf ? (
               <>
@@ -36,14 +36,14 @@ class PdfPreviewCard extends React.PureComponent {
 
     if (isGeneratingPreview) {
       return (
-        <div className="h-100 d-flex align-items-center justify-content-center">
+        <div className="flex-grow-1 d-flex align-items-center justify-content-center">
           <Spinner animation="border" role="status" size="sm" className="me-1" />
           {t('preview.generating.preview')}
         </div>
       );
     }
     return (
-      <Stack direction="vertical" className="h-100 d-flex align-items-center justify-content-center text-center">
+      <Stack direction="vertical" className="align-items-center justify-content-center text-center">
         <p className="lead">{t('preview.empty.title')}</p>
         <p>{t('preview.empty.subtitle')}</p>
       </Stack>

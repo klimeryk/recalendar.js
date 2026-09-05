@@ -9,22 +9,20 @@ class PreviewColumn extends React.PureComponent {
   render() {
     const { blobUrl, expectedTime, isGeneratingPdf, isGeneratingPreview, onDownload, t } = this.props;
     return (
-      <div className="pt-3 pb-3 position-sticky top-0 vh-100">
-        <Card className="h-100">
-          <Card.Header>
-            {t('preview.title')} <small className="text-muted">{t('preview.subtitle')}</small>
-          </Card.Header>
-          <Card.Body className="pb-0">
-            <PdfPreviewCard
-              blobUrl={blobUrl}
-              expectedTime={expectedTime}
-              isGeneratingPdf={isGeneratingPdf}
-              isGeneratingPreview={isGeneratingPreview}
-              onDownload={onDownload}
-            />
-          </Card.Body>
-        </Card>
-      </div>
+      <Card className="preview-card flex-lg-grow-1 min-h-0">
+        <Card.Header>
+          {t('preview.title')} <small className="text-muted">{t('preview.subtitle')}</small>
+        </Card.Header>
+        <Card.Body className="pb-0 d-flex flex-column min-h-0">
+          <PdfPreviewCard
+            blobUrl={blobUrl}
+            expectedTime={expectedTime}
+            isGeneratingPdf={isGeneratingPdf}
+            isGeneratingPreview={isGeneratingPreview}
+            onDownload={onDownload}
+          />
+        </Card.Body>
+      </Card>
     );
   }
 }
