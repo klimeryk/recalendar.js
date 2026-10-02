@@ -1,6 +1,8 @@
 import { Link, StyleSheet, Text, View } from '@react-pdf/renderer';
 import PropTypes from 'prop-types';
 import React from 'react';
+import PdfConfig from '~/pdf/config';
+import { calendarPageExists } from '~/pdf/utils';
 
 class Header extends React.PureComponent {
   constructor(props) {
@@ -99,7 +101,7 @@ class Header extends React.PureComponent {
   }
 
   render() {
-    const { calendar, id, nextLink, number, previousLink, subtitle, title, titleLink } = this.props;
+    const { calendar, config, date, dateType, id, nextLink, number, previousLink, subtitle, title, titleLink } = this.props;
 
     return (
       <View id={id} style={this.styles.header}>
@@ -108,13 +110,17 @@ class Header extends React.PureComponent {
             <Link src={titleLink} style={this.styles.title}>
               {title}
             </Link>
-            <Link src={previousLink} style={this.styles.arrow}>
-              «
-            </Link>
+            {calendarPageExists(date.subtract(1, dateType), config) && (
+              <Link src={previousLink} style={this.styles.arrow}>
+                «
+              </Link>
+            )}
             <Text style={this.styles.dayNumber}>{number}</Text>
-            <Link src={nextLink} style={this.styles.arrow}>
-              »
-            </Link>
+            {calendarPageExists(date.add(1, dateType), config) && (
+              <Link src={nextLink} style={this.styles.arrow}>
+                »
+              </Link>
+            )}
           </View>
           <View style={this.styles.dateInfo}>
             {this.renderSpecialItems()}
@@ -134,8 +140,11 @@ Header.defaultProps = {
 
 Header.propTypes = {
   id: PropTypes.string,
+  config: PropTypes.instanceOf(PdfConfig).isRequired,
   children: PropTypes.node,
   calendar: PropTypes.node.isRequired,
+  date: PropTypes.any.isRequired,
+  dateType: PropTypes.string.isRequired,
   isLeftHanded: PropTypes.bool.isRequired,
   number: PropTypes.string.isRequired,
   specialItems: PropTypes.array,

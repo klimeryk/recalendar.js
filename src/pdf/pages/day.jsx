@@ -39,6 +39,9 @@ class DayPage extends React.Component {
         <Page id={dayPageLink(date, config)} size={getPageSizeInPoints(config)}>
           <View style={this.styles.page}>
             <Header
+              config={config}
+              date={date}
+              dateType={'day'}
               isLeftHanded={config.isLeftHanded}
               title={date.format('MMMM')}
               titleLink={'#' + monthOverviewLink(date, config)}
