@@ -32,6 +32,9 @@ class WeekRetrospectivePage extends React.Component {
         <Page id={weekRetrospectiveLink(date)} size={getPageSizeInPoints(config)}>
           <View style={this.styles.page}>
             <Header
+              config={config}
+              date={date}
+              dateType={'week'}
               isLeftHanded={config.isLeftHanded}
               title={t('page.retrospective.title')}
               titleSize={15}

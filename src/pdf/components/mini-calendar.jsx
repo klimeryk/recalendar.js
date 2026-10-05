@@ -6,6 +6,7 @@ import { withTranslation } from 'react-i18next';
 
 import { getWeekdays, getWeekendDays, getWeekNumber } from '~/lib/date';
 import { findByDate, isEvent, isHoliday, DATE_FORMAT as SPECIAL_DATES_DATE_FORMAT } from '~/lib/special-dates-utils';
+import { calendarPageExists } from '~/pdf/utils';
 import PdfConfig from '~/pdf/config';
 import {
   dayPageLink,
@@ -88,6 +89,11 @@ class MiniCalendar extends React.Component {
     otherMonthDay: {
       color: '#999',
     },
+    noPageDay: {
+      color: '#AAA',
+      fontStyle: 'italic',
+      padding: '2 2 0 2',
+    },
     weekNumber: {
       color: '#999',
       border: 'none',
@@ -113,21 +119,30 @@ class MiniCalendar extends React.Component {
 
   renderMonthName() {
     const { monthArrow, monthName, pushLeft, pushRight, header } = this.styles;
-    const { config, date } = this.props;
+    const { config, date, showArrows } = this.props;
+
     return (
       <View style={header}>
-        <Link src={'#' + monthOverviewLink(date.subtract(1, 'month'), config)} style={[monthArrow, pushLeft]}>
-          {'<'}
-        </Link>
+        {calendarPageExists(date.subtract(1, 'month'), config) && showArrows ? (
+          <Link src={'#' + monthOverviewLink(date.subtract(1, 'month'), config)} style={[monthArrow, pushLeft]}>
+            {'<'}
+          </Link>
+        ) : (
+          <Text style={[monthArrow, pushLeft]}></Text>
+        )}
         <Link src={'#' + monthOverviewLink(date, config)} style={monthName}>
           {date.format('MMM')}
         </Link>
         <Link src={'#' + yearOverviewLink()} style={monthName}>
           {date.format('YYYY')}
         </Link>
-        <Link src={'#' + monthOverviewLink(date.add(1, 'month'), config)} style={[monthArrow, pushRight]}>
-          {'>'}
-        </Link>
+        {calendarPageExists(date.add(1, 'month'), config) && showArrows ? (
+          <Link src={'#' + monthOverviewLink(date.add(1, 'month'), config)} style={[monthArrow, pushRight]}>
+            {'>'}
+          </Link>
+        ) : (
+          <Text style={[monthArrow, pushRight]}></Text>
+        )}
       </View>
     );
   }
@@ -196,6 +211,10 @@ class MiniCalendar extends React.Component {
         dayStyles.push(this.styles.otherMonthDay);
       }
 
+      if (!calendarPageExists(currentDay, config)) {
+        dayStyles.push(this.styles.noPageDay);
+      }
+
       const specialDateKey = currentDay.format(SPECIAL_DATES_DATE_FORMAT);
       const specialDatesToday = config.specialDates.filter(findByDate(specialDateKey));
       if (specialDatesToday.length > 0) {
@@ -208,11 +227,19 @@ class MiniCalendar extends React.Component {
         }
       }
 
-      days.push(
-        <Link key={i} src={'#' + dayPageLink(currentDay, config)} style={dayStyles}>
-          {currentDay.date()}
-        </Link>,
-      );
+      if (calendarPageExists(currentDay, config)) {
+        days.push(
+          <Link key={i} src={'#' + dayPageLink(currentDay, config)} style={dayStyles}>
+            {currentDay.date()}
+          </Link>,
+        );
+      } else {
+        days.push(
+          <Text key={i} style={dayStyles}>
+            {currentDay.date()}
+          </Text>,
+        );
+      }
     }
 
     const weekStyles = [this.styles.week];
@@ -221,14 +248,22 @@ class MiniCalendar extends React.Component {
     }
     return (
       <View key={weekNumber} style={weekStyles}>
-        <Link src={'#' + weekOverviewLink(week, config)} style={[day, this.styles.weekNumber]}>
-          {weekNumber}
-        </Link>
+        {calendarPageExists(week, config) ? (
+          <Link src={'#' + weekOverviewLink(week, config)} style={[day, this.styles.weekNumber]}>
+            {weekNumber}
+          </Link>
+        ) : (
+          <Text style={[day, this.styles.weekNumber, this.styles.noPageDay]}>
+            {weekNumber}
+          </Text>
+        )}
         {days}
-        {config.isWeekRetrospectiveEnabled && (
+        {config.isWeekRetrospectiveEnabled && calendarPageExists(week, config) ? (
           <Link src={'#' + weekRetrospectiveLink(week)} style={[day, this.styles.weekRetrospective]}>
             {t('calendar.body.retrospective')}
           </Link>
+        ) : (
+          <Text style={[day, this.styles.weekRetrospective]}></Text>
         )}
       </View>
     );
@@ -247,6 +282,7 @@ class MiniCalendar extends React.Component {
 
 MiniCalendar.defaultProps = {
   highlightMode: HIGHLIGHT_DAY,
+  showArrows: true,
 };
 
 MiniCalendar.propTypes = {
