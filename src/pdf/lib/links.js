@@ -1,4 +1,5 @@
 import { getWeekId } from '~/lib/date';
+import { isRendered } from '~/pdf/utils';
 
 export function dayPageLink(date, config) {
   const dayLink = findEnabledDayPageLink(date, config, 1);
@@ -37,6 +38,10 @@ function findEnabledDayPageLink(date, config, step) {
       continue;
     }
 
+    if (!isRendered(date, config)) {
+      return '';
+    }
+
     return 'day-' + date.format('DDMMYYYY');
   }
 
@@ -49,7 +54,7 @@ function findDayOfWeek(needle) {
 
 export function monthOverviewLink(date, config) {
   if (config.isMonthOverviewEnabled) {
-    return 'month-' + date.format('MMYYYY');
+    return isRendered(date.date(1), config) ? 'month-' + date.format('MMYYYY') : '';
   }
 
   const dayLink = findEnabledDayPageLink(date.date(1), config, 1);
@@ -68,7 +73,7 @@ export function monthOverviewLink(date, config) {
 
 export function weekOverviewLink(date, config) {
   if (config.isWeekOverviewEnabled) {
-    return 'week-overview-' + getWeekId(date);
+    return isRendered(date.startOf('week'), config) ? 'week-overview-' + getWeekId(date) : '';
   }
 
   const dayLink = findEnabledDayPageLink(date.weekday(0), config, 1);
@@ -83,7 +88,11 @@ export function weekOverviewLink(date, config) {
   return '';
 }
 
-export function weekRetrospectiveLink(date) {
+export function weekRetrospectiveLink(date, config) {
+  if (!config.isWeekRetrospectiveEnabled || !isRendered(date.startOf('week'), config)) {
+    return '';
+  }
+
   return 'week-retrospective-' + getWeekId(date);
 }
 

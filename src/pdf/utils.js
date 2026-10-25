@@ -1,49 +1,64 @@
 import dayjs from 'dayjs/esm';
-import isSameOrBefore from 'dayjs/plugin/isSameOrBefore';
-import isSameOrAfter from 'dayjs/plugin/isSameOrAfter';
 import { ITINERARY_NEW_PAGE } from '~/lib/itinerary-utils';
 
 export function splitItemsByPages(items) {
   const pages = [[]];
-  let currentPageNumber = 0;
+  let currentPage = 0;
+
   for (let i = 0; i < items.length; i++) {
-    const { type } = items[i];
-    if (type === ITINERARY_NEW_PAGE) {
-      currentPageNumber++;
+    const item = items[i];
+    if (item.type === ITINERARY_NEW_PAGE) {
+      currentPage++;
+      pages[currentPage] = [];
       continue;
     }
 
-    if (!pages[currentPageNumber]) {
-      pages[currentPageNumber] = [];
-    }
-
-    pages[currentPageNumber].push(items[i]);
+    pages[currentPage].push(item);
   }
 
   return pages;
 }
 
-dayjs.extend(isSameOrBefore);
-dayjs.extend(isSameOrAfter);
+export function getCalendarStartDate({ year, month }) {
+  return dayjs.utc({ year, month, day: 1 });
+}
 
-export function calendarPageExists(date, config) {
-  // Checks whether a specific date exists within the config's selected range of days.
-  // Extra calendar pages can exist for days before and after the calendar's start and
-  // end dates, if those days are in the calendar's first and last weeks, and this
-  // function takes that into account.
+export function getRenderedMonthCount(config) {
+  return config.isPreview ? 1 : config.monthCount;
+}
 
-  const { year, month, monthCount } = config;
-  const firstCalendarDate = dayjs.utc({
-    year,
-    month,
-    day: 1,
-    hours: 0,
-    minutes: 0,
-    seconds: 0,
-  });
-  const lastCalendarDate = firstCalendarDate.add(monthCount - 1, 'months').endOf('month');
-  const firstDisplayedDate = firstCalendarDate.startOf('week');
-  const lastDisplayedDate = lastCalendarDate.endOf('week');
+export function isRenderedMonth(date, config) {
+  const startDate = getCalendarStartDate(config);
+  const endDate = startDate.add(getRenderedMonthCount(config), 'months');
+  return !date.isBefore(startDate, 'month') && date.isBefore(endDate, 'month');
+}
 
-  return date.isSameOrAfter(firstDisplayedDate) && date.isSameOrBefore(lastDisplayedDate);
+const renderedRanges = new WeakMap();
+const calendarRanges = new WeakMap();
+
+function getRange(cache, config, monthCount) {
+  if (!cache.has(config)) {
+    const startDate = getCalendarStartDate(config);
+    cache.set(config, {
+      first: startDate.startOf('week'),
+      last: startDate
+        .add(monthCount - 1, 'months')
+        .endOf('month')
+        .endOf('week'),
+    });
+  }
+
+  return cache.get(config);
+}
+
+function isInRange(date, { first, last }) {
+  return !date.isBefore(first, 'day') && !date.isAfter(last, 'day');
+}
+
+export function isRendered(date, config) {
+  return isInRange(date, getRange(renderedRanges, config, getRenderedMonthCount(config)));
+}
+
+export function isInCalendarRange(date, config) {
+  return isInRange(date, getRange(calendarRanges, config, config.monthCount));
 }

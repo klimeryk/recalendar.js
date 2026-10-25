@@ -29,20 +29,17 @@ class WeekRetrospectivePage extends React.Component {
     const itemsByPage = splitItemsByPages(config.weekRetrospectiveItinerary);
     return (
       <>
-        <Page id={weekRetrospectiveLink(date)} size={getPageSizeInPoints(config)}>
+        <Page id={weekRetrospectiveLink(date, config)} size={getPageSizeInPoints(config)}>
           <View style={this.styles.page}>
             <Header
-              config={config}
-              date={date}
-              dateType={'week'}
               isLeftHanded={config.isLeftHanded}
               title={t('page.retrospective.title')}
               titleSize={15}
               subtitle={this.getNameOfWeek()}
               subtitleSize={18}
               number={getWeekNumber(date).toString()}
-              previousLink={'#' + weekRetrospectiveLink(date.subtract(1, 'week'))}
-              nextLink={'#' + weekRetrospectiveLink(date.add(1, 'week'))}
+              previousLink={weekRetrospectiveLink(date.subtract(1, 'week'), config)}
+              nextLink={weekRetrospectiveLink(date.add(1, 'week'), config)}
               calendar={<MiniCalendar date={date} highlightMode={HIGHLIGHT_WEEK} config={config} />}
             />
             <View style={this.styles.content}>

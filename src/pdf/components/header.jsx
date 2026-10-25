@@ -1,8 +1,6 @@
 import { Link, StyleSheet, Text, View } from '@react-pdf/renderer';
 import PropTypes from 'prop-types';
 import React from 'react';
-import PdfConfig from '~/pdf/config';
-import { calendarPageExists } from '~/pdf/utils';
 
 class Header extends React.PureComponent {
   constructor(props) {
@@ -52,6 +50,9 @@ class Header extends React.PureComponent {
         padding: '10 5',
         fontSize: 20,
       },
+      hiddenArrow: {
+        opacity: 0,
+      },
       dayNumber: {
         fontSize: 55,
         fontWeight: 'bold',
@@ -100,8 +101,20 @@ class Header extends React.PureComponent {
     );
   }
 
+  renderArrow(link, symbol) {
+    if (!link) {
+      return <Text style={[this.styles.arrow, this.styles.hiddenArrow]}>{symbol}</Text>;
+    }
+
+    return (
+      <Link src={'#' + link} style={this.styles.arrow}>
+        {symbol}
+      </Link>
+    );
+  }
+
   render() {
-    const { calendar, config, date, dateType, id, nextLink, number, previousLink, subtitle, title, titleLink } = this.props;
+    const { calendar, id, nextLink, number, previousLink, subtitle, title, titleLink } = this.props;
 
     return (
       <View id={id} style={this.styles.header}>
@@ -110,17 +123,9 @@ class Header extends React.PureComponent {
             <Link src={titleLink} style={this.styles.title}>
               {title}
             </Link>
-            {calendarPageExists(date.subtract(1, dateType), config) && (
-              <Link src={previousLink} style={this.styles.arrow}>
-                «
-              </Link>
-            )}
+            {this.renderArrow(previousLink, '«')}
             <Text style={this.styles.dayNumber}>{number}</Text>
-            {calendarPageExists(date.add(1, dateType), config) && (
-              <Link src={nextLink} style={this.styles.arrow}>
-                »
-              </Link>
-            )}
+            {this.renderArrow(nextLink, '»')}
           </View>
           <View style={this.styles.dateInfo}>
             {this.renderSpecialItems()}
@@ -140,11 +145,8 @@ Header.defaultProps = {
 
 Header.propTypes = {
   id: PropTypes.string,
-  config: PropTypes.instanceOf(PdfConfig).isRequired,
   children: PropTypes.node,
   calendar: PropTypes.node.isRequired,
-  date: PropTypes.any.isRequired,
-  dateType: PropTypes.string.isRequired,
   isLeftHanded: PropTypes.bool.isRequired,
   number: PropTypes.string.isRequired,
   specialItems: PropTypes.array,

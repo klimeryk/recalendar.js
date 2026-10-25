@@ -1,5 +1,4 @@
 import { Document, StyleSheet } from '@react-pdf/renderer';
-import dayjs from 'dayjs/esm';
 import PropTypes from 'prop-types';
 import React from 'react';
 
@@ -12,6 +11,7 @@ import WeekOverviewPage from '~/pdf/pages/week-overview';
 import WeekRetrospectivePage from '~/pdf/pages/week-retrospective';
 import YearNotesPage from '~/pdf/pages/year-notes';
 import YearOverviewPage from '~/pdf/pages/year-overview';
+import { getCalendarStartDate, getRenderedMonthCount } from '~/pdf/utils';
 
 class RecalendarPdf extends React.Component {
   styles = StyleSheet.create({
@@ -60,14 +60,11 @@ class RecalendarPdf extends React.Component {
 
   renderCalendar() {
     const { config } = this.props;
-    const { year, month, monthCount } = config;
+    const { year, monthCount } = config;
     const pageList = [];
-    let currentDate = dayjs.utc({
-      year,
-      month,
-      day: 1,
-    });
+    let currentDate = getCalendarStartDate(config);
     const endDate = currentDate.add(monthCount, 'months');
+    const renderedEndDate = currentDate.add(getRenderedMonthCount(config), 'months');
 
     pageList.push(
       <YearOverviewPage key={'year-overview-' + year} startDate={currentDate} endDate={endDate} config={config} />,
@@ -77,13 +74,9 @@ class RecalendarPdf extends React.Component {
     }
 
     currentDate = currentDate.startOf('week');
-    while (currentDate.isBefore(endDate)) {
-      pageList.push(this.renderWeek(currentDate, endDate));
-
+    while (currentDate.isBefore(renderedEndDate)) {
+      pageList.push(this.renderWeek(currentDate, renderedEndDate));
       currentDate = currentDate.add(1, 'weeks');
-      if (this.props.isPreview && currentDate.month() === month + 1) {
-        break;
-      }
     }
 
     pageList.push(<LastPage key="last" config={config} />);
@@ -98,7 +91,6 @@ class RecalendarPdf extends React.Component {
 
 RecalendarPdf.propTypes = {
   config: PropTypes.instanceOf(PdfConfig).isRequired,
-  isPreview: PropTypes.bool.isRequired,
 };
 
 export default RecalendarPdf;

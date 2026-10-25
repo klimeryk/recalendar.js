@@ -143,15 +143,12 @@ class WeekOverviewPage extends React.Component {
       <Page id={weekOverviewLink(date, config)} size={getPageSizeInPoints(config)}>
         <View style={this.styles.page}>
           <Header
-            config={config}
-            date={date}
-            dateType={'week'}
             isLeftHanded={config.isLeftHanded}
             title={t('page.week.title')}
             subtitle={this.getNameOfWeek()}
             number={getWeekNumber(date).toString()}
-            previousLink={'#' + weekOverviewLink(date.subtract(1, 'week'), config)}
-            nextLink={'#' + weekOverviewLink(date.add(1, 'week'), config)}
+            previousLink={weekOverviewLink(date.subtract(1, 'week'), config)}
+            nextLink={weekOverviewLink(date.add(1, 'week'), config)}
             calendar={<MiniCalendar date={date} highlightMode={HIGHLIGHT_WEEK} config={config} />}
           />
           <View style={this.styles.days}>{this.renderDays()}</View>

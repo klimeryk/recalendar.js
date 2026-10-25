@@ -39,6 +39,7 @@ self.onmessage = ({ data }) => {
   const config = new PdfConfig(hydrateFromObject(data));
 
   const { firstDayOfWeek, language, isPreview, password, isPasswordEnabledInPreview } = data;
+  config.isPreview = isPreview;
   const userPassword = password && (!isPreview || isPasswordEnabledInPreview) ? password : undefined;
 
   changeLanguage(language);
@@ -52,7 +53,7 @@ self.onmessage = ({ data }) => {
     url: 'https://cdn.jsdelivr.net/gh/jdecked/twemoji@latest/assets/72x72/',
   });
 
-  const document = React.createElement(RecalendarPdf, { isPreview, config }, null);
+  const document = React.createElement(RecalendarPdf, { config }, null);
   pdf(document, {
     attachments: [
       {
